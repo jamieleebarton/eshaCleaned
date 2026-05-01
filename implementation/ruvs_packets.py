@@ -35,36 +35,18 @@ def build_packet(
         hestia_canonical=fndds_label,
         audit_candidates=audit_candidates,
         fndds_desc=ref.fndds_desc_by_code.get(fndds_code, ""),
-        sr28_desc=_lookup_desc(ref.sr28_desc_by_code, audit_candidates, "sr28_code", fndds_label),
-        esha_desc=_lookup_desc(ref.esha_desc_by_code, audit_candidates, "esha_code", fndds_label),
+        sr28_desc=ref.sr28_desc_by_code.get(_first_code(audit_candidates, "sr28_code"), ""),
+        esha_desc=ref.esha_desc_by_code.get(_first_code(audit_candidates, "esha_code"), ""),
         walmart_candidates=walmart_search(parsed_item, limit=walmart_limit),
         kroger_candidates=kroger_search(parsed_item, limit=kroger_limit),
         config=config or {},
     )
 
 
-def _lookup_desc(
-    desc_by_code: dict[str, str],
-    audit: list[dict[str, Any]],
-    code_field: str,
-    hestia_label: str,
-) -> str:
-    """Resolve a reference description by trying, in order:
-    1. The explicit code field on any audit row (e.g. sr28_code, esha_code).
-    2. The fdc_id on any audit row (FDC IDs subsume SR28 NDB numbers).
-    3. A case-insensitive match of the Hestia canonical label against dict values.
-    """
+def _first_code(audit: list[dict[str, Any]], key: str) -> str:
+    """Return first non-empty value of `key` across audit rows, else ''."""
     for row in audit:
-        v = row.get(code_field)
-        if v and str(v) in desc_by_code:
-            return desc_by_code[str(v)]
-    for row in audit:
-        v = row.get("fdc_id")
-        if v and str(v) in desc_by_code:
-            return desc_by_code[str(v)]
-    if hestia_label:
-        target = hestia_label.strip().lower()
-        for desc in desc_by_code.values():
-            if desc.strip().lower() == target:
-                return desc
+        v = row.get(key)
+        if v:
+            return str(v)
     return ""
