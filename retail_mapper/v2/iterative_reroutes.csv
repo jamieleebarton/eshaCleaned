@@ -1,0 +1,738 @@
+iteration,fdc_id,title,old_path,new_path,current_sim,proposed_sim,improvement
+1,2621137,"CHOCOLATE ALMONDMILK, CHOCOLATE",Beverage > Carbonated > Cola,Beverage > Carbonated > Cola > Plant Based,0.439,0.915,+0.476
+1,1387741,"CHOCOLATE ALMONDMILK, CHOCOLATE",Beverage > Carbonated > Cola,Beverage > Carbonated > Cola > Plant Based,0.471,0.882,+0.411
+1,2484319,"CHOCOLATE ALMONDMILK, CHOCOLATE",Beverage > Carbonated > Cola,Beverage > Carbonated > Cola > Plant Based,0.474,0.842,+0.369
+1,2621287,"CHOCOLATE ALMONDMILK, CHOCOLATE",Beverage > Carbonated > Cola,Beverage > Carbonated > Cola > Plant Based,0.439,0.915,+0.476
+1,1891132,"ALMONDMILK, CHOCOLATE",Beverage > Carbonated > Cola,Beverage > Plant Milk > Almond Milk > Sweetened,0.447,0.919,+0.472
+1,2281764,"CHOCOLATE FLAVORED ALMONDMILK, CHOCOLATE",Beverage > Carbonated > Cola,Beverage > Carbonated > Cola > Plant Based,0.499,0.887,+0.388
+1,2473111,"CHOCOLATE ALMONDMILK, CHOCOLATE",Beverage > Carbonated > Cola,Beverage > Carbonated > Cola > Plant Based,0.487,0.910,+0.423
+1,2479428,"CHOCOLATE FLAVORED ALMONDMILK, CHOCOLATE",Beverage > Carbonated > Cola,Beverage > Carbonated > Cola > Plant Based,0.499,0.887,+0.388
+1,2507283,"ALMONDMILK, CHOCOLATE",Beverage > Carbonated > Cola,Beverage > Carbonated > Cola > Plant Based,0.450,0.918,+0.468
+1,2637818,"CHOCOLATE ALMONDMILK, CHOCOLATE",Beverage > Carbonated > Cola,Beverage > Carbonated > Cola > Plant Based,0.452,0.914,+0.462
+1,1851601,"ROUNDY'S, APPLESAUCE, STRAWBERRY",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.500,0.806,+0.306
+1,1913331,"APPLESAUCE, ORIGINAL",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.497,0.842,+0.346
+1,2138432,"ORIGINAL APPLESAUCE, ORIGINAL",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.474,0.818,+0.345
+1,2080220,"APPLESAUCE, ORIGINAL",Pantry > Sauces & Salsas > Sauce,Pantry > Canned Fruit > Applesauce,0.477,0.796,+0.318
+1,2080249,"APPLESAUCE, ORIGINAL",Pantry > Sauces & Salsas > Sauce,Pantry > Canned Fruit > Applesauce,0.477,0.796,+0.318
+1,2080262,"APPLESAUCE, ORIGINAL",Pantry > Sauces & Salsas > Sauce,Pantry > Canned Fruit > Applesauce,0.477,0.796,+0.318
+1,2080215,"APPLESAUCE, ORIGINAL",Pantry > Sauces & Salsas > Sauce,Pantry > Canned Fruit > Applesauce,0.477,0.796,+0.318
+1,1982538,"ORIGINAL APPLESAUCE, ORIGINAL",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.456,0.759,+0.303
+1,1982537,"APPLESAUCE WITH STRAWBERRY PUREE, STRAWBERRY",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.498,0.842,+0.343
+1,1968369,"ORIGINAL APPLESAUCE, ORIGINAL",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.477,0.816,+0.339
+1,1968624,"ORIGINAL APPLESAUCE, ORIGINAL",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.477,0.816,+0.339
+1,1955722,"APPLESAUCE, ORIGINAL",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.485,0.827,+0.342
+1,1956271,ORIGINAL APPLESAUCE,Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.474,0.789,+0.315
+1,2100331,"APPLESAUCE, ORIGINAL",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.453,0.848,+0.395
+1,1920325,"APPLESAUCE, ORIGINAL",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.453,0.848,+0.395
+1,1920628,"APPLESAUCE, ORIGINAL",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.453,0.848,+0.395
+1,1921331,"APPLESAUCE, ORIGINAL",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.453,0.848,+0.395
+1,373308,"CLOVER VALLEY, APPLESAUCE, STRAWBERRY",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.472,0.816,+0.344
+1,1851119,"ORIGINAL APPLESAUCE, ORIGINAL",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.450,0.818,+0.368
+1,1404794,"ORIGINAL APPLESAUCE, ORIGINAL",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.477,0.831,+0.354
+1,1410158,"FRUITY GO, APPLE STRAWBERRY APPLESAUCE, APPLE STRAWBERRY",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.473,0.821,+0.349
+1,1860585,"ORIGINAL APPLESAUCE, ORIGINAL",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.465,0.848,+0.383
+1,1850320,"ORIGINAL APPLESAUCE, ORIGINAL",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.465,0.848,+0.383
+1,1948428,"APPLESAUCE, ORIGINAL APPLE",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.499,0.874,+0.376
+1,2678124,APPLESAUCE,Pantry > Sauces & Salsas > Sauce,Pantry > Canned Fruit > Applesauce,0.486,0.863,+0.377
+1,2314346,APPLESAUCE,Pantry > Sauces & Salsas > Sauce,Pantry > Canned Fruit > Applesauce,0.486,0.863,+0.377
+1,2313854,"CLASSIC APPLESAUCE, CLASSIC",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.487,0.827,+0.340
+1,1895067,"APPLESAUCE WITH STRAWBERRY PUREE, STRAWBERRY",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.477,0.852,+0.375
+1,1850574,"APPLESAUCE, ORIGINAL",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.488,0.814,+0.326
+1,2397618,APPLESAUCE FRUIT ON THE GO,Pantry > Sauces & Salsas > Sauce,Pantry > Canned Fruit > Applesauce,0.494,0.852,+0.359
+1,1865584,"APPLESAUCE ON THE GO, APPLE STRAWBERRY",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.484,0.859,+0.375
+1,2029381,"APPLEBANANA FRUIT ON THE GO APPLESAUCE, APPLEBANANA",Pantry > Sauces & Salsas > Sauce,Snack > Fruit Snacks > Squeezable,0.474,0.811,+0.336
+1,2038661,"APPLEPEACH FRUIT ON THE GO APPLESAUCE, APPLEPEACH",Pantry > Sauces & Salsas > Sauce,Snack > Fruit Snacks > Squeezable,0.461,0.828,+0.367
+1,1904038,"HEALTHY SNACK APPLE PUREE, APPLE",Pantry > Sauces & Salsas > Sauce,Snack > Fruit Snacks > Puree,0.456,0.838,+0.383
+1,745672,"ORIGINAL APPLESAUCE, ORIGINAL",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.494,0.885,+0.391
+1,1861783,"APPLESAUCE, ORIGINAL",Pantry > Sauces & Salsas > Sauce,Pantry > Canned Fruit > Applesauce,0.447,0.769,+0.323
+1,1982724,"ORIGINAL APPLESAUCE, ORIGINAL",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.456,0.759,+0.303
+1,2156499,"ORIGINAL APPLESAUCE, ORIGINAL",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.456,0.759,+0.303
+1,1982723,"ORIGINAL APPLESAUCE, ORIGINAL",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.456,0.759,+0.303
+1,2619895,"SWEET RED SLICED APPLES & CARAMEL DIPPER, SWEET RED",Pantry > Dips & Spreads > Dip,Produce > Fruit > Apples > Red > Sliced,0.496,0.844,+0.348
+1,2630119,"ORIGINAL APPLESAUCE, ORIGINAL",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.492,0.881,+0.389
+1,2611885,"ORIGINAL APPLESAUCE, ORIGINAL",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.492,0.881,+0.389
+1,2136121,"ORIGINAL APPLESAUCE, ORIGINAL",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.450,0.811,+0.361
+1,2241206,"ORIGINAL APPLESAUCE, ORIGINAL",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.480,0.846,+0.366
+1,1388961,"ORIGINAL APPLESAUCE, ORIGINAL",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.480,0.846,+0.366
+1,2248229,"ORIGINAL APPLESAUCE, ORIGINAL",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.480,0.846,+0.366
+1,1997751,"ORIGINAL APPLESAUCE, ORIGINAL",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.450,0.818,+0.368
+1,2147090,"ORIGINAL APPLESAUCE, ORIGINAL",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.450,0.818,+0.368
+1,2524336,"ORIGINAL APPLESAUCE, ORIGINAL",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.465,0.848,+0.383
+1,2624827,"HOMESTYLE APPLESAUCE, HOMESTYLE",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.485,0.794,+0.308
+1,1969610,"HOMESTYLE APPLESAUCE, HOMESTYLE",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.485,0.794,+0.308
+1,1063301,"ORIGINAL APPLESAUCE, ORIGINAL",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.494,0.885,+0.391
+1,2078960,APPLE CHEESE TRAY,Snack > Crackers,Produce > Snack Packs > Fruit Tray,0.467,0.793,+0.326
+1,1457583,"BACN,HRI,BM,18/22,25#",Meat & Seafood > Bacon,Meat & Seafood > Pork > Boneless,0.340,0.722,+0.382
+1,1459593,"BACN,HRI,BM,14/18,25#",Meat & Seafood > Bacon,Meat & Seafood > Pork > Boneless,0.341,0.727,+0.385
+1,1460211,"BACN,SS,RMP,15#,Z",Meat & Seafood > Bacon > Smoked > Sliced,Meat & Seafood > Pork > Boneless,0.370,0.740,+0.369
+1,2740806,EPIC Maple Uncured Bacon and Pork Bars 12 Count,Snack > Bars,Meat & Seafood > Bacon > Uncured,0.465,0.781,+0.315
+1,2381691,"UNCURED BISON DOGS, UNCURED",Pantry > Pickles > Relish,Meat & Seafood > Beef > Uncured,0.458,0.836,+0.378
+1,1992854,"HICKORY SMOKED UNCURED CHICKEN BACON, HICKORY SMOKED",Meal > Salads,Meat & Seafood > Bacon > Uncured > Hickory Smoked,0.483,0.878,+0.394
+1,2119995,CORNBREAD BAKING MIX,Pantry > Canned Vegetables > Corn > Gluten Free,Pantry > Baking Mixes > Cornbread Mix,0.479,0.813,+0.334
+1,2369465,"S'MORES FLAVORED MEAL BAR, S'MORES",Meal > Meal Starters,Snack > Bars > Granola Bars > S'mores,0.481,0.902,+0.421
+1,2406828,REFRIED PINTO BEANS WITH TAPATIO HOT SAUCE,Pantry > Sauces & Salsas > Hot Sauce,Pantry > Canned Vegetables > Refried Beans,0.473,0.793,+0.320
+1,2636308,BLUEBERRY YOGURT,Bakery > Muffins,Bakery > Bagels > Blueberry Bagels,0.479,0.779,+0.300
+1,1862725,"PANKO, BREAD CRUMBS WITH ITALIAN SEASONING",Pantry > Spices & Seasonings > Seasoning,Pantry > Bread Crumbs,0.463,0.893,+0.430
+1,2011929,"BADIA, BREAD CRUMBS WITH COMPLETE SEASONING",Pantry > Spices & Seasonings > Seasoning,Pantry > Bread Crumbs,0.451,0.806,+0.355
+1,2061444,"GRATEFUL BREAD, SLIDER BUNS",Snack > Pretzels,Bakery > Bread > Brioche > Buns > Slider,0.475,0.827,+0.351
+1,2075379,SESAME BUNS,Snack > Pretzels,Snack > Pretzels > Bun,0.469,0.829,+0.360
+1,2569716,ORIGINAL HAWAIIAN SWEET PRETZEL SLIDER BUNS,Snack > Pretzels,Bakery > Rolls > Hawaiian Rolls,0.465,0.790,+0.325
+1,2272424,6 CT SLIDER BUNS,Snack > Pretzels,Bakery > Bread > Brioche > Buns > Slider,0.441,0.834,+0.394
+1,1903633,"SLIDER BUNS, BUTTER",Snack > Pretzels,Bakery > Bread > Brioche > Buns > Slider,0.447,0.770,+0.323
+1,944856,"BLUEBERRY FRUIT & GRAIN BREAKFAST BUNS, BLUEBERRY",Snack > Pretzels > Whole Grain,Bakery > Bagels > Blueberry Bagels,0.500,0.850,+0.351
+1,2453994,MINI SLIDER BUNS,Snack > Pretzels > Mini,Bakery > Bread > Brioche > Buns > Slider,0.454,0.865,+0.411
+1,2035198,SLIDERS MINI BUNS,Snack > Pretzels > Mini,Bakery > Bread > Brioche > Buns > Slider,0.453,0.820,+0.367
+1,2441532,"ONION PREMIUM BUNS, ONION",Snack > Pretzels,Bakery > Bagels > Onion Bagels,0.461,0.769,+0.308
+1,2109508,SESAME TOPPED SLIDERS BUNS,Snack > Pretzels,Bakery > Bread > Brioche > Buns > Slider,0.494,0.825,+0.331
+1,2085186,HAMBERGER BUNS,Snack > Pretzels,Snack > Pretzels > Bun,0.456,0.812,+0.356
+1,363297,BUNS,Snack > Pretzels > Whole Grain,Snack > Pretzels > Bun,0.458,0.911,+0.453
+1,2542608,RUSK BUNS,Snack > Pretzels,Snack > Pretzels > Bun,0.439,0.765,+0.326
+1,2448047,"CHOCOLATE CAKE TASTY PASTRY, CHOCOLATE CAKE",Snack > Bars > Protein Bars > High Protein,Bakery > Pastry,0.454,0.810,+0.355
+1,1979276,GINGERBREAD CAKE BITE KIT,Pantry > Spices & Seasonings > Ginger,Pantry > Baking Mixes > Cookie Mix,0.498,0.830,+0.332
+1,2246295,"CHERRY NO BAKE REAL CHEESECAKE, CHERRY",Pantry > Baking Mixes > Mix,Bakery > Cake > Cheesecake,0.447,0.773,+0.327
+1,1919659,"LEMON BAR MIX, LEMON",Pantry > Pie Fillings,Pantry > Baking Mixes > Cake Mix,0.495,0.795,+0.300
+1,2565623,ORIGINAL FLAVOR BAR,Snack > Crackers,Snack > Candy > Chocolate Bars,0.462,0.765,+0.304
+1,1873998,"DARK CHOCOLATE TRUFFLE BAR, COCONUT ALMOND & SEA SALT",Snack > Candy > Truffles > Sea Salt,Snack > Candy > Truffles > Bar,0.484,0.859,+0.376
+1,2306361,"LEMON LOVERS LEMONADE, CHERRY, LIMONADE, BLUEBERRY, STRAWBERRY FLAVORED CANDY BITES, LEMON LOVERS",Dairy > Cream > Sour Cream,Snack > Candy > Sour Candy > Bite Size,0.490,0.813,+0.324
+1,2526434,LOVE HEARTS CANDY ROLLS,Bakery > Rolls > Roll,Snack > Candy > Candy Rolls,0.487,0.845,+0.358
+1,2490273,OAT CLUSTER CRUNCH BLUE-POM CORN & WHEAT FLAKE CEREAL WITH FLAVORED BLUEBERRY & POMEGRANATE WHOLE GR,Pantry > Canned Vegetables > Corn > Whole,Pantry > Canned Vegetables > Corn > Crunch > Sweetened,0.450,0.771,+0.321
+1,2676697,HONEY & OATS WITH HONEY FLAVORED OAT CLUSTERS SWEETENED CORN & WHOLE WHEAT FLAKE CEREAL WITH GRANOLA,Pantry > Canned Vegetables > Corn > Whole,Pantry > Grain > Oats > Toasted Oats,0.491,0.821,+0.330
+1,2720992,Kellogg's Rice Krispies Treats Squares Cocoa Krispies .7oz,Snack > Candy > Marshmallows,Snack > Bars > Cereal Bars > Rice Krispies Treats,0.457,0.876,+0.419
+1,2234263,Kellogg's Rice Krispies Treats Squares Milk Chocolate M&M .7oz,Snack > Candy > Marshmallows,Snack > Bars > Cereal Bars > Rice Krispies Treats > Original,0.457,0.835,+0.378
+1,2234285,Kellogg's Rice Krispies Treats Squares Double Chocolate Chunk 3oz,Snack > Cookies,Snack > Bars > Cereal Bars > Rice Krispies Treats > Original,0.466,0.896,+0.429
+1,2234130,Ann Org Frnds Bunnies Crl 2 Pk,Snack > Bars > Granola Bars > Chocolate,Pantry > Breakfast Cereal,0.456,0.765,+0.309
+1,2234472,Kellogg's In & Out Cereal Unicorn 10oz,Pantry > Canned Vegetables > Corn,Pantry > Breakfast Cereal,0.455,0.770,+0.315
+1,2535200,"PIMENTO SPREAD, PIMENTO",Pantry > Dips & Spreads > Dip,Dairy > Cheese > Cheddar > Pimento Cheese Spread,0.460,0.884,+0.424
+1,2508820,"MONTEREY JACK QUESO, MONTEREY JACK",Pantry > Dips & Spreads > Dip,Dairy > Cheese > Monterey Jack > Reduced Fat,0.479,0.869,+0.390
+1,2504312,"ARTICHOKE ASIAGO CHEESE SPREAD, ARTICHOKE ASIAGO",Pantry > Dips & Spreads > Dip,Dairy > Cheese > Asiago,0.444,0.813,+0.369
+1,2071977,PIMENTO SPREAD,Pantry > Dips & Spreads > Dip,Dairy > Cheese > Cheddar > Pimento Cheese Spread,0.455,0.782,+0.327
+1,1803995,KANSAS CITY CHILE,Pantry > Dips & Spreads > Dip,Dairy > Cheese > Queso,0.496,0.804,+0.307
+1,2461487,"GARLIC PARMESAN SNACK MAX, GARLIC PARMESAN",Snack > Trail Mix,Dairy > Cheese > Parmesan,0.475,0.808,+0.333
+1,2649343,"Campbell's ChunkyTMChili with Beans, 16.5 oz Can",Pantry > Chili,Pantry > Grain > Rice > Chunky,0.498,0.802,+0.304
+1,2389312,"SPICY RED BEAN CHILI WITH CHIPOTLE + AJI MOLIDO ORGANIC DRY CHILI MIX, SPICY RED BEAN CHILI",Pantry > Canned Vegetables > Red Beans > Organic,Pantry > Chili,0.467,0.789,+0.322
+1,2625986,"VANILLA MERINGUES, VANILLA",Snack > Candy,Snack > Candy > Fat Free,0.476,0.816,+0.341
+1,2193512,"GARLIC HERB CHEESE CRISPS, GARLIC HERB",Dairy > Cheese,Snack > Crisps,0.494,0.797,+0.303
+1,2321807,FRUIT WITH CHEDDAR CHEESE,Pantry > Soup,Meal > Lunch Kits,0.480,0.794,+0.315
+1,718240,"PROTEIN CHIPS, SPICY CHILI LIME",Pantry > Salad Dressings,Snack > Chips > High Protein,0.468,0.863,+0.396
+1,1933310,"PROTEIN CHIPS, SPICY CHILI LIME",Pantry > Salad Dressings,Bakery > Tortillas > High Protein,0.453,0.857,+0.404
+1,2587148,"SEA SALT ORGANIC BROCCOLI BITES, SEA SALT",Meal > Quiche,Snack > Chips > Sea Salt,0.462,0.830,+0.368
+1,2096308,"SHRIMP & CORN CHOWDER, SHRIMP & CORN",Pantry > Canned Vegetables > Corn > Light,Pantry > Canned Vegetables > Corn > Chunky,0.479,0.780,+0.301
+1,2051778,"WHOLE FOODS MARKET, MACADAMIA COCONUT PANKO",Pantry > Bread Crumbs,Pantry > Coconut > Coconut Cream,0.460,0.785,+0.325
+1,2563821,"CHOCOLATE HAZELNUT WITH CHOCOLATE BIT INCLUSIONS COFFEE, CHOCOLATE HAZELNUT",Beverage > Carbonated > Cola,Snack > Nuts > Hazelnuts,0.499,0.819,+0.320
+1,2654812,"VANILLA HALVA, VANILLA",Snack > Candy > Hard Candy,Snack > Cookies > Vanilla,0.457,0.793,+0.336
+1,2171233,"GINGERBREAD COOKIE PANCAKES, GINGERBREAD COOKIE",Pantry > Spices & Seasonings > Ginger,Frozen > Breakfast > Pancakes,0.499,0.898,+0.399
+1,1899465,"MINT COOKIES, DECADENT FUDGE",Snack > Candy > Mints > Sugar Free,Snack > Cookies > Fudge Mint Cookies,0.482,0.845,+0.362
+1,1877423,"TEA BISCUIT, CHOCOLATE",Beverage > Carbonated > Cola,Snack > Cookies > Biscuit,0.457,0.834,+0.378
+1,2566666,"PEPPERMINT COCOA COOKIE DOUGH, PEPPERMINT; COCOA",Pantry > Spices & Seasonings > Pepper,Pantry > Baking Mixes > Cookie Mix,0.448,0.765,+0.317
+1,1876227,"MERINGUES, CHOCOLATE",Snack > Candy,Snack > Candy > Fat Free,0.473,0.912,+0.439
+1,2011898,ORGANIC SPANISH STYLE ANCIENT GRAINS BLEND,Pantry > Spices & Seasonings > Seasoning > Organic,Pantry > Grain > Grain Blend,0.470,0.772,+0.302
+1,2072831,"FRUIT, VEGGIES & CHEDDAR CHEESE",Pantry > Soup,Meal > Lunch Kits,0.498,0.802,+0.304
+1,2482155,"BEEF & PEPPER JACK SMOKED BEEF STICKS & MONTEREY JACK CHEESE WITH JALAPENO PEPPERS, BEEF & PEPPER JA",Snack > Crackers,Dairy > Cheese > Pepper Jack,0.487,0.801,+0.314
+1,2520717,"ACT II Movie Theater Butter, 2.75 OZ",Snack > Popcorn > Popped,Snack > Popcorn > Butter Lovers,0.496,0.889,+0.393
+1,2520733,"ACT II Extra Movie Butter, 33.016 OZ",Snack > Popcorn,Snack > Popcorn > Butter Lovers,0.490,0.880,+0.389
+1,2400284,"WHITE QUINOA WITH OLIVE OIL & SEA SALT, OLIVE OIL & SEA SALT",Snack > Crackers > Organic > Sea Salt,Pantry > Grain > Quinoa,0.485,0.804,+0.319
+1,2511439,"NACHO PLANT CRISPS, NACHO",Pantry > Dips & Spreads > Dip,Snack > Crackers > Crisps,0.489,0.805,+0.316
+1,2611263,"SWEET & SALTY SNACKS, CINNAMON; CHOCOLATE",Bakery > Cake,Snack > Trail Mix > Sweet,0.498,0.808,+0.311
+1,1034727,PREMIUM BUCKWHEAT GROATS,Pantry > Grain > Oats,Pantry > Grain > Buckwheat,0.467,0.797,+0.330
+1,2449161,"LAVOSH NATURAL CRACKERS, LAVOSH",Snack > Crackers > Natural,Snack > Crackers > Sea Salt > Whole Grain,0.476,0.781,+0.305
+1,2294553,"HOT MEGA SIZE SNACK STICK, HOT",Meat & Seafood > Beef > Hot,Meat & Seafood > Meat > Meat Snack Sticks,0.486,0.791,+0.305
+1,2572718,"BELGIAN STYLE CHOCOLATE TOFFEE COFFEE CREAMER, BELGIAN STYLE CHOCOLATE TOFFEE",Beverage > Carbonated > Cola,Beverage > Coffee Creamer,0.443,0.801,+0.358
+1,2566695,"BELGIAN CHOCOLATE CREAMER, BELGIAN CHOCOLATE",Beverage > Carbonated > Cola,Beverage > Coffee Creamer > Concentrated,0.496,0.882,+0.386
+1,2024907,"CREAM HORSERADISH, HOT",Pantry > Sauces & Salsas > Salsa > Hot,Pantry > Sauces & Salsas > Horseradish Sauce,0.461,0.850,+0.390
+1,2679819,HOT CREAM HORSERADISH,Pantry > Sauces & Salsas > Salsa > Hot,Pantry > Sauces & Salsas > Horseradish Sauce,0.456,0.812,+0.356
+1,1863126,"HOT CREAM HORSERADISH, HOT",Pantry > Sauces & Salsas > Salsa > Hot,Pantry > Sauces & Salsas > Horseradish Sauce,0.491,0.802,+0.311
+1,2090414,CENTRAL AMERICAN CREAM,Dairy > Cheese > American,Dairy > Cream,0.472,0.856,+0.384
+1,2664895,"MATCHA FLAVOR TAIWAN CLASSIC BUBBLE TEA WITH TAPIOCA PEARLS, MATCHA WITH TAPIOCA PEARLS",Snack > Gum > Bubble Gum,Beverage > Tea > Matcha,0.458,0.758,+0.300
+1,2744787,"International Delight French Vanilla, Extended Shelf Life 32oz",Snack > Candy,Beverage > Coffee Creamer > Liquid,0.446,0.765,+0.319
+1,2744778,International Delight ESL 64oz French Vanilla Btl,Snack > Candy,Beverage > Coffee Creamer > Liquid,0.448,0.789,+0.341
+1,2530276,TOLL HOUSE BROWN BUTTER CHOCOLATE CHIP COOKIE COFFEE CREAMER,Beverage > Carbonated > Cola,Beverage > Coffee Creamer,0.487,0.810,+0.323
+1,2543738,"CHOCOLATE CARAMEL COFFEE CREAMER, CHOCOLATE CARAMEL",Beverage > Carbonated > Cola,Beverage > Coffee Creamer,0.496,0.810,+0.313
+1,614246,"96 TRENDY SHELL ROUND CHOCO BUTTER 3.2""",Bakery > Pastry > Croissants,Bakery > Bread > Round,0.472,0.797,+0.325
+1,2290320,"DARK, DARK, CHOCOLATE DESSERT",Snack > Candy,Dairy > Pudding > Chocolate Pudding,0.469,0.790,+0.321
+1,2504390,"BEEF GRAVY A SLOW-ROASTED BEEF & VEGETABLE BASED SAUCE, BEEF GRAVY",Pantry > Bouillon & Broth > Vegetable Base,Pantry > Gravy,0.451,0.757,+0.306
+1,2075809,SWEET-CHILI CHICKEN,Pantry > Spices & Seasonings > Seasoning,Frozen > Single Entrees > Frozen Entree,0.475,0.788,+0.313
+1,1850275,"POCKET SANDWICH, SOUTHWEST CHICKEN CHIPOTLE",Meal > Pizza,Frozen > Appetizers > Chicken Sandwich,0.472,0.844,+0.372
+1,1902364,"CHICKEN MINIS, STUFFED JALAPENO",Dairy > Cheese,Frozen > Appetizers & Snacks > Chicken,0.468,0.780,+0.311
+1,2456387,NATURALLY BLUEBERRY MATZO BLINTZES,Bakery > Matzo,Frozen > Blintzes,0.494,0.801,+0.307
+1,2650320,Morningstar Farms Poultry BBQ 9.75oz,Frozen > Single Entrees > Frozen Entree,Meal > Burgers > Veggie Burgers,0.450,0.763,+0.313
+1,2149337,"SHRIMP BISQUE, SHRIMP",Pantry > Soup,Meat & Seafood > Shrimp > Cooked,0.467,0.780,+0.313
+1,2465678,"JELLY DONUT CRUNCH MEAL REPLACEMENT BAR, JELLY DONUT CRUNCH",Meal > Meal Starters,Snack > Bars > Granola Bars > Crunch,0.452,0.787,+0.335
+1,2474043,"JELLY DONUT CRUNCH MEAL REPLACEMENT BAR, JELLY DONUT CRUNCH",Meal > Meal Starters,Snack > Bars > Granola Bars > Crunch,0.452,0.787,+0.335
+1,2607070,"ROASTED GARLIC PEPPERCORN DRESSING, ROASTED GARLIC PEPPERCORN",Pantry > Canned Vegetables > Corn,Pantry > Canned Vegetables > Corn > Low Fat,0.490,0.802,+0.312
+1,1833413,"MINT CHOCOLATE DRINK, MINT CHOCOLATE",Beverage > Plant Milk > Coconut Milk > Plant Based,Snack > Candy > Mints,0.477,0.780,+0.303
+1,1568446,LEMONADE DRINK,Snack > Fruit Snacks,Beverage > Juice > Lemonade,0.490,0.816,+0.326
+1,1874941,"PRICE CHOPPER, COUNTRY STYLE LEMON DRINK MIX, LEMONADE, LEMONADE",Pantry > Grain > Rice,Pantry > Mixes > Lemonade Mix,0.462,0.776,+0.314
+1,2265186,"LEMONADE NATURAL ELECTROLYTE POWDER, LEMONADE",Pantry > Mixes > Hot Cocoa Mix,Sports & Wellness > Electrolyte > Electrolyte Powder,0.467,0.827,+0.360
+1,719242,"THE ORIGINAL OAT-MILK CHOCOLATE, CHOCOLATE",Beverage > Carbonated > Cola,Beverage > Plant Milk > Oat Milk > Plant Based,0.490,0.844,+0.354
+1,2501192,"DARK CHOCOLATE OATMILK, DARK CHOCOLATE",Beverage > Carbonated > Cola,Beverage > Plant Milk > Oat Milk,0.444,0.846,+0.402
+1,2469515,"CHOCOLATE OATMILK, CHOCOLATE",Beverage > Carbonated > Cola,Beverage > Plant Milk > Oat Milk > Plant Based,0.452,0.885,+0.432
+1,2065966,PANKO BREADED COD TENDERS,Pantry > Bread Crumbs,Meat & Seafood > Seafood > Cod > Breaded,0.489,0.845,+0.355
+1,2474492,"MAINE SMOKED A BLEND OF SMOKED SALMON, HERBS AND SPICES PATE, MAINE SMOKED",Pantry > Dips & Spreads > Dip,Meat & Seafood > Salmon > Smoked,0.480,0.802,+0.321
+1,1903204,"PANKO CRUSTED WHITE FLAKY FILLETS, PANKO PARMESAN",Pantry > Bread Crumbs,Meat & Seafood > Fish > Breaded Fish Fillets,0.464,0.782,+0.318
+1,1588232,CHUNK LIGHT TUNA IN OIL,Pantry > Oil,Pantry > Oil > Vegetable Oil > Chunk,0.469,0.912,+0.443
+1,2438335,WHITE TUNA IN OIL,Pantry > Oil,Pantry > Canned Seafood > Tuna,0.446,0.788,+0.342
+1,2013716,"SHOPRITE, CHUNK LIGHT TUNA IN VEGETABLE OIL",Pantry > Oil > Vegetable Oil,Pantry > Oil > Vegetable Oil > Chunk,0.449,0.890,+0.441
+1,2368438,CHUNK LIGHT TUNA IN OIL,Pantry > Oil,Pantry > Oil > Vegetable Oil > Chunk,0.479,0.891,+0.412
+1,2678595,CHUNK LIGHT TUNA IN OIL,Pantry > Oil,Pantry > Oil > Vegetable Oil > Chunk,0.466,0.909,+0.443
+1,2077281,CHUNK LIGHT PREMIUM TUNA IN VEGETABLE OIL,Pantry > Oil > Vegetable Oil,Pantry > Oil > Vegetable Oil > Chunk,0.452,0.899,+0.447
+1,1904249,CHUNK LIGHT PREMIUM TUNA IN VEGETABLE OIL,Pantry > Oil > Vegetable Oil,Pantry > Oil > Vegetable Oil > Chunk,0.452,0.899,+0.447
+1,468341,TUNA IN SOY OIL,Pantry > Oil,Pantry > Oil > Vegetable Oil > Chunk,0.484,0.818,+0.334
+1,1920596,"CHUNK LIGHT TUNA IN VEGETABLE OIL, SMOKE",Pantry > Oil > Vegetable Oil,Pantry > Oil > Vegetable Oil > Chunk,0.485,0.948,+0.463
+1,1851118,"MIXED BERRY APPLESAUCE, MIXED BERRY",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.498,0.827,+0.329
+1,2639312,"MIXED BERRY APPLESAUCE, MIXED BERRY",Pantry > Sauces & Salsas > Sauce,Pantry > Canned Fruit > Mixed Fruit,0.495,0.841,+0.347
+1,1457328,"""""HAM,SMKD,BNLS,WA,DNR,SM,10/15#,2PC""""",Meat & Seafood > Ham > Sliced,Meat & Seafood > Pork > Boneless,0.484,0.796,+0.312
+1,1459182,"""""HAM,STK,SMKD,BI,WA,(UFB),FL,12PC""""",Meat & Seafood > Ham,Meat & Seafood > Pork > Boneless,0.490,0.794,+0.304
+1,2506829,TURTLE PIE,Frozen > Ice Cream > Reduced Fat,Bakery > Pie > Frozen,0.466,0.833,+0.366
+1,2280653,"WAFER FILLED WITH HAZELNUT FLAVORED CREAM, WITH CHOCOLATE FLAVORED COATING AND PEANUTS ROLL, HAZELNU",Bakery > Rolls > Roll,Snack > Nuts > Hazelnuts > Wafer,0.462,0.796,+0.334
+1,2446061,"COCONUT COCONUTMILK NON-DAIRY FROZEN DESSERT SANDWICHES, COCONUT",Meal > Sandwiches > Sandwich,Frozen > Ice Cream > Non-Dairy > Dairy Free > Plant Based > Vegan,0.499,0.887,+0.388
+1,2621715,SALTED CARAMEL BLONDIE SALTED CARAMEL SWIRLED IN SWEET CREAM ICE CREAM BETWEEN BLONDIE WAFERS PREMIU,Meal > Sandwiches > Sandwich,Frozen > Ice Cream > Sea Salt,0.470,0.801,+0.331
+1,2114014,"LIMONE E MENTA SPARKLING LEMON BEVERAGE WITH 16% LEMON JUICE FROM CONCENTRATE WITH MINT EXTRACT, LIM",Snack > Candy > Mints,Beverage > Juice > Lemon Juice,0.456,0.772,+0.316
+1,2113256,"LIMONE E MENTA SPARKLING LEMON BEVERAGE WITH 16% LEMON JUICE FROM CONCENTRATE WITH MINT EXTRACT, LIM",Snack > Candy > Mints,Beverage > Juice > Lemon Juice,0.456,0.772,+0.316
+1,2539785,"Hubert's Lemonade Peach Glass Bottle, 16 fl oz",Snack > Fruit Snacks,Snack > Fruit Snacks > Low Calorie,0.483,0.857,+0.374
+1,1457473,Gatorade Thirst Quencher Low Calorie Glacier Freeze (8 - 20 Fl Oz) 160 Fluid Ounce 8 Pack Plastic Bo,Pantry > Mixes > Drink Mix,Beverage > Sports Drinks > Sports Drink > Low Calorie,0.494,0.798,+0.303
+1,2675576,"CRISPY GREEN CRISPY FRUIT 100% FREEZE-DRIED TANGERINE, 0.42 OZ",Snack > Chips,Snack > Fruit Snacks > Freeze Dried,0.483,0.785,+0.302
+1,2478230,"ITALIAN-STYLE PINWHEELS, ITALIAN-STYLE",Meal > Sandwiches > Sandwich,Meat & Seafood > Charcuterie > Salami > Dry,0.448,0.763,+0.315
+1,1604537,BOLOGNA,Meat & Seafood > Sausage,Meat & Seafood > Sausage > Sliced > Thick Sliced,0.474,0.798,+0.324
+1,1888482,"ORIGINAL RING BOLOGNA, HICKORY SMOKED GARLIC",Meat & Seafood > Sausage > Smoked,Meat & Seafood > Sausage > Ring,0.492,0.829,+0.337
+1,371924,"APPLESNAX, APPLESAUCE WITH MANGOS & PEACHES",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.494,0.802,+0.308
+1,1649622,BLOODY MARY MIXER WITH CLAM JUICE,Beverage > Juice,Beverage > Mixes > Bloody Mary Mix,0.454,0.800,+0.346
+1,2653111,BOILED OYSTERS,Pantry > Oil,Pantry > Canned Seafood > Smoked Oysters,0.457,0.795,+0.338
+1,2593969,Cheesy Beef Pasta Hamburger Helper,Pantry > Pasta,Meal > Meal Starters > Hamburger Helper,0.491,0.892,+0.400
+1,614378,"96 MINI TRENDY SHELL NEUTRAL 2""",Snack > Crackers > Mini,Bakery > Bread > Round,0.485,0.823,+0.338
+1,2581724,"CHOCOLATE TAHINI, CHOCOLATE",Pantry > Sauces & Salsas > Salsa,Snack > Candy > Chocolate Candy > Swiss Milk Chocolate,0.447,0.784,+0.337
+1,2582145,"CHOCOLATE TAHINI, CHOCOLATE",Pantry > Sauces & Salsas > Salsa,Snack > Candy > Chocolate Candy > Swiss Milk Chocolate,0.447,0.784,+0.337
+1,1926360,CROSSPACKED BRISLING SARDINES IN EXTRA VIRGIN OLIVE OIL,Pantry > Oil > Olive Oil > Extra Virgin,Pantry > Canned Seafood > Sardines > Extra Virgin Olive Oil,0.492,0.841,+0.349
+1,2426686,GOURMET BRISLING WILD SARDINES IN EXTRA VIRGIN OLIVE OIL,Pantry > Oil > Olive Oil > Extra Virgin,Pantry > Canned Seafood > Sardines > Olive Oil,0.489,0.841,+0.352
+1,2607562,GOURMET BRISLING WILD SARDINES IN EXTRA VIRGIN OLIVE OIL,Pantry > Oil > Olive Oil > Extra Virgin,Pantry > Canned Seafood > Sardines > Olive Oil,0.489,0.841,+0.352
+1,2401005,MEDITERRANEAN DELICACIES BLACK OLIVES IN OIL,Pantry > Oil,Pantry > Olives,0.476,0.795,+0.319
+1,2651796,ALL NATURAL MOUNT OLIVE  ITALIAN SNACK,Snack > Mixes > Snack Mix,Pantry > Olives,0.500,0.824,+0.325
+1,2428893,PUTTANESCA MARINARA WITH OLIVES & CAPERS,Pantry > Sauces & Salsas > Pasta Sauce,Pantry > Canned Vegetables > Capers,0.485,0.790,+0.305
+1,2309342,"OLIVE & BETA TAPENADE, OLIVE & FETA",Pantry > Dips & Spreads > Dip,Pantry > Dips & Spreads > Olive Tapenade,0.458,0.920,+0.462
+1,1937117,"PELOPONNESE, SPREAD, OLIVE BRUSCHETTA, OLIVE BRUSCHETTA",Pantry > Dips & Spreads > Dip,Pantry > Olives > Green Olives,0.492,0.818,+0.325
+1,2056983,UNSULPHURED PAPAYA SPEARS,Pantry > Flakes > Coconut Flakes,Snack > Dried Fruit > Dried Papaya,0.461,0.839,+0.378
+1,411520,INSTANT CHOW MEIN,Pantry > Pasta,Pantry > Noodles > Enriched,0.464,0.839,+0.375
+1,2110518,100% DURUM WHEAT SEMOLINA EGG PASTA,Pantry > Pasta > Shells,Pantry > Pasta > Durum Wheat Semolina,0.466,0.842,+0.376
+1,2109843,PASTA WITH DURUM WHEAT SEMOLINA AND FLAX SEEDS,Pantry > Pasta > Shells,Pantry > Pasta > Durum Wheat Semolina,0.481,0.822,+0.341
+1,1030705,"PASTA OF DURUM WHEAT SEMOLINA, TROTTOLE",Pantry > Pasta > Shells,Pantry > Pasta > Durum Wheat Semolina,0.461,0.878,+0.416
+1,1941000,"SEDANI PASTA, BLACK BEAN",Pantry > Canned Vegetables > Black Beans,Pantry > Pasta > Enriched,0.489,0.798,+0.309
+1,614502,"96 TRENDY SHELL ROUND CHOCO FROZEN 2""",Bakery > Toaster Pastries,Bakery > Bread > Round,0.473,0.803,+0.331
+1,614258,"96 TRENDY SHELL ROUND CHOCO FROZEN 3.2""",Bakery > Toaster Pastries,Bakery > Bread > Round,0.462,0.789,+0.327
+1,2153706,"CHOCOLATE COVERED PUFF PASTRY FILLED WITH A LUSCIOUS VANILLA FLAVORED CENTER PROFITEROLES, VANILLA",Snack > Pretzels,Bakery > Pastry,0.457,0.818,+0.360
+1,614580,"90 MINI CONE NEUTRAL + COATING 2.4""",Bakery > Toaster Pastries,Bakery > Bread > Round,0.332,0.669,+0.337
+1,2623091,"ROASTED GARLIC BREAD SPREAD, GARLIC",Pantry > Dips & Spreads > Dip,Pantry > Pickles > Garlic,0.471,0.807,+0.335
+1,2289687,"ROLAND, GREEN PEPPERCORNS IN VINEGAR",Pantry > Canned Vegetables > Corn,Pantry > Olives > Green Olives,0.446,0.751,+0.305
+1,1928253,GREEN CHILIES,Pantry > Canned Seafood > Canned Tuna,Pantry > Olives > Green Olives,0.463,0.889,+0.426
+1,2383129,"GREEK FETA SALAD, GREEK FETA",Pantry > Dips & Spreads > Dip,Meal > Salads > Greek Salad,0.454,0.849,+0.395
+1,838398,RAW ARTICHOKE SPREAD,Pantry > Dips & Spreads > Dip,Pantry > Canned Vegetables > Artichokes,0.472,0.834,+0.361
+1,1894469,PICKLED CHAMPIGNONS,Pantry > Canned Vegetables > Mushrooms,Pantry > Pickles,0.492,0.822,+0.330
+1,1883137,"SEGGIANO, ARTICHOKE TAPENADE",Pantry > Dips & Spreads > Dip,Pantry > Dips & Spreads > Tapenade,0.481,0.860,+0.379
+1,2150897,EGGPLANT CAVIAR,Pantry > Dips & Spreads > Dip,Pantry > Canned Vegetables > Eggplant,0.443,0.834,+0.392
+1,1851050,"CAPERELLE, GREEN PEPPERCORNS IN BRINE",Pantry > Canned Vegetables > Corn,Pantry > Canned Vegetables > Capers,0.476,0.835,+0.359
+1,2597545,WHOLE PEELED GARLIC CLOVES,Pantry > Canned Vegetables > Mushrooms > Whole,Pantry > Pickles > Garlic,0.482,0.842,+0.360
+1,2597968,"GARLIC & HERBS DELECTABLE BRIE SPREAD, GARLIC; HERBS",Dairy > Cheese > Brie,Pantry > Pickles > Garlic,0.454,0.797,+0.343
+1,1610130,MINCED GARLIC IN WATER,Pantry > Sauces & Salsas > Salsa,Pantry > Pickles > Garlic,0.483,0.909,+0.426
+1,1545428,MINCED GARLIC IN WATER,Pantry > Sauces & Salsas > Salsa,Pantry > Pickles > Garlic,0.483,0.909,+0.426
+1,1580734,MINCED GARLIC IN WATER,Pantry > Sauces & Salsas > Salsa,Pantry > Pickles > Garlic,0.483,0.909,+0.426
+1,2285810,"GARLIC HERB SPREADS, GARLIC HERB",Pantry > Dips & Spreads > Dip,Pantry > Pickles > Garlic,0.483,0.825,+0.342
+1,1862167,"SAVORY GARLIC, MILD",Pantry > Sauces & Salsas > Salsa > Mild,Pantry > Pickles > Garlic,0.492,0.865,+0.373
+1,2072266,CHOPPED GARLIC IN OIL,Pantry > Oil,Pantry > Sauces & Salsas > Mustard > Chopped,0.495,0.873,+0.378
+1,959927,"SPREAD, EGGPLANT & GARLIC",Pantry > Dips & Spreads > Dip,Pantry > Dips & Spreads > Vegetable Spread,0.485,0.852,+0.367
+1,2384622,"BLACK GARLIC MOLASSES, BLACK GARLIC",Pantry > Sweeteners > Molasses,Pantry > Pickles > Garlic,0.474,0.831,+0.357
+1,1856037,"J&F, SLICED GARLIC IN WATER",Pantry > Canned Vegetables > Mushrooms > Sliced,Pantry > Canned Vegetables > Carrots > Chopped,0.461,0.816,+0.355
+1,2418196,"SERBIAN HOT VEGETABLE SPREAD, SERBIAN HOT",Pantry > Dips & Spreads > Dip,Pantry > Dips & Spreads > Vegetable Spread,0.483,0.794,+0.311
+1,2025664,CHERRY CHUTNEY,Pantry > Sauces & Salsas > Salsa,Pantry > Pickles,0.450,0.762,+0.312
+1,2540834,"SLIGHTLY SWEET SANDWICH SPREAD, SLIGHTLY SWEET",Pantry > Sauces & Salsas > Mayonnaise,Pantry > Pickles,0.475,0.794,+0.319
+1,1553311,MANGO PICKLE IN OIL,Pantry > Oil,Pantry > Olives,0.469,0.783,+0.314
+1,2436179,CRUSHED PEPPER & TRUFFLE OIL POPCORN,Snack > Candy > Truffles,Snack > Popcorn > Popped,0.485,0.804,+0.319
+1,1458905,"BACN,HRI,BM,18/22,15#",Meat & Seafood > Bacon,Meat & Seafood > Pork > Boneless,0.340,0.732,+0.392
+1,1459528,"BACN,VAC,REG,FL,12OZ",Meat & Seafood > Bacon,Meat & Seafood > Pork > Boneless,0.395,0.735,+0.340
+1,1459123,"""""RST,LN,PK,APL CIN,PRECKD,FL,2PC,Z""""",Meat & Seafood > Pork > Pork Chops > Boneless,Meat & Seafood > Pork > Boneless,0.421,0.735,+0.314
+1,1458035,"""""PK,SMKD,PULLED,GM,2/5#,Z""""",Meat & Seafood > Pork > Pulled,Meat & Seafood > Pork > Boneless,0.406,0.755,+0.349
+1,2642175,"ORGANIC SWEET POTATO PIE MIX, SWEET POTATO",Pantry > Baking Mixes > Pie Crust Mix,Produce > Vegetables > Sweet Potatoes > Organic,0.497,0.809,+0.312
+1,508733,PURPLE CORN PUDDING,Bakery > Cake,Dairy > Pudding,0.499,0.820,+0.321
+1,1935476,"SNACK PACK, PUDDING CUPS, CHOCOLATE FUDGE & MILK CHOCOLATE SWIRL, CHOCOLATE FUDGE & MILK CHOCOLATE S",Dairy > Milk,Dairy > Pudding > Chocolate Fudge,0.489,0.866,+0.377
+1,1918411,CHIA PUDDING,Bakery > Cake,Dairy > Pudding > Custard,0.480,0.782,+0.302
+1,2126739,"CINNAMON MILK RICE PUDDING, CINNAMON",Dairy > Milk,Dairy > Pudding > Rice Pudding,0.487,0.874,+0.388
+1,2066094,ALMONDMILK RICE PUDDING,Dairy > Milk,Dairy > Pudding > Rice Pudding,0.484,0.809,+0.325
+1,2494813,"CARAMEL CUSTARD CAJETA, CARAMEL CUSTARD",Bakery > Cake,Dairy > Pudding > Custard,0.456,0.812,+0.356
+1,1601567,LAGANINI PUDDING,Bakery > Cake,Dairy > Pudding > Custard,0.453,0.784,+0.331
+1,2035648,"VANILLA ALMONDMILK DAIRY FREE NON-DAIRY FROZEN DESSERT SANDWICHES, VANILLA",Meal > Sandwiches > Sandwich,Frozen > Ice Cream > Non-Dairy > Dairy Free > Plant Based > Vegan,0.499,0.902,+0.403
+1,516227,CUSTARD,Bakery > Cake,Dairy > Pudding > Custard,0.461,0.890,+0.429
+1,1561644,PUDDING,Bakery > Cake,Dairy > Pudding > Custard,0.494,0.804,+0.310
+1,1575190,LAGANINI PUDDING,Bakery > Cake,Dairy > Pudding > Custard,0.453,0.784,+0.331
+1,912050,"BUTTERNUT SQUASH FILLED RAVIOLI IN A BUTTER & SAGE SAUCE, BUTTERNUT SQUASH",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Pasta Sauce > Butternut Squash,0.469,0.812,+0.344
+1,2426776,"RAVIOLI CAULIFLOWER, RED ONION & PEAS ARTISAN PASTA",Pantry > Canned Vegetables > Peas,Pantry > Pasta,0.480,0.799,+0.319
+1,2369642,"ROASTED RAVIOLI, PUMPKIN",Pantry > Canned Vegetables > Pumpkin,Pantry > Pasta > Stuffed,0.470,0.800,+0.330
+1,2062503,CRANBERRY RELISH,Pantry > Sauces & Salsas > Salsa,Pantry > Pickles > Relish,0.471,0.809,+0.338
+1,2062596,CRANBERRY RELISH,Pantry > Sauces & Salsas > Salsa,Pantry > Pickles > Relish,0.488,0.834,+0.345
+1,2089816,CRANBERRY RELISH,Pantry > Sauces & Salsas > Salsa,Pantry > Pickles > Relish,0.468,0.827,+0.358
+1,2327014,"CRANBERRY RELISH, CRANBERRY",Pantry > Sauces & Salsas > Salsa,Pantry > Pickles > Relish,0.471,0.821,+0.350
+1,2074033,CRANBERRY RELISH,Pantry > Sauces & Salsas > Salsa,Pantry > Pickles > Relish,0.482,0.798,+0.316
+1,2069399,"SESAME GINGER CHICKEN LIGHTLY BREADED WHITE MEAT CHICKEN WITH STEAMED WHITE RICE, BROCCOLI, CARROTS,",Bakery > Bread,Frozen > Single Entrees > Sesame Chicken,0.459,0.893,+0.434
+1,1903193,BALSAMIC GLAZE WITH LEMON,Pantry > Sauces & Salsas > Salsa,Pantry > Sauces & Salsas > Balsamic Glaze,0.466,0.779,+0.313
+1,2565404,"VIDALIA ONION PEPPERCORN DRESSING, ONION; PEPPERCORN",Pantry > Canned Vegetables > Corn,Pantry > Canned Vegetables > Corn > Low Fat,0.465,0.786,+0.321
+1,2523581,"PARMESAN & PEPPERCORN DRESSING, PARMESAN & PEPPERCORN",Pantry > Canned Vegetables > Corn,Pantry > Canned Vegetables > Corn > Low Fat,0.446,0.768,+0.322
+1,2025054,PARMESAN & PEPPERCORN DRESSING,Pantry > Canned Vegetables > Corn,Pantry > Salad Dressings,0.461,0.778,+0.318
+1,2548844,"LEMON PEPPERCORN DRESSING, LEMON PEPPERCORN",Pantry > Canned Vegetables > Corn,Pantry > Canned Vegetables > Corn > Low Fat,0.456,0.823,+0.367
+1,2545146,"GOURMET DRESSING, ONION & PEPPERCORN",Pantry > Canned Vegetables > Corn,Pantry > Canned Vegetables > Corn > Low Fat,0.465,0.802,+0.337
+1,2144102,"SWEET KALE GREEN CABBAGE, KALE, BRUSSELS SPROUTS, PEPITAS, RADICCHIO, DRIED CRANBERRIES WITH POPPY S",Pantry > Salad Dressings,Produce > Vegetables > Carrots > Chopped > Red,0.486,0.816,+0.330
+1,1904140,"NEWMAN'S OWN, VINAIGRETTE, OLIVE OIL & RED WINE VINEGAR",Pantry > Oil > Olive Oil,Pantry > Salad Dressings > Vinaigrette,0.476,0.787,+0.311
+1,2164450,"PEPPERCORN CAESAR DRESSING, PEPPEROORN CAESAR",Pantry > Canned Vegetables > Corn,Pantry > Salad Dressings > Caesar Dressing,0.488,0.863,+0.375
+1,2147215,"KALE CAESAR KALE, SHAVED HARD GRATING PARMESAN CHEESE, GARLIC BRIOCHE CROUTONS WITH CAESAR DRESSING ",Bakery > Bread > Brioche,Bakery > Croutons > Chopped,0.462,0.858,+0.395
+1,2192113,"KALE CAESAR KALE, SHAVED HARD GRATING PARMESAN CHEESE, GARLIC BRIOCHE CROUTONS WITH CAESAR DRESSING ",Bakery > Bread > Brioche,Bakery > Croutons > Chopped,0.462,0.858,+0.395
+1,2299636,"OIL & VINEGAR DRESSING, OIL & VINEGAR",Pantry > Oil > Organic,Pantry > Salad Dressings,0.482,0.812,+0.330
+1,2678128,"KALE CHOPPED SALAD WITH ASIAGO CHEESE, BREADCRUMBS & LEMON GARLIC VINAIGRETTE DRESSING, KALE CHOPPED",Pantry > Bread Crumbs,Meal > Salads,0.464,0.814,+0.349
+1,2074945,EGG SALAD ON 9 GRAIN,Meal > Sandwiches > Sandwich,Meal > Salads > Egg Salad,0.481,0.853,+0.372
+1,2567310,"GARLIC & HERB UNCROUTON, GARLIC; HERB",Bakery > Croutons,Produce > Vegetables > Garlic,0.458,0.769,+0.311
+1,2297689,"CHICKEN CAESAR ROASTED CHICKEN BREAST, ROMAINE, CIABATTA CROUTONS, SHAVED PARMIGIANO, CASER DRESSING",Bakery > Bread > Ciabatta,Meal > Salads > Caesar Salad > Chicken,0.466,0.850,+0.384
+1,2059511,"SEA SALT, HICKORY SMOKE",Snack > Candy > Truffles,Pantry > Spices & Seasonings > Seasoning > Liquid,0.366,0.817,+0.451
+1,2025856,ARTICHOKE & CAPER,Pantry > Canned Vegetables > Capers,Pantry > Dips & Spreads > Spinach Dip,0.454,0.758,+0.305
+1,2606118,"SOUTHWEST-STYLE DIPPING SAUCE WITH ZESTY CAYENNE & ANCHO CHILI PEPPERS, SOUTHWEST-STYLE",Dairy > Cheese,Pantry > Sauces & Salsas > Sauce > Dipping,0.494,0.839,+0.345
+1,2088976,"SEMI-SWEET MORSELS, SEMI-SWEET",Snack > Candy > Chocolate Candy,Snack > Candy > Chocolate Candy > Morsels,0.498,0.886,+0.387
+1,2420077,"SEMI-SWEET MORSELS, SEMI-SWEET",Snack > Candy > Chocolate Candy,Snack > Candy > Chocolate Candy > Morsels,0.498,0.886,+0.387
+1,1934864,"NONPAREILS, MILK CHOCOLATE",Snack > Candy > Hard Candy,Pantry > Baking Decorations > Nonpareils,0.464,0.785,+0.321
+1,1957607,"FLAVORED DECORATING SUGAR, CHOCOLATE",Snack > Crackers,Pantry > Baking > Chocolate Chips,0.498,0.798,+0.300
+1,1862746,"ORGANIC TIKKA MASALA, MEDIUM",Pantry > Sauces & Salsas > Salsa > Medium > Organic,Meal > Curry,0.499,0.802,+0.303
+1,2165408,"SEA SALT BLUE CHEESE, SEA SALT",Snack > Candy > Truffles,Snack > Candy > Truffles > Sea Salt,0.404,0.807,+0.403
+1,2057806,GREEN SUGAR CRYSTALS,Snack > Crackers,Snack > Crackers > Crystals,0.441,0.889,+0.448
+1,2455390,"HAM GLAZE, MAPLE BROWN SUGAR",Pantry > Sauces & Salsas > Salsa,Pantry > Sauces & Salsas > Salsa > Glaze,0.461,0.824,+0.364
+1,1885396,"WILTON, DARK GREEN SUGAR",Snack > Crackers,Snack > Crackers > Crystals,0.464,0.797,+0.334
+1,2524850,SPARKLING SUGARS,Snack > Crackers,Snack > Crackers > Crystals,0.469,0.795,+0.326
+1,2153098,SPARKLING SUGARS,Snack > Crackers,Snack > Crackers > Crystals,0.469,0.795,+0.326
+1,2322941,GREEN SUGAR PEARLS,Snack > Crackers,Snack > Crackers > Crystals,0.427,0.784,+0.357
+1,2499667,"SEASONED RICE WINE VINEGAR, SEASONED",Pantry > Grain > Rice,Pantry > Vinegar > Rice Vinegar,0.458,0.818,+0.359
+1,2095878,OLD FASHIONED HORSERADISH,Pantry > Sauces & Salsas > Salsa,Pantry > Sauces & Salsas > Horseradish Sauce,0.485,0.841,+0.356
+1,2247635,SWEET HEAT NUT GLAZE,Pantry > Sauces & Salsas > Salsa,Pantry > Sauces & Salsas > Salsa > Glaze,0.451,0.783,+0.332
+1,2099986,HONEY TERIYAKI MARINADE,Pantry > Sauces & Salsas > Salsa,Pantry > Sauces & Salsas > Sauce > Marinade,0.491,0.797,+0.306
+1,2101074,TERIYAKI MARINADE,Pantry > Sauces & Salsas > Salsa,Pantry > Sauces & Salsas > Sauce > Marinade,0.486,0.792,+0.305
+1,2445565,"ORIGINAL MILD BAR-B-Q, ORIGINAL",Pantry > Sauces & Salsas > Salsa > Mild,Pantry > Sauces & Salsas > Barbecue Sauce > Mild,0.495,0.812,+0.316
+1,2125391,"ALFREDO FRESH CREAM, BUTTER, FRESH GARLIC & PARMIGIANO-REGGIANO CHEESE, ALFREDO",Pantry > Sauces & Salsas > Salsa,Pantry > Sauces & Salsas > Alfredo Sauce,0.498,0.821,+0.323
+1,2045369,CLAM JUICE,Pantry > Bouillon & Broth > Stock,Pantry > Canned Seafood > Clam Juice,0.490,0.825,+0.335
+1,2165702,"ORIGINAL CHICAGO STYLE KETCH, ORIGINAL",Pantry > Sauces & Salsas > Salsa,Pantry > Sauces & Salsas > Ketchup > Sugar Free,0.461,0.837,+0.376
+1,2454932,"CRYSTALS, RED",Snack > Candy > Hard Candy,Snack > Crackers > Crystals,0.466,0.793,+0.327
+1,2119825,PURPLE SUGAR CRYSTALS,Snack > Crackers,Snack > Crackers > Crystals,0.426,0.857,+0.431
+1,2217562,"SPRINKLES, UNICORN LOVE MIX",Pantry > Canned Vegetables > Corn,Pantry > Baking Mixes > Cake Mix > Cake,0.440,0.815,+0.375
+1,2032492,"WANG KOREA, FERMENTED SOY BEAN PASTE",Pantry > Soup > Miso Soup,Pantry > Sauces & Salsas > Salsa > Paste,0.459,0.773,+0.313
+1,1939279,HOLIDAY SUGAR CRYSTALS,Snack > Crackers,Snack > Crackers > Crystals,0.428,0.896,+0.467
+1,2517910,"SLIM JIM Giant Stick Chili Pepper, 0.97 OZ",Meat & Seafood > Sausage,Meat & Seafood > Meat > Meat Stick,0.479,0.896,+0.417
+1,2195730,SOUSE,Meat & Seafood > Sausage,Meat & Seafood > Charcuterie > Salami,0.482,0.807,+0.326
+1,2523243,"DRY COPPA BLACK PEPPER, DRY COPPA",Meat & Seafood > Sausage,Meat & Seafood > Charcuterie > Salami > Dry,0.464,0.810,+0.346
+1,1593253,"OSCAR MAYER, HARDWOOD SMOKED SEASONED BEEF FRANKS",Meat & Seafood > Beef > Smoked,Meat & Seafood > Sausage > Franks,0.483,0.841,+0.358
+1,2019365,CHEESE & SALAMI CUP,Pantry > Soup,Meat & Seafood > Charcuterie > Salami,0.447,0.811,+0.365
+1,1849887,"HATFIELD, FULLY COOKED PORK ROLL SAUSAGE, TANGY, TANGY",Bakery > Rolls > Roll,Meat & Seafood > Sausage > Pork Sausage,0.454,0.764,+0.310
+1,2143316,"GENOA SALAME WRAPPED IN PROVOLONE PICCINI ROLLS, GENOA SALAME",Bakery > Rolls,Meat & Seafood > Deli > Cold Cuts,0.472,0.796,+0.324
+1,2569816,"FRATELLI BERETTA CHORIZO, 4 OZ",Meat & Seafood > Sausage > Chorizo,Meat & Seafood > Charcuterie > Soppressata,0.493,0.843,+0.350
+1,2525404,"ITALIAN TRIO, ITALIAN",Meat & Seafood > Sausage,Meat & Seafood > Deli > Cold Cuts,0.490,0.831,+0.341
+1,1887919,"BUTCHER'S CHOICE BEEF FRANKS, HARDWOOD SMOKED",Meat & Seafood > Beef > Smoked,Meat & Seafood > Beef > Steak > Hot Dog,0.458,0.843,+0.385
+1,2483669,"MOZZARELLA & UNCURED PEPPERONI ROLTINI SINGLES SNACKS, MOZZARELLA & UNCURED PEPPERONI",Snack > Crackers,Meat & Seafood > Pepperoni,0.454,0.807,+0.353
+1,1900097,HOT COPPA,Meat & Seafood > Sausage,Meat & Seafood > Pepperoni,0.470,0.848,+0.378
+1,1637217,HOT SOPRESSATA PANINO,Meat & Seafood > Sausage,Meat & Seafood > Charcuterie > Soppressata,0.463,0.860,+0.396
+1,1629756,"ODOM'S TENNESSEE PRIDE, CROISSANT EGG AND CHEESE SANDWICH, MAPLE SAUSAGE, ODOM'S TENNESSEE PRIDE, CR",Bakery > Pastry > Croissants,Frozen > Breakfast > Breakfast Sandwich > Buttermilk Biscuit,0.460,0.763,+0.303
+1,2598675,HICKORY SMOKED MILD PORK ROLL,Bakery > Rolls,Meat & Seafood > Pork > Smoked,0.464,0.772,+0.307
+1,2542308,"HICKORY SMOKED MILD PORK ROLL, HICKORY SMOKED",Bakery > Rolls,Meat & Seafood > Pork > Smoked,0.482,0.801,+0.319
+1,2186795,FINOCCHIONA,Meat & Seafood > Sausage,Meat & Seafood > Deli > Cold Cuts,0.457,0.788,+0.330
+1,2136453,SMOKEHOUSE CANDY SUMMER SAUSAGE,Snack > Candy,Snack > Jerky > Summer Sausage,0.476,0.858,+0.382
+1,1446328,"GARLIC SEA SALT, GARLIC",Snack > Candy > Truffles,Pantry > Spices & Seasonings > Garlic Salt,0.363,0.931,+0.567
+1,2577766,"CRACKED PEPPER & GARLIC WITH SEA SALT GRILLING SEASONING, CRACKED PEPPER & GARLIC WITH SEA SALT",Snack > Candy > Truffles,Pantry > Spices & Seasonings > Pepper > Cracked,0.349,0.871,+0.522
+1,2553752,"TRUFFLE & CHOP SEASONING, TRUFFLE & CHOP",Snack > Candy > Truffles,Pantry > Spices & Seasonings > Seasoning > Mix,0.485,0.788,+0.303
+1,2380030,"CALIFORNIA GARLIC & SEA SALT ADJUSTABLE GRINDER, CALIFORNIA GARLIC & SEA SALT",Snack > Candy > Truffles,Pantry > Spices & Seasonings > Sea Salt > Grinder,0.374,0.863,+0.489
+1,2436201,"ESPRESSO COCOA INFUSED SEA SALT, ESPRESSO COCOA",Snack > Candy > Truffles,Snack > Candy > Truffles > Sea Salt,0.463,0.765,+0.302
+1,1853508,"ROUNDY'S, SALT",Snack > Candy > Truffles,Pantry > Spices & Seasonings > Salt,0.387,0.837,+0.450
+1,1503820,"DIAMOND CRYSTAL, SALT SENSE, SALT",Snack > Candy > Truffles,Snack > Candy > Truffles > Fine Crystals > Sea Salt,0.381,0.867,+0.486
+1,2658437,SALT,Snack > Candy > Truffles,Pantry > Spices & Seasonings > Seasoned Salt,0.350,0.867,+0.517
+1,1467358,SALT,Snack > Candy > Truffles,Pantry > Spices & Seasonings > Seasoned Salt,0.352,0.916,+0.564
+1,2026173,SALT,Snack > Candy > Truffles,Pantry > Spices & Seasonings > Iodized Salt,0.356,0.864,+0.507
+1,1478967,"ALESSI, KOSHER SEA SALT",Snack > Candy > Truffles,Pantry > Spices & Seasonings > Kosher Salt > Kosher,0.363,0.840,+0.478
+1,2180391,"GREY FINE SEA SALT, GREY",Snack > Candy > Truffles,Snack > Candy > Truffles > Sea Salt,0.425,0.858,+0.433
+1,2130543,FINE SEA SALT,Snack > Candy > Truffles,Snack > Candy > Truffles > Fine > Sea Salt,0.337,0.888,+0.551
+1,2010527,"RACCONTO, FINE SEA SALT",Snack > Candy > Truffles,Snack > Candy > Truffles > Sea Salt,0.387,0.822,+0.435
+1,2052158,FINE SEA SALT,Snack > Candy > Truffles,Snack > Candy > Truffles > Fine > Sea Salt,0.357,0.881,+0.525
+1,506661,DESSERT SALT,Snack > Candy > Truffles,Pantry > Spices & Seasonings > Seasoned Salt,0.376,0.924,+0.547
+1,2413869,"HIMALAYAN PINK SEA SALT, HIMALAYAN PINK",Snack > Candy > Truffles,Pantry > Spices & Seasonings > Himalayan Pink Salt,0.350,0.943,+0.593
+1,2637995,"OAK SMOKED FINISHING SEA SALT, OAK SMOKED",Snack > Candy > Truffles,Pantry > Spices & Seasonings > Seasoning > Liquid,0.369,0.745,+0.377
+1,1889199,SALT,Snack > Candy > Truffles,Pantry > Spices & Seasonings > Salt,0.333,0.885,+0.552
+1,2010196,"PACIFIC SALT, FINE SEA SALT",Snack > Candy > Truffles,Snack > Candy > Truffles > Sea Salt,0.378,0.920,+0.542
+1,2167695,"ALDER SMOKED SEA SALT, ALDER SMOKED",Snack > Candy > Truffles,Snack > Candy > Truffles > Sea Salt,0.400,0.809,+0.409
+1,2653110,"YAKIMA APPLEWOOD SMOKED SEA SALT, YAKIMA APPLEWOOD SMOKED",Snack > Candy > Truffles,Snack > Candy > Truffles > Sea Salt,0.360,0.774,+0.414
+1,2284274,"GOURMET SALT, CRYSTALLIZED HONEY SEA SALT",Snack > Candy > Truffles,Snack > Candy > Truffles > Sea Salt,0.418,0.850,+0.431
+1,2597370,"MASTER OF MIXES MARGARITA SALT, 8 OZ",Snack > Candy > Truffles,Pantry > Spices & Seasonings > Seasoning > Mix,0.410,0.788,+0.378
+1,2032787,"WESTERN FAMILY, SALT",Snack > Candy > Truffles,Pantry > Spices & Seasonings > Seasoned Salt,0.378,0.845,+0.466
+1,2495942,"PLAIN SALT, PLAIN",Snack > Candy > Truffles,Pantry > Spices & Seasonings > Seasoned Salt,0.350,0.851,+0.502
+1,2090858,PINK SALT,Snack > Candy > Truffles,Snack > Candy > Truffles > Fine > Sea Salt,0.391,0.800,+0.409
+1,2018364,HIMALAYA PINK SALT,Snack > Candy > Truffles,Snack > Candy > Truffles > Fine,0.355,0.799,+0.444
+1,2016133,"SHOPRITE, PLAIN SALT",Snack > Candy > Truffles,Pantry > Spices & Seasonings > Salt,0.456,0.860,+0.405
+1,2152363,SALT,Snack > Candy > Truffles,Pantry > Spices & Seasonings > Seasoned Salt,0.364,0.885,+0.521
+1,2611982,"PLAIN SALT, PLAIN",Snack > Candy > Truffles,Pantry > Spices & Seasonings > Seasoned Salt,0.348,0.892,+0.544
+1,2447712,SALT,Snack > Candy > Truffles,Pantry > Spices & Seasonings > Seasoned Salt,0.358,0.826,+0.468
+1,2339320,"KEY FOOD, PLAIN SALT",Snack > Candy > Truffles,Pantry > Spices & Seasonings > Salt,0.373,0.870,+0.497
+1,2060012,PLAIN SALT,Snack > Candy > Truffles,Pantry > Spices & Seasonings > Seasoned Salt,0.328,0.931,+0.603
+1,2328355,"PLAIN SALT, PLAIN",Snack > Candy > Truffles,Pantry > Spices & Seasonings > Seasoned Salt,0.366,0.863,+0.497
+1,2156338,SALT,Snack > Candy > Truffles,Pantry > Spices & Seasonings > Seasoned Salt,0.372,0.892,+0.520
+1,2052379,"WHOLE FOODS MARKET, MURRAY RIVER SALT",Snack > Candy > Truffles,Pantry > Spices & Seasonings > Salt,0.369,0.764,+0.395
+1,577350,PINK SALT,Snack > Candy > Truffles,Snack > Candy > Truffles > Fine,0.356,0.891,+0.535
+1,2670820,"PLAIN SALT, PLAIN",Snack > Candy > Truffles,Pantry > Spices & Seasonings > Seasoned Salt,0.350,0.878,+0.528
+1,2016868,"LOWES FOODS, SALT",Snack > Candy > Truffles,Pantry > Spices & Seasonings > Salt > No Salt Added,0.377,0.800,+0.423
+1,2160651,PINK SALT,Snack > Candy > Truffles,Snack > Candy > Truffles > Fine,0.371,0.879,+0.508
+1,2093069,BLACK TRUFFLE SALT COOKING SEASONING,Snack > Candy > Truffles,Pantry > Spices & Seasonings > Seasoning > Dry Mix,0.485,0.796,+0.310
+1,2100178,ROASTED GARLIC PEPPERCORN MARINADE & COOKING SAUCE,Pantry > Canned Vegetables > Corn,Pantry > Spices & Seasonings > Garlic Salt,0.470,0.808,+0.338
+1,2612207,RESERVE TRUFFLE SALT,Snack > Candy > Truffles,Snack > Candy > Truffles > Sea Salt,0.440,0.757,+0.318
+1,2072255,HAWAIIAN BLACK SALT,Snack > Candy > Truffles,Snack > Candy > Truffles > Sea Salt,0.358,0.817,+0.459
+1,1888533,ITALIA CLASSICS TRUFFLE SALT,Snack > Candy > Truffles,Pantry > Spices & Seasonings > Salt,0.494,0.800,+0.306
+1,2018073,"FRONTIER, HAWAIIAN BLACK SALT",Snack > Candy > Truffles,Snack > Candy > Truffles > Sea Salt,0.363,0.829,+0.466
+1,2630927,"PRIME STEAK WITH BLACK GARLIC & TRUFFLE SEASONING, PRIME STEAK WITH BLACK GARLIC & TRUFFLE",Snack > Candy > Truffles,Pantry > Spices & Seasonings > Steak Rub,0.395,0.731,+0.336
+1,2175476,"SEA SALT, CHILI LIME",Snack > Candy > Truffles,Snack > Candy > Truffles > Sea Salt,0.356,0.906,+0.550
+1,2175529,"SEA SALT, CHILI LIME",Snack > Candy > Truffles,Snack > Candy > Truffles > Sea Salt,0.356,0.906,+0.550
+1,2118246,BLACK TRUFFLE SEA SALT,Snack > Candy > Truffles,Snack > Candy > Truffles > Sea Salt,0.444,0.810,+0.366
+1,1939556,"SEA SALT, CHILI LIME",Snack > Candy > Truffles,Snack > Candy > Truffles > Sea Salt,0.356,0.906,+0.550
+1,2436107,"GOCHUJANG INFUSED SEA SALT, GOCHUJANG",Snack > Candy > Truffles,Snack > Candy > Truffles > Sea Salt,0.367,0.789,+0.423
+1,2062127,CHIPOTLE SEA SALT,Snack > Candy > Truffles,Pantry > Spices & Seasonings > Salt,0.386,0.792,+0.406
+1,2566842,WHITE SUMMER TRUFFLE SALT,Snack > Candy > Truffles,Pantry > Spices & Seasonings > Seasoning > Gluten Free,0.475,0.799,+0.325
+1,1777297,PINK CURING SALT,Snack > Candy > Truffles,Snack > Candy > Truffles > Fine,0.363,0.818,+0.455
+1,1944055,CURRY SESAME SEEDS,Pantry > Spices & Seasonings > Seasoning,Pantry > Sauces & Salsas > Salsa > Ground,0.484,0.789,+0.305
+1,2023177,"LOWES FOODS, THE SPICE BAZAAR, SEA SALT & HERB SEASONING",Snack > Candy > Truffles,Pantry > Spices & Seasonings > Seasoning > Organic,0.371,0.779,+0.408
+1,1899451,"DIP MIX, VANILLA",Pantry > Baking Mixes > Mix,Pantry > Spices & Seasonings > Seasoning > Mix,0.475,0.854,+0.379
+1,2507123,"SUPER SEEDY CRISPS, SUPER SEEDY",Snack > Crackers > Crisp,Snack > Popcorn > Popped,0.485,0.835,+0.350
+1,1427927,"CHOCOLATE SHAKE, CHOCOLATE",Beverage > Carbonated > Cola,Beverage > Carbonated > Cola > High Protein,0.444,0.752,+0.308
+1,2242727,"CHOCOLATE SHAKE, CHOCOLATE",Beverage > Carbonated > Cola,Beverage > Carbonated > Cola > High Protein,0.444,0.752,+0.308
+1,2267246,"JUMBO BUTTERFLY SHRIMP WITH CRISPY PANKO BREADCRUMBS, BUTTERFLY",Pantry > Bread Crumbs,Meat & Seafood > Shrimp > Breaded > Butterfly,0.447,0.858,+0.411
+1,1985619,"ALMOND + CHOCOLATE BANANA SMOOTHIE BOWL, ALMOND + CHOCOLATE BANANA",Beverage > Carbonated > Cola,Beverage > Smoothies,0.473,0.819,+0.346
+1,2555369,Bugles Sweet and Salty Caramel Snacks,Bakery > Cake,Snack > Chips > Corn Chips > Crispy,0.461,0.819,+0.357
+1,2527797,CHILI CHEESE NACHO FLAVORED CORN SNACKS,Bakery > Cake,Snack > Chips > Tortilla Chips,0.452,0.826,+0.373
+1,2510954,"CLANDESTINE CARAMEL CORN, CLANDESTINE",Snack > Candy > Caramel > Sea Salt,Snack > Popcorn > Popped,0.455,0.776,+0.321
+1,1620242,CHEESY BITES,Dairy > Cheese,Frozen > Appetizers & Snacks > Bites,0.499,0.831,+0.332
+1,1648661,CHEESY BITES,Dairy > Cheese,Frozen > Appetizers & Snacks > Bites,0.499,0.831,+0.332
+1,1648615,CHEESY BITES,Dairy > Cheese,Frozen > Appetizers & Snacks > Bites,0.499,0.831,+0.332
+1,2210018,"CHERRY BLINTZES, CHERRY",Bakery > Crepes,Frozen > Blintzes,0.495,0.852,+0.358
+1,2036649,"GOLDEN, APPLE BLINTZES",Bakery > Crepes,Frozen > Blintzes,0.489,0.789,+0.301
+1,2366180,"APPLE BLINTZES, APPLE",Bakery > Crepes,Frozen > Blintzes,0.486,0.869,+0.383
+1,2651077,"Campbell's ChunkyTMChili with Beans, 15.25 oz Microwavable Bowl",Pantry > Chili,Pantry > Soup > Chicken Soup > Chunky,0.468,0.793,+0.325
+1,1633998,"PROGRESSO, UNSALTED CHICKEN BROTH",Pantry > Spices & Seasonings > Salt > No Salt Added,Pantry > Bouillon & Broth > Stock > Low Sodium,0.459,0.788,+0.330
+1,2656666,"UNSALTED CHICKEN BROTH, UNSALTED CHICKEN",Pantry > Spices & Seasonings > Salt > No Salt Added,Pantry > Bouillon & Broth > Stock > Low Sodium,0.497,0.875,+0.379
+1,2284237,HOMESTYLE SAUSAGE HASH,Pantry > Soup,Meal > Composite Dishes > Corned Beef Hash,0.471,0.782,+0.310
+1,2171789,"SPICY ORIGINAL WITH JALAPENO PEPPERS CHAO SLICES, SPICY ORIGINAL WITH JALAPENO PEPPERS",Dairy > Cheese,Pantry > Sauces & Salsas > Hot Sauce > Jalapeño,0.448,0.763,+0.314
+1,1896539,"FRESH SOUPER SOUP, ROASTED BUTTERNUT & RED PEPPER",Pantry > Spices & Seasonings > Pepper,Pantry > Soup > Low Fat,0.466,0.815,+0.349
+1,2746464,"Silk Soymilk Chocolate 8oz, Shelf Stable",Dairy > Milk > Fortified,Beverage > Carbonated > Cola > Fortified,0.490,0.862,+0.372
+1,365075,BLACK SESAME SEED,Pantry > Spices & Seasonings > Seasoning,Pantry > Sauces & Salsas > Salsa > Ground,0.467,0.772,+0.305
+1,399173,FENNEL SEED,Pantry > Spices & Seasonings > Seasoning,Pantry > Spices & Seasonings > Pepper > Ground,0.452,0.752,+0.300
+1,2009058,"THE SPICE HUNTER, CRYSTALLIZED CHOPPED GINGER",Snack > Candied Fruit,Snack > Candied Fruit > Candied Ginger,0.477,0.791,+0.314
+1,411432,ROASTED WHITE SESAME,Pantry > Spices & Seasonings > Seasoning,Pantry > Oil > Sesame Oil > Organic,0.481,0.794,+0.312
+1,2021083,SESAME SEEDS,Pantry > Spices & Seasonings > Seasoning,Pantry > Oil > Sesame Oil > Organic,0.467,0.793,+0.327
+1,2612338,HULLED SESAME SEEDS,Pantry > Spices & Seasonings > Seasoning,Snack > Sticks > Sesame Sticks,0.482,0.813,+0.331
+1,2399921,WHITE SESAME SEED,Pantry > Spices & Seasonings > Seasoning,Pantry > Oil > Sesame Oil > Organic,0.456,0.774,+0.318
+1,2508803,SESAME SEED,Pantry > Spices & Seasonings > Seasoning,Pantry > Oil > Sesame Oil > Organic,0.453,0.780,+0.327
+1,2439062,SESAME SEEDS,Pantry > Spices & Seasonings > Seasoning,Pantry > Oil > Sesame Oil > Organic,0.476,0.778,+0.302
+1,1608373,SESAME SEED,Pantry > Spices & Seasonings > Seasoning,Pantry > Oil > Sesame Oil > Organic,0.484,0.787,+0.302
+1,2450668,ALL PURPOSE SHORTENING,Pantry > Oil,Pantry > Oil > Whipped,0.490,0.829,+0.338
+1,2316276,ALL PURPOSE VEGETABLE SHORTENING,Pantry > Oil,Pantry > Oil > Whipped,0.494,0.883,+0.389
+1,2445958,ALL VEGETABLE SHORTENING,Pantry > Oil,Pantry > Oil > Whipped,0.494,0.836,+0.342
+1,2454940,HEAVY DUTY VEGETABLE SHORTENING,Pantry > Oil,Pantry > Oil > Whipped,0.495,0.864,+0.369
+1,2500128,ALL PURPOSE VEGETABLE SHORTENING,Pantry > Oil,Pantry > Oil > Whipped,0.494,0.883,+0.389
+1,1616514,ALL-VEGETABLE SHORTENING,Pantry > Oil,Pantry > Oil > Whipped,0.484,0.885,+0.401
+1,2114612,VEGETABLE SHORTENING,Pantry > Oil,Pantry > Oil > Whipped,0.485,0.889,+0.404
+1,2075026,SANDWICH SPREAD WITH RELISH,Pantry > Sauces & Salsas > Mayonnaise,Pantry > Sauces & Salsas > Sandwich Spread,0.473,0.831,+0.359
+1,2196371,SANDWICH SPREAD,Pantry > Sauces & Salsas > Mayonnaise,Pantry > Sauces & Salsas > Sandwich Spread,0.492,0.908,+0.417
+1,1922816,"MIGHTY MANGO, APPLE MANGO BUTTERNUT SQUASH",Pantry > Sauces & Salsas > Sauce,Snack > Dried Fruit > Mango,0.460,0.767,+0.308
+1,1503063,"DEMERARA PURE SUGAR, DEMERARA",Snack > Crackers,Pantry > Sugar & Sweeteners > Brown Sugar,0.433,0.772,+0.339
+1,946352,"SUGAR, VANILLA",Snack > Crackers,Pantry > Sweeteners > Sugar > Powdered Sugar,0.417,0.888,+0.471
+1,2612666,"VANILLA SUGAR, VANILLA",Snack > Crackers,Pantry > Sweeteners > Sugar > Powdered Sugar,0.429,0.830,+0.401
+1,2146946,TURBINADO SUGAR,Snack > Crackers,Snack > Crackers > Natural,0.465,0.813,+0.348
+1,2027745,"NATURAL DIRECTIONS, ORGANIC CANE SUGAR",Snack > Crackers > Organic,Pantry > Sugar & Sweeteners > Sugar Cane,0.489,0.818,+0.328
+1,2411673,"TURBINADO RAW CANE SUGAR, TURBINADO",Snack > Crackers > Organic,Snack > Crackers > Natural,0.494,0.870,+0.375
+1,1935942,PURE CANE SUGAR,Snack > Crackers,Pantry > Sugar & Sweeteners > Sugar Cane,0.419,0.819,+0.400
+1,1851023,PURE CANE SUGAR,Snack > Crackers,Pantry > Sugar & Sweeteners > Sugar Cane,0.419,0.819,+0.400
+1,2035093,"FLAVORED CANE SUGAR, DARK COCOA, DARK COCOA",Snack > Crackers,Pantry > Sugar & Sweeteners > Sugar Cane,0.428,0.794,+0.366
+1,2035076,"FLAVORED CANE SUGAR, RASPBERRY, RASPBERRY",Snack > Crackers,Pantry > Sugar & Sweeteners > Sugar Cane,0.418,0.821,+0.404
+1,2034101,RAW CANE SUGAR,Snack > Crackers > Organic,Pantry > Sugar & Sweeteners > Sugar Cane,0.458,0.850,+0.392
+1,2298494,GRANULATED SUGAR,Snack > Crackers,Pantry > Sugar & Sweeteners > Granulated Sugar,0.416,0.853,+0.437
+1,2611765,FINE GRANULATED PREMIUM SUGAR,Snack > Crackers,Snack > Crackers > Granulated,0.444,0.847,+0.403
+1,2286224,GRANULATED SUGAR,Snack > Crackers,Pantry > Sugar & Sweeteners > Granulated Sugar,0.444,0.851,+0.407
+1,2161605,PURE SUGAR CANISTERS,Snack > Crackers,Pantry > Sugar & Sweeteners > Powdered Sugar,0.421,0.839,+0.418
+1,2040657,PURE SUGAR,Snack > Crackers,Snack > Crackers > Granulated,0.461,0.884,+0.423
+1,2121246,PURE SUGAR,Snack > Crackers,Snack > Crackers > Granulated,0.461,0.884,+0.423
+1,2017409,PURE SUGAR,Snack > Crackers,Pantry > Sweeteners > Sugar > Powdered Sugar,0.497,0.851,+0.354
+1,1936865,GRANULATED SUGAR,Snack > Crackers,Snack > Crackers > Granulated,0.414,0.863,+0.449
+1,2098082,GRANULATED SUGAR,Snack > Crackers,Pantry > Sugar & Sweeteners > Granulated Sugar,0.430,0.889,+0.459
+1,614236,"240 MINI TRENDY SH.SQUARE CHOCO 1.5""",Snack > Cookies > Mini,Bakery > Bread > Round,0.483,0.835,+0.352
+1,614324,"10 FLUTED ROUND SHELLS SWEET 8""",Bakery > Toaster Pastries,Bakery > Bread > Round,0.474,0.778,+0.304
+1,1620342,NECTAR STEVIA SWEETENER BLEND WITH HONEY & SUGAR,Pantry > Sweeteners > Honey,Pantry > Sweeteners > Stevia Sweetener,0.476,0.798,+0.322
+1,1853838,"ICEE, DESSERT TOPPER, CHERRY, CHERRY",Pantry > Sweeteners > Syrup,Pantry > Dessert Toppings,0.447,0.762,+0.315
+1,2679340,"CHOCOLATE DESSERT SPREAD & DIP, CHOCOLATE",Pantry > Dips & Spreads > Dip,Pantry > Syrup > Chocolate Syrup,0.475,0.781,+0.306
+1,2303013,"FUSION SPRINKLES UNICORN MIX, FUSION SPRINKLES",Pantry > Canned Vegetables > Corn,Pantry > Baking Mixes > Cake Mix > Cake,0.481,0.791,+0.310
+1,1365353,PRETTY PEARL SUGAR BEADS,Snack > Crackers,Snack > Crackers > Crystals,0.429,0.800,+0.372
+1,2054129,"BAKERY CRAFTS, HANDCRAFTED ICING DECORATIONS",Snack > Candy > Hard Candy,Pantry > Baking Decorations > Icing Decorations,0.458,0.831,+0.373
+1,2055745,"TOPS, HOLLY BERRY DECORETTES",Snack > Candy > Hard Candy,Pantry > Baking Decorations > Candy Decorations,0.463,0.776,+0.313
+1,1951402,EDIBLE DECORATIONS,Snack > Candy > Hard Candy > Sugar Free,Pantry > Baking Decorations > Decorating Kit,0.483,0.854,+0.370
+1,1885343,"WILTON, ICING DECORATIONS",Snack > Candy > Hard Candy,Pantry > Baking Decorations > Icing Decorations,0.452,0.989,+0.537
+1,1885395,"WILTON, ICING DECORATIONS",Snack > Candy > Hard Candy,Pantry > Baking Decorations > Icing Decorations,0.452,0.989,+0.537
+1,2055899,"WILTON, DECORATING KIT",Snack > Candy > Marshmallows,Pantry > Baking Decorations > Decorating Kit,0.469,0.967,+0.498
+1,1035127,"BLUE SUGAR PEARLS, BLUE",Snack > Crackers,Snack > Crackers > Crystals,0.441,0.782,+0.341
+1,2141491,SPARKLING SUGARS,Snack > Crackers,Snack > Crackers > Crystals,0.469,0.795,+0.326
+1,2322598,GREEN SPARKLING GEL,Pantry > Sweeteners > Syrup,Pantry > Gelatin > Gel,0.446,0.760,+0.315
+1,2322732,GREEN SPARKLING GEL,Pantry > Sweeteners > Syrup,Pantry > Gelatin > Gel,0.446,0.760,+0.315
+1,2057815,EDIBLE DECOR PINK SUGAR CRYSTALS,Snack > Crackers,Snack > Crackers > Crystals,0.453,0.833,+0.380
+1,2524823,"SPARKLING GEL, RED",Pantry > Sweeteners > Syrup,Pantry > Gelatin > Gel,0.467,0.804,+0.337
+1,2667790,"SPARKLING GEL, GOLD",Pantry > Sweeteners > Syrup,Pantry > Gelatin > Gel,0.481,0.791,+0.309
+1,2036484,CITRUS SALAD IN EXTRA LIGHT SYRUP,Pantry > Sweeteners > Syrup,Pantry > Canned Fruit > Fruit Salad,0.491,0.859,+0.368
+1,1889626,"HERBAL REVOLUTION, NO 11 MINERAL TONIC, BEET,GINGER, BEET,GINGER",Beverage > Functional Drinks > Apple Cider Vinegar Drink,Beverage > Functional Drinks,0.447,0.747,+0.300
+1,2139126,YELLOW DECORATING SUGAR,Snack > Crackers,Pantry > Baking Decorations > Candy Decorations,0.447,0.753,+0.306
+1,1457544,"BACN,HRI,BM,14/18,15#",Meat & Seafood > Bacon,Meat & Seafood > Pork > Boneless,0.343,0.737,+0.394
+1,1459110,"BACN,ST LOUIS,14/18,25#",Meat & Seafood > Bacon,Meat & Seafood > Pork > Boneless,0.344,0.702,+0.357
+1,2014373,"SHELTON'S, TURKEY MEAT BALLS",Pantry > Bouillon & Broth > Stock,Meat & Seafood > Bacon > Turkey Bacon,0.478,0.790,+0.312
+1,531106,G&G VEGETABLE TRAY WITH DIP - LG,Pantry > Dips & Spreads > Dip,Produce > Snack Packs > Fruit Tray,0.474,0.792,+0.318
+1,1922890,G & G VEGETABLE TRAY WITH DIP - SM,Pantry > Dips & Spreads > Dip,Produce > Snack Packs > Fruit Tray,0.487,0.812,+0.325
+1,1575864,"BUMBLE BEE, CHUNK WHITE ALBACORE IN VEGETABLE OIL",Pantry > Oil > Vegetable Oil,Pantry > Oil > Vegetable Oil > Chunk,0.468,0.810,+0.342
+1,2511799,"RED CHILE COLORADO, RED CHILE",Pantry > Sauces & Salsas > Sauce,Pantry > Canned Vegetables > Green Chiles > Diced,0.451,0.823,+0.371
+1,2424378,"FIRE ROASTED WHOLE GREEN CHILES, FIRE ROASTED",Pantry > Canned Seafood > Canned Tuna,Pantry > Canned Vegetables > Green Chiles,0.467,0.790,+0.323
+1,2424379,"MILD FIRE ROASTED DICED GREEN CHILES, MILD FIRE ROASTED",Pantry > Canned Seafood > Canned Tuna,Pantry > Canned Vegetables > Green Beans > Mild > Diced,0.477,0.843,+0.366
+1,2424511,"MILD FIRE ROASTED DICED GREEN CHILES, MILD FIRE ROASTED",Pantry > Canned Seafood > Canned Tuna,Pantry > Canned Vegetables > Green Beans > Mild > Diced,0.477,0.843,+0.366
+1,2026945,"MILD FIRE ROASTED WHOLE GREEN CHILES, MILD FIRE ROASTED",Pantry > Canned Seafood > Canned Tuna,Pantry > Canned Vegetables > Green Chiles,0.487,0.807,+0.319
+1,2019564,"MILD FIRE ROASTED DICED GREEN CHILES, MILD FIRE ROASTED",Pantry > Canned Seafood > Canned Tuna,Pantry > Canned Vegetables > Green Chiles,0.481,0.832,+0.351
+1,2015426,"MILD FIRE ROASTED WHOLE GREEN CHILES, MILD FIRE ROASTED",Pantry > Canned Seafood > Canned Tuna,Pantry > Canned Vegetables > Green Chiles,0.487,0.807,+0.319
+1,2399822,"MILD FIRE ROASTED WHOLE GREEN CHILES, MILD",Pantry > Canned Seafood > Canned Tuna,Pantry > Canned Vegetables > Green Chiles,0.484,0.818,+0.335
+1,2400075,"MILD FIRE ROASTED DICED GREEN CHILES, MILD FIRE ROASTED",Pantry > Canned Seafood > Canned Tuna,Pantry > Canned Vegetables > Green Chiles,0.481,0.832,+0.351
+1,2523644,"HOT FIRE ROASTED DICED GREEN CHILES, HOT FIRE ROASTED",Pantry > Canned Seafood > Canned Tuna,Pantry > Canned Vegetables > Green Chiles,0.483,0.815,+0.332
+1,2428729,WHOLE GREEN CHILIES,Pantry > Canned Seafood > Canned Tuna,Pantry > Canned Vegetables > Green Chiles,0.500,0.819,+0.319
+1,2406523,"FRESH STEAM MIXED VEGETABLES CARROTS, CORN, PEAS, GREEN BEANS & LIMA BEANS",Snack > Fruit Snacks,Produce > Vegetables > Green Beans,0.461,0.904,+0.444
+1,2032089,"MILD FIRE ROASTED WHOLE GREEN CHILES, MILD FIRE ROASTED",Pantry > Canned Seafood > Canned Tuna,Pantry > Canned Vegetables > Green Chiles,0.478,0.806,+0.328
+1,2406525,"ORGANIC HOT DICED GREEN CHILES, HOT",Pantry > Canned Seafood > Canned Tuna,Pantry > Canned Vegetables > Green Chiles > Diced,0.457,0.845,+0.388
+1,2660559,"HOT FIRE-ROASTED DICED GREEN CHILES, HOT FIRE-ROASTED",Pantry > Canned Seafood > Canned Tuna,Pantry > Canned Vegetables > Green Chiles,0.485,0.831,+0.346
+1,2659398,"MILD FIRE-ROASTED DICED GREEN CHILES, MILD FIRE-ROASTED",Pantry > Canned Seafood > Canned Tuna,Pantry > Canned Vegetables > Green Beans > Mild > Diced,0.477,0.838,+0.361
+1,2660549,"MILD FIRE-ROASTED DICED GREEN CHILES, MILD FIRE-ROASTED",Pantry > Canned Seafood > Canned Tuna,Pantry > Canned Vegetables > Green Beans > Mild > Diced,0.477,0.838,+0.361
+1,1903310,"FIRE ROASTED WHOLE GREEN CHILES, MILD",Pantry > Canned Seafood > Canned Tuna,Pantry > Canned Vegetables > Green Chiles,0.487,0.831,+0.343
+1,1575909,"BUMBLE BEE, SOLID WHITE ALBACORE IN VEGETABLE OIL",Pantry > Oil > Vegetable Oil,Pantry > Oil > Vegetable Oil > Chunk,0.476,0.782,+0.306
+1,2015531,"BUMBLE BEE, SOLID WHITE ALBACORE IN VEGETABLE OIL",Pantry > Oil > Vegetable Oil,Pantry > Oil > Vegetable Oil > Chunk,0.476,0.782,+0.306
+1,2572773,"ASIAN-STYLE VEGETABLES STEAMS IN BAG BROCCOLI, CARROTS, SUGAR SNAP PEAS, WATER CHESTNUTS, ASIAN-STYL",Snack > Nuts,Produce > Vegetables > Peas & Carrots,0.493,0.819,+0.326
+1,2377557,"STEAM IN BAG BROCCOLI, CARROTS, SUGAR SNAP PEAS & WATER CHESTNUTS",Snack > Nuts,Produce > Vegetables > Peas & Carrots,0.467,0.789,+0.322
+1,2172510,"JAMAICAN STYLE BEEFY CHEESE PATTIES, JAMAICAN STYLE BEEFY CHEESE",Snack > Crackers,Frozen > Appetizers & Snacks > Beef Patties,0.457,0.915,+0.458
+1,2117255,"VIDALIA ONION BURGERS, VIDALIA ONION",Meat & Seafood > Beef > Ground Beef,Meat & Seafood > Patties & Burgers > Burgers,0.478,0.785,+0.306
+1,2613708,7.5 OZ CAN Original Seltzer,Beverage > Sparkling Water,Beverage > Sparkling Water > Seltzer,0.487,0.873,+0.387
+1,2613717,1L BOTTLE ORIGINAL SELTZER,Beverage > Sparkling Water,Beverage > Sparkling Water > Seltzer,0.477,0.888,+0.410
+1,2459917,1L BOXED WINTER VARIETY SELTZER,Beverage > Sparkling Water,Beverage > Sparkling Water > Seltzer,0.460,0.862,+0.402
+1,2557759,1L PERFECTLY PLUM SELTZER,Beverage > Sparkling Water,Beverage > Sparkling Water > Seltzer,0.456,0.811,+0.354
+1,2557848,16.9OZ BOTTLE ORIGINAL SELTZER,Beverage > Sparkling Water,Beverage > Sparkling Water > Seltzer,0.495,0.876,+0.381
+1,2614071,12OZ Can Original Seltzer,Beverage > Sparkling Water,Beverage > Sparkling Water > Seltzer,0.494,0.867,+0.373
+1,2567693,HANDCRAFTED WATERMELON DAIQUIRI & MARGARITA COCKTAIL MIXER,Beverage > Water,Beverage > Mixes > Margarita Mix,0.455,0.861,+0.407
+1,1792004,EVERROAST CHICKEN CAESAR WRAP,Meal > Sandwiches > Sandwich,Meal > Wraps > Chicken Caesar Wrap,0.488,0.796,+0.308
+1,2746442,Silk Almond Milk Cultured Peach 5.3oz,Dairy > Milk > Low Fat,Dairy > Yogurt > Yogurt > Cultured,0.486,0.811,+0.325
+1,2212850,"RHUBARB SWISS YOGURT, RHUBARB",Dairy > Cheese > Swiss > Reduced Fat,Dairy > Cheese > Swiss > Low Fat,0.462,0.806,+0.344
+1,2565792,ORGANIC BUTTERNUT SQUASH RAVIOLI,Pantry > Pasta > Organic,Produce > Vegetables > Butternut Squash > Diced,0.444,0.782,+0.339
+1,1867591,"APPLESAUCE, CHERRY",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.494,0.824,+0.330
+1,2471747,"SPINACH ARTICHOKE RAVIOLI SPINACH, ARTICHOKE & CHEESE FILLED RAVIOLI IN A CREAMY PARMESAN SAUCE WITH",Pantry > Canned Vegetables > Green Beans,Pantry > Canned Vegetables > Spinach,0.468,0.807,+0.339
+1,2382140,"ITALIAN STYLE PEPPERONI PLANT-BASED DELI SLICES, ITALIAN STYLE",Frozen > Single Entrees > Chimichanga,Meat & Seafood > Chicken > Deli Slices > Plant Based,0.487,0.828,+0.340
+1,2420059,WILD HERRING IN WINE SAUCE,Pantry > Sauces & Salsas > Sauce,Pantry > Canned Seafood > Kippered Herring,0.494,0.797,+0.303
+1,1868383,OBLEAS FLOUR WAFER,Snack > Cookies,Bakery > Tortillas > Flour Tortillas,0.477,0.791,+0.314
+1,2021546,JALAPENO SPREAD,Pantry > Dips & Spreads > Dip,Pantry > Spices & Seasonings > Pepper > Sliced,0.498,0.842,+0.344
+1,1952518,"APPLESAUCE, STRAWBERRY",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.492,0.825,+0.333
+1,2029032,"CARLITA, WHOLE GREEN CHILLES",Pantry > Canned Seafood > Canned Tuna,Pantry > Olives > Green Olives,0.444,0.781,+0.337
+1,1373585,INSTANT ENERGY GLUCOSE,Snack > Bars > Energy Bars,Snack > Bars > Energy Bars > Tablet,0.480,0.788,+0.308
+1,1920824,"APPLESAUCE, STRAWBERRY",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.483,0.885,+0.402
+1,2431327,"APPLESAUCE, BLUEBERRY",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.489,0.853,+0.364
+1,2445269,"PANKO CRUSTED ONION RINGS, PANKO CRUSTED",Pantry > Bread Crumbs,Frozen > Appetizers & Snacks > Onion Rings,0.477,0.869,+0.392
+1,2552344,"GARLIC KNOTS, GARLIC",Bakery > Bread,Bakery > Bread > Garlic Bread,0.499,0.815,+0.316
+1,2454720,"ANIMAL VEGETABLE SHORTENING, ANIMAL VEGETABLE",Pantry > Oil,Pantry > Oil > Whipped,0.493,0.798,+0.305
+1,2285046,WHOLE GREEN CHILIS,Pantry > Canned Seafood > Canned Tuna,Pantry > Spices & Seasonings > Pepper > Hot > Whole,0.442,0.864,+0.421
+1,2214202,"SHAKE, CHOCOLATE CARAMEL",Beverage > Carbonated > Cola,Beverage > Carbonated > Cola > High Protein,0.484,0.842,+0.358
+1,2011956,"VICTORIA, BRUSCHETTA",Pantry > Sauces & Salsas > Salsa,Pantry > Pickles,0.494,0.797,+0.303
+1,2546503,"STRAWBERRY APPLESAUCE, STRAWBERRY",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.495,0.859,+0.363
+1,1955653,"CHERRY APPLESAUCE, CHERRY",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.487,0.827,+0.340
+1,1954762,"RASPBERRY APPLESAUCE, RASPBERRY",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.454,0.831,+0.378
+1,2081839,ARTICHOKE PATE,Pantry > Dips & Spreads > Dip,Pantry > Dips & Spreads > Tapenade,0.445,0.803,+0.357
+1,2443099,EGGPLANT APPETIZER,Pantry > Dips & Spreads > Dip,Pantry > Canned Vegetables > Eggplant,0.470,0.854,+0.385
+1,2447487,"STRAWBERRY APPLESAUCE, STRAWBERRY",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.460,0.849,+0.390
+1,1861216,"APPLESAUCE WITH BERRIES, BERRIES",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.458,0.832,+0.375
+1,1926374,BRISLING SARDINES IN TOMATO,Pantry > Canned Vegetables > Tomatoes,Meat & Seafood > Seafood > Sardines,0.496,0.835,+0.340
+1,1926361,TWO LAYER BRISLING SARDINES IN SOY BEAN OIL,Pantry > Oil,Pantry > Canned Seafood > Smoked Sardines,0.456,0.775,+0.320
+1,2128576,HERRING FILLETS IN MUSTARD,Pantry > Sauces & Salsas > Mustard,Pantry > Canned Seafood > Herring Fillets,0.497,0.821,+0.324
+1,1411994,"STRAWBERRY APPLESAUCE, STRAWBERRY",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.468,0.839,+0.372
+1,2433898,SKINLESS AND BONELESS SARDINES IN SUNFLOWER OIL,Pantry > Oil > Sunflower Oil,Pantry > Canned Seafood > Sardines > Olive Oil,0.495,0.834,+0.339
+1,2442418,FIRE ROASTED MILD DICED GREEN CHILES,Pantry > Canned Seafood > Canned Tuna,Pantry > Canned Vegetables > Roasted Red Peppers > Fire Roasted,0.457,0.827,+0.370
+1,2460902,THICK CUT ONION RINGS SLICED WHOLE ONIONS WITH CRISPY PANKO BREADING,Pantry > Bread Crumbs,Frozen > Appetizers & Snacks > Onion Rings,0.459,0.860,+0.401
+1,2265582,THICK CUT SLICED WHOLE ONION RINGS WITH CRISPY PANKO BREADING,Pantry > Bread Crumbs,Frozen > Appetizers & Snacks > Onion Rings,0.493,0.855,+0.362
+1,1382274,"PEDIATRIC ELECTROLYTE SOLUTION, STRAWBERRY",Beverage > Wellness Shots,Beverage > Functional Drinks > Electrolyte Solution,0.484,0.842,+0.358
+1,2524406,"STRAWBERRY APPLESAUCE, STRAWBERRY",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.468,0.849,+0.381
+1,2524422,"STRAWBERRY APPLESAUCE, STRAWBERRY",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.468,0.849,+0.381
+1,2338018,"STRAWBERRY APPLESAUCE, STRAWBERRY",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.468,0.849,+0.381
+1,2505237,"GARLIC KNOTS, GARLIC",Bakery > Bread,Bakery > Bread > Garlic Bread,0.492,0.811,+0.319
+1,2553218,FIRE-ROASTED EGGPLANT BRUSCHETTA,Pantry > Sauces & Salsas > Salsa,Pantry > Canned Vegetables > Eggplant,0.499,0.805,+0.306
+1,2605821,"ARTICHOKE TAPENADE, ARTICHOKE",Pantry > Dips & Spreads > Dip,Pantry > Dips & Spreads > Tapenade,0.454,0.845,+0.391
+1,2625785,"CRISPY ONION RINGS PANKO BREADED SLICED ONION, CRISPY ONION RINGS",Pantry > Bread Crumbs,Frozen > Appetizers & Snacks > Onion Rings,0.478,0.875,+0.397
+1,2060574,PREMIUM POPCORN SALT,Snack > Candy > Truffles,Pantry > Spices & Seasonings > Salt,0.369,0.798,+0.428
+1,2383515,"ORIGINAL CAULIFLOWER GNOCCHI, ORIGINAL CAULIFLOWER",Pantry > Pasta,Produce > Vegetables > Cauliflower,0.468,0.783,+0.315
+1,510936,PUDING,Bakery > Cake,Dairy > Pudding > Custard,0.459,0.775,+0.316
+1,1474015,"MADRIGAL, SPICED SARDINES IN VEGETABLE OIL",Pantry > Oil > Vegetable Oil,Pantry > Canned Seafood > Smoked Sardines,0.495,0.837,+0.342
+1,1908748,BALSAMIC GLAZE WITH CHERRY,Pantry > Sauces & Salsas > Salsa,Pantry > Sauces & Salsas > Balsamic Glaze,0.500,0.829,+0.329
+1,2452556,"ROASTED EGGPLANT SPREAD, ROASTED EGGPLANT",Pantry > Dips & Spreads > Dip,Pantry > Canned Vegetables > Eggplant,0.474,0.872,+0.398
+1,2194657,"MAPLE AND MERLOT SEA SALT FLAVORED GOURMET POPCORN SEASONING, MAPLE AND MERLOT SEA SALT",Snack > Candy > Truffles,Pantry > Spices & Seasonings > Salt,0.405,0.778,+0.373
+1,2435675,BLOODY MARY SEASONING,Pantry > Spices & Seasonings > Seasoning,Beverage > Mixes > Bloody Mary Mix,0.454,0.803,+0.349
+1,2626820,"CRANBERRY DRIED FRUIT CHUTNEY, CRANBERRY",Pantry > Sauces & Salsas > Salsa,Pantry > Jam,0.473,0.800,+0.326
+1,2094770,AJVAR VEGETABLE SPREAD,Pantry > Dips & Spreads > Dip,Pantry > Dips & Spreads > Vegetable Spread,0.488,0.858,+0.370
+1,2489235,"PROTEIN POWDER, CHOCOLATE",Beverage > Carbonated > Cola,Beverage > Carbonated > Cola > Powder > High Protein,0.484,0.918,+0.434
+1,2554101,"FAJITA SHORT CUTS MIX, FAJITA",Produce > Vegetables > Bell Peppers > Red,Produce > Vegetables > Fajita Mix,0.500,0.843,+0.343
+1,1902088,"SPARKLING DRINK MIX, CHERRY",Snack > Fruit Snacks,Beverage > Soda > Sparkling,0.483,0.792,+0.309
+1,1859368,APPLE BERRY  APPLESAUCE ON THE GO,Pantry > Sauces & Salsas > Sauce,Pantry > Canned Fruit > Applesauce,0.476,0.827,+0.351
+1,2381383,"APPLEAPPLE FRUIT ON THE GO APPPLESAUCE, APPLEAPPLE",Pantry > Sauces & Salsas > Sauce,Snack > Fruit Snacks > Squeezable,0.471,0.830,+0.359
+1,2467006,GELATINIZED MACA 100% ORGANIC SUPERFOOD POWDER,Beverage > Tea > Black Tea > Organic,Sports & Wellness > Supplements > Maca Root Powder,0.500,0.806,+0.307
+1,2029711,"THE JAM STAND, PEACHY SRIRACHA SPREAD",Pantry > Sauces & Salsas > Sriracha,Pantry > Jam,0.455,0.801,+0.345
+1,2053050,"BONNIE'S JAMS, PEACH PEPPER JELLY",Pantry > Spices & Seasonings > Pepper,Pantry > Jam,0.495,0.796,+0.301
+1,1889484,"COCONUT ALMONDMILK BLEND, CHOCOLATE",Beverage > Carbonated > Cola,Beverage > Plant Milk > Almond Milk,0.458,0.865,+0.407
+1,1851419,"OLD WORLD, GREEK SALAD",Pantry > Sauces & Salsas > Salsa,Meal > Salads > Greek Salad,0.479,0.780,+0.301
+1,519104,JUICY CITRUS,Snack > Gum > Bubble Gum,Pantry > Mixes > Lemonade Mix,0.451,0.792,+0.340
+1,2396655,"HOT & ZESTY PEPPERONI STYLE PLANT-BASED DELI SLICES, PEPPERONI STYLE",Frozen > Single Entrees > Chimichanga,Meat & Seafood > Chicken > Deli Slices > Plant Based,0.488,0.844,+0.355
+1,2393450,SPREAD & DRESSING,Pantry > Sauces & Salsas > Mayonnaise,Pantry > Dips & Spreads > Vegetable Spread,0.487,0.835,+0.348
+1,2161615,"REAL BUTTER & SEA SALT POPCORN SEASONING, REAL BUTTER & SEA SALT",Snack > Candy > Truffles,Pantry > Spices & Seasonings > Salt,0.377,0.761,+0.384
+1,2020172,"GOLDEN TASTE, GRILLED EGGPLANT",Pantry > Dips & Spreads > Dip,Pantry > Canned Vegetables > Eggplant,0.471,0.836,+0.365
+1,2420244,BRUSCHETTA,Pantry > Sauces & Salsas > Salsa,Pantry > Pickles,0.475,0.789,+0.314
+1,1871461,"APPLESAUCE ON THE GO, APPLE CHERRY",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.482,0.856,+0.374
+1,2266101,"BANANA SWEET POTATO FRITTATA, BANANA SWEET POTATO",Pantry > Flour,Frozen > Breakfast > Breakfast Bowl,0.459,0.771,+0.312
+1,1459069,"""""BKRIB,PK,LN,RC,MEATY,SKLS,IB,12PC,Z""""",Meat & Seafood > Pork > Pork Ribs,Meat & Seafood > Pork > Boneless,0.409,0.724,+0.315
+1,1457727,"""""BKRIB,PK,LN,RC,MEATY,IB,12PC,Z""""",Meat & Seafood > Pork > Pork Ribs,Meat & Seafood > Pork > Boneless,0.412,0.724,+0.311
+2,2621825,"CHOCOLATE ALMONDMILK, CHOCOLATE",Beverage > Carbonated > Cola,Beverage > Carbonated > Cola > Plant Based,0.484,0.910,+0.426
+2,2456468,"ROUNDY'S, APPLESAUCE, ORIGINAL, ORIGINAL",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.499,0.827,+0.328
+2,2074228,REGULAR APPLESAUCE,Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.495,0.819,+0.324
+2,2368463,"ORIGINAL APPLESAUCE, ORIGINAL",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.496,0.878,+0.382
+2,1469352,"FOOD CLUB, APPLESAUCE, ORIGINAL",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.498,0.829,+0.331
+2,1469354,ORIGINAL APPLESAUCE,Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.489,0.900,+0.411
+2,372058,ORIGINAL APPLESAUCE,Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.488,0.960,+0.472
+2,2661794,"HOMESTYLE APPLESAUCE, HOMESTYLE",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.496,0.839,+0.342
+2,2659554,"HOMESTYLE APPLESAUCE, HOMESTYLE",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.496,0.839,+0.342
+2,1894208,"APPLESAUCE, ORIGINAL",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.484,0.916,+0.433
+2,1894209,"APPLESAUCE, ORIGINAL",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.484,0.916,+0.433
+2,491203,APPLESAUCE,Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.498,0.939,+0.442
+2,2326674,"ORIGINAL APPLESAUCE, ORIGINAL",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.494,0.872,+0.379
+2,1871464,APPLE PINEAPPLE APPPLESAUCE,Pantry > Sauces & Salsas > Sauce,Snack > Fruit Snacks > Squeezable,0.475,0.812,+0.337
+2,1379409,"ORIGINAL APPLESAUCE, ORIGINAL",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.489,0.908,+0.419
+2,1366523,"ORIGINAL APPLESAUCE, ORIGINAL",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.489,0.908,+0.419
+2,2245616,"ORIGINAL APPLESAUCE, ORIGINAL",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.489,0.908,+0.419
+2,1382319,"ORIGINAL APPLESAUCE, ORIGINAL",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.489,0.908,+0.419
+2,2244627,"ORIGINAL APPLESAUCE, ORIGINAL",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.489,0.908,+0.419
+2,2633175,"ORIGINAL APPLESAUCE, ORIGINAL",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.494,0.872,+0.379
+2,2661352,"HOMESTYLE APPLESAUCE, HOMESTYLE",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.496,0.839,+0.342
+2,2661327,"HOMESTYLE APPLESAUCE, HOMESTYLE",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.496,0.839,+0.342
+2,936814,"STRAWBERRY FLAVORED APPLESAUCE, STRAWBERRY",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.486,0.904,+0.418
+2,2017599,"ORIGINAL APPLESAUCE, ORIGINAL",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.494,0.872,+0.379
+2,2639314,"ORIGINAL APPLESAUCE, ORIGINAL",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.494,0.872,+0.379
+2,2640969,"SUPER CHUNKY APPLESAUCE, SUPER CHUNKY",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Chunky,0.499,0.863,+0.364
+2,1865590,"GIMME FIVE! APPLESAUCE ON THE GO, APPLE, MANGO, STRAWBERRY, PEACH, BANANA",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.476,0.788,+0.312
+2,2063793,"KING SOOPERS, CITY MARKET, SLIDERS MINI BUNS",Snack > Pretzels > Mini,Bakery > Bread > Brioche > Buns > Slider,0.445,0.749,+0.304
+2,515856,PUMPKIN CHEESE CAKE STARTER,Pantry > Baking Mixes > Mix,Pantry > Baking Mixes > Cake Mix,0.464,0.765,+0.301
+2,2021489,PIMENTO SPREAD,Pantry > Dips & Spreads > Dip,Dairy > Cheese > Cheddar > Pimento Cheese Spread,0.497,0.911,+0.414
+2,2667147,CHILE CON QUESO,Pantry > Dips & Spreads > Dip,Dairy > Cheese > Queso,0.466,0.772,+0.306
+2,2595256,CENTRAL AMERICAN CULTURED CREAM,Dairy > Cheese > American,Dairy > Cream > Cultured Cream,0.495,0.896,+0.401
+2,2140024,"BELGIAN CHOCOLATE FLAVOR CREAMER, BELGIAN CHOCOLATE",Beverage > Carbonated > Cola,Beverage > Coffee Creamer > Concentrated,0.494,0.891,+0.397
+2,2120766,"COFFEE CREAMER, CHOCOLATE",Beverage > Carbonated > Cola,Beverage > Coffee Creamer,0.499,0.865,+0.367
+2,2599193,SOLID WHITE ALBACORE IN VEGETABLE OIL TUNA,Pantry > Oil > Vegetable Oil,Pantry > Oil > Vegetable Oil > Chunk,0.493,0.805,+0.313
+2,2035336,"BREAST O' CHICKEN, CHUNK LIGHT TUNA IN VEGETABLE OIL",Pantry > Oil > Vegetable Oil,Pantry > Oil > Vegetable Oil > Chunk,0.488,0.884,+0.396
+2,2280106,"MIXED BERRY APPLESAUCE, MIXED BERRY",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.490,0.854,+0.363
+2,1457480,"""""RST,HAM,BNLS,NTD,SM,3PC,Z""""",Meat & Seafood > Ham > Smoked > Boneless,Meat & Seafood > Pork > Boneless,0.467,0.834,+0.367
+2,1458837,"""""HAM,SMKD,FS,SH,2PC""""",Meat & Seafood > Ham > Sliced,Meat & Seafood > Pork > Boneless,0.496,0.833,+0.337
+2,1457910,"""""HAM,SMKD,BNLS,NJ,WH,AMER HEARTLAND,2PC""""",Meat & Seafood > Ham > Sliced,Meat & Seafood > Pork > Boneless,0.488,0.842,+0.354
+2,1913830,"APPLESAUCE ON THE GO, APPLE STRAWBERRY KIWI",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.486,0.878,+0.391
+2,2156225,"PEACH MANGO APPLESAUCE, PEACH MANGO",Pantry > Sauces & Salsas > Sauce,Snack > Dried Fruit > Mango,0.471,0.785,+0.313
+2,1887724,"GOURMET GARLIC & PAPRIKA WITH OLIVE OIL, OLIVE OIL",Snack > Veggie Snacks > Veggie Straws,Produce > Vegetables > Garlic,0.480,0.780,+0.300
+2,2063775,OLIVE BRUSCHETTA,Pantry > Sauces & Salsas > Salsa,Pantry > Olives,0.497,0.829,+0.332
+2,2021468,DURUM SEMOLINA & EGG PASTA,Pantry > Pasta > Shells,Pantry > Pasta > Durum Wheat Semolina,0.475,0.781,+0.306
+2,2589955,"EGGPLANTS A LA MAMA SPREAD, EGGPLANTS A LA MAMA",Pantry > Dips & Spreads > Dip,Pantry > Canned Vegetables > Eggplant,0.450,0.760,+0.310
+2,2523928,"CAPONATA EGGPLANT APPETIZER, CAPONATA",Pantry > Dips & Spreads > Dip,Pantry > Canned Vegetables > Eggplant,0.498,0.819,+0.320
+2,2028233,"LEE KUM KEE, MINCED GARLIC",Pantry > Sauces & Salsas > Salsa,Pantry > Pickles > Garlic,0.498,0.801,+0.303
+2,2032480,"LEE KUM KEE, MINCED GARLIC",Pantry > Sauces & Salsas > Salsa,Pantry > Pickles > Garlic,0.498,0.801,+0.303
+2,2284210,"EGGPLANT SPREAD, SPICY",Pantry > Dips & Spreads > Dip,Pantry > Canned Vegetables > Eggplant,0.493,0.801,+0.307
+2,2089696,"GOURMET POPCORN, ROSEMARY TRUFFLE",Snack > Candy > Truffles,Snack > Popcorn > Popped,0.493,0.811,+0.318
+2,2579598,"NEW ENGLAND CRANBERRY RELISH, CRANBERRY",Pantry > Sauces & Salsas > Salsa,Pantry > Pickles > Relish,0.466,0.776,+0.310
+2,2442809,NEW ENGLAND CRANBERRY RELISH,Pantry > Sauces & Salsas > Salsa,Pantry > Pickles > Relish,0.445,0.747,+0.301
+2,2369042,"PARMESAN PEPPERCORN RANCH LIGHT DRESSING, PARMESAN PEPPERCORN RANCH",Pantry > Canned Vegetables > Corn > Light,Pantry > Canned Vegetables > Corn > Low Fat,0.499,0.871,+0.373
+2,2288652,"VINEYARD DRESSING, ASIAGO PEPPERCORN CHARDONNAY",Pantry > Canned Vegetables > Corn,Pantry > Salad Dressings,0.498,0.816,+0.318
+2,2101900,PEPPERCORN RANCH,Pantry > Canned Vegetables > Corn,Pantry > Canned Vegetables > Corn > Low Fat,0.498,0.870,+0.372
+2,2524502,"SUGAR PEARLS, PINK",Snack > Crackers,Snack > Crackers > Crystals,0.470,0.793,+0.323
+2,2022223,MAINE MAPLE GLAZE,Pantry > Sauces & Salsas > Salsa,Pantry > Sauces & Salsas > Salsa > Glaze,0.456,0.756,+0.300
+2,2541326,SPARKLING SILVER SUGAR,Snack > Crackers,Snack > Crackers > Crystals,0.420,0.743,+0.323
+2,1925732,PREPARED HORSERADISH,Pantry > Sauces & Salsas > Salsa,Pantry > Sauces & Salsas > Horseradish Sauce,0.454,0.761,+0.307
+2,2143452,"WHITE SUMMER TRUFFLE SALT, WHITE SUMMER TRUFFLE",Snack > Candy > Truffles,Pantry > Spices & Seasonings > Seasoning > Gluten Free,0.474,0.828,+0.354
+2,1497657,"TARTUFI DI FASSIA, GREY SALT WITH WHITE TRUFFLE",Snack > Candy > Truffles,Pantry > Spices & Seasonings > Seasoning > Dry Mix,0.437,0.764,+0.327
+2,2265274,"UNSALTED CHICKEN BROTH, UNSALTED",Pantry > Spices & Seasonings > Salt > No Salt Added,Pantry > Bouillon & Broth > Stock > Low Sodium,0.490,0.863,+0.373
+2,2744537,Silk Chocolate Soymilk,Dairy > Milk > Fortified,Beverage > Carbonated > Cola > Fortified,0.498,0.880,+0.382
+2,2093050,BLACK ROASTED SESAME SEED,Pantry > Spices & Seasonings > Seasoning,Pantry > Oil > Sesame Oil > Organic,0.458,0.773,+0.315
+2,2413859,"MELANGE PEPPERCORN, MELANGE",Pantry > Canned Vegetables > Corn,Pantry > Spices & Seasonings > Pepper > Ground,0.457,0.758,+0.301
+2,2508262,"RAINBOW PEPPERCORNS WITH GRINDER, RAINBOW WITH GRINDER",Pantry > Canned Vegetables > Corn,Pantry > Spices & Seasonings > Pepper > Ground,0.437,0.737,+0.300
+2,2032386,WHITE PREMIUM ROASTED SESAME SEED,Pantry > Spices & Seasonings > Seasoning,Pantry > Oil > Sesame Oil > Organic,0.457,0.800,+0.344
+2,2110392,WHITE PREMIUM ROASTED SESAME SEED,Pantry > Spices & Seasonings > Seasoning,Pantry > Oil > Sesame Oil > Organic,0.457,0.800,+0.344
+2,2378410,SESAME SEEDS,Pantry > Spices & Seasonings > Seasoning,Pantry > Oil > Sesame Oil > Organic,0.465,0.803,+0.338
+2,2288711,ROASTED SESAME SEEDS,Pantry > Spices & Seasonings > Seasoning,Pantry > Oil > Sesame Oil > Organic,0.465,0.791,+0.326
+2,2105291,SEED SESAME,Pantry > Spices & Seasonings > Seasoning,Pantry > Oil > Sesame Oil > Organic,0.495,0.825,+0.330
+2,2098210,SESAME SEEDS,Pantry > Spices & Seasonings > Seasoning,Pantry > Oil > Sesame Oil > Organic,0.486,0.823,+0.337
+2,1371049,PREMIUM SESAME SEEDS,Pantry > Spices & Seasonings > Seasoning,Pantry > Oil > Sesame Oil > Organic,0.469,0.807,+0.338
+2,2572333,ALL-VEGETABLE SHORTENING,Pantry > Oil,Pantry > Oil > Whipped,0.494,0.868,+0.374
+2,2161444,ALL-VEGETABLE SHORTENING,Pantry > Oil,Pantry > Oil > Whipped,0.493,0.907,+0.414
+2,1599749,ALL-VEGETABLE SHORTENING,Pantry > Oil,Pantry > Oil > Whipped,0.494,0.868,+0.374
+2,1858616,ORGANIC CANE SUGAR,Snack > Crackers > Organic,Pantry > Sugar & Sweeteners > Sugar Cane,0.495,0.885,+0.389
+2,2016804,"LOWES FOODS, GRANULATED SUGAR",Snack > Crackers,Pantry > Sweeteners > Sugar,0.461,0.764,+0.303
+2,2453241,"SPARKLING SUGAR, CHERRY PINK",Snack > Crackers,Snack > Crackers > Crystals,0.433,0.737,+0.304
+2,1035095,"YELLOW SUGAR PEARLS, YELLOW",Snack > Crackers,Snack > Crackers > Crystals,0.460,0.773,+0.312
+2,2114328,BLACK SPARKLING GEL,Pantry > Sweeteners > Syrup,Pantry > Gelatin > Gel,0.452,0.770,+0.318
+2,1988361,"ORANGE DECORATING SUGAR, ORANGE",Snack > Crackers,Pantry > Baking Decorations > Candy Decorations,0.436,0.751,+0.315
+2,2476337,"MAPLE FLAVORED MORSELS, MAPLE",Snack > Candy > Chocolate Candy,Snack > Candy > Chocolate Candy > Morsels,0.451,0.756,+0.305
+2,2110981,"GINGERBREAD LATTE FLAVORED CHILLED ESPRESSO BEVERAGE, GINGERBREAD LATTE",Pantry > Spices & Seasonings > Ginger,Beverage > Coffee > Espresso > Iced,0.500,0.823,+0.323
+2,1575589,"BUMBLE BEE, PREMIUM SOLID WHITE ALBACORE IN VEGETABLE OIL",Pantry > Oil > Vegetable Oil,Pantry > Oil > Vegetable Oil > Chunk,0.482,0.802,+0.320
+2,2615471,MILD FIRE ROASTED DICED GREEN CHILES,Pantry > Canned Seafood > Canned Tuna,Pantry > Canned Vegetables > Green Chiles,0.432,0.780,+0.348
+2,2080259,"APPLESAUCE, STRAWBERRY",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.498,0.888,+0.390
+2,2406039,"STRAWBERRY APPLESAUCE, STRAWBERRY",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.494,0.882,+0.388
+2,2417757,"STRAWBERRY APPLESAUCE, STRAWBERRY",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.492,0.878,+0.387
+2,2107658,ROASTED GREEN CHILI WHOLE,Pantry > Canned Seafood > Canned Tuna,Pantry > Spices & Seasonings > Pepper > Roasted,0.497,0.829,+0.332
+2,722758,"STRAWBERRY APPLESAUCE, STRAWBERRY",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.484,0.918,+0.434
+2,2661793,"STRAWBERRY APPLESAUCE, STRAWBERRY",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.487,0.894,+0.407
+2,2314347,"STRAWBERRY APPLESAUCE, STRAWBERRY",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.487,0.894,+0.407
+2,2626036,BABAGANOUCH EGGPLANT SPREAD,Pantry > Dips & Spreads > Dip,Pantry > Canned Vegetables > Eggplant,0.465,0.770,+0.305
+2,741756,"STRAWBERRY APPLESAUCE, STRAWBERRY",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.484,0.918,+0.434
+2,2382342,"AGED WHITE CHEDDAR TRUFFLE POPCORN SEASONING, AGED WHITE CHEDDAR TRUFFLE",Snack > Candy > Truffles,Pantry > Spices & Seasonings > Seasoning > Mix,0.442,0.774,+0.332
+2,2374795,"APPLE BLINTZES, APPLE",Bakery > Crepes,Frozen > Blintzes,0.464,0.858,+0.395
+2,1895272,BRUSCHETTA ANTIPASTO,Pantry > Sauces & Salsas > Salsa,Pantry > Antipasto,0.490,0.792,+0.302
+2,2608483,"FIRE ROASTED EGGPLANT BRUSCHETTA, FIRE ROASTED EGGPLANT",Pantry > Sauces & Salsas > Salsa,Pantry > Canned Vegetables > Eggplant,0.496,0.831,+0.335
+2,1928957,"APPLESAUCE ON THE GO, APPLE BERRY",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.488,0.892,+0.404
+2,1871458,"APPLESAUCE ON THE GO, APPLE BERRY",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.488,0.892,+0.404
+2,2442971,"THE GRACIOUS GOURMET, ARTICHOKE PARMESAN TAPENADE",Pantry > Dips & Spreads > Dip,Pantry > Dips & Spreads > Tapenade,0.477,0.787,+0.309
+3,2111528,ORIGINAL APPLESAUCE,Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.497,0.853,+0.356
+3,2282685,"STRAWBERRY FLAVORED APPLESAUCE, STRAWBERRY",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.500,0.849,+0.349
+3,2315723,"APPLESAUCE, ORIGINAL",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.494,0.868,+0.374
+3,2034250,"APPLESAUCE, ORIGINAL",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.494,0.868,+0.374
+3,1892972,"APPLESAUCE, ORIGINAL",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.494,0.868,+0.374
+3,2102115,REGULAR APPLESAUCE,Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.499,0.859,+0.360
+3,2101334,REGULAR APPLESAUCE,Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.499,0.859,+0.360
+3,2100318,REGULAR APPLESAUCE,Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.499,0.859,+0.360
+3,2586324,"APPLE BLENDZ PURE FRUIT PUREE, APPLE",Pantry > Sauces & Salsas > Sauce,Snack > Fruit Snacks > Puree,0.495,0.922,+0.427
+3,2146666,"CLASSIC APPLESAUCE, CLASSIC",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.493,0.841,+0.348
+3,2143273,"APPLES IN RASPBERRY CHERRY FLAVORED CHIA, APPLES IN RASPBERRY CHERRY",Pantry > Sauces & Salsas > Sauce,Snack > Fruit Snacks > Diced,0.463,0.765,+0.303
+3,2243749,"ORIGINAL APPLESAUCE, ORIGINAL",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.498,0.903,+0.405
+3,2241786,"ORIGINAL APPLESAUCE, ORIGINAL",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.498,0.903,+0.405
+3,2249474,"ORIGINAL APPLESAUCE, ORIGINAL",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.498,0.903,+0.405
+3,1903237,"APPLESAUCE, CHUNKY",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Chunky,0.495,0.902,+0.407
+3,1895362,"LOWES FOODS, APPLESAUCE, STRAWBERRY, STRAWBERRY",Pantry > Sauces & Salsas > Sauce,Snack > Fruit Snacks > Organic,0.482,0.783,+0.301
+3,1883266,"LET THY FOOD, CHILE CON QUESO",Pantry > Dips & Spreads > Dip,Dairy > Cheese > Queso,0.446,0.747,+0.301
+3,2010122,"THE FRESH MARKET, PREMIUM SHRIMP & CORN CHOWDER",Pantry > Canned Vegetables > Corn > Light,Pantry > Canned Vegetables > Corn > Chunky,0.449,0.749,+0.300
+3,1971509,GREEN OLIVE TAPENADE SPREAD FOR PASTRIES AND CHEESES,Pantry > Dips & Spreads > Dip,Pantry > Dips & Spreads > Olive Tapenade,0.499,0.850,+0.352
+3,2039949,"WISH-BONE, LIGHT PARMESAN PEPPERCORN RANCH DRESSING",Pantry > Canned Vegetables > Corn > Light,Pantry > Salad Dressings > Ranch Dressing,0.448,0.758,+0.310
+3,2404409,PREPARED HORSERADISH,Pantry > Sauces & Salsas > Salsa,Pantry > Sauces & Salsas > Horseradish Sauce,0.500,0.835,+0.335
+3,2418649,PREPARED HORSERADISH,Pantry > Sauces & Salsas > Salsa,Pantry > Sauces & Salsas > Horseradish Sauce,0.500,0.835,+0.335
+3,2310528,"BLACK SESAME SEED, BLACK",Pantry > Spices & Seasonings > Seasoning,Pantry > Oil > Sesame Oil > Organic,0.482,0.802,+0.320
+3,2024957,"JFC, BLACK ROASTED SESAME SEED",Pantry > Spices & Seasonings > Seasoning,Pantry > Oil > Sesame Oil > Organic,0.493,0.826,+0.334
+3,2288758,"ROASTED BLACK SESAME SEED, ROASTED BLACK",Pantry > Spices & Seasonings > Seasoning,Pantry > Oil > Sesame Oil > Organic,0.476,0.781,+0.305
+3,2138385,BLACK SESAME SEEDS,Pantry > Spices & Seasonings > Seasoning > Organic,Pantry > Oil > Sesame Oil > Organic,0.491,0.803,+0.312
+3,2288901,WHITE SESAME SEEDS,Pantry > Spices & Seasonings > Seasoning,Pantry > Oil > Sesame Oil > Organic,0.457,0.789,+0.332
+3,2024490,TOASTED SESAME SEEDS,Pantry > Spices & Seasonings > Seasoning,Pantry > Oil > Sesame Oil > Organic,0.479,0.781,+0.302
+3,1851600,"ROUNDY'S, APPLESAUCE, RASPBERRY, RASPBERRY",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.494,0.799,+0.305
+3,2029511,CRANBERRY CHUTNEY,Pantry > Sauces & Salsas > Salsa,Pantry > Pickles > Relish,0.461,0.769,+0.308
+3,2394237,"ARTICHOKES BRUSCHETTA, ARTICHOKES",Pantry > Sauces & Salsas > Salsa,Pantry > Canned Vegetables > Artichokes,0.500,0.846,+0.346
+4,2245082,"STRAWBERRY FLAVORED APPLESAUCE, STRAWBERRY",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.500,0.897,+0.398
+4,2129138,"ORIGINAL APPLESAUCE, ORIGINAL",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.456,0.762,+0.306
+4,2589586,SOUTHWEST CORN CHOWDER SOUP,Pantry > Canned Vegetables > Corn > Light,Pantry > Canned Vegetables > Corn > Chunky,0.486,0.791,+0.305
+4,1913329,"APPLESAUCE, STRAWBERRY",Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.499,0.898,+0.400
+5,2455975,CLASSIC APPLESAUCE,Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.500,0.846,+0.346
+5,2456024,CLASSIC APPLESAUCE,Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.500,0.846,+0.346
+5,2030887,CLASSIC APPLESAUCE,Pantry > Sauces & Salsas > Sauce,Pantry > Sauces & Salsas > Sauce > Sweetened,0.500,0.846,+0.346
+5,757578,Progresso Light Chicken Corn Chowder,Pantry > Canned Vegetables > Corn > Light,Pantry > Canned Vegetables > Corn > Chunky,0.496,0.817,+0.321
+5,2668672,"SHRIMP & CORN CHOWDER, SHRIMP & CORN",Pantry > Canned Vegetables > Corn > Light,Pantry > Canned Vegetables > Corn > Chunky,0.490,0.849,+0.358
+5,2268792,"SHRIMP & CORN CHOWDER, SHRIMP & CORN",Pantry > Canned Vegetables > Corn > Light,Pantry > Canned Vegetables > Corn > Chunky,0.490,0.849,+0.358
+6,2576377,"CHICKEN POBLANO CORN CHOWDER, CHICKEN POBLANO CORN",Pantry > Canned Vegetables > Corn > Light,Pantry > Canned Vegetables > Corn > Chunky,0.464,0.844,+0.380
+6,2097023,"SIGNATURE RECIPE SHRIMP & CORN CHOWDER, SIGNATURE RECIPE",Pantry > Canned Vegetables > Corn > Light,Pantry > Canned Vegetables > Corn > Chunky,0.379,0.731,+0.352
+6,2166573,"SOUTHWEST CORN CHOWDER, SOUTHWEST CORN",Pantry > Canned Vegetables > Corn > Light,Pantry > Canned Vegetables > Corn > Chunky,0.457,0.790,+0.332
+7,1630470,LIGHT CHICKEN CORN CHOWDER SOUP,Pantry > Canned Vegetables > Corn > Light,Pantry > Canned Vegetables > Corn > Chunky,0.470,0.861,+0.391
+7,2725660,"Wish-Bone Light Parmesan Peppercorn Ranch Salad Dressing, 15 fl. oz.",Pantry > Canned Vegetables > Corn > Light,Pantry > Canned Vegetables > Corn > Low Fat,0.409,0.716,+0.307
+7,2441921,"WHOLESOME SWEETENERS, LIGHT CORN SYRUP, VANILLA, VANILLA",Pantry > Canned Vegetables > Corn > Whole,Pantry > Canned Vegetables > Corn > Light,0.459,0.759,+0.301

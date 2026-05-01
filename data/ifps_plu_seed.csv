@@ -1,0 +1,63 @@
+plu_code,description,canonical_path
+4011,Banana,Produce > Fruit > Bananas
+4015,"Apple, Red Delicious",Produce > Fruit > Apples > Red Delicious
+4131,"Apple, Fuji",Produce > Fruit > Apples > Fuji
+4021,"Apple, Gala",Produce > Fruit > Apples > Gala
+4017,"Apple, Granny Smith",Produce > Fruit > Apples > Granny Smith
+4128,"Apple, Red Rome",Produce > Fruit > Apples > Rome
+4133,"Apple, Pink Lady",Produce > Fruit > Apples > Pink Lady
+4012,"Orange, Navel",Produce > Fruit > Oranges > Navel
+4053,Lemon,Produce > Fruit > Lemons
+4033,"Lemon, small",Produce > Fruit > Lemons > Small
+4048,Lime,Produce > Fruit > Limes
+4046,"Avocado, Hass medium",Produce > Vegetables > Avocados > Hass
+4225,"Avocado, Hass large",Produce > Vegetables > Avocados > Hass > Large
+4051,Mango,Produce > Fruit > Mango
+4029,Pineapple,Produce > Fruit > Pineapple
+4038,Peach,Produce > Fruit > Peaches
+4409,"Pear, Bartlett",Produce > Fruit > Pears > Bartlett
+4032,"Watermelon, seedless",Produce > Fruit > Watermelon > Seedless
+4050,Cantaloupe,Produce > Fruit > Cantaloupe
+4022,"Grapes, seedless",Produce > Fruit > Grapes > Seedless
+4959,Strawberries,Produce > Fruit > Strawberries
+4239,Blackberries,Produce > Fruit > Blackberries
+4240,Blueberries,Produce > Fruit > Blueberries
+4531,Raspberries,Produce > Fruit > Raspberries
+4088,"Bell Pepper, Red",Produce > Vegetables > Bell Peppers > Red
+4065,"Bell Pepper, Green",Produce > Vegetables > Bell Peppers > Green
+4608,Garlic,Produce > Vegetables > Garlic
+4062,Cucumber,Produce > Vegetables > Cucumbers
+4593,"Cucumber, English",Produce > Vegetables > Cucumbers > English
+4081,Eggplant,Produce > Vegetables > Eggplant
+4067,Zucchini,Produce > Vegetables > Zucchini
+4553,"Onion, Yellow",Produce > Vegetables > Onions > Yellow
+4093,"Onion, Red",Produce > Vegetables > Onions > Red
+4663,"Onion, Sweet",Produce > Vegetables > Onions > Sweet
+4665,"Onion, Vidalia",Produce > Vegetables > Onions > Vidalia
+4072,"Potato, Russet",Produce > Vegetables > Potatoes > Russet
+4091,Sweet Potato,Produce > Vegetables > Sweet Potatoes
+4061,"Lettuce, Iceberg",Produce > Vegetables > Lettuce > Iceberg
+4640,"Lettuce, Romaine",Produce > Vegetables > Lettuce > Romaine
+4135,Cauliflower,Produce > Vegetables > Cauliflower
+4069,"Cabbage, Green",Produce > Vegetables > Cabbage > Green
+3082,Broccoli,Produce > Vegetables > Broccoli
+4070,Celery,Produce > Vegetables > Celery
+3077,Beets,Produce > Vegetables > Beets
+4090,Spinach,Produce > Vegetables > Spinach
+4627,Kale,Produce > Vegetables > Kale
+4080,Asparagus,Produce > Vegetables > Asparagus
+4562,Carrots,Produce > Vegetables > Carrots
+4565,"Carrots, baby",Produce > Vegetables > Carrots > Baby
+4148,"Mushrooms, White Button",Produce > Vegetables > Mushrooms > White
+3331,Brussels Sprouts,Produce > Vegetables > Brussels Sprouts
+3083,Green Beans,Produce > Vegetables > Green Beans
+4078,"Corn, Sweet on the cob",Produce > Vegetables > Corn > Sweet
+4612,Ginger Root,Produce > Vegetables > Ginger Root
+4693,"Peppers, Jalapeño",Produce > Vegetables > Jalapeños
+4664,"Tomato, on the vine",Produce > Vegetables > Tomatoes > On The Vine
+4087,"Tomato, plum",Produce > Vegetables > Tomatoes > Plum
+4799,"Tomato, cherry",Produce > Vegetables > Tomatoes > Cherry
+4805,"Tomato, grape",Produce > Vegetables > Tomatoes > Grape
+4889,"Cilantro, fresh bunch",Produce > Fresh Herbs > Fresh Cilantro
+4901,"Parsley, fresh bunch",Produce > Fresh Herbs > Fresh Parsley
+4891,"Dill, fresh bunch",Produce > Fresh Herbs > Fresh Dill
