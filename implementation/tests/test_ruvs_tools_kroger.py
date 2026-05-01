@@ -26,3 +26,8 @@ def test_kroger_search_returns_product_candidates(mock_http):
     assert results[0].retail == "kroger"
     assert results[0].price_cents == 399
     assert results[0].upc == "0001111041700"
+
+
+def test_kroger_search_no_token_returns_empty(monkeypatch):
+    monkeypatch.delenv("KROGER_ACCESS_TOKEN", raising=False)
+    assert kroger_search("butter", limit=3) == []

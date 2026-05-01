@@ -54,7 +54,7 @@ def walmart_search(query: str, limit: int = 10) -> list[ProductCandidate]:
     url = f"https://api.walmartlabs.com/v1/search?{qs}"
     try:
         data = _http_get(url)
-    except (urllib.error.URLError, RuntimeError, TimeoutError):
+    except (urllib.error.URLError, RuntimeError, TimeoutError, ValueError):
         return []
     out: list[ProductCandidate] = []
     for item in (data.get("items") or [])[:limit]:

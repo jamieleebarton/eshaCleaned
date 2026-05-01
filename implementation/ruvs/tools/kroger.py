@@ -19,7 +19,9 @@ KROGER_TOOL_SCHEMA = {
     "name": "kroger_search",
     "description": (
         "Search Kroger for products matching a query. Returns up to `limit` "
-        "candidates with UPC, title, grams, and price."
+        "candidates with UPC, title, grams, and price. Use to verify whether a "
+        "recipe ingredient maps to a real, plain product (not a flavored/breaded/"
+        "seasoned variant)."
     ),
     "input_schema": {
         "type": "object",
@@ -48,7 +50,7 @@ def kroger_search(query: str, limit: int = 10) -> list[ProductCandidate]:
     headers = {"Authorization": f"Bearer {token}", "Accept": "application/json"}
     try:
         data = _http_get(url, headers=headers)
-    except (urllib.error.URLError, RuntimeError, TimeoutError):
+    except (urllib.error.URLError, RuntimeError, TimeoutError, ValueError):
         return []
     out: list[ProductCandidate] = []
     for prod in (data.get("data") or [])[:limit]:
