@@ -1,0 +1,76 @@
+# --- Bytecode and caches ---
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# --- Editor / OS junk ---
+.DS_Store
+.idea/
+.vscode/
+*.swp
+
+# --- Generated outputs ---
+output/
+implementation/output/
+**/_p3_cluster.pkl
+
+# --- Backups (very aggressive) ---
+*.bak
+*.bak.*
+*.csv.*bak*
+*.pre_*.csv
+*.pre_*.jsonl
+
+# --- Mid-run artifacts ---
+*.live.jsonl
+
+# --- Big data files we never want in git ---
+*.db
+*.sqlite
+*.sqlite3
+*.db-wal
+*.db-shm
+*.db-journal
+*.npz
+*.npy
+*.h5
+*.parquet
+*.pkl
+*.pickle
+
+# --- HuggingFace models ---
+retail_mapper/models/
+
+# --- Specific known-huge artifacts ---
+retail_mapper/v2/full_corpus_batch.jsonl
+retail_mapper/v2/full_corpus.live.jsonl
+retail_mapper/v2/retail_leaf_v2_enriched.csv
+retail_mapper/v2/retail_leaf_v2_enriched_v2.csv
+retail_mapper/v2/retail_leaf_v2_enriched_v2.cleaned.csv
+retail_mapper/v2/retail_leaf_v2.reconcile.csv
+
+# --- Graph caches ---
+graph/cache/
+
+# --- Archives + cleanup folders ---
+archive/
+**/archive/
+fixy_done/
+**/cleanup_*/
+
+# --- Logs ---
+*.log
+
+# --- RUVS-specific generated outputs ---
+implementation/output/ruvs/
+
+# --- Specific top-level CSV families that are large/auto-generated ---
+canonical_surface_normalized*.csv
+*.diff.csv
+*_offenders*.csv
+_*.txt
+_*.tsv

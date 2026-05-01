@@ -1,0 +1,4 @@
+graph/**/*.csv filter=lfs diff=lfs merge=lfs -text
+implementation/*.csv filter=lfs diff=lfs merge=lfs -text
+implementation/**/*.csv filter=lfs diff=lfs merge=lfs -text
+retail_mapper/**/*.json filter=lfs diff=lfs merge=lfs -text
