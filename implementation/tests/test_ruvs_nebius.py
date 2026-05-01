@@ -41,3 +41,38 @@ def test_call_returns_text_when_no_tool_calls(mock_urlopen):
     result = client.chat(messages=[{"role": "user", "content": "hi"}], tools=[])
     assert result.tool_calls == []
     assert "facets" in result.content
+
+
+@patch("ruvs.nebius.urllib.request.urlopen")
+def test_call_omits_tools_when_none(mock_urlopen):
+    payload = {
+        "choices": [{"message": {"role": "assistant", "content": "ok"}}],
+        "usage": {"prompt_tokens": 10, "completion_tokens": 5, "prompt_cache_hit_tokens": 0},
+    }
+    mock_resp = MagicMock(); mock_resp.read.return_value = json.dumps(payload).encode("utf-8")
+    mock_urlopen.return_value.__enter__.return_value = mock_resp
+
+    client = NebiusClient(api_key="x", model="m")
+    client.chat(messages=[{"role": "user", "content": "hi"}], tools=None)
+
+    sent_body = json.loads(mock_urlopen.call_args[0][0].data.decode("utf-8"))
+    assert "tools" not in sent_body
+    assert "tool_choice" not in sent_body
+    assert sent_body["model"] == "m"
+    assert sent_body["temperature"] == 0.0
+
+
+@patch("ruvs.nebius.urllib.request.urlopen")
+def test_call_omits_tools_when_empty_list(mock_urlopen):
+    payload = {
+        "choices": [{"message": {"role": "assistant", "content": "ok"}}],
+        "usage": {"prompt_tokens": 10, "completion_tokens": 5, "prompt_cache_hit_tokens": 0},
+    }
+    mock_resp = MagicMock(); mock_resp.read.return_value = json.dumps(payload).encode("utf-8")
+    mock_urlopen.return_value.__enter__.return_value = mock_resp
+
+    client = NebiusClient(api_key="x", model="m")
+    client.chat(messages=[{"role": "user", "content": "hi"}], tools=[])
+
+    sent_body = json.loads(mock_urlopen.call_args[0][0].data.decode("utf-8"))
+    assert "tools" not in sent_body

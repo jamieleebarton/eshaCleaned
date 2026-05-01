@@ -81,9 +81,9 @@ class NebiusClient:
             tc_list.append(ToolCall(id=tc.get("id", ""), name=tc["function"]["name"], arguments=args))
         usage = data.get("usage", {}) or {}
         cost = estimate_cost_usd(
-            prompt_tokens=usage.get("prompt_tokens", 0),
-            completion_tokens=usage.get("completion_tokens", 0),
-            cache_hit_tokens=usage.get("prompt_cache_hit_tokens", 0),
+            prompt_tokens=int(usage.get("prompt_tokens") or 0),
+            completion_tokens=int(usage.get("completion_tokens") or 0),
+            cache_hit_tokens=int(usage.get("prompt_cache_hit_tokens") or 0),
         )
         return MessageResult(
             content=msg.get("content", "") or "",
