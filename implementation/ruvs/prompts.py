@@ -56,6 +56,7 @@ Patch-type deltas:
 - alias: {"add_aliases": [...]} (terms to alias TO this canonical)
 - portion: {"hint": "package size implies X grams not Y"} (no numeric grams from you)
 - exclusion: {"reason": "..."}
+- recipe_text_edit: {"suggested_text": "...", "reason": "..."}
 - audit_correction: {"fdc_id": <int>, "wrong_canonical_label": "...", "suggested_canonical_label": "..."}
 
 DECISION CHECKLIST (run in order):
