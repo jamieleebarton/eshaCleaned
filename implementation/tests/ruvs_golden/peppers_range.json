@@ -1,0 +1,29 @@
+{
+  "name": "peppers_range",
+  "packet": {
+    "recipe_id": 100005, "line_idx": 2, "config_bucket": "household=4|dietary=none|pattern=3meal",
+    "recipe_text": "6-8 jalapeno peppers, chopped", "parsed_item": "jalapeno peppers", "recipe_grams": 70.0,
+    "hestia_canonical": "Jalapeno peppers, raw",
+    "audit_candidates": [{"canonical_label": "Jalapeno Peppers", "match_score": 3.01}],
+    "fndds_desc": "peppers, jalapeno, raw",
+    "sr28_desc": "Peppers, jalapeno, raw",
+    "esha_desc": "Jalapeno peppers, raw",
+    "walmart_candidates": [],
+    "kroger_candidates": [],
+    "config": {}
+  },
+  "expected_facets": {
+    "canonical_correct": "ok",
+    "form_correct": "ok",
+    "granularity_correct": "ok",
+    "grams_plausible": "ok",
+    "cook_state_handled": "n/a",
+    "package_math_sane": "ok",
+    "ambiguity_flagged": "range"
+  },
+  "expected_fix_proposed": {
+    "patch_type": "recipe_text_edit",
+    "canonical": "jalapeno peppers",
+    "delta": {"suggested_text": "7 jalapeno peppers, chopped", "reason": "collapse range to midpoint"}
+  }
+}

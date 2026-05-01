@@ -1,0 +1,29 @@
+{
+  "name": "generic_cheese",
+  "packet": {
+    "recipe_id": 100006, "line_idx": 0, "config_bucket": "household=4|dietary=none|pattern=3meal",
+    "recipe_text": "1 cup shredded cheese", "parsed_item": "cheese", "recipe_grams": 113.0,
+    "hestia_canonical": "Cheese, generic",
+    "audit_candidates": [{"canonical_label": "Cheese", "match_score": 2.50}],
+    "fndds_desc": "cheese, unspecified",
+    "sr28_desc": "Cheese, generic",
+    "esha_desc": "Cheese (generic)",
+    "walmart_candidates": [],
+    "kroger_candidates": [],
+    "config": {}
+  },
+  "expected_facets": {
+    "canonical_correct": "ambiguous",
+    "form_correct": "ok",
+    "granularity_correct": "too_generic",
+    "grams_plausible": "ok",
+    "cook_state_handled": "n/a",
+    "package_math_sane": "ok",
+    "ambiguity_flagged": "generic_term"
+  },
+  "expected_fix_proposed": {
+    "patch_type": "recipe_text_edit",
+    "canonical": "cheese",
+    "delta": {"suggested_text": "1 cup shredded cheddar cheese", "reason": "default generic cheese to cheddar shred"}
+  }
+}

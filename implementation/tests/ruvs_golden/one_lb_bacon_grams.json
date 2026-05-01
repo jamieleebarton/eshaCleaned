@@ -1,0 +1,31 @@
+{
+  "name": "one_lb_bacon_grams",
+  "packet": {
+    "recipe_id": 100003, "line_idx": 1, "config_bucket": "household=2|dietary=none|pattern=3meal",
+    "recipe_text": "1 lb bacon", "parsed_item": "bacon", "recipe_grams": 52.0,
+    "hestia_canonical": "Bacon, raw",
+    "audit_candidates": [{"canonical_label": "Bacon", "match_score": 3.01}],
+    "fndds_desc": "bacon, raw",
+    "sr28_desc": "Pork, cured, bacon, raw",
+    "esha_desc": "Bacon, raw",
+    "walmart_candidates": [
+      {"upc": "22222", "title": "Oscar Mayer Bacon, 16 oz (1 lb)", "grams": 454.0, "price_cents": 749, "retail": "walmart", "raw": {}}
+    ],
+    "kroger_candidates": [],
+    "config": {"household": 2, "dietary": "none", "pattern": "3meal"}
+  },
+  "expected_facets": {
+    "canonical_correct": "ok",
+    "form_correct": "ok",
+    "granularity_correct": "ok",
+    "grams_plausible": "suspect",
+    "cook_state_handled": "n/a",
+    "package_math_sane": "suspect",
+    "ambiguity_flagged": "none"
+  },
+  "expected_fix_proposed": {
+    "patch_type": "portion",
+    "canonical": "bacon",
+    "delta": {"hint": "1 lb bacon should be ~454g, recipe row says 52g"}
+  }
+}

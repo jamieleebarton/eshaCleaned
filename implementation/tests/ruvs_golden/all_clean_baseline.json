@@ -1,0 +1,29 @@
+{
+  "name": "all_clean_baseline",
+  "packet": {
+    "recipe_id": 100007, "line_idx": 0, "config_bucket": "household=2|dietary=none|pattern=3meal",
+    "recipe_text": "1 lb butter", "parsed_item": "butter", "recipe_grams": 454.0,
+    "hestia_canonical": "Butter, salted",
+    "audit_candidates": [{"canonical_label": "Butter", "match_score": 3.01}],
+    "fndds_desc": "butter, salted",
+    "sr28_desc": "Butter, salted",
+    "esha_desc": "Butter (salted)",
+    "walmart_candidates": [
+      {"upc": "33333", "title": "Great Value Salted Butter, 16 oz", "grams": 454.0, "price_cents": 349, "retail": "walmart", "raw": {}}
+    ],
+    "kroger_candidates": [
+      {"upc": "44444", "title": "Kroger Salted Butter Sticks, 16 oz", "grams": 454.0, "price_cents": 399, "retail": "kroger", "raw": {}}
+    ],
+    "config": {"household": 2, "dietary": "none", "pattern": "3meal"}
+  },
+  "expected_facets": {
+    "canonical_correct": "ok",
+    "form_correct": "ok",
+    "granularity_correct": "ok",
+    "grams_plausible": "ok",
+    "cook_state_handled": "n/a",
+    "package_math_sane": "ok",
+    "ambiguity_flagged": "none"
+  },
+  "expected_fix_proposed": null
+}

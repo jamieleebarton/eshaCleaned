@@ -1,0 +1,46 @@
+{
+  "name": "506745_dry_beef_gravy_bug",
+  "packet": {
+    "recipe_id": 506745,
+    "line_idx": 3,
+    "config_bucket": "household=4|dietary=none|pattern=3meal",
+    "recipe_text": "1/2 gallon beef gravy",
+    "parsed_item": "beef gravy",
+    "recipe_grams": 1893.0,
+    "hestia_canonical": "Gravy, instant beef, dry",
+    "audit_candidates": [],
+    "fndds_desc": "gravy, beef, instant, dry",
+    "sr28_desc": "Gravy, instant beef, dry",
+    "esha_desc": "Beef gravy mix, dry",
+    "walmart_candidates": [],
+    "kroger_candidates": [],
+    "config": {
+      "household": 4,
+      "dietary": "none",
+      "pattern": "3meal"
+    }
+  },
+  "expected_facets": {
+    "canonical_correct": "wrong",
+    "form_correct": "wrong_form",
+    "granularity_correct": "ok",
+    "grams_plausible": "ok",
+    "cook_state_handled": "n/a",
+    "package_math_sane": "ok",
+    "ambiguity_flagged": "none"
+  },
+  "expected_fix_proposed": {
+    "patch_type": "wishlist",
+    "canonical": "beef gravy",
+    "delta": {
+      "deny_form": [
+        "dry",
+        "instant"
+      ],
+      "require_form": [
+        "liquid",
+        "jarred"
+      ]
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "name": "breaded_default_state",
+  "packet": {
+    "recipe_id": 100001, "line_idx": 0, "config_bucket": "household=2|dietary=none|pattern=3meal",
+    "recipe_text": "1 lb chicken breast", "parsed_item": "chicken breast", "recipe_grams": 454.0,
+    "hestia_canonical": "Chicken breast, raw",
+    "audit_candidates": [{"canonical_label": "Chicken Breast", "match_score": 3.01}],
+    "fndds_desc": "chicken, breast, raw",
+    "sr28_desc": "Chicken, broilers or fryers, breast, meat only, raw",
+    "esha_desc": "Chicken breast, raw",
+    "walmart_candidates": [
+      {"upc": "11111", "title": "Tyson Breaded Chicken Tenders, 24 oz", "grams": 680.0, "price_cents": 599, "retail": "walmart", "raw": {}}
+    ],
+    "kroger_candidates": [],
+    "config": {"household": 2, "dietary": "none", "pattern": "3meal"}
+  },
+  "expected_facets": {
+    "canonical_correct": "ok",
+    "form_correct": "wrong_form",
+    "granularity_correct": "ok",
+    "grams_plausible": "ok",
+    "cook_state_handled": "n/a",
+    "package_math_sane": "ok",
+    "ambiguity_flagged": "none"
+  },
+  "expected_fix_proposed": {
+    "patch_type": "wishlist",
+    "canonical": "chicken breast",
+    "delta": {"deny_processing": ["breaded", "battered", "seasoned", "popcorn", "nuggets", "tenders"]}
+  }
+}

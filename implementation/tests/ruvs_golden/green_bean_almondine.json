@@ -1,0 +1,32 @@
+{
+  "name": "green_bean_almondine",
+  "packet": {
+    "recipe_id": 100002, "line_idx": 3, "config_bucket": "household=4|dietary=none|pattern=3meal",
+    "recipe_text": "2 cups green beans", "parsed_item": "green beans", "recipe_grams": 200.0,
+    "hestia_canonical": "Green bean almondine",
+    "audit_candidates": [
+      {"canonical_label": "Green Beans", "match_score": 3.01},
+      {"canonical_label": "Green Bean Almondine", "match_score": 2.50}
+    ],
+    "fndds_desc": "green beans, almondine, prepared",
+    "sr28_desc": "Beans, snap, green, raw",
+    "esha_desc": "Green beans, fresh",
+    "walmart_candidates": [],
+    "kroger_candidates": [],
+    "config": {"household": 4, "dietary": "none", "pattern": "3meal"}
+  },
+  "expected_facets": {
+    "canonical_correct": "wrong",
+    "form_correct": "ok",
+    "granularity_correct": "ok",
+    "grams_plausible": "ok",
+    "cook_state_handled": "n/a",
+    "package_math_sane": "ok",
+    "ambiguity_flagged": "none"
+  },
+  "expected_fix_proposed": {
+    "patch_type": "audit_correction",
+    "canonical": "green beans",
+    "delta": {"fdc_id": 0, "wrong_canonical_label": "Green Bean Almondine", "suggested_canonical_label": "Green Beans"}
+  }
+}
