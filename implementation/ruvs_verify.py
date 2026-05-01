@@ -80,8 +80,19 @@ def _parse_verdict(content: str, packet: Packet, run_id: str, *, client_model: s
     try:
         data = json.loads(_strip_codeblock(content))
         facets_in = data.get("facets", {})
-        facets = {f: facets_in.get(f, _default_for(f)) for f in FACETS}
+        facets = {}
+        coerced: list[tuple[str, str]] = []
+        for f in FACETS:
+            v = facets_in.get(f)
+            if v in FACET_ENUMS[f]:
+                facets[f] = v
+            else:
+                facets[f] = _default_for(f)
+                if v is not None:
+                    coerced.append((f, str(v)))
         fix = data.get("fix_proposed")
+        if coerced:
+            evidence = {**evidence, "coerced_facets": coerced}
     except (json.JSONDecodeError, KeyError, TypeError):
         facets = {f: ("ambiguous" if f == "canonical_correct" else _default_for(f)) for f in FACETS}
         fix = None

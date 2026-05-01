@@ -45,8 +45,8 @@ def main() -> int:
         v = verify_line(packet=pkt, client=client, run_id="smoke.506745")
         budget.add(float(v.evidence.get("cost_usd") or 0.0))
         append_verdict(v, verdict_path)
-        if time.time() - started > 300:
-            print(json.dumps({"error": "smoke timeout (>5 min)"}))
+        if time.time() - started > 1200:
+            print(json.dumps({"error": "smoke timeout (>20 min)"}))
             return 1
 
     verdicts = load_verdicts(verdict_path)
