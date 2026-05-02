@@ -1,125 +1,99 @@
 # GOAL — anchor doc
 
-**Last edit:** 2026-05-02 (audit-tagged-cache plan)
+**Last edit:** 2026-05-02 (post-universe-sweep, audit-tagging shipped)
 **Read this every turn before proposing anything.**
 
-## ACTIVE PLAN — Tag the Walmart & Kroger cache to `full_corpus_audit.csv`
+## DONE — Tag the Walmart & Kroger cache to `full_corpus_audit.csv`
 
-This is the next concrete piece of work, and it supersedes the food_packages
-cleaner shipped earlier tonight (that cleaner is a stopgap, not the
-architecture). All future decisions about product correctness flow from this.
+The previous ACTIVE PLAN ("Tag the Walmart & Kroger cache to full_corpus_audit.csv") shipped tonight in two Hestia commits and one esha_audit_bundle commit:
+
+- **a5e26b42** (`Tag api_cache UPCs to full_corpus_audit (FDC + BM25)`) — `api/scripts/tag_api_cache_to_audit.py` populated `api/data/product_audit_classification.db` with 92,634 UPC-keyed classification rows: 17,837 `audit_fdc_match`, 52,303 `audit_title_bm25`, 22,494 `unclassified`. Walmart/Kroger pricing preserved.
+- **a5e26b42** (same commit) — `api/scripts/build_food_packages_from_audit_tagged.py` produced `api/data/food_packages_audit_tagged.db` (drop-in via `HESTIA_PACKAGES_DB`). Sugardale Ham Shank now classifies to fndds 22708010 (sandwich), out of fndds 22010945 (Pork Butt).
+- **03b72ee2** (`ruvs: universe sweep + gap aggregator + walmart weight extractor`) — `api/scripts/run_universe_sweep.py` and `api/scripts/aggregate_universe_gaps.py` produced 1,740 calculator lines across 259 recipes with full classification: 51 `wrong_form_likely`, 46 `shopping_gap`, 28 `nutrition_unknown`, 23 `or_option_in_text`, 21 `range_in_text`, 16 `no_canonical`, 333 `generic_term`. Average per-recipe coverage: 72.8%.
+- **a41fcd5 / cd84424** (esha_audit_bundle) — RUVS residual classifier hardened: regex `verify_ambiguous` path dropped (was sending fully-resolved lines to DeepSeek and getting fictitious issue reports back). Replacement rule: send only when (a) calculator gap, (b) numeric range in recipe text, (c) or-option between ingredient-noun tokens, (d) canonical itself is bare-generic. Sweep before/after: 469 → 143 lines for DeepSeek.
+
+The classification substrate is in place. The next move uses it.
+
+## ACTIVE PLAN — Replace the per-canonical filter chain with audit-driven accept
+
+`/Users/jamiebarton/Desktop/esha_audit_bundle/implementation/surface_lab_calculator.py` is the file that gates which retail products can be selected for a recipe line. Today it has 60+ `if canonical_key == "..."` branches plus a default-tail combo blocklist (`pasta`, `bread`, `salad`, `mix`, `tortilla`, ...) that rejects correctly-classified products whose titles happen to carry those tokens. The universe sweep tonight shows 46 `shopping_gap` and 51 `wrong_form_likely` lines — 5.6% of 1,740 — that are direct outputs of this filter chain over-rejecting. See `INVESTIGATION_FILTER.md` for the full trace.
+
+The classification substrate that just shipped (`product_audit_classification.db`) gives every cached product a deterministic `canonical_path` / `variant` / `form_texture_cut` / `processing_storage`. The filter chain just needs to use it.
 
 ### Why this is the right move
 
-Every bug we've hit tonight is the same root: the calculator and the planner
-classify retailer products at filter time using brittle, hand-tuned regex /
-category rules. The classification work has already been done in
-`full_corpus_audit.csv` (May 1 23:16) — `canonical_path`, `canonical_label`,
-`variant`, `flavor`, `form_texture_cut`, `processing_storage`, `claims`,
-`confidence`, `fndds_code`, `sr28_code` per row. The calculator never reads
-that file. It reads `canonical_to_esha.csv` (Apr 25), the surface CSV
-(Apr 27), and `master_products.db.product_code_tags` (the OLD FNDDS
-crosswalk) — all 5–9 days older than the audit.
-
-Tagging the Walmart and Kroger cache to the audit fixes this at the root:
-
-1. Kills filter-rule brittleness. No more `_contains_phrase("green onion")`
-   missing the plural. No more "creamed corn requires produce category" when
-   Kroger files canned cream-style corn under "Canned & Packaged". The filter
-   becomes "does this product's `canonical_path` start with the canonical we
-   want, with the right variant/form/processing?" Pure deterministic lookup.
-2. Handles retailer-private SKUs uniformly. Kroger Simple Truth, Walmart
-   Great Value, Sugardale, etc. have no FDC ID so they're outside the
-   audit's direct coverage. Title-matching them against audit canonical_paths
-   (BM25/centroid, using existing scripts) classifies every product once.
-3. Single source of truth across the stack. Calculator, planner runtime
-   store, food_packages cleaner, RUVS verifier all read the same audit
-   classifications. No more cross-stack drift.
-4. Decouples from ESHA. Nutrition has been routed through `esha_nutrition.csv`
-   (proprietary). The audit anchors to FNDDS+SR28 (USDA public). Tagging the
-   cache lets nutrition flow through the audit's `fndds_code`/`sr28_code`,
-   not ESHA. Eventually `esha_nutrition.csv` and `canonical_to_esha.csv` are
-   deletable. **We are not using ESHA going forward.**
-5. Makes tonight's `food_packages_final.cleaned.db` a stopgap that becomes
-   unnecessary. The DB gets regenerated from audit-tagged candidates. Sugardale
-   Ham Shank never appears as a Pork Butt candidate because its audit
-   canonical_path is `Deli > Cured > Ham`, not `Meat > Pork > Shoulder > Butt`.
-6. Shrinks the DeepSeek residual to ambiguity-only. Audit classifies ~462K
-   products today. DeepSeek arbitrates only the cases where audit confidence
-   is low or no title-match passes threshold. Cheaper, clearer scope.
-7. Fixes the calculator's gap on retailer-private products without forcing
-   them into FDC. Kroger's $1 Cream Style Golden Corn has no FDC ID so it's
-   not in the audit. Its title cleanly matches `Pantry > Canned Vegetables
-   > Corn > Cream Style > Sweet` via title BM25. Tag it once → it becomes a
-   first-class candidate for `creamed corn`.
-8. The 60+ hand-tuned `canonical_key` branches in
-   `surface_lab_calculator.py` become deletable. Every one was a workaround
-   for missing classification. The audit IS the classification.
+1. **Kills filter-rule brittleness for real this time.** The audit-tagging work shipped the data; the rules are still ignoring it. No more `_reject_combo_product` blocking elbow macaroni because "pasta" is in the blocklist. The accept rule becomes one comparison: `audit.canonical_path startswith expected_path AND audit.variant matches AND audit.processing_storage matches`.
+2. **Handles retailer-private SKUs uniformly.** Already proven by the BM25 step in commit a5e26b42; 52K Kroger/Walmart-private SKUs got their canonical_path. The filter chain is what consumes that work.
+3. **Single source of truth across the stack.** Calculator, planner runtime store (food_packages_audit_tagged.db), RUVS residual all read the same `product_audit_classification` table. Cross-stack drift becomes structurally impossible.
+4. **Decouples from ESHA.** Nutrition was already routed through `esha_nutrition.csv`. The audit anchors to FNDDS+SR28 (USDA public). With the filter accepting via canonical_path, `canonical_to_esha.csv` and the `surface_*_NUTRITION_OVERRIDES` tables in `surface_lab_calculator.py` become deletable. We are not using ESHA going forward.
+5. **Tonight's `food_packages_final.cleaned.db` and `food_packages_audit_tagged.db` are now redundant once the filter accepts via audit.** The cleaner stages drop / demote rows up-front, but the rules-driven filter then rejects again at calc time. With audit-driven accept, the planner's pre-filtered DB and the calculator's accept rule agree by construction.
+6. **Shrinks RUVS residual to true ambiguity.** With shopping_gap + wrong_form_likely fixed deterministically, the only RUVS work is the 333 `generic_term` lines (recipe-text problem) and the 44 `or_option`/`range` lines (recipe-text problem). All filter-time rejection cases drop out.
+7. **Fixes the calculator's gap on retailer-private products without per-canonical maintenance.** Kroger's $1 Cream Style Golden Corn already has its audit canonical_path written (BM25 step). The filter just needs to read it.
+8. **The 60+ hand-tuned `canonical_key` branches in `surface_lab_calculator.py` become deletable**, along with the entire `_reject_combo_product` function and the per-canonical gates in `price_product_filters.py`. Every one was a workaround for missing classification. The audit IS the classification.
 
 ### What we are building
 
-A new table in `api_cache.db` (or a sidecar SQLite, whichever is cleaner)
-keyed on UPC:
+A single accept function in `surface_lab_calculator.py` with this shape:
+
+```python
+def accept_via_audit(
+    product: LabProduct,
+    canonical: str,
+    expected_audit_path: str,
+    required_variant: set[str] | None = None,
+    required_form: set[str] | None = None,
+    required_processing: set[str] | None = None,
+    forbidden_modifiers: set[str] | None = None,
+) -> tuple[bool, str]:
+    """Single deterministic accept rule.
+    Looks up product_audit_classification by product.gtin_upc.
+    Accepts iff:
+      - classification exists AND audit_confidence >= MIN_CONFIDENCE, AND
+      - audit.canonical_path startswith expected_audit_path, AND
+      - required_variant is None OR audit.variant in required_variant, AND
+      - required_form is None OR audit.form_texture_cut in required_form, AND
+      - required_processing is None OR audit.processing_storage in required_processing, AND
+      - forbidden_modifiers is None OR no overlap with audit's variant/flavor/claims.
+    Falls back to the legacy per-canonical rules ONLY for unclassified products
+    (audit_title_bm25 below threshold or no UPC), shrinking the legacy surface
+    to ~22K rows instead of all 92K.
+    """
+```
+
+A new sidecar table mapping each canonical the calculator knows about → its expected audit path + required facets:
 
 ```
-CREATE TABLE product_audit_classification (
-    upc                  TEXT PRIMARY KEY,
-    source               TEXT NOT NULL,             -- 'walmart_search' | 'kroger_search'
-    fdc_id               INTEGER,                   -- nullable, set when FDC match found
-    canonical_path       TEXT,                      -- e.g. 'Pantry > Canned Vegetables > Corn > Cream Style'
-    canonical_label      TEXT,                      -- e.g. 'Cream Style Corn'
-    variant              TEXT,
-    flavor               TEXT,
-    form_texture_cut     TEXT,
-    processing_storage   TEXT,
-    claims               TEXT,
-    fndds_code           TEXT,
-    sr28_code            TEXT,
-    audit_confidence     REAL,                      -- 0.0–1.0 from audit, or BM25 score for title-matched
-    classification_method TEXT NOT NULL,            -- 'audit_fdc_match' | 'audit_title_bm25' | 'unclassified'
-    classified_at        TEXT NOT NULL DEFAULT (datetime('now'))
+CREATE TABLE canonical_audit_expectation (
+    canonical_key        TEXT PRIMARY KEY,        -- e.g. 'macaroni'
+    expected_audit_path  TEXT NOT NULL,           -- e.g. 'Pantry > Pasta > Macaroni > Plain'
+    required_variant     TEXT,                    -- JSON array, nullable
+    required_form        TEXT,                    -- JSON array, nullable
+    required_processing  TEXT,                    -- JSON array, nullable
+    forbidden_modifiers  TEXT,                    -- JSON array, nullable
+    notes                TEXT
 );
 ```
 
-### How (sequence, no code yet)
+Seeded from `full_corpus_audit.csv` by extracting the dominant `canonical_path` per `fndds_code`, joined to the calculator's existing canonical → fndds_code map.
 
-1. **For each (source, UPC) in api_cache product lists,** look up FDC ID via
-   `master_products.db.products.gtin_upc`. Try with and without leading
-   zeros. If found and that fdc_id has a row in `full_corpus_audit.csv` →
-   write classification row with method `audit_fdc_match`, confidence from
-   the audit's `confidence` column.
-2. **For UPCs without an FDC ID** (the Kroger/Walmart private-label tail —
-   Simple Truth, Great Value, Sugardale, etc.), classify by title-match
-   against audit reference titles per fndds_code, reusing the BM25 cohort
-   pattern from `fixy_done/_bm25_esha_v3.py` and the threshold rules from
-   `apply_embed_v3.py` (alt_sim ≥ 0.75 OR ≥0.65+margin≥0.15). Below
-   threshold → method `unclassified`, leave for residual.
-3. **Regenerate `food_packages_final.db`** by joining `product_meta` × the
-   classification table per fndds_code. Drop products whose audit
-   classification disagrees with the fndds the row is being placed under.
-   Demote products whose variant/flavor/form_texture_cut/processing_storage
-   carries unwanted modifiers (the butter-with-olive-oil class). Preserve
-   walmart/kroger pricing.
-4. **Replace the calculator's per-canonical filters with a generic audit
-   lookup.** `surface_lab_calculator.py`'s 60+ canonical_key branches
-   collapse to one rule: candidate accepted iff its `canonical_path` is a
-   prefix of the canonical's expected path AND its variant/flavor/form
-   constraints match the canonical's required spec.
-5. **DeepSeek (RUVS verify_line) only on `unclassified` products** plus
-   recipe-text ambiguity (or-options, ranges, generic terms). Same runner
-   built tonight (`run_ruvs_calculator_residual.py`), now operating on a
-   much smaller, cleaner residual.
+### How (sequence, no code yet — see FIX_PLAN.md for the executable steps)
 
-### Drift guardrail for this plan
+See `FIX_PLAN.md` for the ordered, small, testable changes. The shape is:
 
-- Walmart/Kroger pricing is preserved at every step. The classification
-  table is purely additive — it does not replace `product_meta` JSON.
-- Classification flows from the audit, NOT from new manual rules.
-- The calculator's hand-tuned filters stay in place until step 4 is
-  validated end-to-end against today's plan recipes.
-- Tonight's `food_packages_final.cleaned.db` and the calculator-residual
-  runner stay in place as A/B baselines. They are NOT the final
-  architecture; they are the stopgap that proved the bug pattern.
+1. Build `canonical_audit_expectation` from the audit (deterministic; no LLM).
+2. Add `accept_via_audit()` to `surface_lab_calculator.py`. Fall through to legacy on unclassified products.
+3. Migrate canonicals one at a time, starting with the four investigation samples (macaroni, chicken drumstick, green onion, tomato juice) and the top universe-sweep offenders (creamed corn, butter, ham). Verify recipe coverage rises before moving on.
+4. Once all migrated, delete the per-canonical branches and `_reject_combo_product`.
+5. Delete `canonical_to_esha.csv`, `surface_*_NUTRITION_OVERRIDES`, `esha_nutrition.csv` reads (nutrition already flows through fndds/sr28).
+
+### What we are NOT going to do (drift guardrails for this plan)
+
+- **Do not keep tuning the regex / per-canonical rules.** They are deletable. Every minute spent adding a token to the combo list or a phrase to a per-canonical reject set is a minute that should have been spent moving canonicals onto `accept_via_audit`.
+- **Do not run the LLM at all in this work.** The owner has revoked LLM-call permission for this session. The expectation table is built from the existing audit CSV deterministically; verification reads existing dumps (`/tmp/calc_plan13.json`, `universe_calc.json`) and re-runs the calculator/planner locally.
+- **Walmart/Kroger pricing preserved at every step.** The accept function consumes existing classification rows; it never writes to `product_meta`, `api_cache`, or pricing tables.
+- **Classification flows from the audit, NOT from new manual rules.** When a canonical has no clean audit path (e.g., `coot`, `oleo`, `corn niblet`), do not invent one — leave it on the legacy fallback and add it to a residual queue.
+- **No big-bang switch.** Per-canonical migration with A/B coverage check after each cohort. The legacy chain stays live as fallback until every canonical-with-an-expected-audit-path is migrated.
+- **Tonight's `food_packages_final.cleaned.db` and `food_packages_audit_tagged.db` stay in place as A/B baselines** until the new filter is live and verified, then both become redundant and can be retired.
 
 ## The single goal
 
@@ -166,19 +140,38 @@ A recipe line is correct when ALL of these hold:
 5. **Run the calculator on the planner's recipe IDs.** Confirm calculator-derived grams are sane (verified for Tacos De Carnitas already). Resolve the 3 recipes the calculator's corpus is missing.
 6. **Only THEN** layer DeepSeek on the residual cases that the deterministic pipeline cannot decide.
 
-## State of work right now (2026-05-02 post-cleanup)
+## State of work right now (2026-05-02 post-universe-sweep)
 
-- Step 1: DONE — see Cleanup Script Inventory below.
-- Step 2: DONE — adapted to `food_packages_final.db.packages`. Cohort key = `fndds_code`, doc text = `product_meta.name`, anchor = `food_description`. Cleaner lives at `Hestia/api/scripts/clean_food_packages_via_audit.py`.
-- Step 3: DONE — produced flag list + actions in `Hestia/api/data/food_packages_final.cleaned.db._cleaning_log` table; summary at `food_packages_final.cleaned.report.md`.
-- Step 4: DONE — shadow DB `Hestia/api/data/food_packages_final.cleaned.db` built; planner re-run with `HESTIA_PACKAGES_DB=...cleaned.db` produced 13 recipes, $114.78/wk (was $105.51 dirty — direction is correct, lost the misrouted Sugardale Ham Shank @ $1.25/lb pick). Sugardale Ham Shank is gone from fndds 22010945 (Pork Butt). `Land O Lakes Butter with Olive Oil` demoted from tier 1 → tier 101 in plain Butter cohort.
-- Step 5: PARTIAL. Calculator dump for 10/13 recipes at `/tmp/calc_plan13.json`. Plan dump at `implementation/output/ruvs/real_plan/plan.json`. 3 missing recipes (Blueberry Muffins 32228, Homemade Instant Oatmeal 136842, Pork on a Bun 156460) still need to be added to `recipe_qa.db`.
-- Step 6: NOT STARTED.
+### Shipped tonight (in order)
 
-### Step 2/3/4 cleaner stats (2026-05-02)
-- Inputs: 15,058 rows; 462,664 audit rows; 1,615,533 master_products UPC→fdc entries.
-- Outputs: 13,789 kept, 2,136 demoted (kept @ tier+100), 111 dropped audit_fndds_disagree, 1,536 dropped token_overlap_zero, 378 cohorts had every row fail filters → 1 row restored to keep cohort alive.
-- Verification: Sugardale Ham Shank in Pork Butt = 0 rows; Butter w/ Olive Oil at tier 101 (vs tier 1 original).
+- **Step 1–4 (`food_packages_final.cleaned.db` cleaner)** — DONE in commit 252fb832 on Hestia. `Hestia/api/scripts/clean_food_packages_via_audit.py`. Outputs 13,789 kept / 2,136 demoted / 1,647 dropped from 15,058 inputs. Verification: Sugardale Ham Shank in fndds 22010945 (Pork Butt) = 0 rows.
+- **Audit-tagged classification table** — DONE in commit a5e26b42 on Hestia. `Hestia/api/scripts/tag_api_cache_to_audit.py` produced `Hestia/api/data/product_audit_classification.db`: 17,837 `audit_fdc_match` + 52,303 `audit_title_bm25` + 22,494 `unclassified` = 92,634 rows.
+- **Audit-tagged food_packages DB** — DONE in commit a5e26b42 on Hestia. `Hestia/api/scripts/build_food_packages_from_audit_tagged.py` produced `Hestia/api/data/food_packages_audit_tagged.db` (drop-in via `HESTIA_PACKAGES_DB`). Walmart/Kroger pricing preserved.
+- **Universe sweep + gap aggregator + walmart weight extractor** — DONE in commit 03b72ee2 on Hestia. 259 recipes / 1,740 lines analyzed. `universe_calc.json`, `universe_gaps.md`, `universe_gaps.jsonl`, `universe_sweep.summary.json`. Average per-recipe coverage: 72.8%. 35 recipes have full coverage (no gap on any line).
+- **RUVS residual classifier hardened** — DONE in esha_audit_bundle commits cd84424 (require canonical itself to be bare-generic) and a41fcd5 (drop regex ambiguity detection). Universe sweep before/after: 469 → 143 lines selected for DeepSeek (1,597 clean lines now correctly skipped). The wrong-shaped `verify_ambiguous` regex classifier is gone.
+
+### Coverage / quality numbers
+
+- Recipes analysed: 259
+- Lines total: 1,740
+- Lines with at least one gap class: 469 (27.0%)
+- Recipes with full coverage: 35 (13.5%)
+- Average per-recipe coverage: 72.8%
+- Worst-coverage recipe in the sweep: Tacos De Carnitas at 13.7% (single-line resolution failures dominate)
+- Top unresolved canonicals (no_canonical or shopping_gap): tomato juice (4), green onion (4), chicken drumstick (3), macaroni (2), uncooked oatmeal (2), bourbon (2), then a long tail
+- Top fndds_codes with wrong-form picks: 74406010 (9), 28345140 (6), 11113000 (5), 75109600 (4)
+
+### Open gap classes (next session)
+
+| Class | Count | Lever |
+|---|---|---|
+| `generic_term` | 333 | RUVS verify_line on bare-generic canonicals. Already wired (run_ruvs_calculator_residual.py). Owner has paused LLM calls; will resume next session. |
+| **`wrong_form_likely`** | **51** | **`accept_via_audit` (this plan's ACTIVE PLAN). Audit `processing_storage` / `variant` / `form_texture_cut` rules out wrong forms deterministically.** |
+| **`shopping_gap`** | **46** | **`accept_via_audit` (this plan's ACTIVE PLAN). Audit `canonical_path` accepts cached products that the regex/category rule rejects.** |
+| `nutrition_unknown` | 28 | Resolver-side; separate sweep |
+| `or_option_in_text` | 23 | RUVS verify_line — recipe-text problem |
+| `range_in_text` | 21 | portion_resolver fix; not filter-related |
+| `no_canonical` | 16 | 6 are food terms missing alias mapping (oleo, corn niblet, dry oatmeal, very fine breadcrumbs, saltine cracker, tofu yogurt). 10 are non-food (ziploc bag, toothpick, toothpicks, coot) escaping `non_food_words.csv`. |
 
 ## Cleanup Script Inventory (Step 1 result, 2026-05-02)
 
