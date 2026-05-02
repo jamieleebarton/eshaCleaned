@@ -233,6 +233,49 @@ _WRAPPER_FORMS = {
     "crust",
 }
 
+# Segment-text aliases — cosmetic equivalents that should always normalize
+# to one canonical form. Applied as a post-pass on the assembled path.
+_SEGMENT_TEXT_ALIASES: list[tuple[str, str]] = [
+    ("Pre Sliced", "Sliced"),
+    ("Pre-Sliced", "Sliced"),
+    ("Pre-Sliced Bagels", "Sliced"),
+    ("Pre Sliced Bagels", "Sliced"),
+    ("Presliced", "Sliced"),
+    ("Pre Cooked", "Cooked"),
+    ("Pre-Cooked", "Cooked"),
+    ("Precooked", "Cooked"),
+]
+
+
+# Whole-grain-redundant pairs: when parent already implies whole-grain,
+# drop a "Whole Grain" or similar redundant child.
+_WG_PARENT_NAMES = {
+    "whole wheat", "whole grain", "12 grain", "9 grain", "7 grain",
+    "five grain", "multigrain", "seven grain", "nine grain",
+    "5 grain", "ten grain", "10 grain",
+}
+_WG_REDUNDANT_CHILDREN = {"whole grain", "multigrain", "whole wheat"}
+
+
+def _apply_segment_aliases(parts: list[str]) -> list[str]:
+    out: list[str] = []
+    for seg in parts:
+        new_seg = seg
+        for src, dst in _SEGMENT_TEXT_ALIASES:
+            if new_seg.lower() == src.lower():
+                new_seg = dst
+                break
+        new_lower = new_seg.lower()
+        # WG redundancy: drop child if parent already implies whole-grain
+        if (out and out[-1].lower() in _WG_PARENT_NAMES
+                and new_lower in _WG_REDUNDANT_CHILDREN):
+            continue
+        # Drop redundant immediate duplicate (e.g., Sliced > Sliced after alias)
+        if out and out[-1].lower() == new_lower:
+            continue
+        out.append(new_seg)
+    return out
+
 
 def normalize_path(
     canonical_path: str,
@@ -322,6 +365,9 @@ def normalize_path(
         for c in formatted:
             if c not in out_parts:
                 out_parts.append(c)
+
+    # Final pass: collapse cosmetic-equivalent segments (Pre Sliced → Sliced, etc.)
+    out_parts = _apply_segment_aliases(out_parts)
 
     return " > ".join(out_parts)
 
