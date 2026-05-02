@@ -398,24 +398,23 @@ def final_bfc_validation(baseline: dict) -> int:
         return out
 
     def build_full_path(family: str, identity: str, rec: dict, existing_leaves: list = None) -> str:
-        """Build family > identity > [claims separate] > variant > form > processing > flavor (combined).
-        CLAIMS FIRST after identity for consistent tree traversal — all 'Organic X' under one branch.
-        """
+        """Build family > identity > variant > flavor > form > processing > claims (at end).
+        TYPE FIRST after family — preserves top-down hierarchy. Claims at leaf for filtering."""
         leaves = []
         if identity:
             leaves.append(title_case(identity))
-        # Claims FIRST after identity (separate, alphabetical) — for browsability
-        leaves.extend(parse_separate(rec.get('claims','')))
         if existing_leaves:
             leaves.extend(existing_leaves)
         v = parse_combined(rec.get('variant',''))
+        if v: leaves.append(v)
+        v = parse_combined(rec.get('flavor',''))
         if v: leaves.append(v)
         v = parse_combined(rec.get('form_texture_cut',''))
         if v: leaves.append(v)
         v = parse_combined(rec.get('processing_storage',''))
         if v: leaves.append(v)
-        v = parse_combined(rec.get('flavor',''))
-        if v: leaves.append(v)
+        # Claims at END (separate, alphabetical) — leaf-level filter
+        leaves.extend(parse_separate(rec.get('claims','')))
         all_segs = [family] + leaves
         return ' > '.join(collapse_dupes(all_segs))
 
@@ -517,16 +516,16 @@ def final_bfc_validation(baseline: dict) -> int:
                 rest_leaves.extend(target_extras)
                 if identity and identity.lower() not in {s.lower() for s in target_extras}:
                     rest_leaves.append(title_case(identity))
-                # Claims FIRST (after identity) — consistent depth for browsability
-                rest_leaves.extend(parse_separate(rec.get('claims','')))
                 v = parse_combined(rec.get('variant',''))
+                if v: rest_leaves.append(v)
+                v = parse_combined(rec.get('flavor',''))
                 if v: rest_leaves.append(v)
                 v = parse_combined(rec.get('form_texture_cut',''))
                 if v: rest_leaves.append(v)
                 v = parse_combined(rec.get('processing_storage',''))
                 if v: rest_leaves.append(v)
-                v = parse_combined(rec.get('flavor',''))
-                if v: rest_leaves.append(v)
+                # Claims at END (leaf-level filter)
+                rest_leaves.extend(parse_separate(rec.get('claims','')))
                 new_cp = ' > '.join(collapse_dupes([target_family] + rest_leaves))
                 rec["canonical_path"] = new_cp
                 rec["retail_leaf_path"] = new_cp
@@ -549,18 +548,18 @@ def final_bfc_validation(baseline: dict) -> int:
         if len(segs) >= 2 and segs[1].lower() in FLAVOR_FACET_WORDS and identity:
             if title_case(identity).lower() not in {s.lower() for s in segs}:
                 family = segs[0]
-                # Move identity in front of the flavor segment, claims right after identity
+                # Move identity in front of flavor segment, claims at end
                 rest_with_flavor_demoted = [title_case(identity)]
-                rest_with_flavor_demoted.extend(parse_separate(rec.get('claims','')))
                 rest_with_flavor_demoted += segs[1:]
                 v = parse_combined(rec.get('variant',''))
+                if v: rest_with_flavor_demoted.append(v)
+                v = parse_combined(rec.get('flavor',''))
                 if v: rest_with_flavor_demoted.append(v)
                 v = parse_combined(rec.get('form_texture_cut',''))
                 if v: rest_with_flavor_demoted.append(v)
                 v = parse_combined(rec.get('processing_storage',''))
                 if v: rest_with_flavor_demoted.append(v)
-                v = parse_combined(rec.get('flavor',''))
-                if v: rest_with_flavor_demoted.append(v)
+                rest_with_flavor_demoted.extend(parse_separate(rec.get('claims','')))
                 new_cp = ' > '.join(collapse_dupes([family] + rest_with_flavor_demoted))
                 rec["canonical_path"] = new_cp
                 rec["retail_leaf_path"] = new_cp
@@ -618,18 +617,14 @@ def final_bfc_validation(baseline: dict) -> int:
             v = (rec.get(col) or "").strip()
             if not v: continue
             segs = v.split(" > ")
-            if len(segs) < 4: continue  # need at least family > type > X > Y to reorder
+            if len(segs) < 3: continue  # need at least family > type > X to reorder
             # Identify which segs are claims (case-insensitive)
             claim_idxs = [i for i, s in enumerate(segs) if s.lower() in KNOWN_CLAIMS]
+            if not claim_idxs: continue
             non_claim_segs = [s for i, s in enumerate(segs) if i not in claim_idxs]
             claim_segs = sorted([segs[i] for i in claim_idxs], key=str.lower)
-            if not claim_segs: continue
-            # Reassemble: family > type > [claims sorted] > [other segments preserved]
-            if len(non_claim_segs) >= 2:
-                # family + type + claims + rest
-                new_segs = non_claim_segs[:2] + claim_segs + non_claim_segs[2:]
-            else:
-                new_segs = non_claim_segs + claim_segs
+            # Push claims to END (leaf-level filter): family > type > variant > flavor > form > ... > claims
+            new_segs = non_claim_segs + claim_segs
             new_v = " > ".join(new_segs)
             if new_v != v:
                 rec[col] = new_v
