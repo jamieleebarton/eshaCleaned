@@ -19,17 +19,38 @@ from conftest import V2, fail_with_samples
 REPORT_DIR = V2 / "tests" / "data"
 
 
+# Plain/default tokens that are intentionally NOT preserved in canonical paths
+# (per taxonomy_finalizer.PLAIN_TOKENS — generic words that don't differentiate
+# the SKU). Skipped during variant/flavor consistency checks.
+PLAIN_TOKENS = {
+    "plain", "regular", "original", "classic", "natural",
+    "unflavored", "unscented", "neutral",
+    "enriched", "unenriched", "artisan", "rustic", "country",
+    "homestyle", "home style", "traditional", "gourmet",
+    "bakery", "style", "authentic", "old", "fashioned",
+    "premium", "deluxe", "fancy", "handcrafted", "signature", "select",
+    # Default-state claims that are dropped from path
+    "sweetened",
+}
+
+
 def _norm(s: str) -> str:
     """Lowercase + replace _ with space + collapse whitespace."""
     return re.sub(r"\s+", " ", (s or "").replace("_", " ").lower().strip())
 
 
 def _column_values(r: dict, col: str) -> list[str]:
-    """Pipe-split + underscore→space + strip. Returns lowercase tokens."""
+    """Pipe-split + underscore→space + strip. Returns lowercase tokens.
+    Filters PLAIN_TOKENS that are intentionally not preserved in path."""
     raw = (r.get(col) or "").strip()
     if not raw:
         return []
-    return [_norm(piece) for piece in raw.split("|") if piece.strip()]
+    out = []
+    for piece in raw.split("|"):
+        v = _norm(piece)
+        if v and v not in PLAIN_TOKENS:
+            out.append(v)
+    return out
 
 
 def _path_segs_lower(r: dict) -> list[str]:
@@ -46,17 +67,32 @@ def _path_segs_lower(r: dict) -> list[str]:
     return [_norm(s) for s in cp.split(" > ")]
 
 
+_STOPWORDS = {"the", "and", "or", "of", "in", "with", "a", "an", "to", "for"}
+
+
 def _has_token_match(token: str, segs: list[str]) -> bool:
     """A column token matches a path segment if:
        - exact equality (case-insensitive, normalized), OR
-       - one is contained in the other (handles 'cinnamon' in 'Cinnamon Raisin')
+       - one is contained in the other (substring), OR
+       - at least half of the token's content-words appear across the path
+
+    Examples:
+       'apple slices' matches 'apple snack pack' (apple appears).
+       'cinnamon raisin' matches 'cinnamon raisin' or 'raisin' alone.
+       'tart apple' matches if 'apple' appears anywhere in path.
     """
+    if not token: return True
     for s in segs:
-        if token == s:
-            return True
-        if token in s or s in token:
-            return True
-    return False
+        if token == s: return True
+        if token in s or s in token: return True
+
+    # Word-level fallback
+    token_words = [w for w in token.split() if w and w not in _STOPWORDS]
+    if not token_words:
+        return True
+    seg_blob = " ".join(segs)
+    matches = sum(1 for w in token_words if w in seg_blob)
+    return matches / len(token_words) >= 0.5
 
 
 # ---------------------------------------------------------------------
@@ -202,18 +238,26 @@ def _extract_title_tokens(title: str) -> set[str]:
 
 
 def _all_facet_tokens(r: dict) -> set[str]:
-    """Tokens from all facet columns + title — anything one of these has,
-    we consider 'derivable' for the path."""
+    """Tokens from all facet columns + title + FNDDS desc + structural
+    category — anything one of these has, we consider 'derivable' for the path.
+
+    Includes category_path_fixed so structural sub-categorizations like
+    'Pantry > Sweeteners > Sugar > Frosting' don't flag 'Sugar' as
+    hallucinated — the cleanup pipeline assigned it as a structural parent.
+    """
     tokens: set[str] = set()
-    for col in ("variant", "flavor", "form_texture_cut", "processing_storage", "claims", "product_identity_fixed"):
+    for col in ("variant", "flavor", "form_texture_cut", "processing_storage",
+                "claims", "product_identity_fixed", "modifier"):
         for v in _column_values(r, col):
             tokens.add(v)
             for sub in v.split():
                 if len(sub) > 2:
                     tokens.add(sub)
     tokens |= _extract_title_tokens(r.get("title") or "")
-    # Add the FNDDS desc tokens too
     tokens |= _extract_title_tokens(r.get("fndds_desc") or "")
+    # Structural category words count as derivable
+    tokens |= _extract_title_tokens(r.get("category_path_fixed") or "")
+    tokens |= _extract_title_tokens(r.get("canonical_path") or "")
     return tokens
 
 
