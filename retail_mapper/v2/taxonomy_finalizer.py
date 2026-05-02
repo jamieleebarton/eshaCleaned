@@ -425,14 +425,82 @@ def _forced_base(row: Mapping[str, str]) -> tuple[str, str] | None:
     category = row.get("category_path_fixed", "") or ""
     identity = row.get("product_identity_fixed", "") or ""
     blob = _title_blob(row)
+    bfc_lower = bfc.strip().lower()
 
     plant_context = (
-        bfc.strip().lower() == "plant based milk"
+        bfc_lower == "plant based milk"
         or _token_key(category).startswith("beverage plant milk")
         or _token_key(row.get("canonical_path", "") or "").startswith("beverage plant milk")
     )
     if plant_context:
         return "Beverage > Plant Milk", _detect_plant_milk_identity(title + " " + identity)
+
+    # Authoritative BFC-driven routes — when BFC alone fully determines
+    # family+type, force the route regardless of title regex hijacks.
+    if bfc_lower == "sushi":
+        return "Meal > Sushi", identity or "Sushi"
+    if bfc_lower in {"cookies & biscuits", "biscuits/cookies",
+                     "biscuits/cookies (shelf stable)"}:
+        return "Bakery > Cookies", identity or "Cookies"
+    if bfc_lower == "powdered drinks":
+        # Sub-route by identity / title cue
+        if "hot cocoa" in blob or "hot chocolate" in blob:
+            return "Beverage > Hot Cocoa", identity or "Hot Cocoa"
+        if "lemonade" in blob:
+            return "Beverage > Flavored Drinks", identity or "Lemonade"
+        if "iced tea" in blob or "tea mix" in blob:
+            return "Beverage > Tea", identity or "Tea"
+        return "Beverage > Flavored Drinks", identity or "Drink Mix"
+    if bfc_lower == "candy":
+        # Subroute by title cue first (PI is unreliable for candy SKUs),
+        # then identity. Title takes priority since it's the authoritative
+        # source of what the product actually IS.
+        title_low = title.lower()
+        if "jelly bean" in title_low:
+            return "Snack > Candy", "Jelly Beans"
+        if re.search(r"\bgumm(y|i|ies)\b", title_low):
+            return "Snack > Candy", "Gummy Candy"
+        if "licorice" in title_low or "twizzler" in title_low:
+            return "Snack > Candy", "Licorice"
+        if "marshmallow" in title_low:
+            return "Snack > Candy", "Marshmallows"
+        if "lollipop" in title_low or "sucker" in title_low:
+            return "Snack > Candy", "Lollipops"
+        if "caramel" in title_low and "chocolate" not in title_low:
+            return "Snack > Candy", "Caramels"
+        if "taffy" in title_low:
+            return "Snack > Candy", "Taffy"
+        if "truffle" in title_low and "salt" not in title_low and "oil" not in title_low:
+            return "Snack > Chocolate Candy", "Truffles"
+        # Identity-based fallback
+        id_lower = identity.lower()
+        if "jelly bean" in id_lower:
+            return "Snack > Candy", "Jelly Beans"
+        if "gummy" in id_lower or "gummi" in id_lower:
+            return "Snack > Candy", "Gummy Candy"
+        if "chocolate" in id_lower or "chocolate" in title_low:
+            return "Snack > Chocolate Candy", identity if "chocolate" in id_lower else "Chocolate Candy"
+        if "mint" in id_lower or "peppermint" in id_lower or "peppermint" in title_low:
+            return "Snack > Candy", identity if "mint" in id_lower else "Mints"
+        if "licorice" in id_lower:
+            return "Snack > Candy", "Licorice"
+        # Generic candy fallthrough — only if identity isn't a complete mismatch
+        if identity.lower() in ("buns", "bagels", "bread", "cake", ""):
+            return "Snack > Candy", "Candy"
+        return "Snack > Candy", identity
+
+    # Title-driven jerky override: title says JERKY/SLIM JIM/JACK LINK →
+    # force Snack > Jerky (overrides FNDDS "beef steak" miscoding)
+    if re.search(r"\b(jerky|biltong|slim\s*jim|jack\s*link|chomps|krave)\b", title, re.I):
+        # Determine protein from title
+        if re.search(r"\bturkey\b", title, re.I):
+            return "Snack > Jerky", "Turkey Jerky"
+        if re.search(r"\bpork\b", title, re.I):
+            return "Snack > Jerky", "Pork Jerky"
+        if re.search(r"\bsalmon\b|\btuna\b|\bfish\b", title, re.I):
+            return "Snack > Jerky", "Fish Jerky"
+        # Default to beef
+        return "Snack > Jerky", "Beef Jerky"
 
     if re.search(r"\byogurt\s+raisins?\b", blob):
         return "Snack > Dried Fruit", "Yogurt Raisins"
