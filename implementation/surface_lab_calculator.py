@@ -4850,8 +4850,17 @@ def calculate_lab(display: str, item: str = "", grams: float | None = None) -> L
         api_cache_results = _load_api_cache_products().get(normalize_key(shopping_query), [])
         if api_cache_results:
             product_path = "api_cache_exact"
+            # api_cache fallback also counts as a retail-matching attempt — track
+            # raw candidates so the path logs accepted/rejected even when
+            # _retail_surface_products / match_products both returned empty.
+            raw_products = list(api_cache_results)
             products, rejected_products = _review_products(api_cache_results, shopping_query)
-    if raw_products:
+    # Step A (Part 4): always log the retail-matching outcome when ANY source
+    # was tried, even if all candidates rejected. This is what was missing for
+    # canonicals like macaroni: the api_cache fallback returned products, all
+    # got combo-rejected, but the public path showed nothing — making it look
+    # like retail matching never ran.
+    if raw_products or products or rejected_products:
         path.append(f"shopping_products:{product_path}:accepted={len(products)} rejected={len(rejected_products)}")
     shopping_state = (
         ShoppingState.SHOPPING_CANDIDATES_STRONG
