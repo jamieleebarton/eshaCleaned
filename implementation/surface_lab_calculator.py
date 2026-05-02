@@ -1059,6 +1059,158 @@ def _split_md_row(line: str) -> list[str]:
     return [part.strip() for part in line.strip().strip("|").split("|")]
 
 
+_BRIDGE_DB_PATH = "/Users/jamiebarton/Desktop/Hestia/api/data/canonical_retail_bridge.db"
+_BRIDGE_BY_KEY: dict[str, dict] | None = None
+_MASTER_PRODUCTS_DB = "/Users/jamiebarton/Desktop/esha_audit_bundle/data/master_products.db"
+
+
+def _load_canonical_retail_bridge() -> dict[str, dict]:
+    global _BRIDGE_BY_KEY
+    if _BRIDGE_BY_KEY is not None:
+        return _BRIDGE_BY_KEY
+    out: dict[str, dict] = {}
+    try:
+        conn = sqlite3.connect(_BRIDGE_DB_PATH)
+        for ck, exp_path, allowed_var, allowed_form, allowed_proc, forbid, allow_fl, allow_co, n in conn.execute(
+            "SELECT canonical_key, expected_canonical_path, allowed_variants, "
+            "allowed_forms, allowed_processing_storage, forbidden_modifiers, "
+            "allow_flavored, allow_combo, audit_row_count "
+            "FROM canonical_retail_bridge"
+        ):
+            out[ck] = {
+                "expected_canonical_path": exp_path,
+                "allowed_variants": json.loads(allowed_var) if allowed_var else None,
+                "allowed_forms": json.loads(allowed_form) if allowed_form else None,
+                "allowed_processing_storage": json.loads(allowed_proc) if allowed_proc else None,
+                "forbidden_modifiers": json.loads(forbid) if forbid else [],
+                "allow_flavored": bool(allow_fl),
+                "allow_combo": bool(allow_co),
+                "audit_row_count": n,
+            }
+        conn.close()
+    except Exception:
+        pass
+    _BRIDGE_BY_KEY = out
+    return out
+
+
+def _audit_path_products(canonical: str, limit: int = 25) -> list[LabProduct]:
+    """Step D (Part 6): pull candidate UPCs from product_audit_classification
+    where the canonical_path matches the canonical's expected path from the
+    canonical_retail_bridge. Hydrate each UPC from master_products.products
+    for description + brand. Solves the cache-poor case: canonicals like
+    'macaroni' / 'white sugar' where the existing chain returns only
+    salads/dinners/flavored variants."""
+    canonical_key = normalize_key(canonical)
+    bridge = _load_canonical_retail_bridge()
+    spec = bridge.get(canonical_key)
+    forbidden_modifiers: set[str] = set()
+    # Fall back to hard-coded expectation dict if bridge has no row
+    if not spec or not spec.get("expected_canonical_path"):
+        hard = _CANONICAL_AUDIT_EXPECTATION.get(canonical_key)
+        if not hard:
+            return []
+        prefixes, hard_forbidden = hard
+        if isinstance(prefixes, str):
+            prefixes = [prefixes]
+        if not prefixes:
+            return []
+        forbidden_modifiers = set(hard_forbidden or [])
+    else:
+        prefixes = [spec["expected_canonical_path"]]
+        # Bridge stores forbidden_modifiers as a comma-joined string; tolerate list/None too
+        raw_forbidden = spec.get("forbidden_modifiers")
+        if isinstance(raw_forbidden, str) and raw_forbidden.strip():
+            forbidden_modifiers = {t.strip().lower() for t in raw_forbidden.split(",") if t.strip()}
+        elif isinstance(raw_forbidden, (list, tuple, set)):
+            forbidden_modifiers = {str(t).strip().lower() for t in raw_forbidden if str(t).strip()}
+        # Hard-coded forbidden as a fallback layer (audit bridge alone can be sparse)
+        hard = _CANONICAL_AUDIT_EXPECTATION.get(canonical_key)
+        if hard:
+            _, hard_forbidden = hard
+            if hard_forbidden:
+                forbidden_modifiers |= set(hard_forbidden)
+    if not prefixes:
+        return []
+    # Query classification table for UPCs whose canonical_path starts with the expected
+    upcs: list[str] = []
+    try:
+        conn = sqlite3.connect(_AUDIT_CLASS_DB_PATH)
+        for prefix in prefixes:
+            for (upc,) in conn.execute(
+                "SELECT upc FROM product_audit_classification "
+                "WHERE canonical_path LIKE ? "
+                "AND classification_method != 'unclassified' "
+                "AND audit_confidence >= 0.50 "
+                "LIMIT ?",
+                (prefix + "%", limit * 4),
+            ):
+                if upc:
+                    upcs.append(str(upc))
+            if len(upcs) >= limit * 2:
+                break
+        conn.close()
+    except Exception:
+        return []
+    if not upcs:
+        return []
+    # Dedup
+    seen: set[str] = set()
+    upcs_uniq: list[str] = []
+    for u in upcs:
+        if u in seen:
+            continue
+        seen.add(u)
+        upcs_uniq.append(u)
+        if len(upcs_uniq) >= limit:
+            break
+    # Hydrate from master_products
+    products: list[LabProduct] = []
+    try:
+        mp = sqlite3.connect(_MASTER_PRODUCTS_DB)
+        # Query in a single IN statement (sqlite param limit ~999, we have <= 25)
+        # GTINs vary across DBs: classification stores stripped (e.g.
+        # 78742230498), master_products stores zero-padded to 12-digit
+        # (078742230498) or 13-digit (0078742230498). Try all common widths.
+        variants: set[str] = set()
+        for u in upcs_uniq:
+            stripped = u.lstrip("0") or "0"
+            variants.add(stripped)
+            variants.add(u)
+            variants.add(stripped.zfill(12))
+            variants.add(stripped.zfill(13))
+            variants.add(stripped.zfill(14))
+        variant_list = list(variants)
+        placeholders = ",".join("?" for _ in variant_list)
+        rows = mp.execute(
+            f"SELECT gtin_upc, description, brand_name, branded_food_category "
+            f"FROM products WHERE gtin_upc IN ({placeholders})",
+            tuple(variant_list),
+        ).fetchall()
+        mp.close()
+        for upc, desc, brand, cat in rows:
+            desc_l = (desc or "").lower()
+            brand_l = (brand or "").lower()
+            # Apply forbidden_modifier filter before returning. Audit can
+            # mis-classify combo products (e.g. Mac & Cheese Dinner under
+            # Pantry > Pasta > Macaroni > Enriched). Title token check is the
+            # safety net.
+            if forbidden_modifiers and any(
+                tok and tok in desc_l for tok in forbidden_modifiers
+            ):
+                continue
+            products.append(LabProduct(
+                gtin_upc=str(upc or ""),
+                description=str(desc or ""),
+                brand_name=str(brand or ""),
+                category=str(cat or ""),
+                source="audit_path_lookup",
+            ))
+    except Exception:
+        return []
+    return products[:limit]
+
+
 def _esha_pack_products(esha_code: str, limit: int = 25) -> list[LabProduct]:
     if PRODUCT_ESHA_LOOKUP_DB.exists() and PRODUCT_ESHA_LOOKUP_DB.stat().st_size > 0:
         try:
@@ -3830,7 +3982,10 @@ _AUDIT_CLASS_DB_PATH = "/Users/jamiebarton/Desktop/Hestia/api/data/product_audit
 # canonical_retail_bridge table. Prefixes calibrated against ground-truth
 # debug dump (commit f49da18): the audit's actual path strings, not guesses.
 _CANONICAL_AUDIT_EXPECTATION: dict[str, tuple[list[str], set[str]]] = {
-    "macaroni":          (["Pantry > Pasta", "Pantry > Pastas", "Grocery > Pasta"], set()),
+    "macaroni":          (["Pantry > Pasta > Macaroni",
+                           "Pantry > Pastas > Macaroni",
+                           "Grocery > Pasta > Macaroni"],
+                          {"salad", "kit", "dinner", "casserole"}),
     "chicken drumstick": (["Meat & Seafood > Poultry", "Meat & Seafood > Meat > Poultry"],
                           {"breaded", "battered", "seasoned", "tenders", "nuggets", "popcorn", "marinated"}),
     # green onion: audit uses Produce > Vegetables > Onions > Chopped > Green (not "Fresh Vegetables").
@@ -4874,6 +5029,18 @@ def calculate_lab(display: str, item: str = "", grams: float | None = None) -> L
             if search_results:
                 product_path = "fts_search"
                 products, rejected_products = _review_products(search_results, shopping_query)
+    if not products and shopping_query:
+        # Step D (Part 6): audit-path lookup — pull candidate UPCs from
+        # product_audit_classification by the canonical's expected_canonical_path
+        # (canonical_retail_bridge). Hydrate via master_products. Solves cache-poor
+        # canonicals where the existing chain only finds wrong-form candidates
+        # (e.g. macaroni cache returns only salads/dinners; audit knows where
+        # plain dry pasta lives).
+        audit_results = _audit_path_products(shopping_query)
+        if audit_results:
+            product_path = "audit_path_lookup"
+            raw_products = list(audit_results)
+            products, rejected_products = _review_products(audit_results, shopping_query)
     if not products and shopping_query:
         api_cache_results = _load_api_cache_products().get(normalize_key(shopping_query), [])
         if api_cache_results:
