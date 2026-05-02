@@ -44,7 +44,23 @@ def stage0_route_to_product_class(rows: list[dict]) -> int:
     """For each SKU, if BFC/title/FNDDS matches a known product class,
     REPLACE its canonical_path with the forced family+type prefix +
     preserved modifier leaves from the existing path.
+
+    Filters out junk leaves that look like family/category names.
     """
+    # Family-root and combined-parent words that are NEVER valid as leaves
+    JUNK_LEAF_PATTERNS: set[str] = {
+        'appetizers & snacks', 'appetizers and snacks', 'baking mixes',
+        'bakery', 'beverage', 'pantry', 'snack', 'snacks', 'frozen',
+        'meat & seafood', 'dairy', 'meal', 'produce',
+        'dips & spreads', 'sauces & salsas', 'spices & seasonings',
+        'frosting & icing', 'patties & burgers', 'sports & wellness',
+        'baby & toddler', 'crackers & biscotti', 'cookies & biscuits',
+        'pies & tarts', 'breads & buns', 'cakes', 'baking decorations',
+        'wraps & burritos', 'oils', 'mixes', 'drinks', 'beverages',
+        'plain', 'natural', 'original',  # too generic, often left over
+        'chicken honey', 'butter herb',  # observed junk combos
+    }
+
     print("Stage 0: Force-routing to canonical product class...")
     n_routed = 0
     for r in rows:
@@ -54,14 +70,23 @@ def stage0_route_to_product_class(rows: list[dict]) -> int:
         forced_prefix = route_product(bfc, fndds_desc, title)
         if not forced_prefix:
             continue
-        # Get current path's modifier segments (anything after position 2)
         cp = (r.get('canonical_path') or '').strip()
         forced_segs = forced_prefix.split(' > ')
         forced_lower = {s.lower() for s in forced_segs}
         cp_segs = cp.split(' > ') if cp else []
         # Preserve modifier leaves from current path that aren't in forced_prefix
-        # (these are flavors/claims/forms/variants that shouldn't be lost)
-        modifier_leaves = [s for s in cp_segs[2:] if s.lower() not in forced_lower]
+        # AND aren't junk (family-root names, combined parents, generic labels)
+        modifier_leaves = []
+        for s in cp_segs[2:]:
+            sl = s.lower().strip()
+            if sl in forced_lower: continue
+            if sl in JUNK_LEAF_PATTERNS: continue
+            # Drop any segment containing " & " where both sides are family-root words
+            if ' & ' in sl:
+                left, right = sl.split(' & ', 1)
+                if left.strip() in JUNK_LEAF_PATTERNS or right.strip() in JUNK_LEAF_PATTERNS:
+                    continue
+            modifier_leaves.append(s)
         new_cp = forced_prefix + (' > ' + ' > '.join(modifier_leaves) if modifier_leaves else '')
         if new_cp != cp:
             r['canonical_path'] = new_cp
@@ -216,23 +241,29 @@ def main():
     print(f"  loaded {len(rows):,} rows in {time.time()-t0:.0f}s")
     print()
 
-    # Stage 0: force-route by product class (BFC + title + FNDDS evidence)
+    # Stage 0a: force-route by product class (initial pass for clean baseline)
     stage0_route_to_product_class(rows)
     print()
 
-    # Stage 1: canonicalize
+    # Stage 1: canonicalize (synonym norm, type-echo strip, fixed ordering)
     stage1_canonicalize_all(rows)
     print()
 
-    # Stage 2: FNDDS dedupe
+    # Stage 2: FNDDS dedupe (consolidates same-product SKUs to dominant path)
     stage2_fndds_dedupe(rows)
     print()
 
-    # Stage 3: recover from enriched
+    # Stage 3: recover lost leaf detail from enriched
     stage3_recover_from_enriched(rows)
     print()
 
-    # Stage 4: re-canonicalize
+    # Stage 0b: RE-ROUTE by product class — overrides any dedupe corruption.
+    # Product class is the AUTHORITATIVE family+type prefix.
+    print("Stage 0b: Re-applying product-class router (overrides dedupe)...")
+    stage0_route_to_product_class(rows)
+    print()
+
+    # Stage 4: final re-canonicalize after all routing
     stage4_recanonicalize(rows)
     print()
 

@@ -81,7 +81,18 @@ BFC_FORCED: dict[str, str] = {
 }
 
 # Title keyword → forced family+type prefix (used when BFC alone is ambiguous)
+# ORDER MATTERS: more-specific patterns first
 TITLE_FORCED: list[tuple[re.Pattern, str]] = [
+    # SANDWICH detection FIRST (before nut butter rules — PB&J sandwiches etc.)
+    (re.compile(r"\bbreakfast\s+sandwich(es)?\b", re.I), 'Frozen > Breakfast > Breakfast Sandwich'),
+    (re.compile(r"\bice\s+cream\s+sandwich(es)?\b", re.I), 'Frozen > Ice Cream > Sandwich'),
+    (re.compile(r"\bpb\s*&?\s*j\s+sandwich(es)?\b", re.I), 'Meal > Sandwiches > PB&J'),
+    (re.compile(r"\b(?:peanut\s+butter|almond\s+butter|cashew\s+butter)\s*(?:and|&|with).*\bsandwich(es)?\b", re.I), 'Meal > Sandwiches'),
+    (re.compile(r"\bsandwich(es)?\b", re.I), 'Meal > Sandwiches'),
+
+    # Cookie Kits BEFORE generic cookie rules
+    (re.compile(r"\bcookie\s+(?:kit|house|decorating)\b|\bgingerbread\s+(?:kit|house)\b|\bhaunted\s+house\b", re.I), 'Bakery > Cookie Kits'),
+
     # Sushi takes priority over generic ROLL
     (re.compile(r"\b(sushi|sashimi|nigiri|maki|temaki)\b", re.I), 'Meal > Sushi'),
     (re.compile(r"\b(?:california|alabama|florida|spicy tuna|salmon avocado|philadelphia|dragon|rainbow)\s+roll(?:s)?\b", re.I), 'Meal > Sushi'),
@@ -182,8 +193,121 @@ TITLE_FORCED: list[tuple[re.Pattern, str]] = [
     # Coffee creamer
     (re.compile(r"\bcoffee\s*creamer\b", re.I), 'Dairy > Cream > Coffee Creamer'),
 
-    # Hot dogs
+    # Hot dog BUNS (must come before hot dogs to avoid bun-routing-to-meat)
+    (re.compile(r"\bhot\s*dog\s*buns?\b", re.I), 'Bakery > Buns > Hot Dog Buns'),
+    (re.compile(r"\bhamburger\s*buns?\b", re.I), 'Bakery > Buns > Hamburger Buns'),
+    (re.compile(r"\bslider\s*buns?\b", re.I), 'Bakery > Buns > Slider Buns'),
+    (re.compile(r"\bbrioche\s*buns?\b", re.I), 'Bakery > Buns > Brioche'),
+    (re.compile(r"\bsandwich\s*buns?\b", re.I), 'Bakery > Buns > Sandwich Buns'),
+    (re.compile(r"\bpretzel\s*buns?\b", re.I), 'Bakery > Buns > Pretzel'),
+    (re.compile(r"\bdinner\s*rolls?\b", re.I), 'Bakery > Rolls > Dinner Rolls'),
+    # Hot dogs (the meat — only after buns matched)
     (re.compile(r"\bhot\s*dogs?\b|\bfranks?\b(?!\s+furt)", re.I), 'Meat & Seafood > Hot Dogs'),
+    # Juice variants
+    (re.compile(r"\borange\s*juice\b(?!.*mix)", re.I), 'Beverage > Juice > Orange Juice'),
+    (re.compile(r"\bapple\s*juice\b(?!.*mix)", re.I), 'Beverage > Juice > Apple Juice'),
+    (re.compile(r"\bcranberry\s*juice\b(?!.*mix)", re.I), 'Beverage > Juice > Cranberry Juice'),
+    (re.compile(r"\bgrape\s*juice\b(?!.*mix)", re.I), 'Beverage > Juice > Grape Juice'),
+    (re.compile(r"\bgrapefruit\s*juice\b(?!.*mix)", re.I), 'Beverage > Juice > Grapefruit Juice'),
+    (re.compile(r"\btomato\s*juice\b(?!.*mix)", re.I), 'Beverage > Juice > Tomato Juice'),
+    (re.compile(r"\blemon\s*juice\b(?!.*mix)", re.I), 'Beverage > Juice > Lemon Juice'),
+    (re.compile(r"\blime\s*juice\b(?!.*mix)", re.I), 'Beverage > Juice > Lime Juice'),
+    (re.compile(r"\bvegetable\s*juice\b(?!.*mix)", re.I), 'Beverage > Juice > Vegetable Juice'),
+    # Beans (specific types) — must come before generic Bean catchalls
+    (re.compile(r"\bblack\s*beans?\b", re.I), 'Pantry > Canned Vegetables > Beans > Black'),
+    (re.compile(r"\bnavy\s*beans?\b", re.I), 'Pantry > Canned Vegetables > Beans > Navy'),
+    (re.compile(r"\blima\s*beans?\b", re.I), 'Pantry > Canned Vegetables > Beans > Lima'),
+    (re.compile(r"\bcannellini\s*beans?\b", re.I), 'Pantry > Canned Vegetables > Beans > Cannellini'),
+    (re.compile(r"\brefried\s*beans?\b", re.I), 'Pantry > Canned Vegetables > Beans > Refried'),
+    (re.compile(r"\bbaked\s*beans?\b|\bpork\s*and\s*beans?\b", re.I), 'Pantry > Canned Vegetables > Beans > Baked'),
+    (re.compile(r"\bblack[- ]eyed?\s*peas?\b|\bblack[- ]eyed?\s*beans?\b", re.I), 'Pantry > Canned Vegetables > Beans > Black Eyed'),
+    (re.compile(r"\bgreen\s*beans?\b", re.I), 'Pantry > Canned Vegetables > Green Beans'),
+    # Cakes
+    (re.compile(r"\bsnack\s*cakes?\b", re.I), 'Bakery > Cake > Snack Cake'),
+    (re.compile(r"\bcoffee\s*cakes?\b", re.I), 'Bakery > Cake > Coffee Cake'),
+    (re.compile(r"\bsponge\s*cakes?\b", re.I), 'Bakery > Cake > Sponge Cake'),
+    (re.compile(r"\blayer\s*cakes?\b", re.I), 'Bakery > Cake > Layer Cake'),
+    (re.compile(r"\bcheesecakes?\b", re.I), 'Bakery > Cake > Cheesecake'),
+    (re.compile(r"\bangel\s*food\s*cakes?\b", re.I), 'Bakery > Cake > Angel Food Cake'),
+    (re.compile(r"\bcarrot\s*cakes?\b", re.I), 'Bakery > Cake > Carrot Cake'),
+    (re.compile(r"\bcupcakes?\b(?!.*mix)", re.I), 'Bakery > Cupcakes'),
+    # Cookies
+    (re.compile(r"\boreos?\b", re.I), 'Snack > Cookies > Sandwich > Oreo'),
+    (re.compile(r"\bsugar\s*cookies?\b", re.I), 'Snack > Cookies > Sugar'),
+    (re.compile(r"\bchocolate\s*chip\s*cookies?\b", re.I), 'Snack > Cookies > Chocolate Chip'),
+    (re.compile(r"\bpeanut\s*butter\s*cookies?\b", re.I), 'Snack > Cookies > Peanut Butter'),
+    (re.compile(r"\bgingerbread\s*(?:cookies?|men|kit|house)\b", re.I), 'Bakery > Cookie Kits > Gingerbread'),
+    # Crackers
+    (re.compile(r"\bgraham\s*crackers?\b", re.I), 'Snack > Crackers > Graham'),
+    (re.compile(r"\bsaltines?\s*crackers?\b|\bsoda\s*crackers?\b", re.I), 'Snack > Crackers > Saltine'),
+    (re.compile(r"\bcheese\s*crackers?\b", re.I), 'Snack > Crackers > Cheese'),
+    # Cereals
+    (re.compile(r"\boatmeal\b", re.I), 'Pantry > Cereal > Oatmeal'),
+    (re.compile(r"\bcorn\s*flakes?\b", re.I), 'Pantry > Cereal > Corn Flakes'),
+    (re.compile(r"\b(?:wheat|frosted|frosted mini)\s*wheat\b", re.I), 'Pantry > Cereal > Wheat'),
+    (re.compile(r"\bgranola\b(?!\s*bar)", re.I), 'Snack > Granola'),
+    # Sandwich types (specific)
+    (re.compile(r"\bpb\s*&?\s*j\b|\bpb\s+and\s+j\b|\bpeanut\s+butter\s+and\s+jelly\b", re.I), 'Meal > Sandwiches > PB&J'),
+    # Frozen entrees with proteins
+    (re.compile(r"\bfrozen\s+pizza\b|\bpizza\b(?=.*frozen)", re.I), 'Frozen > Pizza'),
+    (re.compile(r"\b(?:tv\s*dinner|frozen\s*dinner)\b", re.I), 'Frozen > Single Entrees > TV Dinner'),
+    (re.compile(r"\bchicken\s*tenders?\b", re.I), 'Meat & Seafood > Poultry > Chicken > Tenders'),
+    (re.compile(r"\bchicken\s*wings?\b", re.I), 'Meat & Seafood > Poultry > Chicken > Wings'),
+    (re.compile(r"\bchicken\s*(?:thigh|drumstick|breast)s?\b", re.I), 'Meat & Seafood > Poultry > Chicken'),
+    # Tea variants
+    (re.compile(r"\bgreen\s*tea\b", re.I), 'Beverage > Tea > Green'),
+    (re.compile(r"\bblack\s*tea\b", re.I), 'Beverage > Tea > Black'),
+    (re.compile(r"\bherbal\s*tea\b", re.I), 'Beverage > Tea > Herbal'),
+    (re.compile(r"\biced\s*tea\b", re.I), 'Beverage > Tea > Iced'),
+    (re.compile(r"\bchai\b", re.I), 'Beverage > Tea > Chai'),
+    (re.compile(r"\bmatcha\b", re.I), 'Beverage > Tea > Matcha'),
+    # Coffee variants
+    (re.compile(r"\bcold\s*brew\b", re.I), 'Beverage > Coffee > Cold Brew'),
+    (re.compile(r"\binstant\s*coffee\b", re.I), 'Beverage > Coffee > Instant'),
+    (re.compile(r"\bcoffee\s*beans?\b(?!.*chocolate)", re.I), 'Beverage > Coffee > Beans'),
+    # Soda variants
+    (re.compile(r"\bcola\b(?!\s+(?:slaw|bar))", re.I), 'Beverage > Soda > Cola'),
+    (re.compile(r"\broot\s*beer\b", re.I), 'Beverage > Soda > Root Beer'),
+    (re.compile(r"\bginger\s*ale\b", re.I), 'Beverage > Soda > Ginger Ale'),
+    (re.compile(r"\bginger\s*beer\b", re.I), 'Beverage > Soda > Ginger Beer'),
+    (re.compile(r"\bcream\s*soda\b", re.I), 'Beverage > Soda > Cream Soda'),
+    # Lemonade
+    (re.compile(r"\blemonade\b(?!.*mix)", re.I), 'Beverage > Lemonade'),
+    # Specific candies
+    (re.compile(r"\bgummy\s*(?:bears?|worms?|candy|candies)\b|\bgummies\b", re.I), 'Snack > Candy > Gummy'),
+    (re.compile(r"\blicorice\b", re.I), 'Snack > Candy > Licorice'),
+    (re.compile(r"\bjelly\s*beans?\b", re.I), 'Snack > Candy > Jelly Beans'),
+    (re.compile(r"\bcandy\s*canes?\b", re.I), 'Snack > Candy > Candy Canes'),
+    (re.compile(r"\bmarshmallows?\b", re.I), 'Snack > Candy > Marshmallows'),
+    (re.compile(r"\bchocolate\s*bars?\b", re.I), 'Snack > Candy > Chocolate Bar'),
+    (re.compile(r"\btruffles?\b(?!.*oil|.*pasta)", re.I), 'Snack > Candy > Truffles'),
+    # Salami
+    (re.compile(r"\bsalami\b", re.I), 'Meat & Seafood > Charcuterie > Salami'),
+    (re.compile(r"\bprosciutto\b", re.I), 'Meat & Seafood > Charcuterie > Prosciutto'),
+    (re.compile(r"\bcapicola\b|\bcapocollo\b", re.I), 'Meat & Seafood > Charcuterie > Capicola'),
+    # Sausage variants
+    (re.compile(r"\bitalian\s*sausage\b", re.I), 'Meat & Seafood > Sausage > Italian'),
+    (re.compile(r"\bbreakfast\s*sausage\b", re.I), 'Meat & Seafood > Sausage > Breakfast'),
+    (re.compile(r"\bbratwurst\b|\bbrats?\b(?!\s+isch)", re.I), 'Meat & Seafood > Sausage > Bratwurst'),
+    (re.compile(r"\bchorizo\b", re.I), 'Meat & Seafood > Sausage > Chorizo'),
+    (re.compile(r"\bkielbasa\b", re.I), 'Meat & Seafood > Sausage > Kielbasa'),
+    # Bacon variants
+    (re.compile(r"\bturkey\s*bacon\b", re.I), 'Meat & Seafood > Bacon > Turkey'),
+    # Pasta types
+    (re.compile(r"\bspaghetti\b", re.I), 'Pantry > Pasta > Spaghetti'),
+    (re.compile(r"\bpenne\b", re.I), 'Pantry > Pasta > Penne'),
+    (re.compile(r"\brigatoni\b", re.I), 'Pantry > Pasta > Rigatoni'),
+    (re.compile(r"\bfettuccine\b", re.I), 'Pantry > Pasta > Fettuccine'),
+    (re.compile(r"\blinguine\b", re.I), 'Pantry > Pasta > Linguine'),
+    (re.compile(r"\brotini\b|\bfusilli\b", re.I), 'Pantry > Pasta > Rotini'),
+    (re.compile(r"\b(?:elbow\s*)?macaroni\b(?!.*cheese)", re.I), 'Pantry > Pasta > Macaroni'),
+    (re.compile(r"\blasagna\b(?!.*frozen)", re.I), 'Pantry > Pasta > Lasagna'),
+    # Rice types
+    (re.compile(r"\bjasmine\s*rice\b", re.I), 'Pantry > Rice > Jasmine'),
+    (re.compile(r"\bbasmati\s*rice\b", re.I), 'Pantry > Rice > Basmati'),
+    (re.compile(r"\bbrown\s*rice\b", re.I), 'Pantry > Rice > Brown'),
+    (re.compile(r"\bwhite\s*rice\b", re.I), 'Pantry > Rice > White'),
+    (re.compile(r"\bwild\s*rice\b", re.I), 'Pantry > Rice > Wild'),
 
     # Pepperoni (charcuterie not pizza)
     (re.compile(r"\bpepperoni\b(?!.*pizza)", re.I), 'Meat & Seafood > Charcuterie > Pepperoni'),
