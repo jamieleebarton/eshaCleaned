@@ -941,9 +941,57 @@ def _forced_base(row: Mapping[str, str]) -> tuple[str, str] | None:
 
     # BUG #7: Danish blue cheese / cream cheese / etc. — "Danish" regex hijacks
     # towards Pastry. When BFC is Cheese AND title says cheese, force
-    # Dairy > Cheese regardless of pastry-name confusion.
+    # Dairy > Cheese AND override any pastry-leaked product_identity
+    # (e.g., PI="Danishes" is wrong for Danish Blue Cheese — should be Blue Cheese).
+    # NOTE: "Cheese Danish" pastries have BFC="Cakes/Cupcakes/Snack Cakes" (not
+    # "Cheese"), so this rule does NOT touch them — they stay in Bakery > Pastry.
     if bfc_lower == "cheese" and re.search(r"\bcheese\b", blob):
-        return "Dairy > Cheese", identity or "Cheese"
+        # Detect specific cheese type from title; PI may be polluted with
+        # pastry/danish words from earlier pipeline regex hijacks.
+        cheese_type = "Cheese"
+        # Specific cheese types — most-specific first
+        if re.search(r"\bdanish\s+blue\s+cheese\b|\bdanablu\b|\bblue\s+cheese\b", title, re.I):
+            cheese_type = "Blue Cheese"
+        elif re.search(r"\bcream\s+cheese\b", title, re.I):
+            cheese_type = "Cream Cheese"
+        elif re.search(r"\bcottage\s+cheese\b", title, re.I):
+            cheese_type = "Cottage Cheese"
+        elif re.search(r"\bricotta\b", title, re.I):
+            cheese_type = "Ricotta"
+        elif re.search(r"\bgoat\s+cheese\b|\bchevre\b", title, re.I):
+            cheese_type = "Goat Cheese"
+        elif re.search(r"\bfeta\b", title, re.I):
+            cheese_type = "Feta"
+        elif re.search(r"\bmozzarella\b", title, re.I):
+            cheese_type = "Mozzarella"
+        elif re.search(r"\bcheddar\b", title, re.I):
+            cheese_type = "Cheddar"
+        elif re.search(r"\bparmesan\b|\bparmigiano\b", title, re.I):
+            cheese_type = "Parmesan"
+        elif re.search(r"\bswiss\b|\bemmental\b|\bemmenthaler\b", title, re.I):
+            cheese_type = "Swiss"
+        elif re.search(r"\bbrie\b", title, re.I):
+            cheese_type = "Brie"
+        elif re.search(r"\bcamembert\b", title, re.I):
+            cheese_type = "Camembert"
+        elif re.search(r"\bgouda\b", title, re.I):
+            cheese_type = "Gouda"
+        elif re.search(r"\bprovolone\b", title, re.I):
+            cheese_type = "Provolone"
+        elif re.search(r"\basiago\b", title, re.I):
+            cheese_type = "Asiago"
+        elif re.search(r"\bromano\b", title, re.I):
+            cheese_type = "Romano"
+        elif re.search(r"\bhavarti\b", title, re.I):
+            cheese_type = "Havarti"
+        elif re.search(r"\bgorgonzola\b", title, re.I):
+            cheese_type = "Gorgonzola"
+        elif re.search(r"\bmonterey\s*jack\b|\bpepper\s*jack\b", title, re.I):
+            cheese_type = "Monterey Jack"
+        elif identity and identity.lower() not in {"danishes", "danish", "pastry", "pastries", "cake", "cakes", "buns", "rolls"}:
+            # Use existing PI if it's a sensible cheese-related word
+            cheese_type = identity
+        return "Dairy > Cheese", cheese_type
 
     identity_evidence = f"{title} {identity}"
 

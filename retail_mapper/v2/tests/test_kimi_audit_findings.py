@@ -183,6 +183,58 @@ def test_hot_dog_buns_in_bakery_not_sandwich(audit_rows):
 # K10: FNDDS code present implies FNDDS desc populated
 # ---------------------------------------------------------------------
 
+def test_cheese_danish_pastries_stay_in_bakery(audit_rows):
+    """Cheese Danish (the pastry — danish pastry with cheese filling) must
+    stay in Bakery > Pastry > Danishes, NOT get force-routed to Dairy > Cheese.
+
+    Discriminator: title contains 'cheese danish' (compound, in that order)
+    or 'danish with cream cheese' — these are pastries, not cheeses.
+    """
+    bad = []
+    for r in audit_rows:
+        title = (r.get("title") or "").lower()
+        cp = (r.get("canonical_path") or "")
+        is_pastry_danish = (
+            re.search(r"\bcheese\s+danish\b", title)
+            or re.search(r"\bdanish\s+(?:coffee|with\s+(?:cream\s+)?cheese)\b", title)
+        )
+        if not is_pastry_danish:
+            continue
+        # Pastry must be in Bakery, NOT Dairy
+        if cp.startswith("Dairy"):
+            bad.append(r)
+    if bad:
+        fail_with_samples(
+            f"K7-pastry violated: {len(bad):,} Cheese Danish PASTRIES misrouted to Dairy",
+            bad,
+        )
+
+
+def test_danish_blue_cheese_in_dairy_with_correct_leaf(audit_rows):
+    """Danish Blue Cheese (the actual cheese) must be in Dairy > Cheese
+    AND must NOT have 'Danishes' as a leaf (was a pastry-PI leak)."""
+    bad = []
+    for r in audit_rows:
+        title = (r.get("title") or "").lower()
+        cp = (r.get("canonical_path") or "")
+        rlp = (r.get("retail_leaf_path") or "")
+        if not re.search(r"\bdanish\s+blue\s+cheese\b|\bdanablu\b", title):
+            continue
+        # Must be in Dairy
+        if not cp.startswith("Dairy"):
+            r2 = dict(r); r2["_issue"] = "not in Dairy"
+            bad.append(r2); continue
+        # Must NOT have 'Danishes' / 'Pastry' as a leaf
+        if "Danishes" in cp or "Pastry" in cp:
+            r2 = dict(r); r2["_issue"] = "has pastry-leak in path"
+            bad.append(r2); continue
+    if bad:
+        fail_with_samples(
+            f"K7-cheese violated: {len(bad):,} Danish Blue Cheese SKUs misrouted",
+            bad, extra_cols=["_issue"],
+        )
+
+
 def test_fndds_code_implies_desc(audit_rows):
     """When fndds_code is populated, fndds_desc must also be populated."""
     bad = []
