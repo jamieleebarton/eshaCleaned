@@ -98,12 +98,47 @@ CLAIM_ALIASES = {
     "shelf_stable": "shelf_stable",
     "cold_pressed": "cold_pressed",
     "all_natural": "all_natural",
+    "reduced_sugar": "reduced_sugar",
+    "low_sugar": "reduced_sugar",
+    "less_sugar": "reduced_sugar",
+    "fortified_with_calcium": "fortified",
+    "calcium_fortified": "fortified",
+    "iron_fortified": "fortified",
+    "vitamin_added": "fortified",
+    "added_vitamins": "fortified",
+    "no_added_sugar": "no_sugar_added",
+    "no_added_salt": "no_salt_added",
+    "no_msg": "no_msg",
+    "msg_free": "no_msg",
+    "no_artificial_colors": "no_artificial_colors",
+    "no_artificial_sweeteners": "no_artificial_sweeteners",
+    "no_added_flavors": "no_artificial_flavors",
+    "low_calorie": "low_calorie",
+    "reduced_calorie": "low_calorie",
+    "no_calorie": "low_calorie",
+    "low_carb": "low_carb",
+    "low_glycemic": "low_glycemic",
+    "high_calcium": "high_calcium",
+    "high_iron": "high_iron",
+    "high_omega": "high_omega",
+    "rich_in_omega": "high_omega",
+    "good_source_of_fiber": "high_fiber",
+    "good_source_of_protein": "high_protein",
+    "high_in_protein": "high_protein",
+    "high_in_fiber": "high_fiber",
+    "raw": "raw",
+    "unrefined": "unrefined",
+    "unbleached": "unbleached",
+    "bleached": "bleached",
+    "stone_ground": "stone_ground",
+    "extra_virgin": "extra_virgin",
 }
 
-# "Sweetened" is usually the unmarked/default state in retail data and is
-# often inferred when a title merely lacks "unsweetened". Do not create a
-# retail leaf for it; keep explicit negative claims like Unsweetened.
-RELEVANT_CLAIMS = set(CLAIM_ALIASES.values()) - {"sweetened"}
+# All non-empty claims are relevant for the modifier path. "Sweetened" used
+# to be excluded as the unmarked default, but that caused 35k+ rows to lose
+# their claim leaf entirely (path = "...> Plain" instead of "...> Sweetened"
+# or "...> Unsweetened > Fortified"). Now it's preserved like any other claim.
+RELEVANT_CLAIMS = set(CLAIM_ALIASES.values())
 
 FORM_ALIASES = {
     "pre_sliced": "sliced",
@@ -857,6 +892,31 @@ def _forced_base(row: Mapping[str, str]) -> tuple[str, str] | None:
     if plant_context:
         return "Beverage > Plant Milk", _detect_plant_milk_identity(title + " " + identity)
 
+    # BUG #6 + #9: plant-based cheese alternatives + vegetarian frozen meats
+    # routed to Dairy/Meat. CHECKED BEFORE the BFC=Cheese rule so plant-based
+    # cheese alternatives don't get force-routed to Dairy > Cheese.
+    if re.search(r"\b(plant[\s-]?based|vegan|dairy[\s-]?free|alternative)\b", title, re.I) and \
+       re.search(r"\bcheese\b", title, re.I):
+        return "Pantry > Plant Based Cheese", identity or "Plant Based Cheese"
+    if bfc_lower == "vegetarian frozen meats" or \
+       (re.search(r"\b(meat[\s-]?less|plant[\s-]?based|vegan|vegetarian|impossible|beyond)\b", title, re.I) and
+        re.search(r"\b(burger|sausage|chicken|beef|crumbles?|patty|patties|nuggets?|meatball)", title, re.I)):
+        return "Meal > Plant Based", identity or "Plant Based"
+
+    # BUG #13: Hot dog ROLLS/BUNS routed to Meal > Sandwiches > Hot Dog.
+    # When title contains "hot dog" AND "roll"/"bun"/"buns", it's the BREAD
+    # (bun), not the meat. Goes to Bakery > Buns. CHECKED EARLY so it
+    # overrides downstream homogenize and PI-based routing.
+    if re.search(r"\bhot\s*dog\b", title, re.I) and \
+       re.search(r"\b(rolls?|buns?)\b", title, re.I):
+        return "Bakery > Buns", "Hot Dog Buns"
+
+    # BUG #7: Danish blue cheese / cream cheese / etc. — "Danish" regex hijacks
+    # towards Pastry. When BFC is Cheese AND title says cheese, force
+    # Dairy > Cheese regardless of pastry-name confusion.
+    if bfc_lower == "cheese" and re.search(r"\bcheese\b", blob):
+        return "Dairy > Cheese", identity or "Cheese"
+
     identity_evidence = f"{title} {identity}"
 
     if re.search(r"\b(biscotti|biscottini|cantuccini|biscotificio)\b", identity_evidence, re.I):
@@ -1124,15 +1184,36 @@ def _forced_base(row: Mapping[str, str]) -> tuple[str, str] | None:
     # Title-driven jerky override: title says JERKY/SLIM JIM/JACK LINK →
     # force Snack > Jerky (overrides FNDDS "beef steak" miscoding)
     if re.search(r"\b(jerky|biltong|slim\s*jim|jack\s*link|chomps|krave)\b", title, re.I):
-        # Determine protein from title
         if re.search(r"\bturkey\b", title, re.I):
             return "Snack > Jerky", "Turkey Jerky"
         if re.search(r"\bpork\b", title, re.I):
             return "Snack > Jerky", "Pork Jerky"
         if re.search(r"\bsalmon\b|\btuna\b|\bfish\b", title, re.I):
             return "Snack > Jerky", "Fish Jerky"
-        # Default to beef
         return "Snack > Jerky", "Beef Jerky"
+
+    # BUG #13: Hot dog ROLLS/BUNS routed to Meal > Sandwiches > Hot Dog.
+    # When title contains "hot dog" AND "roll"/"bun"/"buns", it's the BREAD
+    # (bun), not the meat. Goes to Bakery > Buns.
+    if re.search(r"\bhot\s*dog\b", title, re.I) and \
+       re.search(r"\b(rolls?|buns?)\b", title, re.I):
+        return "Bakery > Buns", "Hot Dog Buns"
+
+    # BUG #4: Title says FROZEN/FRESHLY FROZEN but path goes to Pantry > Canned.
+    # When title clearly says frozen, route to Frozen family.
+    if re.search(r"\b(freshly\s+frozen|fresh\s+frozen|just\s+(?:picked\s+and\s+)?(?:quickly\s+)?frozen|flash\s+frozen|individually\s+(?:quick\s+)?frozen|iqf)\b", title, re.I):
+        # Determine sub-type from title
+        if re.search(r"\b(green\s+beans?|peas|corn|carrots?|broccoli|spinach|cauliflower|edamame|brussel|asparagus)\b", title, re.I):
+            return "Frozen > Vegetables", identity or "Vegetables"
+        if re.search(r"\b(berries|berry|strawberr|blueberr|raspberr|blackberr|cherry|cherries|peach|mango|pineapple)\b", title, re.I):
+            return "Frozen > Fruit", identity or "Fruit"
+
+    # BUG #14: title says "Fresh" but path is Frozen. When title starts with
+    # "FRESH " (not "FRESHLY FROZEN"), and current path is Frozen, force Produce.
+    if re.match(r"^fresh\s", title.lower()) and not re.search(r"freshly\s+frozen|fresh\s+frozen", title, re.I):
+        cp_now = (row.get("canonical_path", "") or "").strip()
+        if cp_now.startswith("Frozen") and re.search(r"\b(fruit|vegetable|produce|herb|salad)\b", title, re.I):
+            return "Produce > Fresh", identity or "Fresh"
 
     if re.search(r"\byogurt\s+raisins?\b", blob):
         return "Snack > Dried Fruit", "Yogurt Raisins"
@@ -1201,8 +1282,24 @@ def _canonical_from_category_identity(category_path: str, identity: str) -> str:
     if identity_key in category_keys:
         return PATH_SEP.join(category_segments)
 
-    last_is_combined_bucket = bool(re.search(r"[&,/]", category_segments[-1]))
-    if not last_is_combined_bucket and _word_set(identity).issubset(category_words):
+    # =====================================================================
+    # CRITICAL INVARIANT — DO NOT REVERT THIS BLOCK
+    # =====================================================================
+    # When the last category segment is a BFC-combined-parent name (contains
+    # &, comma, or slash, e.g., "Pancakes, Waffles, French Toast & Crepes"
+    # or "Sauces & Salsas"), REPLACE that BFC label with the more-specific
+    # identity rather than appending. BFC labels MUST NOT appear in the
+    # final canonical_path — they're retail-category groupings, not real
+    # product types. Tests in test_path_invariants.py and
+    # test_one_home_per_identity.py depend on this behavior.
+    # If a linter or refactor tries to "simplify" this away, re-add it.
+    # =====================================================================
+    if len(category_segments) >= 2 and re.search(r"[&,/]", category_segments[-1]):
+        return PATH_SEP.join(
+            dedupe_segments(category_segments[:-1] + [identity])
+        )
+
+    if _word_set(identity).issubset(category_words):
         return PATH_SEP.join(category_segments)
 
     return PATH_SEP.join(dedupe_segments(category_segments + [identity]))

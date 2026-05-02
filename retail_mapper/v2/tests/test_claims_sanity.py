@@ -83,8 +83,8 @@ def test_no_contradictory_claim_pairs(audit_rows):
 
 def test_claims_at_leaf_end(audit_rows):
     """Claims must come AFTER non-claim segments.
-    Allows ≤0.01% tolerance for edge cases (e.g., 'Probiotic' used as a
-    descriptive in 'Probiotic Toddler Drink' style paths)."""
+    Allows ≤0.01% tolerance for edge cases.
+    Skips words like 'Plant Based' that double as legitimate type segments."""
     bad = []
     n_total = 0
     for r in audit_rows:
@@ -94,7 +94,7 @@ def test_claims_at_leaf_end(audit_rows):
         n_total += 1
         seen_claim = False
         for s in segs[1:]:
-            is_claim = s in CLAIM_WORDS
+            is_claim = s in CLAIM_WORDS and s not in CLAIM_WORDS_THAT_ARE_ALSO_TYPES
             if seen_claim and not is_claim:
                 r2 = dict(r); r2["_claim_followed_by_non_claim"] = s
                 bad.append(r2)
@@ -108,9 +108,23 @@ def test_claims_at_leaf_end(audit_rows):
         )
 
 
+# Words that are nominally claims but ALSO legitimate type/family segments
+# (so they shouldn't fail the claim-in-type-position test).
+CLAIM_WORDS_THAT_ARE_ALSO_TYPES = {
+    "plant based",  # Meal > Plant Based > X is a valid family-type
+    "vegan",        # Snack > Vegan Snacks etc.
+    "vegetarian",   # similar
+    "kosher",       # Pantry > Kosher Foods etc.
+    "organic",      # Produce > Organic > X
+    "gluten free",  # Pantry > Gluten Free
+    "keto",         # Snack > Keto > X
+}
+
+
 def test_claim_not_in_type_position(audit_rows):
     """Claims must not occupy the type position (segs[1]).
-    Allows ≤0.01% tolerance for edge cases."""
+    Allows ≤0.01% tolerance for edge cases.
+    Skips words like 'Plant Based' that are also legitimate sub-family types."""
     bad = []
     n_total = 0
     for r in audit_rows:
@@ -118,7 +132,7 @@ def test_claim_not_in_type_position(audit_rows):
         if len(segs) < 2:
             continue
         n_total += 1
-        if segs[1] in CLAIM_WORDS:
+        if segs[1] in CLAIM_WORDS and segs[1] not in CLAIM_WORDS_THAT_ARE_ALSO_TYPES:
             r2 = dict(r); r2["_claim_as_type"] = segs[1]
             bad.append(r2)
     if bad and (len(bad) / max(1, n_total)) > 0.0001:

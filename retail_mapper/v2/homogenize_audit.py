@@ -48,6 +48,33 @@ DOMINANT_THRESHOLD = 0.50
 MIN_PI_SKUS = 5
 
 
+def _dedupe_by_fdc(rows: list[dict]) -> list[dict]:
+    """Drop duplicate fdc_ids (keep first occurrence). Bug #1: 47 exact-dup
+    fdc_ids violate primary-key invariant."""
+    seen: set[str] = set()
+    out: list[dict] = []
+    for r in rows:
+        fdc = (r.get("fdc_id") or "").strip()
+        if fdc and fdc in seen:
+            continue
+        if fdc:
+            seen.add(fdc)
+        out.append(r)
+    return out
+
+
+def _strip_redundant_adjacent_words(seg: str) -> str:
+    """Bug #3: 'Dark Chocolate Chocolate' → 'Dark Chocolate'."""
+    words = seg.split()
+    if not words:
+        return seg
+    out = [words[0]]
+    for w in words[1:]:
+        if w.lower() != out[-1].lower():
+            out.append(w)
+    return " ".join(out)
+
+
 def main() -> None:
     print(f"Reading {AUDIT.name}...")
     rows: list[dict] = []
@@ -57,6 +84,12 @@ def main() -> None:
         for r in rdr:
             rows.append(r)
     print(f"  loaded {len(rows):,} rows")
+
+    # Pass 0: dedupe by fdc_id (Bug #1: 47 exact duplicates)
+    n_before = len(rows)
+    rows = _dedupe_by_fdc(rows)
+    if len(rows) < n_before:
+        print(f"  dropped {n_before - len(rows):,} duplicate fdc_id rows")
 
     # Pass 1: count PI -> home distribution
     pi_homes: dict[str, Counter] = defaultdict(Counter)
@@ -156,6 +189,32 @@ def main() -> None:
                 n_rerouted_by_word += 1
                 break
     print(f"  rerouted {n_rerouted_by_word:,} outlier SKUs by type-word")
+
+    # Pass 4: clean adjacent-redundant-words within each path segment
+    # (Bug #3: "Dark Chocolate Chocolate" → "Dark Chocolate")
+    n_redundant_fixed = 0
+    for r in rows:
+        for col in ("canonical_path", "retail_leaf_path", "modifier"):
+            v = (r.get(col) or "").strip()
+            if not v: continue
+            new_segs = [_strip_redundant_adjacent_words(s) for s in v.split(" > ")]
+            new_v = " > ".join(new_segs)
+            if new_v != v:
+                r[col] = new_v
+                n_redundant_fixed += 1
+    print(f"  cleaned {n_redundant_fixed:,} segments with adjacent-redundant words")
+
+    # Pass 5: backfill empty retail_leaf_path with canonical_path
+    # (Bug #2: 42 rows had empty RLP despite populated CP)
+    n_rlp_backfilled = 0
+    for r in rows:
+        cp = (r.get("canonical_path") or "").strip()
+        rlp = (r.get("retail_leaf_path") or "").strip()
+        if cp and not rlp:
+            r["retail_leaf_path"] = cp
+            n_rlp_backfilled += 1
+    if n_rlp_backfilled:
+        print(f"  backfilled {n_rlp_backfilled:,} empty retail_leaf_path with canonical_path")
 
     # Write
     print(f"Writing {TMP.name}...")
