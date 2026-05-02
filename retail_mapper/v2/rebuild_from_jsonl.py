@@ -673,6 +673,72 @@ def final_bfc_validation(baseline: dict) -> int:
     if n_post:
         print(f"    Stage 5c: {n_post:,} stubborn-pattern post-fixes")
 
+    # 5d. Title-flavor fallback: when canonical_path doesn't contain a flavor word
+    # but the title does, append the flavor as a leaf (before claims if claims at end).
+    TITLE_FLAVORS = [
+        # Compound flavors first
+        "Pink Lemonade","Strawberry Lemonade","Cherry Limeade","Tropical Punch",
+        "Fruit Punch","Sweet Tea","Iced Tea","Strawberry Banana","Mixed Berry",
+        "Salted Caramel","Sea Salt Caramel","Birthday Cake","Cookies and Cream",
+        "Cookies & Cream","Pumpkin Spice","Cinnamon Roll","French Vanilla",
+        "Vanilla Bean","Black Cherry","Wild Cherry","Dark Chocolate",
+        "Milk Chocolate","White Chocolate","Honey Mustard","Buffalo",
+        "Peanut Butter","Almond Butter","Apple Cider","Root Beer",
+        "Maple Brown Sugar","Brown Sugar","Honey Roasted",
+        # Single flavors
+        "Strawberry","Blueberry","Raspberry","Blackberry","Cherry","Vanilla",
+        "Chocolate","Banana","Peach","Pineapple","Mango","Coconut","Apple",
+        "Orange","Grape","Pomegranate","Watermelon","Lemon","Lime",
+        "Cinnamon","Caramel","Maple","Honey","Mint","Peppermint",
+        "Almond","Hazelnut","Pistachio","Walnut","Pecan","Cashew",
+        "Pumpkin","Coffee","Mocha","Espresso","Latte","Cappuccino",
+        "Cranberry","Apricot","Plum","Pear","Tangerine","Grapefruit",
+    ]
+    TITLE_FLAVORS = sorted(TITLE_FLAVORS, key=lambda s: -len(s))
+    FLAVOR_RX_TITLE = re.compile(r"\b(" + "|".join(re.escape(f) for f in TITLE_FLAVORS) + r")\b", re.I)
+
+    KNOWN_CLAIMS_LOCAL = KNOWN_CLAIMS  # reuse from above
+
+    n_title_flavors = 0
+    for fdc, rec in baseline.items():
+        cp = (rec.get("canonical_path") or "").strip()
+        if not cp: continue
+        title = (rec.get("title") or "")
+        if not title: continue
+        # Extract candidate flavor from title
+        m = FLAVOR_RX_TITLE.search(title)
+        if not m: continue
+        flavor_word = m.group(0)
+        # Canonicalize to dictionary form
+        canonical_flavor = next((f for f in TITLE_FLAVORS if f.lower() == flavor_word.lower()), flavor_word.title())
+        # Skip if path already has this flavor
+        path_segs_lower = {s.lower() for s in cp.split(' > ')}
+        if canonical_flavor.lower() in path_segs_lower: continue
+        # Skip if any path segment CONTAINS this flavor word (e.g., "Lemonade" already has "Lemon")
+        if any(canonical_flavor.lower() in s.lower() for s in cp.split(' > ')): continue
+        # Insert flavor: before claims (if claims at end), else at end
+        segs = cp.split(' > ')
+        # Find first claim segment from the right
+        last_non_claim = len(segs)
+        for i in range(len(segs)-1, -1, -1):
+            if segs[i].lower() not in KNOWN_CLAIMS_LOCAL:
+                last_non_claim = i + 1
+                break
+        # Insert flavor at last_non_claim (right before claims start)
+        new_segs = segs[:last_non_claim] + [canonical_flavor] + segs[last_non_claim:]
+        # Dedupe
+        seen = set(); out = []
+        for s in new_segs:
+            k = s.lower()
+            if k in seen: continue
+            seen.add(k); out.append(s)
+        new_cp = ' > '.join(out)
+        if new_cp != cp:
+            rec["canonical_path"] = new_cp
+            rec["retail_leaf_path"] = new_cp
+            n_title_flavors += 1
+    print(f"    Stage 5d: {n_title_flavors:,} flavors extracted from title and inserted")
+
     print(f"    Stage 5: {n_cross_family:,} cross-family + {n_shallow_enriched:,} shallow-enriched + {n_flavor_at_d2_fixed:,} flavor-at-d2 + {n_jerky_routed:,} jerky + {n_bean_typed:,} bean-typed + {n_dedupe:,} deduped")
     return n_cross_family + n_shallow_enriched + n_flavor_at_d2_fixed + n_jerky_routed + n_bean_typed
 
