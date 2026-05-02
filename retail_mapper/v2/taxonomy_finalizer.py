@@ -221,6 +221,40 @@ SEAFOOD_TYPES = [
     ("mussel", "Mussel"),
 ]
 
+PREPARED_SANDWICH_BFCS = {
+    "prepared subs & sandwiches",
+    "sandwiches/filled rolls/wraps",
+    "prepared sandwiches",
+    "sandwiches",
+}
+
+PREPARED_WRAP_BFCS = {
+    "prepared wraps and burittos",
+    "prepared wraps and burritos",
+    "wraps & burritos",
+}
+
+FROZEN_BREAKFAST_BFCS = {
+    "frozen breakfast sandwiches, biscuits & meals",
+}
+
+BREAKFAST_SANDWICH_BFCS = {
+    "breakfast sandwiches, biscuits & meals",
+}
+
+FROZEN_APPETIZER_BFCS = {
+    "frozen appetizers & hors d'oeuvres",
+}
+
+FROZEN_MEAL_BFCS = {
+    "frozen dinners & entrees",
+}
+
+PREPARED_MEAT_BFCS = {
+    "meat/poultry/other animals  prepared/processed",
+    "meat/poultry/other animals sausages  prepared/processed",
+}
+
 ABBREVIATIONS = {
     "bbq": "BBQ",
     "pb&j": "PB&J",
@@ -447,6 +481,75 @@ def _detect_plant_milk_identity(text: str) -> str:
     return "Plant Milk"
 
 
+def _looks_like_prepared_sandwich(title: str) -> bool:
+    return bool(re.search(
+        r"\b(sandwich|sub|hoagie|hero|panini|slider|burger|cheeseburger|"
+        r"hamburger|hot\s*dog|frank(?:furter)?|gyro|banh\s*mi|on\s+(?:a\s+)?"
+        r"(?:white\s+|wheat\s+|whole\s+grain\s+|sesame\s+|hoagie\s+|pretzel\s+)?"
+        r"(?:bun|roll|hoagie|sub))\b",
+        title or "",
+        re.I,
+    ))
+
+
+def _sandwich_identity(title: str) -> str:
+    t = title or ""
+    if re.search(r"\bbanh\s*mi\b", t, re.I):
+        return "Banh Mi Sandwich"
+    if re.search(r"\bgyro\b", t, re.I):
+        return "Gyro Sandwich"
+    if re.search(r"\bpanini\b", t, re.I):
+        return "Panini"
+    if re.search(r"\bwraps?\b", t, re.I):
+        return "Wrap Sandwich"
+    if re.search(r"\b(?:sub|hoagie|hero)s?\b", t, re.I):
+        return "Sub Sandwich"
+    if re.search(r"\bsliders?\b", t, re.I):
+        return "Slider Sandwich"
+    if re.search(r"\bcheeseburger\b", t, re.I):
+        return "Cheeseburger"
+    if re.search(r"\bhamburger\b|\bburger\b", t, re.I):
+        return "Hamburger"
+    if re.search(r"\bhot\s*dogs?\b|\bfranks?\b|\bfrankfurters?\b", t, re.I):
+        return "Hot Dog"
+    if re.search(r"\bbreakfast\s+sandwich\b", t, re.I):
+        return "Breakfast Sandwich"
+    if re.search(r"\bpita\b", t, re.I):
+        return "Pita Sandwich"
+    return "Sandwich"
+
+
+def _appetizer_identity(title: str) -> str:
+    t = title or ""
+    if re.search(r"\begg\s+rolls?\b", t, re.I):
+        return "Egg Rolls"
+    if re.search(r"\bspring\s+rolls?\b", t, re.I):
+        return "Spring Rolls"
+    if re.search(r"\bpizza\s+rolls?\b", t, re.I):
+        return "Pizza Rolls"
+    if re.search(r"\b(?:sausage|pork|beef|chicken)\s+rolls?\b", t, re.I):
+        return "Meat Rolls"
+    if re.search(r"\b(?:bao|baozi|steamed|asian|bbq|barbecue|pork|teriyaki).*\bbuns?\b|\bbuns?.*(?:pork|teriyaki|bbq|barbecue)\b", t, re.I):
+        return "Stuffed Buns"
+    if _looks_like_prepared_sandwich(t):
+        ident = _sandwich_identity(t)
+        return "Sliders" if ident == "Slider Sandwich" else ident
+    if re.search(r"\bbread\s*st(?:ick|ix)s?\b|\bbreadsticks?\b", t, re.I):
+        return "Breadsticks"
+    return "Appetizers"
+
+
+def _prepared_meal_identity(title: str) -> str:
+    t = title or ""
+    if re.search(r"\bstuffed\s+cabbage\s+rolls?\b|\bcabbage\s+rolls?\b", t, re.I):
+        return "Stuffed Cabbage"
+    if re.search(r"\bpizza\s+rolls?\b", t, re.I):
+        return "Pizza Rolls"
+    if _looks_like_prepared_sandwich(t):
+        return _sandwich_identity(t)
+    return "Entree"
+
+
 def _forced_base(row: Mapping[str, str]) -> tuple[str, str] | None:
     title = row.get("title", "") or ""
     bfc = row.get("branded_food_category", "") or ""
@@ -462,6 +565,36 @@ def _forced_base(row: Mapping[str, str]) -> tuple[str, str] | None:
     )
     if plant_context:
         return "Beverage > Plant Milk", _detect_plant_milk_identity(title + " " + identity)
+
+    if bfc_lower in PREPARED_SANDWICH_BFCS:
+        return "Meal > Sandwiches", _sandwich_identity(title)
+
+    if bfc_lower in PREPARED_WRAP_BFCS:
+        if re.search(r"\bburritos?\b", title, re.I):
+            return "Meal > Burritos", "Burrito"
+        return "Meal > Wraps", "Wrap"
+
+    if bfc_lower in FROZEN_BREAKFAST_BFCS:
+        return "Frozen > Breakfast", _sandwich_identity(title)
+
+    if bfc_lower in BREAKFAST_SANDWICH_BFCS:
+        return "Meal > Sandwiches", _sandwich_identity(title)
+
+    if bfc_lower in FROZEN_APPETIZER_BFCS:
+        return "Frozen > Appetizers", _appetizer_identity(title)
+
+    if bfc_lower in FROZEN_MEAL_BFCS:
+        return "Frozen > Single Entrees", _prepared_meal_identity(title)
+
+    if bfc_lower in PREPARED_MEAT_BFCS and _looks_like_prepared_sandwich(title):
+        return "Meal > Sandwiches", _sandwich_identity(title)
+
+    if bfc_lower == "pizza":
+        if re.search(r"\bpizza\s+rolls?\b", title, re.I):
+            return "Frozen > Appetizers", "Pizza Rolls"
+        if re.search(r"\bbread\s*st(?:ick|ix)s?\b|\bbreadsticks?\b", title, re.I):
+            return "Frozen > Pizza", "Breadsticks"
+        return "Meal > Pizza", "Pizza"
 
     # Authoritative BFC-driven routes — when BFC alone fully determines
     # family+type, force the route regardless of title regex hijacks.
@@ -588,17 +721,6 @@ def _canonical_from_category_identity(category_path: str, identity: str) -> str:
     if not identity:
         return PATH_SEP.join(category_segments)
 
-    # Combined-parent BFC names ("Sauces & Salsas", "Hot Dogs & Sausages",
-    # "Salad Dressing & Mayonnaise", etc.) must NOT appear in canonical_path.
-    # When the category last segment contains '&', ',', or '/', REPLACE it
-    # with the more-specific identity rather than appending.
-    if len(category_segments) >= 2:
-        last_seg = category_segments[-1]
-        if re.search(r"[&,/]", last_seg):
-            return PATH_SEP.join(
-                dedupe_segments(category_segments[:-1] + [identity])
-            )
-
     identity_key = _token_key(identity)
     category_keys = {_token_key(seg) for seg in category_segments}
     category_words: set[str] = set()
@@ -608,7 +730,8 @@ def _canonical_from_category_identity(category_path: str, identity: str) -> str:
     if identity_key in category_keys:
         return PATH_SEP.join(category_segments)
 
-    if _word_set(identity).issubset(category_words):
+    last_is_combined_bucket = bool(re.search(r"[&,/]", category_segments[-1]))
+    if not last_is_combined_bucket and _word_set(identity).issubset(category_words):
         return PATH_SEP.join(category_segments)
 
     return PATH_SEP.join(dedupe_segments(category_segments + [identity]))

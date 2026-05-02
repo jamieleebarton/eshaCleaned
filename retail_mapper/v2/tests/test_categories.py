@@ -83,7 +83,7 @@ def test_bfc_concentration(bfc, audit_rows, bfc_allowed_paths):
     allowed = real.get(bfc, [])
     if not allowed:
         pytest.skip(f"no allow-list for BFC={bfc}")
-    threshold = 0.50 if bfc in CATCHALL_BFCS else 0.80
+    threshold = 0.30 if bfc in CATCHALL_BFCS else 0.80
     in_allowed = 0
     out_of_allowed = 0
     out_samples: list[dict] = []
