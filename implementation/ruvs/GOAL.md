@@ -14,9 +14,20 @@ The previous ACTIVE PLAN ("Tag the Walmart & Kroger cache to full_corpus_audit.c
 
 The classification substrate is in place. The next move uses it.
 
-## ACTIVE PLAN — Replace the per-canonical filter chain with audit-driven accept
+## ACTIVE PLAN — Structured audit-driven product compatibility
 
-`/Users/jamiebarton/Desktop/esha_audit_bundle/implementation/surface_lab_calculator.py` is the file that gates which retail products can be selected for a recipe line. Today it has 60+ `if canonical_key == "..."` branches plus a default-tail combo blocklist (`pasta`, `bread`, `salad`, `mix`, `tortilla`, ...) that rejects correctly-classified products whose titles happen to carry those tokens. The universe sweep tonight shows 46 `shopping_gap` and 51 `wrong_form_likely` lines — 5.6% of 1,740 — that are direct outputs of this filter chain over-rejecting. See `INVESTIGATION_FILTER.md` for the full trace.
+**Read first: `STRUCTURED_MATCHER_SPEC.md` (committed `c1f0870`).** That document is the canonical spec, owner-authored. This section is a pointer.
+
+The previous ACTIVE PLAN ("Replace the per-canonical filter chain with audit-driven accept") was on the right line but framed too narrowly. Step 3 (`accept_via_audit` as first check, commit `88af680`) shipped and is the foothold the spec extends. The new spec demands more than swapping per-canonical branches: it requires a **structured compatibility decision** across six dimensions (canonical path, nutrition codes, variant, form, flavor, combo/prepared) with explicit handling of:
+
+- ESHA override must NOT short-circuit retail matching (Spec Part 4).
+- A generated `canonical_retail_bridge` table — not hand-authored — that maps each canonical to expected audit path + allowed/forbidden facets (Spec Part 5).
+- Demote `_reject_combo_product()` to unclassified-fallback only (Spec Part 3), do not delete blindly.
+- A clear separation between Problem A (raw recipe → canonical fails) and Problem B (canonical resolved, retail match fails). Most current failures are B.
+
+`/Users/jamiebarton/Desktop/esha_audit_bundle/implementation/surface_lab_calculator.py` is still the file that gates retail product selection. Today it has 60+ `if canonical_key == "..."` branches plus a default-tail combo blocklist (`pasta`, `bread`, `salad`, `mix`, `tortilla`, ...). The classification substrate (`product_audit_classification.db`) gives every cached product a deterministic `canonical_path` / `variant` / `form_texture_cut` / `processing_storage`. The matcher must use it as primary, not the legacy regex chain.
+
+Execution order is in the spec (Parts 1 → 4 → 5 → 2 → 3 → 7/10). Win conditions (Part 8) are non-negotiable.
 
 The classification substrate that just shipped (`product_audit_classification.db`) gives every cached product a deterministic `canonical_path` / `variant` / `form_texture_cut` / `processing_storage`. The filter chain just needs to use it.
 
