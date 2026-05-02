@@ -30,6 +30,7 @@ from path_canonicalizer import (
     SYNONYM_MAP,
     title_case,
 )
+from product_class_router import route_product
 
 V2 = Path("/Users/jamiebarton/Desktop/esha_audit_bundle/retail_mapper/v2")
 AUDIT = V2 / "full_corpus_audit.csv"
@@ -37,6 +38,37 @@ ENRICHED = V2 / "full_corpus_enriched.csv"
 NEW_AUDIT = V2 / "full_corpus_audit.csv.canonical"
 
 csv.field_size_limit(sys.maxsize)
+
+
+def stage0_route_to_product_class(rows: list[dict]) -> int:
+    """For each SKU, if BFC/title/FNDDS matches a known product class,
+    REPLACE its canonical_path with the forced family+type prefix +
+    preserved modifier leaves from the existing path.
+    """
+    print("Stage 0: Force-routing to canonical product class...")
+    n_routed = 0
+    for r in rows:
+        bfc = (r.get('branded_food_category') or '').strip()
+        title = (r.get('title') or '').strip()
+        fndds_desc = (r.get('fndds_desc') or '').strip()
+        forced_prefix = route_product(bfc, fndds_desc, title)
+        if not forced_prefix:
+            continue
+        # Get current path's modifier segments (anything after position 2)
+        cp = (r.get('canonical_path') or '').strip()
+        forced_segs = forced_prefix.split(' > ')
+        forced_lower = {s.lower() for s in forced_segs}
+        cp_segs = cp.split(' > ') if cp else []
+        # Preserve modifier leaves from current path that aren't in forced_prefix
+        # (these are flavors/claims/forms/variants that shouldn't be lost)
+        modifier_leaves = [s for s in cp_segs[2:] if s.lower() not in forced_lower]
+        new_cp = forced_prefix + (' > ' + ' > '.join(modifier_leaves) if modifier_leaves else '')
+        if new_cp != cp:
+            r['canonical_path'] = new_cp
+            r['retail_leaf_path'] = new_cp
+            n_routed += 1
+    print(f"  SKUs routed to canonical product class: {n_routed:,}")
+    return n_routed
 
 
 def stage1_canonicalize_all(rows: list[dict]) -> int:
@@ -182,6 +214,10 @@ def main():
         fieldnames = rdr.fieldnames
         rows = list(rdr)
     print(f"  loaded {len(rows):,} rows in {time.time()-t0:.0f}s")
+    print()
+
+    # Stage 0: force-route by product class (BFC + title + FNDDS evidence)
+    stage0_route_to_product_class(rows)
     print()
 
     # Stage 1: canonicalize
