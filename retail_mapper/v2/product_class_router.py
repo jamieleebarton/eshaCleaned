@@ -203,6 +203,14 @@ TITLE_FORCED: list[tuple[re.Pattern, str]] = [
     (re.compile(r"\bdinner\s*rolls?\b", re.I), 'Bakery > Rolls > Dinner Rolls'),
     # Hot dogs (the meat — only after buns matched)
     (re.compile(r"\bhot\s*dogs?\b|\bfranks?\b(?!\s+furt)", re.I), 'Meat & Seafood > Hot Dogs'),
+    # Flavored drink mixes / powdered drinks (BEFORE generic juice rules)
+    (re.compile(r"\borange\s+(?:drink\s+mix|powder(?:ed)?\s+drink|flavored\s+drink|breakfast\s+drink)\b|\borange\s+(?:tang|kool[\s-]?aid)\b", re.I), 'Beverage > Flavored Drinks > Orange'),
+    (re.compile(r"\bgrape\s+(?:drink\s+mix|powder(?:ed)?\s+drink|flavored\s+drink|kool[\s-]?aid)\b", re.I), 'Beverage > Flavored Drinks > Grape'),
+    (re.compile(r"\bcherry\s+(?:drink\s+mix|powder(?:ed)?\s+drink|flavored\s+drink|kool[\s-]?aid)\b", re.I), 'Beverage > Flavored Drinks > Cherry'),
+    (re.compile(r"\bstrawberry\s+(?:drink\s+mix|powder(?:ed)?\s+drink|flavored\s+drink|kool[\s-]?aid)\b", re.I), 'Beverage > Flavored Drinks > Strawberry'),
+    (re.compile(r"\b(?:fruit\s+)?punch\s+(?:drink\s+mix|powder(?:ed)?\s+drink|flavored\s+drink|kool[\s-]?aid)\b|\btropical\s+punch\s+drink\b", re.I), 'Beverage > Flavored Drinks > Punch'),
+    (re.compile(r"\blemonade\s+(?:drink\s+mix|powder(?:ed)?\s+drink|mix|powder)\b", re.I), 'Beverage > Flavored Drinks > Lemonade'),
+    (re.compile(r"\biced?\s*tea\s+(?:drink\s+mix|powder(?:ed)?\s+drink|mix|powder)\b", re.I), 'Beverage > Flavored Drinks > Iced Tea'),
     # Juice variants
     (re.compile(r"\borange\s*juice\b(?!.*mix)", re.I), 'Beverage > Juice > Orange Juice'),
     (re.compile(r"\bapple\s*juice\b(?!.*mix)", re.I), 'Beverage > Juice > Apple Juice'),

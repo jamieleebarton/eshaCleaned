@@ -40,28 +40,35 @@ NEW_AUDIT = V2 / "full_corpus_audit.csv.canonical"
 csv.field_size_limit(sys.maxsize)
 
 
+def _facet_leaves_from_columns(r: dict) -> list[str]:
+    """Build leaves from the SKU's structured DeepSeek columns:
+    variant | flavor | form_texture_cut | processing_storage | claims.
+
+    These are PER-SKU title-derived facets — the source of truth for leaves.
+    Each column may contain a pipe-separated list. Underscores → spaces.
+    """
+    leaves: list[str] = []
+    for col in ('variant', 'flavor', 'form_texture_cut', 'processing_storage', 'claims'):
+        v = (r.get(col) or '').strip()
+        if not v: continue
+        for piece in v.split('|'):
+            piece = piece.strip().replace('_', ' ')
+            if piece:
+                leaves.append(title_case(piece))
+    return leaves
+
+
 def stage0_route_to_product_class(rows: list[dict]) -> int:
     """For each SKU, if BFC/title/FNDDS matches a known product class,
-    REPLACE its canonical_path with the forced family+type prefix +
-    preserved modifier leaves from the existing path.
+    set canonical_path = forced_family_type_prefix + structured-column leaves.
 
-    Filters out junk leaves that look like family/category names.
+    Source of truth for leaves: variant | flavor | form_texture_cut |
+    processing_storage | claims columns (per-SKU title-derived facets).
+
+    NOT used: pre-existing canonical_path leaves (often corrupted).
+    NOT used: FNDDS dedupe (FNDDS is a type bucket, not a flavor source).
     """
-    # Family-root and combined-parent words that are NEVER valid as leaves
-    JUNK_LEAF_PATTERNS: set[str] = {
-        'appetizers & snacks', 'appetizers and snacks', 'baking mixes',
-        'bakery', 'beverage', 'pantry', 'snack', 'snacks', 'frozen',
-        'meat & seafood', 'dairy', 'meal', 'produce',
-        'dips & spreads', 'sauces & salsas', 'spices & seasonings',
-        'frosting & icing', 'patties & burgers', 'sports & wellness',
-        'baby & toddler', 'crackers & biscotti', 'cookies & biscuits',
-        'pies & tarts', 'breads & buns', 'cakes', 'baking decorations',
-        'wraps & burritos', 'oils', 'mixes', 'drinks', 'beverages',
-        'plain', 'natural', 'original',  # too generic, often left over
-        'chicken honey', 'butter herb',  # observed junk combos
-    }
-
-    print("Stage 0: Force-routing to canonical product class...")
+    print("Stage 0: Force-routing + rebuilding leaves from structured columns...")
     n_routed = 0
     for r in rows:
         bfc = (r.get('branded_food_category') or '').strip()
@@ -70,24 +77,10 @@ def stage0_route_to_product_class(rows: list[dict]) -> int:
         forced_prefix = route_product(bfc, fndds_desc, title)
         if not forced_prefix:
             continue
+        leaves = _facet_leaves_from_columns(r)
+        new_segs = forced_prefix.split(' > ') + leaves
+        new_cp = canonicalize_path(new_segs)  # dedupe + reorder
         cp = (r.get('canonical_path') or '').strip()
-        forced_segs = forced_prefix.split(' > ')
-        forced_lower = {s.lower() for s in forced_segs}
-        cp_segs = cp.split(' > ') if cp else []
-        # Preserve modifier leaves from current path that aren't in forced_prefix
-        # AND aren't junk (family-root names, combined parents, generic labels)
-        modifier_leaves = []
-        for s in cp_segs[2:]:
-            sl = s.lower().strip()
-            if sl in forced_lower: continue
-            if sl in JUNK_LEAF_PATTERNS: continue
-            # Drop any segment containing " & " where both sides are family-root words
-            if ' & ' in sl:
-                left, right = sl.split(' & ', 1)
-                if left.strip() in JUNK_LEAF_PATTERNS or right.strip() in JUNK_LEAF_PATTERNS:
-                    continue
-            modifier_leaves.append(s)
-        new_cp = forced_prefix + (' > ' + ' > '.join(modifier_leaves) if modifier_leaves else '')
         if new_cp != cp:
             r['canonical_path'] = new_cp
             r['retail_leaf_path'] = new_cp
@@ -227,7 +220,7 @@ def stage4_recanonicalize(rows: list[dict]) -> int:
 
 def main():
     print("=" * 70)
-    print("Path canonicalization + FNDDS dedupe + leaf recovery")
+    print("Path canonicalization (structured-column rebuild + leaf recovery)")
     print("=" * 70)
     t_start = time.time()
 
@@ -249,21 +242,17 @@ def main():
     stage1_canonicalize_all(rows)
     print()
 
-    # Stage 2: FNDDS dedupe (consolidates same-product SKUs to dominant path)
-    stage2_fndds_dedupe(rows)
-    print()
+    # Stage 2 (FNDDS dedupe) — REMOVED. FNDDS is a TYPE bucket, not a flavor
+    # source of truth. Dedupe at FNDDS level collapsed different-flavor SKUs
+    # sharing one FNDDS code into a single wrong-flavor dominant path
+    # (e.g. dragged "Lemon" into Orange Drink Mix). Title + structured
+    # facet columns are the source of truth, applied per-SKU in Stage 0.
 
     # Stage 3: recover lost leaf detail from enriched
     stage3_recover_from_enriched(rows)
     print()
 
-    # Stage 0b: RE-ROUTE by product class — overrides any dedupe corruption.
-    # Product class is the AUTHORITATIVE family+type prefix.
-    print("Stage 0b: Re-applying product-class router (overrides dedupe)...")
-    stage0_route_to_product_class(rows)
-    print()
-
-    # Stage 4: final re-canonicalize after all routing
+    # Stage 4: final re-canonicalize after recovery
     stage4_recanonicalize(rows)
     print()
 
