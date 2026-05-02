@@ -940,7 +940,9 @@ def _cocktail_mixer_identity(title: str, identity: str) -> str | None:
     has_mix_cue = re.search(
         r"\b(cocktail\s+(?:mix|mixer)|mix(?:es|ers?)?|drink\s+mix|juice\s+mixers?|bar\s+juice|"
         r"rimm(?:er|ing)|rim\s+(?:sugar|salt|candy|dip|paste|dressing)|cocktail\s+garnish|"
-        r"grenadine|bitters?|brine|syrup|cream\s+of\s+coconut|coconut\s+cream)\b",
+        r"grenadine|bitters?|brine|syrup|beer\s+salt|margarita\s+salt|"
+        r"bloody\s*mary\s+seasoning|michelada|rim\s+shot|cocktail\s+sea\s+salt|"
+        r"chamoy|chamo\s+mix|picante|cream\s+of\s+coconut|coconut\s+cream)\b",
         evidence,
         re.I,
     )
@@ -948,14 +950,21 @@ def _cocktail_mixer_identity(title: str, identity: str) -> str | None:
         r"\b(cocktails?|margarita|pina\s*colada|daiquiri|bloody\s+mary|mojito|martini|"
         r"michelada|mule|paloma|cosmopolitan|old\s+fashioned|sweet\s*&?\s*sour|"
         r"whiskey\s+sour|grenadine|bitters?|rimm(?:er|ing)|rim\s+(?:sugar|salt|candy|dip|paste|dressing)|"
-        r"bar\s+juice|cream\s+of\s+coconut)\b",
+        r"bar\s+juice|brine|syrup|beer\s+salt|margarita\s+salt|bloody\s*mary\s+seasoning|"
+        r"rim\s+shot|cocktail\s+sea\s+salt|chamoy|chamo\s+mix|picante|cream\s+of\s+coconut)\b",
         evidence,
         re.I,
     ):
         return None
     if re.search(r"\bbitters?\b", evidence, re.I):
         return "Cocktail Bitters"
-    if re.search(r"\b(rimm(?:er|ing)|rim\s+(?:sugar|salt|candy|dip|paste|dressing)|cocktail\s+garnish)\b", evidence, re.I):
+    if re.search(
+        r"\b(rimm(?:er|ing)|rim\s+(?:sugar|salt|candy|dip|paste|dressing)|cocktail\s+garnish|"
+        r"beer\s+salt|margarita\s+salt|bloody\s*mary\s+seasoning|rim\s+shot|"
+        r"cocktail\s+sea\s+salt|chamoy|chamo\s+mix|picante)\b",
+        evidence,
+        re.I,
+    ):
         return "Cocktail Rimmer"
     if re.search(r"\b(grenadine|simple\s+syrup|cocktail\s+syrup|syrup)\b", evidence, re.I):
         return "Cocktail Syrup"
@@ -970,6 +979,25 @@ def _cocktail_mixer_identity(title: str, identity: str) -> str | None:
     if has_mix_cue and re.search(r"\b(margarita|pina\s*colada|daiquiri|mojito|martini|mule|paloma|cosmopolitan|"
                  r"old\s+fashioned|sweet\s*&?\s*sour|whiskey\s+sour|cocktail\s+(?:mix|mixer)|mixers?)\b", evidence, re.I):
         return "Cocktail Mix"
+    return None
+
+
+def _beverage_mix_route(title: str, identity: str) -> tuple[str, str] | None:
+    evidence = f"{title or ''} {identity or ''}"
+    if re.search(r"\bprotein\s+shake\s+mix\b|\bprotein\s+powder\s+drink\s+mix\b", evidence, re.I):
+        return "Beverage > Protein Drinks", "Protein Shake Mix"
+    if re.search(r"\bhot\s+cocoa\s+mix\b|\bhot\s+chocolate\s+mix\b", evidence, re.I):
+        return "Beverage > Hot Cocoa", "Hot Cocoa Mix"
+    if re.search(r"\biced\s+tea\s+mix\b|\btea\s+mix\b", evidence, re.I):
+        return "Beverage > Tea", "Iced Tea Mix"
+    if re.search(r"\blemonade\s+mix\b", evidence, re.I):
+        return "Beverage > Mixes", "Lemonade Mix"
+    if re.search(r"\blatte\s+mix\b|\biced\s+latte\b|\bcoffee\s+mix\b", evidence, re.I):
+        return "Beverage > Coffee", "Latte Mix"
+    if re.search(r"\b(sports?\s+drink|electrolyte|hydration|thirst\s+quencher)\b.*\bmix\b", evidence, re.I):
+        return "Beverage > Sports Drinks", "Sports Drink Mix"
+    if re.search(r"\b(?:drink|beverage|soda|smoothie)\s+mix\b|\bmix\s+for\s+beverage\b", evidence, re.I):
+        return "Beverage > Mixes", "Drink Mix"
     return None
 
 
@@ -1075,6 +1103,14 @@ def _forced_base(row: Mapping[str, str]) -> tuple[str, str] | None:
     if re.search(r"\bhot\s*dog\b", title, re.I) and \
        re.search(r"\b(rolls?|buns?)\b", title, re.I):
         return "Bakery > Buns", "Hot Dog Buns"
+
+    # Sandwich title detection — title clearly says "SANDWICH(ES)" and
+    # is not a sandwich-cookie/sandwich-cracker. Routes to Meal > Sandwiches
+    # regardless of BFC=Breads & Buns hijack.
+    if re.search(r"\bsandwich(?:es)?\b", title, re.I) and \
+       not re.search(r"\b(sandwich\s+cookies?|cookie\s+sandwich|cracker\s+sandwich|"
+                     r"ice\s+cream\s+sandwich|breakfast\s+sandwich)\b", title, re.I):
+        return "Meal > Sandwiches", identity if (identity and identity.lower() not in {"sandwich", "bread", "bun", "buns"}) else "Sandwich"
 
     breakfast_reference = " ".join([
         identity,
@@ -1305,6 +1341,20 @@ def _forced_base(row: Mapping[str, str]) -> tuple[str, str] | None:
         ))
     ):
         return "Beverage > Cocktail Mixers", cocktail_identity
+
+    beverage_mix_route = _beverage_mix_route(title, identity)
+    if beverage_mix_route and (
+        bfc_lower in {
+            "alcohol",
+            "liquid water enhancer",
+            "sport drinks",
+            "other drinks",
+            "energy, protein & muscle recovery drinks",
+        }
+        or _token_key(category).startswith(("pantry mix", "pantry drink mix"))
+        or _token_key(row.get("canonical_path", "") or "").startswith(("pantry mix", "pantry drink mix"))
+    ):
+        return beverage_mix_route
 
     bakery_hijack = _bakery_path_hijacked(category, row.get("canonical_path", "") or "")
 
@@ -1537,16 +1587,11 @@ def _canonical_from_category_identity(category_path: str, identity: str) -> str:
     if identity_key in category_keys:
         return PATH_SEP.join(category_segments)
 
-    # =====================================================================
-    # CRITICAL INVARIANT — DO NOT REMOVE OR REVERT
-    # =====================================================================
-    # When the last category segment is a BFC combined-parent name (contains
-    # &, comma, or slash, e.g. "Pancakes, Waffles, French Toast & Crepes"),
-    # REPLACE it with the more-specific identity instead of appending. BFC
-    # labels MUST NOT appear in canonical_path. Tests in
-    # tests/test_path_invariants.py and tests/test_one_home_per_identity.py
-    # depend on this. test_bfc_strip_replaces_combined_parent enforces it.
-    # =====================================================================
+    # ============================================================
+    # BFC COMBINED-PARENT STRIP — REQUIRED BY UNIT TESTS
+    # tests/test_taxonomy_finalizer_unit.py pins this behavior.
+    # Linter reverted this 4 times. DO NOT REMOVE.
+    # ============================================================
     if len(category_segments) >= 2 and re.search(r"[&,/]", category_segments[-1]):
         return PATH_SEP.join(
             dedupe_segments(category_segments[:-1] + [identity])

@@ -17,6 +17,7 @@ Result: every product_identity_fixed value has exactly ONE family>type home.
 from __future__ import annotations
 
 import csv
+import json
 import re
 import shutil
 import sys
@@ -119,7 +120,11 @@ def main() -> None:
 
     print(f"  identities with dominant home (≥{DOMINANT_THRESHOLD:.0%}): {len(pi_dominant):,}")
 
-    # Pass 2: reroute outliers by PI
+    # Pass 2: reroute by PI dominance OR by _forced_base — whichever
+    # disagrees with the current home. _forced_base output ALWAYS wins
+    # (it's title-driven and authoritative); only fall back to PI dominance
+    # when no force applies.
+    from taxonomy_finalizer import _forced_base
     n_rerouted_by_pi = 0
     n_skipped = 0
     for r in rows:
@@ -127,18 +132,27 @@ def main() -> None:
         cp = (r.get("canonical_path") or "").strip()
         if not (pi and cp):
             continue
+        segs = cp.split(" > ")
+        cur_home = " > ".join(segs[:2]) if len(segs) >= 2 else cp
+        # Authoritative: _forced_base. If it returns a different home, USE IT
+        # (overrides current path even if cur_home matches PI dominant home).
+        forced = _forced_base(r)
+        if forced is not None and forced[0] != cur_home:
+            r["category_path_fixed"] = forced[0]
+            apply_finalized_taxonomy(r)
+            n_rerouted_by_pi += 1
+            continue
+        # Fallback: PI dominance. Only fires if no force.
         if pi not in pi_dominant:
             n_skipped += 1
             continue
         dom_home = pi_dominant[pi]
-        segs = cp.split(" > ")
-        cur_home = " > ".join(segs[:2]) if len(segs) >= 2 else cp
         if cur_home == dom_home:
             continue
         r["category_path_fixed"] = dom_home
         apply_finalized_taxonomy(r)
         n_rerouted_by_pi += 1
-    print(f"  rerouted {n_rerouted_by_pi:,} outlier SKUs by PI")
+    print(f"  rerouted {n_rerouted_by_pi:,} outlier SKUs by PI/forced")
     print(f"  skipped {n_skipped:,} SKUs (PI without dominant home or too few SKUs)")
 
     # Pass 3: homogenize by type-WORD appearing anywhere in path.
@@ -271,6 +285,68 @@ def main() -> None:
                 r[col] = new_v
                 n_redundant_fixed += 1
     print(f"  cleaned {n_redundant_fixed:,} segments with adjacent-redundant words")
+
+    # Pass 4.5: BFC → authoritative family enforcement.
+    # Loads the curated map (≥80% concentration) and forces SKUs whose
+    # canonical_path family doesn't match their BFC's authoritative family.
+    # E.g., BFC=Alcohol → all 1,146 SKUs must be in Beverage family. The
+    # 60 SKUs currently in Pantry are misrouted hijacks → reroute to Beverage.
+    AUTH_PATH = V2 / "bfc_authoritative_family.json"
+    n_family_forced = 0
+    if AUTH_PATH.exists():
+        with AUTH_PATH.open(encoding="utf-8") as fh:
+            auth_map_raw = json.load(fh)
+        auth_map = {k.lower(): v for k, v in auth_map_raw.items() if not k.startswith("_")}
+        # For each BFC, also figure out the dominant TYPE within that family
+        # so when we reroute, we can pick a sensible category_path_fixed.
+        bfc_type_dom: dict[str, str] = {}
+        bfc_type_count: dict[str, Counter] = defaultdict(Counter)
+        for r in rows:
+            bfc = (r.get("branded_food_category") or "").strip().lower()
+            cp = (r.get("canonical_path") or "").strip()
+            if bfc not in auth_map: continue
+            segs = cp.split(" > ")
+            if len(segs) < 2: continue
+            if segs[0] != auth_map[bfc]: continue
+            top2 = " > ".join(segs[:2])
+            if _has_combined_bfc_name(top2): continue  # skip BFC-name parents
+            bfc_type_count[bfc][top2] += 1
+        for bfc, counter in bfc_type_count.items():
+            if counter:
+                bfc_type_dom[bfc] = counter.most_common(1)[0][0]
+        # Now reroute outliers — but RESPECT _forced_base. If a row has a
+        # title-driven force (sandwich, hot dog buns, plant-based cheese,
+        # candy with jelly beans, etc.), the _forced_base output trumps the
+        # BFC family-force. We check by calling _forced_base BEFORE forcing.
+        from taxonomy_finalizer import _forced_base
+        for r in rows:
+            bfc = (r.get("branded_food_category") or "").strip().lower()
+            cp = (r.get("canonical_path") or "").strip()
+            if bfc not in auth_map: continue
+            expected_family = auth_map[bfc]
+            if not cp:
+                continue
+            segs = cp.split(" > ")
+            current_family = segs[0]
+            if current_family == expected_family:
+                continue
+            # Check if _forced_base would route this to a non-bakery family
+            # (e.g., sandwich, plant-based cheese). If so, don't override.
+            forced = _forced_base(r)
+            if forced is not None:
+                forced_family = forced[0].split(" > ", 1)[0]
+                if forced_family != current_family:
+                    # _forced_base will fix this naturally — don't double-force
+                    r["category_path_fixed"] = forced[0]
+                    apply_finalized_taxonomy(r)
+                    n_family_forced += 1
+                    continue
+            new_top2 = bfc_type_dom.get(bfc) or expected_family
+            r["category_path_fixed"] = new_top2
+            apply_finalized_taxonomy(r)
+            n_family_forced += 1
+    if n_family_forced:
+        print(f"  forced {n_family_forced:,} SKUs to BFC-authoritative family")
 
     # Pass 5: backfill empty retail_leaf_path with canonical_path
     # (Bug #2: 42 rows had empty RLP despite populated CP)
