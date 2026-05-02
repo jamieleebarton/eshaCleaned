@@ -1,3 +1,5 @@
+retail_mapper/v2/full_corpus_audit.csv filter=lfs diff=lfs merge=lfs -text
+retail_mapper/v2/*.csv filter=lfs diff=lfs merge=lfs -text
 graph/**/*.csv filter=lfs diff=lfs merge=lfs -text
 implementation/*.csv filter=lfs diff=lfs merge=lfs -text
 implementation/**/*.csv filter=lfs diff=lfs merge=lfs -text
