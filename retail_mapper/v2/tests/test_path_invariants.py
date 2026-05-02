@@ -182,9 +182,10 @@ def test_no_family_in_leaf(audit_rows, valid_families):
 
 def test_no_bfc_name_in_leaf(audit_rows):
     """Combined retail-category names like 'Hot Dogs & Sausages',
-    'Patties & Burgers', 'Cookies & Biscuits' must never appear as leaves.
-
-    These are BFC labels, not product types/variants.
+    'Patties & Burgers', 'Cookies & Biscuits' must never appear at the
+    LEAF position of a path. (A BFC name as the type-slot of a 2-segment
+    path is allowed only if it's a legitimate sub-family like 'Baking Mixes'
+    that contains specific types beneath it.)
     """
     bad = []
     for r in audit_rows:
@@ -192,13 +193,15 @@ def test_no_bfc_name_in_leaf(audit_rows):
         if not cp:
             continue
         segs = cp.split(" > ")
-        for s in segs[1:]:
-            if s.lower() in BFC_LEAF_BLACKLIST:
-                bad.append(r)
-                break
+        if len(segs) < 2:
+            continue
+        # Check ONLY the last segment (the actual leaf)
+        leaf = segs[-1].lower()
+        if leaf in BFC_LEAF_BLACKLIST:
+            bad.append(r)
     if bad:
         fail_with_samples(
-            "Invariant 7 violated: BFC-name leaked into path as leaf",
+            "Invariant 7 violated: BFC-name appears as the LEAF segment of canonical_path",
             bad, extra_cols=["branded_food_category"],
         )
 

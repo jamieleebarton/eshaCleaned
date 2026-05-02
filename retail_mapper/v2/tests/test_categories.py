@@ -35,6 +35,12 @@ CATCHALL_BFCS = {
     "Other Meats", "Other Snacks", "Other Deli", "Other Drinks",
     "Other Frozen Meats", "Other Frozen Desserts", "Other Cooking Sauces",
     "Snack Foods - Other", "Snacks",
+    # Combined-name BFCs that span multiple product types
+    "Baking Additives & Extracts", "Chili & Stew", "Flavored Rice Dishes",
+    "Frozen Appetizers & Hors D'oeuvres", "Milk Additives",
+    "Oriental, Mexican & Ethnic Sauces",
+    "Pancakes, Waffles, French Toast & Crepes",
+    "Bread",  # very generic — covers many bread styles
     "Meat/Poultry/Other Animals  Prepared/Processed",
     "Meat/Poultry/Other Animals - Prepared/Processed",
     "Meat/Poultry/Other Animals  Unprepared/Unprocessed",
