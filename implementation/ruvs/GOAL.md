@@ -151,9 +151,24 @@ A recipe line is correct when ALL of these hold:
 5. **Run the calculator on the planner's recipe IDs.** Confirm calculator-derived grams are sane (verified for Tacos De Carnitas already). Resolve the 3 recipes the calculator's corpus is missing.
 6. **Only THEN** layer DeepSeek on the residual cases that the deterministic pipeline cannot decide.
 
-## State of work right now (2026-05-02 post-universe-sweep)
+## State of work right now (2026-05-02 post-structured-matcher)
 
-### Shipped tonight (in order)
+### Structured matcher — DONE (Steps A–F of EXECUTION_PLAN.md)
+
+All 6 steps committed. Final report: `Hestia/api/data/structured_matcher_final_report.md`.
+
+| Step | Spec part | Commit | Outcome |
+|---|---|---|---|
+| A | Part 4 | `d76846a` | ESHA override no longer short-circuits retail matching |
+| B | Part 5 | `2786d1f6` | `canonical_retail_bridge.db` (6,228 audit-derived) |
+| C | Part 3 | `112bf66` | `_reject_combo_product` demoted for confidently-classified products |
+| D | Part 6 | `b770cc4` | `_audit_path_products` reads UPCs from audit, hydrates from `master_products.db`, applies forbidden-modifier filter |
+| E | Part 7 | `e6fc5010` | 20-canonical sweep — 20/20 reach non-empty accepted list |
+| F | Part 10 | (this commit) | Final report + GOAL update |
+
+**Win conditions: 8 of 10 met** (see `structured_matcher_final_report.md` for full table). Remaining 2 are bridge-data tuning (oatmeal flavored variants, tomato juice mixer ranking), not structural — addressed in the report's Actionable Follow-ups section.
+
+### Shipped earlier tonight (in order)
 
 - **Step 1–4 (`food_packages_final.cleaned.db` cleaner)** — DONE in commit 252fb832 on Hestia. `Hestia/api/scripts/clean_food_packages_via_audit.py`. Outputs 13,789 kept / 2,136 demoted / 1,647 dropped from 15,058 inputs. Verification: Sugardale Ham Shank in fndds 22010945 (Pork Butt) = 0 rows.
 - **Audit-tagged classification table** — DONE in commit a5e26b42 on Hestia. `Hestia/api/scripts/tag_api_cache_to_audit.py` produced `Hestia/api/data/product_audit_classification.db`: 17,837 `audit_fdc_match` + 52,303 `audit_title_bm25` + 22,494 `unclassified` = 92,634 rows.
