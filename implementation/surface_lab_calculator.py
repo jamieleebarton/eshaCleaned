@@ -4271,9 +4271,57 @@ def _limit_reviewed_products(products: list[LabProduct], limit: int) -> list[Lab
     return out
 
 
+_DEBUG_DUMPER_HANDLE = None
+_DEBUG_DUMPER_PATH: str | None = None
+
+
+def _debug_dump_row(row: dict) -> None:
+    """Spec Part 1 instrumentation. Emits one JSON row per (canonical, product)
+    pair when env RUVS_PRODUCT_DEBUG_PATH is set. Read-only; does not change
+    matcher behavior."""
+    global _DEBUG_DUMPER_HANDLE, _DEBUG_DUMPER_PATH
+    target = os.environ.get("RUVS_PRODUCT_DEBUG_PATH")
+    if not target:
+        return
+    if _DEBUG_DUMPER_PATH != target:
+        if _DEBUG_DUMPER_HANDLE is not None:
+            try: _DEBUG_DUMPER_HANDLE.close()
+            except Exception: pass
+        try:
+            _DEBUG_DUMPER_HANDLE = open(target, "a", encoding="utf-8")
+            _DEBUG_DUMPER_PATH = target
+        except Exception:
+            _DEBUG_DUMPER_HANDLE = None
+            _DEBUG_DUMPER_PATH = None
+            return
+    try:
+        _DEBUG_DUMPER_HANDLE.write(json.dumps(row, default=str) + "\n")
+        _DEBUG_DUMPER_HANDLE.flush()
+    except Exception:
+        pass
+
+
+def _classify_acceptance_path(reason: str, product: LabProduct) -> str:
+    """Bucket a rejection/acceptance reason into one of the spec's
+    acceptance_path categories: audit_exact, audit_compatible,
+    nutrition_code_match, legacy_branch, legacy_combo_reject,
+    unclassified_fallback."""
+    if reason.startswith("audit_accept"):
+        return "audit_exact" if "audit_accept:" in reason and ":" in reason else "audit_compatible"
+    if reason.startswith("audit_path_mismatch") or reason.startswith("audit_forbidden_modifier"):
+        return "audit_compatible"
+    if reason in ("combo_or_prepared_product", "missing_required_canonical_terms") or "combo" in reason or "prepared" in reason:
+        return "legacy_combo_reject"
+    if "fallback_token_match" in reason or "missing_required_canonical_terms" in reason:
+        return "unclassified_fallback"
+    return "legacy_branch"
+
+
 def _review_products(products: list[LabProduct], canonical: str, limit: int = 25) -> tuple[list[LabProduct], list[LabProduct]]:
     accepted: list[LabProduct] = []
     rejected: list[LabProduct] = []
+    debug_on = bool(os.environ.get("RUVS_PRODUCT_DEBUG_PATH"))
+    audit_classes = _load_audit_class_by_upc() if debug_on else None
     for product in products:
         ok, reason = _product_acceptance_reason(product, canonical)
         reviewed = LabProduct(
@@ -4285,6 +4333,39 @@ def _review_products(products: list[LabProduct], canonical: str, limit: int = 25
             decision="accept" if ok else "reject",
             reason=reason,
         )
+        if debug_on:
+            cls = audit_classes.get(product.gtin_upc) or audit_classes.get((product.gtin_upc or "").lstrip("0")) if audit_classes else None
+            row = {
+                "canonical_key": normalize_key(canonical),
+                "canonical_name": canonical,
+                "product_title": product.description,
+                "product_brand": product.brand_name,
+                "product_category": product.category,
+                "product_source": product.source,
+                "product_upc": product.gtin_upc,
+                "accepted": ok,
+                "rejection_reason": "" if ok else reason,
+                "accept_reason": reason if ok else "",
+                "acceptance_path": _classify_acceptance_path(reason, product),
+            }
+            if cls:
+                cp, var, flv, ftc, ps, conf, method = cls
+                row.update({
+                    "product_canonical_path": cp,
+                    "product_variant": var,
+                    "product_flavor": flv,
+                    "product_form_texture_cut": ftc,
+                    "product_processing_storage": ps,
+                    "audit_confidence": conf,
+                    "classification_method": method,
+                })
+            else:
+                row.update({
+                    "product_canonical_path": None,
+                    "audit_confidence": None,
+                    "classification_method": "no_classification",
+                })
+            _debug_dump_row(row)
         if ok:
             accepted.append(reviewed)
         else:
