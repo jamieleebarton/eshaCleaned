@@ -33,6 +33,13 @@ def _column_values(r: dict, col: str) -> list[str]:
 
 
 def _path_segs_lower(r: dict) -> list[str]:
+    """Use retail_leaf_path for variant/flavor/form/claims checks since
+    canonical_path is family+type only per the taxonomy contract.
+    Falls back to canonical_path if RLP is empty.
+    """
+    rlp = (r.get("retail_leaf_path") or "").strip()
+    if rlp:
+        return [_norm(s) for s in rlp.split(" > ")]
     cp = (r.get("canonical_path") or "").strip()
     if not cp:
         return []

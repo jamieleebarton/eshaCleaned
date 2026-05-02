@@ -552,22 +552,6 @@ def _forced_base(row: Mapping[str, str]) -> tuple[str, str] | None:
     return None
 
 
-# Combined-parent BFC names that should never appear in a canonical_path.
-# When category_path's last segment matches one of these AND the identity
-# is more specific, replace the BFC name with the identity.
-_BFC_COMBINED_PARENTS = frozenset({
-    "sauces & salsas", "spices & seasonings", "dips & spreads",
-    "appetizers & snacks", "patties & burgers", "hot dogs & sausages",
-    "frosting & icing", "wraps & burritos", "cookies & biscuits",
-    "biscuits/cookies", "biscuits/cookies (shelf stable)",
-    "crackers & biscotti", "breads & buns", "pies & tarts",
-    "bagels, muffins, doughnuts & pastries", "baking mixes",
-    "pepperoni, salami & cold cuts", "sausages, hotdogs & brats",
-    "pickles, olives, peppers & relishes", "cakes, cupcakes, snack cakes",
-    "sports & wellness",
-})
-
-
 def _canonical_from_category_identity(category_path: str, identity: str) -> str:
     category_segments = dedupe_segments(split_path(category_path))
     identity = _prettify_segment(identity)
@@ -576,25 +560,19 @@ def _canonical_from_category_identity(category_path: str, identity: str) -> str:
     if not identity:
         return PATH_SEP.join(category_segments)
 
-    # If the category path's last segment is a combined-parent BFC name
-    # (e.g., "Sauces & Salsas"), replace it with the more-specific identity.
-    # Drops the BFC-grouping leaf from the canonical path.
-    if len(category_segments) >= 2:
-        last_seg_lower = category_segments[-1].lower()
-        if last_seg_lower in _BFC_COMBINED_PARENTS:
-            # Replace BFC-name with identity; preserve family + any earlier
-            # category segments.
-            return PATH_SEP.join(
-                dedupe_segments(category_segments[:-1] + [identity])
-            )
-
     identity_key = _token_key(identity)
     category_keys = {_token_key(seg) for seg in category_segments}
     category_words: set[str] = set()
     for seg in category_segments:
         category_words.update(_word_set(seg))
 
-    if identity_key in category_keys or _word_set(identity).issubset(category_words):
+    if identity_key in category_keys:
+        return PATH_SEP.join(category_segments)
+
+    # Combined category buckets such as "Sauces & Salsas" or
+    # "Hot Dogs & Sausages" still need the concrete identity appended.
+    last_is_combined_bucket = bool(re.search(r"[&,/]", category_segments[-1]))
+    if not last_is_combined_bucket and _word_set(identity).issubset(category_words):
         return PATH_SEP.join(category_segments)
 
     return PATH_SEP.join(dedupe_segments(category_segments + [identity]))

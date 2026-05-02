@@ -60,17 +60,31 @@ def test_each_known_sku_present(known_good_skus, audit_by_fdc):
     })
 ])
 def test_golden_path(fdc, mode, expected, label, audit_by_fdc):
-    """One pytest case per golden SKU — pinpoints exactly which one regressed."""
+    """One pytest case per golden SKU — pinpoints exactly which one regressed.
+
+    For 'contains'/'not_contains' modes, checks BOTH canonical_path and
+    retail_leaf_path (since flavors/variants live in RLP per the taxonomy
+    contract). For 'starts_with' modes, only canonical_path is checked.
+    """
     if fdc not in audit_by_fdc:
         pytest.skip(f"fdc {fdc} not in audit")
     row = audit_by_fdc[fdc]
-    actual = (row.get("canonical_path") or "").strip()
+    cp = (row.get("canonical_path") or "").strip()
+    rlp = (row.get("retail_leaf_path") or "").strip()
     title = (row.get("title") or "").strip()
+
+    if mode in ("contains", "not_contains"):
+        # Check against retail_leaf_path (the deeper path with all leaves)
+        actual = rlp or cp
+    else:
+        actual = cp
+
     assert _check(mode, actual, expected), (
-        f"\n  fdc:      {fdc}"
-        f"\n  label:    {label}"
-        f"\n  title:    {title[:120]}"
-        f"\n  mode:     {mode}"
-        f"\n  expected: {expected}"
-        f"\n  actual:   {actual}"
+        f"\n  fdc:               {fdc}"
+        f"\n  label:             {label}"
+        f"\n  title:             {title[:120]}"
+        f"\n  mode:              {mode}"
+        f"\n  expected:          {expected}"
+        f"\n  canonical_path:    {cp}"
+        f"\n  retail_leaf_path:  {rlp}"
     )
