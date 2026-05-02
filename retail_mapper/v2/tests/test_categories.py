@@ -41,6 +41,8 @@ CATCHALL_BFCS = {
     "Oriental, Mexican & Ethnic Sauces",
     "Pancakes, Waffles, French Toast & Crepes",
     "Bread",  # very generic — covers many bread styles
+    "Crusts & Dough",  # cookie dough/pizza dough/pie crust/biscuit dough — different products
+    "Milk/Milk Substitutes",  # contains chocolate/cheese sauces/puddings (BFC misassigned by brand)
     "Meat/Poultry/Other Animals  Prepared/Processed",
     "Meat/Poultry/Other Animals - Prepared/Processed",
     "Meat/Poultry/Other Animals  Unprepared/Unprocessed",
