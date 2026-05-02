@@ -42,26 +42,12 @@ SKIP_INPUT_PATTERNS = re.compile(
     r"butcher.?paper|cooking spray)\b", re.IGNORECASE,
 )
 
-# Ambiguity hints in the raw recipe text — only TRUE judgment-call cases get
-# routed to DeepSeek. A line is sent only if:
-#   (a) it has an actual gap (no canonical / shop_gap / nutrition_unknown), OR
-#   (b) the recipe text has a numeric range (e.g. "6-8 peppers"), OR
-#   (c) the recipe text has an or-option (e.g. "butter or margarine") that
-#       looks ingredient-y (not a stylistic "salt or pepper to taste"), OR
-#   (d) the canonical itself is one of the bare-generic terms (recipe says
-#       just "cheese" with no qualifier).
-RANGE_RE   = re.compile(r"\d+\s*[-–]\s*\d+")
-# Match an "X or Y" where both X and Y look like ingredient nouns (3+ chars,
-# alphabetic, not common stop words). Skip "to taste" style phrasing.
-_OR_NOUN = r"[A-Za-z][A-Za-z\-]{2,}"
-OR_OPTION_RE = re.compile(rf"\b{_OR_NOUN}(?:\s+{_OR_NOUN})?\s+or\s+{_OR_NOUN}(?:\s+{_OR_NOUN})?\b", re.IGNORECASE)
-# Bare-generic canonicals — only the WHOLE canonical, not as a suffix.
-GENERIC_CANONICALS = {
-    "cheese", "sauce", "seasoning", "spice", "spices",
-    "broth", "stock", "vinegar", "oil", "flour", "sugar",
-    "rice", "pasta", "noodles", "noodle", "bread",
-    "fish", "meat", "beans", "bean", "milk",
-}
+# A line is sent to DeepSeek ONLY when the calculator failed.
+# The calculator already runs through LayeredResolver -> canonical_aliases.csv
+# -> canonical_items.csv (~18K canonical concepts). If a line resolves cleanly
+# with shopping/nutrition state OK, it is OK. We do not detect ambiguity by
+# regex on the recipe text — true ambiguity that survived parsing manifests
+# as no_canonical or shopping_gap, which the gap test below catches.
 
 
 def _to_product_candidate(opt: dict, retail: str) -> ProductCandidate:
@@ -122,22 +108,11 @@ def _classify(ln: dict) -> str:
         return "skip"
 
     has_gap = (
-        not can                                 # unresolved canonical
-        or ss == "shopping_gap"                 # no retail product picked
+        not can                                 # canonical alias resolution failed
+        or ss == "shopping_gap"                 # no retail product accepted
         or (ns == "nutrition_unknown" and not (ln.get("walmart") or ln.get("kroger")))
     )
-    # Only flag ambiguity when there's a REAL signal — a numeric range, an
-    # or-option, or the canonical itself is bare-generic. Don't flag clean
-    # lines like "1 cup all-purpose flour" or "2 tablespoons vegetable oil".
-    has_range = bool(RANGE_RE.search(text))
-    has_or = bool(OR_OPTION_RE.search(text))
-    is_bare_generic = can in GENERIC_CANONICALS
-    has_ambiguity = has_range or has_or or is_bare_generic
-    if has_gap:
-        return "verify"
-    if has_ambiguity:
-        return "verify_ambiguous"
-    return "skip"
+    return "verify" if has_gap else "skip"
 
 
 def _derive_aliases(verdicts: list, calc_lines: list) -> list[dict]:
