@@ -199,6 +199,8 @@ COMPOUND_TOKENS = {
     "cinnamon_raisin",
     "cinnamon_roll",
     "cinnamon_sugar",
+    "cookies_and_cream",
+    "cookies_n_cream",
     "dark_chocolate",
     "french_vanilla",
     "ginger_ale",
@@ -351,6 +353,23 @@ ABBREVIATIONS = {
     "nfs": "NFS",
     "nsa": "NSA",
 }
+
+
+# BFC retail-grouping labels that should NEVER appear at canonical_path's
+# last segment when a more-specific identity exists. These are pluralized
+# BFC names without &/, that the BFC-strip regex misses.
+# Keep curated — adding too many breaks legitimate type segments.
+_BFC_RETAIL_LABEL_LEAVES = frozenset({
+    "baking mixes",          # Pantry > Baking Mixes > X is OK at depth 2,
+                             # but "Pantry > Baking Mixes" alone (depth 2)
+                             # leaves PI=Baking Mix as type → strip.
+    "salad dressings",
+    "appetizers & snacks",   # also caught by [&,/] but explicit for clarity
+    "hot dogs & sausages",
+    "patties & burgers",
+    "frosting & icing",
+    "wraps & burritos",
+})
 
 
 def split_path(path: str) -> list[str]:
@@ -900,8 +919,137 @@ def _dessert_mix_identity(title: str, identity: str) -> str | None:
     return None
 
 
+FROZEN_DESSERT_BFCS = {
+    "ice cream & frozen yogurt",
+    "frozen desserts",
+    "other frozen desserts",
+}
+
+FROZEN_DESSERT_PATTERN = (
+    r"\b(?:ice\s+cream|frozen\s+yogurt|gelato|sorbetto?|sherbet|"
+    r"italian\s+ice|ice\s+pops?|freezer\s+pops?|freeze\s+pops?|"
+    r"popsicles?|paletas?|fudge\s+bars?|fruit\s+bars?|"
+    r"yogurt\s+bars?|frozen\s+kefir|kefir\s+bars?|"
+    r"frozen\s+smoothie|smoothie\s+bowls?)\b"
+)
+
+
+def _looks_like_bakery_ice_cream_flavor_only(title: str, bfc_lower: str) -> bool:
+    title = title or ""
+    if re.search(r"\btoaster\s+(?:pastries|tarts)\b", title, re.I):
+        return True
+    if re.search(r"\b(?:pastries|toaster\s+(?:pastries|tarts)).*\bice\s+cream\s+sundae\b", title, re.I):
+        return True
+    if re.search(r"\bice\s+cream\s+sundae\b.*\b(?:pastries|toaster\s+(?:pastries|tarts))\b", title, re.I):
+        return True
+    if bfc_lower not in COOKIE_BFCS:
+        return False
+    if re.search(r"\bice\s+cream\s+(?:bars?|sandwich(?:es)?|cakes?)\b", title, re.I):
+        return False
+    if re.search(r"\bwith\b.{0,80}\bice\s+cream\b", title, re.I):
+        return False
+    return bool(re.search(
+        r"\b(chips\s+ahoy|nabisco|oreo|sandwich\s+cookies?|"
+        r"ice\s+cream\s+creations|ice\s+cream\s+cookies?|"
+        r"sugar\s+cookie\s+decorating\s+kit)\b",
+        title,
+        re.I,
+    ))
+
+
+def _frozen_dessert_route(row: Mapping[str, str]) -> tuple[str, str] | None:
+    title = row.get("title", "") or ""
+    bfc_lower = (row.get("branded_food_category", "") or "").strip().lower()
+    identity = row.get("product_identity_fixed", "") or ""
+    category_key = _token_key(row.get("category_path_fixed", "") or "")
+    canonical_key = _token_key(row.get("canonical_path", "") or "")
+    reference = " ".join([
+        row.get("fndds_desc", "") or "",
+        row.get("esha_desc", "") or "",
+        row.get("matched_key", "") or "",
+    ])
+    evidence = f"{title} {identity} {reference}"
+
+    bfc_context = bfc_lower in FROZEN_DESSERT_BFCS
+    title_has_frozen_dessert = bool(re.search(FROZEN_DESSERT_PATTERN, title, re.I))
+    reference_has_frozen_dessert = bool(re.search(FROZEN_DESSERT_PATTERN, reference, re.I))
+    evidence_has_frozen_dessert = bool(re.search(FROZEN_DESSERT_PATTERN, evidence, re.I))
+    current_frozen_family = (
+        category_key.startswith("frozen")
+        or canonical_key.startswith("frozen")
+    )
+    current_bad_family = (
+        category_key.startswith(("bakery", "meal sandwich", "snack", "dairy", "produce", "pantry"))
+        or canonical_key.startswith(("bakery", "meal sandwich", "snack", "dairy", "produce", "pantry"))
+    )
+    strong_title_frozen_dessert = bool(re.search(
+        r"\bice\s+cream\s+(?:cakes?|bars?|sandwich(?:es)?)\b|"
+        r"\bice\s+cream\s+fill+ed\b|"
+        r"\bcupcakes?\b.*\bice\s+cream\b|"
+        r"\b(?:rolls?|buns?)\b.*\bice\s+cream\b",
+        title,
+        re.I,
+    ))
+
+    if not (
+        (bfc_context and evidence_has_frozen_dessert)
+        or (
+            title_has_frozen_dessert
+            and (current_bad_family or current_frozen_family)
+            and (reference_has_frozen_dessert or strong_title_frozen_dessert)
+        )
+    ):
+        return None
+
+    if not bfc_context and _looks_like_bakery_ice_cream_flavor_only(title, bfc_lower):
+        return None
+
+    if not bfc_context and re.search(r"\bice\s+cream\s+(?:mix|base|powder|stabilizer)\b", evidence, re.I):
+        return None
+    if not bfc_context and bfc_lower in COOKIE_BFCS and re.search(
+        r"\bice\s+cream\s+(?:cones?|cups?|cake\s+cups?)\b",
+        title,
+        re.I,
+    ):
+        return None
+
+    if re.search(r"\bice\s+cream\s+sandwich(?:es)?\b|\bsandwich(?:es)?\b.*\bice\s+cream\b", title, re.I):
+        return "Frozen > Ice Cream Sandwiches", "Ice Cream Sandwich"
+    if re.search(r"\bice\s+cream\s+cake\b|\bice\s+cream\b.*\bcakes?\b|\bcakes?\b.*\bice\s+cream\b|\bcupcakes?\b.*\bice\s+cream\b", title, re.I):
+        return "Frozen > Ice Cream Cakes", "Ice Cream Cake"
+    if re.search(r"\bsmoothie\s+bowls?\b", title, re.I):
+        return "Frozen > Smoothie Bowls", "Smoothie Bowl"
+    if re.search(r"\bfrozen\s+kefir\b|\bkefir\s+bars?\b", title, re.I):
+        return "Frozen > Frozen Kefir", "Frozen Kefir"
+    if re.search(r"\b(?:frozen\s+yogurt|yogurt).*\bbars?\b", title, re.I):
+        return "Frozen > Frozen Yogurt Bars", "Frozen Yogurt Bar"
+    if re.search(r"\bfruit\s+bars?\b", title, re.I):
+        return "Frozen > Fruit Bars", "Fruit Bar"
+    if re.search(r"\b(?:ice\s+cream).*\bbars?\b|\bfudge\s+bars?\b", title, re.I):
+        return "Frozen > Ice Cream Bars", "Ice Cream Bar"
+    if bfc_context and re.search(r"\bice\s+cream\s+(?:cones?|cups?|cake\s+cups?)\b", title, re.I):
+        return "Frozen > Ice Cream Cones", "Ice Cream Cone"
+    if re.search(r"\b(?:ice\s+pops?|freezer\s+pops?|freeze\s+pops?|popsicles?|paletas?)\b", title, re.I):
+        return "Frozen > Ice Pops", "Ice Pop"
+    if re.search(r"\bitalian\s+ice\b", title, re.I):
+        return "Frozen > Italian Ice", "Italian Ice"
+    if re.search(r"\bgelato\b", evidence, re.I):
+        return "Frozen > Gelato", "Gelato"
+    if re.search(r"\bsorbetto?\b", evidence, re.I):
+        return "Frozen > Sorbet", "Sorbet"
+    if re.search(r"\bsherbet\b", evidence, re.I):
+        return "Frozen > Sherbet", "Sherbet"
+    if re.search(r"\bfrozen\s+yogurt\b", evidence, re.I):
+        return "Frozen > Frozen Yogurt", "Frozen Yogurt"
+    if re.search(r"\bice\s+cream\b", evidence, re.I) or bfc_context:
+        return "Frozen > Ice Cream", "Ice Cream"
+    return None
+
+
 def _ice_cream_cone_identity(title: str, identity: str) -> str | None:
     evidence = f"{title or ''} {identity or ''}"
+    if re.search(r"\b(sugar\s+cookie|decorating\s+kit)\b", evidence, re.I):
+        return None
     if re.search(
         r"\b(candy|lollipops?|marshmallows?|truffles?|protein\s+bars?|"
         r"chocolate\s+bars?|latte|gum|cone\s+coating|cone\s+pieces?)\b",
@@ -1038,6 +1186,144 @@ def _bakery_path_hijacked(category: str, canonical_path: str) -> bool:
     ))
 
 
+# PHASE 2: per-BFC title-cue sub-routers. For ambiguous BFCs that span
+# multiple product types, use title cues to pick the right family>type.
+# Returns (family>type, identity) when a rule matches; None otherwise.
+def _bfc_title_subroute(bfc_lower: str, title: str, identity: str) -> tuple[str, str] | None:
+    t = title.lower()
+
+    if bfc_lower == "wholesome snacks":
+        # 1.5k misrouted. Sub-routes by title cue.
+        if re.search(r"\bapplesauce\b|\bapple\s+sauce\b", t):
+            return "Pantry > Applesauce", "Applesauce"
+        if re.search(r"\bsmoothie\b", t):
+            return "Beverage > Smoothies", identity or "Smoothie"
+        if re.search(r"\byogurt\b", t):
+            return "Dairy > Yogurt", identity or "Yogurt"
+        if re.search(r"\bjuice\b", t):
+            return "Beverage > Juice", identity or "Juice"
+        if re.search(r"\bgranola\s+bar\b|\bbar\b", t):
+            return "Snack > Bars", identity or "Granola Bars"
+        if re.search(r"\bfruit\s+(snack|leather|strip)", t):
+            return "Snack > Fruit Snacks", identity or "Fruit Snacks"
+
+    if bfc_lower in ("breads & buns", "bread"):
+        # 1.5k SKUs. Sandwich + sub override; default to Bakery > Bread.
+        if re.search(r"\bsandwich(?:es)?\b", t) and not re.search(r"\bsandwich\s+cookie\b|\bcookie\s+sandwich\b", t):
+            return "Meal > Sandwiches", identity or "Sandwich"
+        if re.search(r"\bsub\s+(rolls?|sandwich)\b|\bhoagie\b|\bhero\b", t):
+            return "Meal > Sandwiches", identity or "Sub Sandwich"
+        if re.search(r"\bhot\s*dog\s+(rolls?|buns?)\b|\bbrioche\s+buns?\b|\bsandwich\s+buns?\b", t):
+            return "Bakery > Buns", identity or "Buns"
+        if re.search(r"\bdinner\s+rolls?\b", t):
+            return "Bakery > Rolls", identity or "Dinner Rolls"
+        if re.search(r"\bpita\b", t):
+            return "Bakery > Pita Bread", identity or "Pita"
+        if re.search(r"\btortillas?\b", t):
+            return "Bakery > Tortillas", identity or "Tortillas"
+        if re.search(r"\bnaan\b", t):
+            return "Bakery > Naan", identity or "Naan"
+        if re.search(r"\bflatbread\b|\bflat\s+bread\b", t):
+            return "Bakery > Flatbread", identity or "Flatbread"
+
+    if bfc_lower == "pickles, olives, peppers & relishes":
+        # 1.7k misrouted. Pantry-family default; sub-routed by product type.
+        if re.search(r"\bolives?\b", t):
+            return "Pantry > Olives", identity or "Olives"
+        if re.search(r"\bpickles?\b", t):
+            return "Pantry > Pickles", identity or "Pickles"
+        if re.search(r"\bpeppers?\b", t) and not re.search(r"\bpepper\s+(sauce|seasoning|spice)\b", t):
+            return "Pantry > Peppers", identity or "Peppers"
+        if re.search(r"\brelish(?:es)?\b", t):
+            return "Pantry > Relish", identity or "Relish"
+
+    if bfc_lower == "other deli":
+        # 1.7k SKUs span everything. Default by title.
+        if re.search(r"\bhummus\b", t):
+            return "Pantry > Dips & Spreads", "Hummus"
+        if re.search(r"\bdip\b", t):
+            return "Pantry > Dip", identity or "Dip"
+        if re.search(r"\bsalad\b", t) and not re.search(r"\bsalad\s+dressing\b", t):
+            return "Meal > Salads", identity or "Salad"
+        if re.search(r"\bcheese\b", t) and not re.search(r"\b(plant[\s-]?based|vegan|alternative|dairy[\s-]?free)\b", t):
+            return "Dairy > Cheese", identity or "Cheese"
+        if re.search(r"\bdeli\s+meat\b|\bham\b|\bturkey\s+breast\b|\bsalami\b|\bpastrami\b|\bcorned\s+beef\b", t):
+            return "Meat & Seafood > Charcuterie", identity or "Deli Meat"
+        if re.search(r"\bsushi\b|\bsashimi\b|\bnigiri\b|\bmaki\b", t):
+            return "Meal > Sushi", identity or "Sushi"
+
+    if bfc_lower in ("frozen patties and burgers", "frozen patties & burgers"):
+        # Sub-route by protein from title
+        if re.search(r"\b(beef|hamburger)\b", t) and not re.search(r"\bcheeseburger\b", t):
+            return "Meat & Seafood > Beef > Patties", identity or "Beef Patties"
+        if re.search(r"\bcheeseburger\b", t):
+            return "Meat & Seafood > Beef > Patties", "Cheeseburger Patties"
+        if re.search(r"\bchicken\b", t):
+            return "Meat & Seafood > Poultry > Chicken > Patties", identity or "Chicken Patties"
+        if re.search(r"\bturkey\b", t):
+            return "Meat & Seafood > Poultry > Turkey > Patties", identity or "Turkey Patties"
+        if re.search(r"\b(veggie|black\s+bean|beyond|impossible|plant[\s-]?based|vegan)\b", t):
+            return "Meal > Plant Based", identity or "Veggie Burgers"
+        if re.search(r"\bsalmon\b", t):
+            return "Meat & Seafood > Salmon > Patties", "Salmon Patties"
+
+    if bfc_lower == "butter & spread":
+        if re.search(r"\bpeanut\s+butter\b", t):
+            return "Pantry > Nut Butters", "Peanut Butter"
+        if re.search(r"\balmond\s+butter\b", t):
+            return "Pantry > Nut Butters", "Almond Butter"
+        if re.search(r"\bcashew\s+butter\b", t):
+            return "Pantry > Nut Butters", "Cashew Butter"
+        if re.search(r"\bsunflower\s+butter\b", t):
+            return "Pantry > Nut Butters", "Sunflower Seed Butter"
+        if re.search(r"\b(plant[\s-]?based|vegan|dairy[\s-]?free)\s+(butter|spread)\b", t):
+            return "Pantry > Plant Based Butter", identity or "Plant Based Butter"
+        if re.search(r"\bbutter\b", t):
+            return "Dairy > Butter", identity or "Butter"
+
+    if bfc_lower == "savoury bakery products":
+        if re.search(r"\bpizza\b", t):
+            return "Frozen > Pizza" if "frozen" in t else "Meal > Pizza", identity or "Pizza"
+        if re.search(r"\bpretzel\s+(stick|bite|nugget)\b", t):
+            return "Snack > Pretzels", identity or "Pretzels"
+        if re.search(r"\bsausage\s+roll\b", t):
+            return "Bakery > Sausage Rolls", identity or "Sausage Rolls"
+        if re.search(r"\bquiche\b", t):
+            return "Bakery > Quiche", identity or "Quiche"
+        if re.search(r"\bempanada\b", t):
+            return "Bakery > Empanadas", identity or "Empanadas"
+
+    if bfc_lower == "frozen prepared sides":
+        if re.search(r"\b(potato|fries|hash\s+brown|tater\s+tot)", t):
+            return "Frozen > Potatoes", identity or "Potatoes"
+        if re.search(r"\b(broccoli|cauliflower|spinach|kale|carrots?|peas|corn|brussels?|asparagus|green\s+beans?)\b", t):
+            return "Frozen > Vegetables", identity or "Vegetables"
+        if re.search(r"\brice\b", t):
+            return "Frozen > Rice", identity or "Rice"
+        if re.search(r"\bpasta\b|\bnoodle\b", t):
+            return "Frozen > Pasta", identity or "Pasta"
+
+    if bfc_lower == "lunch snacks & combinations":
+        if re.search(r"\bsalad\b", t):
+            return "Meal > Salads", identity or "Salad"
+        if re.search(r"\bsandwich\b", t):
+            return "Meal > Sandwiches", identity or "Sandwich"
+        if re.search(r"\bwrap\b", t):
+            return "Meal > Wraps", identity or "Wrap"
+        if re.search(r"\b(lunchable|lunch\s+pack|protein\s+pack|snack\s+pack)\b", t):
+            return "Meal > Lunch Packs", identity or "Lunch Pack"
+
+    if bfc_lower == "baking decorations & dessert toppings":
+        if re.search(r"\bsprinkles?\b|\bjimmies\b|\bnonpareils?\b|\bsanding\s+sugar\b", t):
+            return "Pantry > Baking Decorations", identity or "Sprinkles"
+        if re.search(r"\bfrosting\b|\bicing\b", t):
+            return "Pantry > Frosting", identity or "Frosting"
+        if re.search(r"\bsyrup\b|\btopping\b", t):
+            return "Pantry > Sweeteners", identity or "Syrup"
+
+    return None
+
+
 _BFC_TO_FORCED_FAMILY: dict[str, tuple[str, str | None]] = {
     # When the cleanup pipeline routed an SKU to Bakery > Pastry > X based
     # on a TITLE flavor-word (Churro, Cookie, Pizza), but the BFC clearly
@@ -1064,6 +1350,17 @@ def _forced_base(row: Mapping[str, str]) -> tuple[str, str] | None:
     identity = row.get("product_identity_fixed", "") or ""
     blob = _title_blob(row)
     bfc_lower = bfc.strip().lower()
+
+    frozen_dessert_route = _frozen_dessert_route(row)
+    if frozen_dessert_route:
+        return frozen_dessert_route
+
+    # Phase-2 per-BFC title-cue sub-router (Wholesome Snacks, Breads & Buns,
+    # Pickles/Olives, Other Deli, Frozen Patties, Butter & Spread, Savoury
+    # Bakery, Frozen Prepared Sides, Lunch Snacks, Baking Decorations).
+    sub = _bfc_title_subroute(bfc_lower, title, identity)
+    if sub:
+        return sub
 
     # BFC family-veto: when the EXISTING category_path family conflicts with
     # the BFC's expected family, force-route to the BFC-expected family.
@@ -1316,6 +1613,7 @@ def _forced_base(row: Mapping[str, str]) -> tuple[str, str] | None:
     ice_cream_cone_identity = _ice_cream_cone_identity(title, identity)
     if ice_cream_cone_identity and (
         "ice cream" in bfc_lower
+        or bfc_lower in COOKIE_BFCS
         or "crackers & biscotti" in bfc_lower
         or _token_key(category).startswith(("pantry baking mix", "snack ice cream cone", "frozen ice cream cone", "frozen ice cream"))
         or _token_key(row.get("canonical_path", "") or "").startswith(("pantry baking mix", "snack ice cream cone", "frozen ice cream cone", "frozen ice cream"))
@@ -1587,12 +1885,18 @@ def _canonical_from_category_identity(category_path: str, identity: str) -> str:
     if identity_key in category_keys:
         return PATH_SEP.join(category_segments)
 
-    # ============================================================
-    # BFC COMBINED-PARENT STRIP — REQUIRED BY UNIT TESTS
-    # tests/test_taxonomy_finalizer_unit.py pins this behavior.
-    # Linter reverted this 4 times. DO NOT REMOVE.
-    # ============================================================
+    # =====================================================================
+    # BFC COMBINED-PARENT STRIP — REQUIRED — 5x reverted, do not touch.
+    # Pinned by tests/test_taxonomy_finalizer_unit.py.
+    # User explicitly directed: BFC labels are NOT retail TYPE segments.
+    # Strip + replace.
+    # =====================================================================
     if len(category_segments) >= 2 and re.search(r"[&,/]", category_segments[-1]):
+        return PATH_SEP.join(
+            dedupe_segments(category_segments[:-1] + [identity])
+        )
+    # Strip BFC-style retail-label plurals ("Baking Mixes", "Salad Dressings")
+    if len(category_segments) >= 2 and category_segments[-1].lower() in _BFC_RETAIL_LABEL_LEAVES:
         return PATH_SEP.join(
             dedupe_segments(category_segments[:-1] + [identity])
         )

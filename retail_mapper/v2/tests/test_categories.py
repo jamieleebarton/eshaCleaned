@@ -45,6 +45,8 @@ CATCHALL_BFCS = {
     "Milk/Milk Substitutes",  # contains chocolate/cheese sauces/puddings (BFC misassigned by brand)
     "Frozen Patties and Burgers",  # beef/chicken/turkey/veggie — different families
     "Frozen Patties & Burgers",
+    "Salad Dressing & Mayonnaise",  # sub-routes by dressing type (Caesar, Ranch, Aioli, etc.)
+    "Pickles, Olives, Peppers & Relishes",  # sub-routes per pickle/olive/pepper type
     "Meat/Poultry/Other Animals  Prepared/Processed",
     "Meat/Poultry/Other Animals - Prepared/Processed",
     "Meat/Poultry/Other Animals  Unprepared/Unprocessed",

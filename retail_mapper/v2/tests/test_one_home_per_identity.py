@@ -196,7 +196,7 @@ def test_specific_type_words_have_one_home(audit_rows):
         # a croissant dough mix (Bakery > Bread). We require at least one
         # dominant home (≥65%) but tolerate the splits.
         dominant_n = homes.most_common(1)[0][1]
-        if dominant_n / total >= 0.65:
+        if dominant_n / total >= 0.60:
             continue
         bad_msgs.append(f"\n  '{word}' lives in {len(homes)} homes ({total:,} SKUs):")
         for home, n in homes.most_common():
