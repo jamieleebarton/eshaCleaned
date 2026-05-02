@@ -1,6 +1,6 @@
 # GOAL — anchor doc
 
-**Last edit:** 2026-05-02
+**Last edit:** 2026-05-02 (post-cleanup-pass)
 **Read this every turn before proposing anything.**
 
 ## The single goal
@@ -48,14 +48,19 @@ A recipe line is correct when ALL of these hold:
 5. **Run the calculator on the planner's recipe IDs.** Confirm calculator-derived grams are sane (verified for Tacos De Carnitas already). Resolve the 3 recipes the calculator's corpus is missing.
 6. **Only THEN** layer DeepSeek on the residual cases that the deterministic pipeline cannot decide.
 
-## State of work right now (2026-05-02)
+## State of work right now (2026-05-02 post-cleanup)
 
 - Step 1: DONE — see Cleanup Script Inventory below.
-- Step 2: NOT STARTED.
-- Step 3: NOT STARTED.
-- Step 4: NOT STARTED. (Existing shadow DB from Apr 28 has the same bugs; shadow build chain doesn't use audit columns.)
-- Step 5: PARTIAL. Calculator dump for 10/13 recipes at `/tmp/calc_plan13.json`. Plan dump at `implementation/output/ruvs/real_plan/plan.json`.
+- Step 2: DONE — adapted to `food_packages_final.db.packages`. Cohort key = `fndds_code`, doc text = `product_meta.name`, anchor = `food_description`. Cleaner lives at `Hestia/api/scripts/clean_food_packages_via_audit.py`.
+- Step 3: DONE — produced flag list + actions in `Hestia/api/data/food_packages_final.cleaned.db._cleaning_log` table; summary at `food_packages_final.cleaned.report.md`.
+- Step 4: DONE — shadow DB `Hestia/api/data/food_packages_final.cleaned.db` built; planner re-run with `HESTIA_PACKAGES_DB=...cleaned.db` produced 13 recipes, $114.78/wk (was $105.51 dirty — direction is correct, lost the misrouted Sugardale Ham Shank @ $1.25/lb pick). Sugardale Ham Shank is gone from fndds 22010945 (Pork Butt). `Land O Lakes Butter with Olive Oil` demoted from tier 1 → tier 101 in plain Butter cohort.
+- Step 5: PARTIAL. Calculator dump for 10/13 recipes at `/tmp/calc_plan13.json`. Plan dump at `implementation/output/ruvs/real_plan/plan.json`. 3 missing recipes (Blueberry Muffins 32228, Homemade Instant Oatmeal 136842, Pork on a Bun 156460) still need to be added to `recipe_qa.db`.
 - Step 6: NOT STARTED.
+
+### Step 2/3/4 cleaner stats (2026-05-02)
+- Inputs: 15,058 rows; 462,664 audit rows; 1,615,533 master_products UPC→fdc entries.
+- Outputs: 13,789 kept, 2,136 demoted (kept @ tier+100), 111 dropped audit_fndds_disagree, 1,536 dropped token_overlap_zero, 378 cohorts had every row fail filters → 1 row restored to keep cohort alive.
+- Verification: Sugardale Ham Shank in Pork Butt = 0 rows; Butter w/ Olive Oil at tier 101 (vs tier 1 original).
 
 ## Cleanup Script Inventory (Step 1 result, 2026-05-02)
 
