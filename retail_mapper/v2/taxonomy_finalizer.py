@@ -255,6 +255,24 @@ PREPARED_MEAT_BFCS = {
     "meat/poultry/other animals sausages  prepared/processed",
 }
 
+COOKIE_BFCS = {
+    "cookies & biscuits",
+    "biscuits/cookies",
+    "biscuits/cookies (shelf stable)",
+}
+
+PRE_PACKAGED_PRODUCE_BFCS = {
+    "pre-packaged fruit & vegetables",
+}
+
+BEAN_BFCS = {
+    "canned & bottled beans",
+    "vegetable and lentil mixes",
+    "vegetables  prepared/processed",
+    "vegetables - prepared/processed",
+    "vegetables  unprepared/unprocessed (shelf stable)",
+}
+
 ABBREVIATIONS = {
     "bbq": "BBQ",
     "pb&j": "PB&J",
@@ -334,6 +352,11 @@ def _facet_values(value: str) -> list[str]:
 
 def _normalize_token(raw: str) -> str:
     token = re.sub(r"[^a-z0-9]+", "_", (raw or "").lower()).strip("_")
+    token = re.sub(r"\bblack_?eye(?:d)?\b", "black_eyed", token)
+    # "1" / "2" as standalone tokens — DeepSeek extracted "1%"/"2%" milk fat
+    # variants but stripped the % sign. Convert to canonical "1_percent"/"2_percent".
+    if token in ("1", "2"):
+        token = f"{token}_percent"
     return CLAIM_ALIASES.get(token, FORM_ALIASES.get(token, token))
 
 
@@ -439,7 +462,7 @@ def derive_modifier(
     levels: list[str] = []
     used: set[str] = set()
 
-    def add_level(tokens: list[str], *, sort_claims: bool = False) -> None:
+    def add_level(tokens: list[str], *, sort_claims: bool = False, one_segment_per_token: bool = False) -> None:
         nonlocal levels, used
         ordered = _claim_sort(tokens) if sort_claims else _ordered_unique(tokens)
         kept: list[str] = []
@@ -452,11 +475,19 @@ def derive_modifier(
             used.add(key)
             kept.append(token)
         if kept:
-            levels.append(" ".join(_prettify(token) for token in kept))
+            if one_segment_per_token:
+                # Each claim/form gets its OWN path segment so they stack
+                # cleanly: "Organic > Fat Free" not "Organic Fat Free".
+                for token in kept:
+                    levels.append(_prettify(token))
+            else:
+                # Variant/flavor tokens compose into one descriptive segment
+                # (e.g., "Date Chia Almond" stays as one leaf).
+                levels.append(" ".join(_prettify(token) for token in kept))
 
     add_level(l1)
-    add_level(l2, sort_claims=True)
-    add_level(l3)
+    add_level(l2, sort_claims=True, one_segment_per_token=True)
+    add_level(l3, one_segment_per_token=True)
     return PATH_SEP.join(levels) if levels else "Plain"
 
 
@@ -482,11 +513,19 @@ def _detect_plant_milk_identity(text: str) -> str:
 
 
 def _looks_like_prepared_sandwich(title: str) -> bool:
+    if re.search(
+        r"\b(?:sandwich\s+cookies?|cookie\s+sandwich(?:es)?|cracker\s+sandwich(?:es)?|"
+        r"ice\s+cream\s+sandwich(?:es)?)\b",
+        title or "",
+        re.I,
+    ):
+        return False
     return bool(re.search(
-        r"\b(sandwich|sub|hoagie|hero|panini|slider|burger|cheeseburger|"
+        r"\b(sandwich|sub|hoagie|hero|panini|sliders?|burger|cheeseburger|"
         r"hamburger|hot\s*dog|frank(?:furter)?|gyro|banh\s*mi|on\s+(?:a\s+)?"
         r"(?:white\s+|wheat\s+|whole\s+grain\s+|sesame\s+|hoagie\s+|pretzel\s+)?"
-        r"(?:bun|roll|hoagie|sub))\b",
+        r"(?:bun|roll|hoagie|sub)|on\s+(?:a\s+)?[a-z\\s-]{0,40}\\b(?:bun|roll)|"
+        r"with\s+(?:a\s+)?bun)\b",
         title or "",
         re.I,
     ))
@@ -550,6 +589,258 @@ def _prepared_meal_identity(title: str) -> str:
     return "Entree"
 
 
+def _packaged_tortilla_identity(title: str, identity: str) -> str | None:
+    evidence = f"{title or ''} {identity or ''}"
+    if re.search(r"\btortilla\s+(?:chips?|strips?)\b|\b(?:chips?|strips?)\s+.*\btortillas?\b", evidence, re.I):
+        return None
+    if re.search(r"\btaco\s+salad\s+shells?\b|\btaco\s+shells?\b", evidence, re.I):
+        return "Taco Shells"
+    if re.search(r"\btostada\s+shells?\b", evidence, re.I):
+        return "Tostada Shells"
+    if re.search(r"\btostada\s+bowls?\b", evidence, re.I):
+        return "Tostada Bowls"
+    if re.search(r"\btostadas?\b", evidence, re.I):
+        return "Tostadas"
+    if re.search(r"\btortillas?\b|\btortilla\s+wraps?\b", evidence, re.I):
+        return "Tortillas"
+    return None
+
+
+def _bean_legume_identity(title: str, identity: str) -> str | None:
+    evidence = f"{title or ''} {identity or ''}"
+    if re.search(r"\b(jelly\s+beans?|coffee\s+beans?|cocoa\s+beans?|vanilla\s+beans?)\b", evidence, re.I):
+        return None
+
+    candidates = [
+        (r"\bblack[\s-]?(?:eyed|eye)\s+peas?\b|\bblackeye\s+peas?\b", "Black-Eyed Peas"),
+        (r"\bsmall\s+red\s+beans?\b", "Small Red Beans"),
+        (r"\bred\s+kidney\s+beans?\b|\bkidney\s+beans?\b", "Kidney Beans"),
+        (r"\bgreat\s+northern\s+beans?\b", "Great Northern Beans"),
+        (r"\bbaby\s+lima\s+beans?\b", "Baby Lima Beans"),
+        (r"\blima\s+beans?\b", "Lima Beans"),
+        (r"\bblack\s+beans?\b", "Black Beans"),
+        (r"\bpinto\s+beans?\b", "Pinto Beans"),
+        (r"\bnavy\s+beans?\b", "Navy Beans"),
+        (r"\bgarbanzo\s+beans?\b|\bchickpeas?\b", "Garbanzo Beans"),
+        (r"\bcannellini\s+beans?\b", "Cannellini Beans"),
+        (r"\bcranberry\s+beans?\b", "Cranberry Beans"),
+        (r"\bbutter\s+beans?\b", "Butter Beans"),
+        (r"\badzuki\s+beans?\b", "Adzuki Beans"),
+        (r"\bmung\s+beans?\b", "Mung Beans"),
+        (r"\bfava\s+beans?\b", "Fava Beans"),
+        (r"\bpink\s+beans?\b", "Pink Beans"),
+        (r"\bsoy\s+beans?\b|\bsoybeans?\b", "Soy Beans"),
+        (r"\bred\s+beans?\b", "Red Beans"),
+        (r"\brefried\s+beans?\b", "Refried Beans"),
+        (r"\bbaked\s+beans?\b", "Baked Beans"),
+        (r"\bpork\s+and\s+beans?\b", "Pork and Beans"),
+        (r"\bchili\s+beans?\b", "Chili Beans"),
+        (r"\bred\s+lentils?\b", "Red Lentils"),
+        (r"\bgreen\s+lentils?\b", "Green Lentils"),
+        (r"\blentils?\b", "Lentils"),
+        (r"\bsplit\s+peas?\b", "Split Peas"),
+        (r"\bwhole\s+green\s+peas?\b|\bgreen\s+peas?\b", "Green Peas"),
+        (r"\byellow\s+peas?\b", "Yellow Peas"),
+        (r"\bfield\s+peas?\b", "Field Peas"),
+        (r"\bcow\s*peas?\b|\bcowpeas?\b", "Cowpeas"),
+        (r"\bedamame\b", "Edamame"),
+        (r"\bchana\s+dal\b", "Chana Dal"),
+    ]
+    for pattern, label in candidates:
+        if re.search(pattern, evidence, re.I):
+            return label
+    if re.search(r"\bbeans?\b", identity, re.I):
+        return identity or "Beans"
+    if re.search(r"\blentils?\b", identity, re.I):
+        return identity or "Lentils"
+    return None
+
+
+def _mexican_prepared_identity(title: str, identity: str) -> str | None:
+    evidence = f"{title or ''} {identity or ''}"
+    if re.search(r"\bbreakfast\s+burritos?\b", evidence, re.I):
+        return "Breakfast Burrito"
+    if re.search(r"\bburritos?\b", evidence, re.I):
+        return "Burrito"
+    if re.search(r"\bchimichangas?\b", evidence, re.I):
+        return "Chimichanga"
+    if re.search(r"\benchiladas?\b", evidence, re.I):
+        return "Enchiladas"
+    if re.search(r"\btaquitos?\b", evidence, re.I):
+        return "Taquitos"
+    if re.search(r"\btamales?\b", evidence, re.I):
+        if re.search(r"\bmasa\b|\bmix\b", evidence, re.I):
+            return None
+        return "Tamales"
+    if re.search(r"\bpupusas?\b", evidence, re.I):
+        return "Pupusas"
+    if re.search(r"\bgorditas?\b", evidence, re.I):
+        return "Gorditas"
+    return None
+
+
+def _packaged_potato_side_identity(title: str, identity: str) -> str | None:
+    evidence = f"{title or ''} {identity or ''}"
+    if re.search(
+        r"\b(potato\s+(?:starch|flour)|potato\s+bread|potato\s+rolls?|"
+        r"potato\s+buns?|potato\s+chips?)\b",
+        evidence,
+        re.I,
+    ):
+        return None
+    if re.search(
+        r"\b(au\s+gratin|scalloped|mashed|hash\s*browns?|potato\s+mix|"
+        r"potato\s+(?:slices?|shreds?|flakes?|salad|casserole|kugel|dumpling)|potatoes?)\b",
+        evidence,
+        re.I,
+    ) and re.search(
+        r"\b(potatoes?|potato\s+(?:mix|shreds?|flakes?|salad|casserole|kugel|dumpling|slices?)|"
+        r"scalloped\s+potatoes?\s+mix)\b",
+        evidence,
+        re.I,
+    ):
+        return "Potatoes"
+    return None
+
+
+def _gravy_identity(title: str, identity: str) -> str | None:
+    evidence = f"{title or ''} {identity or ''}"
+    if not re.search(r"\b(gravy|au\s+jus)\b", evidence, re.I):
+        return None
+    if re.search(r"\bbiscuits?\s+and\s+gravy\b", evidence, re.I):
+        return "Biscuits and Gravy"
+    if re.search(r"\bsausage\s+gravy\b", evidence, re.I):
+        return "Sausage Gravy"
+    if re.search(r"\bturkey\s+gravy\b", evidence, re.I):
+        return "Turkey Gravy"
+    if re.search(r"\b(beef|roast\s+beef)\s+gravy\b", evidence, re.I):
+        return "Beef Gravy"
+    if re.search(r"\bchicken\s+gravy\b", evidence, re.I):
+        return "Chicken Gravy"
+    if re.search(r"\bau\s+jus\b", evidence, re.I):
+        return "Au Jus"
+    if re.search(r"\b(country|cream|white)\s+gravy\b", evidence, re.I):
+        return "Country Gravy"
+    if re.search(r"\bgravy\s+mix\b|\bmix\b", evidence, re.I):
+        return "Gravy Mix"
+    return "Gravy"
+
+
+def _meal_kit_identity(title: str, identity: str) -> str | None:
+    evidence = f"{title or ''} {identity or ''}"
+    if re.search(r"\bhamburger\s+helper\b", evidence, re.I):
+        return "Hamburger Helper"
+    if re.search(r"\bpasta\s+salad\s+mix\b|\bsuddenly\s+salad\b", evidence, re.I):
+        return "Pasta Salad Mix"
+    if re.search(r"\bfalafel\s+mix\b|\bfalafel\b", evidence, re.I):
+        return "Falafel Mix"
+    if re.search(r"\btaco\s+dinner\s+kit\b", evidence, re.I):
+        return "Taco Dinner Kit"
+    if re.search(r"\btaco\s+kit\b", evidence, re.I):
+        return "Taco Kit"
+    if re.search(r"\bdinner\s+kit\b", evidence, re.I):
+        return "Dinner Kit"
+    if re.search(r"\bmeal\s+starter\b", evidence, re.I):
+        return "Meal Starter"
+    if re.search(r"\bskillet\s+meal\b", evidence, re.I):
+        return "Skillet Meal"
+    if re.search(r"\bcasserole\s+mix\b|\bkugel\s+mix\b|\bmeat\s*loaf\s+mix\b|\bmeatloaf\s+mix\b", evidence, re.I):
+        return identity or "Meal Kit"
+    return None
+
+
+def _coating_breading_identity(title: str, identity: str) -> str | None:
+    evidence = f"{title or ''} {identity or ''}"
+    if re.search(r"\bbreading(?:\s+(?:mix|substitute))?\b|\bseafood\s+breading\b", evidence, re.I):
+        return "Breading Mix"
+    if re.search(r"\bbread\s+coating\b|\bcoating\s+mix\b|\bseasoned\s+coating\b", evidence, re.I):
+        return "Coating Mix"
+    if re.search(r"\b(chicken|fish|seafood|tempura|fry)\s+batter\s+mix\b|\bbatter\s+mix\b", evidence, re.I):
+        return "Batter Mix"
+    return None
+
+
+def _seaweed_identity(title: str, identity: str) -> str | None:
+    evidence = f"{title or ''} {identity or ''}"
+    if re.search(r"\bnori\b", evidence, re.I):
+        return "Nori"
+    if re.search(r"\bseaweed\s+snacks?\b", evidence, re.I):
+        return "Seaweed Snacks"
+    if re.search(r"\bseaweed\b", evidence, re.I):
+        return "Seaweed"
+    return None
+
+
+def _grain_identity(title: str, identity: str) -> str | None:
+    evidence = f"{title or ''} {identity or ''}"
+    if re.search(r"\bpearl\s+barley\b", evidence, re.I):
+        return "Pearl Barley"
+    if re.search(r"\bbarley\b", evidence, re.I):
+        return "Barley"
+    if re.search(r"\bquinoa\b", evidence, re.I):
+        return "Quinoa"
+    return None
+
+
+def _soup_identity(title: str, identity: str) -> str | None:
+    evidence = f"{title or ''} {identity or ''}"
+    if re.search(r"\bpea\s+soup\b", evidence, re.I):
+        return "Pea Soup"
+    if re.search(r"\bsoup\b", evidence, re.I):
+        return identity if re.search(r"\bsoup\b", identity, re.I) else "Soup"
+    return None
+
+
+def _hot_cereal_identity(title: str, identity: str) -> str | None:
+    evidence = f"{title or ''} {identity or ''}"
+    if re.search(r"\boatmeal\s+mix(?:-ins?)?\b|\boatmeal\b", evidence, re.I):
+        return "Oatmeal"
+    return None
+
+
+def _dessert_mix_identity(title: str, identity: str) -> str | None:
+    evidence = f"{title or ''} {identity or ''}"
+    if re.search(r"\bice\s+cream\s+mix\b", evidence, re.I):
+        return "Ice Cream Mix"
+    if re.search(r"\bpudding\b", evidence, re.I):
+        return identity if re.search(r"\bpudding\b", identity, re.I) else "Pudding Mix"
+    return None
+
+
+def _ice_cream_cone_identity(title: str, identity: str) -> str | None:
+    evidence = f"{title or ''} {identity or ''}"
+    if re.search(
+        r"\b(candy|lollipops?|marshmallows?|truffles?|protein\s+bars?|"
+        r"chocolate\s+bars?|latte|gum|cone\s+coating|cone\s+pieces?)\b",
+        evidence,
+        re.I,
+    ):
+        return None
+    if re.search(r"\bwaffle\s+cones?\b", evidence, re.I):
+        return "Waffle Cones"
+    if re.search(r"\bsugar[\s-]?free\s+cones?\b", evidence, re.I):
+        return "Ice Cream Cone"
+    if re.search(r"\bsugar\s+cones?\b", evidence, re.I):
+        return "Sugar Cones"
+    if re.search(r"\bcake\s+cones?\b|\bcones?\s+cake\b", evidence, re.I):
+        return "Ice Cream Cone"
+    if re.search(r"\bice\s+cream\s+(?:cones?|cups?|cake\s+cups?)\b", evidence, re.I):
+        return "Ice Cream Cone"
+    if _token_key(identity) in {"ice cream cone", "ice cream cones"}:
+        return "Ice Cream Cone"
+    return None
+
+
+def _bakery_path_hijacked(category: str, canonical_path: str) -> bool:
+    key = _token_key(category or canonical_path)
+    return key.startswith((
+        "bakery bun",
+        "bakery roll",
+        "bakery bread",
+        "bakery breadstick",
+    ))
+
+
 def _forced_base(row: Mapping[str, str]) -> tuple[str, str] | None:
     title = row.get("title", "") or ""
     bfc = row.get("branded_food_category", "") or ""
@@ -565,6 +856,182 @@ def _forced_base(row: Mapping[str, str]) -> tuple[str, str] | None:
     )
     if plant_context:
         return "Beverage > Plant Milk", _detect_plant_milk_identity(title + " " + identity)
+
+    identity_evidence = f"{title} {identity}"
+
+    if re.search(r"\b(biscotti|biscottini|cantuccini|biscotificio)\b", identity_evidence, re.I):
+        return "Bakery > Biscotti", "Biscotti"
+
+    if bfc_lower in PRE_PACKAGED_PRODUCE_BFCS and re.search(r"\bsalad\s+kits?\b|\bchopped\s+kits?\b", title, re.I):
+        return "Produce > Salad Kits", "Salad Kit"
+
+    lunch_kit_context = (
+        bfc_lower in {"lunch snacks & combinations", "prepared subs & sandwiches"}
+        or _token_key(category).startswith("meal lunch kit")
+        or _token_key(row.get("canonical_path", "") or "").startswith("meal lunch kit")
+    )
+    if lunch_kit_context and re.search(
+        r"\b(lunch\s+kits?|snack\s+kits?|snack\s+on\s+the\s+run|cracker\s+stackers|"
+        r"(?:tuna|chicken|turkey)\s+salad\s+kit(?:\s+with\s+crackers?)?)\b",
+        title,
+        re.I,
+    ):
+        return "Meal > Lunch Kits", "Lunch Kit"
+
+    bean_identity = _bean_legume_identity(title, identity)
+    if bean_identity and (
+        bfc_lower in BEAN_BFCS
+        or _token_key(category).startswith("pantry baking mix")
+        or _token_key(row.get("canonical_path", "") or "").startswith("pantry baking mix")
+    ):
+        return "Pantry > Beans", bean_identity
+
+    if re.search(r"\b(crackers?|triscuit|triscuits|water\s+biscuits?|crispbreads?)\b", identity_evidence, re.I):
+        cracker_identity = identity if re.search(r"\bcrackers?\b", identity, re.I) else "Crackers"
+        return "Snack > Crackers", cracker_identity
+
+    tortilla_identity = _packaged_tortilla_identity(title, identity)
+    if tortilla_identity and (
+        bfc_lower in COOKIE_BFCS | {"breads & buns", "bread", "mexican dinner mixes"}
+        or _token_key(category).startswith(("bakery cookie", "bakery tortilla", "pantry grain shell"))
+        or _token_key(row.get("canonical_path", "") or "").startswith(("bakery cookie", "bakery tortilla", "pantry grain shell"))
+    ):
+        return "Bakery > Tortillas", tortilla_identity
+
+    mexican_identity = _mexican_prepared_identity(title, identity)
+    if mexican_identity and (
+        bfc_lower == "mexican dinner mixes"
+        or _token_key(category).startswith("pantry baking mix")
+        or _token_key(row.get("canonical_path", "") or "").startswith("pantry baking mix")
+    ):
+        if mexican_identity == "Breakfast Burrito":
+            return "Meal > Breakfast Burritos", mexican_identity
+        if mexican_identity == "Burrito":
+            return "Meal > Burritos", mexican_identity
+        return "Meal > Mexican Entrees", mexican_identity
+
+    if re.search(r"\btacos?\b", identity_evidence, re.I) and (
+        bfc_lower == "mexican dinner mixes"
+        or _token_key(category).startswith("pantry baking mix")
+        or _token_key(row.get("canonical_path", "") or "").startswith("pantry baking mix")
+    ):
+        return "Meal > Tacos", "Tacos"
+
+    potato_side_identity = _packaged_potato_side_identity(title, identity)
+    if potato_side_identity and (
+        bfc_lower in {"vegetable and lentil mixes", "vegetables - prepared/processed (shelf stable)"}
+        or _token_key(category).startswith("pantry baking mix")
+        or _token_key(row.get("canonical_path", "") or "").startswith("pantry baking mix")
+    ):
+        return "Pantry > Packaged Sides", potato_side_identity
+
+    gravy_identity = _gravy_identity(title, identity)
+    if gravy_identity and (
+        bfc_lower in {"gravy mix", "sauces/spreads/dips/condiments", "seasoning mixes, salts, marinades & tenderizers"}
+        or _token_key(category).startswith("pantry baking mix")
+        or _token_key(row.get("canonical_path", "") or "").startswith("pantry baking mix")
+    ):
+        return "Pantry > Gravy", gravy_identity
+
+    meal_kit_identity = _meal_kit_identity(title, identity)
+    if meal_kit_identity and (
+        bfc_lower in {"baking/cooking mixes/supplies", "mexican dinner mixes", "pizza mixes & other dry dinners", "pasta dinners"}
+        or _token_key(category).startswith("pantry baking mix")
+        or _token_key(row.get("canonical_path", "") or "").startswith("pantry baking mix")
+    ):
+        return "Pantry > Meal Kits", meal_kit_identity
+
+    coating_breading_identity = _coating_breading_identity(title, identity)
+    if coating_breading_identity and (
+        bfc_lower in {"seasoning mixes, salts, marinades & tenderizers", "bread & muffin mixes"}
+        or _token_key(category).startswith("pantry baking mix")
+        or _token_key(row.get("canonical_path", "") or "").startswith("pantry baking mix")
+    ):
+        return "Pantry > Coatings & Breadings", coating_breading_identity
+
+    seaweed_identity = _seaweed_identity(title, identity)
+    if seaweed_identity and (
+        bfc_lower == "vegetable and lentil mixes"
+        or _token_key(category).startswith("pantry baking mix")
+        or _token_key(row.get("canonical_path", "") or "").startswith("pantry baking mix")
+    ):
+        return "Pantry > Seaweed", seaweed_identity
+
+    grain_identity = _grain_identity(title, identity)
+    if grain_identity and (
+        bfc_lower == "vegetable and lentil mixes"
+        or _token_key(category).startswith("pantry baking mix")
+        or _token_key(row.get("canonical_path", "") or "").startswith("pantry baking mix")
+    ):
+        return "Pantry > Rice & Grains", grain_identity
+
+    soup_identity = _soup_identity(title, identity)
+    if soup_identity and (
+        _token_key(category).startswith("pantry baking mix")
+        or _token_key(row.get("canonical_path", "") or "").startswith("pantry baking mix")
+    ):
+        return "Pantry > Soup", soup_identity
+
+    hot_cereal_identity = _hot_cereal_identity(title, identity)
+    if hot_cereal_identity and (
+        _token_key(category).startswith("pantry baking mix")
+        or _token_key(row.get("canonical_path", "") or "").startswith("pantry baking mix")
+    ):
+        return "Pantry > Hot Cereal", hot_cereal_identity
+
+    dessert_mix_identity = _dessert_mix_identity(title, identity)
+    if dessert_mix_identity and (
+        _token_key(category).startswith("pantry baking mix")
+        or _token_key(row.get("canonical_path", "") or "").startswith("pantry baking mix")
+    ):
+        return "Pantry > Dessert Mixes", dessert_mix_identity
+
+    ice_cream_cone_identity = _ice_cream_cone_identity(title, identity)
+    if ice_cream_cone_identity and (
+        "ice cream" in bfc_lower
+        or "crackers & biscotti" in bfc_lower
+        or _token_key(category).startswith(("pantry baking mix", "snack ice cream cone", "frozen ice cream cone", "frozen ice cream"))
+        or _token_key(row.get("canonical_path", "") or "").startswith(("pantry baking mix", "snack ice cream cone", "frozen ice cream cone", "frozen ice cream"))
+    ):
+        return "Snack > Ice Cream Cones", ice_cream_cone_identity
+
+    bakery_hijack = _bakery_path_hijacked(category, row.get("canonical_path", "") or "")
+
+    if bakery_hijack and re.search(r"\bpizza\s+rolls?\b", title, re.I):
+        return "Frozen > Appetizers", "Pizza Rolls"
+
+    if bakery_hijack and re.search(r"\begg\s+rolls?\b|\bspring\s+rolls?\b", title, re.I):
+        root = "Frozen > Appetizers" if "frozen" in bfc_lower else "Meal > Appetizers"
+        return root, _appetizer_identity(title)
+
+    if bakery_hijack and re.search(r"\bstuffed\s+cabbage\s+rolls?\b|\bcabbage\s+rolls?\b", title, re.I):
+        root = "Frozen > Single Entrees" if "frozen" in bfc_lower else "Meal > Entrees"
+        return root, "Stuffed Cabbage"
+
+    if bakery_hijack and re.search(r"\bpork\s+roll\b|\btaylor\s+pork\s+roll\b", title, re.I):
+        return "Meat & Seafood > Pork", "Pork Roll"
+
+    if bakery_hijack and "sausage" in bfc_lower:
+        if re.search(r"\bfranks?\b|\bhot\s*dogs?\b", title, re.I):
+            return "Meat & Seafood > Hot Dogs", "Hot Dogs"
+        if re.search(r"\bchorizo\b", title, re.I):
+            return "Meat & Seafood > Sausage", "Chorizo"
+        return "Meat & Seafood > Sausage", "Sausage"
+
+    if bakery_hijack and re.search(r"\bsalami\s+roll\b", title, re.I):
+        return "Meat & Seafood > Charcuterie", "Salami"
+
+    if bakery_hijack and _looks_like_prepared_sandwich(title):
+        if bfc_lower in FROZEN_APPETIZER_BFCS:
+            return "Frozen > Appetizers", _appetizer_identity(title)
+        if "frozen" in bfc_lower:
+            return "Frozen > Single Entrees", _sandwich_identity(title)
+        return "Meal > Sandwiches", _sandwich_identity(title)
+
+    if bakery_hijack and re.search(r"\bbuns?\b", title, re.I) and any(
+        cue in bfc_lower for cue in ("entrees", "ready-made", "cooked & prepared", "dinners")
+    ):
+        return "Meal > Entrees", "Stuffed Buns"
 
     if bfc_lower in PREPARED_SANDWICH_BFCS:
         return "Meal > Sandwiches", _sandwich_identity(title)
@@ -600,9 +1067,13 @@ def _forced_base(row: Mapping[str, str]) -> tuple[str, str] | None:
     # family+type, force the route regardless of title regex hijacks.
     if bfc_lower == "sushi":
         return "Meal > Sushi", identity or "Sushi"
-    if bfc_lower in {"cookies & biscuits", "biscuits/cookies",
-                     "biscuits/cookies (shelf stable)"}:
-        return "Bakery > Cookies", identity or "Cookies"
+    if bfc_lower in COOKIE_BFCS:
+        cookie_evidence = f"{title} {identity}"
+        if re.search(r"\bcookies?\b", cookie_evidence, re.I):
+            cookie_identity = identity if re.search(r"\bcookies?\b", identity, re.I) else "Cookies"
+            return "Bakery > Cookies", cookie_identity
+        if re.search(r"\bbiscuits?\b", identity, re.I):
+            return "Bakery > Biscuits", identity or "Biscuits"
     if bfc_lower == "powdered drinks":
         # Sub-route by identity / title cue
         if "hot cocoa" in blob or "hot chocolate" in blob:
