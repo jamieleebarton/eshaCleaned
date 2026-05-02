@@ -398,10 +398,14 @@ def final_bfc_validation(baseline: dict) -> int:
         return out
 
     def build_full_path(family: str, identity: str, rec: dict, existing_leaves: list = None) -> str:
-        """Build family > identity > variant > form > processing > claims (sep) > flavor (combined)."""
+        """Build family > identity > [claims separate] > variant > form > processing > flavor (combined).
+        CLAIMS FIRST after identity for consistent tree traversal — all 'Organic X' under one branch.
+        """
         leaves = []
         if identity:
             leaves.append(title_case(identity))
+        # Claims FIRST after identity (separate, alphabetical) — for browsability
+        leaves.extend(parse_separate(rec.get('claims','')))
         if existing_leaves:
             leaves.extend(existing_leaves)
         v = parse_combined(rec.get('variant',''))
@@ -410,7 +414,6 @@ def final_bfc_validation(baseline: dict) -> int:
         if v: leaves.append(v)
         v = parse_combined(rec.get('processing_storage',''))
         if v: leaves.append(v)
-        leaves.extend(parse_separate(rec.get('claims','')))
         v = parse_combined(rec.get('flavor',''))
         if v: leaves.append(v)
         all_segs = [family] + leaves
@@ -463,6 +466,32 @@ def final_bfc_validation(baseline: dict) -> int:
         current_family = cp.split(" > ")[0]
         segs = cp.split(" > ")
 
+        # SANDWICH override (title says SANDWICH but path doesn't)
+        if re.search(r"\bSANDWICH(ES)?\b", title, re.I) and 'Sandwich' not in cp:
+            # Don't override Frozen sandwiches (they're already correctly placed)
+            if not cp.startswith('Frozen'):
+                flavor = parse_combined(rec.get('flavor','')) or ''
+                if flavor:
+                    new_cp = f"Meal > Sandwiches > Sandwich > {flavor}"
+                else:
+                    # Try to extract a meaningful descriptor from title
+                    # e.g., "ALMOND BUTTER & STRAWBERRY JAM" stays as a leaf
+                    desc = re.split(r'\bSANDWICH', title, maxsplit=1, flags=re.I)[0].strip().rstrip(',').strip()
+                    if desc and len(desc) < 80:
+                        new_cp = f"Meal > Sandwiches > Sandwich > {title_case(desc)}"
+                    else:
+                        new_cp = "Meal > Sandwiches > Sandwich"
+                rec["canonical_path"] = new_cp
+                rec["retail_leaf_path"] = new_cp
+                continue
+
+        # ALIMENTARY PASTE — fix wrong "Yam" leaf when title says paste only
+        if 'ALIMENTARY PASTE' in title.upper() and cp.startswith('Bakery > Alimentary Paste'):
+            new_cp = 'Bakery > Dough > Alimentary Paste'
+            rec["canonical_path"] = new_cp
+            rec["retail_leaf_path"] = new_cp
+            continue
+
         # JERKY override (title-driven; many BFCs miscategorize jerky)
         if (JERKY_RX.search(title) or JERKY_STICK_RX.search(title)) and 'Jerky' not in cp:
             new_cp = 'Snack > Jerky > Beef'
@@ -488,13 +517,14 @@ def final_bfc_validation(baseline: dict) -> int:
                 rest_leaves.extend(target_extras)
                 if identity and identity.lower() not in {s.lower() for s in target_extras}:
                     rest_leaves.append(title_case(identity))
+                # Claims FIRST (after identity) — consistent depth for browsability
+                rest_leaves.extend(parse_separate(rec.get('claims','')))
                 v = parse_combined(rec.get('variant',''))
                 if v: rest_leaves.append(v)
                 v = parse_combined(rec.get('form_texture_cut',''))
                 if v: rest_leaves.append(v)
                 v = parse_combined(rec.get('processing_storage',''))
                 if v: rest_leaves.append(v)
-                rest_leaves.extend(parse_separate(rec.get('claims','')))
                 v = parse_combined(rec.get('flavor',''))
                 if v: rest_leaves.append(v)
                 new_cp = ' > '.join(collapse_dupes([target_family] + rest_leaves))
@@ -519,16 +549,16 @@ def final_bfc_validation(baseline: dict) -> int:
         if len(segs) >= 2 and segs[1].lower() in FLAVOR_FACET_WORDS and identity:
             if title_case(identity).lower() not in {s.lower() for s in segs}:
                 family = segs[0]
-                # Move identity in front of the flavor segment
-                rest_with_flavor_demoted = [title_case(identity)] + segs[1:]
-                # Also add facets
+                # Move identity in front of the flavor segment, claims right after identity
+                rest_with_flavor_demoted = [title_case(identity)]
+                rest_with_flavor_demoted.extend(parse_separate(rec.get('claims','')))
+                rest_with_flavor_demoted += segs[1:]
                 v = parse_combined(rec.get('variant',''))
                 if v: rest_with_flavor_demoted.append(v)
                 v = parse_combined(rec.get('form_texture_cut',''))
                 if v: rest_with_flavor_demoted.append(v)
                 v = parse_combined(rec.get('processing_storage',''))
                 if v: rest_with_flavor_demoted.append(v)
-                rest_with_flavor_demoted.extend(parse_separate(rec.get('claims','')))
                 v = parse_combined(rec.get('flavor',''))
                 if v: rest_with_flavor_demoted.append(v)
                 new_cp = ' > '.join(collapse_dupes([family] + rest_with_flavor_demoted))
@@ -570,7 +600,42 @@ def final_bfc_validation(baseline: dict) -> int:
             rec["retail_leaf_path"] = new_cp
             n_bean_typed += 1
 
-    # 5. Final dedupe pass: collapse case-insensitive duplicate segments
+    # 5a. Reorder claims to consistent position: right after type segment (depth 3)
+    # This normalizes paths from log replays that may have claims at end vs middle.
+    KNOWN_CLAIMS = {
+        'organic', 'plant based', 'gluten free', 'dairy free', 'sugar free',
+        'fat free', 'low fat', 'reduced fat', 'lactose free', 'caffeine free',
+        'high protein', 'high fiber', 'low sodium', 'no salt added', 'unsweetened',
+        'sweetened', 'no sugar added', 'reduced sugar', 'zero sugar', 'low calorie',
+        'natural', 'all natural', 'fortified', 'probiotic', 'grass fed', 'free range',
+        'cage free', 'wild caught', 'fair trade', 'kosher', 'halal', 'vegan',
+        'keto', 'paleo', 'whole grain', 'multi grain', '100% whole grain',
+        'non gmo', 'non-gmo', 'no preservatives', 'no artificial flavors',
+    }
+    n_reordered = 0
+    for fdc, rec in baseline.items():
+        for col in ("canonical_path", "retail_leaf_path"):
+            v = (rec.get(col) or "").strip()
+            if not v: continue
+            segs = v.split(" > ")
+            if len(segs) < 4: continue  # need at least family > type > X > Y to reorder
+            # Identify which segs are claims (case-insensitive)
+            claim_idxs = [i for i, s in enumerate(segs) if s.lower() in KNOWN_CLAIMS]
+            non_claim_segs = [s for i, s in enumerate(segs) if i not in claim_idxs]
+            claim_segs = sorted([segs[i] for i in claim_idxs], key=str.lower)
+            if not claim_segs: continue
+            # Reassemble: family > type > [claims sorted] > [other segments preserved]
+            if len(non_claim_segs) >= 2:
+                # family + type + claims + rest
+                new_segs = non_claim_segs[:2] + claim_segs + non_claim_segs[2:]
+            else:
+                new_segs = non_claim_segs + claim_segs
+            new_v = " > ".join(new_segs)
+            if new_v != v:
+                rec[col] = new_v
+                n_reordered += 1
+
+    # 5b. Final dedupe pass: collapse case-insensitive duplicate segments
     n_dedupe = 0
     for fdc, rec in baseline.items():
         for col in ("canonical_path", "retail_leaf_path"):
@@ -586,6 +651,32 @@ def final_bfc_validation(baseline: dict) -> int:
             if new_v != v:
                 rec[col] = new_v
                 n_dedupe += 1
+    print(f"    Stage 5b: {n_reordered:,} paths reordered (claims to consistent depth)")
+
+    # 5c. Final post-process: unconditional fixes for stubborn known bad patterns
+    n_post = 0
+    for fdc, rec in baseline.items():
+        cp = (rec.get("canonical_path") or "").strip()
+        title = (rec.get("title") or "")
+        # Alimentary Paste with wrong leaf (Yam etc. from FNDDS code mismatch)
+        if 'ALIMENTARY PASTE' in title.upper() and cp.startswith('Bakery > Alimentary Paste'):
+            new_cp = 'Bakery > Dough > Alimentary Paste'
+            rec["canonical_path"] = new_cp
+            rec["retail_leaf_path"] = new_cp
+            n_post += 1
+            continue
+        # Almond/Peanut/Cashew/Hazelnut Butter sandwich misrouted to Bakery > Almond Butter
+        if (re.search(r"\bSANDWICH(ES)?\b", title, re.I)
+            and re.match(r'^Bakery > (Almond|Peanut|Cashew|Hazelnut|Sunflower|Cookie) Butter', cp)):
+            flavor = parse_combined(rec.get('flavor','')) or ''
+            desc = re.split(r'\bSANDWICH', title, maxsplit=1, flags=re.I)[0].strip().rstrip(',').strip()
+            leaf = title_case(desc)[:80] if desc else (flavor or 'Plain')
+            new_cp = f"Meal > Sandwiches > Sandwich > {leaf}"
+            rec["canonical_path"] = new_cp
+            rec["retail_leaf_path"] = new_cp
+            n_post += 1
+    if n_post:
+        print(f"    Stage 5c: {n_post:,} stubborn-pattern post-fixes")
 
     print(f"    Stage 5: {n_cross_family:,} cross-family + {n_shallow_enriched:,} shallow-enriched + {n_flavor_at_d2_fixed:,} flavor-at-d2 + {n_jerky_routed:,} jerky + {n_bean_typed:,} bean-typed + {n_dedupe:,} deduped")
     return n_cross_family + n_shallow_enriched + n_flavor_at_d2_fixed + n_jerky_routed + n_bean_typed
