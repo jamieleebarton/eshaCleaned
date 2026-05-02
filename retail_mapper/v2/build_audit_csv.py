@@ -534,6 +534,7 @@ def main() -> None:
             fdc = (row.get("fdc_id") or "").strip()
             source_category_path = row.get("category_path_fixed", "")
             source_identity = row.get("product_identity_fixed", "")
+            source_canonical_path = row.get("canonical_path", "")
             extra = enriched_by_fdc.get(fdc, {})
             f_code = extra.get("fndds_code", "")
             s_code = extra.get("sr28_code", "")
@@ -619,6 +620,7 @@ def main() -> None:
             # are finalized from the cleaned category+identity contract.
             row["category_path_fixed"] = source_category_path
             row["product_identity_fixed"] = source_identity
+            row["canonical_path"] = source_canonical_path
             apply_finalized_taxonomy(row)
             wtr.writerow(row)
             n += 1

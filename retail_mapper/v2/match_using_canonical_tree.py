@@ -29,6 +29,8 @@ import sys
 from collections import Counter, defaultdict
 from pathlib import Path
 
+from taxonomy_finalizer import finalize_taxonomy_row
+
 REPO = Path(__file__).resolve().parents[2]
 V2 = REPO / "retail_mapper" / "v2"
 
@@ -564,15 +566,14 @@ def main() -> None:
         for row in rdr:
             sku_count += 1
             title = row.get("title", "")
-            identity = row.get("product_identity_fixed", "")
             bfc = row.get("branded_food_category", "")
-            leaf = row.get("canonical_path", "")
+            finalized = finalize_taxonomy_row(row)
+            identity = finalized.product_identity_fixed
+            leaf = finalized.canonical_path
             variant = row.get("variant", "")
             flavor = row.get("flavor", "")
-            claims = row.get("claims", "")
-            form = row.get("form_texture_cut", "")
-            modifier = derive_modifier(variant, flavor, claims, form, identity)
-            retail_leaf_path = f"{leaf} > {modifier}" if leaf and modifier else leaf
+            modifier = finalized.modifier
+            retail_leaf_path = finalized.retail_leaf_path
             leaf_to_total[leaf] += 1
 
             # Identity tokens are passed separately so the matcher can bias
@@ -650,7 +651,7 @@ def main() -> None:
                 "fdc_id": row.get("fdc_id", ""),
                 "title": title,
                 "branded_food_category": row.get("branded_food_category", ""),
-                "category_path_fixed": row.get("category_path_fixed", ""),
+                "category_path_fixed": finalized.category_path_fixed,
                 "product_identity_fixed": identity,
                 "canonical_path": leaf,
                 "variant": variant,

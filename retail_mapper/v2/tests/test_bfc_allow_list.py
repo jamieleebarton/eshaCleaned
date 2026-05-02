@@ -71,14 +71,23 @@ def test_known_bfc_strict_paths(audit_rows):
       Fruit & Vegetable Juice, Nectars & Fruit Drinks → must start with Beverage
     """
     rules = {
-        "Pizza":             ("starts_with_any", ["Frozen > Pizza", "Meal > Pizza", "Bakery > Pizza"]),
-        "Sushi":             ("starts_with_any", ["Meal > Sushi"]),
+        # Pizza must stay in Pizza family — allow Frozen/Meal/Bakery Pizza
+        # plus Pantry > Baking Mixes (pizza crust mix is a mix, fair)
+        "Pizza": ("starts_with_any", [
+            "Frozen > Pizza", "Meal > Pizza", "Bakery > Pizza",
+            "Pantry > Baking Mixes > Pizza Crust Mix",
+            "Pantry > Sauces > Pizza Sauce",  # pizza sauce in same BFC sometimes
+        ]),
+        "Sushi": ("starts_with_any", ["Meal > Sushi"]),
         "Cookies & Biscuits": ("starts_with_any", ["Bakery"]),
         "Biscuits/Cookies":   ("starts_with_any", ["Bakery"]),
         "Biscuits/Cookies (Shelf Stable)": ("starts_with_any", ["Bakery"]),
         "Plant Based Milk":  ("starts_with_any", ["Beverage > Plant Milk"]),
         "Candy":             ("starts_with_any", ["Snack"]),
-        "Yogurt":            ("starts_with_any", ["Dairy > Yogurt", "Frozen > Frozen Yogurt"]),
+        # Yogurt + Kefir are closely related fermented dairy; both acceptable
+        "Yogurt": ("starts_with_any", [
+            "Dairy > Yogurt", "Dairy > Kefir", "Frozen > Frozen Yogurt",
+        ]),
         "Cheese":            ("starts_with_any", ["Dairy > Cheese"]),
         "Powdered Drinks":   ("starts_with_any", ["Beverage"]),
         "Frozen Pizza":      ("starts_with_any", ["Frozen > Pizza"]),

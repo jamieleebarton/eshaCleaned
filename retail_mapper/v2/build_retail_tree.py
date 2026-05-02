@@ -37,6 +37,8 @@ import sys
 from collections import Counter, defaultdict
 from pathlib import Path
 
+from taxonomy_finalizer import finalize_taxonomy_row
+
 REPO = Path(__file__).resolve().parents[2]
 V2 = REPO / "retail_mapper" / "v2"
 CLEAN_SRC = V2 / "full_corpus_cleaned.csv"   # has variant + flavor + canonical_label
@@ -156,16 +158,13 @@ def main() -> None:
         for row in csv.DictReader(fh):
             n_rows += 1
             fdc = (row.get("fdc_id") or "").strip()
-            base_path = (row.get("canonical_path") or "").strip()
-            identity = (row.get("product_identity_fixed") or "").strip()
-            variant = row.get("variant") or ""
-            flavor = row.get("flavor") or ""
-            claims = row.get("claims") or ""
-            form = row.get("form_texture_cut") or ""
+            finalized = finalize_taxonomy_row(row)
+            base_path = finalized.canonical_path
+            identity = finalized.product_identity_fixed
             if not base_path or not identity:
                 continue
-            mod = derive_modifier(variant, flavor, claims, form)
-            leaf_path = f"{base_path} > {mod}" if mod else base_path
+            mod = finalized.modifier
+            leaf_path = finalized.retail_leaf_path
             leaf_count[leaf_path] += 1
             leaf_modifier[leaf_path] = mod
             leaf_base_path[leaf_path] = base_path
