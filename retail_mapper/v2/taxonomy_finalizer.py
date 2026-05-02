@@ -560,6 +560,17 @@ def _canonical_from_category_identity(category_path: str, identity: str) -> str:
     if not identity:
         return PATH_SEP.join(category_segments)
 
+    # Combined-parent BFC names ("Sauces & Salsas", "Hot Dogs & Sausages",
+    # "Salad Dressing & Mayonnaise", etc.) must NOT appear in canonical_path.
+    # When the category last segment contains '&', ',', or '/', REPLACE it
+    # with the more-specific identity rather than appending.
+    if len(category_segments) >= 2:
+        last_seg = category_segments[-1]
+        if re.search(r"[&,/]", last_seg):
+            return PATH_SEP.join(
+                dedupe_segments(category_segments[:-1] + [identity])
+            )
+
     identity_key = _token_key(identity)
     category_keys = {_token_key(seg) for seg in category_segments}
     category_words: set[str] = set()
@@ -569,10 +580,7 @@ def _canonical_from_category_identity(category_path: str, identity: str) -> str:
     if identity_key in category_keys:
         return PATH_SEP.join(category_segments)
 
-    # Combined category buckets such as "Sauces & Salsas" or
-    # "Hot Dogs & Sausages" still need the concrete identity appended.
-    last_is_combined_bucket = bool(re.search(r"[&,/]", category_segments[-1]))
-    if not last_is_combined_bucket and _word_set(identity).issubset(category_words):
+    if _word_set(identity).issubset(category_words):
         return PATH_SEP.join(category_segments)
 
     return PATH_SEP.join(dedupe_segments(category_segments + [identity]))
