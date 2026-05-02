@@ -50,12 +50,74 @@ A recipe line is correct when ALL of these hold:
 
 ## State of work right now (2026-05-02)
 
-- Step 1: NOT DONE. Need to read each cleanup script's I/O contract and write a one-line summary per script.
+- Step 1: DONE — see Cleanup Script Inventory below.
 - Step 2: NOT STARTED.
 - Step 3: NOT STARTED.
 - Step 4: NOT STARTED. (Existing shadow DB from Apr 28 has the same bugs; shadow build chain doesn't use audit columns.)
 - Step 5: PARTIAL. Calculator dump for 10/13 recipes at `/tmp/calc_plan13.json`. Plan dump at `implementation/output/ruvs/real_plan/plan.json`.
 - Step 6: NOT STARTED.
+
+## Cleanup Script Inventory (Step 1 result, 2026-05-02)
+
+All scripts read or write `product_to_best_esha_full_map.vIdentity*.csv` (462K rows: product → ESHA code map). The cohort key is `current_esha_code`. The product text is `product_description + brand_name`. The category check is `branded_food_category`. To repurpose for `food_packages_final.db`, the cohort key becomes `fndds_code`, doc text becomes `product_meta.name + product_meta.ingredient_statement`, anchor becomes `food_description`. The scoring math is unchanged.
+
+### Outlier-scoring engines (produce flag lists)
+
+| Script | Signal | Threshold | Inputs | Outputs |
+|---|---|---|---|---|
+| `cohort_outlier_scan.py` | TF-IDF ingredient distance z-score + category mismatch + fndds mismatch + weak verdict | composite > 1.5 | vIdentity.fixed_v2.csv + master_products.db | `cohort_outliers_per_code.csv`, summary md |
+| `embed_outlier_scan.py` | MiniLM `description+brand` embedding, 1−cos(emb, cohort_centroid), z-score within cohort | z ≥ 1.5 | vIdentity.fixed_v2.csv + esha_cleaned_canonical.csv | `embed_outliers.csv`, cache at `.embed_cache/prod_emb.npy`, summary md |
+
+### Reroute engines (move outliers to a better cohort)
+
+| Script | Signal | Apply rule | Inputs | Outputs |
+|---|---|---|---|---|
+| `cohort_reroute.py` | TF-IDF cosine to alt cohort centroid, filtered by branded_food_category majority | alt_sim ≥ 0.25, margin ≥ 0.10, alt_majority ≥ 0.4, alt_size ≥ 5 | vIdentity.fixed_v2.csv + cohort_outliers_per_code.csv | `cohort_reroute_applied.csv`, review queue, vIdentity.fixed_v3.csv |
+| `embed_reroute.py` | MiniLM embedding cosine to alt cohort centroid, filtered by majority category | alt_sim ≥ 0.50, margin ≥ 0.10, alt_majority ≥ 0.4, alt_size ≥ 5 | vIdentity.fixed_v2.csv + outliers_filtered.csv + .embed_cache/* | `embed_reroute_applied.csv`, review, vIdentity.fixed_v3_embed.csv |
+
+### Tightening / filtering (post-reroute confidence)
+
+| Script | Action | Inputs | Outputs |
+|---|---|---|---|
+| `apply_embed_v3.py` | Tighten embed_reroute_applied.csv: keep only if alt_sim ≥ 0.75, OR (alt_sim ≥ 0.65 AND margin ≥ 0.15) | embed_reroute_applied.csv + vIdentity.fixed_v2.csv | `embed_v3_applied.csv`, review queue, vIdentity.fixed_v3.csv |
+| `filter_and_cluster_outliers.py` | Drop outliers whose sim_to_tree_description ≥ 0.5 (false-positive guard); cluster survivors by (esha_code, category) for bulk fix | embed_outliers.csv | `outliers_filtered.csv`, `outlier_clusters.csv`, summary |
+
+### BM25 utilities (alternative scoring, ingredient-list driven)
+
+| Script | What it indexes | Use |
+|---|---|---|
+| `fixy_done/_bm25_match.py` | Token bag per FNDDS CSV file | ingredient list → best `fndds_code` |
+| `fixy_done/_bm25_esha_v3.py` | ESHA-code docs with field weighting (title 5x, ingredients 1x, bigrams) | product/audit text → best `esha_code` with top1/top2 margin as confidence |
+| `fixy_done/_bm25_fast.py` | Sparse-matrix variant of v3 (batch scoring) | full-corpus scoring against ESHA |
+
+### Cleanup orchestration
+
+| Script | What it does |
+|---|---|
+| `embed_cluster_pipeline.py` | Full pipeline: load → MiniLM embed → FAISS kNN graph → Leiden cluster → centroid kNN against SR28/FNDDS/ESHA → report. Two modes: `products_only` (default) and `joint` (with reference items). |
+| `build_esha_cleanup_matrix.py` | Assembles MD-pack product rows + cross-reference + matcher into `esha_cleanup_matrix.csv` |
+| `build_esha_category_outlier_workbench.py` | Per-category outlier triage workbench, uses `self_heal_common` for category lane / form / role / target heads |
+
+### The chain that produced the working v3 reroute
+
+```
+embed_outlier_scan.py        →  embed_outliers.csv
+filter_and_cluster_outliers  →  outliers_filtered.csv     (drop sim_to_tree ≥ 0.5)
+embed_reroute.py             →  embed_reroute_applied.csv (alt_sim ≥ 0.50, margin ≥ 0.10)
+apply_embed_v3.py            →  vIdentity.fixed_v3.csv    (tighten to alt_sim ≥ 0.75 OR ≥0.65+margin≥0.15)
+```
+
+### Adaptation surface for food_packages_final.db
+
+To clean the planner's runtime store using this same chain, only the data-loading layer changes:
+
+- **INPUT** rows: `food_packages_final.db.packages` (15,009 rows). Key = `(fndds_code, package_weight_grams)`. Per row: `food_description`, `product_meta` JSON (`name`, `brand`, `ingredient_statement`, `categories`).
+- **Cohort key**: `fndds_code` (was `current_esha_code`).
+- **Doc text per row**: `product_meta.name + " " + product_meta.ingredient_statement`.
+- **Anchor (analog of esha_cleaned_canonical row)**: `food_description`.
+- **Category analog**: `product_meta.categories[0]` (kroger) — used for the majority-category filter in reroute.
+- **Output**: a flag list (`food_packages_outliers.csv`) of (fndds_code, package_weight_grams, name, score, reason). Optionally a sidecar `food_packages_demote.csv` indicating which rows to drop or demote in confidence_tier.
+- The scoring math, thresholds, embedding model, cache layout — all reused.
 
 ## Anti-drift checklist (run before every reply)
 
