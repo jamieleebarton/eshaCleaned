@@ -1161,35 +1161,63 @@ def _has_phrase(text: str, phrase: str) -> bool:
     return f" {normalize_key(text)} ".find(f" {normalize_key(phrase)} ") >= 0
 
 
+_COMBO_DEMOTE_CONFIDENCE_THRESHOLD = 0.50
+
+
 def _reject_combo_product(canonical: str, product: LabProduct) -> str:
+    """Combo / prepared / kit detector. Step C (Part 3) demotes this to
+    unclassified-fallback only — when the product has a confident audit
+    classification AND its canonical_path is plausibly compatible with the
+    canonical, we DO NOT combo-reject. The structured matcher (accept_via_audit)
+    has already had a chance to decide; combo_product should not override it
+    for classified products.
+    """
     canonical_tokens = set(normalize_key(canonical).split())
     product_tokens = _product_tokens(product)
     combo_terms = {
-        "bar",
-        "bars",
-        "blend",
-        "bread",
-        "casserole",
-        "chips",
-        "dinner",
-        "dinners",
-        "entree",
-        "fry",
-        "medley",
-        "mix",
-        "mixed",
-        "pasta",
-        "salad",
-        "side",
-        "sides",
-        "stir",
-        "tortilla",
-        "tortillas",
+        "bar", "bars", "blend", "bread", "casserole", "chips", "dinner",
+        "dinners", "entree", "fry", "medley", "mix", "mixed", "pasta",
+        "salad", "side", "sides", "stir", "tortilla", "tortillas",
     }
     extra_combo = product_tokens & (combo_terms - canonical_tokens)
-    if extra_combo:
-        return "combo_or_prepared_product:" + "/".join(sorted(extra_combo))
-    return ""
+    if not extra_combo:
+        return ""
+
+    # Step C demote rule: if the product has a confident audit classification
+    # whose canonical_path leaf token-overlaps the canonical, the audit's
+    # decision wins over the title blocklist.
+    upc = (product.gtin_upc or "").strip()
+    if upc:
+        classes = _load_audit_class_by_upc()
+        cls = classes.get(upc) or classes.get(upc.lstrip("0"))
+        if cls:
+            canonical_path, variant, flavor, ftc, ps, conf, method = cls
+            if (
+                method != "unclassified"
+                and conf >= _COMBO_DEMOTE_CONFIDENCE_THRESHOLD
+                and canonical_path
+            ):
+                # Last segment of the audit's canonical_path — the "leaf" food.
+                leaf = canonical_path.split(" > ")[-1].lower()
+                leaf_tokens = {t for t in re.findall(r"[a-z0-9]+", leaf) if len(t) > 1}
+                # If the canonical's tokens overlap with the audit's leaf tokens,
+                # trust the audit. Example: macaroni canonical, audit leaf
+                # "Macaroni" -> overlap, do not combo-reject even if title has
+                # "pasta".
+                if canonical_tokens & leaf_tokens:
+                    return ""
+                # Or: forbid only when the audit explicitly says this is a
+                # kit/prepared/salad path.
+                bad_path_tokens = {"salad", "kit", "kits", "dinner", "dinners",
+                                    "casserole", "meal", "meals", "prepared"}
+                path_tokens = {
+                    t for t in re.findall(r"[a-z0-9]+", canonical_path.lower())
+                    if len(t) > 1
+                }
+                if not (path_tokens & bad_path_tokens):
+                    return ""
+
+    return "combo_or_prepared_product:" + "/".join(sorted(extra_combo))
 
 
 def _product_desc(product: LabProduct) -> str:
