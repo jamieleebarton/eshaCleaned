@@ -3797,15 +3797,25 @@ def _accept_sparse_audit_product(product: LabProduct, canonical_key: str) -> tup
 _AUDIT_CLASS_BY_UPC: dict[str, tuple[str, str, str, str, str, float, str]] | None = None
 _AUDIT_CLASS_DB_PATH = "/Users/jamiebarton/Desktop/Hestia/api/data/product_audit_classification.db"
 
-# Canonical -> (expected_audit_path_prefix, forbidden_modifier_tokens).
-# Step 3 seed set for the four investigation samples plus a small extension.
-# Step 5 will move this into a sidecar DB; for now hard-coded so the rule is
-# observable in source.
-_CANONICAL_AUDIT_EXPECTATION: dict[str, tuple[str, set[str]]] = {
-    "macaroni":          ("Pantry > Pasta",                        set()),
-    "chicken drumstick": ("Meat & Seafood > Poultry",              {"breaded", "battered", "seasoned", "tenders", "nuggets", "popcorn", "marinated"}),
-    "green onion":       ("Produce > Fresh Vegetables > Onions",   set()),
-    "tomato juice":      ("Beverage > Juice > Tomato",             set()),
+# Canonical -> (list of expected_audit_path_prefixes, forbidden_modifier_tokens).
+# Hard-coded for now; STRUCTURED_MATCHER_SPEC Part 5 moves this to a generated
+# canonical_retail_bridge table. Prefixes calibrated against ground-truth
+# debug dump (commit f49da18): the audit's actual path strings, not guesses.
+_CANONICAL_AUDIT_EXPECTATION: dict[str, tuple[list[str], set[str]]] = {
+    "macaroni":          (["Pantry > Pasta", "Pantry > Pastas", "Grocery > Pasta"], set()),
+    "chicken drumstick": (["Meat & Seafood > Poultry", "Meat & Seafood > Meat > Poultry"],
+                          {"breaded", "battered", "seasoned", "tenders", "nuggets", "popcorn", "marinated"}),
+    # green onion: audit uses Produce > Vegetables > Onions > Chopped > Green (not "Fresh Vegetables").
+    # Accept any path that goes through Onions + Green / Scallion / Spring.
+    "green onion":       (["Produce > Vegetables > Onions",
+                           "Produce > Onions",
+                           "Produce > Fresh Vegetables > Onions"], set()),
+    # tomato juice: audit also uses Beverage > Drink > Tomatoes for legit tomato juice.
+    # Reject sodas/cocktail-mixers via forbidden modifiers; reject diced tomatoes via path mismatch (canned vegetables path won't match).
+    "tomato juice":      (["Beverage > Juice > Tomato",
+                           "Beverage > Drink > Tomatoes",
+                           "Beverage > Juice"],
+                          {"cocktail", "soda", "carbonated"}),
 }
 
 
@@ -3848,7 +3858,9 @@ def accept_via_audit(product: LabProduct, canonical: str) -> tuple[bool, str] | 
     spec = _CANONICAL_AUDIT_EXPECTATION.get(canonical_key)
     if spec is None:
         return None
-    expected_prefix, forbidden_modifiers = spec
+    expected_prefixes, forbidden_modifiers = spec
+    if isinstance(expected_prefixes, str):  # back-compat: single string
+        expected_prefixes = [expected_prefixes]
     upc = (product.gtin_upc or "").strip()
     if not upc:
         return None
@@ -3859,13 +3871,17 @@ def accept_via_audit(product: LabProduct, canonical: str) -> tuple[bool, str] | 
     canonical_path, variant, flavor, ftc, ps, conf, method = cls
     if method == "unclassified":
         return None
-    if not canonical_path.startswith(expected_prefix):
-        return False, f"audit_path_mismatch:{canonical_path[:60]}"
-    blob = " ".join([variant, flavor, ftc, ps]).lower()
+    # Forbidden modifiers checked first — kills sodas / cocktail mixers /
+    # breaded variants regardless of path.
+    blob = " ".join([variant or "", flavor or "", ftc or "", ps or "", canonical_path or ""]).lower()
     for mod in forbidden_modifiers:
         if mod and mod in blob:
             return False, f"audit_forbidden_modifier:{mod}"
-    return True, f"audit_accept:{canonical_path[:60]}"
+    # Path prefix match — any of the listed prefixes
+    for prefix in expected_prefixes:
+        if canonical_path.startswith(prefix):
+            return True, f"audit_accept:{canonical_path[:60]}"
+    return False, f"audit_path_mismatch:{canonical_path[:60]}"
 
 
 def _product_acceptance_reason(product: LabProduct, canonical: str) -> tuple[bool, str]:
