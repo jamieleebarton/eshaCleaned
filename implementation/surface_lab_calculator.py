@@ -3998,7 +3998,32 @@ _CANONICAL_AUDIT_EXPECTATION: dict[str, tuple[list[str], set[str]]] = {
     "tomato juice":      (["Beverage > Juice > Tomato",
                            "Beverage > Drink > Tomatoes",
                            "Beverage > Juice"],
-                          {"cocktail", "soda", "carbonated"}),
+                          {"cocktail", "soda", "carbonated", "michelada", "mixer"}),
+    # Plain oats / oatmeal. Audit splits cleanly:
+    #   Pantry > Cereal > Oats             (87)  plain rolled
+    #   Pantry > Grain > Oats > *          (~50) steel cut, instant-no-flavor, whole
+    #   Pantry > Grain > Steel Cut Oats    audit's preferred bucket for esha 93119
+    # Flavored variants live elsewhere:
+    #   Pantry > Cereal > Oatmeal Raisin Cookie / Creme Pies (cookies disguised)
+    #   Snack > Cookies > Oatmeal Chocolate Chip
+    # canonical_to_esha.csv currently mis-maps `oatmeal` to esha 44533
+    # (Muffin, oatmeal), poisoning the bridge — fix in surface dict.
+    "oat":               (["Pantry > Cereal > Oats",
+                           "Pantry > Grain > Oats",
+                           "Pantry > Grain > Steel Cut Oats",
+                           "Pantry > Grain > Instant Oats"],
+                          {"flavored", "apples", "cinnamon", "maple", "fruit",
+                           "variety pack", "raisin cookie", "creme pies",
+                           "chocolate chip", "granola", "bran", "cracklin",
+                           "peaches", "cream", "strawberry", "honey nut"}),
+    "oatmeal":           (["Pantry > Cereal > Oats",
+                           "Pantry > Grain > Oats",
+                           "Pantry > Grain > Steel Cut Oats",
+                           "Pantry > Grain > Instant Oats"],
+                          {"flavored", "apples", "cinnamon", "maple", "fruit",
+                           "variety pack", "raisin cookie", "creme pies",
+                           "chocolate chip", "muffin", "bran", "cracklin",
+                           "peaches", "cream", "strawberry", "honey nut"}),
 }
 
 
@@ -4049,16 +4074,28 @@ def accept_via_audit(product: LabProduct, canonical: str) -> tuple[bool, str] | 
         return None
     classes = _load_audit_class_by_upc()
     cls = classes.get(upc) or classes.get(upc.lstrip("0"))
-    if not cls:
+    title_blob = " ".join([
+        product.description or "",
+        product.brand_name or "",
+        product.category or "",
+    ]).lower()
+    if not cls or cls[6] == "unclassified":
+        # No reliable audit classification. We still apply the title
+        # forbidden-modifier check for canonicals with strict expectation
+        # rules — otherwise products like Cracklin Oat Bran or
+        # Peaches & Cream Instant Oatmeal slip past the legacy chain.
+        for mod in forbidden_modifiers:
+            if mod and mod in title_blob:
+                return False, f"audit_forbidden_modifier_title:{mod}"
         return None
     canonical_path, variant, flavor, ftc, ps, conf, method = cls
-    if method == "unclassified":
-        return None
     # Forbidden modifiers checked first — kills sodas / cocktail mixers /
-    # breaded variants regardless of path.
-    blob = " ".join([variant or "", flavor or "", ftc or "", ps or "", canonical_path or ""]).lower()
+    # breaded variants regardless of path. Check both audit fields and title
+    # so audit-classified products with the modifier only in the description
+    # (e.g. Clamato Michelada labelled under Beverage > Juice) are still cut.
+    audit_blob = " ".join([variant or "", flavor or "", ftc or "", ps or "", canonical_path or ""]).lower()
     for mod in forbidden_modifiers:
-        if mod and mod in blob:
+        if mod and (mod in audit_blob or mod in title_blob):
             return False, f"audit_forbidden_modifier:{mod}"
     # Path prefix match — any of the listed prefixes
     for prefix in expected_prefixes:
