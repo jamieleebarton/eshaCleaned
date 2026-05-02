@@ -190,6 +190,74 @@ def main() -> None:
                 break
     print(f"  rerouted {n_rerouted_by_word:,} outlier SKUs by type-word")
 
+    # Pass 3.5: leaf-signature homogenization. Same leaf-words appearing in
+    # MULTIPLE family>type homes — reroute outliers to the dominant home.
+    # E.g., "Pina Colada Mix" appears in both:
+    #   Pantry > Baking Mixes > Mix > Pina Colada (1 SKU)
+    #   Beverage > Cocktail Mixers > Cocktail Mix > Pina Colada (50 SKUs)
+    # Dominant wins. The 1-SKU outlier was a hijack and gets rerouted.
+    sig_to_paths: dict[str, Counter] = defaultdict(Counter)
+    for r in rows:
+        cp = (r.get("canonical_path") or "").strip()
+        if not cp: continue
+        segs = cp.split(" > ")
+        if len(segs) <= 2: continue
+        leaves = segs[2:]
+        words = []
+        for s in leaves:
+            for w in re.findall(r"[A-Za-z][A-Za-z']+", s):
+                wl = w.lower()
+                if wl in {"plain", "natural", "original", "the", "and", "or"}: continue
+                if len(wl) <= 2: continue
+                words.append(wl)
+        sig = " ".join(sorted(set(words)))
+        if sig:
+            sig_to_paths[sig][cp] += 1
+
+    sig_dom: dict[str, str] = {}
+    for sig, paths in sig_to_paths.items():
+        total = sum(paths.values())
+        if total < 5: continue
+        dom_path, dom_n = paths.most_common(1)[0]
+        # Only set as canonical if dominant has >=50% AND >=5x the runner-up
+        if dom_n / total < 0.50: continue
+        runner_up = paths.most_common(2)[1][1] if len(paths) > 1 else 0
+        if runner_up and dom_n / runner_up < 5: continue
+        # And exclude tainted (BFC-combined-name) homes
+        if _has_combined_bfc_name(dom_path): continue
+        sig_dom[sig] = dom_path
+
+    n_rerouted_by_sig = 0
+    for r in rows:
+        cp = (r.get("canonical_path") or "").strip()
+        if not cp: continue
+        segs = cp.split(" > ")
+        if len(segs) <= 2: continue
+        leaves = segs[2:]
+        words = []
+        for s in leaves:
+            for w in re.findall(r"[A-Za-z][A-Za-z']+", s):
+                wl = w.lower()
+                if wl in {"plain", "natural", "original", "the", "and", "or"}: continue
+                if len(wl) <= 2: continue
+                words.append(wl)
+        sig = " ".join(sorted(set(words)))
+        if not sig or sig not in sig_dom: continue
+        dom = sig_dom[sig]
+        if cp == dom: continue
+        # Only reroute if current path is significantly less common than dom
+        current_count = sig_to_paths[sig].get(cp, 0)
+        dom_count = sig_to_paths[sig][dom]
+        if current_count >= dom_count: continue
+        if dom_count / max(1, current_count) < 5: continue
+        # Reroute: set category_path_fixed to dominant home's family+type
+        dom_segs = dom.split(" > ")
+        new_cat = " > ".join(dom_segs[:2])
+        r["category_path_fixed"] = new_cat
+        apply_finalized_taxonomy(r)
+        n_rerouted_by_sig += 1
+    print(f"  rerouted {n_rerouted_by_sig:,} outlier SKUs by leaf-signature dominance")
+
     # Pass 4: clean adjacent-redundant-words within each path segment
     # (Bug #3: "Dark Chocolate Chocolate" → "Dark Chocolate")
     n_redundant_fixed = 0

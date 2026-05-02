@@ -230,6 +230,15 @@ PROTECTED_FLAVOR_TOKENS = {
     "chocolate_chip",
 }
 
+PLANT_BASED_CONTEXT_PREFIXES = (
+    "beverage plant milk",
+    "meat seafood meat alternative",
+    "frozen plant based meat",
+    "pantry plant based dairy",
+    "dairy cheese alternative",
+    "dairy cheese substitute",
+)
+
 CLAIM_ORDER = [
     "organic", "gluten_free", "whole_grain", "whole_wheat",
     "unsweetened", "no_sugar_added", "sugar_free", "sweetened",
@@ -467,6 +476,10 @@ def _ordered_unique(tokens: Iterable[str]) -> list[str]:
 def _identity_echo(token: str, identity: str, canonical_segments: Iterable[str]) -> bool:
     if token in PROTECTED_FLAVOR_TOKENS:
         return False
+    canonical_segments = list(canonical_segments)
+    path_key = _token_key(PATH_SEP.join(canonical_segments))
+    if token in {"plant_based", "non_dairy"} and path_key.startswith(PLANT_BASED_CONTEXT_PREFIXES):
+        return True
     token_words = _word_set(token)
     if not token_words:
         return True
@@ -594,8 +607,27 @@ def _looks_like_prepared_sandwich(title: str) -> bool:
     ))
 
 
+def _looks_like_breakfast_sandwich(title: str, reference_text: str = "") -> bool:
+    title = title or ""
+    reference_text = reference_text or ""
+    evidence = f"{title} {reference_text}"
+    if re.search(r"\bbreakfast\s+sandwich(?:es)?\b", evidence, re.I):
+        return True
+    carrier = r"(?:bagels?|biscuits?|croissants?|english\s+muffins?|muffins?|flatbreads?)"
+    filling = r"(?:eggs?|egg\s+white|cheese|cheddar|mozzarella|sausage|bacon|ham|turkey|steak)"
+    if re.search(rf"\bbreakfast\s+{carrier}\b", title, re.I) and re.search(rf"\b{filling}\b", title, re.I):
+        return True
+    if re.search(rf"\b{carrier}\b.*\bwith\b.*\b{filling}\b", title, re.I):
+        return True
+    if re.search(rf"\b{filling}\b.*\bon\s+(?:a\s+)?{carrier}\b", evidence, re.I):
+        return True
+    return False
+
+
 def _sandwich_identity(title: str) -> str:
     t = title or ""
+    if _looks_like_breakfast_sandwich(t):
+        return "Breakfast Sandwich"
     if re.search(r"\bbanh\s*mi\b", t, re.I):
         return "Banh Mi Sandwich"
     if re.search(r"\bgyro\b", t, re.I):
@@ -614,8 +646,6 @@ def _sandwich_identity(title: str) -> str:
         return "Hamburger"
     if re.search(r"\bhot\s*dogs?\b|\bfranks?\b|\bfrankfurters?\b", t, re.I):
         return "Hot Dog"
-    if re.search(r"\bbreakfast\s+sandwich\b", t, re.I):
-        return "Breakfast Sandwich"
     if re.search(r"\bpita\b", t, re.I):
         return "Pita Sandwich"
     return "Sandwich"
@@ -894,6 +924,82 @@ def _ice_cream_cone_identity(title: str, identity: str) -> str | None:
     return None
 
 
+def _pie_crust_identity(title: str, identity: str) -> tuple[str, str] | None:
+    evidence = f"{title or ''} {identity or ''}"
+    if not re.search(r"\bpie\s*(?:crusts?|shells?|crust\s+mix)\b|\bpiecrusts?\b", evidence, re.I):
+        return None
+    if re.search(r"\bmix(?:es)?\b|\bdry\s+mix\b", evidence, re.I):
+        return "Pantry > Baking Mixes", "Pie Crust Mix"
+    if re.search(r"\bshells?\b", evidence, re.I):
+        return "Bakery > Pie Crusts", "Pie Shells"
+    return "Bakery > Pie Crusts", "Pie Crust"
+
+
+def _cocktail_mixer_identity(title: str, identity: str) -> str | None:
+    evidence = f"{title or ''} {identity or ''}"
+    has_mix_cue = re.search(
+        r"\b(cocktail\s+(?:mix|mixer)|mix(?:es|ers?)?|drink\s+mix|juice\s+mixers?|bar\s+juice|"
+        r"rimm(?:er|ing)|rim\s+(?:sugar|salt|candy|dip|paste|dressing)|cocktail\s+garnish|"
+        r"grenadine|bitters?|brine|syrup|cream\s+of\s+coconut|coconut\s+cream)\b",
+        evidence,
+        re.I,
+    )
+    if not re.search(
+        r"\b(cocktails?|margarita|pina\s*colada|daiquiri|bloody\s+mary|mojito|martini|"
+        r"michelada|mule|paloma|cosmopolitan|old\s+fashioned|sweet\s*&?\s*sour|"
+        r"whiskey\s+sour|grenadine|bitters?|rimm(?:er|ing)|rim\s+(?:sugar|salt|candy|dip|paste|dressing)|"
+        r"bar\s+juice|cream\s+of\s+coconut)\b",
+        evidence,
+        re.I,
+    ):
+        return None
+    if re.search(r"\bbitters?\b", evidence, re.I):
+        return "Cocktail Bitters"
+    if re.search(r"\b(rimm(?:er|ing)|rim\s+(?:sugar|salt|candy|dip|paste|dressing)|cocktail\s+garnish)\b", evidence, re.I):
+        return "Cocktail Rimmer"
+    if re.search(r"\b(grenadine|simple\s+syrup|cocktail\s+syrup|syrup)\b", evidence, re.I):
+        return "Cocktail Syrup"
+    if re.search(r"\b(brine|olive\s+brine|pickle\s+brine)\b", evidence, re.I):
+        return "Cocktail Brine"
+    if re.search(r"\b(cream\s+of\s+coconut|coconut\s+cream)\b", evidence, re.I):
+        return "Cream of Coconut"
+    if has_mix_cue and re.search(r"\b(bloody\s+mary)\b", evidence, re.I):
+        return "Bloody Mary Mix"
+    if has_mix_cue and re.search(r"\b(michelada)\b", evidence, re.I):
+        return "Michelada Mix"
+    if has_mix_cue and re.search(r"\b(margarita|pina\s*colada|daiquiri|mojito|martini|mule|paloma|cosmopolitan|"
+                 r"old\s+fashioned|sweet\s*&?\s*sour|whiskey\s+sour|cocktail\s+(?:mix|mixer)|mixers?)\b", evidence, re.I):
+        return "Cocktail Mix"
+    return None
+
+
+def _cocktail_style_variant(title: str) -> str:
+    styles = [
+        ("pina_colada", r"\bpina\s*colada\b|\bcoco[\s-]?lada\b"),
+        ("bloody_mary", r"\bbloody\s+mary\b"),
+        ("strawberry_daiquiri", r"\bstrawberry\s+daiquiri\b"),
+        ("daiquiri", r"\bdaiquiri\b"),
+        ("margarita", r"\bmargarita\b"),
+        ("mojito", r"\bmojito\b"),
+        ("dirty_martini", r"\bdirty\s+martini\b"),
+        ("martini", r"\bmartini\b"),
+        ("michelada", r"\bmichelada\b"),
+        ("moscow_mule", r"\bmoscow\s+mule\b"),
+        ("mule", r"\bmule\b"),
+        ("paloma", r"\bpaloma\b"),
+        ("cosmopolitan", r"\bcosmopolitan\b|\bcosmo\b"),
+        ("old_fashioned", r"\bold\s+fashioned\b"),
+        ("sweet_sour", r"\bsweet\s*&?\s*sour\b"),
+        ("whiskey_sour", r"\bwhiskey\s+sour\b"),
+        ("lemon_drop", r"\blemon\s+drop\b"),
+        ("grenadine", r"\bgrenadine\b"),
+    ]
+    for token, pattern in styles:
+        if re.search(pattern, title or "", re.I):
+            return token
+    return ""
+
+
 def _bakery_path_hijacked(category: str, canonical_path: str) -> bool:
     key = _token_key(category or canonical_path)
     return key.startswith((
@@ -904,6 +1010,25 @@ def _bakery_path_hijacked(category: str, canonical_path: str) -> bool:
     ))
 
 
+_BFC_TO_FORCED_FAMILY: dict[str, tuple[str, str | None]] = {
+    # When the cleanup pipeline routed an SKU to Bakery > Pastry > X based
+    # on a TITLE flavor-word (Churro, Cookie, Pizza), but the BFC clearly
+    # indicates a different product family, force the family.
+    # Format: bfc_lower → (family, default_type_hint)
+    "popcorn, peanuts, seeds & related snacks": ("Snack", "Trail Mix"),
+    "snack, energy & granola bars":             ("Snack", "Bars"),
+    "chips, pretzels & snacks":                 ("Snack", None),
+    "chewing gum & mints":                      ("Snack", "Candy"),
+    "ice cream & frozen yogurt":                ("Frozen", "Ice Cream"),
+    "other frozen desserts":                    ("Frozen", None),
+    "puddings & custards":                      ("Dairy", "Pudding"),
+    # NOTE: BFCs with explicit specialized handlers later in _forced_base
+    # (Candy, Chocolate, Powdered Drinks, Sushi, Cookies & Biscuits, Yogurt)
+    # are intentionally NOT in this map — those have title-aware sub-routing
+    # below that picks specific identities (Jelly Beans, Hot Cocoa, etc.).
+}
+
+
 def _forced_base(row: Mapping[str, str]) -> tuple[str, str] | None:
     title = row.get("title", "") or ""
     bfc = row.get("branded_food_category", "") or ""
@@ -911,6 +1036,18 @@ def _forced_base(row: Mapping[str, str]) -> tuple[str, str] | None:
     identity = row.get("product_identity_fixed", "") or ""
     blob = _title_blob(row)
     bfc_lower = bfc.strip().lower()
+
+    # BFC family-veto: when the EXISTING category_path family conflicts with
+    # the BFC's expected family, force-route to the BFC-expected family.
+    # Catches cleanup-pipeline hijacks: "CHURRO TRAIL MIX" + BFC=Popcorn was
+    # routed to Bakery > Pastry > Churros (wrong — should be Snack > Trail Mix).
+    cur_family = category.split(" > ", 1)[0] if category else ""
+    forced_family_info = _BFC_TO_FORCED_FAMILY.get(bfc_lower)
+    if forced_family_info and cur_family == "Bakery":
+        forced_family, type_hint = forced_family_info
+        if forced_family != "Bakery":
+            type_seg = type_hint or identity or "Other"
+            return f"{forced_family} > {type_seg}", identity or type_seg
 
     plant_context = (
         bfc_lower == "plant based milk"
@@ -938,6 +1075,16 @@ def _forced_base(row: Mapping[str, str]) -> tuple[str, str] | None:
     if re.search(r"\bhot\s*dog\b", title, re.I) and \
        re.search(r"\b(rolls?|buns?)\b", title, re.I):
         return "Bakery > Buns", "Hot Dog Buns"
+
+    breakfast_reference = " ".join([
+        identity,
+        row.get("fndds_desc", "") or "",
+        row.get("esha_desc", "") or "",
+        row.get("matched_key", "") or "",
+    ])
+    if _looks_like_breakfast_sandwich(title, breakfast_reference):
+        root = "Frozen > Breakfast Sandwiches" if "frozen" in bfc_lower or re.search(r"\bfrozen\b", title, re.I) else "Meal > Breakfast Sandwiches"
+        return root, "Breakfast Sandwich"
 
     # BUG #7: Danish blue cheese / cream cheese / etc. — "Danish" regex hijacks
     # towards Pastry. When BFC is Cheese AND title says cheese, force
@@ -1122,6 +1269,14 @@ def _forced_base(row: Mapping[str, str]) -> tuple[str, str] | None:
     ):
         return "Pantry > Dessert Mixes", dessert_mix_identity
 
+    pie_crust_route = _pie_crust_identity(title, identity)
+    if pie_crust_route and (
+        bfc_lower in {"crusts & dough", "sweet bakery products", "breads & buns", "flavored snack crackers", "cake, cookie & cupcake mixes"}
+        or _token_key(category).startswith(("bakery pie", "bakery pie crust", "pantry baking mix"))
+        or _token_key(row.get("canonical_path", "") or "").startswith(("bakery pie", "bakery pie crust", "pantry baking mix"))
+    ):
+        return pie_crust_route
+
     ice_cream_cone_identity = _ice_cream_cone_identity(title, identity)
     if ice_cream_cone_identity and (
         "ice cream" in bfc_lower
@@ -1130,6 +1285,26 @@ def _forced_base(row: Mapping[str, str]) -> tuple[str, str] | None:
         or _token_key(row.get("canonical_path", "") or "").startswith(("pantry baking mix", "snack ice cream cone", "frozen ice cream cone", "frozen ice cream"))
     ):
         return "Snack > Ice Cream Cones", ice_cream_cone_identity
+
+    cocktail_identity = _cocktail_mixer_identity(title, identity)
+    if cocktail_identity and (
+        bfc_lower == "alcohol"
+        or _token_key(category).startswith((
+            "pantry baking mix",
+            "pantry mix",
+            "pantry drink mix",
+            "beverage mix",
+            "beverage juice mix",
+        ))
+        or _token_key(row.get("canonical_path", "") or "").startswith((
+            "pantry baking mix",
+            "pantry mix",
+            "pantry drink mix",
+            "beverage mix",
+            "beverage juice mix",
+        ))
+    ):
+        return "Beverage > Cocktail Mixers", cocktail_identity
 
     bakery_hijack = _bakery_path_hijacked(category, row.get("canonical_path", "") or "")
 
@@ -1178,10 +1353,14 @@ def _forced_base(row: Mapping[str, str]) -> tuple[str, str] | None:
         return "Meal > Wraps", "Wrap"
 
     if bfc_lower in FROZEN_BREAKFAST_BFCS:
+        if _looks_like_breakfast_sandwich(title, breakfast_reference):
+            return "Frozen > Breakfast Sandwiches", "Breakfast Sandwich"
         return "Frozen > Breakfast", _sandwich_identity(title)
 
     if bfc_lower in BREAKFAST_SANDWICH_BFCS:
-        return "Meal > Sandwiches", _sandwich_identity(title)
+        if _looks_like_breakfast_sandwich(title, breakfast_reference):
+            return "Meal > Breakfast Sandwiches", "Breakfast Sandwich"
+        return "Meal > Breakfast", _sandwich_identity(title)
 
     if bfc_lower in FROZEN_APPETIZER_BFCS:
         return "Frozen > Appetizers", _appetizer_identity(title)
@@ -1359,16 +1538,14 @@ def _canonical_from_category_identity(category_path: str, identity: str) -> str:
         return PATH_SEP.join(category_segments)
 
     # =====================================================================
-    # CRITICAL INVARIANT — DO NOT REVERT THIS BLOCK
+    # CRITICAL INVARIANT — DO NOT REMOVE OR REVERT
     # =====================================================================
-    # When the last category segment is a BFC-combined-parent name (contains
-    # &, comma, or slash, e.g., "Pancakes, Waffles, French Toast & Crepes"
-    # or "Sauces & Salsas"), REPLACE that BFC label with the more-specific
-    # identity rather than appending. BFC labels MUST NOT appear in the
-    # final canonical_path — they're retail-category groupings, not real
-    # product types. Tests in test_path_invariants.py and
-    # test_one_home_per_identity.py depend on this behavior.
-    # If a linter or refactor tries to "simplify" this away, re-add it.
+    # When the last category segment is a BFC combined-parent name (contains
+    # &, comma, or slash, e.g. "Pancakes, Waffles, French Toast & Crepes"),
+    # REPLACE it with the more-specific identity instead of appending. BFC
+    # labels MUST NOT appear in canonical_path. Tests in
+    # tests/test_path_invariants.py and tests/test_one_home_per_identity.py
+    # depend on this. test_bfc_strip_replaces_combined_parent enforces it.
     # =====================================================================
     if len(category_segments) >= 2 and re.search(r"[&,/]", category_segments[-1]):
         return PATH_SEP.join(
@@ -1398,8 +1575,20 @@ def finalize_taxonomy_row(row: Mapping[str, str]) -> FinalizedTaxonomy:
     category_path = normalize_path(category_path)
     identity = _prettify_segment(identity)
     canonical_path = _canonical_from_category_identity(category_path, identity)
+    variant = row.get("variant", "") or ""
+    if category_path == "Beverage > Cocktail Mixers" and identity in {
+        "Cocktail Mix",
+        "Cocktail Rimmer",
+        "Cocktail Syrup",
+        "Cocktail Brine",
+    }:
+        style = _cocktail_style_variant(row.get("title", "") or "")
+        if style:
+            existing = {_normalize_token(token) for token in _facet_values(variant)}
+            if _normalize_token(style) not in existing:
+                variant = f"{style}|{variant}" if variant else style
     modifier = derive_modifier(
-        variant=row.get("variant", "") or "",
+        variant=variant,
         flavor=row.get("flavor", "") or "",
         claims=row.get("claims", "") or "",
         form=row.get("form_texture_cut", "") or row.get("form", "") or "",

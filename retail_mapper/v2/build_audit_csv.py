@@ -293,6 +293,66 @@ def title_blocked(target_path: str, title: str) -> bool:
     return not any(kw in tlow for kw in required)
 
 
+# BFC veto: when the FNDDS canonical map points to a path under family X,
+# but the SKU's BFC clearly belongs to a different family, the FNDDS override
+# is wrong (the title-word that triggered FNDDS match is just a flavor).
+#
+# Example: FNDDS code 53520200 → "Bakery > Pastry > Churros" for any title
+# matching "churros". But "CHURRO TRAIL MIX" with BFC="Popcorn, Peanuts,
+# Seeds & Related Snacks" is NOT a churro — it's churro-FLAVORED trail mix.
+#
+# Format: target family prefix → set of BFCs that veto the override
+BFC_FAMILY_VETO: dict[str, set[str]] = {
+    "Bakery": {
+        # These BFCs are clearly NOT bakery items — title word is a flavor
+        "popcorn, peanuts, seeds & related snacks",
+        "snack, energy & granola bars",
+        "ice cream & frozen yogurt",
+        "other frozen desserts",
+        "puddings & custards",
+        "chewing gum & mints",
+        "chips, pretzels & snacks",
+        "candy",
+        "chocolate",
+        "confectionery",
+        "powdered drinks",
+        "non alcoholic beverages - ready to drink",
+        "non alcoholic beverages - not ready to drink",
+        "energy drinks",
+        "soda",
+        "coffee",
+        "tea & infusions",
+        "yogurt",
+        "cheese",
+        "milk/milk substitutes",
+        "plant based milk",
+        "alcohol",
+    },
+    "Dairy": {
+        # Plant-based "cheese alternatives" / vegan "yogurt" should NOT
+        # land in Dairy
+        "vegetarian frozen meats",
+    },
+    "Meat & Seafood": {
+        "vegetarian frozen meats",
+        "vegetable based products / meals",
+    },
+}
+
+
+def bfc_blocked(target_path: str, bfc: str) -> bool:
+    """Return True if FNDDS override should be vetoed because the BFC
+    clearly indicates a different product family than the target.
+    """
+    if not target_path or not bfc:
+        return False
+    target_family = target_path.split(" > ", 1)[0]
+    veto_set = BFC_FAMILY_VETO.get(target_family)
+    if not veto_set:
+        return False
+    return bfc.strip().lower() in veto_set
+
+
 # Cheese-type splitter: FNDDS lumps most cheeses into a flat "Dairy > Cheese"
 # bucket, leaving 20K+ SKUs with no type-level breakout. Detect the cheese
 # type from the title, and add an age/style sub-level when present.
@@ -568,7 +628,12 @@ def main() -> None:
                 # Hand-override map wins over auto-generated FNDDS map.
                 canon_path = FNDDS_PATH_OVERRIDES.get(f_code) or FNDDS_CANONICAL_PATH_MAP.get(f_code)
                 title_now = row.get("title", "") or ""
-                vetoed = canon_path and title_blocked(canon_path, title_now)
+                bfc_now = row.get("branded_food_category", "") or ""
+                # Veto sources: title-required missing, OR BFC family mismatch.
+                vetoed = canon_path and (
+                    title_blocked(canon_path, title_now)
+                    or bfc_blocked(canon_path, bfc_now)
+                )
                 if canon_path and not vetoed and row.get("canonical_path") != canon_path:
                     row["canonical_path"] = canon_path
                     n_fndds_path_override += 1
