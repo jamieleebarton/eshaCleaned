@@ -480,28 +480,40 @@ def main() -> None:
     if n_family_forced:
         print(f"  forced {n_family_forced:,} SKUs to BFC-authoritative family")
 
-    # Pass 4.7: strip/replace BFC combined-parent leaves. When the LEAF is
-    # a BFC label and the SKU has a more-specific PI, replace with PI.
-    # Otherwise keep intermediate sub-family hierarchy (Codex insight).
+    # Pass 4.7: strip/replace BFC combined-parent leaves with consistent
+    # behavior across CP / RLP / category_path_fixed. The leaf-replacement
+    # decision is made ONCE from CP, then applied identically to all three
+    # columns so they stay aligned.
     n_bfc_stripped = 0
     for r in rows:
         pi = (r.get("product_identity_fixed") or "").strip()
+        cp = (r.get("canonical_path") or "").strip()
+        old_leaf = None
+        new_leaf = None
+        if cp and pi:
+            cp_segs = cp.split(" > ")
+            if len(cp_segs) >= 2:
+                old_leaf = cp_segs[-1]
+                old_lower = old_leaf.lower()
+                pi_norm = pi.lower().rstrip("s")
+                old_norm = old_lower.rstrip("s")
+                if old_lower in _BFC_LEAF_LABELS_DROP and pi_norm != old_norm:
+                    new_leaf = pi
         for col in ("canonical_path", "retail_leaf_path", "category_path_fixed"):
             v = (r.get(col) or "").strip()
-            if not v: continue
-            segs = v.split(" > ")
-            # If LEAF is a BFC label and we have a PI, replace leaf with PI
-            if len(segs) >= 2 and pi:
-                leaf_lower = segs[-1].lower()
-                if leaf_lower in _BFC_LEAF_LABELS_DROP and pi.lower() != leaf_lower:
-                    segs = segs[:-1] + [pi]
-                    v_new = " > ".join(segs)
-                    if v_new != v:
-                        r[col] = v_new
-                        v = v_new
-            new_v = _strip_bfc_combined_parents(v)
-            if new_v != v:
-                r[col] = new_v
+            if not v:
+                continue
+            if old_leaf and new_leaf:
+                # Replace ALL occurrences of old_leaf in this path's segments
+                segs = v.split(" > ")
+                segs = [new_leaf if s == old_leaf else s for s in segs]
+                v_new = " > ".join(segs)
+                if v_new != v:
+                    r[col] = v_new
+                    v = v_new
+            stripped = _strip_bfc_combined_parents(v)
+            if stripped != v:
+                r[col] = stripped
                 n_bfc_stripped += 1
     if n_bfc_stripped:
         print(f"  stripped/replaced {n_bfc_stripped:,} BFC-combined-parent segments")

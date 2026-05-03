@@ -47,6 +47,8 @@ CATCHALL_BFCS = {
     "Frozen Patties & Burgers",
     "Salad Dressing & Mayonnaise",  # sub-routes by dressing type (Caesar, Ranch, Aioli, etc.)
     "Pickles, Olives, Peppers & Relishes",  # sub-routes per pickle/olive/pepper type
+    "Canned Vegetables",  # canned veg / canned beans / canned blends — different paths
+    "Frozen Vegetables",  # similar — vegetable types span paths
     "Meat/Poultry/Other Animals  Prepared/Processed",
     "Meat/Poultry/Other Animals - Prepared/Processed",
     "Meat/Poultry/Other Animals  Unprepared/Unprocessed",

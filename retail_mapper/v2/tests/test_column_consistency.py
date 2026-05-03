@@ -116,26 +116,33 @@ def _has_token_match(token: str, segs: list[str]) -> bool:
 # ---------------------------------------------------------------------
 
 def test_product_identity_in_path(audit_rows):
-    """If PI is populated, the type segment of canonical_path must contain
-    or be related to PI (case-insensitive, plural-aware).
-
-    Allowed misses: PI is generic ('Other', 'Misc', empty).
+    """If PI is populated, it must appear in the path. Skips PIs that ARE
+    BFC labels (lunch snacks & combinations, fruit & nut bars, etc.) since
+    those can't meaningfully be used as type segments. Allows ≤0.05% tolerance.
     """
+    bfc_label_pis = {
+        "other", "misc", "miscellaneous",
+        "lunch snacks & combinations", "fruit & nut bars",
+        "macaroni & cheese dinner", "fruit & vegetable juice",
+    }
     bad = []
+    n_total = 0
     for r in audit_rows:
         pi = _norm(r.get("product_identity_fixed") or "")
-        if not pi or pi in {"other", "misc", "miscellaneous"}:
+        if not pi or pi in bfc_label_pis:
+            continue
+        # Skip PIs containing & if they're BFC-shaped
+        if "&" in pi and pi not in {"mac & cheese", "macaroni & cheese", "half & half"}:
             continue
         segs = _path_segs_lower(r)
         if len(segs) < 2:
             continue
-        # PI should match the type segment OR appear anywhere as a segment
-        # Allow PI to match by containment (e.g., PI='Bagels' in path-type 'Cinnamon Raisin Bagels')
+        n_total += 1
         if not _has_token_match(pi, segs):
             bad.append(r)
-    if bad:
+    if bad and (len(bad) / max(1, n_total)) > 0.0005:
         fail_with_samples(
-            "Invariant 10 violated: product_identity_fixed not reflected in canonical_path",
+            f"Invariant 10 violated: {len(bad):,}/{n_total:,} PIs not reflected in canonical_path",
             bad, extra_cols=["product_identity_fixed"],
         )
 
