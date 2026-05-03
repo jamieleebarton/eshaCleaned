@@ -33,6 +33,7 @@ DEFAULT_REFERENCE_OVERRIDES = V2 / "consensus_reference_overrides.csv"
 DEFAULT_SOURCE_CONFLICTS = V2 / "consensus_source_conflicts.csv"
 DEFAULT_OUT = V2 / "consensus_full_corpus_audit.v2.csv"
 DEFAULT_DECISIONS = V2 / "consensus_full_corpus_audit.v2_decisions.csv"
+DEFAULT_SUMMARY_DECISIONS = V2 / "consensus_apply_decision_log.csv"
 DEFAULT_REPORT = V2 / "consensus_full_corpus_audit.v2_report.json"
 DEFAULT_MD = V2 / "consensus_full_corpus_audit.v2.md"
 
@@ -101,6 +102,27 @@ DECISION_FIELDS = [
     "new_value",
 ]
 
+SUMMARY_DECISION_FIELDS = [
+    "fdc_id",
+    "title",
+    "change_type",
+    "owner",
+    "issue_family",
+    "status",
+    "old_category_path",
+    "new_category_path",
+    "old_product_identity",
+    "new_product_identity",
+    "old_canonical_path",
+    "new_canonical_path",
+    "old_retail_leaf_path",
+    "new_retail_leaf_path",
+    "old_matched_key",
+    "new_matched_key",
+    "source_conflict_action",
+    "reason",
+]
+
 
 def sort_fdc(value: str) -> tuple[int, int | str]:
     value = (value or "").strip()
@@ -142,7 +164,12 @@ def normalize_legacy_override(override_type: str, override: Mapping[str, str], s
             row["product_identity_fixed"] = row.get("new_product_identity", "") or ""
             mapped = True
         if has_override_value(row, "new_canonical_path"):
-            if has_override_value(row, "product_identity_fixed") and not has_override_value(row, "category_path_fixed"):
+            if has_override_value(row, "category_path_fixed") and has_override_value(row, "product_identity_fixed"):
+                # Current active rows keep new_canonical_path as a compatibility
+                # alias for the target shelf. Let repair_taxonomy_after_override
+                # derive the actual canonical_path from category + identity.
+                pass
+            elif has_override_value(row, "product_identity_fixed") and not has_override_value(row, "category_path_fixed"):
                 row["category_path_fixed"] = row.get("new_canonical_path", "") or ""
                 mapped = True
             elif not has_override_value(row, "canonical_path"):
@@ -295,6 +322,36 @@ def append_decisions(
         })
 
 
+def append_summary_decision(
+    summaries: list[dict[str, str]],
+    *,
+    override_type: str,
+    override: Mapping[str, str],
+    before: Mapping[str, str],
+    after: Mapping[str, str],
+) -> None:
+    summaries.append({
+        "fdc_id": (override.get("fdc_id") or "").strip(),
+        "title": after.get("title", "") or override.get("title", "") or "",
+        "change_type": override_type,
+        "owner": override.get("owner", "") or "",
+        "issue_family": override.get("issue_family", "") or "",
+        "status": override.get("status", "") or "",
+        "old_category_path": before.get("category_path_fixed", "") or "",
+        "new_category_path": after.get("category_path_fixed", "") or "",
+        "old_product_identity": before.get("product_identity_fixed", "") or "",
+        "new_product_identity": after.get("product_identity_fixed", "") or "",
+        "old_canonical_path": before.get("canonical_path", "") or "",
+        "new_canonical_path": after.get("canonical_path", "") or "",
+        "old_retail_leaf_path": before.get("retail_leaf_path", "") or "",
+        "new_retail_leaf_path": after.get("retail_leaf_path", "") or "",
+        "old_matched_key": before.get("matched_key", "") or "",
+        "new_matched_key": after.get("matched_key", "") or "",
+        "source_conflict_action": after.get("source_conflict_action", "") or "",
+        "reason": override.get("reason", "") or override.get("likely_fix", "") or "",
+    })
+
+
 def apply_override_rows(
     rows_by_fdc: dict[str, dict[str, str]],
     override_rows: Iterable[Mapping[str, str]],
@@ -303,6 +360,7 @@ def apply_override_rows(
     fields: list[str],
     apply_draft: bool,
     decisions: list[dict[str, str]],
+    summaries: list[dict[str, str]],
     stats: Counter[str],
 ) -> None:
     for raw_override in override_rows:
@@ -341,6 +399,13 @@ def apply_override_rows(
             changes.append(("override_source", before.get("override_source", "") or "", row["override_source"]))
             if before.get("override_reason", "") != row.get("override_reason", ""):
                 changes.append(("override_reason", before.get("override_reason", "") or "", row["override_reason"]))
+            append_summary_decision(
+                summaries,
+                override_type=override_type,
+                override=override,
+                before=before,
+                after=row,
+            )
             append_decisions(decisions, override_type=override_type, override=override, changes=changes)
             stats[f"{override_type}:applied"] += 1
             stats[f"{override_type}:changed_fields"] += len(changes)
@@ -396,6 +461,7 @@ def build_markdown(report: Mapping[str, object]) -> str:
         "- Only rows with `status` in `approved`, `apply`, or `accepted` are applied by default.",
         "- Blank override cells mean no change. Use `<blank>` to intentionally clear a field.",
         "- Reviewer todo queues are separate from active override files.",
+        "- `consensus_apply_decision_log.csv` is per-FDC; `consensus_full_corpus_audit.v2_decisions.csv` is field-level.",
     ])
     return "\n".join(lines)
 
@@ -408,14 +474,18 @@ def apply_overrides(
     source_conflicts: Path = DEFAULT_SOURCE_CONFLICTS,
     out: Path = DEFAULT_OUT,
     decisions_out: Path = DEFAULT_DECISIONS,
+    summary_decisions_out: Path | None = None,
     report_out: Path = DEFAULT_REPORT,
     markdown_out: Path = DEFAULT_MD,
     apply_draft: bool = False,
 ) -> dict[str, object]:
+    if summary_decisions_out is None:
+        summary_decisions_out = decisions_out.with_name("consensus_apply_decision_log.csv")
     source_fields, rows = load_csv_rows(source)
     output_fields = ensure_fields(source_fields, EXTRA_OUTPUT_FIELDS)
     rows_by_fdc = build_index(rows)
     decisions: list[dict[str, str]] = []
+    summaries: list[dict[str, str]] = []
     stats: Counter[str] = Counter()
 
     _, taxonomy_rows = load_override_rows(taxonomy_overrides)
@@ -429,6 +499,7 @@ def apply_overrides(
         fields=TAXONOMY_FIELDS,
         apply_draft=apply_draft,
         decisions=decisions,
+        summaries=summaries,
         stats=stats,
     )
     apply_override_rows(
@@ -438,6 +509,7 @@ def apply_overrides(
         fields=REFERENCE_FIELDS,
         apply_draft=apply_draft,
         decisions=decisions,
+        summaries=summaries,
         stats=stats,
     )
     apply_override_rows(
@@ -447,12 +519,15 @@ def apply_overrides(
         fields=SOURCE_CONFLICT_FIELDS,
         apply_draft=apply_draft,
         decisions=decisions,
+        summaries=summaries,
         stats=stats,
     )
 
     rows.sort(key=lambda row: sort_fdc(row.get("fdc_id", "")))
+    summaries.sort(key=lambda row: sort_fdc(row.get("fdc_id", "")))
     write_csv(out, output_fields, rows)
     write_csv(decisions_out, DECISION_FIELDS, decisions)
+    write_csv(summary_decisions_out, SUMMARY_DECISION_FIELDS, summaries)
 
     changed_fdc_ids = {decision["fdc_id"] for decision in decisions if decision.get("fdc_id")}
     issue_counts: defaultdict[str, Counter[str]] = defaultdict(Counter)
@@ -469,12 +544,14 @@ def apply_overrides(
         "outputs": {
             "csv": str(out),
             "decisions": str(decisions_out),
+            "summary_decisions": str(summary_decisions_out),
             "report": str(report_out),
             "markdown": str(markdown_out),
         },
         "apply_draft": apply_draft,
         "override_stats": dict(stats),
         "changed_fdc_ids": len(changed_fdc_ids),
+        "summary_decision_rows": len(summaries),
         "changed_field_decisions": len(decisions),
         "changed_issue_counts": {key: dict(counter.most_common()) for key, counter in issue_counts.items()},
         "quality_metrics": quality_metrics(rows),
@@ -492,6 +569,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--source-conflicts", type=Path, default=DEFAULT_SOURCE_CONFLICTS)
     parser.add_argument("--out", type=Path, default=DEFAULT_OUT)
     parser.add_argument("--decisions-out", type=Path, default=DEFAULT_DECISIONS)
+    parser.add_argument("--summary-decisions-out", type=Path, default=DEFAULT_SUMMARY_DECISIONS)
     parser.add_argument("--report-out", type=Path, default=DEFAULT_REPORT)
     parser.add_argument("--markdown-out", type=Path, default=DEFAULT_MD)
     parser.add_argument(
@@ -511,6 +589,7 @@ def main() -> None:
         source_conflicts=args.source_conflicts,
         out=args.out,
         decisions_out=args.decisions_out,
+        summary_decisions_out=args.summary_decisions_out,
         report_out=args.report_out,
         markdown_out=args.markdown_out,
         apply_draft=args.apply_draft,

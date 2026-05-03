@@ -27,11 +27,33 @@ OUT_CONFLICTS = V2 / "consensus_source_conflicts.csv"
 
 csv.field_size_limit(sys.maxsize)
 
+FAMILY_PRIORITY = {
+    # More specific than the generic sandwich-cookie rule; these rows mention
+    # sandwich but the product identity is still biscotti.
+    "biscotti_product_routed_as_meal_sandwich": 100,
+    "cracker_title_still_under_bakery_cookies": 90,
+}
+
+MANUAL_OR_POLICY_FAMILIES = {
+    "cake_or_cupcake_product_routed_as_cookie",
+    "ice_cream_title_left_under_bakery_review",
+    "candy_bfc_routed_outside_snack_candy",
+    "alcohol_bfc_routed_outside_beverage",
+    "beverage_bfc_left_in_baking_mixes",
+}
+
+ACTIVE_SOURCE_CONFLICT_FAMILIES = {
+    "pickle_bfc_salad_source_conflict",
+}
+
 
 def family_to_target(family: str, row: dict) -> tuple[str, str, str] | None:
     """Map (family, row) → (target_canonical_path, target_identity, reason).
     Returns None for families that need human review.
     """
+    if family in MANUAL_OR_POLICY_FAMILIES:
+        return None
+
     title = (row.get("title") or "").lower()
     cp = (row.get("canonical_path") or "").strip()
 
@@ -96,28 +118,6 @@ def family_to_target(family: str, row: dict) -> tuple[str, str, str] | None:
     if family == "salad_kit_not_on_produce_salad_kit_shelf":
         return "Produce > Salad Kits", "Salad Kit", "salad kit goes to Produce > Salad Kits"
 
-    if family == "cake_or_cupcake_product_routed_as_cookie":
-        if "cupcake" in title:
-            return "Bakery > Cake > Cupcake", "Cupcake", "cupcake, not cookie"
-        return "Bakery > Cake", "Cake", "cake, not cookie"
-
-    if family == "ice_cream_title_left_under_bakery_review":
-        return "Frozen > Ice Cream", "Ice Cream", "ice cream → Frozen"
-
-    if family == "candy_bfc_routed_outside_snack_candy":
-        # BFC=Candy but path went elsewhere — force Snack > Candy
-        if "chocolate" in title:
-            return "Snack > Chocolate Candy", "Chocolate Candy", "BFC=Candy + chocolate title"
-        if "gum" in title or "mint" in title:
-            return "Snack > Candy > Gum", "Gum", "BFC=Candy chewing gum"
-        return "Snack > Candy", "Candy", "BFC=Candy must be in Snack family"
-
-    if family == "alcohol_bfc_routed_outside_beverage":
-        return "Beverage > Alcohol", "Alcohol", "BFC=Alcohol must be in Beverage"
-
-    if family == "beverage_bfc_left_in_baking_mixes":
-        return "Beverage > Mixes", "Drink Mix", "Beverage BFC, not Pantry > Baking Mixes"
-
     if family == "prepared_sandwich_routed_to_bakery_carrier":
         return "Meal > Sandwiches", "Prepared Sandwich", "prepared sandwich, not just bread"
 
@@ -125,15 +125,33 @@ def family_to_target(family: str, row: dict) -> tuple[str, str, str] | None:
     return None
 
 
+def override_priority(row: dict) -> int:
+    return FAMILY_PRIORITY.get(row.get("issue_family", ""), 10)
+
+
+def add_override(overrides_by_fdc: dict[str, dict], override: dict) -> bool:
+    """Add or replace one deterministic override.
+
+    A few SKUs are hit by a broad family and a narrower family. Keep only one
+    applied override per fdc_id so the apply log is stable and the narrower
+    rule wins.
+    """
+    fdc_id = override["fdc_id"]
+    existing = overrides_by_fdc.get(fdc_id)
+    if existing is None or override_priority(override) >= override_priority(existing):
+        overrides_by_fdc[fdc_id] = override
+        return existing is None
+    return False
+
+
 def main() -> None:
     if not SRC.exists():
         print(f"missing {SRC}", file=sys.stderr); sys.exit(1)
 
-    overrides = []
+    overrides_by_fdc: dict[str, dict] = {}
     review = []
     conflicts = []
     family_counts: Counter = Counter()
-    auto_counts: Counter = Counter()
 
     with SRC.open() as fh:
         for r in csv.DictReader(fh):
@@ -144,7 +162,7 @@ def main() -> None:
             target = family_to_target(fam, r)
             if target is None:
                 # Branch by action_type for what review file to write to
-                if action == "source_conflict_review":
+                if action == "source_conflict_review" and fam in ACTIVE_SOURCE_CONFLICT_FAMILIES:
                     conflicts.append({
                         "fdc_id": r["fdc_id"],
                         "title": r["title"],
@@ -167,20 +185,31 @@ def main() -> None:
                 continue
 
             new_cp, new_identity, reason = target
-            overrides.append({
+            add_override(overrides_by_fdc, {
                 "fdc_id": r["fdc_id"],
+                "status": "approved",
+                "owner": "claude",
                 "title": r["title"][:120],
                 "current_canonical_path": r.get("canonical_path", ""),
+                "category_path_fixed": new_cp,
+                "product_identity_fixed": new_identity,
+                # Keep Claude's original column names as compatibility aliases
+                # for older scripts and spot-check reports.
                 "new_canonical_path": new_cp,
                 "new_product_identity": new_identity,
                 "issue_family": fam,
                 "reason": reason,
             })
-            auto_counts[fam] += 1
 
     # Write outputs
     OUT_OVERRIDES.parent.mkdir(parents=True, exist_ok=True)
-    cols_overrides = ["fdc_id", "title", "current_canonical_path",
+    overrides = sorted(
+        overrides_by_fdc.values(),
+        key=lambda r: (0, int(r["fdc_id"])) if r["fdc_id"].isdigit() else (1, r["fdc_id"]),
+    )
+    auto_counts: Counter = Counter(r["issue_family"] for r in overrides)
+    cols_overrides = ["fdc_id", "status", "owner", "title", "current_canonical_path",
+                      "category_path_fixed", "product_identity_fixed",
                       "new_canonical_path", "new_product_identity",
                       "issue_family", "reason"]
     with OUT_OVERRIDES.open("w", newline="", encoding="utf-8") as fh:
@@ -190,7 +219,10 @@ def main() -> None:
             w.writerow(r)
     print(f"  wrote {len(overrides):,} taxonomy overrides → {OUT_OVERRIDES.name}")
 
-    cols_review = ["fdc_id", "title", "issue_family", "action_type",
+    for r in review:
+        r["status"] = "review"
+        r["owner"] = "shared" if r.get("action_type") == "policy_decision" else "claude"
+    cols_review = ["fdc_id", "status", "owner", "title", "issue_family", "action_type",
                    "current_canonical_path", "rationale", "likely_fix"]
     with OUT_REVIEW.open("w", newline="", encoding="utf-8") as fh:
         w = csv.DictWriter(fh, fieldnames=cols_review)
@@ -199,9 +231,16 @@ def main() -> None:
             w.writerow(r)
     print(f"  wrote {len(review):,} manual-review rows → {OUT_REVIEW.name}")
 
-    cols_conflicts = ["fdc_id", "title", "issue_family",
+    for r in conflicts:
+        r["status"] = "approved"
+        r["owner"] = "shared"
+        r["reason"] = r.get("likely_fix", "")
+        r["source_conflict_note"] = r.get("likely_fix", "")
+        r["source_conflict_action"] = "flag_dirty_source_only"
+    cols_conflicts = ["fdc_id", "status", "owner", "title", "issue_family",
                       "branded_food_category", "current_canonical_path",
-                      "rationale", "likely_fix"]
+                      "rationale", "likely_fix", "reason",
+                      "source_conflict_note", "source_conflict_action"]
     with OUT_CONFLICTS.open("w", newline="", encoding="utf-8") as fh:
         w = csv.DictWriter(fh, fieldnames=cols_conflicts)
         w.writeheader()
