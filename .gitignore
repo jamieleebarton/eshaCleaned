@@ -74,3 +74,25 @@ canonical_surface_normalized*.csv
 *_offenders*.csv
 _*.txt
 _*.tsv
+
+# --- Retired large CSVs (superseded by consensus_full_corpus_audit.csv) ---
+# Old v1/v2 retail-leaf experiments — abandoned
+retail_mapper/v2/retail_leaf_v2*.csv
+retail_mapper/v2/retail_leaf_v2*.tsv
+# Old semantic taxonomy work — superseded
+retail_mapper/v2/semantic_product_taxonomy.csv
+retail_mapper/v2/semantic_normalization_audit.csv
+retail_mapper/v2/semantic_taxonomy_product_assignments.csv
+# Older intermediates / corrupted snapshots
+retail_mapper/v2/full_corpus.csv
+retail_mapper/v2/full_corpus_finalized.csv
+retail_mapper/v2/*.corrupted-*.csv
+retail_mapper/v2/*.truncated*.csv
+# Per-side audit files — consensus_full_corpus_audit.csv supersedes
+retail_mapper/v2/codex_full_corpus_audit.csv
+retail_mapper/v2/full_corpus_audit.csv
+# Old inputs (still needed by pipeline; ignored from new commits)
+retail_mapper/v2/full_corpus_cleaned.csv
+retail_mapper/v2/full_corpus_enriched.csv
+retail_mapper/v2/full_corpus_enriched.csv.rebuilt
+retail_mapper/v2/full_corpus.live.jsonl
