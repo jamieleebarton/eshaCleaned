@@ -96,3 +96,6 @@ retail_mapper/v2/full_corpus_cleaned.csv
 retail_mapper/v2/full_corpus_enriched.csv
 retail_mapper/v2/full_corpus_enriched.csv.rebuilt
 retail_mapper/v2/full_corpus.live.jsonl
+
+# --- Generated test artifacts (regenerated every pytest run) ---
+retail_mapper/v2/tests/data/row_validation_report.csv
