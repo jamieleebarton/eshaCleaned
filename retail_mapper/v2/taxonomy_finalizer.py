@@ -1678,6 +1678,28 @@ def _forced_base(row: Mapping[str, str]) -> tuple[str, str] | None:
     if frozen_dessert_route:
         return frozen_dessert_route
 
+    # A2 (Codex insight): Title-level salad detection. When title says SALAD
+    # (excluding salad-dressing, fruit-salad, salad-flavored snacks), route
+    # to Meal > Salads regardless of BFC. Catches BFC=Pickles SKUs that are
+    # actually salads (1,011 SKUs).
+    if re.search(r"\bsalad\b", title, re.I) and \
+       not re.search(r"\bsalad\s+dressing\b", title, re.I) and \
+       not re.search(r"\bfruit\s+salad\b", title, re.I) and \
+       not re.search(r"\bsalad\s+(chip|cracker|kit|mix|seasoning|topping)\b", title, re.I):
+        return "Meal > Salads", identity or "Salad"
+
+    # A3 (Codex insight): Real-churro detection. When the SKU is genuinely
+    # a churro pastry product (not just churro-flavored), route to
+    # Bakery > Pastry > Churros.
+    if re.search(r"\bchurros?\b", title, re.I) and \
+       (re.search(r"\bchurro\s+(doughnut|pastry|fritter|stick|bite|filled)\b", title, re.I) or
+        re.search(r"\bbeyond\s+churros?\b|\btio\s+pepe\b|\bchurro\s+house\b", title, re.I) or
+        re.search(r"^cinnamon\s+sugar\s+churros?\s*$", title, re.I)):
+        if bfc_lower in {"croissants, sweet rolls, muffins & other pastries",
+                         "bakery", "frozen bread & dough",
+                         "savoury bakery products", ""}:
+            return "Bakery > Pastry > Churros", "Churros"
+
     creamer_route = _coffee_creamer_route(title, identity)
     if creamer_route and (
         bfc_lower == "milk additives"

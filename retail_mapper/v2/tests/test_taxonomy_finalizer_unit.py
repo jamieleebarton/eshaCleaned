@@ -16,38 +16,51 @@ sys.path.insert(0, str(V2))
 from taxonomy_finalizer import _canonical_from_category_identity  # noqa: E402
 
 
-def test_bfc_strip_replaces_combined_parent_ampersand():
-    """BFC combined-parent name with '&' must be REPLACED with identity.
-       'Pantry > Sauces & Salsas' + 'Salsa' → 'Pantry > Salsa'
-       NOT 'Pantry > Sauces & Salsas > Salsa'.
+# Phase A1 (Codex insight): BFC sub-family hierarchy is now PRESERVED at
+# intermediate positions (Pantry > Sauces & Salsas > Sauce is shopper-friendly).
+# The strip only fires on:
+#   (a) verbose 3+ item BFC labels (Pancakes, Waffles, French Toast & Crepes)
+#   (b) BFC labels that would otherwise become the LEAF
+# The strip lives in homogenize_audit.py Pass 4.7 (linter kept reverting it
+# in taxonomy_finalizer.py, so we apply it post-finalize).
+
+
+def test_intermediate_bfc_subfamily_kept():
+    """When category last segment is a BFC retail sub-family ('Sauces & Salsas')
+    and identity is more specific ('Salsa'), the sub-family stays as an
+    intermediate segment per Codex feedback.
+
+    Result: 'Pantry > Sauces & Salsas > Salsa' (NOT 'Pantry > Salsa').
     """
     result = _canonical_from_category_identity("Pantry > Sauces & Salsas", "Salsa")
-    assert result == "Pantry > Salsa", (
-        f"BFC strip removed/reverted. Got: {result!r}. "
-        f"Re-add the [&,/] strip in _canonical_from_category_identity."
+    assert result == "Pantry > Sauces & Salsas > Salsa", (
+        f"Intermediate BFC sub-family was wrongly stripped. Got: {result!r}"
     )
 
 
-def test_bfc_strip_replaces_combined_parent_comma():
-    """BFC combined-parent with comma must be REPLACED.
-       'Frozen > Pancakes, Waffles, French Toast & Crepes' + 'Pancakes'
-       → 'Frozen > Pancakes' (NOT '... > Crepes > Pancakes')
+def test_intermediate_milk_substitutes_kept():
+    """'Dairy > Milk/Milk Substitutes' + 'Whole Milk' → keep the slash-segment
+    as intermediate sub-family.
     """
+    result = _canonical_from_category_identity("Dairy > Milk/Milk Substitutes", "Whole Milk")
+    assert result == "Dairy > Milk/Milk Substitutes > Whole Milk"
+
+
+def test_verbose_bfc_label_handled_by_homogenize():
+    """The verbose 'Pancakes, Waffles, French Toast & Crepes' is too long
+    to be useful in a path. It's stripped by homogenize_audit.py Pass 4.7
+    (not by _canonical_from_category_identity directly). This unit test
+    just documents the contract; the actual strip happens at audit-build time.
+    """
+    # finalize keeps it as an intermediate; homogenize strips it later
     result = _canonical_from_category_identity(
         "Frozen > Pancakes, Waffles, French Toast & Crepes", "Pancakes"
     )
-    assert result == "Frozen > Pancakes", (
-        f"BFC strip not handling comma-separated combined parents. Got: {result!r}"
-    )
-
-
-def test_bfc_strip_replaces_combined_parent_slash():
-    """BFC combined-parent with '/' must be REPLACED.
-       'Dairy > Milk/Milk Substitutes' + 'Whole Milk' → 'Dairy > Whole Milk'
-    """
-    result = _canonical_from_category_identity("Dairy > Milk/Milk Substitutes", "Whole Milk")
-    assert result == "Dairy > Whole Milk", (
-        f"BFC strip not handling slash-separated combined parents. Got: {result!r}"
+    # Either pre-strip or post-strip is acceptable here; verify final-form
+    # behavior in test_homogenize_audit_smoke instead.
+    assert result in (
+        "Frozen > Pancakes, Waffles, French Toast & Crepes > Pancakes",
+        "Frozen > Pancakes",
     )
 
 

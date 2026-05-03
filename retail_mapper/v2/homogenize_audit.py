@@ -39,6 +39,51 @@ _VALID_FAMILY_NAMES_LOWER = {
     "meat & seafood", "baby & toddler", "sports & wellness",
 }
 
+# BFC labels that should NEVER be the LEAF (they're sub-family containers).
+# When found at leaf, replace with PI.
+_BFC_LEAF_LABELS_DROP = frozenset({
+    "sauces & salsas", "dips & spreads", "spices & seasonings",
+    "salad dressing & mayonnaise", "salad dressings",
+    "herbs & spices", "herbs/spices/extracts",
+    "baking mixes", "baking decorations & dessert toppings",
+    "appetizers & snacks", "patties & burgers",
+    "hot dogs & sausages", "sausages, hotdogs & brats",
+    "frosting & icing", "wraps & burritos",
+    "cookies & biscuits", "crackers & biscotti", "biscuits/cookies",
+    "biscuits/cookies (shelf stable)",
+    "breads & buns", "pies & tarts", "cakes, cupcakes, snack cakes",
+    "bagels, muffins, doughnuts & pastries",
+    "pickles, olives, peppers & relishes",
+    "pepperoni, salami & cold cuts",
+    "milk/milk substitutes", "cream/cream substitutes",
+    "butter/butter substitutes", "yogurt/yogurt substitutes",
+    "cheese/cheese substitutes", "eggs & egg substitutes",
+    "dips & salsa", "dips/hummus/pate",
+    "chili & stew", "gravy mix",
+    "vegetable & cooking oils",
+    "snack, energy & granola bars",
+    "fruit & vegetable juice, nectars & fruit drinks",
+    "ketchup, mustard, bbq & cheese sauce",
+    "energy, protein & muscle recovery drinks",
+    "pancakes, waffles, french toast & crepes",
+    "frozen pancakes, waffles, french toast & crepes",
+    "oriental, mexican & ethnic sauces",
+    "frozen patties and burgers", "frozen patties & burgers",
+    "fish & seafood", "frozen fish & seafood", "frozen fish/seafood",
+    "milk additives", "jam, jelly & fruit spreads",
+    "pickles/relishes/chutneys/olives",
+    "cake, cookie & cupcake mixes",
+    "meat/poultry/other animals  prepared/processed",
+    "meat/poultry/other animals - prepared/processed",
+    "frozen bacon, sausages & ribs",
+    "baking additives & extracts",
+    "popcorn, peanuts, seeds & related snacks",
+    "chips, pretzels & snacks",
+    "ice cream & frozen yogurt",
+    "iced & bottle tea",
+    "croissants, sweet rolls, muffins & other pastries",
+})
+
 _LEGIT_COMPOUND_SEGMENTS = {
     "mac & cheese", "macaroni & cheese", "spaghetti & meatballs",
     "half & half", "salt & pepper", "fish & chips", "ham & cheese",
@@ -58,14 +103,21 @@ _LEGIT_COMPOUND_SEGMENTS = {
 
 
 def _strip_bfc_combined_parents(path: str) -> str:
-    """Strip BFC combined-parent segments (Sauces & Salsas, etc.) from non-
-    family positions. Skip valid family names (Meat & Seafood) and known
-    legit compound names (Mac & Cheese)."""
+    """Strip BFC combined-parent segments only when:
+       (a) they appear at the LEAF position (Codex insight: intermediate
+           sub-family hierarchy like 'Pantry > Sauces & Salsas > Sauce' is
+           shopper-friendly and should stay), OR
+       (b) they're verbose 3+ item BFC labels that are too long for any path
+           ('Pancakes, Waffles, French Toast & Crepes' style).
+
+    Skip valid family names (Meat & Seafood) and known legit compound names
+    (Mac & Cheese)."""
     if not path: return path
     segs = path.split(" > ")
     if len(segs) < 2: return path
+
     cleaned = [segs[0]]  # always keep family
-    for s in segs[1:]:
+    for i, s in enumerate(segs[1:], start=1):
         sl = s.lower()
         if not re.search(r"[&,/]", s):
             cleaned.append(s)
@@ -73,7 +125,15 @@ def _strip_bfc_combined_parents(path: str) -> str:
         if sl in _VALID_FAMILY_NAMES_LOWER or sl in _LEGIT_COMPOUND_SEGMENTS:
             cleaned.append(s)
             continue
-        # It's a BFC combined-parent — drop it
+        # Intermediate sub-family BFC name — KEEP unless it's verbose
+        # (3+ items joined) or it's the LEAF position.
+        is_leaf = (i == len(segs) - 1)
+        # Count "items" by splitting on & or commas
+        items = re.split(r"\s*(?:&|,)\s*", sl)
+        is_verbose = len(items) >= 3
+        if is_leaf or is_verbose:
+            continue  # drop
+        cleaned.append(s)  # keep as intermediate sub-family
     return " > ".join(cleaned)
 
 V2 = Path(__file__).resolve().parent
@@ -420,19 +480,31 @@ def main() -> None:
     if n_family_forced:
         print(f"  forced {n_family_forced:,} SKUs to BFC-authoritative family")
 
-    # Pass 4.7: strip BFC combined-parent segments that linter prevents
-    # from being stripped in _canonical_from_category_identity.
+    # Pass 4.7: strip/replace BFC combined-parent leaves. When the LEAF is
+    # a BFC label and the SKU has a more-specific PI, replace with PI.
+    # Otherwise keep intermediate sub-family hierarchy (Codex insight).
     n_bfc_stripped = 0
     for r in rows:
+        pi = (r.get("product_identity_fixed") or "").strip()
         for col in ("canonical_path", "retail_leaf_path", "category_path_fixed"):
             v = (r.get(col) or "").strip()
             if not v: continue
+            segs = v.split(" > ")
+            # If LEAF is a BFC label and we have a PI, replace leaf with PI
+            if len(segs) >= 2 and pi:
+                leaf_lower = segs[-1].lower()
+                if leaf_lower in _BFC_LEAF_LABELS_DROP and pi.lower() != leaf_lower:
+                    segs = segs[:-1] + [pi]
+                    v_new = " > ".join(segs)
+                    if v_new != v:
+                        r[col] = v_new
+                        v = v_new
             new_v = _strip_bfc_combined_parents(v)
             if new_v != v:
                 r[col] = new_v
                 n_bfc_stripped += 1
     if n_bfc_stripped:
-        print(f"  stripped {n_bfc_stripped:,} BFC-combined-parent segments")
+        print(f"  stripped/replaced {n_bfc_stripped:,} BFC-combined-parent segments")
 
     # Pass 5: backfill empty retail_leaf_path with canonical_path
     # (Bug #2: 42 rows had empty RLP despite populated CP)
