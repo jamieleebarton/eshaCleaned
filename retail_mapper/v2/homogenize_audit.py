@@ -34,6 +34,48 @@ def _has_combined_bfc_name(home: str) -> bool:
             return True
     return False
 
+
+_VALID_FAMILY_NAMES_LOWER = {
+    "meat & seafood", "baby & toddler", "sports & wellness",
+}
+
+_LEGIT_COMPOUND_SEGMENTS = {
+    "mac & cheese", "macaroni & cheese", "spaghetti & meatballs",
+    "half & half", "salt & pepper", "fish & chips", "ham & cheese",
+    "rice & beans", "chicken & rice", "beef & broccoli",
+    "fruit & nut", "fruit & nuts", "nuts & seeds",
+    "honey & oats", "spinach & artichoke", "peanut butter & jelly",
+    "peanut butter & jam", "cookies & cream", "milk & cereal",
+    "fruit & veggie blends", "fruit & veggie",
+    "rice & grains", "rice & pasta blend",
+    "pancake & waffle mix", "pancake & baking mix",
+    "pudding & pie filling", "pudding & pie filling mix",
+    "soup & dip mix", "onion soup & dip mix",
+    "chicken & dumplings", "quinoa & brown rice",
+    "baby spinach & baby kale", "baby spinach & spring mix",
+    "creamed spinach & kale",
+}
+
+
+def _strip_bfc_combined_parents(path: str) -> str:
+    """Strip BFC combined-parent segments (Sauces & Salsas, etc.) from non-
+    family positions. Skip valid family names (Meat & Seafood) and known
+    legit compound names (Mac & Cheese)."""
+    if not path: return path
+    segs = path.split(" > ")
+    if len(segs) < 2: return path
+    cleaned = [segs[0]]  # always keep family
+    for s in segs[1:]:
+        sl = s.lower()
+        if not re.search(r"[&,/]", s):
+            cleaned.append(s)
+            continue
+        if sl in _VALID_FAMILY_NAMES_LOWER or sl in _LEGIT_COMPOUND_SEGMENTS:
+            cleaned.append(s)
+            continue
+        # It's a BFC combined-parent — drop it
+    return " > ".join(cleaned)
+
 V2 = Path(__file__).resolve().parent
 AUDIT = V2 / "full_corpus_audit.csv"
 TMP = V2 / "full_corpus_audit.csv.homogenized"
@@ -91,6 +133,36 @@ def main() -> None:
     rows = _dedupe_by_fdc(rows)
     if len(rows) < n_before:
         print(f"  dropped {n_before - len(rows):,} duplicate fdc_id rows")
+
+    # Pass 0.5: apply DeepSeek per-fdc misroute overrides (highest priority)
+    # Loaded from deepseek_misroute_overrides.json — fdc_id → {family, type}.
+    # These come from DeepSeek reviewing ambiguous SKUs the rule-based system
+    # couldn't resolve. Applied first; subsequent passes won't override.
+    DS_OVERRIDES_PATH = V2 / "deepseek_misroute_overrides.json"
+    n_ds_applied = 0
+    if DS_OVERRIDES_PATH.exists():
+        try:
+            ds_overrides = json.loads(DS_OVERRIDES_PATH.read_text())
+        except Exception:
+            ds_overrides = {}
+        for r in rows:
+            fdc = (r.get("fdc_id") or "").strip()
+            if fdc not in ds_overrides:
+                continue
+            ov = ds_overrides[fdc]
+            family = ov.get("family", "")
+            type_seg = ov.get("type", "")
+            if not (family and type_seg):
+                continue
+            # Set category AND identity to DeepSeek's choice. Identity must
+            # match type or BFC-strip will overwrite "Macaroni & Cheese" with
+            # the original PI ("Pasta") since "&" triggers the strip.
+            r["category_path_fixed"] = f"{family} > {type_seg}"
+            r["product_identity_fixed"] = type_seg
+            apply_finalized_taxonomy(r)
+            n_ds_applied += 1
+        if n_ds_applied:
+            print(f"  applied {n_ds_applied:,} DeepSeek misroute overrides")
 
     # Pass 1: count PI -> home distribution
     pi_homes: dict[str, Counter] = defaultdict(Counter)
@@ -347,6 +419,20 @@ def main() -> None:
             n_family_forced += 1
     if n_family_forced:
         print(f"  forced {n_family_forced:,} SKUs to BFC-authoritative family")
+
+    # Pass 4.7: strip BFC combined-parent segments that linter prevents
+    # from being stripped in _canonical_from_category_identity.
+    n_bfc_stripped = 0
+    for r in rows:
+        for col in ("canonical_path", "retail_leaf_path", "category_path_fixed"):
+            v = (r.get(col) or "").strip()
+            if not v: continue
+            new_v = _strip_bfc_combined_parents(v)
+            if new_v != v:
+                r[col] = new_v
+                n_bfc_stripped += 1
+    if n_bfc_stripped:
+        print(f"  stripped {n_bfc_stripped:,} BFC-combined-parent segments")
 
     # Pass 5: backfill empty retail_leaf_path with canonical_path
     # (Bug #2: 42 rows had empty RLP despite populated CP)
