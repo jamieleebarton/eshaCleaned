@@ -99,3 +99,10 @@ retail_mapper/v2/full_corpus.live.jsonl
 
 # --- Generated test artifacts (regenerated every pytest run) ---
 retail_mapper/v2/tests/data/row_validation_report.csv
+
+# --- Recipe mapper / pricing pipeline (this session) ---
+# Large generated outputs — not in source control
+recipe_mapper/v1/output/
+recipe_mapper/v1/data/htc_registry_seed.db
+recipe_pricing/data/priced_products_v2.db
+recipe_pricing/data/priced_products_tagged.db
