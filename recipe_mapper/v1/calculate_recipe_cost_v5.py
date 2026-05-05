@@ -42,7 +42,18 @@ WS = re.compile(r"[^a-z0-9 ]+")
 STOP = {"the","of","and","with","a","an","to","in","fresh","frozen","raw",
         "ground","whole","large","medium","small","extra","lean","low","fat",
         "free","organic","natural","chopped","diced","minced","sliced",
-        "boneless","skinless","grade","brand"}
+        "boneless","skinless","grade","brand",
+        # ripeness/quality words — recipe authors specify them but shoppers
+        # just buy the produce. "ripe bananas" → "bananas".
+        "ripe","unripe","overripe","green","fully","perfectly",
+        # prep state authors mention but don't change what to buy
+        "thinly","thickly","finely","coarsely","roughly","lightly","heavily",
+        "shaved","grated","crushed","cracked","crumbled","torn",
+        "softened","melted","cold","cool","hot","warm","room",
+        "peeled","seeded","cored","trimmed","stemmed","pitted",
+        "drained","rinsed","washed","dried","patted",
+        "halved","quartered","cubed","julienned","ribboned",
+        "good","best","quality","premium","real"}
 RULE_B_PIDS = {"Spice Blend", "Seasoning", "Single Entree", "Family Entree",
                "Pasta Sauce", "BBQ Sauce", "Hot Sauce", "Marinade", "Pizza",
                "Sandwich", "Salad", "Composite Dish", "Pasta Dish", "Sauce",
@@ -126,10 +137,13 @@ def build_ingredient_targets(items_filter: set[str] | None = None) -> dict[str, 
         for mod_lc, mod in mod_pool.items():
             mod_tokens = toks(mod_lc)
             # Rule-B: the modifier IS the recipe ingredient.
-            # Require EXACT modifier match OR primary-noun match where all
-            # item tokens are in modifier tokens.
-            if mod_lc == item or (primary and primary in mod_tokens
-                                  and item_tokens.issubset(mod_tokens)):
+            # Match if ANY of:
+            #   - exact modifier == item ('cardamom' == 'cardamom')
+            #   - modifier ⊂ item    ('cardamom' ⊂ {cardamom, seeds})
+            #   - primary noun in modifier ('saffron' in modifier='saffron')
+            if (mod_lc == item
+                    or (mod_tokens and mod_tokens.issubset(item_tokens))
+                    or (primary and primary in mod_tokens)):
                 valid_modifiers.add(mod)
 
         out[item] = {

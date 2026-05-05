@@ -69,6 +69,9 @@ GROUP_RULES: list[tuple[re.Pattern, str]] = [
     # Spice prefix guard — "ground cinnamon", "ground ginger", "ground cumin"
     # would otherwise hit Red Meat's "ground" pattern. Catch them here first.
     (re.compile(r"\bground\s+(cinnamon|ginger|cumin|coriander|nutmeg|allspice|cardamom|cloves?|mace|turmeric|black pepper|white pepper|paprika|mustard seed|fennel|caraway)\b", re.I), "E"),
+    # Spice-seed guard — "cardamom seeds", "coriander seeds", "cumin seeds"
+    # are SPICES, not Nuts & Seeds. Catch them before the seeds-as-nuts rule.
+    (re.compile(r"\b(cardamom|coriander|cumin|fennel|caraway|anise|dill|mustard|poppy|sesame|nigella|fenugreek|celery)\s+seeds?\b", re.I), "E"),
     # Red Meat (2)
     (re.compile(r"\bbeef\b|\bsteak\b|\bjerky\b", re.I), "2"),
     (re.compile(r"\bpork\b(?!.*rind)|\bham\b|\bbacon\b", re.I), "2"),
