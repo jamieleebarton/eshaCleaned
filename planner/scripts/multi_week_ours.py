@@ -23,6 +23,8 @@ _patch_pi(ds)
 from hestia.scoring_config import ScoringConfig
 from hestia.data_structures import PersonProfile, HouseholdConfig, AttendanceSchedule
 import hestia.plate_builder as pb
+from protein_floor import daily_protein_floor_g
+from mode_config import build_scoring_config
 
 DATA = ROOT / "data"
 CI = json.loads((DATA / "concept_index.json").read_text())
@@ -305,7 +307,7 @@ def main():
     ap.add_argument("--people", type=int, default=1,
                      help="Number of people in the household")
     ap.add_argument("--protein-pct", type=float, default=20.0)
-    ap.add_argument("--protein-floor-mode", choices=("pct", "flat50"), default="pct",
+    ap.add_argument("--protein-floor-mode", choices=("pct", "flat50"), default="flat50",
                      help="Synthetic household protein floor policy")
     ap.add_argument("--leftover-pct", type=float, default=None,
                      help="Override scoring config leftover_pct_target (0.0–0.85)")
@@ -324,25 +326,16 @@ def main():
     package_index = ds.PackageIndex()
     package_index.build_gpu_tensors(recipe_db.ingredient_index, device)
 
-    # Match planner/scripts/multi_week_hestia.py: mode presets establish the
-    # scoring weights, then the requested calories/protein target override the
-    # preset defaults for every mode. Without this, balanced/budget silently
-    # ignore --protein-pct and keep the preset 15% target.
-    if args.mode in {"thrifty", "low_cost", "moderate", "liberal"}:
-        config = getattr(ScoringConfig, args.mode)(protein_pct=float(args.protein_pct))
-    elif args.mode == "balanced":
-        config = ScoringConfig.balanced(protein_diversity=True)
-    elif args.mode == "high_protein":
-        config = ScoringConfig.high_protein(target_pct=args.protein_pct)
-    else:
-        config = ScoringConfig.budget(protein_diversity=True)
-    config = dc_replace(
-        config,
-        daily_cal_target=float(args.cal),
-        protein_pct_target=float(args.protein_pct),
+    # Match the production batch builder: mode selects the preset, protein_pct
+    # remains an orthogonal macro target.
+    config = build_scoring_config(
+        ScoringConfig,
+        dc_replace,
+        mode=args.mode,
+        protein_pct=float(args.protein_pct),
+        daily_cal=float(args.cal),
+        leftover_pct=args.leftover_pct,
     )
-    if args.leftover_pct is not None:
-        config = dc_replace(config, leftover_pct_target=args.leftover_pct)
     audit_overrides = {}
     if args.disable_produce_bonus:
         audit_overrides.update({
@@ -359,12 +352,14 @@ def main():
     if audit_overrides:
         config = dc_replace(config, **audit_overrides)
 
-    # Match Hestia's tier sweep: protein_pct is the macro target and also the
-    # per-profile protein floor for synthetic sweep households.
-    if args.protein_floor_mode == "flat50":
-        daily_protein_g = 50.0
-    else:
-        daily_protein_g = float(args.cal) * (float(args.protein_pct) / 100.0) / 4.0
+    # Keep the hard protein gram floor independent from the macro target. The
+    # macro target is handled by ScoringConfig; profile protein floors are
+    # baseline adequacy constraints and should not turn 35% into 175g/person.
+    daily_protein_g = daily_protein_floor_g(
+        calories_per_person=float(args.cal),
+        protein_pct=float(args.protein_pct),
+        floor_mode=args.protein_floor_mode,
+    )
     people = [PersonProfile(f"P{i+1}", args.cal, daily_protein_g) for i in range(args.people)]
     schedule = AttendanceSchedule(HouseholdConfig(people=people))
     # Current API-style runs only set leftover_pct_target on the config. The
@@ -524,6 +519,7 @@ def main():
             },
             "leftover_pct": args.leftover_pct,
             "planner_leftover_target": args.planner_leftover_target,
+            "daily_protein_floor_g_per_person": daily_protein_g,
             "daily_protein_g": daily_protein_g,
             "protein_floor_mode": args.protein_floor_mode,
             "audit_switches": {

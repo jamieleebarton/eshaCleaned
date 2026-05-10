@@ -39,30 +39,66 @@ class ProteinTargetingConfigTests(unittest.TestCase):
                 overrides = _protein_targeting_overrides(factory(protein_pct=20.0))
                 self.assertNotIn("enable_protein_prefilter", overrides)
 
-    def test_prefilter_boundary_is_twenty_five_percent(self) -> None:
+    def test_normal_tiers_do_not_auto_enable_hard_prefilter_at_p35(self) -> None:
+        for factory in (
+            ScoringConfig.thrifty,
+            ScoringConfig.low_cost,
+            ScoringConfig.moderate,
+            ScoringConfig.liberal,
+        ):
+            with self.subTest(factory=factory.__name__):
+                overrides = _protein_targeting_overrides(factory(protein_pct=35.0))
+                self.assertNotIn("enable_protein_prefilter", overrides)
+                self.assertNotIn("protein_filter_margin", overrides)
+
+    def test_prefilter_boundary_is_not_auto_enabled_for_normal_tiers(self) -> None:
         self.assertNotIn(
             "enable_protein_prefilter",
             _protein_targeting_overrides(ScoringConfig.thrifty(protein_pct=24.9)),
         )
-        self.assertTrue(
-            _protein_targeting_overrides(
-                ScoringConfig.thrifty(protein_pct=25.0)
-            )["enable_protein_prefilter"]
+        self.assertNotIn(
+            "enable_protein_prefilter",
+            _protein_targeting_overrides(ScoringConfig.thrifty(protein_pct=25.0)),
         )
 
-    def test_high_protein_target_enables_hard_prefilter(self) -> None:
-        config = ScoringConfig.thrifty(protein_pct=25.0)
+    def test_high_protein_mode_keeps_hard_prefilter(self) -> None:
+        config = ScoringConfig.high_protein(target_pct=35.0)
 
         overrides = _protein_targeting_overrides(config)
 
-        self.assertTrue(overrides["enable_protein_prefilter"])
-        self.assertEqual(overrides["protein_filter_margin"], 6.0)
+        self.assertTrue(config.enable_protein_prefilter)
+        self.assertNotIn("enable_protein_prefilter", overrides)
+        self.assertEqual(overrides["protein_filter_margin"], 8.0)
+
+    def test_thrifty_preserves_budget_no_produce_bonus(self) -> None:
+        config = ScoringConfig.thrifty(protein_pct=35.0)
+
+        self.assertFalse(config.enable_produce_bonus)
+        self.assertEqual(config.produce_value_lunch, 0.0)
+        self.assertEqual(config.produce_value_dinner, 0.0)
 
     def test_budget_tier_is_source_mix_not_macro_target(self) -> None:
         self.assertIsNone(ScoringConfig.thrifty(protein_pct=20.0).protein_target_distribution)
+        self.assertIsNotNone(ScoringConfig.thrifty(protein_pct=35.0).protein_target_distribution)
         self.assertIsNotNone(ScoringConfig.low_cost(protein_pct=20.0).protein_target_distribution)
         self.assertIsNotNone(ScoringConfig.moderate(protein_pct=20.0).protein_target_distribution)
         self.assertIsNotNone(ScoringConfig.liberal(protein_pct=20.0).protein_target_distribution)
+
+    def test_high_protein_thrifty_uses_budget_source_mix(self) -> None:
+        config = ScoringConfig.thrifty(protein_pct=35.0)
+
+        self.assertEqual(
+            config.protein_target_distribution,
+            [0.03, 0.22, 0.25, 0.02, 0.34, 0.14],
+        )
+        self.assertGreater(
+            config.protein_target_distribution[4] + config.protein_target_distribution[5],
+            config.protein_target_distribution[0] + config.protein_target_distribution[3],
+        )
+        self.assertGreater(
+            config.protein_target_distribution[1] + config.protein_target_distribution[2],
+            config.protein_target_distribution[0] + config.protein_target_distribution[3],
+        )
 
     def test_constructor_protein_target_matches_config_path(self) -> None:
         config = _with_constructor_protein_target(

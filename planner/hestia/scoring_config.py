@@ -1045,12 +1045,20 @@ class ScoringConfig:
         config = cls.budget()
         config.protein_pct_target = protein_pct
         config.tier_config = None
-        config.protein_target_distribution = None
-        config.protein_quota_strictness = 0.0
-        config.enable_produce_bonus = True
+        if protein_pct >= 25.0:
+            # High-protein thrifty still uses cheap dense protein first. This
+            # target keeps beef/fish occasional while leaving room for eggs,
+            # legumes, pork, and poultry to win on package economics.
+            config.protein_target_distribution = [0.03, 0.22, 0.25, 0.02, 0.34, 0.14]
+            config.protein_quota_strictness = 5.0
+        else:
+            config.protein_target_distribution = None
+            config.protein_quota_strictness = 0.0
+        config.enable_produce_bonus = False
+        config.produce_value = 0.0
         config.produce_value_breakfast = 0.000
-        config.produce_value_lunch = 0.002
-        config.produce_value_dinner = 0.005
+        config.produce_value_lunch = 0.000
+        config.produce_value_dinner = 0.000
         return config
 
     @classmethod

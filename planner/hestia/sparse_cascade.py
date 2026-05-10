@@ -99,17 +99,18 @@ def _protein_targeting_overrides(config: ScoringConfig) -> Dict[str, Any]:
     if config.macro_deviation_weight < auto_macro_w:
         overrides['macro_deviation_weight'] = auto_macro_w
 
-    # Keep macro target separate from food-plan tier. Moderate protein targets
-    # should still reach for cheap protein first; tier/quota controls premium
-    # beef/fish mix. Hard filtering is reserved for high-protein plans.
-    if prot_target >= 25 and not config.enable_protein_prefilter:
-        overrides['enable_protein_prefilter'] = True
+    # Keep macro target separate from food-plan tier. A 35% weekly target should
+    # not force every recipe through a hard protein floor; that collapses the
+    # cheap egg/legume/pork pool before cost optimization can use it. Hard
+    # filtering is reserved for configs that explicitly enable it, such as
+    # high_protein mode.
     if prot_target >= 25 and config.macro_tolerance_pct > 3.0:
         overrides['macro_tolerance_pct'] = 3.0
-    if prot_target >= 35 and config.protein_filter_margin < 8.0:
-        overrides['protein_filter_margin'] = 8.0
-    elif prot_target >= 25 and config.protein_filter_margin < 6.0:
-        overrides['protein_filter_margin'] = 6.0
+    if config.enable_protein_prefilter:
+        if prot_target >= 35 and config.protein_filter_margin < 8.0:
+            overrides['protein_filter_margin'] = 8.0
+        elif prot_target >= 25 and config.protein_filter_margin < 6.0:
+            overrides['protein_filter_margin'] = 6.0
     return overrides
 
 
@@ -3326,27 +3327,21 @@ class SparseCascadePlanner:
 
                 cost_per_1000cal = cost_per_1000cal - diversity_boost  # Lower = better
 
-            # === PROTEIN PREFILTER (492k → 20k gate) ===
-            # When enabled, push low-protein recipes to the bottom of the cost ranking.
-            # This is the KEY filter — it ensures only recipes >= (target - margin)%
-            # protein survive to the scoring stage. Without this, cost optimization
-            # fills the top 20k with cheap carb-heavy recipes.
-            # Two layers:
-            #   1. Hard exclude: recipes outside (target ± margin) get +1e6
-            #   2. Graduated bonus: recipes closer to target get a cost discount
-            # Floor-only filter: exclude recipes BELOW target - margin
-            # Never exclude high-protein recipes - extra protein is nutritionally fine
-            # and cheap high-protein foods (eggs, chicken, beans) are the cost optimizer's best tools
-            if self.config.enable_protein_prefilter:
+            # === PROTEIN TARGETING IN COST FILTER (492k → 20k gate) ===
+            # Normal food-plan tiers use a soft discount so high-protein
+            # candidates survive the cost filter. Only explicit hard-prefilter
+            # configs push low-protein recipes to the bottom.
+            if self.config.enable_protein_prefilter or self.config.enable_protein_density_bonus:
                 recipe_nutr_pf = self.db.nutrition[indices].float()  # [N, 4]
                 prot_cal_pf = recipe_nutr_pf[:, 1] * 4  # protein grams → calories
                 total_cal_pf = recipe_nutr_pf[:, 0].clamp(min=1.0)  # cal/serving
                 recipe_prot_pct_pf = (prot_cal_pf / total_cal_pf) * 100  # [N]
 
-                # FLOOR ONLY: exclude recipes below target - margin (never cap high protein)
-                min_prot_pct = self.protein_pct_target - self.config.protein_filter_margin
-                low_protein_mask = recipe_prot_pct_pf < min_prot_pct
-                cost_per_1000cal[low_protein_mask] += 1e6  # Effectively excluded
+                if self.config.enable_protein_prefilter:
+                    # FLOOR ONLY: exclude recipes below target - margin (never cap high protein)
+                    min_prot_pct = self.protein_pct_target - self.config.protein_filter_margin
+                    low_protein_mask = recipe_prot_pct_pf < min_prot_pct
+                    cost_per_1000cal[low_protein_mask] += 1e6  # Effectively excluded
 
                 # Graduated bonus: pull surviving recipes toward target
                 # Recipes at target get max discount, further away get less
@@ -3700,7 +3695,7 @@ class SparseCascadePlanner:
             # This is the KEY mechanism: without it, cost optimization eliminates
             # high-protein recipes before the density bonus can help them.
             # NOTE: Removed 'target > 15' check to enable targeting at any level
-            if self.config.enable_protein_prefilter:
+            if self.config.enable_protein_prefilter or self.config.enable_protein_density_bonus:
                 recipe_prot_g_cf = self.db.nutrition[recipe_indices.long(), 1].float()  # [N]
                 recipe_cal_cf = self.db.nutrition[recipe_indices.long(), 0].float()  # [N]
                 recipe_prot_pct_cf = (recipe_prot_g_cf * 4) / recipe_cal_cf.clamp(min=1) * 100  # [N]
@@ -6889,7 +6884,7 @@ class SparseCascadePlanner:
                     # overall protein even when mains are high-protein. This bonus pulls
                     # side selection toward the protein target.
                     # NOTE: Removed 'target > 15' check to enable targeting at any level
-                    if self.config.enable_protein_prefilter:
+                    if self.config.enable_protein_prefilter or self.config.enable_protein_density_bonus:
                         side_prot_g = self.db.nutrition[all_side_indices.long(), 1].float()  # [num_sides]
                         side_cal = self.db.nutrition[all_side_indices.long(), 0].float()  # [num_sides]
                         side_prot_pct = (side_prot_g * 4) / side_cal.clamp(min=1) * 100  # [num_sides]
