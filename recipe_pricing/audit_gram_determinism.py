@@ -65,6 +65,7 @@ VARIABLE_PACKAGE_UNITS = {
     "pouch", "pouches",
     "sprig", "sprigs",
     "bunch", "bunches",
+    "serving", "servings",
 }
 
 REPAIRED_QUANTITY_SOURCES = {
@@ -73,6 +74,7 @@ REPAIRED_QUANTITY_SOURCES = {
     "text_range_clamped_to_blob",
     "per_pound_parenthetical_fixed",
     "temperature_quantity_restored",
+    "total_weight_range_restored",
 }
 
 DENSITY_STATE_TOKENS = {

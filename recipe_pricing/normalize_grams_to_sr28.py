@@ -92,6 +92,7 @@ PRESERVE_GRAMS_SOURCES = {
     "per_pound_parenthetical_fixed",
     "whipped_density_override",
     "temperature_quantity_restored",
+    "total_weight_range_restored",
 }
 
 REVIEW_UNIT_ALIASES = {
@@ -534,10 +535,6 @@ def main():
         if qty <= 0:
             if write_w: write_w.writerow(row)
             return
-        unit = (row.get("unit") or "").strip().lower()
-        if not unit:
-            if write_w: write_w.writerow(row)
-            return
         disp = row.get("display") or ""
         if SKIP_PATTERNS.search(disp):
             skipped_skip += 1
@@ -550,9 +547,42 @@ def main():
         if gs in PRESERVE_GRAMS_SOURCES:
             if write_w: write_w.writerow(row)
             return
+        ing_name = (row.get("ingredient_item") or "").lower().strip()
+        unit = (row.get("unit") or "").strip().lower()
+        if not unit:
+            portion = (
+                pick_reviewed_portion(reviewed_portions, ing_name, "count", disp)
+                or pick_reviewed_portion(reviewed_portions, ing_name, "each", disp)
+            )
+            if portion is None:
+                if write_w: write_w.writerow(row)
+                return
+            matched_portion += 1
+            gpu, plabel = portion
+            new_g = qty * gpu
+            try: old_g = float(row.get("grams_resolved") or 0)
+            except: old_g = 0
+            if abs(new_g - old_g) < 0.01:
+                if write_w: write_w.writerow(row)
+                return
+            changed += 1
+            by_pattern[(ing_name, "count", plabel)]["count"] += 1
+            by_pattern[(ing_name, "count", plabel)]["old_total"] += old_g
+            by_pattern[(ing_name, "count", plabel)]["new_total"] += new_g
+            if len(samples) < 25:
+                samples.append({
+                    "rid": row.get("recipe_id"),
+                    "display": disp[:80],
+                    "old": old_g,
+                    "new": new_g,
+                    "portion": plabel,
+                })
+            row["grams_resolved"] = f"{new_g:.2f}"
+            row["grams_source"] = REVIEWED_SOURCE
+            if write_w: write_w.writerow(row)
+            return
         # PRIMARY: per-ingredient-name bridge (more specific). Falls back to
         # htc-dominant bridge only when item isn't in the per-name table.
-        ing_name = (row.get("ingredient_item") or "").lower().strip()
         reviewed_portion = pick_reviewed_portion(reviewed_portions, ing_name, unit, disp)
         unit_key = canonical_review_unit(unit)
         wildcard_reviewed_portion = (

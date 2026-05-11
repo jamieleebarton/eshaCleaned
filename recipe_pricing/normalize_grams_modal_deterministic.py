@@ -11,6 +11,10 @@ Package-size units are deliberately excluded. "1 can tomatoes" can be 8 oz,
 14.5 oz, or 28 oz depending on recipe text; forcing a corpus-wide modal would
 destroy real package evidence.
 
+When an SR28/reviewed-household source is present for a drift bucket, that
+anchor wins over the statistical modal. The modal is only the fallback for
+deterministic tuples that do not have a source-backed row.
+
 Usage:
   python3 recipe_pricing/normalize_grams_modal_deterministic.py --dry-run
   python3 recipe_pricing/normalize_grams_modal_deterministic.py
@@ -34,6 +38,44 @@ LOG = ROOT / "recipe_pricing" / "normalize_grams_modal_deterministic_log.csv"
 REVIEW = ROOT / "recipe_pricing" / "normalize_grams_modal_deterministic_review.csv"
 
 SOURCE = "deterministic_modal_normalized"
+
+ANCHOR_GRAMS_SOURCES = {
+    "usda_sr28_normalized",
+    "reviewed_household_portion_normalized",
+}
+
+REPAIRED_QUANTITY_SOURCES = {
+    "range_lower_bound",
+    "range_clamped_to_blob",
+    "text_range_clamped_to_blob",
+    "per_pound_parenthetical_fixed",
+    "temperature_quantity_restored",
+    "total_weight_range_restored",
+}
+
+COMPOUND_QUANTITY_PATTERNS = re.compile(
+    r"\bplus\s+(?:\d|one|two|three|four|five|six|seven|eight|nine|ten)\b"
+    r"|\bfor boiling\b",
+    re.I,
+)
+
+VARIABLE_PACKAGE_UNITS = {
+    "bag", "bags",
+    "bottle", "bottles",
+    "box", "boxes",
+    "can", "cans",
+    "carton", "cartons",
+    "container", "containers",
+    "envelope", "envelopes",
+    "jar", "jars",
+    "package", "packages",
+    "packet", "packets",
+    "pkg", "pkgs",
+    "pouch", "pouches",
+    "sprig", "sprigs",
+    "bunch", "bunches",
+    "serving", "servings",
+}
 
 UNIT_ALIASES = {
     "tsp": "tsp",
@@ -81,6 +123,30 @@ UNIT_ALIASES = {
     "kg": "kg",
     "kilogram": "kg",
     "kilograms": "kg",
+    "ml": "ml",
+    "milliliter": "ml",
+    "milliliters": "ml",
+    "millilitre": "ml",
+    "millilitres": "ml",
+    "fl_oz": "fl_oz",
+    "fl oz": "fl_oz",
+    "floz": "fl_oz",
+    "fluid ounce": "fl_oz",
+    "fluid ounces": "fl_oz",
+    "pint": "pint",
+    "pints": "pint",
+    "pt": "pint",
+    "quart": "quart",
+    "quarts": "quart",
+    "qt": "quart",
+    "gallon": "gallon",
+    "gallons": "gallon",
+    "gal": "gallon",
+    "l": "liter",
+    "liter": "liter",
+    "liters": "liter",
+    "litre": "liter",
+    "litres": "liter",
 }
 
 DENSITY_STATE_TOKENS = {
@@ -165,7 +231,17 @@ FORCE_MODAL_TERMS = {
 }
 
 EXACT_UNIT_GRAMS = {
-    "water": {"tsp": 5.0, "tbsp": 15.0, "cup": 240.0},
+    "water": {
+        "tsp": 5.0,
+        "tbsp": 14.8,
+        "cup": 240.0,
+        "fl_oz": 29.6,
+        "pint": 473.0,
+        "quart": 946.0,
+        "gallon": 3785.0,
+        "ml": 1.0,
+        "liter": 1000.0,
+    },
     "all-purpose flour": {"tsp": 2.6, "tbsp": 7.8, "cup": 125.0},
     "flour": {"tsp": 2.6, "tbsp": 7.8, "cup": 125.0},
     "plain flour": {"tsp": 2.6, "tbsp": 7.8, "cup": 125.0},
@@ -184,6 +260,8 @@ MASS_UNIT_GRAMS = {
     "kg": 1000.0,
     "oz": 28.349523125,
     "lb": 453.59237,
+    "ml": 1.0,
+    "liter": 1000.0,
 }
 
 
@@ -209,6 +287,13 @@ def key_for(row: dict[str, str]) -> tuple[str, float, str] | None:
         return None
     if grams is None or grams <= 0:
         return None
+    if (row.get("grams_source") or "") in REPAIRED_QUANTITY_SOURCES:
+        return None
+    if COMPOUND_QUANTITY_PATTERNS.search(display):
+        return None
+    raw_unit = (row.get("unit") or "").strip().lower()
+    if raw_unit in VARIABLE_PACKAGE_UNITS or unit in VARIABLE_PACKAGE_UNITS:
+        return None
     if qty >= 50 and TEMP_RANGE_RE.search(display):
         return None
     for token in DENSITY_STATE_TOKENS | FORM_STATE_TOKENS:
@@ -227,6 +312,18 @@ def exact_rule_value(item: str, qty: float, unit: str) -> float | None:
             if grams_per_unit is not None:
                 return round(qty * grams_per_unit, 1)
     return None
+
+
+def choose_anchor_grams(bucket: dict) -> float | None:
+    anchor_counts: dict[float, int] = defaultdict(int)
+    for source, grams_counts in bucket["source_grams"].items():
+        if source not in ANCHOR_GRAMS_SOURCES:
+            continue
+        for grams, count in grams_counts.items():
+            anchor_counts[grams] += count
+    if not anchor_counts:
+        return None
+    return sorted(anchor_counts.items(), key=lambda kv: (-kv[1], kv[0]))[0][0]
 
 
 def should_review_item(item: str) -> bool:
@@ -262,6 +359,7 @@ def build_rules(args: argparse.Namespace) -> tuple[dict[tuple[str, float, str], 
     buckets = defaultdict(lambda: {
         "grams": defaultdict(int),
         "sources": defaultdict(int),
+        "source_grams": defaultdict(lambda: defaultdict(int)),
         "htcs": defaultdict(int),
         "samples": [],
     })
@@ -276,7 +374,9 @@ def build_rules(args: argparse.Namespace) -> tuple[dict[tuple[str, float, str], 
             grams = round(float(row["grams_resolved"]), 1)
             bucket = buckets[key]
             bucket["grams"][grams] += 1
-            bucket["sources"][row.get("grams_source", "")] += 1
+            source = row.get("grams_source", "")
+            bucket["sources"][source] += 1
+            bucket["source_grams"][source][grams] += 1
             bucket["htcs"][row.get("htc_code", "")] += 1
             if len(bucket["samples"]) < 3:
                 bucket["samples"].append((row.get("recipe_id", ""), row.get("display", "")[:80]))
@@ -314,14 +414,27 @@ def build_rules(args: argparse.Namespace) -> tuple[dict[tuple[str, float, str], 
             "n_htcs": len(bucket["htcs"]),
             "sample": " ; ".join(f"{rid}:{display}" for rid, display in bucket["samples"]),
         }
+        anchor_g = choose_anchor_grams(bucket)
         exact_g = exact_rule_value(item, qty, unit)
-        if should_review_item(item):
+        if should_review_item(item) and not args.all_deterministic_drift:
             row["decision"] = "review"
-        elif implausible_liquid_density(item, qty, unit, exact_g if exact_g is not None else modal_g):
+        elif (
+            not args.all_deterministic_drift
+            and implausible_liquid_density(
+                item, qty, unit,
+                anchor_g if anchor_g is not None else exact_g if exact_g is not None else modal_g,
+            )
+        ):
             row["decision"] = "review"
+        elif anchor_g is not None:
+            rules[key] = anchor_g
+            row["decision"] = "apply"
+            row["decision_reason"] = "anchor_source"
+            row["modal_g"] = anchor_g
         elif exact_g is not None and n_lines >= args.min_lines:
             rules[key] = exact_g
             row["decision"] = "apply"
+            row["decision_reason"] = "exact_unit_rule"
             row["modal_g"] = exact_g
         elif n_lines >= args.min_lines and (
             modal_share >= args.min_modal_share
@@ -329,8 +442,14 @@ def build_rules(args: argparse.Namespace) -> tuple[dict[tuple[str, float, str], 
         ):
             rules[key] = modal_g
             row["decision"] = "apply"
+            row["decision_reason"] = "modal_threshold"
+        elif args.all_deterministic_drift:
+            rules[key] = modal_g
+            row["decision"] = "apply"
+            row["decision_reason"] = "determinism_audit_modal"
         else:
             row["decision"] = "review"
+            row["decision_reason"] = "below_threshold"
         review_rows.append(row)
 
     review_rows.sort(key=lambda r: (r["decision"] != "apply", -int(r["n_lines"])))
@@ -417,6 +536,15 @@ def main() -> None:
     parser.add_argument("--dry-run", action="store_true")
     parser.add_argument("--min-lines", type=int, default=25)
     parser.add_argument("--min-modal-share", type=float, default=0.90)
+    parser.add_argument(
+        "--all-deterministic-drift",
+        action="store_true",
+        help=(
+            "Apply one gram value to every deterministic drift bucket that "
+            "the gram determinism audit would fail. SR28/reviewed anchors "
+            "win when present; otherwise the bucket modal is used."
+        ),
+    )
     args = parser.parse_args()
 
     if not RECIPES.exists():

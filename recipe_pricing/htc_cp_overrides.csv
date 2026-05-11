@@ -1,0 +1,341 @@
+item,canonical_path,reason
+ground mace,Pantry > Spices & Seasonings > Mace,same
+mace,Pantry > Spices & Seasonings > Mace,same
+fenugreek,Pantry > Spices & Seasonings > Fenugreek,
+mint leaves,Produce > Herbs > Mint,taxonomy had Snack > Candy > Mints
+cilantro,Produce > Vegetables > Cilantro,recipes use fresh cilantro; htc/fdc path was pantry spice
+parsley,Produce > Vegetables > Parsley,taxonomy had bare Pantry
+dried parsley,Pantry > Spices & Seasonings > Parsley Flakes,taxonomy had bare Pantry
+mint,Produce > Herbs > Mint,taxonomy had bare Pantry
+dried mint,Pantry > Spices & Seasonings > Mint,taxonomy had bare Pantry
+mint extract,Pantry > Baking Extracts > Peppermint Extract,taxonomy had bare Pantry
+unsweetened chocolate,Snack > Chocolate Candy > Chocolate Squares,taxonomy had bare Pantry
+grated chocolate,Snack > Chocolate Candy > Chocolate Squares,taxonomy had bare Pantry
+ground sweet chocolate,Snack > Chocolate Candy > Chocolate Squares,taxonomy had bare Pantry
+chocolate granules,Snack > Chocolate Candy > Chocolate Squares,taxonomy had bare Pantry
+cocoa cooking chocolate,Snack > Chocolate Candy > Chocolate Squares,taxonomy had bare Pantry
+grated sweet chocolate,Snack > Chocolate Candy > Chocolate Squares,taxonomy had bare Pantry
+chipotle chile in adobo,Pantry > Peppers > Chipotle Peppers in Adobo Sauce,taxonomy had bare Pantry
+chipotle chiles in adobo,Pantry > Peppers > Chipotle Peppers in Adobo Sauce,taxonomy had bare Pantry
+minced chipotle chile in adobo,Pantry > Peppers > Chipotle Peppers in Adobo Sauce,taxonomy had bare Pantry
+minced chipotle chiles in adobo,Pantry > Peppers > Chipotle Peppers in Adobo Sauce,taxonomy had bare Pantry
+pureed chipotle chile in adobo,Pantry > Peppers > Chipotle Peppers in Adobo Sauce,taxonomy had bare Pantry
+canned chipotle chile puree,Pantry > Peppers > Chipotle Peppers in Adobo Sauce,taxonomy had bare Pantry
+minced canned chipotle chile in adobo,Pantry > Peppers > Chipotle Peppers in Adobo Sauce,taxonomy had bare Pantry
+pureed canned chipotle chile in adobo,Pantry > Peppers > Chipotle Peppers in Adobo Sauce,taxonomy had bare Pantry
+canned minced chipotle chile in adobo,Pantry > Peppers > Chipotle Peppers in Adobo Sauce,taxonomy had bare Pantry
+canned minced chipotle chiles in adobo,Pantry > Peppers > Chipotle Peppers in Adobo Sauce,taxonomy had bare Pantry
+lemon extract,Pantry > Baking Extracts > Lemon Extract,taxonomy had bare Pantry
+peppermint extract,Pantry > Baking Extracts > Peppermint Extract,taxonomy had bare Pantry
+vanilla flavoring,Pantry > Baking Extracts > Vanilla Extract,taxonomy had bare Pantry
+vanilla pod,Pantry > Baking Extracts > Vanilla Bean Paste,taxonomy had bare Pantry
+coconut flavoring,Pantry > Baking Extracts > Coconut Extract,taxonomy had bare Pantry
+lemon flavoring,Pantry > Baking Extracts > Lemon Extract,taxonomy had bare Pantry
+chocolate extract,Pantry > Baking Extracts > Chocolate Extract,taxonomy had bare Pantry
+caramel flavoring,Pantry > Baking Extracts > Caramel Extract,taxonomy had bare Pantry
+orange flavoring,Pantry > Baking Extracts > Orange Extract,taxonomy had bare Pantry
+spaghetti sauce,Pantry > Sauces & Salsas > Spaghetti Sauce,taxonomy had bare Pantry
+rye flour,Pantry > Flour > Rye Flour,taxonomy had bare Pantry
+medium rye flour,Pantry > Flour > Rye Flour,taxonomy had bare Pantry
+dark rye flour,Pantry > Flour > Rye Flour,taxonomy had bare Pantry
+rye meal,Pantry > Flour > Rye Flour,taxonomy had bare Pantry
+whole rye flour,Pantry > Flour > Rye Flour,taxonomy had bare Pantry
+wholemeal rye flour,Pantry > Flour > Rye Flour,taxonomy had bare Pantry
+light rye flour,Pantry > Flour > Rye Flour,taxonomy had bare Pantry
+natural bran,Pantry > Grain > Bran,taxonomy had bare Pantry
+unprocessed natural bran,Pantry > Grain > Bran,taxonomy had bare Pantry
+whole natural bran,Pantry > Grain > Bran,taxonomy had bare Pantry
+refrigerated crescent dinner roll dough,Bakery > Rolls > Crescent Rolls,taxonomy had bare Pantry
+cheez whiz,Pantry > Dips & Spreads > Dip,taxonomy had bare Pantry
+shredded coconut,Pantry > Flakes > Coconut Flakes,taxonomy had bare Pantry
+matzo meal,Snack > Crackers > Matzo,taxonomy had bare Pantry
+splenda granular,Pantry > Sweeteners > Zero Calorie Sweetener,taxonomy had bare Pantry
+splenda,Pantry > Sweeteners > Zero Calorie Sweetener,taxonomy had bare Pantry
+lemongrass,Produce > Vegetables > Paste,taxonomy had bare Pantry
+white pepper,Pantry > Spices & Seasonings > White Pepper,taxonomy had bare Pantry
+cayenne,Pantry > Spices & Seasonings > Cayenne Pepper,taxonomy had bare Pantry
+sumac,Pantry > Spices & Seasonings > Sumac,Class-2 retag had only 1 FDC at new cp; bypass min-count gate
+ground sumac,Pantry > Spices & Seasonings > Sumac,same as sumac
+lemon extract,Pantry > Baking Extracts,priced has Watkins Pure Lemon Extract at parent path; specific Lemon Extract leaf has 0 SKUs
+peppermint extract,Pantry > Baking Extracts,parent has extracts with name-token guard
+mint extract,Pantry > Baking Extracts,
+almond extract,Pantry > Baking Extracts,parent has Almond Extract SKUs
+maple extract,Pantry > Baking Extracts,
+rum extract,Pantry > Baking Extracts,
+banana extract,Pantry > Baking Extracts,
+coconut extract,Pantry > Baking Extracts,
+orange extract,Pantry > Baking Extracts,
+chocolate extract,Pantry > Baking Extracts,
+tangerines,Produce > Fruit > Oranges,no tangerine pool — substitute orange (close citrus)
+tangerine,Produce > Fruit > Oranges,no tangerine pool — substitute orange
+clementines,Produce > Fruit > Oranges,no clementine pool — substitute orange
+satsuma,Produce > Fruit > Oranges,
+satsumas,Produce > Fruit > Oranges,
+bacon fat,Pantry > Oil,bacon fat ≈ rendered animal oil; closest priced is generic Pantry > Oil
+duck fat,Pantry > Oil,
+schmaltz,Pantry > Oil,
+graham cracker crumbs,Snack > Crackers > Graham Crackers,recipes use crumbs from box of grahams; substitute whole graham crackers
+chocolate cookie crumbs,Bakery > Cookies,no cookie-crumbs-as-product; substitute chocolate cookies
+chocolate wafer crumbs,Bakery > Cookies,substitute chocolate cookies
+cookie crumbs,Bakery > Cookies,substitute whole cookies; recipe will use crumbed-up cookies
+vanilla wafer crumbs,Bakery > Cookies,substitute vanilla wafers/cookies
+oreo cookie crumbs,Bakery > Cookies,substitute Oreo cookies
+gingersnap crumbs,Bakery > Cookies,substitute gingersnaps
+graham cracker,Snack > Crackers > Graham Crackers,
+graham crackers,Snack > Crackers > Graham Crackers,
+egg yolk,Dairy > Eggs,no standalone yolks; recipe will buy whole eggs
+egg yolks,Dairy > Eggs,
+yolks,Dairy > Eggs,
+egg white,Dairy > Eggs,priced has Egg Whites pool but recipe item often resolves to generic Eggs; either is correct
+egg whites,Dairy > Eggs,
+beaten egg yolks,Dairy > Eggs,
+beaten egg whites,Dairy > Eggs,
+large egg yolks,Dairy > Eggs,
+large egg whites,Dairy > Eggs,
+lemon zest,Produce > Fruit > Lemons,no standalone zest; recipe will buy whole lemons (1 lemon ≈ 2g zest)
+lime zest,Produce > Fruit > Limes,
+orange zest,Produce > Fruit > Oranges,
+lemon peel,Produce > Fruit > Lemons,
+lime peel,Produce > Fruit > Limes,
+orange peel,Produce > Fruit > Oranges,
+lemon rind,Produce > Fruit > Lemons,
+lime rind,Produce > Fruit > Limes,
+orange rind,Produce > Fruit > Oranges,
+grated lemon peel,Produce > Fruit > Lemons,
+grated lime peel,Produce > Fruit > Limes,
+grated orange peel,Produce > Fruit > Oranges,
+fresh lemon zest,Produce > Fruit > Lemons,
+fresh orange zest,Produce > Fruit > Oranges,
+
+instant nonfat dry milk powder,Dairy > Milk > Powdered Milk,taxonomy had bare Pantry
+chipotle chiles in adobo sauce,Pantry > Peppers > Chipotle Peppers in Adobo Sauce,taxonomy had bare Pantry
+chipotle chile in adobo sauce,Pantry > Peppers > Chipotle Peppers in Adobo Sauce,taxonomy had bare Pantry
+chipotle chilies in adobo sauce,Pantry > Peppers > Chipotle Peppers in Adobo Sauce,taxonomy had bare Pantry
+white sauce,Pantry > Sauces & Salsas > White Sauce,taxonomy had bare Pantry
+medium white sauce,Pantry > Sauces & Salsas > White Sauce,taxonomy had bare Pantry
+thin white sauce,Pantry > Sauces & Salsas > White Sauce,taxonomy had bare Pantry
+thick white sauce,Pantry > Sauces & Salsas > White Sauce,taxonomy had bare Pantry
+thai peanut sauce,Pantry > Sauces & Salsas > Peanut Sauce,taxonomy had bare Pantry
+goya sofrito sauce,Pantry > Sauces & Salsas > Sofrito,taxonomy had bare Pantry
+tomato and basil pasta sauce,Pantry > Sauces & Salsas > Tomato Basil Sauce,htc F800000X had only 1 mistagged FDC
+pesto sauce,Pantry > Sauces & Salsas > Pesto,htc F800000X had only 1 mistagged FDC
+prepared pesto sauce,Pantry > Sauces & Salsas > Pesto,htc F800000X had only 1 mistagged FDC
+hollandaise sauce,Pantry > Sauces & Salsas > Alfredo Sauce,no hollandaise pool — substitute alfredo
+hollandaise sauce mix,Pantry > Sauces & Salsas > Alfredo Sauce,no hollandaise pool — substitute alfredo
+bechamel sauce,Pantry > Sauces & Salsas > Alfredo Sauce,no bechamel pool — substitute alfredo
+béchamel sauce,Pantry > Sauces & Salsas > Alfredo Sauce,no bechamel pool — substitute alfredo
+stock,Pantry > Broth & Stock > Chicken Broth,htc F800000X had only 1 mistagged FDC
+dashi,Pantry > Broth & Stock > Chicken Broth,htc F800000X had only 1 mistagged FDC
+dashi stock,Pantry > Broth & Stock > Chicken Broth,htc F800000X had only 1 mistagged FDC
+bouillon,Pantry > Broth & Stock > Chicken Broth,htc F800000X had only 1 mistagged FDC
+bouillon cube,Pantry > Broth & Stock > Chicken Broth,htc F800000X had only 1 mistagged FDC
+bouillon cubes,Pantry > Broth & Stock > Chicken Broth,htc F800000X had only 1 mistagged FDC
+consomme,Pantry > Broth & Stock > Chicken Broth,htc F800000X had only 1 mistagged FDC
+demi-glace,Pantry > Broth & Stock > Beef Broth,no demi-glace pool — substitute beef broth
+gravy,Pantry > Gravy > Gravy Mix,htc F800000X had only 1 mistagged FDC
+mushroom gravy,Pantry > Gravy > Gravy Mix,htc F800000X had only 1 mistagged FDC
+bouquet garni,Pantry > Spices & Seasonings > Spice Blend,htc F800000X had only 1 mistagged FDC
+avocado,Produce > Vegetables > Avocado,recipe encoder put avocado in Frozen Fruit
+avocados,Produce > Vegetables > Avocado,recipe encoder put avocado in Frozen Fruit
+hass avocado,Produce > Vegetables > Avocado,recipe encoder put avocado in Frozen Fruit
+hass avocados,Produce > Vegetables > Avocado,recipe encoder put avocado in Frozen Fruit
+ripe avocado,Produce > Vegetables > Avocado,recipe encoder put avocado in Frozen Fruit
+ripe avocados,Produce > Vegetables > Avocado,recipe encoder put avocado in Frozen Fruit
+california avocado,Produce > Vegetables > Avocado,recipe encoder put avocado in Frozen Fruit
+california avocados,Produce > Vegetables > Avocado,recipe encoder put avocado in Frozen Fruit
+cranberries,Snack > Dried Fruit > Dried Cranberries,no fresh cranberry pool — substitute dried
+fresh cranberries,Snack > Dried Fruit > Dried Cranberries,no fresh cranberry pool — substitute dried
+raw cranberries,Snack > Dried Fruit > Dried Cranberries,no fresh cranberry pool — substitute dried
+chickpeas,Pantry > Beans > Garbanzo Beans,recipe encoder put chickpeas in Snack > Chips
+canned chickpeas,Pantry > Beans > Garbanzo Beans,recipe encoder put chickpeas in Snack > Chips
+dried chickpeas,Pantry > Beans > Garbanzo Beans,recipe encoder put chickpeas in Snack > Chips
+cooked chickpeas,Pantry > Beans > Garbanzo Beans,recipe encoder put chickpeas in Snack > Chips
+dried garbanzo beans,Pantry > Beans > Garbanzo Beans,recipe encoder put chickpeas in Snack > Chips
+canned garbanzo beans,Pantry > Beans > Garbanzo Beans,recipe encoder put chickpeas in Snack > Chips
+cooked garbanzo beans,Pantry > Beans > Garbanzo Beans,recipe encoder put chickpeas in Snack > Chips
+cherries,Produce > Fruit > Cherries,recipe encoder put cherries in Frozen Fruit
+fresh cherries,Produce > Fruit > Cherries,recipe encoder put cherries in Frozen Fruit
+sweet cherries,Produce > Fruit > Cherries,recipe encoder put cherries in Frozen Fruit
+cherry,Produce > Fruit > Cherries,recipe encoder put cherries in Frozen Fruit
+glace cherries,Pantry > Canned Fruit > Maraschino Cherries,glace=candied cherries
+candied cherries,Pantry > Canned Fruit > Maraschino Cherries,candied cherries
+candied cherry,Pantry > Canned Fruit > Maraschino Cherries,candied cherries
+candied red cherries,Pantry > Canned Fruit > Maraschino Cherries,candied cherries
+water chestnuts,Pantry > Canned Vegetables > Water Chestnuts,recipe encoder put in Snack > Nuts
+sliced water chestnuts,Pantry > Canned Vegetables > Water Chestnuts,recipe encoder put in Snack > Nuts
+water chestnut,Pantry > Canned Vegetables > Water Chestnuts,recipe encoder put in Snack > Nuts
+canned water chestnuts,Pantry > Canned Vegetables > Water Chestnuts,recipe encoder put in Snack > Nuts
+chopped water chestnuts,Pantry > Canned Vegetables > Water Chestnuts,recipe encoder put in Snack > Nuts
+whole water chestnuts,Pantry > Canned Vegetables > Water Chestnuts,recipe encoder put in Snack > Nuts
+fresh water chestnuts,Pantry > Canned Vegetables > Water Chestnuts,recipe encoder put in Snack > Nuts
+whole wheat bread,Bakery > Bread > Whole Wheat Bread,recipe encoder put in Pantry > Grain
+wheat bread,Bakery > Bread > Whole Wheat Bread,recipe encoder put in Pantry > Grain
+light whole wheat bread,Bakery > Bread > Whole Wheat Bread,recipe encoder put in Pantry > Grain
+honey-wheat bread,Bakery > Bread > Whole Wheat Bread,recipe encoder put in Pantry > Grain
+hearty whole wheat bread,Bakery > Bread > Whole Wheat Bread,recipe encoder put in Pantry > Grain
+red cabbage,Produce > Vegetables > Red Cabbage,recipe encoder put in Pantry > Canned
+fresh red cabbage,Produce > Vegetables > Red Cabbage,recipe encoder put in Pantry > Canned
+grated red cabbage,Produce > Vegetables > Red Cabbage,recipe encoder put in Pantry > Canned
+red cabbage leaves,Produce > Vegetables > Red Cabbage,recipe encoder put in Pantry > Canned
+red cabbage leaf,Produce > Vegetables > Red Cabbage,recipe encoder put in Pantry > Canned
+mixed berries,Frozen > Fruit > Mixed Berries,no fresh mixed-berry pool — substitute frozen
+fresh berries,Frozen > Fruit > Mixed Berries,no fresh mixed-berry pool — substitute frozen
+berries,Frozen > Fruit > Mixed Berries,generic berries → frozen mixed
+assorted berries,Frozen > Fruit > Mixed Berries,assorted berries → frozen mixed
+assorted fresh berries,Frozen > Fruit > Mixed Berries,assorted berries → frozen mixed
+seasonal berries,Frozen > Fruit > Mixed Berries,seasonal berries → frozen mixed
+apricots,Snack > Dried Fruit > Dried Apricots,no fresh apricot pool — substitute dried
+fresh apricots,Snack > Dried Fruit > Dried Apricots,no fresh apricot pool — substitute dried
+apricot,Snack > Dried Fruit > Dried Apricots,no fresh apricot pool — substitute dried
+canned apricots,Snack > Dried Fruit > Dried Apricots,no canned apricot pool — substitute dried
+fresh apricot,Snack > Dried Fruit > Dried Apricots,no fresh apricot pool — substitute dried
+figs,Snack > Dried Fruit > Dried Figs,no fresh fig pool — substitute dried
+fresh figs,Snack > Dried Fruit > Dried Figs,no fresh fig pool — substitute dried
+ripe figs,Snack > Dried Fruit > Dried Figs,no fresh fig pool — substitute dried
+fig,Snack > Dried Fruit > Dried Figs,no fresh fig pool — substitute dried
+black mission figs,Snack > Dried Fruit > Dried Figs,fig variety → dried figs
+pineapple chunks,Pantry > Canned Fruit > Pineapple,recipe wants frozen but priced has canned
+canned pineapple chunks,Pantry > Canned Fruit > Pineapple,canned pineapple
+unsweetened pineapple chunks,Pantry > Canned Fruit > Pineapple,canned pineapple
+pineapple chunk,Pantry > Canned Fruit > Pineapple,canned pineapple
+fresh pineapple chunks,Pantry > Canned Fruit > Pineapple,no fresh pool — substitute canned
+oysters,Pantry > Canned Seafood > Smoked Oysters,no fresh oyster pool — substitute canned
+fresh oysters,Pantry > Canned Seafood > Smoked Oysters,no fresh oyster pool — substitute canned
+canned oysters,Pantry > Canned Seafood > Smoked Oysters,canned oysters
+greens,Produce > Vegetables > Mixed Greens,generic greens → mixed greens
+leafy greens,Produce > Vegetables > Mixed Greens,leafy greens → mixed greens
+spring greens,Produce > Vegetables > Mixed Greens,spring greens → mixed greens
+plantains,Produce > Vegetables > Plantains,recipe encoder put plantains in Frozen Fruit
+plantain,Produce > Vegetables > Plantains,recipe encoder put plantains in Frozen Fruit
+fresh plantains,Produce > Vegetables > Plantains,recipe encoder put plantains in Frozen Fruit
+ripe plantains,Produce > Vegetables > Plantains,recipe encoder put plantains in Frozen Fruit
+green plantains,Produce > Vegetables > Plantains,recipe encoder put plantains in Frozen Fruit
+frankfurters,Meat & Seafood > Hot Dogs & Sausages > Hot Dogs,frankfurters = hot dogs
+frankfurter,Meat & Seafood > Hot Dogs & Sausages > Hot Dogs,frankfurters = hot dogs
+beef hot dogs,Meat & Seafood > Hot Dogs & Sausages > Hot Dogs,beef hot dog
+calamari steaks,Meat & Seafood > Seafood > Calamari,priced has Calamari leaf
+squid,Meat & Seafood > Seafood > Calamari,squid = calamari
+swordfish,Meat & Seafood > Fish > Swordfish Steaks,priced has Swordfish Steaks leaf
+swordfish steaks,Meat & Seafood > Fish > Swordfish Steaks,priced has Swordfish Steaks leaf
+veal,Meat & Seafood > Veal > Ground Veal,priced only has Ground Veal — substitute
+veal cutlet,Meat & Seafood > Veal > Ground Veal,no veal cutlet — substitute ground
+veal scallopini,Meat & Seafood > Veal > Ground Veal,no veal scallopini — substitute ground
+currants,Snack > Dried Fruit,Sun-Maid Zante Currants exists in dried fruit
+dried currants,Snack > Dried Fruit,dried currants
+zante currants,Snack > Dried Fruit,zante currants
+hazelnuts,Snack > Nuts > Mixed Nuts,Kroger Roasted Chopped Hazelnuts in Mixed Nuts
+chopped hazelnuts,Snack > Nuts > Mixed Nuts,chopped hazelnuts
+roasted hazelnuts,Snack > Nuts > Mixed Nuts,roasted hazelnuts
+toasted hazelnuts,Snack > Nuts > Mixed Nuts,toasted hazelnuts
+ground hazelnuts,Snack > Nuts > Mixed Nuts,ground hazelnuts
+yams,Frozen > Potatoes > Sweet Potatoes,priced uses Sweet Potatoes for canned yams
+canned yams,Frozen > Potatoes > Sweet Potatoes,canned yams = sweet potatoes
+crema,Dairy > Sour Cream,Cacique Crema Mexicana at Sour Cream
+crema mexicana,Dairy > Sour Cream,Crema Mexicana
+mexican crema,Dairy > Sour Cream,Mexican Crema
+mussels,Meat & Seafood > Shellfish > Mussel,Marketside Mussels at Shellfish
+fresh mussels,Meat & Seafood > Shellfish > Mussel,fresh mussels
+imitation crabmeat,Meal > Salads > Imitation Crab,Aquamar Imitation Crab in Salads
+imitation crab,Meal > Salads > Imitation Crab,imitation crab
+surimi,Meal > Salads > Imitation Crab,surimi = imitation crab
+crab,Meal > Salads > Imitation Crab,no real crab pool — substitute imitation
+semolina,Pantry > Pasta,semolina is pasta wheat — substitute pasta
+semolina flour,Pantry > Flour > All Purpose Flour,semolina flour as flour substitute
+chicken patties,Meat & Seafood > Poultry > Chicken Patties,priced has Chicken Patties leaf
+chicken patty,Meat & Seafood > Poultry > Chicken Patties,priced has Chicken Patties leaf
+vermouth,Beverage > Wine,Gallo Dry Vermouth at Wine
+dry vermouth,Beverage > Wine,Gallo Dry Vermouth at Wine
+sweet vermouth,Beverage > Wine,vermouth at Wine
+sweetened coconut,Pantry > Flakes > Coconut Flakes,sweetened coconut flakes
+desiccated coconut,Pantry > Flakes > Coconut Flakes,desiccated = coconut flakes
+shredded coconut,Pantry > Flakes > Coconut Flakes,shredded = coconut flakes
+flaked coconut,Pantry > Flakes > Coconut Flakes,flaked = coconut flakes
+unsweetened coconut,Pantry > Flakes > Coconut Flakes,unsweetened coconut flakes
+unsweetened shredded coconut,Pantry > Flakes > Coconut Flakes,unsweetened shredded = coconut flakes
+vegetable suet,Dairy > Butter > Shortening,retail has shortening but bird-feed suet polluted bare Pantry
+shredded vegetable suet,Dairy > Butter > Shortening,retail has shortening but bird-feed suet polluted bare Pantry
+chinese wine,Pantry > Cooking Wines,Shaoxing/cooking wine should not route to beverage mix
+shaoxing wine,Pantry > Cooking Wines,Shaoxing/cooking wine should not route to beverage mix
+white wine,Pantry > Cooking Wines,cooking ingredient default
+dry white wine,Pantry > Cooking Wines,cooking ingredient default
+red wine,Pantry > Cooking Wines,cooking ingredient default
+dry red wine,Pantry > Cooking Wines,cooking ingredient default
+poblano chile,Produce > Vegetables > Peppers,fresh chile pepper
+poblano chiles,Produce > Vegetables > Peppers,fresh chile pepper
+poblano pepper,Produce > Vegetables > Peppers,fresh chile pepper
+poblano peppers,Produce > Vegetables > Peppers,fresh chile pepper
+frisee,Produce > Vegetables > Lettuce,salad green
+jalapenos,Produce > Vegetables > Jalapenos,fresh jalapenos should not buy pickled slices
+jalapeno,Produce > Vegetables > Jalapenos,fresh jalapenos should not buy pickled slices
+onion,Produce > Vegetables > Onions,fresh onion default
+onions,Produce > Vegetables > Onions,fresh onion default
+white onion,Produce > Vegetables > Onions,fresh onion default
+white onions,Produce > Vegetables > Onions,fresh onion default
+carrot,Produce > Vegetables > Carrots,fresh carrot default
+carrots,Produce > Vegetables > Carrots,fresh carrot default
+fresh carrots,Produce > Vegetables > Carrots,fresh carrot default
+fresh spinach,Produce > Vegetables > Spinach,fresh spinach default
+ears corn,Frozen > Vegetables > Corn on the Cob,corn ears default to corn on the cob
+fresh ripe tomatoes,Produce > Vegetables > Tomatoes,fresh tomatoes should not buy canned tomatoes
+fresh tomatoes,Produce > Vegetables > Tomatoes,fresh tomatoes should not buy canned tomatoes
+frozen hash browns,Produce > Vegetables > Hash Browns,hash browns are potatoes not grain blend
+red licorice string,Snack > Candy > Licorice,licorice candy should not route to grain blend
+sweet red bean paste,Pantry > Baking Extracts > Red Bean Paste,anko/red bean filling should not route to fruit preserves
+eye of round roast,Meal > Meal Starters > Beef Roast,same as beef roast
+beef consomme,Pantry > Broth & Stock > Beef Broth,consomme = beef broth substitute
+beef consommé,Pantry > Broth & Stock > Beef Broth,consomme = beef broth substitute
+yellow squash,Produce > Vegetables > Squash,encoder routed yellow squash to Frozen Vegetables (squash)
+squash,Produce > Vegetables > Squash,generic squash
+crookneck yellow squash,Produce > Vegetables > Squash,yellow squash variant
+kabocha squash,Produce > Vegetables > Squash,winter squash variant
+cherry pie filling,Pantry > Canned Fruit > Pie Filling,priced has Pie Filling leaf not Cherry-specific
+sour cherries,Pantry > Canned Fruit > Cherries,fresh sour cherries rare; substitute canned
+bing cherries,Produce > Fruit > Cherries,fresh cherry variety
+dark sweet cherries,Pantry > Canned Fruit > Cherries,canned dark sweet cherries
+pitted cherries,Produce > Fruit > Cherries,fresh pitted cherries
+whole wheat hamburger buns,Bakery > Buns > Hamburger Buns,encoder routed to Wheat Bread
+whole wheat rolls,Bakery > Rolls > Dinner Rolls,whole wheat rolls
+whole wheat hoagie rolls,Bakery > Rolls > Dinner Rolls,whole wheat hoagie rolls
+hoagie rolls,Bakery > Rolls > Dinner Rolls,hoagie rolls
+hot dog buns,Bakery > Buns > Hot Dog Buns,hot dog buns
+breadcrumbs,Pantry > Bread Crumbs,breadcrumbs same
+fresh breadcrumbs,Pantry > Bread Crumbs,
+miso,Pantry > Sauces & Salsas > Miso Paste,miso paste — priced has 16 SKUs at Miso Paste leaf
+white miso,Pantry > Sauces & Salsas > Miso Paste,
+red miso,Pantry > Sauces & Salsas > Miso Paste,
+light miso,Pantry > Sauces & Salsas > Miso Paste,
+yellow miso,Pantry > Sauces & Salsas > Miso Paste,
+miso paste,Pantry > Sauces & Salsas > Miso Paste,
+ginger,Produce > Vegetables > Ginger Root,fresh ginger root exists at Produce > Vegetables (31 SKUs)
+gingerroot,Produce > Vegetables > Ginger Root,
+fresh ginger,Produce > Vegetables > Ginger Root,
+fresh gingerroot,Produce > Vegetables > Ginger Root,
+ginger puree,Produce > Vegetables > Ginger Root,
+ginger root,Produce > Vegetables > Ginger Root,
+crystallized ginger,Snack > Dried Fruit,no priced match — substitute dried fruit
+candied ginger,Snack > Dried Fruit,same
+orange marmalade,Pantry > Spreads > Marmalade,encoder routes orange marmalade to Lime Curd via mistagged FDC
+marmalade,Pantry > Spreads > Marmalade,
+ginger marmalade,Pantry > Spreads > Marmalade,
+reduced-sugar orange marmalade,Pantry > Spreads > Marmalade,
+peanut butter,Pantry > Nut Butters > Peanut Butter,htc A0FZ000Q maps to Snack > Bars via mistagged FDC; priced has 457 SKUs at Nut Butters
+creamy peanut butter,Pantry > Nut Butters > Peanut Butter,
+chunky peanut butter,Pantry > Nut Butters > Peanut Butter,
+crunchy peanut butter,Pantry > Nut Butters > Peanut Butter,
+smooth peanut butter,Pantry > Nut Butters > Peanut Butter,
+natural peanut butter,Pantry > Nut Butters > Peanut Butter,
+almond butter,Pantry > Nut Butters,htc A001000P maps to Snack > Nuts > Almonds via mistag
+sherry wine,Pantry > Cooking Wines,htc D8000007 maps to Slushie Mix via mistag; sherry is cooking wine
+port wine,Beverage > Wine,
+marsala wine,Pantry > Cooking Wines,
+madeira wine,Pantry > Cooking Wines,
+burgundy wine,Beverage > Wine,
+red wine,Beverage > Wine,red wine
+dry red wine,Beverage > Wine,
+white wine,Beverage > Wine,
+dry white wine,Beverage > Wine,
+lean pork,Meat & Seafood > Pork > Pork Stew Meat,plain diced lean pork should buy pork stew meat cubes not sausage
+chorizo sausage,Meat & Seafood > Sausage > Chorizo Sausage,chorizo is its own sausage subtype
+chorizo sausages,Meat & Seafood > Sausage > Chorizo Sausage,chorizo is its own sausage subtype
+pork chorizo sausage,Meat & Seafood > Sausage > Chorizo Sausage,chorizo is its own sausage subtype
+mexican chorizo sausage,Meat & Seafood > Sausage > Chorizo Sausage,chorizo is its own sausage subtype
