@@ -27,6 +27,8 @@ RANGE_RE = re.compile(
     r"(?<![\d./])(\d+(?:\.\d+)?)\s*-\s*(\d+(?:\.\d+)?)\s*lb\b",
     re.I,
 )
+MEAT_RANDOM_WEIGHT_PATH_RE = re.compile(r"^(?:Meat & Seafood|Seafood)\b", re.I)
+RANDOM_WEIGHT_NAME_RE = re.compile(r"\b(?:family\s+pack|tray|steaks?|chops?|roast|ribs?)\b", re.I)
 
 
 def declared_range_grams(name: str) -> tuple[float, float] | None:
@@ -47,33 +49,40 @@ def main() -> None:
 
     con = sqlite3.connect(str(DB))
     rows = con.execute(
-        """SELECT DISTINCT upc, name, grams, cents, size_display
+        """SELECT DISTINCT upc, name, grams, cents, size_display, consensus_canonical
            FROM priced_products
            WHERE available = 1
-             AND lower(name) LIKE '% lb%'"""
+             AND (lower(name) LIKE '% lb%' OR lower(size_display) LIKE '% lb%')"""
     ).fetchall()
 
     fixes: list[dict[str, object]] = []
-    for upc, name, grams, cents, size_display in rows:
+    for upc, name, grams, cents, size_display, canonical_path in rows:
         declared = declared_range_grams(name or "")
-        if declared is None:
-            continue
-
-        low_g, high_g = declared
         old_grams = float(grams or 0)
         old_display = size_display or ""
         new_grams = old_grams
         new_display = old_display
         reasons: list[str] = []
 
-        if old_grams <= 0 or old_grams > high_g * 1.05 or old_grams < low_g * 0.95:
-            new_grams = (low_g + high_g) / 2.0
-            reasons.append("grams_outside_declared_lb_range")
-
         display_g = parse_largest_size(old_display)
-        if display_g is not None and (display_g > high_g * 1.05 or display_g < low_g * 0.95):
+        low_g = high_g = 0.0
+        if declared is not None:
+            low_g, high_g = declared
+            if old_grams <= 0 or old_grams > high_g * 1.05 or old_grams < low_g * 0.95:
+                new_grams = (low_g + high_g) / 2.0
+                reasons.append("grams_outside_declared_lb_range")
+
+            if display_g is not None and (display_g > high_g * 1.05 or display_g < low_g * 0.95):
+                new_display = "Random Weight"
+                reasons.append("size_display_outside_declared_lb_range")
+        elif (
+            display_g is not None
+            and old_grams > display_g * 1.5
+            and MEAT_RANDOM_WEIGHT_PATH_RE.search(canonical_path or "")
+            and RANDOM_WEIGHT_NAME_RE.search(name or "")
+        ):
             new_display = "Random Weight"
-            reasons.append("size_display_outside_declared_lb_range")
+            reasons.append("meat_random_weight_size_display_understates_package")
 
         if not reasons:
             continue
@@ -85,8 +94,8 @@ def main() -> None:
             "new_grams": round(new_grams, 3),
             "old_size_display": old_display,
             "new_size_display": new_display,
-            "declared_low_g": round(low_g, 3),
-            "declared_high_g": round(high_g, 3),
+            "declared_low_g": round(low_g, 3) if low_g else "",
+            "declared_high_g": round(high_g, 3) if high_g else "",
             "cents": int(cents or 0),
             "reason": ";".join(reasons),
         })

@@ -14,3 +14,7 @@ upc,name_contains,new_grams,reason
 259825000003,"Lean Beef Stew Meat",453.59237,random_weight_range_midpoint_from_name_0.75_1.25_lb
 268963000004,"Fresh Chicken Paws Tray",646.36912725,random_weight_range_midpoint_from_name_1.1_1.75_lb
 260741000008,"Wild Caught Alaska Sockeye Whole Salmon Portions",351.53408675,random_weight_range_midpoint_from_name_0.7_0.85_lb
+0003410001509,"Miller High Life Beer American Lager Beer",4258.584,net_package_volume_from_display_12_bottles_x_12_fl_oz
+018000001231,"Pillsbury Grands Southern Homestyle Buttermilk Biscuit Dough",924.1937,net_package_weight_from_name_32.6_oz_total_not_doubled_by_2_pack
+041000004087,"Lipton Recipe Secrets Beefy Onion Dry Recipe Soup and Dip Mix",62.3689,net_package_weight_from_display_2.2_oz
+0001111085501,"Kroger® Fast Rise Yeast",21.2621,net_package_weight_from_display_3_ct_x_0.25_oz
