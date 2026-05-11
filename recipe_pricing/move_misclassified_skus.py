@@ -170,6 +170,30 @@ MOVES = [
     ("796853100249", "Pantry > Canned Meat > Canned Beef",
      "J000000D", "J000200T",
      "Keystone canned ground beef is shelf-stable canned beef, not raw ground beef"),
+
+    # Product-pool collision audit: keep these SKUs buyable, but move them out
+    # of food concepts where the HTC/path would let them contaminate recipes.
+    ("0084105804086", "Non-Food > Personal Care",
+     "N007000P", "N007000P",
+     "Schick razor with coconut milk/almond oil is personal care, not almond milk"),
+    ("0084105804087", "Non-Food > Personal Care",
+     "N007000P", "N007000P",
+     "Schick razor refills with coconut milk/almond oil are personal care, not almond milk"),
+    ("0084105804090", "Non-Food > Personal Care",
+     "N007000P", "N007000P",
+     "Schick razor refills with coconut milk/almond oil are personal care, not almond milk"),
+    ("0001111062457", "Produce > Vegetables > Cauliflower",
+     "6203000V", "6203100F",
+     "Kroger cauliflower florets belong to fresh cauliflower florets, not broccoli"),
+    ("0001111079550", "Produce > Vegetables > Cauliflower",
+     "6203000V", "6203100F",
+     "Kroger cauliflower florets bag belongs to fresh cauliflower florets, not broccoli"),
+    ("0024733780000", "Meal > Composite Dishes > Coleslaw",
+     "H0050006", "H005101*",
+     "Deli Summer Slaw is prepared deli coleslaw, not broccoli"),
+    ("016000200685", "Meal > Mashed Potatoes",
+     "H601000$", "H601600U",
+     "Betty Crocker creamy butter mashed potatoes belong to mashed potatoes, not baking mix"),
 ]
 
 
