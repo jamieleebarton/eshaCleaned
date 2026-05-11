@@ -1,0 +1,143 @@
+item,fdc_id,sr_description,reason
+chicken broth,174536,"Soup, chicken broth, ready-to-serve",bridge_to_meat_was_wrong
+chicken stock,174536,"Soup, chicken broth, ready-to-serve",bridge_to_meat_was_wrong
+beef broth,171538,"Soup, beef broth or bouillon canned, ready-to-serve",bridge_to_meat_was_wrong
+beef stock,171538,"Soup, beef broth or bouillon canned, ready-to-serve",bridge_to_meat_was_wrong
+vegetable broth,171583,"Soup, vegetable broth, ready to serve",bridge_to_fish_broth_was_wrong
+vegetable stock,171583,"Soup, vegetable broth, ready to serve",bridge_to_fish_broth_was_wrong
+corn tortillas,175036,"Tortillas, ready-to-bake or -fry, corn",bridge_to_flour_was_wrong
+whole wheat tortillas,174081,"Tortillas, ready-to-bake or -fry, whole wheat",bridge_to_flour_was_wrong
+flour tortillas,167535,"Tortillas, ready-to-bake or -fry, flour, shelf stable",explicit_flour_match
+tortilla,175036,"Tortillas, ready-to-bake or -fry, corn",default_to_corn_when_unspecified
+chili powder,171319,"Spices, chili powder",bridge_to_chili_entree_was_wrong
+cayenne pepper,170932,"Spices, pepper, red or cayenne",bridge_to_banana_pepper_was_wrong
+crushed red pepper flakes,170932,"Spices, pepper, red or cayenne",bridge_to_banana_pepper_was_wrong
+red pepper flakes,170932,"Spices, pepper, red or cayenne",bridge_to_banana_pepper_was_wrong
+bacon,168277,"Pork, cured, bacon, unprepared",bridge_to_meatless_bacon_was_wrong
+orange juice,169100,"Orange juice, chilled, includes from concentrate",bridge_to_apple_grape_juice_was_wrong
+white pepper,170933,"Spices, pepper, white",bridge_to_banana_pepper_was_wrong
+pepper,170931,"Spices, pepper, black",generic_recipe_pepper_defaults_to_black
+ground red pepper,170932,"Spices, pepper, red or cayenne",bridge_to_banana_pepper_was_wrong
+celery seed,170920,"Spices, celery seed",bridge_to_celery_raw_was_wrong
+cream of tartar,175041,"Leavening agents, cream of tartar",bridge_to_half_and_half_was_wrong
+poultry seasoning,171331,"Spices, poultry seasoning",bridge_to_raw_poultry_was_wrong
+dry mustard,170929,"Spices, mustard seed, ground",prepared_mustard_bridge_was_wrong_for_powder
+ground dry mustard,170929,"Spices, mustard seed, ground",prepared_mustard_bridge_was_wrong_for_powder
+dry mustard powder,170929,"Spices, mustard seed, ground",prepared_mustard_bridge_was_wrong_for_powder
+mustard powder,170929,"Spices, mustard seed, ground",prepared_mustard_bridge_was_wrong_for_powder
+hot dry mustard,170929,"Spices, mustard seed, ground",prepared_mustard_bridge_was_wrong_for_powder
+light corn syrup,168837,"Syrups, corn, light",bridge_to_fresh_corn_was_wrong
+cooking oil,172370,"Oil, vegetable, soybean, refined",bridge_to_cooking_spray_was_wrong
+vegetable oil,172370,"Oil, vegetable, soybean, refined",generic_recipe_oil_default
+pumpkin pie spice,171332,"Spices, pumpkin pie spice",bridge_to_pumpkin_pie_was_wrong
+dill weed,171322,"Spices, dill weed, dried",generic_recipe_dill_weed_defaults_to_dried
+dried dill weed,171322,"Spices, dill weed, dried",explicit_dried_dill
+basil,171317,"Spices, basil, dried",generic_teaspoon_basil_defaults_to_dried
+dried basil,171317,"Spices, basil, dried",explicit_dried_basil
+red chili powder,171319,"Spices, chili powder",bridge_to_chili_entree_was_wrong
+broccoli florets,169330,"Broccoli, flower clusters, raw",bridge_to_broccoli_leaves_was_wrong
+cornmeal,168867,"Cornmeal, degermed, enriched, yellow",bridge_to_blue_cornmeal_was_wrong
+yellow cornmeal,168867,"Cornmeal, degermed, enriched, yellow",explicit_yellow_cornmeal
+dried marjoram,170928,"Spices, marjoram, dried",bridge_to_mustard_seed_was_wrong
+marjoram,170928,"Spices, marjoram, dried",explicit_marjoram
+fennel seed,171323,"Spices, fennel seed",bridge_to_fennel_bulb_was_wrong
+fennel seeds,171323,"Spices, fennel seed",bridge_to_dill_weed_was_wrong
+confectioners' sugar,169656,"Sugars, powdered",bridge_to_turbinado_was_wrong
+powdered sugar,169656,"Sugars, powdered",explicit_powdered_sugar
+coriander powder,170922,"Spices, coriander seed",bridge_to_fresh_cilantro_was_wrong
+ground coriander,170922,"Spices, coriander seed",explicit_ground_coriander
+dried dill,171322,"Spices, dill weed, dried",bridge_to_curry_powder_was_wrong
+sweet paprika,171329,"Spices, paprika",bridge_to_sweet_potato_leaves_was_wrong
+ground pepper,170931,"Spices, pepper, black",generic_ground_pepper_defaults_to_black
+black peppercorns,170931,"Spices, pepper, black",bridge_to_yogurt_was_wrong
+corn syrup,168837,"Syrups, corn, light",generic_recipe_corn_syrup_defaults_to_light
+cornflour,169698,"Cornstarch",cornflour_in_recipe_context_defaults_to_cornstarch
+light brown sugar,168833,"Sugars, brown",explicit_brown_sugar
+dark brown sugar,168833,"Sugars, brown",explicit_brown_sugar
+cool whip,170868,"Dessert topping, semi solid, frozen",bridge_to_sour_cream_was_wrong
+pineapple juice,168187,"Pineapple juice, canned or bottled, unsweetened, with added ascorbic acid",bridge_to_pineapple_chunks_was_wrong
+unsweetened pineapple juice,168187,"Pineapple juice, canned or bottled, unsweetened, with added ascorbic acid",bridge_to_pineapple_chunks_was_wrong
+dried parsley flakes,170930,"Spices, parsley, dried",bridge_to_freeze_dried_parsley_was_wrong_for_flakes
+parsley flakes,170930,"Spices, parsley, dried",explicit_parsley_flakes
+ground clove,171321,"Spices, cloves, ground",explicit_ground_clove
+ground clove powder,171321,"Spices, cloves, ground",explicit_ground_clove
+celery seeds,170920,"Spices, celery seed",bridge_to_celery_raw_was_wrong
+coriander seed,170922,"Spices, coriander seed",bridge_to_fresh_cilantro_was_wrong
+coriander seeds,170922,"Spices, coriander seed",explicit_coriander_seed
+instant coffee,171893,"Beverages, coffee, instant, regular, powder",bridge_to_soymilk_was_wrong
+instant coffee granules,171893,"Beverages, coffee, instant, regular, powder",bridge_to_soymilk_was_wrong
+instant coffee powder,171893,"Beverages, coffee, instant, regular, powder",bridge_to_soymilk_was_wrong
+american cheese,171290,"Cheese, pasteurized process, American, without added vitamin D",bridge_to_nonfat_american_was_wrong
+shredded cheese,173414,"Cheese, cheddar (Includes foods for USDA's Food Distribution Program)",generic_shredded_cheese_defaults_to_cheddar_not_parmesan
+whipped topping,170868,"Dessert topping, semi solid, frozen",bridge_to_sour_cream_was_wrong
+non-dairy whipped topping,170868,"Dessert topping, semi solid, frozen",bridge_to_sour_cream_was_wrong
+frozen whipped topping,170868,"Dessert topping, semi solid, frozen",bridge_to_sour_cream_was_wrong
+thawed whipped topping,170868,"Dessert topping, semi solid, frozen",bridge_to_sour_cream_was_wrong
+pure maple syrup,169661,"Syrups, maple",use_sr28_maple_with_household_portions
+icing sugar,169656,"Sugars, powdered",bridge_to_turbinado_was_wrong
+chili flakes,170932,"Spices, pepper, red or cayenne",bridge_to_chili_entree_was_wrong
+dried chili flakes,170932,"Spices, pepper, red or cayenne",bridge_to_chili_entree_was_wrong
+chili pepper flakes,170932,"Spices, pepper, red or cayenne",bridge_to_banana_pepper_was_wrong
+red chili pepper flakes,170932,"Spices, pepper, red or cayenne",bridge_to_banana_pepper_was_wrong
+dried chili pepper flakes,170932,"Spices, pepper, red or cayenne",bridge_to_chili_entree_was_wrong
+dried red pepper flakes,170932,"Spices, pepper, red or cayenne",bridge_to_banana_pepper_was_wrong
+hot pepper flakes,170932,"Spices, pepper, red or cayenne",bridge_to_banana_pepper_was_wrong
+hot red pepper flakes,170932,"Spices, pepper, red or cayenne",bridge_to_banana_pepper_was_wrong
+crushed red pepper,170932,"Spices, pepper, red or cayenne",bridge_to_banana_pepper_was_wrong
+dry crushed red pepper,170932,"Spices, pepper, red or cayenne",bridge_to_banana_pepper_was_wrong
+cracked black pepper,170931,"Spices, pepper, black",generic_cracked_pepper_defaults_to_black
+dried mint,172239,"Spearmint, dried",bridge_to_fresh_mint_was_wrong
+dried mint flakes,172239,"Spearmint, dried",bridge_to_fresh_mint_was_wrong
+mint flakes,172239,"Spearmint, dried",bridge_to_fresh_mint_was_wrong
+unflavored gelatin,169599,"Gelatins, dry powder, unsweetened",bridge_to_gelatin_dessert_mix_was_wrong
+ground sage,170935,"Spices, sage, ground",missing_sr28_bridge
+rubbed sage,170935,"Spices, sage, ground",missing_sr28_bridge
+ground mace,170927,"Spices, mace, ground",bridge_to_coriander_was_wrong
+ground cayenne pepper,170932,"Spices, pepper, red or cayenne",bridge_to_banana_pepper_was_wrong
+bicarbonate of soda,175040,"Leavening agents, baking soda",bridge_to_cream_soda_was_wrong
+white chocolate chips,167571,"Candies, white chocolate",codex_high_drift_bridge_20260510
+white chocolate morsels,167571,"Candies, white chocolate",codex_high_drift_bridge_20260510
+white chocolate chip,167571,"Candies, white chocolate",codex_high_drift_bridge_20260510
+chicken bouillon granules,171562,"Soup, chicken broth or bouillon, dry",codex_high_drift_bridge_20260510
+chicken bouillon granule,171562,"Soup, chicken broth or bouillon, dry",codex_high_drift_bridge_20260510
+beef bouillon granules,171560,"Soup, beef broth or bouillon, powder, dry",codex_high_drift_bridge_20260510
+beef bouillon granule,171560,"Soup, beef broth or bouillon, powder, dry",codex_high_drift_bridge_20260510
+bacon bits,169893,"Bacon bits, meatless",codex_high_drift_bridge_20260510
+clove,171321,"Spices, cloves, ground",codex_high_drift_bridge_20260510
+ground cloves,171321,"Spices, cloves, ground",codex_high_drift_bridge_20260510
+whole cloves,171321,"Spices, cloves, ground",codex_high_drift_bridge_20260510
+paprika,171329,"Spices, paprika",codex_high_drift_bridge_20260510
+ground flax seeds,169414,"Seeds, flaxseed",codex_high_drift_bridge_20260510
+fresh ground pepper,170931,"Spices, pepper, black",codex_gram_drift_bridge_20260511
+fresh ground black pepper,170931,"Spices, pepper, black",codex_gram_drift_bridge_20260511
+coarse black pepper,170931,"Spices, pepper, black",codex_gram_drift_bridge_20260511
+ginger powder,170926,"Spices, ginger, ground",codex_gram_drift_bridge_20260511
+instant espresso powder,171893,"Beverages, coffee, instant, regular, powder",codex_gram_drift_bridge_20260511
+espresso powder,171893,"Beverages, coffee, instant, regular, powder",codex_gram_drift_bridge_20260511
+chicken bouillon,171562,"Soup, chicken broth or bouillon, dry",codex_gram_drift_bridge_20260511
+dry yeast,175043,"Leavening agents, yeast, baker's, active dry",codex_gram_drift_bridge_20260511
+dry active yeast,175043,"Leavening agents, yeast, baker's, active dry",codex_gram_drift_bridge_20260511
+fast-rising active dry yeast,175043,"Leavening agents, yeast, baker's, active dry",codex_gram_drift_bridge_20260511
+plain breadcrumbs,174924,"Bread, white, commercially prepared (includes soft bread crumbs)",codex_gram_drift_bridge_20260511
+flax seed,169414,"Seeds, flaxseed",codex_gram_drift_bridge_20260511
+flax seeds,169414,"Seeds, flaxseed",codex_gram_drift_bridge_20260511
+agave nectar,170277,"Sweetener, syrup, agave",codex_gram_drift_bridge_20260511
+apple cider,167771,"Apple juice, canned or bottled, unsweetened, with added ascorbic acid",codex_gram_drift_bridge_20260511
+crisco,171011,"Shortening, household, soybean (partially hydrogenated)-cottonseed (partially hydrogenated)",codex_gram_drift_bridge_20260511
+craisins,171723,"Cranberries, dried, sweetened (Includes foods for USDA's Food Distribution Program)",codex_gram_drift_bridge_20260511
+dried cranberries,171723,"Cranberries, dried, sweetened (Includes foods for USDA's Food Distribution Program)",codex_gram_drift_bridge_20260511
+italian seasoned breadcrumbs,174924,"Bread, white, commercially prepared (includes soft bread crumbs)",codex_gram_drift_bridge_20260511
+seasoned breadcrumbs,174924,"Bread, white, commercially prepared (includes soft bread crumbs)",codex_gram_drift_bridge_20260511
+mace,170927,"Spices, mace, ground",codex_gram_drift_bridge_20260511
+shredded cheddar cheese,173414,"Cheese, cheddar (Includes foods for USDA's Food Distribution Program)",codex_gram_drift_bridge_20260511
+rice flour,169714,"Rice flour, white, unenriched",codex_gram_drift_bridge_20260511
+white rice flour,169714,"Rice flour, white, unenriched",codex_gram_drift_bridge_20260511
+prosciutto,168296,"Pork, cured, ham, boneless, extra lean and regular, roasted",codex_gram_drift_bridge_20260511
+extra-virgin olive oil,167737,"Oil, corn, peanut, and olive",codex_gram_drift_bridge_20260511
+low-fat buttermilk,170874,"Milk, buttermilk, fluid, cultured, lowfat",codex_gram_drift_bridge_20260511
+tahini,170189,"Seeds, sesame butter, tahini, from roasted and toasted kernels (most common type)",codex_gram_drift_bridge_20260511
+red curry paste,171604,"Sauce, peppers, hot, chili, mature red, canned",codex_gram_drift_bridge_20260511
+miniature semisweet chocolate chips,167976,"Candies, semisweet chocolate",codex_gram_drift_bridge_20260511
+semi-sweet chocolate chips,167976,"Candies, semisweet chocolate",codex_gram_drift_bridge_20260511
+semisweet chocolate chips,167976,"Candies, semisweet chocolate",codex_gram_drift_bridge_20260511
+butterscotch chips,167972,"Candies, butterscotch",codex_gram_drift_bridge_20260511
