@@ -13,7 +13,7 @@ or reviewed household portion.
 
 ## Current Evidence
 
-Latest deterministic audit:
+Baseline deterministic audit before the 2026-05-11 bridge pass:
 
 ```bash
 python3 recipe_pricing/audit_gram_determinism.py
@@ -29,6 +29,48 @@ Result:
 - 8,119 lower-ratio drift tuples below `1.5`, affecting 60,668 lines.
 - 198 drift tuples already contain an SR28/reviewed source somewhere in the
   bucket, which means mixed source precedence still exists.
+
+Latest deterministic audit after `Normalize authoritative recipe gram bridges`
+(`32b3c7a`) and local re-normalization of ignored
+`recipe_mapper/v1/output/recipes_unified.csv`:
+
+```bash
+python3 recipe_pricing/normalize_grams_to_sr28.py --dry-run
+python3 recipe_pricing/audit_gram_determinism.py
+python3 recipe_pricing/audit_gram_determinism.py --fail-on-drift
+```
+
+Result:
+
+- Normalizer dry run is idempotent: 4,729,696 rows scanned, `changed: 0`.
+- 174,408 main deterministic `(ingredient_item, qty, unit)` keys.
+- 10,836 drifted deterministic tuples remain.
+- 77,293 recipe lines remain affected by drift.
+- 3,213 high-ratio drift tuples remain at `ratio >= 1.5`, affecting 25,266
+  lines.
+- 155 drift tuples still contain an SR28/reviewed source somewhere in the
+  bucket.
+- `--fail-on-drift` correctly exits nonzero. This is expected until the
+  remaining bridge/portion work is drained.
+
+Progress from baseline:
+
+- Drifted tuples: 11,846 -> 10,836.
+- Affected lines: 96,069 -> 77,293.
+- High-ratio tuples: 3,727 -> 3,213.
+- High-ratio affected lines: 35,401 -> 25,266.
+
+Root fixes already applied:
+
+- The SR28 safety check no longer rejects `dry red wine` merely because the
+  ingredient contains `dry`; it now only treats `dry` as a safety risk when
+  there is no meaningful token overlap.
+- `deterministic_modal_normalized` is no longer preserved over SR28/reviewed
+  household portions. SR28/reviewed is allowed to overwrite stale modal values.
+- `crumbled` and `crushed` are explicit form-state tokens in the drift audit.
+- Added bridge/portion evidence for high-impact offenders including pepper,
+  wine, olives, baby carrots, breadcrumbs, tapioca, rice flour, chocolate chips,
+  prosciutto, egg substitute, buttermilk, tahini, and others.
 
 Latest cause replay for the top 300 high-ratio tuples:
 
@@ -53,7 +95,7 @@ Examples:
 - `baby carrots, 2 cup`: no matching reviewed/SR28 portion.
 - `onion flakes, 1 tbsp`: bridge points to taco seasoning mix.
 
-Planner evidence after today's package fixes:
+Planner evidence after package fixes, before the gram bridge pass:
 
 ```bash
 python3 planner/scripts/audit_plan_multipacks.py \
@@ -69,6 +111,37 @@ Result:
 - Bad SKU audit: 0 hits across 584 purchase rows.
 - Reasonableness package flags: 0.
 
+Planner evidence after the gram bridge pass and downstream rebuild:
+
+```bash
+python3 planner/scripts/build_recipe_concept_grams.py
+python3 planner/scripts/build_concept_index.py
+python3 planner/scripts/build_concept_resolution.py
+python3 planner/build_concept_tensor_cache.py
+python3 planner/scripts/multi_week_ours.py \
+  --weeks 12 --mode thrifty --cal 2000 --people 4 \
+  --protein-pct 35 --protein-floor-mode flat50 \
+  --leftover-pct 0.75 \
+  --out planner/data/gramfix_p4_2000_thrifty_l75_p35_12wk.json
+```
+
+Same-config price comparison:
+
+- Before gram bridge pass:
+  `planner/data/fix_try12_p4_2000_thrifty_l75_p35_12wk_multipackfix.json`
+  total cost `$1,901.46`, `$158.45/week`, `$5.66/person/day`, protein `32.2%`.
+- After gram bridge pass:
+  `planner/data/gramfix_p4_2000_thrifty_l75_p35_12wk.json`
+  total cost `$1,893.05`, `$157.75/week`, `$5.63/person/day`, protein `32.0%`.
+- Delta: `-$8.41` over 12 weeks, `-$0.70/week`, about `-$0.03/person/day`.
+
+Post-rebuild plan audits:
+
+- Multipack audit: 51 selected count/multipack packages audited, 0 flags.
+- Reasonableness audit: 597 purchases, blank SKU 0, bad SKU 0, package flags 0.
+- Bad SKU audit: 0 hits across 597 purchase rows.
+- Form/facet audit: 0 findings across 2,558 selected-recipe lines.
+
 ## Root Cause
 
 `planner/scripts/build_recipe_concept_grams.py` aggregates
@@ -82,11 +155,10 @@ then the planner artifacts must be rebuilt.
 
 ## Fix Plan
 
-1. Add a strict validation gate.
+1. Maintain the strict validation gate.
 
-   Create a strict mode for the gram determinism audit or a new
-   `recipe_pricing/validate_gram_determinism.py` wrapper that exits nonzero
-   when main deterministic drift remains. It must report:
+   `recipe_pricing/audit_gram_determinism.py --fail-on-drift` exits nonzero
+   when main deterministic drift remains. It reports:
 
    - total drift tuples;
    - affected lines;
@@ -144,13 +216,15 @@ then the planner artifacts must be rebuilt.
    explicit reviewed portion. Do not let `goat cheese` silently mix block,
    soft, hard, and crumbled grams.
 
-5. Re-normalize recipe grams.
+5. Re-normalize recipe grams and prove idempotence.
 
    Run the SR28/FNDDS/reviewed normalizer after bridge corrections:
 
    ```bash
    python3 recipe_pricing/normalize_grams_to_sr28.py
+   python3 recipe_pricing/normalize_grams_to_sr28.py --dry-run
    python3 recipe_pricing/audit_gram_determinism.py
+   python3 recipe_pricing/audit_gram_determinism.py --fail-on-drift
    python3 recipe_pricing/audit_gram_drift_causes.py --limit 300
    ```
 
@@ -200,6 +274,25 @@ then the planner artifacts must be rebuilt.
    - `0.5 tsp fresh ground pepper` uses a spice/pepper bridge, not fresh pepper.
    - `0.5 cup kalamata olives` has one reviewed value.
    - `2 cup baby carrots` has one reviewed value.
+
+8. Record price impact every time.
+
+   For the family-of-4 reference config, always compare against the previous
+   accepted 12-week artifact before claiming a gram bridge fix is safe:
+
+   ```bash
+   python3 - <<'PY'
+   import json
+   before = json.load(open("planner/data/fix_try12_p4_2000_thrifty_l75_p35_12wk_multipackfix.json"))
+   after = json.load(open("planner/data/gramfix_p4_2000_thrifty_l75_p35_12wk.json"))
+   b = before["totals"]["total_cost"]
+   a = after["totals"]["total_cost"]
+   print(f"before=${b:.2f} after=${a:.2f} delta=${a-b:.2f}")
+   PY
+   ```
+
+   A large swing is not automatically wrong, but it must be traced to recipe
+   grams, selected recipes, or package purchases before being accepted.
 
 ## Acceptance Criteria
 
