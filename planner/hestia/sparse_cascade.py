@@ -1727,8 +1727,9 @@ class SparseCascadePlanner:
                 self.config = dc_replace(self.config, **_hh_overrides)
 
         # === TIERED AUTO PROTEIN TARGETING ===
-        # At 15%: soft steering only (density bonus + macro weight, NO prefilter)
-        #   - Keeps all cheap recipes in pool, gentle pull toward protein
+        # At 15%: final scoring may use soft macro/protein nudges, but the
+        #   early cost filter stays baseline. Letting density steering into the
+        #   filter made thrifty choose a more expensive recipe pool.
         # At 25%+: add prefilter for harder steering.
         #   - Moderate 18% targets are still normal-family meal plans; the
         #     hard gate over-constrains the cuisine/recipe pool and raises
@@ -3331,7 +3332,11 @@ class SparseCascadePlanner:
             # Normal food-plan tiers use a soft discount so high-protein
             # candidates survive the cost filter. Only explicit hard-prefilter
             # configs push low-protein recipes to the bottom.
-            if self.config.enable_protein_prefilter or self.config.enable_protein_density_bonus:
+            soft_protein_filter = (
+                self.config.enable_protein_density_bonus
+                and self.config.protein_pct_target > 15.0
+            )
+            if self.config.enable_protein_prefilter or soft_protein_filter:
                 recipe_nutr_pf = self.db.nutrition[indices].float()  # [N, 4]
                 prot_cal_pf = recipe_nutr_pf[:, 1] * 4  # protein grams → calories
                 total_cal_pf = recipe_nutr_pf[:, 0].clamp(min=1.0)  # cal/serving
@@ -3692,10 +3697,14 @@ class SparseCascadePlanner:
             # === PROTEIN PROXIMITY DISCOUNT (Cost Filter) ===
             # When protein targeting is active, give high-protein recipes a cost discount
             # so they survive the cost filter and reach the second pass scoring.
-            # This is the KEY mechanism: without it, cost optimization eliminates
-            # high-protein recipes before the density bonus can help them.
-            # NOTE: Removed 'target > 15' check to enable targeting at any level
-            if self.config.enable_protein_prefilter or self.config.enable_protein_density_bonus:
+            # This is the KEY mechanism for above-baseline protein targets:
+            # without it, cost optimization eliminates high-protein recipes
+            # before the density bonus can help them.
+            soft_protein_filter = (
+                self.config.enable_protein_density_bonus
+                and self.config.protein_pct_target > 15.0
+            )
+            if self.config.enable_protein_prefilter or soft_protein_filter:
                 recipe_prot_g_cf = self.db.nutrition[recipe_indices.long(), 1].float()  # [N]
                 recipe_cal_cf = self.db.nutrition[recipe_indices.long(), 0].float()  # [N]
                 recipe_prot_pct_cf = (recipe_prot_g_cf * 4) / recipe_cal_cf.clamp(min=1) * 100  # [N]
@@ -6883,8 +6892,13 @@ class SparseCascadePlanner:
                     # Sides typically have ~10% protein density, which massively dilutes
                     # overall protein even when mains are high-protein. This bonus pulls
                     # side selection toward the protein target.
-                    # NOTE: Removed 'target > 15' check to enable targeting at any level
-                    if self.config.enable_protein_prefilter or self.config.enable_protein_density_bonus:
+                    # Above-baseline protein targets may need side dishes to
+                    # help carry protein; baseline p15 stays cost-led here.
+                    soft_side_protein_filter = (
+                        self.config.enable_protein_density_bonus
+                        and self.config.protein_pct_target > 15.0
+                    )
+                    if self.config.enable_protein_prefilter or soft_side_protein_filter:
                         side_prot_g = self.db.nutrition[all_side_indices.long(), 1].float()  # [num_sides]
                         side_cal = self.db.nutrition[all_side_indices.long(), 0].float()  # [num_sides]
                         side_prot_pct = (side_prot_g * 4) / side_cal.clamp(min=1) * 100  # [num_sides]

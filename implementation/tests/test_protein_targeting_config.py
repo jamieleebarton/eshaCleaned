@@ -28,6 +28,13 @@ class ProteinTargetingConfigTests(unittest.TestCase):
         self.assertGreater(overrides["protein_density_value"], config.protein_density_value)
         self.assertGreater(overrides["macro_deviation_weight"], config.macro_deviation_weight)
 
+    def test_baseline_fifteen_percent_stays_soft_for_thrifty(self) -> None:
+        overrides = _protein_targeting_overrides(ScoringConfig.thrifty(protein_pct=15.0))
+
+        self.assertNotIn("enable_protein_prefilter", overrides)
+        self.assertTrue(overrides["enable_protein_density_bonus"])
+        self.assertGreater(overrides["protein_density_value"], 0)
+
     def test_twenty_percent_stays_soft_for_budget_tiers(self) -> None:
         for factory in (
             ScoringConfig.thrifty,
@@ -70,12 +77,12 @@ class ProteinTargetingConfigTests(unittest.TestCase):
         self.assertNotIn("enable_protein_prefilter", overrides)
         self.assertEqual(overrides["protein_filter_margin"], 8.0)
 
-    def test_thrifty_preserves_budget_no_produce_bonus(self) -> None:
+    def test_thrifty_preserves_budget_produce_nudges(self) -> None:
         config = ScoringConfig.thrifty(protein_pct=35.0)
 
-        self.assertFalse(config.enable_produce_bonus)
-        self.assertEqual(config.produce_value_lunch, 0.0)
-        self.assertEqual(config.produce_value_dinner, 0.0)
+        self.assertTrue(config.enable_produce_bonus)
+        self.assertEqual(config.produce_value_lunch, 0.002)
+        self.assertEqual(config.produce_value_dinner, 0.005)
 
     def test_budget_tier_is_source_mix_not_macro_target(self) -> None:
         self.assertIsNone(ScoringConfig.thrifty(protein_pct=20.0).protein_target_distribution)

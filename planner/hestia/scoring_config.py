@@ -1054,11 +1054,12 @@ class ScoringConfig:
         else:
             config.protein_target_distribution = None
             config.protein_quota_strictness = 0.0
-        config.enable_produce_bonus = False
-        config.produce_value = 0.0
+        # Keep the budget preset's small produce nudges. Removing them made
+        # thrifty select more pantry/bakery packages and raised family p15 cost.
+        config.enable_produce_bonus = True
         config.produce_value_breakfast = 0.000
-        config.produce_value_lunch = 0.000
-        config.produce_value_dinner = 0.000
+        config.produce_value_lunch = 0.002
+        config.produce_value_dinner = 0.005
         return config
 
     @classmethod

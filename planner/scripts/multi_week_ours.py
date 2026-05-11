@@ -307,7 +307,7 @@ def main():
     ap.add_argument("--people", type=int, default=1,
                      help="Number of people in the household")
     ap.add_argument("--protein-pct", type=float, default=20.0)
-    ap.add_argument("--protein-floor-mode", choices=("pct", "flat50"), default="flat50",
+    ap.add_argument("--protein-floor-mode", choices=("pct", "flat50"), default="pct",
                      help="Synthetic household protein floor policy")
     ap.add_argument("--leftover-pct", type=float, default=None,
                      help="Override scoring config leftover_pct_target (0.0–0.85)")
@@ -352,9 +352,9 @@ def main():
     if audit_overrides:
         config = dc_replace(config, **audit_overrides)
 
-    # Keep the hard protein gram floor independent from the macro target. The
-    # macro target is handled by ScoringConfig; profile protein floors are
-    # baseline adequacy constraints and should not turn 35% into 175g/person.
+    # Match Hestia's batch runs by default: the requested protein percentage
+    # sets the profile gram floor. flat50 remains available as an explicit
+    # audit switch for separating adequacy floor behavior from macro scoring.
     daily_protein_g = daily_protein_floor_g(
         calories_per_person=float(args.cal),
         protein_pct=float(args.protein_pct),
