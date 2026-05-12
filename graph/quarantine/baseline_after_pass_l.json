@@ -1,0 +1,12 @@
+{
+  "alignment_failures": 148338,
+  "assigned": 417080,
+  "brand_pc_dominants": 904,
+  "ingredient_signals": 456549,
+  "ingredient_veto_failures": 100556,
+  "passing": 242531,
+  "pc_dominants": 103,
+  "total_failures": 174549,
+  "trusted_rows_for_learning": 79475,
+  "v3_total": 462646
+}

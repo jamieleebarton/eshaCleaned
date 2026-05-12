@@ -1,0 +1,2936 @@
+{
+  "config": {
+    "mode": "thrifty",
+    "weeks": 3,
+    "people": 4,
+    "cal": 2000.0,
+    "protein_pct": 15.0,
+    "effective_protein_pct_target": 15.0,
+    "effective_scoring": {
+      "protein_pct_target": 15.0,
+      "enable_protein_prefilter": false,
+      "protein_filter_margin": 5.0,
+      "enable_protein_density_bonus": false,
+      "protein_density_value": 2.0,
+      "macro_deviation_weight": 0.1,
+      "auto_protein_targeting": false,
+      "enable_produce_bonus": false,
+      "produce_value_breakfast": 0.0,
+      "produce_value_lunch": 0.0,
+      "produce_value_dinner": 0.0
+    },
+    "leftover_pct": 0.75,
+    "daily_protein_g": 75.0,
+    "protein_floor_mode": "pct",
+    "audit_switches": {
+      "disable_produce_bonus": true,
+      "disable_auto_protein_targeting": true
+    }
+  },
+  "totals": {
+    "total_cost": 282.55,
+    "total_whole_cart_cost": 282.55,
+    "avg_weekly_cost": 94.18,
+    "avg_whole_cart_cost": 94.18,
+    "avg_veg_compliance": 0.287,
+    "avg_protein_pct": 16.8,
+    "total_unique_recipes": 64,
+    "repeat_picks": 9
+  },
+  "weeks": [
+    {
+      "week": 1,
+      "elapsed_s": 17.7,
+      "cost": 99.7599868774414,
+      "whole_cart_cost": 99.75999450683594,
+      "n_packages": 73,
+      "pantry_start_grams": 0.0,
+      "pantry_end_grams": 9828.8671875,
+      "pantry_delta_grams": 9828.8671875,
+      "pantry_grams_used": 0.0,
+      "cal_compliance": 0.9999493582589286,
+      "protein_pct": 16.675200976277118,
+      "veg_compliance": 0.20637177385602679,
+      "fruit_compliance": 0.0,
+      "fat_pct": 24.80218158020558,
+      "carbs_pct": 19.97161337830027,
+      "n_recipes": 20,
+      "recipe_ids": [
+        510684,
+        478938,
+        388121,
+        486023,
+        25993,
+        455273,
+        286497,
+        151372,
+        473026,
+        126228,
+        206950,
+        416797,
+        226917,
+        514496,
+        44120,
+        31040,
+        150504,
+        165215,
+        225112,
+        208401
+      ],
+      "recipe_names": [
+        "Patricia's Whole Wheat Applesauce Bread",
+        "Sticky Bagels",
+        "Simple Semolina Soup with Butter",
+        "Quick and Easy Whole Wheat Sandwich Bread",
+        "Fusako's Egg Drop Soup",
+        "Peanut Soup With Pig Trotters",
+        "Poached Chicken Breast (Crock Pot)",
+        "Mom's Forget-Me-Not Biscuits",
+        "Immune-Boosting Broth Soup",
+        "Creamy Chicken Taco Skillet",
+        "Crock Pot Chicken Taco Corn Soup",
+        "Mexican Liver Tacos",
+        "ABC Soup with Alphabet Pasta, Vegetables, and Chickpeas",
+        "Simple Samosa Appetizers",
+        "Tomato Salad Biscuits",
+        "Real Swedish Pancakes (Pannkakor)",
+        "Gnocchi Alla Romana",
+        "Easy Pancakes or Crepes",
+        "Easy Egg Drop Soup",
+        "Crispy Potato and Jalape\u00f1o Rolled Tacos"
+      ],
+      "ingredient_purchases": [
+        {
+          "concept_key": "Bakery > Bagels|G00G000T",
+          "n_packages": 1.0,
+          "purchased_grams": 567.0,
+          "cost": 2.49,
+          "selected_sku": "Kroger\u00ae 100% Whole Wheat Bagels",
+          "selected_upc": "0001111000923",
+          "selected_package_grams": 567.0,
+          "selected_package_cents": 249,
+          "selected_package_display": "6 ct / 20 oz",
+          "selected_packages": [
+            {
+              "n_packages": 1.0,
+              "name": "Kroger\u00ae 100% Whole Wheat Bagels",
+              "upc": "0001111000923",
+              "grams": 567.0,
+              "cents": 249,
+              "display": "6 ct / 20 oz"
+            }
+          ]
+        },
+        {
+          "concept_key": "Bakery > Tortillas|G020000M",
+          "n_packages": 2.0,
+          "purchased_grams": 963.9,
+          "cost": 3.56,
+          "selected_sku": "CHI-CHI'S Flour Tortillas Burrito Size, Tortilla Wrap, Shelf-Stable, 17 oz Resealable Package, (8 Tortillas)",
+          "selected_upc": "043354007257",
+          "selected_package_grams": 481.9,
+          "selected_package_cents": 178,
+          "selected_package_display": "17",
+          "selected_packages": [
+            {
+              "n_packages": 2.0,
+              "name": "CHI-CHI'S Flour Tortillas Burrito Size, Tortilla Wrap, Shelf-Stable, 17 oz Resealable Package, (8 Tortillas)",
+              "upc": "043354007257",
+              "grams": 481.9,
+              "cents": 178,
+              "display": "17"
+            }
+          ]
+        },
+        {
+          "concept_key": "Dairy > Butter > Margarine|140B606K",
+          "n_packages": 1.0,
+          "purchased_grams": 453.6,
+          "cost": 1.24,
+          "selected_sku": "Imperial Vegetable Oil Spread, 16 oz Box, 4 Sticks (Refrigerated)",
+          "selected_upc": "011115871324",
+          "selected_package_grams": 453.6,
+          "selected_package_cents": 124,
+          "selected_package_display": "16 oz",
+          "selected_packages": [
+            {
+              "n_packages": 1.0,
+              "name": "Imperial Vegetable Oil Spread, 16 oz Box, 4 Sticks (Refrigerated)",
+              "upc": "011115871324",
+              "grams": 453.6,
+              "cents": 124,
+              "display": "16 oz"
+            }
+          ]
+        },
+        {
+          "concept_key": "Dairy > Butter|14010003",
+          "n_packages": 1.0,
+          "purchased_grams": 226.8,
+          "cost": 2.68,
+          "selected_sku": "Land O Lakes Salted Butter in Half Sticks, 4 Half Sticks, 8 oz Pack",
+          "selected_upc": "034500151351",
+          "selected_package_grams": 226.8,
+          "selected_package_cents": 268,
+          "selected_package_display": "8 oz",
+          "selected_packages": [
+            {
+              "n_packages": 1.0,
+              "name": "Land O Lakes Salted Butter in Half Sticks, 4 Half Sticks, 8 oz Pack",
+              "upc": "034500151351",
+              "grams": 226.8,
+              "cents": 268,
+              "display": "8 oz"
+            }
+          ]
+        },
+        {
+          "concept_key": "Dairy > Cheese|110Q0005",
+          "n_packages": 2.0,
+          "purchased_grams": 453.6,
+          "cost": 3.98,
+          "selected_sku": "Kroger\u00ae Low Fat Neufchatel Cheese",
+          "selected_upc": "0001111059963",
+          "selected_package_grams": 226.8,
+          "selected_package_cents": 199,
+          "selected_package_display": "8 oz",
+          "selected_packages": [
+            {
+              "n_packages": 2.0,
+              "name": "Kroger\u00ae Low Fat Neufchatel Cheese",
+              "upc": "0001111059963",
+              "grams": 226.8,
+              "cents": 199,
+              "display": "8 oz"
+            }
+          ]
+        },
+        {
+          "concept_key": "Dairy > Eggs|5005000P",
+          "n_packages": 1.0,
+          "purchased_grams": 626.0,
+          "cost": 1.59,
+          "selected_sku": "Kroger\u00ae Medium Grade A White Eggs",
+          "selected_upc": "0001111060902",
+          "selected_package_grams": 626.0,
+          "selected_package_cents": 159,
+          "selected_package_display": "12 ct",
+          "selected_packages": [
+            {
+              "n_packages": 1.0,
+              "name": "Kroger\u00ae Medium Grade A White Eggs",
+              "upc": "0001111060902",
+              "grams": 626.0,
+              "cents": 159,
+              "display": "12 ct"
+            }
+          ]
+        },
+        {
+          "concept_key": "Dairy > Milk|1001600U",
+          "n_packages": 2.0,
+          "purchased_grams": 3785.4,
+          "cost": 3.44,
+          "selected_sku": "Great Value Milk 1% Low-fat, Half Gallon, 64 fl oz",
+          "selected_upc": "078742352022",
+          "selected_package_grams": 1892.7,
+          "selected_package_cents": 172,
+          "selected_package_display": "64 fl oz",
+          "selected_packages": [
+            {
+              "n_packages": 2.0,
+              "name": "Great Value Milk 1% Low-fat, Half Gallon, 64 fl oz",
+              "upc": "078742352022",
+              "grams": 1892.7,
+              "cents": 172,
+              "display": "64 fl oz"
+            }
+          ]
+        },
+        {
+          "concept_key": "Dairy > Sour Cream|1301600P",
+          "n_packages": 2.0,
+          "purchased_grams": 680.4,
+          "cost": 3.08,
+          "selected_sku": "Mixed: 1x Great Value Original Sour Cream, 16 oz Tub + 1x Great Value All Natural Sour Cream, 8 oz",
+          "selected_upc": "",
+          "selected_package_grams": 340.2,
+          "selected_package_cents": 154,
+          "selected_package_display": "mixed package sizes",
+          "selected_packages": [
+            {
+              "n_packages": 1,
+              "name": "Great Value Original Sour Cream, 16 oz Tub",
+              "upc": "078742119083",
+              "grams": 453.6,
+              "cents": 184,
+              "display": "16 oz"
+            },
+            {
+              "n_packages": 1,
+              "name": "Great Value All Natural Sour Cream, 8 oz",
+              "upc": "078742119069",
+              "grams": 226.8,
+              "cents": 124,
+              "display": "8 oz"
+            }
+          ]
+        },
+        {
+          "concept_key": "Frozen > Vegetables > Corn|68012003",
+          "n_packages": 2.0,
+          "purchased_grams": 680.4,
+          "cost": 1.76,
+          "selected_sku": "Kroger\u00ae Traditional Favorites Frozen Corn Super Sweet",
+          "selected_upc": "0001111084961",
+          "selected_package_grams": 340.2,
+          "selected_package_cents": 88,
+          "selected_package_display": "12 oz",
+          "selected_packages": [
+            {
+              "n_packages": 2.0,
+              "name": "Kroger\u00ae Traditional Favorites Frozen Corn Super Sweet",
+              "upc": "0001111084961",
+              "grams": 340.2,
+              "cents": 88,
+              "display": "12 oz"
+            }
+          ]
+        },
+        {
+          "concept_key": "Frozen > Vegetables > Peas|6303200Q",
+          "n_packages": 1.0,
+          "purchased_grams": 340.2,
+          "cost": 0.88,
+          "selected_sku": "Kroger\u00ae Traditional Favorites Frozen Peas Green",
+          "selected_upc": "0001111089736",
+          "selected_package_grams": 340.2,
+          "selected_package_cents": 88,
+          "selected_package_display": "12 oz",
+          "selected_packages": [
+            {
+              "n_packages": 1.0,
+              "name": "Kroger\u00ae Traditional Favorites Frozen Peas Green",
+              "upc": "0001111089736",
+              "grams": 340.2,
+              "cents": 88,
+              "display": "12 oz"
+            }
+          ]
+        },
+        {
+          "concept_key": "Frozen > Vegetables > Potatoes|6101000=",
+          "n_packages": 1.0,
+          "purchased_grams": 567.0,
+          "cost": 3.0,
+          "selected_sku": "Kroger\u00ae Loaded Mashed Potatoes",
+          "selected_upc": "0001111038694",
+          "selected_package_grams": 567.0,
+          "selected_package_cents": 300,
+          "selected_package_display": "20 oz",
+          "selected_packages": [
+            {
+              "n_packages": 1.0,
+              "name": "Kroger\u00ae Loaded Mashed Potatoes",
+              "upc": "0001111038694",
+              "grams": 567.0,
+              "cents": 300,
+              "display": "20 oz"
+            }
+          ]
+        },
+        {
+          "concept_key": "Frozen > Vegetables > Vegetable Blend|6002200E",
+          "n_packages": 1.0,
+          "purchased_grams": 340.2,
+          "cost": 1.16,
+          "selected_sku": "Great Value Frozen California Style Vegetable Mix, 12 oz (Frozen)",
+          "selected_upc": "078742237398",
+          "selected_package_grams": 340.2,
+          "selected_package_cents": 116,
+          "selected_package_display": "12 oz",
+          "selected_packages": [
+            {
+              "n_packages": 1.0,
+              "name": "Great Value Frozen California Style Vegetable Mix, 12 oz (Frozen)",
+              "upc": "078742237398",
+              "grams": 340.2,
+              "cents": 116,
+              "display": "12 oz"
+            }
+          ]
+        },
+        {
+          "concept_key": "Meat & Seafood > Beef > Beef Liver|207F0017",
+          "n_packages": 1.0,
+          "purchased_grams": 453.6,
+          "cost": 3.68,
+          "selected_sku": "Skylark Sliced Calf Liver 4 Pieces, 16 oz",
+          "selected_upc": "079041221156",
+          "selected_package_grams": 453.6,
+          "selected_package_cents": 368,
+          "selected_package_display": "1 lbs",
+          "selected_packages": [
+            {
+              "n_packages": 1.0,
+              "name": "Skylark Sliced Calf Liver 4 Pieces, 16 oz",
+              "upc": "079041221156",
+              "grams": 453.6,
+              "cents": 368,
+              "display": "1 lbs"
+            }
+          ]
+        },
+        {
+          "concept_key": "Meat & Seafood > Pork|2109000V",
+          "n_packages": 1.0,
+          "purchased_grams": 453.6,
+          "cost": 3.49,
+          "selected_sku": "Kroger\u00ae Mild Pork Sausage Roll",
+          "selected_upc": "0001111097298",
+          "selected_package_grams": 453.6,
+          "selected_package_cents": 349,
+          "selected_package_display": "16 oz",
+          "selected_packages": [
+            {
+              "n_packages": 1.0,
+              "name": "Kroger\u00ae Mild Pork Sausage Roll",
+              "upc": "0001111097298",
+              "grams": 453.6,
+              "cents": 349,
+              "display": "16 oz"
+            }
+          ]
+        },
+        {
+          "concept_key": "Meat & Seafood > Poultry > Chicken Breast|3001000K",
+          "n_packages": 1.0,
+          "purchased_grams": 1360.8,
+          "cost": 7.57,
+          "selected_sku": "Marketside Antibiotic-Free Boneless Skinless Chicken Breasts, 1.3 - 3.0 lb",
+          "selected_upc": "259431000008",
+          "selected_package_grams": 1360.8,
+          "selected_package_cents": 757,
+          "selected_package_display": "Random Weight",
+          "selected_packages": [
+            {
+              "n_packages": 1.0,
+              "name": "Marketside Antibiotic-Free Boneless Skinless Chicken Breasts, 1.3 - 3.0 lb",
+              "upc": "259431000008",
+              "grams": 1360.8,
+              "cents": 757,
+              "display": "Random Weight"
+            }
+          ]
+        },
+        {
+          "concept_key": "Pantry > Applesauce|J005600K",
+          "n_packages": 1.0,
+          "purchased_grams": 675.9,
+          "cost": 1.99,
+          "selected_sku": "Kroger\u00ae Classic Apple Applesauce Cups",
+          "selected_upc": "0001111089895",
+          "selected_package_grams": 675.9,
+          "selected_package_cents": 199,
+          "selected_package_display": "6 ct / 4 oz",
+          "selected_packages": [
+            {
+              "n_packages": 1.0,
+              "name": "Kroger\u00ae Classic Apple Applesauce Cups",
+              "upc": "0001111089895",
+              "grams": 675.9,
+              "cents": 199,
+              "display": "6 ct / 4 oz"
+            }
+          ]
+        },
+        {
+          "concept_key": "Pantry > Baking Extracts > Yeast|E500000*",
+          "n_packages": 2.0,
+          "purchased_grams": 54.4,
+          "cost": 2.58,
+          "selected_sku": "Kroger\u00ae Fast Rise Yeast",
+          "selected_upc": "0001111085501",
+          "selected_package_grams": 27.2,
+          "selected_package_cents": 129,
+          "selected_package_display": "3 ct / 0.25 oz",
+          "selected_packages": [
+            {
+              "n_packages": 2.0,
+              "name": "Kroger\u00ae Fast Rise Yeast",
+              "upc": "0001111085501",
+              "grams": 27.2,
+              "cents": 129,
+              "display": "3 ct / 0.25 oz"
+            }
+          ]
+        },
+        {
+          "concept_key": "Pantry > Baking Mixes|871A000A",
+          "n_packages": 3.0,
+          "purchased_grams": 721.2,
+          "cost": 2.07,
+          "selected_sku": "Jiffy\u00ae Vegetarian Corn Muffin Mix",
+          "selected_upc": "0007248601004",
+          "selected_package_grams": 240.4,
+          "selected_package_cents": 69,
+          "selected_package_display": "8.5 oz",
+          "selected_packages": [
+            {
+              "n_packages": 3.0,
+              "name": "Jiffy\u00ae Vegetarian Corn Muffin Mix",
+              "upc": "0007248601004",
+              "grams": 240.4,
+              "cents": 69,
+              "display": "8.5 oz"
+            }
+          ]
+        },
+        {
+          "concept_key": "Pantry > Beans > Garbanzo Beans|9003000M",
+          "n_packages": 1.0,
+          "purchased_grams": 421.8,
+          "cost": 1.0,
+          "selected_sku": "Simple Truth Organic\u00ae Low Sodium Garbanzo Beans",
+          "selected_upc": "0001111012210",
+          "selected_package_grams": 421.8,
+          "selected_package_cents": 100,
+          "selected_package_display": "15 oz",
+          "selected_packages": [
+            {
+              "n_packages": 1.0,
+              "name": "Simple Truth Organic\u00ae Low Sodium Garbanzo Beans",
+              "upc": "0001111012210",
+              "grams": 421.8,
+              "cents": 100,
+              "display": "15 oz"
+            }
+          ]
+        },
+        {
+          "concept_key": "Pantry > Broth & Stock > Chicken Broth|J0066005",
+          "n_packages": 12.0,
+          "purchased_grams": 6787.1,
+          "cost": 10.29,
+          "selected_sku": "Mixed: 3x Great Value Reduced Sodium Gluten-Free Chicken B + 9x Great Value Chicken Broth, 14.5 oz (Shelf-Stable",
+          "selected_upc": "",
+          "selected_package_grams": 565.6,
+          "selected_package_cents": 86,
+          "selected_package_display": "mixed package sizes",
+          "selected_packages": [
+            {
+              "n_packages": 3,
+              "name": "Great Value Reduced Sodium Gluten-Free Chicken Broth, 32 oz Carton (Shelf-Stable)",
+              "upc": "078742212692",
+              "grams": 975.9,
+              "cents": 127,
+              "display": "33 fl oz"
+            },
+            {
+              "n_packages": 9,
+              "name": "Great Value Chicken Broth, 14.5 oz (Shelf-Stable)",
+              "upc": "078742371566",
+              "grams": 428.8,
+              "cents": 72,
+              "display": "14.5 fl oz"
+            }
+          ]
+        },
+        {
+          "concept_key": "Pantry > Canned Vegetables > Tomatoes|6701100*",
+          "n_packages": 2.0,
+          "purchased_grams": 272.2,
+          "cost": 0.6,
+          "selected_sku": "Fresh Roma Tomato",
+          "selected_upc": "0000000004087",
+          "selected_package_grams": 136.1,
+          "selected_package_cents": 30,
+          "selected_package_display": "1 lb",
+          "selected_packages": [
+            {
+              "n_packages": 2.0,
+              "name": "Fresh Roma Tomato",
+              "upc": "0000000004087",
+              "grams": 136.1,
+              "cents": 30,
+              "display": "1 lb"
+            }
+          ]
+        },
+        {
+          "concept_key": "Pantry > Flour|870Z000G",
+          "n_packages": 2.0,
+          "purchased_grams": 3175.1,
+          "cost": 4.45,
+          "selected_sku": "Mixed: 1x Great Value All-Purpose Unbleached Flour, 5 lb B + 1x Pillsbury All Purpose Flour, 2 Lb Bag",
+          "selected_upc": "",
+          "selected_package_grams": 1587.6,
+          "selected_package_cents": 222,
+          "selected_package_display": "mixed package sizes",
+          "selected_packages": [
+            {
+              "n_packages": 1,
+              "name": "Great Value All-Purpose Unbleached Flour, 5 lb Bag",
+              "upc": "078742152059",
+              "grams": 2268.0,
+              "cents": 197,
+              "display": "80 oz"
+            },
+            {
+              "n_packages": 1,
+              "name": "Pillsbury All Purpose Flour, 2 Lb Bag",
+              "upc": "013300204306",
+              "grams": 907.2,
+              "cents": 248,
+              "display": "32 OZ"
+            }
+          ]
+        },
+        {
+          "concept_key": "Pantry > Oil > Cooking Oil|B02N6006",
+          "n_packages": 1.0,
+          "purchased_grams": 473.2,
+          "cost": 2.97,
+          "selected_sku": "Crisco Pure Canola Oil, Cooking Oil, 16 fl oz",
+          "selected_upc": "196005264407",
+          "selected_package_grams": 473.2,
+          "selected_package_cents": 297,
+          "selected_package_display": "16 fl oz",
+          "selected_packages": [
+            {
+              "n_packages": 1.0,
+              "name": "Crisco Pure Canola Oil, Cooking Oil, 16 fl oz",
+              "upc": "196005264407",
+              "grams": 473.2,
+              "cents": 297,
+              "display": "16 fl oz"
+            }
+          ]
+        },
+        {
+          "concept_key": "Pantry > Oil > Vegetable Oil|B00W600V",
+          "n_packages": 2.0,
+          "purchased_grams": 870.9,
+          "cost": 2.98,
+          "selected_sku": "Smart Way\u2122 Vegetable Oil",
+          "selected_upc": "0001111014719",
+          "selected_package_grams": 435.4,
+          "selected_package_cents": 149,
+          "selected_package_display": "16 fl oz",
+          "selected_packages": [
+            {
+              "n_packages": 2.0,
+              "name": "Smart Way\u2122 Vegetable Oil",
+              "upc": "0001111014719",
+              "grams": 435.4,
+              "cents": 149,
+              "display": "16 fl oz"
+            }
+          ]
+        },
+        {
+          "concept_key": "Pantry > Pasta|830N0002",
+          "n_packages": 2.0,
+          "purchased_grams": 396.9,
+          "cost": 0.82,
+          "selected_sku": "El Mexicano Alphabet Pasta, Letras, 7 oz Bag",
+          "selected_upc": "042743250908",
+          "selected_package_grams": 198.4,
+          "selected_package_cents": 41,
+          "selected_package_display": "7 oz",
+          "selected_packages": [
+            {
+              "n_packages": 2.0,
+              "name": "El Mexicano Alphabet Pasta, Letras, 7 oz Bag",
+              "upc": "042743250908",
+              "grams": 198.4,
+              "cents": 41,
+              "display": "7 oz"
+            }
+          ]
+        },
+        {
+          "concept_key": "Pantry > Rice|8406000A",
+          "n_packages": 2.0,
+          "purchased_grams": 499.0,
+          "cost": 2.64,
+          "selected_sku": "Great Value Ready-to-Heat 90-Second Long Grain White Rice Pouch, 8.8 oz",
+          "selected_upc": "194346521746",
+          "selected_package_grams": 249.5,
+          "selected_package_cents": 132,
+          "selected_package_display": "8.8 oz",
+          "selected_packages": [
+            {
+              "n_packages": 2.0,
+              "name": "Great Value Ready-to-Heat 90-Second Long Grain White Rice Pouch, 8.8 oz",
+              "upc": "194346521746",
+              "grams": 249.5,
+              "cents": 132,
+              "display": "8.8 oz"
+            }
+          ]
+        },
+        {
+          "concept_key": "Pantry > Sauces & Salsas > Tomato Sauce|F6046009",
+          "n_packages": 2.0,
+          "purchased_grams": 453.6,
+          "cost": 0.96,
+          "selected_sku": "Great Value Tomato Sauce, 8 oz Can",
+          "selected_upc": "078742369501",
+          "selected_package_grams": 226.8,
+          "selected_package_cents": 48,
+          "selected_package_display": "8 oz",
+          "selected_packages": [
+            {
+              "n_packages": 2.0,
+              "name": "Great Value Tomato Sauce, 8 oz Can",
+              "upc": "078742369501",
+              "grams": 226.8,
+              "cents": 48,
+              "display": "8 oz"
+            }
+          ]
+        },
+        {
+          "concept_key": "Pantry > Spices & Seasonings > Curry Powder|E401500C",
+          "n_packages": 1.0,
+          "purchased_grams": 49.6,
+          "cost": 1.48,
+          "selected_sku": "Lawry's Casero Kosher Curry Powder, 1.75 oz Bottle",
+          "selected_upc": "021500012928",
+          "selected_package_grams": 49.6,
+          "selected_package_cents": 148,
+          "selected_package_display": "4.047 X1.802",
+          "selected_packages": [
+            {
+              "n_packages": 1.0,
+              "name": "Lawry's Casero Kosher Curry Powder, 1.75 oz Bottle",
+              "upc": "021500012928",
+              "grams": 49.6,
+              "cents": 148,
+              "display": "4.047 X1.802"
+            }
+          ]
+        },
+        {
+          "concept_key": "Pantry > Spices & Seasonings > Salt|E001000X",
+          "n_packages": 1.0,
+          "purchased_grams": 739.4,
+          "cost": 0.79,
+          "selected_sku": "Kroger\u00ae Salt",
+          "selected_upc": "0001111004807",
+          "selected_package_grams": 739.4,
+          "selected_package_cents": 79,
+          "selected_package_display": "26 oz",
+          "selected_packages": [
+            {
+              "n_packages": 1.0,
+              "name": "Kroger\u00ae Salt",
+              "upc": "0001111004807",
+              "grams": 739.4,
+              "cents": 79,
+              "display": "26 oz"
+            }
+          ]
+        },
+        {
+          "concept_key": "Pantry > Spices & Seasonings > Spice Blend|E611000$",
+          "n_packages": 1.0,
+          "purchased_grams": 29.6,
+          "cost": 4.0,
+          "selected_sku": "McCormick Pure Pumpkin Pie Spice Blend Extract, 1.0 fl oz Box",
+          "selected_upc": "052100028972",
+          "selected_package_grams": 29.6,
+          "selected_package_cents": 400,
+          "selected_package_display": "3.877 X1.782",
+          "selected_packages": [
+            {
+              "n_packages": 1.0,
+              "name": "McCormick Pure Pumpkin Pie Spice Blend Extract, 1.0 fl oz Box",
+              "upc": "052100028972",
+              "grams": 29.6,
+              "cents": 400,
+              "display": "3.877 X1.782"
+            }
+          ]
+        },
+        {
+          "concept_key": "Pantry > Spices & Seasonings > Taco Seasoning|E6010001",
+          "n_packages": 3.0,
+          "purchased_grams": 85.0,
+          "cost": 2.91,
+          "selected_sku": "McCormick Chicken Taco Seasoning Mix, 1.0 oz Packet",
+          "selected_upc": "052100760674",
+          "selected_package_grams": 28.3,
+          "selected_package_cents": 97,
+          "selected_package_display": "5.750IN X4.125IN",
+          "selected_packages": [
+            {
+              "n_packages": 3.0,
+              "name": "McCormick Chicken Taco Seasoning Mix, 1.0 oz Packet",
+              "upc": "052100760674",
+              "grams": 28.3,
+              "cents": 97,
+              "display": "5.750IN X4.125IN"
+            }
+          ]
+        },
+        {
+          "concept_key": "Pantry > Sweeteners > Sugar > Brown Sugar|C00K000E",
+          "n_packages": 1.0,
+          "purchased_grams": 907.2,
+          "cost": 1.94,
+          "selected_sku": "Great Value Light Brown Sugar, 32 oz",
+          "selected_upc": "078742372211",
+          "selected_package_grams": 907.2,
+          "selected_package_cents": 194,
+          "selected_package_display": "32 oz (907 g)",
+          "selected_packages": [
+            {
+              "n_packages": 1.0,
+              "name": "Great Value Light Brown Sugar, 32 oz",
+              "upc": "078742372211",
+              "grams": 907.2,
+              "cents": 194,
+              "display": "32 oz (907 g)"
+            }
+          ]
+        },
+        {
+          "concept_key": "Pantry > Sweeteners > Sugar|C005000S",
+          "n_packages": 1.0,
+          "purchased_grams": 907.2,
+          "cost": 2.99,
+          "selected_sku": "Imperial Pure Granulated Cane Sugar",
+          "selected_upc": "0007210002600",
+          "selected_package_grams": 907.2,
+          "selected_package_cents": 299,
+          "selected_package_display": "2 lb",
+          "selected_packages": [
+            {
+              "n_packages": 1.0,
+              "name": "Imperial Pure Granulated Cane Sugar",
+              "upc": "0007210002600",
+              "grams": 907.2,
+              "cents": 299,
+              "display": "2 lb"
+            }
+          ]
+        },
+        {
+          "concept_key": "Produce > Vegetables > Cilantro|6013000M",
+          "n_packages": 1.0,
+          "purchased_grams": 453.6,
+          "cost": 0.89,
+          "selected_sku": "Cilantro",
+          "selected_upc": "0000000004889",
+          "selected_package_grams": 453.6,
+          "selected_package_cents": 89,
+          "selected_package_display": "1 ct",
+          "selected_packages": [
+            {
+              "n_packages": 1.0,
+              "name": "Cilantro",
+              "upc": "0000000004889",
+              "grams": 453.6,
+              "cents": 89,
+              "display": "1 ct"
+            }
+          ]
+        },
+        {
+          "concept_key": "Produce > Vegetables > Garlic|6504000U",
+          "n_packages": 1.0,
+          "purchased_grams": 453.6,
+          "cost": 0.79,
+          "selected_sku": "Garlic",
+          "selected_upc": "0000000004608",
+          "selected_package_grams": 453.6,
+          "selected_package_cents": 79,
+          "selected_package_display": "1 ct",
+          "selected_packages": [
+            {
+              "n_packages": 1.0,
+              "name": "Garlic",
+              "upc": "0000000004608",
+              "grams": 453.6,
+              "cents": 79,
+              "display": "1 ct"
+            }
+          ]
+        },
+        {
+          "concept_key": "Produce > Vegetables > Ginger Root|60700001",
+          "n_packages": 1.0,
+          "purchased_grams": 49.9,
+          "cost": 0.44,
+          "selected_sku": "Ginger Root",
+          "selected_upc": "0000000004612",
+          "selected_package_grams": 49.9,
+          "selected_package_cents": 44,
+          "selected_package_display": "1 lb",
+          "selected_packages": [
+            {
+              "n_packages": 1.0,
+              "name": "Ginger Root",
+              "upc": "0000000004612",
+              "grams": 49.9,
+              "cents": 44,
+              "display": "1 lb"
+            }
+          ]
+        },
+        {
+          "concept_key": "Produce > Vegetables > Green Onions|650A000T",
+          "n_packages": 1.0,
+          "purchased_grams": 453.6,
+          "cost": 0.99,
+          "selected_sku": "Green Onions",
+          "selected_upc": "0000000004068",
+          "selected_package_grams": 453.6,
+          "selected_package_cents": 99,
+          "selected_package_display": "1 each",
+          "selected_packages": [
+            {
+              "n_packages": 1.0,
+              "name": "Green Onions",
+              "upc": "0000000004068",
+              "grams": 453.6,
+              "cents": 99,
+              "display": "1 each"
+            }
+          ]
+        },
+        {
+          "concept_key": "Produce > Vegetables > Jalapenos|6622100V",
+          "n_packages": 2.0,
+          "purchased_grams": 136.0,
+          "cost": 0.54,
+          "selected_sku": "Fresh Jalapeno Peppers",
+          "selected_upc": "0000000004693",
+          "selected_package_grams": 68.0,
+          "selected_package_cents": 27,
+          "selected_package_display": "1 lb",
+          "selected_packages": [
+            {
+              "n_packages": 2.0,
+              "name": "Fresh Jalapeno Peppers",
+              "upc": "0000000004693",
+              "grams": 68.0,
+              "cents": 27,
+              "display": "1 lb"
+            }
+          ]
+        },
+        {
+          "concept_key": "Produce > Vegetables > Onions|65010004",
+          "n_packages": 2.0,
+          "purchased_grams": 453.6,
+          "cost": 0.88,
+          "selected_sku": "Jumbo Yellow Onions",
+          "selected_upc": "0000000004093",
+          "selected_package_grams": 226.8,
+          "selected_package_cents": 44,
+          "selected_package_display": "1 lb",
+          "selected_packages": [
+            {
+              "n_packages": 2.0,
+              "name": "Jumbo Yellow Onions",
+              "upc": "0000000004093",
+              "grams": 226.8,
+              "cents": 44,
+              "display": "1 lb"
+            }
+          ]
+        },
+        {
+          "concept_key": "Produce > Vegetables > Peppers|6608100S",
+          "n_packages": 2.0,
+          "purchased_grams": 56.2,
+          "cost": 0.5,
+          "selected_sku": "Fresh Green Serrano Peppers",
+          "selected_upc": "0000000004709",
+          "selected_package_grams": 28.1,
+          "selected_package_cents": 25,
+          "selected_package_display": "1 lb",
+          "selected_packages": [
+            {
+              "n_packages": 2.0,
+              "name": "Fresh Green Serrano Peppers",
+              "upc": "0000000004709",
+              "grams": 28.1,
+              "cents": 25,
+              "display": "1 lb"
+            }
+          ]
+        },
+        {
+          "concept_key": "Produce > Vegetables > Potatoes|6101000=",
+          "n_packages": 2.0,
+          "purchased_grams": 453.6,
+          "cost": 1.68,
+          "selected_sku": "White Potatoes",
+          "selected_upc": "0000000004219",
+          "selected_package_grams": 226.8,
+          "selected_package_cents": 84,
+          "selected_package_display": "1 lb",
+          "selected_packages": [
+            {
+              "n_packages": 2.0,
+              "name": "White Potatoes",
+              "upc": "0000000004219",
+              "grams": 226.8,
+              "cents": 84,
+              "display": "1 lb"
+            }
+          ]
+        },
+        {
+          "concept_key": "Snack > Nuts > Mixed Nuts|A004010C",
+          "n_packages": 1.0,
+          "purchased_grams": 453.6,
+          "cost": 1.99,
+          "selected_sku": "Kroger\u00ae Raw Peanuts",
+          "selected_upc": "0001111003410",
+          "selected_package_grams": 453.6,
+          "selected_package_cents": 199,
+          "selected_package_display": "16 oz",
+          "selected_packages": [
+            {
+              "n_packages": 1.0,
+              "name": "Kroger\u00ae Raw Peanuts",
+              "upc": "0001111003410",
+              "grams": 453.6,
+              "cents": 199,
+              "display": "16 oz"
+            }
+          ]
+        }
+      ],
+      "leftover_stats": {
+        "fresh_count": 5,
+        "frozen_count": 0,
+        "fresh_servings": 32.7,
+        "frozen_servings": 0.0,
+        "consumed": 69.9,
+        "waste": 0.0,
+        "carryover_fresh": 5,
+        "carryover_frozen": 0
+      }
+    },
+    {
+      "week": 2,
+      "elapsed_s": 18.2,
+      "cost": 103.02000427246094,
+      "whole_cart_cost": 103.02000427246094,
+      "n_packages": 64,
+      "pantry_start_grams": 9828.8676071167,
+      "pantry_end_grams": 11979.9228515625,
+      "pantry_delta_grams": 2151.055244445801,
+      "pantry_grams_used": 9828.8676071167,
+      "cal_compliance": 0.9982297712053572,
+      "protein_pct": 17.931248900292385,
+      "veg_compliance": 0.2887004743303571,
+      "fruit_compliance": 0.0,
+      "fat_pct": 30.207894920640065,
+      "carbs_pct": 26.609781531508553,
+      "n_recipes": 28,
+      "recipe_ids": [
+        290959,
+        223063,
+        367751,
+        151372,
+        259525,
+        175477,
+        118172,
+        44120,
+        416998,
+        58051,
+        125619,
+        322348,
+        243247,
+        316587,
+        126728,
+        306420,
+        99085,
+        416507,
+        200495,
+        274046,
+        463560,
+        53758,
+        293349,
+        399393,
+        9353,
+        157434,
+        375075,
+        486023
+      ],
+      "recipe_names": [
+        "Poached Eggs on Baked Potato Pancakes",
+        "Easy Sourdough Bread from Starter",
+        "Jerusalem Peppery Kugel (Kugel Yerushalmi)",
+        "Mom's Forget-Me-Not Biscuits",
+        "Classic Bean Burritos",
+        "Easy Homemade Pancakes",
+        "Macaroni and Cheese Soup",
+        "Tomato Salad Biscuits",
+        "Chicken and Rice Burritos",
+        "Whole Wheat Featherbed Rolls",
+        "Spinach Poffertjes (Mini Dutch Pancakes)",
+        "Light (Almost Airy) Sourdough Bread",
+        "Grandma's Homemade Chicken Noodles",
+        "Roasted Chicken Breasts with Herb Butter (Beginner-Friendly)",
+        "Scrambled Huevos Rancheros",
+        "Homemade Instant Oatmeal Mix (Single-Serve Packets)",
+        "Easy Chicken Wraps with Salsa and Cheese",
+        "Zippy Chicken Tacos",
+        "Not Your Typical Sweet Bread (ABM)",
+        "Depression-Era Spaghetti Soup",
+        "Butter Bean Burgers",
+        "Scrambled Eggs with Tortillas",
+        "Corn and Black Bean Quesadillas",
+        "Broccoli and Cheese Calzone",
+        "Easy Homemade Banana Bread"
+      ],
+      "ingredient_purchases": [
+        {
+          "concept_key": "Bakery > Bread > Sourdough Bread|8008000D",
+          "n_packages": 1.0,
+          "purchased_grams": 340.2,
+          "cost": 2.18,
+          "selected_sku": "Nature's Harvest Sourdough Bread, Half Loaf, 12 oz, Bread, Bag",
+          "selected_upc": "078700804488",
+          "selected_package_grams": 340.2,
+          "selected_package_cents": 218,
+          "selected_package_display": "12 oz Bag",
+          "selected_packages": [
+            {
+              "n_packages": 1.0,
+              "name": "Nature's Harvest Sourdough Bread, Half Loaf, 12 oz, Bread, Bag",
+              "upc": "078700804488",
+              "grams": 340.2,
+              "cents": 218,
+              "display": "12 oz Bag"
+            }
+          ]
+        },
+        {
+          "concept_key": "Bakery > Croutons|G0D5080E",
+          "n_packages": 1.0,
+          "purchased_grams": 141.7,
+          "cost": 0.98,
+          "selected_sku": "Great Value Cheese & Garlic Seasoned Croutons, 5 oz Resealable Bag",
+          "selected_upc": "078742194844",
+          "selected_package_grams": 141.7,
+          "selected_package_cents": 98,
+          "selected_package_display": "5 oz",
+          "selected_packages": [
+            {
+              "n_packages": 1.0,
+              "name": "Great Value Cheese & Garlic Seasoned Croutons, 5 oz Resealable Bag",
+              "upc": "078742194844",
+              "grams": 141.7,
+              "cents": 98,
+              "display": "5 oz"
+            }
+          ]
+        },
+        {
+          "concept_key": "Bakery > Tortillas|G020000M",
+          "n_packages": 1.0,
+          "purchased_grams": 481.9,
+          "cost": 1.78,
+          "selected_sku": "CHI-CHI'S Flour Tortillas Burrito Size, Tortilla Wrap, Shelf-Stable, 17 oz Resealable Package, (8 Tortillas)",
+          "selected_upc": "043354007257",
+          "selected_package_grams": 481.9,
+          "selected_package_cents": 178,
+          "selected_package_display": "17",
+          "selected_packages": [
+            {
+              "n_packages": 1.0,
+              "name": "CHI-CHI'S Flour Tortillas Burrito Size, Tortilla Wrap, Shelf-Stable, 17 oz Resealable Package, (8 Tortillas)",
+              "upc": "043354007257",
+              "grams": 481.9,
+              "cents": 178,
+              "display": "17"
+            }
+          ]
+        },
+        {
+          "concept_key": "Dairy > Butter|14010003",
+          "n_packages": 1.0,
+          "purchased_grams": 226.8,
+          "cost": 2.68,
+          "selected_sku": "Land O Lakes Salted Butter in Half Sticks, 4 Half Sticks, 8 oz Pack",
+          "selected_upc": "034500151351",
+          "selected_package_grams": 226.8,
+          "selected_package_cents": 268,
+          "selected_package_display": "8 oz",
+          "selected_packages": [
+            {
+              "n_packages": 1.0,
+              "name": "Land O Lakes Salted Butter in Half Sticks, 4 Half Sticks, 8 oz Pack",
+              "upc": "034500151351",
+              "grams": 226.8,
+              "cents": 268,
+              "display": "8 oz"
+            }
+          ]
+        },
+        {
+          "concept_key": "Dairy > Cheese > Mozzarella|11020058",
+          "n_packages": 1.0,
+          "purchased_grams": 473.2,
+          "cost": 3.48,
+          "selected_sku": "Great Value Low-Moisture Part-Skim Mozzarella Shredded Cheese, 16 oz Bag",
+          "selected_upc": "078742353210",
+          "selected_package_grams": 473.2,
+          "selected_package_cents": 348,
+          "selected_package_display": "16 fl oz",
+          "selected_packages": [
+            {
+              "n_packages": 1.0,
+              "name": "Great Value Low-Moisture Part-Skim Mozzarella Shredded Cheese, 16 oz Bag",
+              "upc": "078742353210",
+              "grams": 473.2,
+              "cents": 348,
+              "display": "16 fl oz"
+            }
+          ]
+        },
+        {
+          "concept_key": "Dairy > Cheese|110Q0005",
+          "n_packages": 4.0,
+          "purchased_grams": 907.2,
+          "cost": 7.96,
+          "selected_sku": "Kroger\u00ae Low Fat Neufchatel Cheese",
+          "selected_upc": "0001111059963",
+          "selected_package_grams": 226.8,
+          "selected_package_cents": 199,
+          "selected_package_display": "8 oz",
+          "selected_packages": [
+            {
+              "n_packages": 4.0,
+              "name": "Kroger\u00ae Low Fat Neufchatel Cheese",
+              "upc": "0001111059963",
+              "grams": 226.8,
+              "cents": 199,
+              "display": "8 oz"
+            }
+          ]
+        },
+        {
+          "concept_key": "Dairy > Cheese|110Q005A",
+          "n_packages": 1.0,
+          "purchased_grams": 198.4,
+          "cost": 2.24,
+          "selected_sku": "Great Value Shredded Caroline Reaper Blend Cheese, 7 oz",
+          "selected_upc": "194346052813",
+          "selected_package_grams": 198.4,
+          "selected_package_cents": 224,
+          "selected_package_display": "oz",
+          "selected_packages": [
+            {
+              "n_packages": 1.0,
+              "name": "Great Value Shredded Caroline Reaper Blend Cheese, 7 oz",
+              "upc": "194346052813",
+              "grams": 198.4,
+              "cents": 224,
+              "display": "oz"
+            }
+          ]
+        },
+        {
+          "concept_key": "Dairy > Eggs|5005000P",
+          "n_packages": 3.0,
+          "purchased_grams": 1877.9,
+          "cost": 4.77,
+          "selected_sku": "Kroger\u00ae Medium Grade A White Eggs",
+          "selected_upc": "0001111060902",
+          "selected_package_grams": 626.0,
+          "selected_package_cents": 159,
+          "selected_package_display": "12 ct",
+          "selected_packages": [
+            {
+              "n_packages": 3.0,
+              "name": "Kroger\u00ae Medium Grade A White Eggs",
+              "upc": "0001111060902",
+              "grams": 626.0,
+              "cents": 159,
+              "display": "12 ct"
+            }
+          ]
+        },
+        {
+          "concept_key": "Dairy > Yogurt|1205000J",
+          "n_packages": 1.0,
+          "purchased_grams": 156.7,
+          "cost": 1.33,
+          "selected_sku": "Chobani Non-Fat Greek Yogurt Plain 5.3 oz Cup",
+          "selected_upc": "894700010014",
+          "selected_package_grams": 156.7,
+          "selected_package_cents": 133,
+          "selected_package_display": "5.3 fl oz",
+          "selected_packages": [
+            {
+              "n_packages": 1.0,
+              "name": "Chobani Non-Fat Greek Yogurt Plain 5.3 oz Cup",
+              "upc": "894700010014",
+              "grams": 156.7,
+              "cents": 133,
+              "display": "5.3 fl oz"
+            }
+          ]
+        },
+        {
+          "concept_key": "Frozen > Single Entrees > Mac and Cheese|H501000E",
+          "n_packages": 1.0,
+          "purchased_grams": 205.5,
+          "cost": 1.24,
+          "selected_sku": "Kraft Mac and Cheese, 1 Box, for Easy Dinner or Dinner Sides, Three Cheese with Mini-Shell Pasta, No Artificial Flavors, Preservatives or Dyes, 7.25 oz",
+          "selected_upc": "021000653218",
+          "selected_package_grams": 205.5,
+          "selected_package_cents": 124,
+          "selected_package_display": "7.25 oz",
+          "selected_packages": [
+            {
+              "n_packages": 1.0,
+              "name": "Kraft Mac and Cheese, 1 Box, for Easy Dinner or Dinner Sides, Three Cheese with Mini-Shell Pasta, No Artificial Flavors, Preservatives or Dyes, 7.25 oz",
+              "upc": "021000653218",
+              "grams": 205.5,
+              "cents": 124,
+              "display": "7.25 oz"
+            }
+          ]
+        },
+        {
+          "concept_key": "Frozen > Vegetables > Broccoli|6201200Z",
+          "n_packages": 1.0,
+          "purchased_grams": 340.2,
+          "cost": 0.88,
+          "selected_sku": "Kroger\u00ae Frozen Broccoli Cuts",
+          "selected_upc": "0001111010307",
+          "selected_package_grams": 340.2,
+          "selected_package_cents": 88,
+          "selected_package_display": "12 oz",
+          "selected_packages": [
+            {
+              "n_packages": 1.0,
+              "name": "Kroger\u00ae Frozen Broccoli Cuts",
+              "upc": "0001111010307",
+              "grams": 340.2,
+              "cents": 88,
+              "display": "12 oz"
+            }
+          ]
+        },
+        {
+          "concept_key": "Frozen > Vegetables > Onions|6501200H",
+          "n_packages": 1.0,
+          "purchased_grams": 283.5,
+          "cost": 1.42,
+          "selected_sku": "Great Value Frozen Chopped Onions, 10 oz",
+          "selected_upc": "078742350936",
+          "selected_package_grams": 283.5,
+          "selected_package_cents": 142,
+          "selected_package_display": "10",
+          "selected_packages": [
+            {
+              "n_packages": 1.0,
+              "name": "Great Value Frozen Chopped Onions, 10 oz",
+              "upc": "078742350936",
+              "grams": 283.5,
+              "cents": 142,
+              "display": "10"
+            }
+          ]
+        },
+        {
+          "concept_key": "Frozen > Vegetables > Peas|6303000A",
+          "n_packages": 1.0,
+          "purchased_grams": 425.2,
+          "cost": 0.76,
+          "selected_sku": "Great Value No Salt Added Green Peas, 15 oz",
+          "selected_upc": "078742358758",
+          "selected_package_grams": 425.2,
+          "selected_package_cents": 76,
+          "selected_package_display": "15 oz",
+          "selected_packages": [
+            {
+              "n_packages": 1.0,
+              "name": "Great Value No Salt Added Green Peas, 15 oz",
+              "upc": "078742358758",
+              "grams": 425.2,
+              "cents": 76,
+              "display": "15 oz"
+            }
+          ]
+        },
+        {
+          "concept_key": "Frozen > Vegetables > Spinach|6001200W",
+          "n_packages": 1.0,
+          "purchased_grams": 283.5,
+          "cost": 1.24,
+          "selected_sku": "Great Value Chopped Spinach, 10 oz (Frozen)",
+          "selected_upc": "078742295886",
+          "selected_package_grams": 283.5,
+          "selected_package_cents": 124,
+          "selected_package_display": "10 oz",
+          "selected_packages": [
+            {
+              "n_packages": 1.0,
+              "name": "Great Value Chopped Spinach, 10 oz (Frozen)",
+              "upc": "078742295886",
+              "grams": 283.5,
+              "cents": 124,
+              "display": "10 oz"
+            }
+          ]
+        },
+        {
+          "concept_key": "Meat & Seafood > Poultry > Chicken Breast|3001000K",
+          "n_packages": 2.0,
+          "purchased_grams": 2721.6,
+          "cost": 15.14,
+          "selected_sku": "Marketside Antibiotic-Free Boneless Skinless Chicken Breasts, 1.3 - 3.0 lb",
+          "selected_upc": "259431000008",
+          "selected_package_grams": 1360.8,
+          "selected_package_cents": 757,
+          "selected_package_display": "Random Weight",
+          "selected_packages": [
+            {
+              "n_packages": 2.0,
+              "name": "Marketside Antibiotic-Free Boneless Skinless Chicken Breasts, 1.3 - 3.0 lb",
+              "upc": "259431000008",
+              "grams": 1360.8,
+              "cents": 757,
+              "display": "Random Weight"
+            }
+          ]
+        },
+        {
+          "concept_key": "Pantry > Baking Extracts > Yeast|E500400N",
+          "n_packages": 1.0,
+          "purchased_grams": 21.3,
+          "cost": 1.14,
+          "selected_sku": "Great Value Active Dry Yeast, 0.25 oz, 3 Count",
+          "selected_upc": "078742365725",
+          "selected_package_grams": 21.3,
+          "selected_package_cents": 114,
+          "selected_package_display": "0.25 oz, 3 Count",
+          "selected_packages": [
+            {
+              "n_packages": 1.0,
+              "name": "Great Value Active Dry Yeast, 0.25 oz, 3 Count",
+              "upc": "078742365725",
+              "grams": 21.3,
+              "cents": 114,
+              "display": "0.25 oz, 3 Count"
+            }
+          ]
+        },
+        {
+          "concept_key": "Pantry > Baking Mixes|871A000A",
+          "n_packages": 1.0,
+          "purchased_grams": 240.4,
+          "cost": 0.69,
+          "selected_sku": "Jiffy\u00ae Vegetarian Corn Muffin Mix",
+          "selected_upc": "0007248601004",
+          "selected_package_grams": 240.4,
+          "selected_package_cents": 69,
+          "selected_package_display": "8.5 oz",
+          "selected_packages": [
+            {
+              "n_packages": 1.0,
+              "name": "Jiffy\u00ae Vegetarian Corn Muffin Mix",
+              "upc": "0007248601004",
+              "grams": 240.4,
+              "cents": 69,
+              "display": "8.5 oz"
+            }
+          ]
+        },
+        {
+          "concept_key": "Pantry > Beans > Black Beans|9001000B",
+          "n_packages": 2.0,
+          "purchased_grams": 850.5,
+          "cost": 1.72,
+          "selected_sku": "Great Value Black Beans, 15 oz",
+          "selected_upc": "078742075761",
+          "selected_package_grams": 425.2,
+          "selected_package_cents": 86,
+          "selected_package_display": "15 oz",
+          "selected_packages": [
+            {
+              "n_packages": 2.0,
+              "name": "Great Value Black Beans, 15 oz",
+              "upc": "078742075761",
+              "grams": 425.2,
+              "cents": 86,
+              "display": "15 oz"
+            }
+          ]
+        },
+        {
+          "concept_key": "Pantry > Beans > Black Beans|9001300C",
+          "n_packages": 1.0,
+          "purchased_grams": 425.2,
+          "cost": 0.86,
+          "selected_sku": "Great Value, No Salt Added, Canned Black Beans, 15 oz Can",
+          "selected_upc": "078742061993",
+          "selected_package_grams": 425.2,
+          "selected_package_cents": 86,
+          "selected_package_display": "15 oz",
+          "selected_packages": [
+            {
+              "n_packages": 1.0,
+              "name": "Great Value, No Salt Added, Canned Black Beans, 15 oz Can",
+              "upc": "078742061993",
+              "grams": 425.2,
+              "cents": 86,
+              "display": "15 oz"
+            }
+          ]
+        },
+        {
+          "concept_key": "Pantry > Beans > Lima Beans|900G000Q",
+          "n_packages": 1.0,
+          "purchased_grams": 453.6,
+          "cost": 2.49,
+          "selected_sku": "Kroger\u00ae Large Lima Beans",
+          "selected_upc": "0001111089634",
+          "selected_package_grams": 453.6,
+          "selected_package_cents": 249,
+          "selected_package_display": "16 oz",
+          "selected_packages": [
+            {
+              "n_packages": 1.0,
+              "name": "Kroger\u00ae Large Lima Beans",
+              "upc": "0001111089634",
+              "grams": 453.6,
+              "cents": 249,
+              "display": "16 oz"
+            }
+          ]
+        },
+        {
+          "concept_key": "Pantry > Bread Crumbs|8005000J",
+          "n_packages": 1.0,
+          "purchased_grams": 254.0,
+          "cost": 1.39,
+          "selected_sku": "Kroger\u00ae Plain Bread Crumbs",
+          "selected_upc": "0001111013526",
+          "selected_package_grams": 254.0,
+          "selected_package_cents": 139,
+          "selected_package_display": "15 oz",
+          "selected_packages": [
+            {
+              "n_packages": 1.0,
+              "name": "Kroger\u00ae Plain Bread Crumbs",
+              "upc": "0001111013526",
+              "grams": 254.0,
+              "cents": 139,
+              "display": "15 oz"
+            }
+          ]
+        },
+        {
+          "concept_key": "Pantry > Broth & Stock > Beef Broth|J014600X",
+          "n_packages": 1.0,
+          "purchased_grams": 946.4,
+          "cost": 1.27,
+          "selected_sku": "Great Value Unsalted Gluten-Free Beef Broth, 32 oz Carton (Shelf Stable)",
+          "selected_upc": "078742212708",
+          "selected_package_grams": 946.4,
+          "selected_package_cents": 127,
+          "selected_package_display": "32 fl oz (907g)",
+          "selected_packages": [
+            {
+              "n_packages": 1.0,
+              "name": "Great Value Unsalted Gluten-Free Beef Broth, 32 oz Carton (Shelf Stable)",
+              "upc": "078742212708",
+              "grams": 946.4,
+              "cents": 127,
+              "display": "32 fl oz (907g)"
+            }
+          ]
+        },
+        {
+          "concept_key": "Pantry > Broth & Stock > Chicken Broth|J0066005",
+          "n_packages": 1.0,
+          "purchased_grams": 975.9,
+          "cost": 1.27,
+          "selected_sku": "Great Value Reduced Sodium Gluten-Free Chicken Broth, 32 oz Carton (Shelf-Stable)",
+          "selected_upc": "078742212692",
+          "selected_package_grams": 975.9,
+          "selected_package_cents": 127,
+          "selected_package_display": "33 fl oz",
+          "selected_packages": [
+            {
+              "n_packages": 1.0,
+              "name": "Great Value Reduced Sodium Gluten-Free Chicken Broth, 32 oz Carton (Shelf-Stable)",
+              "upc": "078742212692",
+              "grams": 975.9,
+              "cents": 127,
+              "display": "33 fl oz"
+            }
+          ]
+        },
+        {
+          "concept_key": "Pantry > Canned Vegetables > Corn|6801000V",
+          "n_packages": 1.0,
+          "purchased_grams": 425.2,
+          "cost": 0.76,
+          "selected_sku": "Great Value Golden Sweet Whole Kernel Corn, 15 oz",
+          "selected_upc": "078742369396",
+          "selected_package_grams": 425.2,
+          "selected_package_cents": 76,
+          "selected_package_display": "15 oz",
+          "selected_packages": [
+            {
+              "n_packages": 1.0,
+              "name": "Great Value Golden Sweet Whole Kernel Corn, 15 oz",
+              "upc": "078742369396",
+              "grams": 425.2,
+              "cents": 76,
+              "display": "15 oz"
+            }
+          ]
+        },
+        {
+          "concept_key": "Pantry > Canned Vegetables > Tomatoes|67010007",
+          "n_packages": 1.0,
+          "purchased_grams": 412.8,
+          "cost": 0.99,
+          "selected_sku": "Red Gold\u00ae Stewed Tomatoes",
+          "selected_upc": "0007294015216",
+          "selected_package_grams": 412.8,
+          "selected_package_cents": 99,
+          "selected_package_display": "14.5 oz",
+          "selected_packages": [
+            {
+              "n_packages": 1.0,
+              "name": "Red Gold\u00ae Stewed Tomatoes",
+              "upc": "0007294015216",
+              "grams": 412.8,
+              "cents": 99,
+              "display": "14.5 oz"
+            }
+          ]
+        },
+        {
+          "concept_key": "Pantry > Flour|870Z000G",
+          "n_packages": 3.0,
+          "purchased_grams": 2721.6,
+          "cost": 7.44,
+          "selected_sku": "Pillsbury All Purpose Flour, 2 Lb Bag",
+          "selected_upc": "013300204306",
+          "selected_package_grams": 907.2,
+          "selected_package_cents": 248,
+          "selected_package_display": "32 OZ",
+          "selected_packages": [
+            {
+              "n_packages": 3.0,
+              "name": "Pillsbury All Purpose Flour, 2 Lb Bag",
+              "upc": "013300204306",
+              "grams": 907.2,
+              "cents": 248,
+              "display": "32 OZ"
+            }
+          ]
+        },
+        {
+          "concept_key": "Pantry > Grain > Oats|850K000",
+          "n_packages": 1.0,
+          "purchased_grams": 508.0,
+          "cost": 2.29,
+          "selected_sku": "100% WHOLE GRAIN OLD FASHIONED OATS - KROGER - 18 OZ",
+          "selected_upc": "0001111076654",
+          "selected_package_grams": 508.0,
+          "selected_package_cents": 229,
+          "selected_package_display": "18 oz",
+          "selected_packages": [
+            {
+              "n_packages": 1.0,
+              "name": "100% WHOLE GRAIN OLD FASHIONED OATS - KROGER - 18 OZ",
+              "upc": "0001111076654",
+              "grams": 508.0,
+              "cents": 229,
+              "display": "18 oz"
+            }
+          ]
+        },
+        {
+          "concept_key": "Pantry > Pasta > Spaghetti|8301000Q",
+          "n_packages": 1.0,
+          "purchased_grams": 453.6,
+          "cost": 0.88,
+          "selected_sku": "Kroger\u00ae 100% Whole Grain Spaghetti",
+          "selected_upc": "0001111087270",
+          "selected_package_grams": 453.6,
+          "selected_package_cents": 88,
+          "selected_package_display": "16 oz",
+          "selected_packages": [
+            {
+              "n_packages": 1.0,
+              "name": "Kroger\u00ae 100% Whole Grain Spaghetti",
+              "upc": "0001111087270",
+              "grams": 453.6,
+              "cents": 88,
+              "display": "16 oz"
+            }
+          ]
+        },
+        {
+          "concept_key": "Pantry > Pasta|830N0002",
+          "n_packages": 2.0,
+          "purchased_grams": 396.9,
+          "cost": 0.82,
+          "selected_sku": "El Mexicano Alphabet Pasta, Letras, 7 oz Bag",
+          "selected_upc": "042743250908",
+          "selected_package_grams": 198.4,
+          "selected_package_cents": 41,
+          "selected_package_display": "7 oz",
+          "selected_packages": [
+            {
+              "n_packages": 2.0,
+              "name": "El Mexicano Alphabet Pasta, Letras, 7 oz Bag",
+              "upc": "042743250908",
+              "grams": 198.4,
+              "cents": 41,
+              "display": "7 oz"
+            }
+          ]
+        },
+        {
+          "concept_key": "Pantry > Salad Dressings > Italian Dressing|F703100X",
+          "n_packages": 1.0,
+          "purchased_grams": 467.2,
+          "cost": 2.0,
+          "selected_sku": "Kroger\u00ae Zesty Italian Salad Dressing",
+          "selected_upc": "0001111067425",
+          "selected_package_grams": 467.2,
+          "selected_package_cents": 200,
+          "selected_package_display": "16 fl oz",
+          "selected_packages": [
+            {
+              "n_packages": 1.0,
+              "name": "Kroger\u00ae Zesty Italian Salad Dressing",
+              "upc": "0001111067425",
+              "grams": 467.2,
+              "cents": 200,
+              "display": "16 fl oz"
+            }
+          ]
+        },
+        {
+          "concept_key": "Pantry > Sauces & Salsas > Mayonnaise|F0010003",
+          "n_packages": 1.0,
+          "purchased_grams": 443.6,
+          "cost": 2.12,
+          "selected_sku": "Great Value Mayonnaise, 15 fl oz",
+          "selected_upc": "078742065328",
+          "selected_package_grams": 443.6,
+          "selected_package_cents": 212,
+          "selected_package_display": "15 fl oz",
+          "selected_packages": [
+            {
+              "n_packages": 1.0,
+              "name": "Great Value Mayonnaise, 15 fl oz",
+              "upc": "078742065328",
+              "grams": 443.6,
+              "cents": 212,
+              "display": "15 fl oz"
+            }
+          ]
+        },
+        {
+          "concept_key": "Pantry > Sauces & Salsas > Salsa|F6070002",
+          "n_packages": 3.0,
+          "purchased_grams": 595.3,
+          "cost": 2.91,
+          "selected_sku": "San Marcos Shelf Stable Chipotle Salsa, 7 oz Can",
+          "selected_upc": "074234925125",
+          "selected_package_grams": 198.4,
+          "selected_package_cents": 97,
+          "selected_package_display": "7 oz",
+          "selected_packages": [
+            {
+              "n_packages": 3.0,
+              "name": "San Marcos Shelf Stable Chipotle Salsa, 7 oz Can",
+              "upc": "074234925125",
+              "grams": 198.4,
+              "cents": 97,
+              "display": "7 oz"
+            }
+          ]
+        },
+        {
+          "concept_key": "Pantry > Sauces & Salsas > Tomato Sauce|F6046009",
+          "n_packages": 2.0,
+          "purchased_grams": 453.6,
+          "cost": 0.96,
+          "selected_sku": "Great Value Tomato Sauce, 8 oz Can",
+          "selected_upc": "078742369501",
+          "selected_package_grams": 226.8,
+          "selected_package_cents": 48,
+          "selected_package_display": "8 oz",
+          "selected_packages": [
+            {
+              "n_packages": 2.0,
+              "name": "Great Value Tomato Sauce, 8 oz Can",
+              "upc": "078742369501",
+              "grams": 226.8,
+              "cents": 48,
+              "display": "8 oz"
+            }
+          ]
+        },
+        {
+          "concept_key": "Pantry > Sauces & Salsas > Worcestershire Sauce|F502600H",
+          "n_packages": 1.0,
+          "purchased_grams": 295.7,
+          "cost": 1.0,
+          "selected_sku": "Great Value Worcestershire Sauce, 10 fl oz",
+          "selected_upc": "078742429564",
+          "selected_package_grams": 295.7,
+          "selected_package_cents": 100,
+          "selected_package_display": "10 fl oz (296mL)",
+          "selected_packages": [
+            {
+              "n_packages": 1.0,
+              "name": "Great Value Worcestershire Sauce, 10 fl oz",
+              "upc": "078742429564",
+              "grams": 295.7,
+              "cents": 100,
+              "display": "10 fl oz (296mL)"
+            }
+          ]
+        },
+        {
+          "concept_key": "Pantry > Spices & Seasonings > Black Pepper|E1040007",
+          "n_packages": 1.0,
+          "purchased_grams": 17.6,
+          "cost": 1.48,
+          "selected_sku": "El Guapo Non-GMO Whole Black Pepper, 0.62 oz Bag",
+          "selected_upc": "044989013125",
+          "selected_package_grams": 17.6,
+          "selected_package_cents": 148,
+          "selected_package_display": "5.25 X5",
+          "selected_packages": [
+            {
+              "n_packages": 1.0,
+              "name": "El Guapo Non-GMO Whole Black Pepper, 0.62 oz Bag",
+              "upc": "044989013125",
+              "grams": 17.6,
+              "cents": 148,
+              "display": "5.25 X5"
+            }
+          ]
+        },
+        {
+          "concept_key": "Pantry > Spices & Seasonings > Crushed Red Pepper|E105000Y",
+          "n_packages": 1.0,
+          "purchased_grams": 49.6,
+          "cost": 1.44,
+          "selected_sku": "Great Value Crushed Red Pepper, 1.75 oz",
+          "selected_upc": "078742254562",
+          "selected_package_grams": 49.6,
+          "selected_package_cents": 144,
+          "selected_package_display": "1.75 oz",
+          "selected_packages": [
+            {
+              "n_packages": 1.0,
+              "name": "Great Value Crushed Red Pepper, 1.75 oz",
+              "upc": "078742254562",
+              "grams": 49.6,
+              "cents": 144,
+              "display": "1.75 oz"
+            }
+          ]
+        },
+        {
+          "concept_key": "Pantry > Spices & Seasonings > Garlic Powder|E613500M",
+          "n_packages": 1.0,
+          "purchased_grams": 96.4,
+          "cost": 1.0,
+          "selected_sku": "Great Value Garlic Powder, 3.4 oz",
+          "selected_upc": "078742254654",
+          "selected_package_grams": 96.4,
+          "selected_package_cents": 100,
+          "selected_package_display": "3.4 oz",
+          "selected_packages": [
+            {
+              "n_packages": 1.0,
+              "name": "Great Value Garlic Powder, 3.4 oz",
+              "upc": "078742254654",
+              "grams": 96.4,
+              "cents": 100,
+              "display": "3.4 oz"
+            }
+          ]
+        },
+        {
+          "concept_key": "Pantry > Spices & Seasonings > Seasoning|E602000R",
+          "n_packages": 1.0,
+          "purchased_grams": 281.2,
+          "cost": 1.89,
+          "selected_sku": "Andy's Seasoning\u2122 Yellow Corn Meal Fish Breading",
+          "selected_upc": "0003520440094",
+          "selected_package_grams": 281.2,
+          "selected_package_cents": 189,
+          "selected_package_display": "10 oz",
+          "selected_packages": [
+            {
+              "n_packages": 1.0,
+              "name": "Andy's Seasoning\u2122 Yellow Corn Meal Fish Breading",
+              "upc": "0003520440094",
+              "grams": 281.2,
+              "cents": 189,
+              "display": "10 oz"
+            }
+          ]
+        },
+        {
+          "concept_key": "Pantry > Vinegar > Red Wine Vinegar|J04G600$",
+          "n_packages": 1.0,
+          "purchased_grams": 375.6,
+          "cost": 2.32,
+          "selected_sku": "Great Value Red Wine Vinegar, 12.7 fl oz",
+          "selected_upc": "078742230092",
+          "selected_package_grams": 375.6,
+          "selected_package_cents": 232,
+          "selected_package_display": "12.7 fl oz",
+          "selected_packages": [
+            {
+              "n_packages": 1.0,
+              "name": "Great Value Red Wine Vinegar, 12.7 fl oz",
+              "upc": "078742230092",
+              "grams": 375.6,
+              "cents": 232,
+              "display": "12.7 fl oz"
+            }
+          ]
+        },
+        {
+          "concept_key": "Produce > Fruit > Bananas|7101100$",
+          "n_packages": 1.0,
+          "purchased_grams": 952.6,
+          "cost": 1.03,
+          "selected_sku": "Fresh Bunch of Bananas \u2013 5-7 Bananas",
+          "selected_upc": "0000000004011",
+          "selected_package_grams": 952.6,
+          "selected_package_cents": 103,
+          "selected_package_display": "1 lb",
+          "selected_packages": [
+            {
+              "n_packages": 1.0,
+              "name": "Fresh Bunch of Bananas \u2013 5-7 Bananas",
+              "upc": "0000000004011",
+              "grams": 952.6,
+              "cents": 103,
+              "display": "1 lb"
+            }
+          ]
+        },
+        {
+          "concept_key": "Produce > Vegetables > Bell Peppers|6604000K",
+          "n_packages": 1.0,
+          "purchased_grams": 417.3,
+          "cost": 3.59,
+          "selected_sku": "Simple Truth Organic\u00ae Mixed Bell Peppers",
+          "selected_upc": "0001111090010",
+          "selected_package_grams": 417.3,
+          "selected_package_cents": 359,
+          "selected_package_display": "2 ct",
+          "selected_packages": [
+            {
+              "n_packages": 1.0,
+              "name": "Simple Truth Organic\u00ae Mixed Bell Peppers",
+              "upc": "0001111090010",
+              "grams": 417.3,
+              "cents": 359,
+              "display": "2 ct"
+            }
+          ]
+        },
+        {
+          "concept_key": "Produce > Vegetables > Onions|65010004",
+          "n_packages": 4.0,
+          "purchased_grams": 907.2,
+          "cost": 1.76,
+          "selected_sku": "Jumbo Yellow Onions",
+          "selected_upc": "0000000004093",
+          "selected_package_grams": 226.8,
+          "selected_package_cents": 44,
+          "selected_package_display": "1 lb",
+          "selected_packages": [
+            {
+              "n_packages": 4.0,
+              "name": "Jumbo Yellow Onions",
+              "upc": "0000000004093",
+              "grams": 226.8,
+              "cents": 44,
+              "display": "1 lb"
+            }
+          ]
+        },
+        {
+          "concept_key": "Produce > Vegetables > Parsley|601M0004",
+          "n_packages": 1.0,
+          "purchased_grams": 453.6,
+          "cost": 1.19,
+          "selected_sku": "Parsley",
+          "selected_upc": "0000000004899",
+          "selected_package_grams": 453.6,
+          "selected_package_cents": 119,
+          "selected_package_display": "1 ct",
+          "selected_packages": [
+            {
+              "n_packages": 1.0,
+              "name": "Parsley",
+              "upc": "0000000004899",
+              "grams": 453.6,
+              "cents": 119,
+              "display": "1 ct"
+            }
+          ]
+        },
+        {
+          "concept_key": "Produce > Vegetables > Potatoes|6101000=",
+          "n_packages": 4.0,
+          "purchased_grams": 907.2,
+          "cost": 3.36,
+          "selected_sku": "White Potatoes",
+          "selected_upc": "0000000004219",
+          "selected_package_grams": 226.8,
+          "selected_package_cents": 84,
+          "selected_package_display": "1 lb",
+          "selected_packages": [
+            {
+              "n_packages": 4.0,
+              "name": "White Potatoes",
+              "upc": "0000000004219",
+              "grams": 226.8,
+              "cents": 84,
+              "display": "1 lb"
+            }
+          ]
+        },
+        {
+          "concept_key": "Snack > Crackers|J007000T",
+          "n_packages": 1.0,
+          "purchased_grams": 360.0,
+          "cost": 2.88,
+          "selected_sku": "Club Multigrain Crackers, Lunch Snacks, 12.7 oz",
+          "selected_upc": "030100100683",
+          "selected_package_grams": 360.0,
+          "selected_package_cents": 288,
+          "selected_package_display": "12.7 oz",
+          "selected_packages": [
+            {
+              "n_packages": 1.0,
+              "name": "Club Multigrain Crackers, Lunch Snacks, 12.7 oz",
+              "upc": "030100100683",
+              "grams": 360.0,
+              "cents": 288,
+              "display": "12.7 oz"
+            }
+          ]
+        }
+      ],
+      "leftover_stats": {
+        "fresh_count": 7,
+        "frozen_count": 1,
+        "fresh_servings": 56.3,
+        "frozen_servings": 1.2,
+        "consumed": 51.1,
+        "waste": 0.0,
+        "carryover_fresh": 7,
+        "carryover_frozen": 1
+      }
+    },
+    {
+      "week": 3,
+      "elapsed_s": 18.3,
+      "cost": 79.77000427246094,
+      "whole_cart_cost": 79.77000427246094,
+      "n_packages": 54,
+      "pantry_start_grams": 11979.92283821106,
+      "pantry_end_grams": 15324.185546875,
+      "pantry_delta_grams": 3344.2627086639404,
+      "pantry_grams_used": 11979.92283821106,
+      "cal_compliance": 0.9545490373883928,
+      "protein_pct": 15.813571497210512,
+      "veg_compliance": 0.36556808035714283,
+      "fruit_compliance": 0.0,
+      "fat_pct": 25.81713462906525,
+      "carbs_pct": 27.250351951471803,
+      "n_recipes": 25,
+      "recipe_ids": [
+        362398,
+        223063,
+        462164,
+        44120,
+        119278,
+        151372,
+        434488,
+        322348,
+        155294,
+        58051,
+        448456,
+        366728,
+        306420,
+        68037,
+        193251,
+        385501,
+        19546,
+        22115,
+        402159,
+        70430,
+        505518,
+        121101,
+        444105,
+        486453,
+        271168
+      ],
+      "recipe_names": [
+        "St. Martin Banana Bread",
+        "Easy Sourdough Bread from Starter",
+        "Breakfast Tacos",
+        "Tomato Salad Biscuits",
+        "Chickpea and Coriander Dumplings (Garbanzo and Cilantro)",
+        "Mom's Forget-Me-Not Biscuits",
+        "Dutch Babies Lightened Up",
+        "Light (Almost Airy) Sourdough Bread",
+        "Best Quick Black Bean Soup",
+        "Whole Wheat Featherbed Rolls",
+        "Layered Vegetable Enchiladas",
+        "Easy Banana Bread",
+        "Homemade Instant Oatmeal Mix (Single-Serve Packets)",
+        "Cracker and Vegetable Lasagna",
+        "Black Bean Burrito Bake",
+        "Quick Mini Vegetable Frittatas",
+        "Calico Bean Soup",
+        "Easy Pesto Pizza with Tomatoes and Red Pepper Flakes",
+        "Classic Banana Bread",
+        "Easy French Onion Soup",
+        "Oriental Chicken Broth",
+        "Cream of Broccoli Cheese Soup",
+        "Creamy Garlic Soup",
+        "Banana Bread Muffins",
+        "Triscuit Wings"
+      ],
+      "ingredient_purchases": [
+        {
+          "concept_key": "Bakery > Tortillas|G020000M",
+          "n_packages": 1.0,
+          "purchased_grams": 481.9,
+          "cost": 1.78,
+          "selected_sku": "CHI-CHI'S Flour Tortillas Burrito Size, Tortilla Wrap, Shelf-Stable, 17 oz Resealable Package, (8 Tortillas)",
+          "selected_upc": "043354007257",
+          "selected_package_grams": 481.9,
+          "selected_package_cents": 178,
+          "selected_package_display": "17",
+          "selected_packages": [
+            {
+              "n_packages": 1.0,
+              "name": "CHI-CHI'S Flour Tortillas Burrito Size, Tortilla Wrap, Shelf-Stable, 17 oz Resealable Package, (8 Tortillas)",
+              "upc": "043354007257",
+              "grams": 481.9,
+              "cents": 178,
+              "display": "17"
+            }
+          ]
+        },
+        {
+          "concept_key": "Beverage > Juice > Lime Juice|D119600=",
+          "n_packages": 1.0,
+          "purchased_grams": 133.1,
+          "cost": 0.98,
+          "selected_sku": "Concord Foods Lime Juice, No Pulp, from Concentrate 4.5 oz",
+          "selected_upc": "041409000062",
+          "selected_package_grams": 133.1,
+          "selected_package_cents": 98,
+          "selected_package_display": "4.5 fl oz",
+          "selected_packages": [
+            {
+              "n_packages": 1.0,
+              "name": "Concord Foods Lime Juice, No Pulp, from Concentrate 4.5 oz",
+              "upc": "041409000062",
+              "grams": 133.1,
+              "cents": 98,
+              "display": "4.5 fl oz"
+            }
+          ]
+        },
+        {
+          "concept_key": "Dairy > Butter > Margarine|140B606K",
+          "n_packages": 1.0,
+          "purchased_grams": 453.6,
+          "cost": 1.24,
+          "selected_sku": "Imperial Vegetable Oil Spread, 16 oz Box, 4 Sticks (Refrigerated)",
+          "selected_upc": "011115871324",
+          "selected_package_grams": 453.6,
+          "selected_package_cents": 124,
+          "selected_package_display": "16 oz",
+          "selected_packages": [
+            {
+              "n_packages": 1.0,
+              "name": "Imperial Vegetable Oil Spread, 16 oz Box, 4 Sticks (Refrigerated)",
+              "upc": "011115871324",
+              "grams": 453.6,
+              "cents": 124,
+              "display": "16 oz"
+            }
+          ]
+        },
+        {
+          "concept_key": "Dairy > Butter > Shortening|140E0006",
+          "n_packages": 1.0,
+          "purchased_grams": 453.6,
+          "cost": 4.12,
+          "selected_sku": "Crisco All-Vegetable Shortening, 16 oz",
+          "selected_upc": "196005242504",
+          "selected_package_grams": 453.6,
+          "selected_package_cents": 412,
+          "selected_package_display": "16 oz",
+          "selected_packages": [
+            {
+              "n_packages": 1.0,
+              "name": "Crisco All-Vegetable Shortening, 16 oz",
+              "upc": "196005242504",
+              "grams": 453.6,
+              "cents": 412,
+              "display": "16 oz"
+            }
+          ]
+        },
+        {
+          "concept_key": "Dairy > Butter|14010003",
+          "n_packages": 2.0,
+          "purchased_grams": 453.6,
+          "cost": 5.36,
+          "selected_sku": "Land O Lakes Salted Butter in Half Sticks, 4 Half Sticks, 8 oz Pack",
+          "selected_upc": "034500151351",
+          "selected_package_grams": 226.8,
+          "selected_package_cents": 268,
+          "selected_package_display": "8 oz",
+          "selected_packages": [
+            {
+              "n_packages": 2.0,
+              "name": "Land O Lakes Salted Butter in Half Sticks, 4 Half Sticks, 8 oz Pack",
+              "upc": "034500151351",
+              "grams": 226.8,
+              "cents": 268,
+              "display": "8 oz"
+            }
+          ]
+        },
+        {
+          "concept_key": "Dairy > Cheese > Mozzarella|11020058",
+          "n_packages": 1.0,
+          "purchased_grams": 473.2,
+          "cost": 3.48,
+          "selected_sku": "Great Value Low-Moisture Part-Skim Mozzarella Shredded Cheese, 16 oz Bag",
+          "selected_upc": "078742353210",
+          "selected_package_grams": 473.2,
+          "selected_package_cents": 348,
+          "selected_package_display": "16 fl oz",
+          "selected_packages": [
+            {
+              "n_packages": 1.0,
+              "name": "Great Value Low-Moisture Part-Skim Mozzarella Shredded Cheese, 16 oz Bag",
+              "upc": "078742353210",
+              "grams": 473.2,
+              "cents": 348,
+              "display": "16 fl oz"
+            }
+          ]
+        },
+        {
+          "concept_key": "Dairy > Cheese|110Q0005",
+          "n_packages": 2.0,
+          "purchased_grams": 453.6,
+          "cost": 3.98,
+          "selected_sku": "Kroger\u00ae Low Fat Neufchatel Cheese",
+          "selected_upc": "0001111059963",
+          "selected_package_grams": 226.8,
+          "selected_package_cents": 199,
+          "selected_package_display": "8 oz",
+          "selected_packages": [
+            {
+              "n_packages": 2.0,
+              "name": "Kroger\u00ae Low Fat Neufchatel Cheese",
+              "upc": "0001111059963",
+              "grams": 226.8,
+              "cents": 199,
+              "display": "8 oz"
+            }
+          ]
+        },
+        {
+          "concept_key": "Dairy > Eggs|5005000P",
+          "n_packages": 3.0,
+          "purchased_grams": 1877.9,
+          "cost": 4.77,
+          "selected_sku": "Kroger\u00ae Medium Grade A White Eggs",
+          "selected_upc": "0001111060902",
+          "selected_package_grams": 626.0,
+          "selected_package_cents": 159,
+          "selected_package_display": "12 ct",
+          "selected_packages": [
+            {
+              "n_packages": 3.0,
+              "name": "Kroger\u00ae Medium Grade A White Eggs",
+              "upc": "0001111060902",
+              "grams": 626.0,
+              "cents": 159,
+              "display": "12 ct"
+            }
+          ]
+        },
+        {
+          "concept_key": "Dairy > Milk|1001600U",
+          "n_packages": 1.0,
+          "purchased_grams": 1892.7,
+          "cost": 1.72,
+          "selected_sku": "Great Value Milk 1% Low-fat, Half Gallon, 64 fl oz",
+          "selected_upc": "078742352022",
+          "selected_package_grams": 1892.7,
+          "selected_package_cents": 172,
+          "selected_package_display": "64 fl oz",
+          "selected_packages": [
+            {
+              "n_packages": 1.0,
+              "name": "Great Value Milk 1% Low-fat, Half Gallon, 64 fl oz",
+              "upc": "078742352022",
+              "grams": 1892.7,
+              "cents": 172,
+              "display": "64 fl oz"
+            }
+          ]
+        },
+        {
+          "concept_key": "Dairy > Sour Cream|1301600P",
+          "n_packages": 1.0,
+          "purchased_grams": 226.8,
+          "cost": 1.24,
+          "selected_sku": "Great Value All Natural Sour Cream, 8 oz",
+          "selected_upc": "078742119069",
+          "selected_package_grams": 226.8,
+          "selected_package_cents": 124,
+          "selected_package_display": "8 oz",
+          "selected_packages": [
+            {
+              "n_packages": 1.0,
+              "name": "Great Value All Natural Sour Cream, 8 oz",
+              "upc": "078742119069",
+              "grams": 226.8,
+              "cents": 124,
+              "display": "8 oz"
+            }
+          ]
+        },
+        {
+          "concept_key": "Frozen > Vegetables > Broccoli|6201200Z",
+          "n_packages": 2.0,
+          "purchased_grams": 680.4,
+          "cost": 1.76,
+          "selected_sku": "Kroger\u00ae Frozen Broccoli Cuts",
+          "selected_upc": "0001111010307",
+          "selected_package_grams": 340.2,
+          "selected_package_cents": 88,
+          "selected_package_display": "12 oz",
+          "selected_packages": [
+            {
+              "n_packages": 2.0,
+              "name": "Kroger\u00ae Frozen Broccoli Cuts",
+              "upc": "0001111010307",
+              "grams": 340.2,
+              "cents": 88,
+              "display": "12 oz"
+            }
+          ]
+        },
+        {
+          "concept_key": "Frozen > Vegetables > Corn|68012003",
+          "n_packages": 1.0,
+          "purchased_grams": 340.2,
+          "cost": 0.88,
+          "selected_sku": "Kroger\u00ae Traditional Favorites Frozen Corn Super Sweet",
+          "selected_upc": "0001111084961",
+          "selected_package_grams": 340.2,
+          "selected_package_cents": 88,
+          "selected_package_display": "12 oz",
+          "selected_packages": [
+            {
+              "n_packages": 1.0,
+              "name": "Kroger\u00ae Traditional Favorites Frozen Corn Super Sweet",
+              "upc": "0001111084961",
+              "grams": 340.2,
+              "cents": 88,
+              "display": "12 oz"
+            }
+          ]
+        },
+        {
+          "concept_key": "Meat & Seafood > Pork|2109000V",
+          "n_packages": 1.0,
+          "purchased_grams": 453.6,
+          "cost": 3.49,
+          "selected_sku": "Kroger\u00ae Mild Pork Sausage Roll",
+          "selected_upc": "0001111097298",
+          "selected_package_grams": 453.6,
+          "selected_package_cents": 349,
+          "selected_package_display": "16 oz",
+          "selected_packages": [
+            {
+              "n_packages": 1.0,
+              "name": "Kroger\u00ae Mild Pork Sausage Roll",
+              "upc": "0001111097298",
+              "grams": 453.6,
+              "cents": 349,
+              "display": "16 oz"
+            }
+          ]
+        },
+        {
+          "concept_key": "Meat & Seafood > Poultry > Chicken Breast|30011007",
+          "n_packages": 1.0,
+          "purchased_grams": 1814.4,
+          "cost": 6.9,
+          "selected_sku": "Foster Farms Fresh & Natural Half Chicken Breasts with Ribs",
+          "selected_upc": "263877000003",
+          "selected_package_grams": 1814.4,
+          "selected_package_cents": 690,
+          "selected_package_display": "2.0 - 4.0 lbs",
+          "selected_packages": [
+            {
+              "n_packages": 1.0,
+              "name": "Foster Farms Fresh & Natural Half Chicken Breasts with Ribs",
+              "upc": "263877000003",
+              "grams": 1814.4,
+              "cents": 690,
+              "display": "2.0 - 4.0 lbs"
+            }
+          ]
+        },
+        {
+          "concept_key": "Pantry > Baking Additives & Extracts > Baking Soda|J05E600N",
+          "n_packages": 1.0,
+          "purchased_grams": 226.8,
+          "cost": 0.92,
+          "selected_sku": "ARM & HAMMER Pure Baking Soda, For Baking, Cleaning & Deodorizing, 8 oz Box",
+          "selected_upc": "033200011309",
+          "selected_package_grams": 226.8,
+          "selected_package_cents": 92,
+          "selected_package_display": "8.0 oz",
+          "selected_packages": [
+            {
+              "n_packages": 1.0,
+              "name": "ARM & HAMMER Pure Baking Soda, For Baking, Cleaning & Deodorizing, 8 oz Box",
+              "upc": "033200011309",
+              "grams": 226.8,
+              "cents": 92,
+              "display": "8.0 oz"
+            }
+          ]
+        },
+        {
+          "concept_key": "Pantry > Baking Mixes > Pizza Crust Mix|8703090Y",
+          "n_packages": 1.0,
+          "purchased_grams": 255.1,
+          "cost": 0.98,
+          "selected_sku": "\"JIFFY\" Pie Crust Mix, 9 oz Box",
+          "selected_upc": "072486001505",
+          "selected_package_grams": 255.1,
+          "selected_package_cents": 98,
+          "selected_package_display": "9 oz",
+          "selected_packages": [
+            {
+              "n_packages": 1.0,
+              "name": "\"JIFFY\" Pie Crust Mix, 9 oz Box",
+              "upc": "072486001505",
+              "grams": 255.1,
+              "cents": 98,
+              "display": "9 oz"
+            }
+          ]
+        },
+        {
+          "concept_key": "Pantry > Beans > Black Beans|9001000B",
+          "n_packages": 4.0,
+          "purchased_grams": 1701.0,
+          "cost": 3.44,
+          "selected_sku": "Great Value Black Beans, 15 oz",
+          "selected_upc": "078742075761",
+          "selected_package_grams": 425.2,
+          "selected_package_cents": 86,
+          "selected_package_display": "15 oz",
+          "selected_packages": [
+            {
+              "n_packages": 4.0,
+              "name": "Great Value Black Beans, 15 oz",
+              "upc": "078742075761",
+              "grams": 425.2,
+              "cents": 86,
+              "display": "15 oz"
+            }
+          ]
+        },
+        {
+          "concept_key": "Pantry > Beans > Garbanzo Beans|9003000M",
+          "n_packages": 1.0,
+          "purchased_grams": 421.8,
+          "cost": 1.0,
+          "selected_sku": "Simple Truth Organic\u00ae Low Sodium Garbanzo Beans",
+          "selected_upc": "0001111012210",
+          "selected_package_grams": 421.8,
+          "selected_package_cents": 100,
+          "selected_package_display": "15 oz",
+          "selected_packages": [
+            {
+              "n_packages": 1.0,
+              "name": "Simple Truth Organic\u00ae Low Sodium Garbanzo Beans",
+              "upc": "0001111012210",
+              "grams": 421.8,
+              "cents": 100,
+              "display": "15 oz"
+            }
+          ]
+        },
+        {
+          "concept_key": "Pantry > Beans|902Q000W",
+          "n_packages": 1.0,
+          "purchased_grams": 453.6,
+          "cost": 1.48,
+          "selected_sku": "Great Value Mayocoba Beans, 1 lb",
+          "selected_upc": "078742364780",
+          "selected_package_grams": 453.6,
+          "selected_package_cents": 148,
+          "selected_package_display": "1 LB (454 g)",
+          "selected_packages": [
+            {
+              "n_packages": 1.0,
+              "name": "Great Value Mayocoba Beans, 1 lb",
+              "upc": "078742364780",
+              "grams": 453.6,
+              "cents": 148,
+              "display": "1 LB (454 g)"
+            }
+          ]
+        },
+        {
+          "concept_key": "Pantry > Bread Crumbs|8005000J",
+          "n_packages": 1.0,
+          "purchased_grams": 254.0,
+          "cost": 1.39,
+          "selected_sku": "Kroger\u00ae Plain Bread Crumbs",
+          "selected_upc": "0001111013526",
+          "selected_package_grams": 254.0,
+          "selected_package_cents": 139,
+          "selected_package_display": "15 oz",
+          "selected_packages": [
+            {
+              "n_packages": 1.0,
+              "name": "Kroger\u00ae Plain Bread Crumbs",
+              "upc": "0001111013526",
+              "grams": 254.0,
+              "cents": 139,
+              "display": "15 oz"
+            }
+          ]
+        },
+        {
+          "concept_key": "Pantry > Broth & Stock > Beef Broth|J014600X",
+          "n_packages": 1.0,
+          "purchased_grams": 946.4,
+          "cost": 1.27,
+          "selected_sku": "Great Value Unsalted Gluten-Free Beef Broth, 32 oz Carton (Shelf Stable)",
+          "selected_upc": "078742212708",
+          "selected_package_grams": 946.4,
+          "selected_package_cents": 127,
+          "selected_package_display": "32 fl oz (907g)",
+          "selected_packages": [
+            {
+              "n_packages": 1.0,
+              "name": "Great Value Unsalted Gluten-Free Beef Broth, 32 oz Carton (Shelf Stable)",
+              "upc": "078742212708",
+              "grams": 946.4,
+              "cents": 127,
+              "display": "32 fl oz (907g)"
+            }
+          ]
+        },
+        {
+          "concept_key": "Pantry > Broth & Stock > Chicken Broth|J0066005",
+          "n_packages": 4.0,
+          "purchased_grams": 1715.3,
+          "cost": 2.88,
+          "selected_sku": "Great Value Chicken Broth, 14.5 oz (Shelf-Stable)",
+          "selected_upc": "078742371566",
+          "selected_package_grams": 428.8,
+          "selected_package_cents": 72,
+          "selected_package_display": "14.5 fl oz",
+          "selected_packages": [
+            {
+              "n_packages": 4.0,
+              "name": "Great Value Chicken Broth, 14.5 oz (Shelf-Stable)",
+              "upc": "078742371566",
+              "grams": 428.8,
+              "cents": 72,
+              "display": "14.5 fl oz"
+            }
+          ]
+        },
+        {
+          "concept_key": "Pantry > Canned Vegetables > Corn|6801000V",
+          "n_packages": 1.0,
+          "purchased_grams": 425.2,
+          "cost": 0.76,
+          "selected_sku": "Great Value Golden Sweet Whole Kernel Corn, 15 oz",
+          "selected_upc": "078742369396",
+          "selected_package_grams": 425.2,
+          "selected_package_cents": 76,
+          "selected_package_display": "15 oz",
+          "selected_packages": [
+            {
+              "n_packages": 1.0,
+              "name": "Great Value Golden Sweet Whole Kernel Corn, 15 oz",
+              "upc": "078742369396",
+              "grams": 425.2,
+              "cents": 76,
+              "display": "15 oz"
+            }
+          ]
+        },
+        {
+          "concept_key": "Pantry > Canned Vegetables > Tomatoes|67010007",
+          "n_packages": 2.0,
+          "purchased_grams": 825.5,
+          "cost": 1.98,
+          "selected_sku": "Red Gold\u00ae Stewed Tomatoes",
+          "selected_upc": "0007294015216",
+          "selected_package_grams": 412.8,
+          "selected_package_cents": 99,
+          "selected_package_display": "14.5 oz",
+          "selected_packages": [
+            {
+              "n_packages": 2.0,
+              "name": "Red Gold\u00ae Stewed Tomatoes",
+              "upc": "0007294015216",
+              "grams": 412.8,
+              "cents": 99,
+              "display": "14.5 oz"
+            }
+          ]
+        },
+        {
+          "concept_key": "Pantry > Canned Vegetables > Tomatoes|6701008F",
+          "n_packages": 1.0,
+          "purchased_grams": 411.1,
+          "cost": 0.96,
+          "selected_sku": "Great Value No Salt Added Diced Tomatoes, 14.5 oz",
+          "selected_upc": "078742078175",
+          "selected_package_grams": 411.1,
+          "selected_package_cents": 96,
+          "selected_package_display": "14.5 oz",
+          "selected_packages": [
+            {
+              "n_packages": 1.0,
+              "name": "Great Value No Salt Added Diced Tomatoes, 14.5 oz",
+              "upc": "078742078175",
+              "grams": 411.1,
+              "cents": 96,
+              "display": "14.5 oz"
+            }
+          ]
+        },
+        {
+          "concept_key": "Pantry > Flour|870Z000G",
+          "n_packages": 2.0,
+          "purchased_grams": 1814.4,
+          "cost": 4.96,
+          "selected_sku": "Pillsbury All Purpose Flour, 2 Lb Bag",
+          "selected_upc": "013300204306",
+          "selected_package_grams": 907.2,
+          "selected_package_cents": 248,
+          "selected_package_display": "32 OZ",
+          "selected_packages": [
+            {
+              "n_packages": 2.0,
+              "name": "Pillsbury All Purpose Flour, 2 Lb Bag",
+              "upc": "013300204306",
+              "grams": 907.2,
+              "cents": 248,
+              "display": "32 OZ"
+            }
+          ]
+        },
+        {
+          "concept_key": "Pantry > Peppers > Chipotle Peppers in Adobo Sauce|F00P6007",
+          "n_packages": 1.0,
+          "purchased_grams": 154.2,
+          "cost": 1.49,
+          "selected_sku": "Kroger\u00ae Gluten Free Whole Chipotle Peppers in Adobo Sauce",
+          "selected_upc": "0001111088003",
+          "selected_package_grams": 154.2,
+          "selected_package_cents": 149,
+          "selected_package_display": "7 oz",
+          "selected_packages": [
+            {
+              "n_packages": 1.0,
+              "name": "Kroger\u00ae Gluten Free Whole Chipotle Peppers in Adobo Sauce",
+              "upc": "0001111088003",
+              "grams": 154.2,
+              "cents": 149,
+              "display": "7 oz"
+            }
+          ]
+        },
+        {
+          "concept_key": "Pantry > Rice & Grains > Brown Rice|840F000*",
+          "n_packages": 1.0,
+          "purchased_grams": 453.6,
+          "cost": 0.88,
+          "selected_sku": "Great Value Brown Rice, Whole Grain, 16 oz",
+          "selected_upc": "078742122229",
+          "selected_package_grams": 453.6,
+          "selected_package_cents": 88,
+          "selected_package_display": "16 oz",
+          "selected_packages": [
+            {
+              "n_packages": 1.0,
+              "name": "Great Value Brown Rice, Whole Grain, 16 oz",
+              "upc": "078742122229",
+              "grams": 453.6,
+              "cents": 88,
+              "display": "16 oz"
+            }
+          ]
+        },
+        {
+          "concept_key": "Pantry > Sauces & Salsas > Hot Sauce|F401600B",
+          "n_packages": 1.0,
+          "purchased_grams": 354.9,
+          "cost": 1.24,
+          "selected_sku": "Great Value Louisiana Hot Sauce, 12 fl oz",
+          "selected_upc": "078742375212",
+          "selected_package_grams": 354.9,
+          "selected_package_cents": 124,
+          "selected_package_display": "12 fl oz (355mL)",
+          "selected_packages": [
+            {
+              "n_packages": 1.0,
+              "name": "Great Value Louisiana Hot Sauce, 12 fl oz",
+              "upc": "078742375212",
+              "grams": 354.9,
+              "cents": 124,
+              "display": "12 fl oz (355mL)"
+            }
+          ]
+        },
+        {
+          "concept_key": "Pantry > Sauces & Salsas > Pesto|F671000N",
+          "n_packages": 1.0,
+          "purchased_grams": 189.9,
+          "cost": 2.48,
+          "selected_sku": "Great Value Traditional Basil Pesto, 6.7 oz (3 Servings)",
+          "selected_upc": "194346052905",
+          "selected_package_grams": 189.9,
+          "selected_package_cents": 248,
+          "selected_package_display": "6.7 oz",
+          "selected_packages": [
+            {
+              "n_packages": 1.0,
+              "name": "Great Value Traditional Basil Pesto, 6.7 oz (3 Servings)",
+              "upc": "194346052905",
+              "grams": 189.9,
+              "cents": 248,
+              "display": "6.7 oz"
+            }
+          ]
+        },
+        {
+          "concept_key": "Pantry > Sauces & Salsas > Salsa|F6070002",
+          "n_packages": 1.0,
+          "purchased_grams": 198.4,
+          "cost": 0.97,
+          "selected_sku": "San Marcos Shelf Stable Chipotle Salsa, 7 oz Can",
+          "selected_upc": "074234925125",
+          "selected_package_grams": 198.4,
+          "selected_package_cents": 97,
+          "selected_package_display": "7 oz",
+          "selected_packages": [
+            {
+              "n_packages": 1.0,
+              "name": "San Marcos Shelf Stable Chipotle Salsa, 7 oz Can",
+              "upc": "074234925125",
+              "grams": 198.4,
+              "cents": 97,
+              "display": "7 oz"
+            }
+          ]
+        },
+        {
+          "concept_key": "Pantry > Spices & Seasonings > Cayenne Pepper|E103000N",
+          "n_packages": 1.0,
+          "purchased_grams": 45.9,
+          "cost": 2.28,
+          "selected_sku": "Lawry's Casero Kosher Cayenne Pepper, 1.62 oz Bottle",
+          "selected_upc": "021500012942",
+          "selected_package_grams": 45.9,
+          "selected_package_cents": 228,
+          "selected_package_display": "4.047 X1.802",
+          "selected_packages": [
+            {
+              "n_packages": 1.0,
+              "name": "Lawry's Casero Kosher Cayenne Pepper, 1.62 oz Bottle",
+              "upc": "021500012942",
+              "grams": 45.9,
+              "cents": 228,
+              "display": "4.047 X1.802"
+            }
+          ]
+        },
+        {
+          "concept_key": "Pantry > Spices & Seasonings > Chili Powder|H306500X",
+          "n_packages": 1.0,
+          "purchased_grams": 54.4,
+          "cost": 1.25,
+          "selected_sku": "Smart Way\u2122 Chili Powder",
+          "selected_upc": "0001111011749",
+          "selected_package_grams": 54.4,
+          "selected_package_cents": 125,
+          "selected_package_display": "1.98 oz",
+          "selected_packages": [
+            {
+              "n_packages": 1.0,
+              "name": "Smart Way\u2122 Chili Powder",
+              "upc": "0001111011749",
+              "grams": 54.4,
+              "cents": 125,
+              "display": "1.98 oz"
+            }
+          ]
+        },
+        {
+          "concept_key": "Produce > Fruit > Bananas|7101100$",
+          "n_packages": 1.0,
+          "purchased_grams": 952.6,
+          "cost": 1.03,
+          "selected_sku": "Fresh Bunch of Bananas \u2013 5-7 Bananas",
+          "selected_upc": "0000000004011",
+          "selected_package_grams": 952.6,
+          "selected_package_cents": 103,
+          "selected_package_display": "1 lb",
+          "selected_packages": [
+            {
+              "n_packages": 1.0,
+              "name": "Fresh Bunch of Bananas \u2013 5-7 Bananas",
+              "upc": "0000000004011",
+              "grams": 952.6,
+              "cents": 103,
+              "display": "1 lb"
+            }
+          ]
+        },
+        {
+          "concept_key": "Produce > Vegetables > Cilantro|60131008",
+          "n_packages": 1.0,
+          "purchased_grams": 70.9,
+          "cost": 0.83,
+          "selected_sku": "Fresh Produce, Whole Green Cilantro, 1 Bunch",
+          "selected_upc": "833493000017",
+          "selected_package_grams": 70.9,
+          "selected_package_cents": 83,
+          "selected_package_display": "2.5 oz",
+          "selected_packages": [
+            {
+              "n_packages": 1.0,
+              "name": "Fresh Produce, Whole Green Cilantro, 1 Bunch",
+              "upc": "833493000017",
+              "grams": 70.9,
+              "cents": 83,
+              "display": "2.5 oz"
+            }
+          ]
+        },
+        {
+          "concept_key": "Produce > Vegetables > Onions|65010004",
+          "n_packages": 4.0,
+          "purchased_grams": 907.2,
+          "cost": 1.76,
+          "selected_sku": "Jumbo Yellow Onions",
+          "selected_upc": "0000000004093",
+          "selected_package_grams": 226.8,
+          "selected_package_cents": 44,
+          "selected_package_display": "1 lb",
+          "selected_packages": [
+            {
+              "n_packages": 4.0,
+              "name": "Jumbo Yellow Onions",
+              "upc": "0000000004093",
+              "grams": 226.8,
+              "cents": 44,
+              "display": "1 lb"
+            }
+          ]
+        },
+        {
+          "concept_key": "Produce > Vegetables > Potatoes|6101000=",
+          "n_packages": 1.0,
+          "purchased_grams": 226.8,
+          "cost": 0.84,
+          "selected_sku": "White Potatoes",
+          "selected_upc": "0000000004219",
+          "selected_package_grams": 226.8,
+          "selected_package_cents": 84,
+          "selected_package_display": "1 lb",
+          "selected_packages": [
+            {
+              "n_packages": 1.0,
+              "name": "White Potatoes",
+              "upc": "0000000004219",
+              "grams": 226.8,
+              "cents": 84,
+              "display": "1 lb"
+            }
+          ]
+        },
+        {
+          "concept_key": "Produce > Vegetables > Zucchini|6403000Y",
+          "n_packages": 1.0,
+          "purchased_grams": 226.8,
+          "cost": 1.0,
+          "selected_sku": "Organic Zucchini Squash",
+          "selected_upc": "0000000094067",
+          "selected_package_grams": 226.8,
+          "selected_package_cents": 100,
+          "selected_package_display": "1 lb",
+          "selected_packages": [
+            {
+              "n_packages": 1.0,
+              "name": "Organic Zucchini Squash",
+              "upc": "0000000094067",
+              "grams": 226.8,
+              "cents": 100,
+              "display": "1 lb"
+            }
+          ]
+        }
+      ],
+      "leftover_stats": {
+        "fresh_count": 5,
+        "frozen_count": 1,
+        "fresh_servings": 29.4,
+        "frozen_servings": 1.2,
+        "consumed": 66.4,
+        "waste": 0.0,
+        "carryover_fresh": 5,
+        "carryover_frozen": 1
+      }
+    }
+  ]
+}

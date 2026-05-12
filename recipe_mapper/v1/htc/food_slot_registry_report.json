@@ -1,0 +1,5657 @@
+{
+  "rows_scanned": 462725,
+  "blank_identity_rows": 0,
+  "source_bucket_count": 104,
+  "assigned_bucket_count": 191,
+  "registry_entries": 104404,
+  "max_slots": 1024,
+  "reserved_slot": "00",
+  "overflow_threshold": 900,
+  "pre_subdivision_overflow_buckets": [
+    {
+      "bucket": [
+        "1",
+        "1"
+      ],
+      "distinct_foods": 916,
+      "total_rows": 19173,
+      "top_foods": [
+        {
+          "food_name": "Cheddar",
+          "rows": 4255
+        },
+        {
+          "food_name": "Mozzarella",
+          "rows": 1845
+        },
+        {
+          "food_name": "Cream Cheese",
+          "rows": 1013
+        },
+        {
+          "food_name": "Cottage Cheese",
+          "rows": 979
+        },
+        {
+          "food_name": "Parmesan",
+          "rows": 863
+        },
+        {
+          "food_name": "Colby Jack",
+          "rows": 718
+        },
+        {
+          "food_name": "Swiss",
+          "rows": 653
+        },
+        {
+          "food_name": "Pepper Jack",
+          "rows": 572
+        },
+        {
+          "food_name": "Goat Cheese",
+          "rows": 536
+        },
+        {
+          "food_name": "Monterey Jack",
+          "rows": 510
+        },
+        {
+          "food_name": "Gouda",
+          "rows": 448
+        },
+        {
+          "food_name": "Feta",
+          "rows": 421
+        },
+        {
+          "food_name": "Mexican Blend Cheese",
+          "rows": 371
+        },
+        {
+          "food_name": "Cheese american",
+          "rows": 355
+        },
+        {
+          "food_name": "Provolone",
+          "rows": 340
+        },
+        {
+          "food_name": "Ricotta",
+          "rows": 302
+        },
+        {
+          "food_name": "Muenster",
+          "rows": 231
+        },
+        {
+          "food_name": "Blue Cheese",
+          "rows": 216
+        },
+        {
+          "food_name": "American Cheese",
+          "rows": 214
+        },
+        {
+          "food_name": "Brie",
+          "rows": 190
+        },
+        {
+          "food_name": "Havarti",
+          "rows": 181
+        },
+        {
+          "food_name": "Cheddar Jack",
+          "rows": 159
+        },
+        {
+          "food_name": "Cheese",
+          "rows": 150
+        },
+        {
+          "food_name": "Colby",
+          "rows": 145
+        },
+        {
+          "food_name": "Asiago",
+          "rows": 131
+        }
+      ]
+    },
+    {
+      "bucket": [
+        "1",
+        "5"
+      ],
+      "distinct_foods": 2697,
+      "total_rows": 14849,
+      "top_foods": [
+        {
+          "food_name": "Ice Cream vanilla",
+          "rows": 1661
+        },
+        {
+          "food_name": "Ice Cream chocolate",
+          "rows": 1134
+        },
+        {
+          "food_name": "Ice Cream strawberry",
+          "rows": 533
+        },
+        {
+          "food_name": "Ice Cream mint",
+          "rows": 322
+        },
+        {
+          "food_name": "Ice Cream caramel",
+          "rows": 226
+        },
+        {
+          "food_name": "Ice Cream butter_pecan",
+          "rows": 215
+        },
+        {
+          "food_name": "Ice Cream coffee",
+          "rows": 211
+        },
+        {
+          "food_name": "Ice Cream vanilla_bean",
+          "rows": 206
+        },
+        {
+          "food_name": "Ice Cream cherry",
+          "rows": 182
+        },
+        {
+          "food_name": "Ice Cream Sandwich vanilla",
+          "rows": 175
+        },
+        {
+          "food_name": "Ice Cream cookies_and_cream",
+          "rows": 169
+        },
+        {
+          "food_name": "Ice Cream peanut_butter",
+          "rows": 163
+        },
+        {
+          "food_name": "Ice Cream chocolate_chip_cookie_dough",
+          "rows": 144
+        },
+        {
+          "food_name": "Ice Cream Bar vanilla",
+          "rows": 141
+        },
+        {
+          "food_name": "Sherbet orange",
+          "rows": 126
+        },
+        {
+          "food_name": "Ice Cream cookies_n_cream",
+          "rows": 118
+        },
+        {
+          "food_name": "Ice Cream chocolate_chip",
+          "rows": 117
+        },
+        {
+          "food_name": "Ice Cream Bar chocolate",
+          "rows": 103
+        },
+        {
+          "food_name": "Ice Cream neapolitan",
+          "rows": 101
+        },
+        {
+          "food_name": "Ice Cream mint_chocolate_chip",
+          "rows": 99
+        },
+        {
+          "food_name": "Ice Cream peppermint",
+          "rows": 97
+        },
+        {
+          "food_name": "Ice Cream salted_caramel",
+          "rows": 97
+        },
+        {
+          "food_name": "Ice Cream fudge",
+          "rows": 95
+        },
+        {
+          "food_name": "Ice Cream coconut",
+          "rows": 94
+        },
+        {
+          "food_name": "Ice Cream mango",
+          "rows": 86
+        }
+      ]
+    },
+    {
+      "bucket": [
+        "2",
+        "0"
+      ],
+      "distinct_foods": 1276,
+      "total_rows": 3770,
+      "top_foods": [
+        {
+          "food_name": "Ground Beef",
+          "rows": 461
+        },
+        {
+          "food_name": "Beef Patties",
+          "rows": 79
+        },
+        {
+          "food_name": "Ground Beef 80_lean_20_fat",
+          "rows": 70
+        },
+        {
+          "food_name": "Ribeye Steak",
+          "rows": 67
+        },
+        {
+          "food_name": "Roast Beef",
+          "rows": 66
+        },
+        {
+          "food_name": "Steak",
+          "rows": 51
+        },
+        {
+          "food_name": "Salame italian",
+          "rows": 50
+        },
+        {
+          "food_name": "Ground Beef chuck",
+          "rows": 44
+        },
+        {
+          "food_name": "Ground Beef angus",
+          "rows": 43
+        },
+        {
+          "food_name": "Ground Pork",
+          "rows": 42
+        },
+        {
+          "food_name": "Beef Burgers",
+          "rows": 41
+        },
+        {
+          "food_name": "Ham Steak",
+          "rows": 40
+        },
+        {
+          "food_name": "Beef",
+          "rows": 39
+        },
+        {
+          "food_name": "Beef Patties angus",
+          "rows": 36
+        },
+        {
+          "food_name": "Snapper",
+          "rows": 36
+        },
+        {
+          "food_name": "Ground Beef 85_lean_15_fat",
+          "rows": 35
+        },
+        {
+          "food_name": "Tofu",
+          "rows": 35
+        },
+        {
+          "food_name": "Pork Tenderloin",
+          "rows": 32
+        },
+        {
+          "food_name": "Corned Beef",
+          "rows": 31
+        },
+        {
+          "food_name": "Salame genoa",
+          "rows": 31
+        },
+        {
+          "food_name": "Snapper Fillet",
+          "rows": 27
+        },
+        {
+          "food_name": "Ground Beef sirloin",
+          "rows": 26
+        },
+        {
+          "food_name": "Tofu extra_firm",
+          "rows": 24
+        },
+        {
+          "food_name": "Tofu firm",
+          "rows": 22
+        },
+        {
+          "food_name": "Filet Mignon",
+          "rows": 18
+        }
+      ]
+    },
+    {
+      "bucket": [
+        "2",
+        "4"
+      ],
+      "distinct_foods": 2145,
+      "total_rows": 10016,
+      "top_foods": [
+        {
+          "food_name": "Ham",
+          "rows": 388
+        },
+        {
+          "food_name": "Bacon",
+          "rows": 270
+        },
+        {
+          "food_name": "Bacon hickory_smoked",
+          "rows": 268
+        },
+        {
+          "food_name": "Ham honey",
+          "rows": 219
+        },
+        {
+          "food_name": "Bacon applewood_smoked",
+          "rows": 177
+        },
+        {
+          "food_name": "Sausage pork",
+          "rows": 155
+        },
+        {
+          "food_name": "Pepperoni",
+          "rows": 147
+        },
+        {
+          "food_name": "Frank beef",
+          "rows": 143
+        },
+        {
+          "food_name": "Ham black_forest",
+          "rows": 137
+        },
+        {
+          "food_name": "Meatballs italian_style",
+          "rows": 133
+        },
+        {
+          "food_name": "Italian Sausage mild",
+          "rows": 118
+        },
+        {
+          "food_name": "Italian Sausage hot",
+          "rows": 116
+        },
+        {
+          "food_name": "Bratwurst",
+          "rows": 113
+        },
+        {
+          "food_name": "Hot Dogs beef",
+          "rows": 108
+        },
+        {
+          "food_name": "Bacon smoked",
+          "rows": 101
+        },
+        {
+          "food_name": "Bacon center_cut",
+          "rows": 95
+        },
+        {
+          "food_name": "Chorizo",
+          "rows": 92
+        },
+        {
+          "food_name": "Sausage",
+          "rows": 92
+        },
+        {
+          "food_name": "Prosciutto",
+          "rows": 88
+        },
+        {
+          "food_name": "Smoked Sausage",
+          "rows": 85
+        },
+        {
+          "food_name": "Italian Sausage sweet",
+          "rows": 82
+        },
+        {
+          "food_name": "Bacon thick_cut",
+          "rows": 77
+        },
+        {
+          "food_name": "Bacon uncured",
+          "rows": 74
+        },
+        {
+          "food_name": "Kielbasa",
+          "rows": 74
+        },
+        {
+          "food_name": "Salami genoa",
+          "rows": 74
+        }
+      ]
+    },
+    {
+      "bucket": [
+        "3",
+        "0"
+      ],
+      "distinct_foods": 1415,
+      "total_rows": 3931,
+      "top_foods": [
+        {
+          "food_name": "Chicken Breast",
+          "rows": 498
+        },
+        {
+          "food_name": "Chicken Patties",
+          "rows": 106
+        },
+        {
+          "food_name": "Chicken Breast boneless_skinless",
+          "rows": 97
+        },
+        {
+          "food_name": "Chicken Nuggets",
+          "rows": 59
+        },
+        {
+          "food_name": "Chicken Breast rotisserie_seasoned",
+          "rows": 58
+        },
+        {
+          "food_name": "Chicken Thighs",
+          "rows": 55
+        },
+        {
+          "food_name": "Chicken Wings",
+          "rows": 50
+        },
+        {
+          "food_name": "Chicken Tenders",
+          "rows": 48
+        },
+        {
+          "food_name": "Bologna chicken",
+          "rows": 46
+        },
+        {
+          "food_name": "Ground Chicken",
+          "rows": 42
+        },
+        {
+          "food_name": "Whole Chicken",
+          "rows": 40
+        },
+        {
+          "food_name": "Chicken",
+          "rows": 39
+        },
+        {
+          "food_name": "Chicken Breast fajita",
+          "rows": 32
+        },
+        {
+          "food_name": "Chicken Breast buffalo_style",
+          "rows": 30
+        },
+        {
+          "food_name": "Chicken Burgers turkey",
+          "rows": 29
+        },
+        {
+          "food_name": "Chicken Drumsticks",
+          "rows": 28
+        },
+        {
+          "food_name": "Chicken Franks",
+          "rows": 28
+        },
+        {
+          "food_name": "Chicken Sausage",
+          "rows": 24
+        },
+        {
+          "food_name": "Chicken Breast buffalo",
+          "rows": 23
+        },
+        {
+          "food_name": "Chicken Strips",
+          "rows": 21
+        },
+        {
+          "food_name": "Chicken Burgers",
+          "rows": 20
+        },
+        {
+          "food_name": "Chicken Sausage apple",
+          "rows": 20
+        },
+        {
+          "food_name": "Whole Chicken rotisserie",
+          "rows": 20
+        },
+        {
+          "food_name": "Chicken Breast bbq",
+          "rows": 19
+        },
+        {
+          "food_name": "Chicken Breast italian_style",
+          "rows": 19
+        }
+      ]
+    },
+    {
+      "bucket": [
+        "4",
+        "0"
+      ],
+      "distinct_foods": 2090,
+      "total_rows": 9264,
+      "top_foods": [
+        {
+          "food_name": "Shrimp",
+          "rows": 1048
+        },
+        {
+          "food_name": "Tuna chunk_light",
+          "rows": 273
+        },
+        {
+          "food_name": "Clam",
+          "rows": 228
+        },
+        {
+          "food_name": "Crab",
+          "rows": 219
+        },
+        {
+          "food_name": "Lobster",
+          "rows": 210
+        },
+        {
+          "food_name": "Salmon",
+          "rows": 204
+        },
+        {
+          "food_name": "Tilapia",
+          "rows": 164
+        },
+        {
+          "food_name": "Cod",
+          "rows": 157
+        },
+        {
+          "food_name": "Tuna albacore",
+          "rows": 153
+        },
+        {
+          "food_name": "Salmon pink",
+          "rows": 149
+        },
+        {
+          "food_name": "Tuna",
+          "rows": 132
+        },
+        {
+          "food_name": "Salmon sockeye",
+          "rows": 130
+        },
+        {
+          "food_name": "Salmon atlantic",
+          "rows": 127
+        },
+        {
+          "food_name": "Tuna solid_white_albacore",
+          "rows": 111
+        },
+        {
+          "food_name": "Swai",
+          "rows": 83
+        },
+        {
+          "food_name": "Catfish",
+          "rows": 73
+        },
+        {
+          "food_name": "Shrimp jumbo",
+          "rows": 72
+        },
+        {
+          "food_name": "Scallop",
+          "rows": 71
+        },
+        {
+          "food_name": "Tuna yellowfin",
+          "rows": 65
+        },
+        {
+          "food_name": "Squid",
+          "rows": 63
+        },
+        {
+          "food_name": "Shrimp white",
+          "rows": 61
+        },
+        {
+          "food_name": "Fish Sticks",
+          "rows": 57
+        },
+        {
+          "food_name": "Mahi Mahi",
+          "rows": 55
+        },
+        {
+          "food_name": "Shrimp medium",
+          "rows": 51
+        },
+        {
+          "food_name": "Flounder",
+          "rows": 43
+        }
+      ]
+    },
+    {
+      "bucket": [
+        "5",
+        "0"
+      ],
+      "distinct_foods": 915,
+      "total_rows": 3015,
+      "top_foods": [
+        {
+          "food_name": "Egg Whites",
+          "rows": 163
+        },
+        {
+          "food_name": "Eggs brown",
+          "rows": 160
+        },
+        {
+          "food_name": "Eggs large",
+          "rows": 109
+        },
+        {
+          "food_name": "Egg Noodles",
+          "rows": 100
+        },
+        {
+          "food_name": "Eggs",
+          "rows": 97
+        },
+        {
+          "food_name": "Breakfast Sandwich Sausage Egg Cheese",
+          "rows": 91
+        },
+        {
+          "food_name": "Noodles egg",
+          "rows": 68
+        },
+        {
+          "food_name": "Breakfast Sandwich sausage_egg_cheese",
+          "rows": 65
+        },
+        {
+          "food_name": "Eggs grade_a",
+          "rows": 57
+        },
+        {
+          "food_name": "Pasta egg",
+          "rows": 51
+        },
+        {
+          "food_name": "Egg Noodles wide",
+          "rows": 49
+        },
+        {
+          "food_name": "Breakfast Sandwich egg",
+          "rows": 42
+        },
+        {
+          "food_name": "Eggs extra_large",
+          "rows": 40
+        },
+        {
+          "food_name": "Noodles extra_wide_egg",
+          "rows": 40
+        },
+        {
+          "food_name": "Egg Noodles medium",
+          "rows": 38
+        },
+        {
+          "food_name": "Egg Substitute",
+          "rows": 37
+        },
+        {
+          "food_name": "Egg Salad",
+          "rows": 33
+        },
+        {
+          "food_name": "Potato Salad Deviled Egg",
+          "rows": 33
+        },
+        {
+          "food_name": "Fettuccine egg",
+          "rows": 31
+        },
+        {
+          "food_name": "Eggs medium",
+          "rows": 30
+        },
+        {
+          "food_name": "Sandwich Egg",
+          "rows": 30
+        },
+        {
+          "food_name": "Potato Salad Egg",
+          "rows": 25
+        },
+        {
+          "food_name": "Breakfast Sandwich bacon_egg_cheese",
+          "rows": 24
+        },
+        {
+          "food_name": "Breakfast Sandwich Bacon Egg Cheese",
+          "rows": 23
+        },
+        {
+          "food_name": "Eggs grade_aa",
+          "rows": 23
+        }
+      ]
+    },
+    {
+      "bucket": [
+        "6",
+        "0"
+      ],
+      "distinct_foods": 1033,
+      "total_rows": 3517,
+      "top_foods": [
+        {
+          "food_name": "Spinach",
+          "rows": 311
+        },
+        {
+          "food_name": "Vegetable Blend",
+          "rows": 123
+        },
+        {
+          "food_name": "Baby Spinach",
+          "rows": 117
+        },
+        {
+          "food_name": "Canned Vegetables",
+          "rows": 86
+        },
+        {
+          "food_name": "Vegetable Blend mixed",
+          "rows": 84
+        },
+        {
+          "food_name": "Kale",
+          "rows": 75
+        },
+        {
+          "food_name": "Spring Mix",
+          "rows": 74
+        },
+        {
+          "food_name": "Collard Greens",
+          "rows": 69
+        },
+        {
+          "food_name": "Vegetable Blend stir_fry",
+          "rows": 69
+        },
+        {
+          "food_name": "Canned Vegetables sweet",
+          "rows": 64
+        },
+        {
+          "food_name": "Hominy white",
+          "rows": 60
+        },
+        {
+          "food_name": "Pineapple",
+          "rows": 49
+        },
+        {
+          "food_name": "Romaine Lettuce",
+          "rows": 41
+        },
+        {
+          "food_name": "Hash Browns",
+          "rows": 32
+        },
+        {
+          "food_name": "Turnip Greens",
+          "rows": 31
+        },
+        {
+          "food_name": "Arugula",
+          "rows": 28
+        },
+        {
+          "food_name": "Lima Beans baby",
+          "rows": 28
+        },
+        {
+          "food_name": "Vegetable Blend green_beans",
+          "rows": 28
+        },
+        {
+          "food_name": "Romaine Hearts",
+          "rows": 24
+        },
+        {
+          "food_name": "Pimientos",
+          "rows": 23
+        },
+        {
+          "food_name": "Vegetable Blend seasoned",
+          "rows": 23
+        },
+        {
+          "food_name": "Hominy golden",
+          "rows": 22
+        },
+        {
+          "food_name": "Lettuce iceberg",
+          "rows": 22
+        },
+        {
+          "food_name": "Kale Greens",
+          "rows": 21
+        },
+        {
+          "food_name": "Mustard Greens",
+          "rows": 21
+        }
+      ]
+    },
+    {
+      "bucket": [
+        "7",
+        "0"
+      ],
+      "distinct_foods": 969,
+      "total_rows": 4027,
+      "top_foods": [
+        {
+          "food_name": "Pineapple",
+          "rows": 413
+        },
+        {
+          "food_name": "Pears",
+          "rows": 217
+        },
+        {
+          "food_name": "Pears bartlett",
+          "rows": 169
+        },
+        {
+          "food_name": "Apple Chips",
+          "rows": 120
+        },
+        {
+          "food_name": "Fruit Cocktail",
+          "rows": 103
+        },
+        {
+          "food_name": "Fruit Cocktail heavy_syrup",
+          "rows": 88
+        },
+        {
+          "food_name": "Apples",
+          "rows": 66
+        },
+        {
+          "food_name": "Mixed Fruit",
+          "rows": 60
+        },
+        {
+          "food_name": "Apple Snack Pack",
+          "rows": 57
+        },
+        {
+          "food_name": "Dried Pineapple",
+          "rows": 50
+        },
+        {
+          "food_name": "Salad Kit caesar",
+          "rows": 49
+        },
+        {
+          "food_name": "Pineapple tidbits",
+          "rows": 47
+        },
+        {
+          "food_name": "Apple Chips cinnamon",
+          "rows": 43
+        },
+        {
+          "food_name": "Dried Fruit pineapple",
+          "rows": 43
+        },
+        {
+          "food_name": "Pears heavy_syrup",
+          "rows": 42
+        },
+        {
+          "food_name": "Apple Snack Pack caramel",
+          "rows": 41
+        },
+        {
+          "food_name": "Salad Mix spring_mix",
+          "rows": 37
+        },
+        {
+          "food_name": "Apple Chips pineapple",
+          "rows": 36
+        },
+        {
+          "food_name": "Apple Snack Pack red",
+          "rows": 33
+        },
+        {
+          "food_name": "Pineapple Chunks",
+          "rows": 33
+        },
+        {
+          "food_name": "Fruit Cocktail light_syrup",
+          "rows": 29
+        },
+        {
+          "food_name": "Plain",
+          "rows": 28
+        },
+        {
+          "food_name": "Apples gala",
+          "rows": 27
+        },
+        {
+          "food_name": "Frozen Fruit pineapple",
+          "rows": 26
+        },
+        {
+          "food_name": "Apple Snack Pack sweet",
+          "rows": 23
+        }
+      ]
+    },
+    {
+      "bucket": [
+        "8",
+        "0"
+      ],
+      "distinct_foods": 2562,
+      "total_rows": 10614,
+      "top_foods": [
+        {
+          "food_name": "Bread white",
+          "rows": 449
+        },
+        {
+          "food_name": "Bread whole_wheat",
+          "rows": 301
+        },
+        {
+          "food_name": "Bread",
+          "rows": 257
+        },
+        {
+          "food_name": "Waffles",
+          "rows": 210
+        },
+        {
+          "food_name": "Bread Crumbs",
+          "rows": 193
+        },
+        {
+          "food_name": "Bread italian",
+          "rows": 162
+        },
+        {
+          "food_name": "Bread wheat",
+          "rows": 157
+        },
+        {
+          "food_name": "Sourdough Bread",
+          "rows": 148
+        },
+        {
+          "food_name": "Waffles blueberry",
+          "rows": 137
+        },
+        {
+          "food_name": "Rye Bread",
+          "rows": 132
+        },
+        {
+          "food_name": "Pita Bread",
+          "rows": 130
+        },
+        {
+          "food_name": "Bread multigrain",
+          "rows": 110
+        },
+        {
+          "food_name": "Pancakes buttermilk",
+          "rows": 105
+        },
+        {
+          "food_name": "Sandwich Bread white",
+          "rows": 97
+        },
+        {
+          "food_name": "Bread honey_wheat",
+          "rows": 96
+        },
+        {
+          "food_name": "Bread Crumbs italian_style",
+          "rows": 91
+        },
+        {
+          "food_name": "Frosting vanilla",
+          "rows": 87
+        },
+        {
+          "food_name": "Garlic Bread",
+          "rows": 86
+        },
+        {
+          "food_name": "Waffles buttermilk",
+          "rows": 86
+        },
+        {
+          "food_name": "Bread honey",
+          "rows": 85
+        },
+        {
+          "food_name": "Waffles chocolate_chip",
+          "rows": 76
+        },
+        {
+          "food_name": "Bread french",
+          "rows": 73
+        },
+        {
+          "food_name": "Bread garlic",
+          "rows": 71
+        },
+        {
+          "food_name": "Bread cinnamon",
+          "rows": 64
+        },
+        {
+          "food_name": "Bread multi_grain",
+          "rows": 64
+        }
+      ]
+    },
+    {
+      "bucket": [
+        "8",
+        "3"
+      ],
+      "distinct_foods": 1852,
+      "total_rows": 7581,
+      "top_foods": [
+        {
+          "food_name": "Spaghetti",
+          "rows": 411
+        },
+        {
+          "food_name": "Penne Pasta",
+          "rows": 136
+        },
+        {
+          "food_name": "Pasta linguine",
+          "rows": 133
+        },
+        {
+          "food_name": "Spaghetti thin",
+          "rows": 133
+        },
+        {
+          "food_name": "Macaroni",
+          "rows": 128
+        },
+        {
+          "food_name": "Pasta rigatoni",
+          "rows": 117
+        },
+        {
+          "food_name": "Pasta whole_wheat",
+          "rows": 116
+        },
+        {
+          "food_name": "Pasta fusilli",
+          "rows": 115
+        },
+        {
+          "food_name": "Angel Hair Pasta",
+          "rows": 104
+        },
+        {
+          "food_name": "Pasta elbow",
+          "rows": 97
+        },
+        {
+          "food_name": "Spaghetti whole_wheat",
+          "rows": 96
+        },
+        {
+          "food_name": "Macaroni elbow",
+          "rows": 94
+        },
+        {
+          "food_name": "Gnocchi potato",
+          "rows": 92
+        },
+        {
+          "food_name": "Ravioli cheese",
+          "rows": 86
+        },
+        {
+          "food_name": "Pasta farfalle",
+          "rows": 80
+        },
+        {
+          "food_name": "Rotini",
+          "rows": 77
+        },
+        {
+          "food_name": "Pasta rotini",
+          "rows": 76
+        },
+        {
+          "food_name": "Penne",
+          "rows": 74
+        },
+        {
+          "food_name": "Pasta angel_hair",
+          "rows": 70
+        },
+        {
+          "food_name": "Tortellini cheese",
+          "rows": 68
+        },
+        {
+          "food_name": "Pasta",
+          "rows": 67
+        },
+        {
+          "food_name": "Ravioli beef",
+          "rows": 66
+        },
+        {
+          "food_name": "Pasta shells",
+          "rows": 63
+        },
+        {
+          "food_name": "Ravioli four_cheese",
+          "rows": 60
+        },
+        {
+          "food_name": "Penne Pasta whole_wheat",
+          "rows": 52
+        }
+      ]
+    },
+    {
+      "bucket": [
+        "8",
+        "4"
+      ],
+      "distinct_foods": 1100,
+      "total_rows": 3856,
+      "top_foods": [
+        {
+          "food_name": "Rice long_grain",
+          "rows": 298
+        },
+        {
+          "food_name": "Rice brown",
+          "rows": 275
+        },
+        {
+          "food_name": "Rice white",
+          "rows": 144
+        },
+        {
+          "food_name": "Rice jasmine",
+          "rows": 126
+        },
+        {
+          "food_name": "Rice medium_grain",
+          "rows": 84
+        },
+        {
+          "food_name": "Rice",
+          "rows": 80
+        },
+        {
+          "food_name": "Basmati Rice",
+          "rows": 69
+        },
+        {
+          "food_name": "Jasmine Rice",
+          "rows": 64
+        },
+        {
+          "food_name": "Rice extra_long_grain",
+          "rows": 60
+        },
+        {
+          "food_name": "Rice Cakes",
+          "rows": 57
+        },
+        {
+          "food_name": "Rice basmati",
+          "rows": 55
+        },
+        {
+          "food_name": "Rice brown_basmati",
+          "rows": 42
+        },
+        {
+          "food_name": "Rice Mix chicken",
+          "rows": 37
+        },
+        {
+          "food_name": "Jasmine Rice long_grain",
+          "rows": 34
+        },
+        {
+          "food_name": "Brown Rice",
+          "rows": 33
+        },
+        {
+          "food_name": "Rice arborio",
+          "rows": 31
+        },
+        {
+          "food_name": "Basmati Rice white",
+          "rows": 30
+        },
+        {
+          "food_name": "Arborio Rice",
+          "rows": 28
+        },
+        {
+          "food_name": "Rice Crackers soy_sauce",
+          "rows": 28
+        },
+        {
+          "food_name": "Farro",
+          "rows": 26
+        },
+        {
+          "food_name": "Rice parboiled",
+          "rows": 25
+        },
+        {
+          "food_name": "Wild Rice",
+          "rows": 23
+        },
+        {
+          "food_name": "Brown Rice long_grain",
+          "rows": 22
+        },
+        {
+          "food_name": "Rice white_basmati",
+          "rows": 22
+        },
+        {
+          "food_name": "Rice white_jasmine",
+          "rows": 22
+        }
+      ]
+    },
+    {
+      "bucket": [
+        "8",
+        "6"
+      ],
+      "distinct_foods": 1091,
+      "total_rows": 6722,
+      "top_foods": [
+        {
+          "food_name": "Cereal cinnamon",
+          "rows": 482
+        },
+        {
+          "food_name": "Cereal chocolate",
+          "rows": 260
+        },
+        {
+          "food_name": "Cereal honey",
+          "rows": 243
+        },
+        {
+          "food_name": "Cereal",
+          "rows": 212
+        },
+        {
+          "food_name": "Cereal strawberry",
+          "rows": 187
+        },
+        {
+          "food_name": "Cereal cocoa",
+          "rows": 174
+        },
+        {
+          "food_name": "Cereal apple",
+          "rows": 173
+        },
+        {
+          "food_name": "Cereal raisin_bran",
+          "rows": 167
+        },
+        {
+          "food_name": "Cereal honey_nut",
+          "rows": 143
+        },
+        {
+          "food_name": "Cereal frosted_flakes",
+          "rows": 141
+        },
+        {
+          "food_name": "Cereal berry",
+          "rows": 133
+        },
+        {
+          "food_name": "Cereal fruit",
+          "rows": 105
+        },
+        {
+          "food_name": "Cereal Bars strawberry",
+          "rows": 101
+        },
+        {
+          "food_name": "Cereal blueberry",
+          "rows": 101
+        },
+        {
+          "food_name": "Cereal marshmallow",
+          "rows": 94
+        },
+        {
+          "food_name": "Cereal vanilla",
+          "rows": 79
+        },
+        {
+          "food_name": "Cereal peanut_butter",
+          "rows": 72
+        },
+        {
+          "food_name": "Cereal fruity",
+          "rows": 71
+        },
+        {
+          "food_name": "Cereal Bars blueberry",
+          "rows": 68
+        },
+        {
+          "food_name": "Cereal frosted",
+          "rows": 64
+        },
+        {
+          "food_name": "Cereal toasted_oats",
+          "rows": 62
+        },
+        {
+          "food_name": "Cereal Bars apple",
+          "rows": 61
+        },
+        {
+          "food_name": "Cereal multigrain",
+          "rows": 61
+        },
+        {
+          "food_name": "Cereal quick_oats",
+          "rows": 61
+        },
+        {
+          "food_name": "Cereal toasted_rice",
+          "rows": 61
+        }
+      ]
+    },
+    {
+      "bucket": [
+        "8",
+        "7"
+      ],
+      "distinct_foods": 1838,
+      "total_rows": 6193,
+      "top_foods": [
+        {
+          "food_name": "Flour all_purpose",
+          "rows": 284
+        },
+        {
+          "food_name": "Cookie Dough chocolate_chip",
+          "rows": 151
+        },
+        {
+          "food_name": "Pizza Crust Mix",
+          "rows": 150
+        },
+        {
+          "food_name": "Cookie Mix chocolate_chip",
+          "rows": 123
+        },
+        {
+          "food_name": "Cookie Dough sugar",
+          "rows": 121
+        },
+        {
+          "food_name": "Pancake Mix buttermilk",
+          "rows": 118
+        },
+        {
+          "food_name": "Waffle Mix buttermilk",
+          "rows": 117
+        },
+        {
+          "food_name": "Cake Mix chocolate",
+          "rows": 114
+        },
+        {
+          "food_name": "Cookie Mix sugar",
+          "rows": 90
+        },
+        {
+          "food_name": "Waffle Mix",
+          "rows": 75
+        },
+        {
+          "food_name": "Cake Mix yellow",
+          "rows": 70
+        },
+        {
+          "food_name": "Muffin Mix blueberry",
+          "rows": 69
+        },
+        {
+          "food_name": "Pancake Mix",
+          "rows": 68
+        },
+        {
+          "food_name": "Cornstarch",
+          "rows": 67
+        },
+        {
+          "food_name": "Brownie Mix fudge",
+          "rows": 65
+        },
+        {
+          "food_name": "Flour whole_wheat",
+          "rows": 63
+        },
+        {
+          "food_name": "Brownie Mix",
+          "rows": 54
+        },
+        {
+          "food_name": "Brownie Mix chocolate",
+          "rows": 54
+        },
+        {
+          "food_name": "Cake Mix",
+          "rows": 53
+        },
+        {
+          "food_name": "Cake Mix vanilla",
+          "rows": 47
+        },
+        {
+          "food_name": "Waffle Mix complete",
+          "rows": 44
+        },
+        {
+          "food_name": "Self-Rising Flour",
+          "rows": 36
+        },
+        {
+          "food_name": "Baking Mix all_purpose",
+          "rows": 35
+        },
+        {
+          "food_name": "Cookie Mix peanut_butter",
+          "rows": 34
+        },
+        {
+          "food_name": "Cake Mix white",
+          "rows": 33
+        }
+      ]
+    },
+    {
+      "bucket": [
+        "9",
+        "0"
+      ],
+      "distinct_foods": 932,
+      "total_rows": 5936,
+      "top_foods": [
+        {
+          "food_name": "Black Beans",
+          "rows": 511
+        },
+        {
+          "food_name": "Pinto Beans",
+          "rows": 465
+        },
+        {
+          "food_name": "Garbanzo Beans",
+          "rows": 303
+        },
+        {
+          "food_name": "Jelly Beans",
+          "rows": 209
+        },
+        {
+          "food_name": "Kidney Beans dark_red",
+          "rows": 172
+        },
+        {
+          "food_name": "Refried Beans",
+          "rows": 162
+        },
+        {
+          "food_name": "Baked Beans",
+          "rows": 159
+        },
+        {
+          "food_name": "Great Northern Beans great_northern",
+          "rows": 105
+        },
+        {
+          "food_name": "Kidney Beans light_red",
+          "rows": 99
+        },
+        {
+          "food_name": "Lentils",
+          "rows": 94
+        },
+        {
+          "food_name": "Cannellini Beans",
+          "rows": 92
+        },
+        {
+          "food_name": "Great Northern Beans",
+          "rows": 88
+        },
+        {
+          "food_name": "Black-Eyed Peas blackeye",
+          "rows": 87
+        },
+        {
+          "food_name": "Navy Beans",
+          "rows": 87
+        },
+        {
+          "food_name": "Red Beans",
+          "rows": 72
+        },
+        {
+          "food_name": "Lima Beans",
+          "rows": 67
+        },
+        {
+          "food_name": "Refried Beans traditional",
+          "rows": 66
+        },
+        {
+          "food_name": "Kidney Beans",
+          "rows": 60
+        },
+        {
+          "food_name": "Pink Beans",
+          "rows": 54
+        },
+        {
+          "food_name": "Pork and Beans",
+          "rows": 51
+        },
+        {
+          "food_name": "Baked Beans bacon",
+          "rows": 48
+        },
+        {
+          "food_name": "Butter Beans",
+          "rows": 46
+        },
+        {
+          "food_name": "Small Red Beans small_red",
+          "rows": 46
+        },
+        {
+          "food_name": "Kidney Beans red_kidney",
+          "rows": 45
+        },
+        {
+          "food_name": "Kidney Beans dark_red_kidney",
+          "rows": 44
+        }
+      ]
+    },
+    {
+      "bucket": [
+        "A",
+        "0"
+      ],
+      "distinct_foods": 3102,
+      "total_rows": 19058,
+      "top_foods": [
+        {
+          "food_name": "Almonds",
+          "rows": 1427
+        },
+        {
+          "food_name": "Cashews",
+          "rows": 1196
+        },
+        {
+          "food_name": "Peanuts",
+          "rows": 805
+        },
+        {
+          "food_name": "Mixed Nuts",
+          "rows": 738
+        },
+        {
+          "food_name": "Pecans",
+          "rows": 600
+        },
+        {
+          "food_name": "Walnuts",
+          "rows": 590
+        },
+        {
+          "food_name": "Chocolate Candy peanut_butter",
+          "rows": 519
+        },
+        {
+          "food_name": "Sunflower Seeds",
+          "rows": 441
+        },
+        {
+          "food_name": "Pistachios",
+          "rows": 403
+        },
+        {
+          "food_name": "Pumpkin Seeds",
+          "rows": 330
+        },
+        {
+          "food_name": "Chocolate Candy almond",
+          "rows": 258
+        },
+        {
+          "food_name": "Almonds dark_chocolate",
+          "rows": 199
+        },
+        {
+          "food_name": "Protein Bars peanut_butter",
+          "rows": 186
+        },
+        {
+          "food_name": "Peanuts honey_roasted",
+          "rows": 183
+        },
+        {
+          "food_name": "Chocolate Candy peanut",
+          "rows": 180
+        },
+        {
+          "food_name": "Macadamia Nuts",
+          "rows": 154
+        },
+        {
+          "food_name": "Protein Bars chocolate_peanut_butter",
+          "rows": 153
+        },
+        {
+          "food_name": "Pretzels peanut_butter_filled",
+          "rows": 137
+        },
+        {
+          "food_name": "Pine Nuts",
+          "rows": 123
+        },
+        {
+          "food_name": "Chocolate Candy peanut_butter_cup",
+          "rows": 111
+        },
+        {
+          "food_name": "Chocolate Candy pecan",
+          "rows": 98
+        },
+        {
+          "food_name": "Protein Bars peanut_butter_chocolate",
+          "rows": 94
+        },
+        {
+          "food_name": "Granola Bars peanut_butter",
+          "rows": 92
+        },
+        {
+          "food_name": "Cashews honey_roasted",
+          "rows": 86
+        },
+        {
+          "food_name": "Cheese and Crackers Pack peanut_butter",
+          "rows": 86
+        }
+      ]
+    },
+    {
+      "bucket": [
+        "C",
+        "0"
+      ],
+      "distinct_foods": 1162,
+      "total_rows": 5988,
+      "top_foods": [
+        {
+          "food_name": "Honey",
+          "rows": 312
+        },
+        {
+          "food_name": "Maple Syrup",
+          "rows": 221
+        },
+        {
+          "food_name": "Syrup",
+          "rows": 203
+        },
+        {
+          "food_name": "Whipped Topping",
+          "rows": 183
+        },
+        {
+          "food_name": "Sugar",
+          "rows": 158
+        },
+        {
+          "food_name": "Honey clover",
+          "rows": 149
+        },
+        {
+          "food_name": "Honey raw",
+          "rows": 144
+        },
+        {
+          "food_name": "Chocolate Syrup",
+          "rows": 121
+        },
+        {
+          "food_name": "Sweetener",
+          "rows": 102
+        },
+        {
+          "food_name": "Honey wildflower",
+          "rows": 100
+        },
+        {
+          "food_name": "Powdered Sugar",
+          "rows": 99
+        },
+        {
+          "food_name": "Sugar granulated",
+          "rows": 87
+        },
+        {
+          "food_name": "Honey manuka",
+          "rows": 86
+        },
+        {
+          "food_name": "Honey pure",
+          "rows": 81
+        },
+        {
+          "food_name": "Maple Syrup pure",
+          "rows": 79
+        },
+        {
+          "food_name": "Syrup vanilla",
+          "rows": 75
+        },
+        {
+          "food_name": "Syrup strawberry",
+          "rows": 71
+        },
+        {
+          "food_name": "Agave Nectar",
+          "rows": 68
+        },
+        {
+          "food_name": "Brown Sugar",
+          "rows": 68
+        },
+        {
+          "food_name": "Stevia Sweetener",
+          "rows": 65
+        },
+        {
+          "food_name": "Syrup caramel",
+          "rows": 62
+        },
+        {
+          "food_name": "Syrup butter",
+          "rows": 61
+        },
+        {
+          "food_name": "Syrup maple",
+          "rows": 60
+        },
+        {
+          "food_name": "Sugar white",
+          "rows": 58
+        },
+        {
+          "food_name": "Brown Sugar dark",
+          "rows": 52
+        }
+      ]
+    },
+    {
+      "bucket": [
+        "D",
+        "0"
+      ],
+      "distinct_foods": 1056,
+      "total_rows": 4286,
+      "top_foods": [
+        {
+          "food_name": "Hot Cocoa Mix milk_chocolate",
+          "rows": 245
+        },
+        {
+          "food_name": "Hot Cocoa Mix chocolate",
+          "rows": 168
+        },
+        {
+          "food_name": "Hot Cocoa Mix marshmallow",
+          "rows": 128
+        },
+        {
+          "food_name": "Drink Mix strawberry",
+          "rows": 123
+        },
+        {
+          "food_name": "Drink Mix fruit_punch",
+          "rows": 117
+        },
+        {
+          "food_name": "Drink Mix",
+          "rows": 106
+        },
+        {
+          "food_name": "Hot Cocoa Mix",
+          "rows": 106
+        },
+        {
+          "food_name": "Drink Mix orange",
+          "rows": 103
+        },
+        {
+          "food_name": "Drink Mix grape",
+          "rows": 86
+        },
+        {
+          "food_name": "Hot Cocoa Mix peppermint",
+          "rows": 80
+        },
+        {
+          "food_name": "Chocolate Milk Mix",
+          "rows": 78
+        },
+        {
+          "food_name": "Drink Mix peach",
+          "rows": 67
+        },
+        {
+          "food_name": "Drink Mix cherry",
+          "rows": 63
+        },
+        {
+          "food_name": "Wellness Shot ginger",
+          "rows": 57
+        },
+        {
+          "food_name": "Drink Mix lemon",
+          "rows": 48
+        },
+        {
+          "food_name": "Wellness Shot turmeric",
+          "rows": 46
+        },
+        {
+          "food_name": "Drink Mix raspberry",
+          "rows": 43
+        },
+        {
+          "food_name": "Hot Cocoa Mix dark_chocolate",
+          "rows": 43
+        },
+        {
+          "food_name": "Drink Mix tropical_punch",
+          "rows": 41
+        },
+        {
+          "food_name": "Drink Mix vanilla",
+          "rows": 40
+        },
+        {
+          "food_name": "Drink Mix berry",
+          "rows": 38
+        },
+        {
+          "food_name": "Hot Cocoa Mix salted_caramel",
+          "rows": 37
+        },
+        {
+          "food_name": "Drink Mix mango",
+          "rows": 35
+        },
+        {
+          "food_name": "Drink Mix pineapple",
+          "rows": 35
+        },
+        {
+          "food_name": "Wellness Shot lemon",
+          "rows": 32
+        }
+      ]
+    },
+    {
+      "bucket": [
+        "D",
+        "1"
+      ],
+      "distinct_foods": 1950,
+      "total_rows": 11862,
+      "top_foods": [
+        {
+          "food_name": "Orange Juice",
+          "rows": 805
+        },
+        {
+          "food_name": "Apple Juice",
+          "rows": 628
+        },
+        {
+          "food_name": "Lemonade",
+          "rows": 406
+        },
+        {
+          "food_name": "Juice apple",
+          "rows": 294
+        },
+        {
+          "food_name": "Lemonade Mix",
+          "rows": 190
+        },
+        {
+          "food_name": "Fruit Punch",
+          "rows": 184
+        },
+        {
+          "food_name": "Apple Cider",
+          "rows": 179
+        },
+        {
+          "food_name": "Juice lemon",
+          "rows": 160
+        },
+        {
+          "food_name": "Tomato Juice",
+          "rows": 157
+        },
+        {
+          "food_name": "Juice cranberry",
+          "rows": 156
+        },
+        {
+          "food_name": "Juice pineapple",
+          "rows": 156
+        },
+        {
+          "food_name": "Juice mango",
+          "rows": 144
+        },
+        {
+          "food_name": "Vegetable Juice",
+          "rows": 144
+        },
+        {
+          "food_name": "Juice orange",
+          "rows": 132
+        },
+        {
+          "food_name": "Lemonade strawberry",
+          "rows": 120
+        },
+        {
+          "food_name": "Grape Juice",
+          "rows": 111
+        },
+        {
+          "food_name": "Juice strawberry",
+          "rows": 105
+        },
+        {
+          "food_name": "Lemonade raspberry",
+          "rows": 94
+        },
+        {
+          "food_name": "Cranberry Juice Cocktail",
+          "rows": 92
+        },
+        {
+          "food_name": "Prune Juice",
+          "rows": 87
+        },
+        {
+          "food_name": "Juice pomegranate",
+          "rows": 86
+        },
+        {
+          "food_name": "Juice tart_cherry",
+          "rows": 83
+        },
+        {
+          "food_name": "Juice grape",
+          "rows": 81
+        },
+        {
+          "food_name": "Juice cranberry_apple",
+          "rows": 80
+        },
+        {
+          "food_name": "Orange Juice no_pulp",
+          "rows": 76
+        }
+      ]
+    },
+    {
+      "bucket": [
+        "D",
+        "2"
+      ],
+      "distinct_foods": 1095,
+      "total_rows": 11761,
+      "top_foods": [
+        {
+          "food_name": "Soda orange",
+          "rows": 451
+        },
+        {
+          "food_name": "Soda lemon_lime",
+          "rows": 395
+        },
+        {
+          "food_name": "Cola lime",
+          "rows": 359
+        },
+        {
+          "food_name": "Cola",
+          "rows": 340
+        },
+        {
+          "food_name": "Soda cream",
+          "rows": 337
+        },
+        {
+          "food_name": "Sparkling Water",
+          "rows": 280
+        },
+        {
+          "food_name": "Sparkling Water lemon",
+          "rows": 271
+        },
+        {
+          "food_name": "Sparkling Water lime",
+          "rows": 267
+        },
+        {
+          "food_name": "Soda grape",
+          "rows": 265
+        },
+        {
+          "food_name": "Soda root_beer",
+          "rows": 260
+        },
+        {
+          "food_name": "Sparkling Water orange",
+          "rows": 239
+        },
+        {
+          "food_name": "Sparkling Water black_cherry",
+          "rows": 224
+        },
+        {
+          "food_name": "Ginger Ale",
+          "rows": 215
+        },
+        {
+          "food_name": "Sparkling Water raspberry",
+          "rows": 213
+        },
+        {
+          "food_name": "Soda citrus",
+          "rows": 204
+        },
+        {
+          "food_name": "Soda",
+          "rows": 188
+        },
+        {
+          "food_name": "Sparkling Water strawberry",
+          "rows": 187
+        },
+        {
+          "food_name": "Soda strawberry",
+          "rows": 175
+        },
+        {
+          "food_name": "Sparkling Water grapefruit",
+          "rows": 173
+        },
+        {
+          "food_name": "Sparkling Water lemon_lime",
+          "rows": 170
+        },
+        {
+          "food_name": "Soda cherry",
+          "rows": 153
+        },
+        {
+          "food_name": "Tonic Water",
+          "rows": 137
+        },
+        {
+          "food_name": "Soda cola",
+          "rows": 135
+        },
+        {
+          "food_name": "Soda black_cherry",
+          "rows": 128
+        },
+        {
+          "food_name": "Soda pineapple",
+          "rows": 126
+        }
+      ]
+    },
+    {
+      "bucket": [
+        "D",
+        "3"
+      ],
+      "distinct_foods": 969,
+      "total_rows": 4292,
+      "top_foods": [
+        {
+          "food_name": "Coffee Creamer",
+          "rows": 328
+        },
+        {
+          "food_name": "Coffee Creamer french_vanilla",
+          "rows": 244
+        },
+        {
+          "food_name": "Coffee Creamer hazelnut",
+          "rows": 198
+        },
+        {
+          "food_name": "Cold Brew Coffee",
+          "rows": 153
+        },
+        {
+          "food_name": "Cold Brew Coffee vanilla",
+          "rows": 129
+        },
+        {
+          "food_name": "Coffee Creamer vanilla",
+          "rows": 119
+        },
+        {
+          "food_name": "Cold Brew Coffee mocha",
+          "rows": 89
+        },
+        {
+          "food_name": "Latte Mix french_vanilla",
+          "rows": 70
+        },
+        {
+          "food_name": "Coffee mocha",
+          "rows": 61
+        },
+        {
+          "food_name": "Cold Brew Coffee black",
+          "rows": 61
+        },
+        {
+          "food_name": "Cold Brew Coffee caramel",
+          "rows": 57
+        },
+        {
+          "food_name": "Coffee",
+          "rows": 55
+        },
+        {
+          "food_name": "Coffee Creamer pumpkin_spice",
+          "rows": 52
+        },
+        {
+          "food_name": "Coffee Creamer caramel",
+          "rows": 43
+        },
+        {
+          "food_name": "Latte Mix caramel",
+          "rows": 40
+        },
+        {
+          "food_name": "Latte Mix mocha",
+          "rows": 39
+        },
+        {
+          "food_name": "Coffee Creamer peppermint",
+          "rows": 34
+        },
+        {
+          "food_name": "Coffee vanilla",
+          "rows": 32
+        },
+        {
+          "food_name": "Latte vanilla",
+          "rows": 32
+        },
+        {
+          "food_name": "Coffee Creamer sweet_cream",
+          "rows": 31
+        },
+        {
+          "food_name": "Coffee caramel",
+          "rows": 30
+        },
+        {
+          "food_name": "Coffee Creamer caramel_macchiato",
+          "rows": 30
+        },
+        {
+          "food_name": "Espresso",
+          "rows": 30
+        },
+        {
+          "food_name": "Latte Mix chai",
+          "rows": 30
+        },
+        {
+          "food_name": "Latte Mix hazelnut",
+          "rows": 27
+        }
+      ]
+    },
+    {
+      "bucket": [
+        "D",
+        "4"
+      ],
+      "distinct_foods": 1278,
+      "total_rows": 5670,
+      "top_foods": [
+        {
+          "food_name": "Iced Tea lemon",
+          "rows": 249
+        },
+        {
+          "food_name": "Iced Tea",
+          "rows": 179
+        },
+        {
+          "food_name": "Iced Tea peach",
+          "rows": 171
+        },
+        {
+          "food_name": "Green Tea",
+          "rows": 140
+        },
+        {
+          "food_name": "Iced Tea Mix lemon",
+          "rows": 128
+        },
+        {
+          "food_name": "Iced Tea raspberry",
+          "rows": 114
+        },
+        {
+          "food_name": "Kombucha ginger",
+          "rows": 111
+        },
+        {
+          "food_name": "Iced Tea lemonade",
+          "rows": 109
+        },
+        {
+          "food_name": "Tea",
+          "rows": 99
+        },
+        {
+          "food_name": "Tea black",
+          "rows": 97
+        },
+        {
+          "food_name": "Tea lemon",
+          "rows": 82
+        },
+        {
+          "food_name": "Tea peach",
+          "rows": 74
+        },
+        {
+          "food_name": "Black Tea",
+          "rows": 73
+        },
+        {
+          "food_name": "Iced Tea green",
+          "rows": 68
+        },
+        {
+          "food_name": "Sweet Tea",
+          "rows": 59
+        },
+        {
+          "food_name": "Iced Tea mango",
+          "rows": 57
+        },
+        {
+          "food_name": "Tea sweet",
+          "rows": 51
+        },
+        {
+          "food_name": "Iced Tea honey",
+          "rows": 50
+        },
+        {
+          "food_name": "Kombucha blueberry",
+          "rows": 47
+        },
+        {
+          "food_name": "Kombucha raspberry",
+          "rows": 47
+        },
+        {
+          "food_name": "Tea raspberry",
+          "rows": 45
+        },
+        {
+          "food_name": "Kombucha mango",
+          "rows": 44
+        },
+        {
+          "food_name": "Tea green",
+          "rows": 43
+        },
+        {
+          "food_name": "Iced Tea black",
+          "rows": 42
+        },
+        {
+          "food_name": "Tea herbal",
+          "rows": 42
+        }
+      ]
+    },
+    {
+      "bucket": [
+        "D",
+        "6"
+      ],
+      "distinct_foods": 1058,
+      "total_rows": 5356,
+      "top_foods": [
+        {
+          "food_name": "Protein Shake vanilla",
+          "rows": 493
+        },
+        {
+          "food_name": "Protein Shake chocolate",
+          "rows": 481
+        },
+        {
+          "food_name": "Energy Drink",
+          "rows": 162
+        },
+        {
+          "food_name": "Protein Shake strawberry",
+          "rows": 132
+        },
+        {
+          "food_name": "Sports Drink fruit_punch",
+          "rows": 97
+        },
+        {
+          "food_name": "Protein Shake milk_chocolate",
+          "rows": 91
+        },
+        {
+          "food_name": "Smoothie mango",
+          "rows": 79
+        },
+        {
+          "food_name": "Sports Drink orange",
+          "rows": 75
+        },
+        {
+          "food_name": "Smoothie strawberry",
+          "rows": 71
+        },
+        {
+          "food_name": "Protein Shake vanilla_bean",
+          "rows": 67
+        },
+        {
+          "food_name": "Sports Drink lemon_lime",
+          "rows": 65
+        },
+        {
+          "food_name": "Sports Drink Mix lemon_lime",
+          "rows": 59
+        },
+        {
+          "food_name": "Protein Shake french_vanilla",
+          "rows": 56
+        },
+        {
+          "food_name": "Smoothie strawberry_banana",
+          "rows": 54
+        },
+        {
+          "food_name": "Sports Drink grape",
+          "rows": 54
+        },
+        {
+          "food_name": "Sports Drink Mix orange",
+          "rows": 47
+        },
+        {
+          "food_name": "Energy Drink strawberry",
+          "rows": 38
+        },
+        {
+          "food_name": "Sports Drink Mix fruit_punch",
+          "rows": 37
+        },
+        {
+          "food_name": "Energy Drink peach",
+          "rows": 36
+        },
+        {
+          "food_name": "Protein Shake chocolate_fudge",
+          "rows": 36
+        },
+        {
+          "food_name": "Smoothie berry",
+          "rows": 35
+        },
+        {
+          "food_name": "Sports Drink berry",
+          "rows": 35
+        },
+        {
+          "food_name": "Sports Drink glacier_freeze",
+          "rows": 35
+        },
+        {
+          "food_name": "Energy Drink watermelon",
+          "rows": 32
+        },
+        {
+          "food_name": "Smoothie blueberry",
+          "rows": 32
+        }
+      ]
+    },
+    {
+      "bucket": [
+        "E",
+        "6"
+      ],
+      "distinct_foods": 3008,
+      "total_rows": 6879,
+      "top_foods": [
+        {
+          "food_name": "Taco Seasoning",
+          "rows": 151
+        },
+        {
+          "food_name": "Seasoning",
+          "rows": 107
+        },
+        {
+          "food_name": "Cajun Seasoning",
+          "rows": 100
+        },
+        {
+          "food_name": "Seasoning All Purpose",
+          "rows": 78
+        },
+        {
+          "food_name": "BBQ Rub garlic",
+          "rows": 66
+        },
+        {
+          "food_name": "Steak Seasoning",
+          "rows": 61
+        },
+        {
+          "food_name": "Fajita Seasoning",
+          "rows": 59
+        },
+        {
+          "food_name": "Adobo Seasoning",
+          "rows": 57
+        },
+        {
+          "food_name": "Spice Blend Paprika",
+          "rows": 55
+        },
+        {
+          "food_name": "Seasoning Garlic Herb",
+          "rows": 50
+        },
+        {
+          "food_name": "BBQ Rub",
+          "rows": 47
+        },
+        {
+          "food_name": "Creole Seasoning",
+          "rows": 46
+        },
+        {
+          "food_name": "Seasoning Chicken",
+          "rows": 46
+        },
+        {
+          "food_name": "Sesame Seeds",
+          "rows": 44
+        },
+        {
+          "food_name": "Seasoning Beef Stew",
+          "rows": 41
+        },
+        {
+          "food_name": "Seasoning Sloppy Joe",
+          "rows": 41
+        },
+        {
+          "food_name": "Bouillon beef",
+          "rows": 38
+        },
+        {
+          "food_name": "BBQ Rub brown_sugar_garlic",
+          "rows": 34
+        },
+        {
+          "food_name": "Italian Seasoning",
+          "rows": 34
+        },
+        {
+          "food_name": "Seasoning Chili",
+          "rows": 34
+        },
+        {
+          "food_name": "Everything Bagel Seasoning everything_bagel",
+          "rows": 32
+        },
+        {
+          "food_name": "Seasoning Lemon Pepper",
+          "rows": 32
+        },
+        {
+          "food_name": "Seasoning Seafood",
+          "rows": 31
+        },
+        {
+          "food_name": "Poultry Seasoning",
+          "rows": 29
+        },
+        {
+          "food_name": "Bouillon chicken",
+          "rows": 28
+        }
+      ]
+    },
+    {
+      "bucket": [
+        "F",
+        "0"
+      ],
+      "distinct_foods": 1767,
+      "total_rows": 4854,
+      "top_foods": [
+        {
+          "food_name": "Mayonnaise",
+          "rows": 502
+        },
+        {
+          "food_name": "Dip French Onion",
+          "rows": 190
+        },
+        {
+          "food_name": "Hummus roasted_red_pepper",
+          "rows": 181
+        },
+        {
+          "food_name": "Hummus roasted_garlic",
+          "rows": 136
+        },
+        {
+          "food_name": "Hummus",
+          "rows": 127
+        },
+        {
+          "food_name": "Hummus garlic",
+          "rows": 98
+        },
+        {
+          "food_name": "Dip Spinach",
+          "rows": 70
+        },
+        {
+          "food_name": "Dip Spinach Artichoke",
+          "rows": 70
+        },
+        {
+          "food_name": "Dip Caramel",
+          "rows": 43
+        },
+        {
+          "food_name": "Guava Paste",
+          "rows": 41
+        },
+        {
+          "food_name": "Mayonnaise olive_oil",
+          "rows": 41
+        },
+        {
+          "food_name": "Hummus lemon",
+          "rows": 38
+        },
+        {
+          "food_name": "Mayonnaise real",
+          "rows": 37
+        },
+        {
+          "food_name": "Mayonnaise chipotle",
+          "rows": 34
+        },
+        {
+          "food_name": "Dip Dill",
+          "rows": 33
+        },
+        {
+          "food_name": "Hummus spicy",
+          "rows": 33
+        },
+        {
+          "food_name": "Aioli garlic",
+          "rows": 30
+        },
+        {
+          "food_name": "Dip Buffalo Chicken",
+          "rows": 30
+        },
+        {
+          "food_name": "Dip Jalapeno",
+          "rows": 29
+        },
+        {
+          "food_name": "Hummus traditional",
+          "rows": 28
+        },
+        {
+          "food_name": "Mayonnaise lime",
+          "rows": 26
+        },
+        {
+          "food_name": "Chipotle Peppers in Adobo Sauce",
+          "rows": 25
+        },
+        {
+          "food_name": "Hummus jalapeno",
+          "rows": 24
+        },
+        {
+          "food_name": "Mayonnaise avocado_oil",
+          "rows": 24
+        },
+        {
+          "food_name": "Dip Queso",
+          "rows": 21
+        }
+      ]
+    },
+    {
+      "bucket": [
+        "F",
+        "6"
+      ],
+      "distinct_foods": 6056,
+      "total_rows": 16099,
+      "top_foods": [
+        {
+          "food_name": "Salsa Mild",
+          "rows": 397
+        },
+        {
+          "food_name": "Marinara Sauce",
+          "rows": 251
+        },
+        {
+          "food_name": "Salsa Hot",
+          "rows": 215
+        },
+        {
+          "food_name": "Tomato Sauce",
+          "rows": 209
+        },
+        {
+          "food_name": "Salsa Medium",
+          "rows": 208
+        },
+        {
+          "food_name": "Pasta Sauce Tomato Basil",
+          "rows": 201
+        },
+        {
+          "food_name": "Salsa",
+          "rows": 183
+        },
+        {
+          "food_name": "Marinara Sauce basil",
+          "rows": 166
+        },
+        {
+          "food_name": "Pesto basil",
+          "rows": 157
+        },
+        {
+          "food_name": "Tomato Sauce garlic",
+          "rows": 135
+        },
+        {
+          "food_name": "Pizza Sauce",
+          "rows": 123
+        },
+        {
+          "food_name": "Pasta Sauce traditional",
+          "rows": 121
+        },
+        {
+          "food_name": "Cocktail Sauce",
+          "rows": 117
+        },
+        {
+          "food_name": "Sauce",
+          "rows": 117
+        },
+        {
+          "food_name": "Tartar Sauce",
+          "rows": 103
+        },
+        {
+          "food_name": "Pasta Sauce Roasted Garlic",
+          "rows": 100
+        },
+        {
+          "food_name": "Steak Sauce",
+          "rows": 96
+        },
+        {
+          "food_name": "Salsa Pico De Gallo",
+          "rows": 92
+        },
+        {
+          "food_name": "Pasta Sauce Vodka",
+          "rows": 91
+        },
+        {
+          "food_name": "Salsa Black Bean Corn",
+          "rows": 87
+        },
+        {
+          "food_name": "Pasta Sauce Mushroom",
+          "rows": 82
+        },
+        {
+          "food_name": "Alfredo Sauce",
+          "rows": 78
+        },
+        {
+          "food_name": "Salsa Verde",
+          "rows": 70
+        },
+        {
+          "food_name": "Enchilada Sauce mild",
+          "rows": 68
+        },
+        {
+          "food_name": "Sauce Sloppy Joe",
+          "rows": 62
+        }
+      ]
+    },
+    {
+      "bucket": [
+        "F",
+        "9"
+      ],
+      "distinct_foods": 1076,
+      "total_rows": 6482,
+      "top_foods": [
+        {
+          "food_name": "Pickles dill",
+          "rows": 635
+        },
+        {
+          "food_name": "Pickles kosher_dill",
+          "rows": 292
+        },
+        {
+          "food_name": "Olives manzanilla",
+          "rows": 248
+        },
+        {
+          "food_name": "Relish sweet",
+          "rows": 244
+        },
+        {
+          "food_name": "Beets",
+          "rows": 222
+        },
+        {
+          "food_name": "Pickles sweet",
+          "rows": 218
+        },
+        {
+          "food_name": "Olives black",
+          "rows": 203
+        },
+        {
+          "food_name": "Olives kalamata",
+          "rows": 180
+        },
+        {
+          "food_name": "Garlic",
+          "rows": 162
+        },
+        {
+          "food_name": "Pickles bread_and_butter",
+          "rows": 161
+        },
+        {
+          "food_name": "Olives green",
+          "rows": 128
+        },
+        {
+          "food_name": "Olives",
+          "rows": 111
+        },
+        {
+          "food_name": "Olives pimiento",
+          "rows": 103
+        },
+        {
+          "food_name": "Capers",
+          "rows": 84
+        },
+        {
+          "food_name": "Olives pitted",
+          "rows": 82
+        },
+        {
+          "food_name": "Pickles garlic",
+          "rows": 76
+        },
+        {
+          "food_name": "Relish dill",
+          "rows": 74
+        },
+        {
+          "food_name": "Olives queen",
+          "rows": 69
+        },
+        {
+          "food_name": "Pepperoncini",
+          "rows": 64
+        },
+        {
+          "food_name": "Pickles bread_butter",
+          "rows": 63
+        },
+        {
+          "food_name": "Pickles hot",
+          "rows": 61
+        },
+        {
+          "food_name": "Olives garlic",
+          "rows": 55
+        },
+        {
+          "food_name": "Pickles sweet_gherkin",
+          "rows": 54
+        },
+        {
+          "food_name": "Olives spanish",
+          "rows": 52
+        },
+        {
+          "food_name": "Olives ripe",
+          "rows": 51
+        }
+      ]
+    },
+    {
+      "bucket": [
+        "G",
+        "0"
+      ],
+      "distinct_foods": 7263,
+      "total_rows": 36202,
+      "top_foods": [
+        {
+          "food_name": "Cookies chocolate",
+          "rows": 1203
+        },
+        {
+          "food_name": "Cookies chocolate_chip",
+          "rows": 1200
+        },
+        {
+          "food_name": "Cookies vanilla",
+          "rows": 622
+        },
+        {
+          "food_name": "Cookies sugar",
+          "rows": 520
+        },
+        {
+          "food_name": "Hamburger Buns",
+          "rows": 438
+        },
+        {
+          "food_name": "Cake chocolate",
+          "rows": 414
+        },
+        {
+          "food_name": "Tortillas flour",
+          "rows": 392
+        },
+        {
+          "food_name": "English Muffins",
+          "rows": 345
+        },
+        {
+          "food_name": "Cookies peanut_butter",
+          "rows": 330
+        },
+        {
+          "food_name": "Cookies frosted_sugar",
+          "rows": 318
+        },
+        {
+          "food_name": "Cookies lemon",
+          "rows": 313
+        },
+        {
+          "food_name": "Cookies shortbread",
+          "rows": 260
+        },
+        {
+          "food_name": "Cupcakes chocolate",
+          "rows": 257
+        },
+        {
+          "food_name": "Cookies gingerbread",
+          "rows": 245
+        },
+        {
+          "food_name": "Muffins blueberry",
+          "rows": 230
+        },
+        {
+          "food_name": "Bagels",
+          "rows": 216
+        },
+        {
+          "food_name": "Cinnamon Rolls",
+          "rows": 215
+        },
+        {
+          "food_name": "Cookies oatmeal_raisin",
+          "rows": 214
+        },
+        {
+          "food_name": "Cookies cinnamon",
+          "rows": 207
+        },
+        {
+          "food_name": "Cookies strawberry",
+          "rows": 204
+        },
+        {
+          "food_name": "Hot Dog Buns hot_dog",
+          "rows": 201
+        },
+        {
+          "food_name": "Cookies coconut",
+          "rows": 197
+        },
+        {
+          "food_name": "Pie apple",
+          "rows": 190
+        },
+        {
+          "food_name": "Biscuits buttermilk",
+          "rows": 186
+        },
+        {
+          "food_name": "Cookies butter",
+          "rows": 176
+        }
+      ]
+    },
+    {
+      "bucket": [
+        "H",
+        "0"
+      ],
+      "distinct_foods": 5887,
+      "total_rows": 11235,
+      "top_foods": [
+        {
+          "food_name": "Appetizers",
+          "rows": 903
+        },
+        {
+          "food_name": "Entree",
+          "rows": 138
+        },
+        {
+          "food_name": "Appetizers Buffalo",
+          "rows": 105
+        },
+        {
+          "food_name": "Appetizers Beef",
+          "rows": 91
+        },
+        {
+          "food_name": "Coleslaw",
+          "rows": 73
+        },
+        {
+          "food_name": "Appetizers Chicken",
+          "rows": 71
+        },
+        {
+          "food_name": "Mac and Cheese Cheddar",
+          "rows": 67
+        },
+        {
+          "food_name": "Appetizers Cream Cheese",
+          "rows": 52
+        },
+        {
+          "food_name": "Entree Chicken",
+          "rows": 50
+        },
+        {
+          "food_name": "Appetizers Chicken Breast",
+          "rows": 48
+        },
+        {
+          "food_name": "Entree Cheddar",
+          "rows": 48
+        },
+        {
+          "food_name": "Appetizers Honey BBQ",
+          "rows": 44
+        },
+        {
+          "food_name": "Appetizers Organic",
+          "rows": 42
+        },
+        {
+          "food_name": "Pot Pie chicken",
+          "rows": 38
+        },
+        {
+          "food_name": "Entree Cheese",
+          "rows": 37
+        },
+        {
+          "food_name": "Entree Vegetable",
+          "rows": 36
+        },
+        {
+          "food_name": "Entree Meat Sauce",
+          "rows": 35
+        },
+        {
+          "food_name": "Mac and Cheese White Cheddar",
+          "rows": 35
+        },
+        {
+          "food_name": "Appetizers Cheddar",
+          "rows": 33
+        },
+        {
+          "food_name": "Appetizers Cheese",
+          "rows": 32
+        },
+        {
+          "food_name": "Entree Bean Cheese",
+          "rows": 32
+        },
+        {
+          "food_name": "Entree Beef",
+          "rows": 32
+        },
+        {
+          "food_name": "Appetizers Chicken Honey",
+          "rows": 30
+        },
+        {
+          "food_name": "Entree Chicken Tikka Masala",
+          "rows": 30
+        },
+        {
+          "food_name": "Cheeseburger",
+          "rows": 29
+        }
+      ]
+    },
+    {
+      "bucket": [
+        "H",
+        "1"
+      ],
+      "distinct_foods": 1562,
+      "total_rows": 4657,
+      "top_foods": [
+        {
+          "food_name": "Pizza Pepperoni",
+          "rows": 592
+        },
+        {
+          "food_name": "Pizza Cheese",
+          "rows": 260
+        },
+        {
+          "food_name": "Pizza Supreme",
+          "rows": 246
+        },
+        {
+          "food_name": "Pizza Four Cheese",
+          "rows": 157
+        },
+        {
+          "food_name": "Pizza Margherita",
+          "rows": 122
+        },
+        {
+          "food_name": "Pizza Sausage Pepperoni",
+          "rows": 102
+        },
+        {
+          "food_name": "Pizza",
+          "rows": 85
+        },
+        {
+          "food_name": "Pizza Sausage",
+          "rows": 81
+        },
+        {
+          "food_name": "Pizza Three Meat",
+          "rows": 62
+        },
+        {
+          "food_name": "Pizza Pepperoni Mozzarella",
+          "rows": 50
+        },
+        {
+          "food_name": "Pizza BBQ Chicken",
+          "rows": 48
+        },
+        {
+          "food_name": "Pizza Three Cheese",
+          "rows": 48
+        },
+        {
+          "food_name": "Pizza Buffalo Chicken",
+          "rows": 40
+        },
+        {
+          "food_name": "Pizza Five Cheese",
+          "rows": 36
+        },
+        {
+          "food_name": "Pizza Margherita Basil",
+          "rows": 36
+        },
+        {
+          "food_name": "Pizza Chicken Bacon Ranch",
+          "rows": 30
+        },
+        {
+          "food_name": "Pizza Italian Sausage",
+          "rows": 29
+        },
+        {
+          "food_name": "Pizza Roasted Vegetable",
+          "rows": 24
+        },
+        {
+          "food_name": "Pizza Turkey Pepperoni",
+          "rows": 23
+        },
+        {
+          "food_name": "Pizza Spinach Feta",
+          "rows": 22
+        },
+        {
+          "food_name": "Pizza Combination",
+          "rows": 19
+        },
+        {
+          "food_name": "Pizza Four Meat",
+          "rows": 18
+        },
+        {
+          "food_name": "Pizza Hawaiian",
+          "rows": 18
+        },
+        {
+          "food_name": "Pizza Pepperoni Sausage",
+          "rows": 17
+        },
+        {
+          "food_name": "Pizza Veggie",
+          "rows": 17
+        }
+      ]
+    },
+    {
+      "bucket": [
+        "H",
+        "2"
+      ],
+      "distinct_foods": 1992,
+      "total_rows": 3555,
+      "top_foods": [
+        {
+          "food_name": "Sandwich Chicken",
+          "rows": 45
+        },
+        {
+          "food_name": "Sandwich Cookies Chocolate Creme",
+          "rows": 35
+        },
+        {
+          "food_name": "Wrap chicken_caesar",
+          "rows": 32
+        },
+        {
+          "food_name": "Sandwich Tuna",
+          "rows": 26
+        },
+        {
+          "food_name": "Breakfast Sandwich sausage",
+          "rows": 25
+        },
+        {
+          "food_name": "Sandwich Turkey Cheddar",
+          "rows": 24
+        },
+        {
+          "food_name": "Sandwich Cookies Chocolate Mint",
+          "rows": 23
+        },
+        {
+          "food_name": "Sandwich Cookies Vanilla Creme",
+          "rows": 23
+        },
+        {
+          "food_name": "Wrap italian_style",
+          "rows": 23
+        },
+        {
+          "food_name": "Sandwich Italian",
+          "rows": 22
+        },
+        {
+          "food_name": "Sandwich Ham Swiss",
+          "rows": 21
+        },
+        {
+          "food_name": "Sub Sandwich Italian",
+          "rows": 21
+        },
+        {
+          "food_name": "Wrap chipotle",
+          "rows": 21
+        },
+        {
+          "food_name": "Beef Sandwich Slices",
+          "rows": 20
+        },
+        {
+          "food_name": "Sandwich Cookies Vanilla",
+          "rows": 19
+        },
+        {
+          "food_name": "Breakfast Sandwich ham",
+          "rows": 18
+        },
+        {
+          "food_name": "Sandwich Ham Cheddar",
+          "rows": 17
+        },
+        {
+          "food_name": "Sandwich Cookies Creme Vanilla",
+          "rows": 15
+        },
+        {
+          "food_name": "Sandwich Cookies Lemon Creme",
+          "rows": 14
+        },
+        {
+          "food_name": "Sandwich Roast Beef Cheddar",
+          "rows": 14
+        },
+        {
+          "food_name": "Sandwich Cookies Creme Lemon",
+          "rows": 13
+        },
+        {
+          "food_name": "Sandwich Cookies Duplex Creme",
+          "rows": 13
+        },
+        {
+          "food_name": "Sandwich Ham Cheese",
+          "rows": 13
+        },
+        {
+          "food_name": "Sandwich Turkey",
+          "rows": 13
+        },
+        {
+          "food_name": "Breakfast Sandwich turkey_sausage",
+          "rows": 12
+        }
+      ]
+    },
+    {
+      "bucket": [
+        "H",
+        "3"
+      ],
+      "distinct_foods": 2797,
+      "total_rows": 7483,
+      "top_foods": [
+        {
+          "food_name": "Chicken Noodle Soup",
+          "rows": 324
+        },
+        {
+          "food_name": "Chili beef",
+          "rows": 242
+        },
+        {
+          "food_name": "Chicken Soup Cream Of",
+          "rows": 108
+        },
+        {
+          "food_name": "Soup Cream Of Mushroom",
+          "rows": 102
+        },
+        {
+          "food_name": "Chili Seasoning",
+          "rows": 88
+        },
+        {
+          "food_name": "Chili Powder",
+          "rows": 82
+        },
+        {
+          "food_name": "Broccoli Cheddar Soup",
+          "rows": 75
+        },
+        {
+          "food_name": "Soup Vegetable Beef",
+          "rows": 74
+        },
+        {
+          "food_name": "Tomato Soup",
+          "rows": 66
+        },
+        {
+          "food_name": "Chili Sauce",
+          "rows": 61
+        },
+        {
+          "food_name": "Chili Beans",
+          "rows": 60
+        },
+        {
+          "food_name": "Soup Tomato Basil",
+          "rows": 60
+        },
+        {
+          "food_name": "Tomato Soup Condensed",
+          "rows": 56
+        },
+        {
+          "food_name": "Soup Vegetable",
+          "rows": 53
+        },
+        {
+          "food_name": "Soup Italian Wedding",
+          "rows": 52
+        },
+        {
+          "food_name": "Cream of Mushroom Soup Condensed",
+          "rows": 49
+        },
+        {
+          "food_name": "Cream of Mushroom Soup",
+          "rows": 48
+        },
+        {
+          "food_name": "Chicken Noodle Soup Chunky",
+          "rows": 47
+        },
+        {
+          "food_name": "Soup Cream Of Celery",
+          "rows": 45
+        },
+        {
+          "food_name": "Chicken Rice Soup",
+          "rows": 42
+        },
+        {
+          "food_name": "Chili",
+          "rows": 42
+        },
+        {
+          "food_name": "Soup Butternut Squash",
+          "rows": 42
+        },
+        {
+          "food_name": "Soup Lentil",
+          "rows": 42
+        },
+        {
+          "food_name": "Chicken Noodle Soup Organic",
+          "rows": 39
+        },
+        {
+          "food_name": "Minestrone",
+          "rows": 39
+        }
+      ]
+    },
+    {
+      "bucket": [
+        "H",
+        "4"
+      ],
+      "distinct_foods": 1514,
+      "total_rows": 2574,
+      "top_foods": [
+        {
+          "food_name": "Macaroni Salad",
+          "rows": 74
+        },
+        {
+          "food_name": "Potato Salad",
+          "rows": 63
+        },
+        {
+          "food_name": "Potato Salad Mustard",
+          "rows": 48
+        },
+        {
+          "food_name": "Salad Chicken Caesar",
+          "rows": 44
+        },
+        {
+          "food_name": "Salad Cobb",
+          "rows": 38
+        },
+        {
+          "food_name": "Tuna Salad",
+          "rows": 38
+        },
+        {
+          "food_name": "Salad Caesar",
+          "rows": 33
+        },
+        {
+          "food_name": "Pasta Salad Italian",
+          "rows": 24
+        },
+        {
+          "food_name": "Chicken Salad",
+          "rows": 22
+        },
+        {
+          "food_name": "Potato Salad old_fashioned",
+          "rows": 22
+        },
+        {
+          "food_name": "Salad Chef",
+          "rows": 17
+        },
+        {
+          "food_name": "Potato Salad Red Skin",
+          "rows": 16
+        },
+        {
+          "food_name": "Macaroni Salad Amish",
+          "rows": 15
+        },
+        {
+          "food_name": "Salad Greek",
+          "rows": 15
+        },
+        {
+          "food_name": "Salad Greek Feta",
+          "rows": 14
+        },
+        {
+          "food_name": "Chicken Salad White Meat",
+          "rows": 13
+        },
+        {
+          "food_name": "Ham Salad",
+          "rows": 12
+        },
+        {
+          "food_name": "Salad Garden",
+          "rows": 12
+        },
+        {
+          "food_name": "Seafood Salad",
+          "rows": 12
+        },
+        {
+          "food_name": "Chicken Caesar Salad",
+          "rows": 11
+        },
+        {
+          "food_name": "Pasta Salad Greek",
+          "rows": 10
+        },
+        {
+          "food_name": "Potato Salad Red Bliss",
+          "rows": 10
+        },
+        {
+          "food_name": "Salad Italian",
+          "rows": 10
+        },
+        {
+          "food_name": "Salad Southwest",
+          "rows": 10
+        },
+        {
+          "food_name": "Salad Turkey Bacon Cobb",
+          "rows": 9
+        }
+      ]
+    },
+    {
+      "bucket": [
+        "H",
+        "5"
+      ],
+      "distinct_foods": 1592,
+      "total_rows": 3127,
+      "top_foods": [
+        {
+          "food_name": "Mac and Cheese",
+          "rows": 242
+        },
+        {
+          "food_name": "Mac and Cheese Cheddar",
+          "rows": 183
+        },
+        {
+          "food_name": "Lasagna",
+          "rows": 100
+        },
+        {
+          "food_name": "Mac and Cheese White Cheddar",
+          "rows": 80
+        },
+        {
+          "food_name": "Mac and Cheese Shells Cheddar",
+          "rows": 60
+        },
+        {
+          "food_name": "Mac and Cheese Shells",
+          "rows": 42
+        },
+        {
+          "food_name": "Mac and Cheese Organic",
+          "rows": 28
+        },
+        {
+          "food_name": "Mac and Cheese Cheeseburger",
+          "rows": 22
+        },
+        {
+          "food_name": "Mac and Cheese Four",
+          "rows": 20
+        },
+        {
+          "food_name": "Mac and Cheese Sharp Cheddar",
+          "rows": 20
+        },
+        {
+          "food_name": "Mac and Cheese Beef Tomato",
+          "rows": 19
+        },
+        {
+          "food_name": "Mac and Cheese Triple",
+          "rows": 17
+        },
+        {
+          "food_name": "Lasagna Oven Ready",
+          "rows": 16
+        },
+        {
+          "food_name": "Mac and Cheese Three",
+          "rows": 16
+        },
+        {
+          "food_name": "Mac and Cheese Thick Creamy",
+          "rows": 15
+        },
+        {
+          "food_name": "Penne Alfredo Chicken",
+          "rows": 15
+        },
+        {
+          "food_name": "Lasagna Beef",
+          "rows": 14
+        },
+        {
+          "food_name": "Lasagna Meat Sauce",
+          "rows": 14
+        },
+        {
+          "food_name": "Mac and Cheese Mild Cheddar",
+          "rows": 14
+        },
+        {
+          "food_name": "Penne Alfredo",
+          "rows": 13
+        },
+        {
+          "food_name": "Mac and Cheese Shells White Cheddar",
+          "rows": 12
+        },
+        {
+          "food_name": "Penne Alfredo Chicken Broccoli",
+          "rows": 12
+        },
+        {
+          "food_name": "Polenta Organic",
+          "rows": 12
+        },
+        {
+          "food_name": "Chicken Parmesan",
+          "rows": 11
+        },
+        {
+          "food_name": "Mac and Cheese Sauce",
+          "rows": 11
+        }
+      ]
+    },
+    {
+      "bucket": [
+        "J",
+        "0"
+      ],
+      "distinct_foods": 20661,
+      "total_rows": 103343,
+      "top_foods": [
+        {
+          "food_name": "Chocolate Candy milk_chocolate",
+          "rows": 3220
+        },
+        {
+          "food_name": "Peanut Butter",
+          "rows": 1261
+        },
+        {
+          "food_name": "Potato Chips",
+          "rows": 1193
+        },
+        {
+          "food_name": "Chocolate Candy dark",
+          "rows": 763
+        },
+        {
+          "food_name": "Applesauce",
+          "rows": 756
+        },
+        {
+          "food_name": "Chicken Broth",
+          "rows": 740
+        },
+        {
+          "food_name": "Crackers",
+          "rows": 689
+        },
+        {
+          "food_name": "Chocolate Candy dark_chocolate",
+          "rows": 662
+        },
+        {
+          "food_name": "Hard Candy",
+          "rows": 651
+        },
+        {
+          "food_name": "Chocolate Candy caramel",
+          "rows": 644
+        },
+        {
+          "food_name": "Popcorn butter",
+          "rows": 623
+        },
+        {
+          "food_name": "Mints peppermint",
+          "rows": 565
+        },
+        {
+          "food_name": "Gummy Candy",
+          "rows": 523
+        },
+        {
+          "food_name": "Crackers cheddar",
+          "rows": 518
+        },
+        {
+          "food_name": "Jam strawberry",
+          "rows": 462
+        },
+        {
+          "food_name": "Gummy Candy sour",
+          "rows": 455
+        },
+        {
+          "food_name": "Beef Jerky",
+          "rows": 424
+        },
+        {
+          "food_name": "Chocolate Candy",
+          "rows": 379
+        },
+        {
+          "food_name": "Chocolate Candy assorted",
+          "rows": 378
+        },
+        {
+          "food_name": "Almond Butter",
+          "rows": 377
+        },
+        {
+          "food_name": "Chocolate Candy milk",
+          "rows": 371
+        },
+        {
+          "food_name": "Chocolate Bar milk_chocolate",
+          "rows": 351
+        },
+        {
+          "food_name": "Potato Chips barbecue",
+          "rows": 342
+        },
+        {
+          "food_name": "Protein Bars chocolate",
+          "rows": 342
+        },
+        {
+          "food_name": "Popcorn",
+          "rows": 314
+        }
+      ]
+    }
+  ],
+  "subdivision_count": 122,
+  "subdivisions": [
+    {
+      "parent_group": "1",
+      "parent_family": "1",
+      "sub_family_code": "1",
+      "sub_family_name": "11 rank chunk 1",
+      "canonical_path_pattern": "*",
+      "rank_start": 1,
+      "rank_end": 900,
+      "distinct_foods": 900,
+      "total_rows": 19157,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "1",
+      "parent_family": "1",
+      "sub_family_code": "6",
+      "sub_family_name": "11 rank chunk 2",
+      "canonical_path_pattern": "*",
+      "rank_start": 901,
+      "rank_end": 916,
+      "distinct_foods": 16,
+      "total_rows": 16,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "1",
+      "parent_family": "5",
+      "sub_family_code": "5",
+      "sub_family_name": "15 rank chunk 1",
+      "canonical_path_pattern": "*",
+      "rank_start": 1,
+      "rank_end": 900,
+      "distinct_foods": 900,
+      "total_rows": 13052,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "1",
+      "parent_family": "5",
+      "sub_family_code": "7",
+      "sub_family_name": "15 rank chunk 2",
+      "canonical_path_pattern": "*",
+      "rank_start": 901,
+      "rank_end": 1800,
+      "distinct_foods": 900,
+      "total_rows": 900,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "1",
+      "parent_family": "5",
+      "sub_family_code": "8",
+      "sub_family_name": "15 rank chunk 3",
+      "canonical_path_pattern": "*",
+      "rank_start": 1801,
+      "rank_end": 2697,
+      "distinct_foods": 897,
+      "total_rows": 897,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "2",
+      "parent_family": "0",
+      "sub_family_code": "0",
+      "sub_family_name": "20 rank chunk 1",
+      "canonical_path_pattern": "*",
+      "rank_start": 1,
+      "rank_end": 900,
+      "distinct_foods": 900,
+      "total_rows": 3394,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "2",
+      "parent_family": "0",
+      "sub_family_code": "7",
+      "sub_family_name": "20 rank chunk 2",
+      "canonical_path_pattern": "*",
+      "rank_start": 901,
+      "rank_end": 1276,
+      "distinct_foods": 376,
+      "total_rows": 376,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "2",
+      "parent_family": "4",
+      "sub_family_code": "4",
+      "sub_family_name": "24 rank chunk 1",
+      "canonical_path_pattern": "*",
+      "rank_start": 1,
+      "rank_end": 900,
+      "distinct_foods": 900,
+      "total_rows": 8771,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "2",
+      "parent_family": "4",
+      "sub_family_code": "8",
+      "sub_family_name": "24 rank chunk 2",
+      "canonical_path_pattern": "*",
+      "rank_start": 901,
+      "rank_end": 1800,
+      "distinct_foods": 900,
+      "total_rows": 900,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "2",
+      "parent_family": "4",
+      "sub_family_code": "9",
+      "sub_family_name": "24 rank chunk 3",
+      "canonical_path_pattern": "*",
+      "rank_start": 1801,
+      "rank_end": 2145,
+      "distinct_foods": 345,
+      "total_rows": 345,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "3",
+      "parent_family": "0",
+      "sub_family_code": "0",
+      "sub_family_name": "30 rank chunk 1",
+      "canonical_path_pattern": "*",
+      "rank_start": 1,
+      "rank_end": 900,
+      "distinct_foods": 900,
+      "total_rows": 3416,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "3",
+      "parent_family": "0",
+      "sub_family_code": "3",
+      "sub_family_name": "30 rank chunk 2",
+      "canonical_path_pattern": "*",
+      "rank_start": 901,
+      "rank_end": 1415,
+      "distinct_foods": 515,
+      "total_rows": 515,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "4",
+      "parent_family": "0",
+      "sub_family_code": "0",
+      "sub_family_name": "40 rank chunk 1",
+      "canonical_path_pattern": "*",
+      "rank_start": 1,
+      "rank_end": 900,
+      "distinct_foods": 900,
+      "total_rows": 8074,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "4",
+      "parent_family": "0",
+      "sub_family_code": "1",
+      "sub_family_name": "40 rank chunk 2",
+      "canonical_path_pattern": "*",
+      "rank_start": 901,
+      "rank_end": 1800,
+      "distinct_foods": 900,
+      "total_rows": 900,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "4",
+      "parent_family": "0",
+      "sub_family_code": "2",
+      "sub_family_name": "40 rank chunk 3",
+      "canonical_path_pattern": "*",
+      "rank_start": 1801,
+      "rank_end": 2090,
+      "distinct_foods": 290,
+      "total_rows": 290,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "5",
+      "parent_family": "0",
+      "sub_family_code": "0",
+      "sub_family_name": "50 rank chunk 1",
+      "canonical_path_pattern": "*",
+      "rank_start": 1,
+      "rank_end": 900,
+      "distinct_foods": 900,
+      "total_rows": 3000,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "5",
+      "parent_family": "0",
+      "sub_family_code": "1",
+      "sub_family_name": "50 rank chunk 2",
+      "canonical_path_pattern": "*",
+      "rank_start": 901,
+      "rank_end": 915,
+      "distinct_foods": 15,
+      "total_rows": 15,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "6",
+      "parent_family": "0",
+      "sub_family_code": "0",
+      "sub_family_name": "60 rank chunk 1",
+      "canonical_path_pattern": "*",
+      "rank_start": 1,
+      "rank_end": 900,
+      "distinct_foods": 900,
+      "total_rows": 3384,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "6",
+      "parent_family": "0",
+      "sub_family_code": "B",
+      "sub_family_name": "60 rank chunk 2",
+      "canonical_path_pattern": "*",
+      "rank_start": 901,
+      "rank_end": 1033,
+      "distinct_foods": 133,
+      "total_rows": 133,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "7",
+      "parent_family": "0",
+      "sub_family_code": "0",
+      "sub_family_name": "70 rank chunk 1",
+      "canonical_path_pattern": "*",
+      "rank_start": 1,
+      "rank_end": 900,
+      "distinct_foods": 900,
+      "total_rows": 3958,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "7",
+      "parent_family": "0",
+      "sub_family_code": "A",
+      "sub_family_name": "70 rank chunk 2",
+      "canonical_path_pattern": "*",
+      "rank_start": 901,
+      "rank_end": 969,
+      "distinct_foods": 69,
+      "total_rows": 69,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "8",
+      "parent_family": "0",
+      "sub_family_code": "0",
+      "sub_family_name": "80 rank chunk 1",
+      "canonical_path_pattern": "*",
+      "rank_start": 1,
+      "rank_end": 900,
+      "distinct_foods": 900,
+      "total_rows": 8952,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "8",
+      "parent_family": "0",
+      "sub_family_code": "B",
+      "sub_family_name": "80 rank chunk 2",
+      "canonical_path_pattern": "*",
+      "rank_start": 901,
+      "rank_end": 1800,
+      "distinct_foods": 900,
+      "total_rows": 900,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "8",
+      "parent_family": "0",
+      "sub_family_code": "C",
+      "sub_family_name": "80 rank chunk 3",
+      "canonical_path_pattern": "*",
+      "rank_start": 1801,
+      "rank_end": 2562,
+      "distinct_foods": 762,
+      "total_rows": 762,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "8",
+      "parent_family": "3",
+      "sub_family_code": "3",
+      "sub_family_name": "83 rank chunk 1",
+      "canonical_path_pattern": "*",
+      "rank_start": 1,
+      "rank_end": 900,
+      "distinct_foods": 900,
+      "total_rows": 6629,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "8",
+      "parent_family": "3",
+      "sub_family_code": "D",
+      "sub_family_name": "83 rank chunk 2",
+      "canonical_path_pattern": "*",
+      "rank_start": 901,
+      "rank_end": 1800,
+      "distinct_foods": 900,
+      "total_rows": 900,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "8",
+      "parent_family": "3",
+      "sub_family_code": "E",
+      "sub_family_name": "83 rank chunk 3",
+      "canonical_path_pattern": "*",
+      "rank_start": 1801,
+      "rank_end": 1852,
+      "distinct_foods": 52,
+      "total_rows": 52,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "8",
+      "parent_family": "4",
+      "sub_family_code": "4",
+      "sub_family_name": "84 rank chunk 1",
+      "canonical_path_pattern": "*",
+      "rank_start": 1,
+      "rank_end": 900,
+      "distinct_foods": 900,
+      "total_rows": 3656,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "8",
+      "parent_family": "4",
+      "sub_family_code": "F",
+      "sub_family_name": "84 rank chunk 2",
+      "canonical_path_pattern": "*",
+      "rank_start": 901,
+      "rank_end": 1100,
+      "distinct_foods": 200,
+      "total_rows": 200,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "8",
+      "parent_family": "6",
+      "sub_family_code": "6",
+      "sub_family_name": "86 rank chunk 1",
+      "canonical_path_pattern": "*",
+      "rank_start": 1,
+      "rank_end": 900,
+      "distinct_foods": 900,
+      "total_rows": 6531,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "8",
+      "parent_family": "6",
+      "sub_family_code": "G",
+      "sub_family_name": "86 rank chunk 2",
+      "canonical_path_pattern": "*",
+      "rank_start": 901,
+      "rank_end": 1091,
+      "distinct_foods": 191,
+      "total_rows": 191,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "8",
+      "parent_family": "7",
+      "sub_family_code": "7",
+      "sub_family_name": "87 rank chunk 1",
+      "canonical_path_pattern": "*",
+      "rank_start": 1,
+      "rank_end": 900,
+      "distinct_foods": 900,
+      "total_rows": 5255,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "8",
+      "parent_family": "7",
+      "sub_family_code": "H",
+      "sub_family_name": "87 rank chunk 2",
+      "canonical_path_pattern": "*",
+      "rank_start": 901,
+      "rank_end": 1800,
+      "distinct_foods": 900,
+      "total_rows": 900,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "8",
+      "parent_family": "7",
+      "sub_family_code": "J",
+      "sub_family_name": "87 rank chunk 3",
+      "canonical_path_pattern": "*",
+      "rank_start": 1801,
+      "rank_end": 1838,
+      "distinct_foods": 38,
+      "total_rows": 38,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "9",
+      "parent_family": "0",
+      "sub_family_code": "0",
+      "sub_family_name": "90 rank chunk 1",
+      "canonical_path_pattern": "*",
+      "rank_start": 1,
+      "rank_end": 900,
+      "distinct_foods": 900,
+      "total_rows": 5904,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "9",
+      "parent_family": "0",
+      "sub_family_code": "1",
+      "sub_family_name": "90 rank chunk 2",
+      "canonical_path_pattern": "*",
+      "rank_start": 901,
+      "rank_end": 932,
+      "distinct_foods": 32,
+      "total_rows": 32,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "A",
+      "parent_family": "0",
+      "sub_family_code": "0",
+      "sub_family_name": "A0 rank chunk 1",
+      "canonical_path_pattern": "*",
+      "rank_start": 1,
+      "rank_end": 900,
+      "distinct_foods": 900,
+      "total_rows": 16483,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "A",
+      "parent_family": "0",
+      "sub_family_code": "1",
+      "sub_family_name": "A0 rank chunk 2",
+      "canonical_path_pattern": "*",
+      "rank_start": 901,
+      "rank_end": 1800,
+      "distinct_foods": 900,
+      "total_rows": 1273,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "A",
+      "parent_family": "0",
+      "sub_family_code": "2",
+      "sub_family_name": "A0 rank chunk 3",
+      "canonical_path_pattern": "*",
+      "rank_start": 1801,
+      "rank_end": 2700,
+      "distinct_foods": 900,
+      "total_rows": 900,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "A",
+      "parent_family": "0",
+      "sub_family_code": "3",
+      "sub_family_name": "A0 rank chunk 4",
+      "canonical_path_pattern": "*",
+      "rank_start": 2701,
+      "rank_end": 3102,
+      "distinct_foods": 402,
+      "total_rows": 402,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "C",
+      "parent_family": "0",
+      "sub_family_code": "0",
+      "sub_family_name": "C0 rank chunk 1",
+      "canonical_path_pattern": "*",
+      "rank_start": 1,
+      "rank_end": 900,
+      "distinct_foods": 900,
+      "total_rows": 5726,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "C",
+      "parent_family": "0",
+      "sub_family_code": "1",
+      "sub_family_name": "C0 rank chunk 2",
+      "canonical_path_pattern": "*",
+      "rank_start": 901,
+      "rank_end": 1162,
+      "distinct_foods": 262,
+      "total_rows": 262,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "D",
+      "parent_family": "0",
+      "sub_family_code": "0",
+      "sub_family_name": "D0 rank chunk 1",
+      "canonical_path_pattern": "*",
+      "rank_start": 1,
+      "rank_end": 900,
+      "distinct_foods": 900,
+      "total_rows": 4130,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "D",
+      "parent_family": "0",
+      "sub_family_code": "B",
+      "sub_family_name": "D0 rank chunk 2",
+      "canonical_path_pattern": "*",
+      "rank_start": 901,
+      "rank_end": 1056,
+      "distinct_foods": 156,
+      "total_rows": 156,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "D",
+      "parent_family": "1",
+      "sub_family_code": "1",
+      "sub_family_name": "D1 rank chunk 1",
+      "canonical_path_pattern": "*",
+      "rank_start": 1,
+      "rank_end": 900,
+      "distinct_foods": 900,
+      "total_rows": 10812,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "D",
+      "parent_family": "1",
+      "sub_family_code": "C",
+      "sub_family_name": "D1 rank chunk 2",
+      "canonical_path_pattern": "*",
+      "rank_start": 901,
+      "rank_end": 1800,
+      "distinct_foods": 900,
+      "total_rows": 900,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "D",
+      "parent_family": "1",
+      "sub_family_code": "D",
+      "sub_family_name": "D1 rank chunk 3",
+      "canonical_path_pattern": "*",
+      "rank_start": 1801,
+      "rank_end": 1950,
+      "distinct_foods": 150,
+      "total_rows": 150,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "D",
+      "parent_family": "2",
+      "sub_family_code": "2",
+      "sub_family_name": "D2 rank chunk 1",
+      "canonical_path_pattern": "*",
+      "rank_start": 1,
+      "rank_end": 900,
+      "distinct_foods": 900,
+      "total_rows": 11566,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "D",
+      "parent_family": "2",
+      "sub_family_code": "E",
+      "sub_family_name": "D2 rank chunk 2",
+      "canonical_path_pattern": "*",
+      "rank_start": 901,
+      "rank_end": 1095,
+      "distinct_foods": 195,
+      "total_rows": 195,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "D",
+      "parent_family": "3",
+      "sub_family_code": "3",
+      "sub_family_name": "D3 rank chunk 1",
+      "canonical_path_pattern": "*",
+      "rank_start": 1,
+      "rank_end": 900,
+      "distinct_foods": 900,
+      "total_rows": 4223,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "D",
+      "parent_family": "3",
+      "sub_family_code": "F",
+      "sub_family_name": "D3 rank chunk 2",
+      "canonical_path_pattern": "*",
+      "rank_start": 901,
+      "rank_end": 969,
+      "distinct_foods": 69,
+      "total_rows": 69,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "D",
+      "parent_family": "4",
+      "sub_family_code": "4",
+      "sub_family_name": "D4 rank chunk 1",
+      "canonical_path_pattern": "*",
+      "rank_start": 1,
+      "rank_end": 900,
+      "distinct_foods": 900,
+      "total_rows": 5292,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "D",
+      "parent_family": "4",
+      "sub_family_code": "G",
+      "sub_family_name": "D4 rank chunk 2",
+      "canonical_path_pattern": "*",
+      "rank_start": 901,
+      "rank_end": 1278,
+      "distinct_foods": 378,
+      "total_rows": 378,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "D",
+      "parent_family": "6",
+      "sub_family_code": "6",
+      "sub_family_name": "D6 rank chunk 1",
+      "canonical_path_pattern": "*",
+      "rank_start": 1,
+      "rank_end": 900,
+      "distinct_foods": 900,
+      "total_rows": 5198,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "D",
+      "parent_family": "6",
+      "sub_family_code": "H",
+      "sub_family_name": "D6 rank chunk 2",
+      "canonical_path_pattern": "*",
+      "rank_start": 901,
+      "rank_end": 1058,
+      "distinct_foods": 158,
+      "total_rows": 158,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "E",
+      "parent_family": "6",
+      "sub_family_code": "6",
+      "sub_family_name": "E6 rank chunk 1",
+      "canonical_path_pattern": "*",
+      "rank_start": 1,
+      "rank_end": 900,
+      "distinct_foods": 900,
+      "total_rows": 4771,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "E",
+      "parent_family": "6",
+      "sub_family_code": "7",
+      "sub_family_name": "E6 rank chunk 2",
+      "canonical_path_pattern": "*",
+      "rank_start": 901,
+      "rank_end": 1800,
+      "distinct_foods": 900,
+      "total_rows": 900,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "E",
+      "parent_family": "6",
+      "sub_family_code": "9",
+      "sub_family_name": "E6 rank chunk 3",
+      "canonical_path_pattern": "*",
+      "rank_start": 1801,
+      "rank_end": 2700,
+      "distinct_foods": 900,
+      "total_rows": 900,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "E",
+      "parent_family": "6",
+      "sub_family_code": "A",
+      "sub_family_name": "E6 rank chunk 4",
+      "canonical_path_pattern": "*",
+      "rank_start": 2701,
+      "rank_end": 3008,
+      "distinct_foods": 308,
+      "total_rows": 308,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "F",
+      "parent_family": "0",
+      "sub_family_code": "0",
+      "sub_family_name": "F0 rank chunk 1",
+      "canonical_path_pattern": "*",
+      "rank_start": 1,
+      "rank_end": 900,
+      "distinct_foods": 900,
+      "total_rows": 3987,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "F",
+      "parent_family": "0",
+      "sub_family_code": "C",
+      "sub_family_name": "F0 rank chunk 2",
+      "canonical_path_pattern": "*",
+      "rank_start": 901,
+      "rank_end": 1767,
+      "distinct_foods": 867,
+      "total_rows": 867,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "F",
+      "parent_family": "6",
+      "sub_family_code": "6",
+      "sub_family_name": "F6 rank chunk 1",
+      "canonical_path_pattern": "*",
+      "rank_start": 1,
+      "rank_end": 900,
+      "distinct_foods": 900,
+      "total_rows": 10313,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "F",
+      "parent_family": "6",
+      "sub_family_code": "D",
+      "sub_family_name": "F6 rank chunk 2",
+      "canonical_path_pattern": "*",
+      "rank_start": 901,
+      "rank_end": 1800,
+      "distinct_foods": 900,
+      "total_rows": 1530,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "F",
+      "parent_family": "6",
+      "sub_family_code": "E",
+      "sub_family_name": "F6 rank chunk 3",
+      "canonical_path_pattern": "*",
+      "rank_start": 1801,
+      "rank_end": 2700,
+      "distinct_foods": 900,
+      "total_rows": 900,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "F",
+      "parent_family": "6",
+      "sub_family_code": "F",
+      "sub_family_name": "F6 rank chunk 4",
+      "canonical_path_pattern": "*",
+      "rank_start": 2701,
+      "rank_end": 3600,
+      "distinct_foods": 900,
+      "total_rows": 900,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "F",
+      "parent_family": "6",
+      "sub_family_code": "G",
+      "sub_family_name": "F6 rank chunk 5",
+      "canonical_path_pattern": "*",
+      "rank_start": 3601,
+      "rank_end": 4500,
+      "distinct_foods": 900,
+      "total_rows": 900,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "F",
+      "parent_family": "6",
+      "sub_family_code": "H",
+      "sub_family_name": "F6 rank chunk 6",
+      "canonical_path_pattern": "*",
+      "rank_start": 4501,
+      "rank_end": 5400,
+      "distinct_foods": 900,
+      "total_rows": 900,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "F",
+      "parent_family": "6",
+      "sub_family_code": "J",
+      "sub_family_name": "F6 rank chunk 7",
+      "canonical_path_pattern": "*",
+      "rank_start": 5401,
+      "rank_end": 6056,
+      "distinct_foods": 656,
+      "total_rows": 656,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "F",
+      "parent_family": "9",
+      "sub_family_code": "9",
+      "sub_family_name": "F9 rank chunk 1",
+      "canonical_path_pattern": "*",
+      "rank_start": 1,
+      "rank_end": 900,
+      "distinct_foods": 900,
+      "total_rows": 6306,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "F",
+      "parent_family": "9",
+      "sub_family_code": "K",
+      "sub_family_name": "F9 rank chunk 2",
+      "canonical_path_pattern": "*",
+      "rank_start": 901,
+      "rank_end": 1076,
+      "distinct_foods": 176,
+      "total_rows": 176,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "G",
+      "parent_family": "0",
+      "sub_family_code": "0",
+      "sub_family_name": "G0 rank chunk 1",
+      "canonical_path_pattern": "*",
+      "rank_start": 1,
+      "rank_end": 900,
+      "distinct_foods": 900,
+      "total_rows": 26863,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "G",
+      "parent_family": "0",
+      "sub_family_code": "1",
+      "sub_family_name": "G0 rank chunk 2",
+      "canonical_path_pattern": "*",
+      "rank_start": 901,
+      "rank_end": 1800,
+      "distinct_foods": 900,
+      "total_rows": 3001,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "G",
+      "parent_family": "0",
+      "sub_family_code": "2",
+      "sub_family_name": "G0 rank chunk 3",
+      "canonical_path_pattern": "*",
+      "rank_start": 1801,
+      "rank_end": 2700,
+      "distinct_foods": 900,
+      "total_rows": 1775,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "G",
+      "parent_family": "0",
+      "sub_family_code": "3",
+      "sub_family_name": "G0 rank chunk 4",
+      "canonical_path_pattern": "*",
+      "rank_start": 2701,
+      "rank_end": 3600,
+      "distinct_foods": 900,
+      "total_rows": 900,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "G",
+      "parent_family": "0",
+      "sub_family_code": "4",
+      "sub_family_name": "G0 rank chunk 5",
+      "canonical_path_pattern": "*",
+      "rank_start": 3601,
+      "rank_end": 4500,
+      "distinct_foods": 900,
+      "total_rows": 900,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "G",
+      "parent_family": "0",
+      "sub_family_code": "5",
+      "sub_family_name": "G0 rank chunk 6",
+      "canonical_path_pattern": "*",
+      "rank_start": 4501,
+      "rank_end": 5400,
+      "distinct_foods": 900,
+      "total_rows": 900,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "G",
+      "parent_family": "0",
+      "sub_family_code": "6",
+      "sub_family_name": "G0 rank chunk 7",
+      "canonical_path_pattern": "*",
+      "rank_start": 5401,
+      "rank_end": 6300,
+      "distinct_foods": 900,
+      "total_rows": 900,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "G",
+      "parent_family": "0",
+      "sub_family_code": "7",
+      "sub_family_name": "G0 rank chunk 8",
+      "canonical_path_pattern": "*",
+      "rank_start": 6301,
+      "rank_end": 7200,
+      "distinct_foods": 900,
+      "total_rows": 900,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "G",
+      "parent_family": "0",
+      "sub_family_code": "8",
+      "sub_family_name": "G0 rank chunk 9",
+      "canonical_path_pattern": "*",
+      "rank_start": 7201,
+      "rank_end": 7263,
+      "distinct_foods": 63,
+      "total_rows": 63,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "H",
+      "parent_family": "0",
+      "sub_family_code": "0",
+      "sub_family_name": "H0 rank chunk 1",
+      "canonical_path_pattern": "*",
+      "rank_start": 1,
+      "rank_end": 900,
+      "distinct_foods": 900,
+      "total_rows": 6019,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "H",
+      "parent_family": "0",
+      "sub_family_code": "B",
+      "sub_family_name": "H0 rank chunk 2",
+      "canonical_path_pattern": "*",
+      "rank_start": 901,
+      "rank_end": 1800,
+      "distinct_foods": 900,
+      "total_rows": 1129,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "H",
+      "parent_family": "0",
+      "sub_family_code": "C",
+      "sub_family_name": "H0 rank chunk 3",
+      "canonical_path_pattern": "*",
+      "rank_start": 1801,
+      "rank_end": 2700,
+      "distinct_foods": 900,
+      "total_rows": 900,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "H",
+      "parent_family": "0",
+      "sub_family_code": "D",
+      "sub_family_name": "H0 rank chunk 4",
+      "canonical_path_pattern": "*",
+      "rank_start": 2701,
+      "rank_end": 3600,
+      "distinct_foods": 900,
+      "total_rows": 900,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "H",
+      "parent_family": "0",
+      "sub_family_code": "E",
+      "sub_family_name": "H0 rank chunk 5",
+      "canonical_path_pattern": "*",
+      "rank_start": 3601,
+      "rank_end": 4500,
+      "distinct_foods": 900,
+      "total_rows": 900,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "H",
+      "parent_family": "0",
+      "sub_family_code": "F",
+      "sub_family_name": "H0 rank chunk 6",
+      "canonical_path_pattern": "*",
+      "rank_start": 4501,
+      "rank_end": 5400,
+      "distinct_foods": 900,
+      "total_rows": 900,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "H",
+      "parent_family": "0",
+      "sub_family_code": "G",
+      "sub_family_name": "H0 rank chunk 7",
+      "canonical_path_pattern": "*",
+      "rank_start": 5401,
+      "rank_end": 5887,
+      "distinct_foods": 487,
+      "total_rows": 487,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "H",
+      "parent_family": "1",
+      "sub_family_code": "1",
+      "sub_family_name": "H1 rank chunk 1",
+      "canonical_path_pattern": "*",
+      "rank_start": 1,
+      "rank_end": 900,
+      "distinct_foods": 900,
+      "total_rows": 3995,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "H",
+      "parent_family": "1",
+      "sub_family_code": "H",
+      "sub_family_name": "H1 rank chunk 2",
+      "canonical_path_pattern": "*",
+      "rank_start": 901,
+      "rank_end": 1562,
+      "distinct_foods": 662,
+      "total_rows": 662,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "H",
+      "parent_family": "2",
+      "sub_family_code": "2",
+      "sub_family_name": "H2 rank chunk 1",
+      "canonical_path_pattern": "*",
+      "rank_start": 1,
+      "rank_end": 900,
+      "distinct_foods": 900,
+      "total_rows": 2463,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "H",
+      "parent_family": "2",
+      "sub_family_code": "J",
+      "sub_family_name": "H2 rank chunk 2",
+      "canonical_path_pattern": "*",
+      "rank_start": 901,
+      "rank_end": 1800,
+      "distinct_foods": 900,
+      "total_rows": 900,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "H",
+      "parent_family": "2",
+      "sub_family_code": "K",
+      "sub_family_name": "H2 rank chunk 3",
+      "canonical_path_pattern": "*",
+      "rank_start": 1801,
+      "rank_end": 1992,
+      "distinct_foods": 192,
+      "total_rows": 192,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "H",
+      "parent_family": "3",
+      "sub_family_code": "3",
+      "sub_family_name": "H3 rank chunk 1",
+      "canonical_path_pattern": "*",
+      "rank_start": 1,
+      "rank_end": 900,
+      "distinct_foods": 900,
+      "total_rows": 5586,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "H",
+      "parent_family": "3",
+      "sub_family_code": "M",
+      "sub_family_name": "H3 rank chunk 2",
+      "canonical_path_pattern": "*",
+      "rank_start": 901,
+      "rank_end": 1800,
+      "distinct_foods": 900,
+      "total_rows": 900,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "H",
+      "parent_family": "3",
+      "sub_family_code": "N",
+      "sub_family_name": "H3 rank chunk 3",
+      "canonical_path_pattern": "*",
+      "rank_start": 1801,
+      "rank_end": 2700,
+      "distinct_foods": 900,
+      "total_rows": 900,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "H",
+      "parent_family": "3",
+      "sub_family_code": "P",
+      "sub_family_name": "H3 rank chunk 4",
+      "canonical_path_pattern": "*",
+      "rank_start": 2701,
+      "rank_end": 2797,
+      "distinct_foods": 97,
+      "total_rows": 97,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "H",
+      "parent_family": "4",
+      "sub_family_code": "4",
+      "sub_family_name": "H4 rank chunk 1",
+      "canonical_path_pattern": "*",
+      "rank_start": 1,
+      "rank_end": 900,
+      "distinct_foods": 900,
+      "total_rows": 1960,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "H",
+      "parent_family": "4",
+      "sub_family_code": "Q",
+      "sub_family_name": "H4 rank chunk 2",
+      "canonical_path_pattern": "*",
+      "rank_start": 901,
+      "rank_end": 1514,
+      "distinct_foods": 614,
+      "total_rows": 614,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "H",
+      "parent_family": "5",
+      "sub_family_code": "5",
+      "sub_family_name": "H5 rank chunk 1",
+      "canonical_path_pattern": "*",
+      "rank_start": 1,
+      "rank_end": 900,
+      "distinct_foods": 900,
+      "total_rows": 2435,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "H",
+      "parent_family": "5",
+      "sub_family_code": "R",
+      "sub_family_name": "H5 rank chunk 2",
+      "canonical_path_pattern": "*",
+      "rank_start": 901,
+      "rank_end": 1592,
+      "distinct_foods": 692,
+      "total_rows": 692,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "J",
+      "parent_family": "0",
+      "sub_family_code": "0",
+      "sub_family_name": "J0 rank chunk 1",
+      "canonical_path_pattern": "*",
+      "rank_start": 1,
+      "rank_end": 900,
+      "distinct_foods": 900,
+      "total_rows": 62403,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "J",
+      "parent_family": "0",
+      "sub_family_code": "1",
+      "sub_family_name": "J0 rank chunk 2",
+      "canonical_path_pattern": "*",
+      "rank_start": 901,
+      "rank_end": 1800,
+      "distinct_foods": 900,
+      "total_rows": 9327,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "J",
+      "parent_family": "0",
+      "sub_family_code": "2",
+      "sub_family_name": "J0 rank chunk 3",
+      "canonical_path_pattern": "*",
+      "rank_start": 1801,
+      "rank_end": 2700,
+      "distinct_foods": 900,
+      "total_rows": 5212,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "J",
+      "parent_family": "0",
+      "sub_family_code": "3",
+      "sub_family_name": "J0 rank chunk 4",
+      "canonical_path_pattern": "*",
+      "rank_start": 2701,
+      "rank_end": 3600,
+      "distinct_foods": 900,
+      "total_rows": 3740,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "J",
+      "parent_family": "0",
+      "sub_family_code": "4",
+      "sub_family_name": "J0 rank chunk 5",
+      "canonical_path_pattern": "*",
+      "rank_start": 3601,
+      "rank_end": 4500,
+      "distinct_foods": 900,
+      "total_rows": 2700,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "J",
+      "parent_family": "0",
+      "sub_family_code": "5",
+      "sub_family_name": "J0 rank chunk 6",
+      "canonical_path_pattern": "*",
+      "rank_start": 4501,
+      "rank_end": 5400,
+      "distinct_foods": 900,
+      "total_rows": 2199,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "J",
+      "parent_family": "0",
+      "sub_family_code": "6",
+      "sub_family_name": "J0 rank chunk 7",
+      "canonical_path_pattern": "*",
+      "rank_start": 5401,
+      "rank_end": 6300,
+      "distinct_foods": 900,
+      "total_rows": 1800,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "J",
+      "parent_family": "0",
+      "sub_family_code": "7",
+      "sub_family_name": "J0 rank chunk 8",
+      "canonical_path_pattern": "*",
+      "rank_start": 6301,
+      "rank_end": 7200,
+      "distinct_foods": 900,
+      "total_rows": 1800,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "J",
+      "parent_family": "0",
+      "sub_family_code": "8",
+      "sub_family_name": "J0 rank chunk 9",
+      "canonical_path_pattern": "*",
+      "rank_start": 7201,
+      "rank_end": 8100,
+      "distinct_foods": 900,
+      "total_rows": 1601,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "J",
+      "parent_family": "0",
+      "sub_family_code": "9",
+      "sub_family_name": "J0 rank chunk 10",
+      "canonical_path_pattern": "*",
+      "rank_start": 8101,
+      "rank_end": 9000,
+      "distinct_foods": 900,
+      "total_rows": 900,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "J",
+      "parent_family": "0",
+      "sub_family_code": "A",
+      "sub_family_name": "J0 rank chunk 11",
+      "canonical_path_pattern": "*",
+      "rank_start": 9001,
+      "rank_end": 9900,
+      "distinct_foods": 900,
+      "total_rows": 900,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "J",
+      "parent_family": "0",
+      "sub_family_code": "B",
+      "sub_family_name": "J0 rank chunk 12",
+      "canonical_path_pattern": "*",
+      "rank_start": 9901,
+      "rank_end": 10800,
+      "distinct_foods": 900,
+      "total_rows": 900,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "J",
+      "parent_family": "0",
+      "sub_family_code": "C",
+      "sub_family_name": "J0 rank chunk 13",
+      "canonical_path_pattern": "*",
+      "rank_start": 10801,
+      "rank_end": 11700,
+      "distinct_foods": 900,
+      "total_rows": 900,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "J",
+      "parent_family": "0",
+      "sub_family_code": "D",
+      "sub_family_name": "J0 rank chunk 14",
+      "canonical_path_pattern": "*",
+      "rank_start": 11701,
+      "rank_end": 12600,
+      "distinct_foods": 900,
+      "total_rows": 900,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "J",
+      "parent_family": "0",
+      "sub_family_code": "E",
+      "sub_family_name": "J0 rank chunk 15",
+      "canonical_path_pattern": "*",
+      "rank_start": 12601,
+      "rank_end": 13500,
+      "distinct_foods": 900,
+      "total_rows": 900,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "J",
+      "parent_family": "0",
+      "sub_family_code": "F",
+      "sub_family_name": "J0 rank chunk 16",
+      "canonical_path_pattern": "*",
+      "rank_start": 13501,
+      "rank_end": 14400,
+      "distinct_foods": 900,
+      "total_rows": 900,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "J",
+      "parent_family": "0",
+      "sub_family_code": "G",
+      "sub_family_name": "J0 rank chunk 17",
+      "canonical_path_pattern": "*",
+      "rank_start": 14401,
+      "rank_end": 15300,
+      "distinct_foods": 900,
+      "total_rows": 900,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "J",
+      "parent_family": "0",
+      "sub_family_code": "H",
+      "sub_family_name": "J0 rank chunk 18",
+      "canonical_path_pattern": "*",
+      "rank_start": 15301,
+      "rank_end": 16200,
+      "distinct_foods": 900,
+      "total_rows": 900,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "J",
+      "parent_family": "0",
+      "sub_family_code": "J",
+      "sub_family_name": "J0 rank chunk 19",
+      "canonical_path_pattern": "*",
+      "rank_start": 16201,
+      "rank_end": 17100,
+      "distinct_foods": 900,
+      "total_rows": 900,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "J",
+      "parent_family": "0",
+      "sub_family_code": "K",
+      "sub_family_name": "J0 rank chunk 20",
+      "canonical_path_pattern": "*",
+      "rank_start": 17101,
+      "rank_end": 18000,
+      "distinct_foods": 900,
+      "total_rows": 900,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "J",
+      "parent_family": "0",
+      "sub_family_code": "M",
+      "sub_family_name": "J0 rank chunk 21",
+      "canonical_path_pattern": "*",
+      "rank_start": 18001,
+      "rank_end": 18900,
+      "distinct_foods": 900,
+      "total_rows": 900,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "J",
+      "parent_family": "0",
+      "sub_family_code": "N",
+      "sub_family_name": "J0 rank chunk 22",
+      "canonical_path_pattern": "*",
+      "rank_start": 18901,
+      "rank_end": 19800,
+      "distinct_foods": 900,
+      "total_rows": 900,
+      "reason": "overflow_subdivision"
+    },
+    {
+      "parent_group": "J",
+      "parent_family": "0",
+      "sub_family_code": "P",
+      "sub_family_name": "J0 rank chunk 23",
+      "canonical_path_pattern": "*",
+      "rank_start": 19801,
+      "rank_end": 20661,
+      "distinct_foods": 861,
+      "total_rows": 861,
+      "reason": "overflow_subdivision"
+    }
+  ],
+  "overflow_buckets": [],
+  "largest_buckets_by_distinct_foods": [
+    {
+      "bucket": [
+        "J",
+        "0"
+      ],
+      "distinct_foods": 900,
+      "total_rows": 62403
+    },
+    {
+      "bucket": [
+        "G",
+        "0"
+      ],
+      "distinct_foods": 900,
+      "total_rows": 26863
+    },
+    {
+      "bucket": [
+        "1",
+        "1"
+      ],
+      "distinct_foods": 900,
+      "total_rows": 19157
+    },
+    {
+      "bucket": [
+        "A",
+        "0"
+      ],
+      "distinct_foods": 900,
+      "total_rows": 16483
+    },
+    {
+      "bucket": [
+        "1",
+        "5"
+      ],
+      "distinct_foods": 900,
+      "total_rows": 13052
+    },
+    {
+      "bucket": [
+        "D",
+        "2"
+      ],
+      "distinct_foods": 900,
+      "total_rows": 11566
+    },
+    {
+      "bucket": [
+        "D",
+        "1"
+      ],
+      "distinct_foods": 900,
+      "total_rows": 10812
+    },
+    {
+      "bucket": [
+        "F",
+        "6"
+      ],
+      "distinct_foods": 900,
+      "total_rows": 10313
+    },
+    {
+      "bucket": [
+        "J",
+        "1"
+      ],
+      "distinct_foods": 900,
+      "total_rows": 9327
+    },
+    {
+      "bucket": [
+        "8",
+        "0"
+      ],
+      "distinct_foods": 900,
+      "total_rows": 8952
+    },
+    {
+      "bucket": [
+        "2",
+        "4"
+      ],
+      "distinct_foods": 900,
+      "total_rows": 8771
+    },
+    {
+      "bucket": [
+        "4",
+        "0"
+      ],
+      "distinct_foods": 900,
+      "total_rows": 8074
+    },
+    {
+      "bucket": [
+        "8",
+        "3"
+      ],
+      "distinct_foods": 900,
+      "total_rows": 6629
+    },
+    {
+      "bucket": [
+        "8",
+        "6"
+      ],
+      "distinct_foods": 900,
+      "total_rows": 6531
+    },
+    {
+      "bucket": [
+        "F",
+        "9"
+      ],
+      "distinct_foods": 900,
+      "total_rows": 6306
+    },
+    {
+      "bucket": [
+        "H",
+        "0"
+      ],
+      "distinct_foods": 900,
+      "total_rows": 6019
+    },
+    {
+      "bucket": [
+        "9",
+        "0"
+      ],
+      "distinct_foods": 900,
+      "total_rows": 5904
+    },
+    {
+      "bucket": [
+        "C",
+        "0"
+      ],
+      "distinct_foods": 900,
+      "total_rows": 5726
+    },
+    {
+      "bucket": [
+        "H",
+        "3"
+      ],
+      "distinct_foods": 900,
+      "total_rows": 5586
+    },
+    {
+      "bucket": [
+        "D",
+        "4"
+      ],
+      "distinct_foods": 900,
+      "total_rows": 5292
+    },
+    {
+      "bucket": [
+        "8",
+        "7"
+      ],
+      "distinct_foods": 900,
+      "total_rows": 5255
+    },
+    {
+      "bucket": [
+        "J",
+        "2"
+      ],
+      "distinct_foods": 900,
+      "total_rows": 5212
+    },
+    {
+      "bucket": [
+        "D",
+        "6"
+      ],
+      "distinct_foods": 900,
+      "total_rows": 5198
+    },
+    {
+      "bucket": [
+        "E",
+        "6"
+      ],
+      "distinct_foods": 900,
+      "total_rows": 4771
+    },
+    {
+      "bucket": [
+        "D",
+        "3"
+      ],
+      "distinct_foods": 900,
+      "total_rows": 4223
+    },
+    {
+      "bucket": [
+        "D",
+        "0"
+      ],
+      "distinct_foods": 900,
+      "total_rows": 4130
+    },
+    {
+      "bucket": [
+        "H",
+        "1"
+      ],
+      "distinct_foods": 900,
+      "total_rows": 3995
+    },
+    {
+      "bucket": [
+        "F",
+        "0"
+      ],
+      "distinct_foods": 900,
+      "total_rows": 3987
+    },
+    {
+      "bucket": [
+        "7",
+        "0"
+      ],
+      "distinct_foods": 900,
+      "total_rows": 3958
+    },
+    {
+      "bucket": [
+        "J",
+        "3"
+      ],
+      "distinct_foods": 900,
+      "total_rows": 3740
+    },
+    {
+      "bucket": [
+        "8",
+        "4"
+      ],
+      "distinct_foods": 900,
+      "total_rows": 3656
+    },
+    {
+      "bucket": [
+        "3",
+        "0"
+      ],
+      "distinct_foods": 900,
+      "total_rows": 3416
+    },
+    {
+      "bucket": [
+        "2",
+        "0"
+      ],
+      "distinct_foods": 900,
+      "total_rows": 3394
+    },
+    {
+      "bucket": [
+        "6",
+        "0"
+      ],
+      "distinct_foods": 900,
+      "total_rows": 3384
+    },
+    {
+      "bucket": [
+        "G",
+        "1"
+      ],
+      "distinct_foods": 900,
+      "total_rows": 3001
+    },
+    {
+      "bucket": [
+        "5",
+        "0"
+      ],
+      "distinct_foods": 900,
+      "total_rows": 3000
+    },
+    {
+      "bucket": [
+        "J",
+        "4"
+      ],
+      "distinct_foods": 900,
+      "total_rows": 2700
+    },
+    {
+      "bucket": [
+        "H",
+        "2"
+      ],
+      "distinct_foods": 900,
+      "total_rows": 2463
+    },
+    {
+      "bucket": [
+        "H",
+        "5"
+      ],
+      "distinct_foods": 900,
+      "total_rows": 2435
+    },
+    {
+      "bucket": [
+        "J",
+        "5"
+      ],
+      "distinct_foods": 900,
+      "total_rows": 2199
+    }
+  ],
+  "outputs": {
+    "registry": "/Users/jamiebarton/Desktop/esha_audit_bundle/recipe_mapper/v1/htc/food_slot_registry.csv",
+    "subdivisions": "/Users/jamiebarton/Desktop/esha_audit_bundle/recipe_mapper/v1/htc/family_subdivisions.csv",
+    "report": "/Users/jamiebarton/Desktop/esha_audit_bundle/recipe_mapper/v1/htc/food_slot_registry_report.json"
+  }
+}

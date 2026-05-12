@@ -1,0 +1,67 @@
+{
+  "category": "Wholesome Snacks",
+  "n_products": 6375,
+  "verdict_distribution": {
+    "NEEDS_NEW_CONCEPT": 1780,
+    "EXACT": 1742,
+    "WEAK": 1692,
+    "STRONG": 1009,
+    "COMPOSITE": 135,
+    "NO_IDENTITY": 9,
+    "NO_MATCH": 8
+  },
+  "top_esha_codes": [
+    {
+      "code": "",
+      "desc": "",
+      "n": 367
+    },
+    {
+      "code": "9922",
+      "desc": "Raisins, freeze dried, Just Raisins, serving",
+      "n": 274
+    },
+    {
+      "code": "46799",
+      "desc": "applesauce, cinnamon",
+      "n": 234
+    },
+    {
+      "code": "3006",
+      "desc": "applesauce, unsweetened, canned",
+      "n": 233
+    },
+    {
+      "code": "35873",
+      "desc": "applesauce",
+      "n": 215
+    },
+    {
+      "code": "71967",
+      "desc": "Prunes, dried, pitted",
+      "n": 149
+    },
+    {
+      "code": "9916",
+      "desc": "Mango, freeze dried, Just Mango, serving",
+      "n": 135
+    },
+    {
+      "code": "35873",
+      "desc": "Applesauce",
+      "n": 134
+    },
+    {
+      "code": "48557",
+      "desc": "Cranberries, dried",
+      "n": 131
+    },
+    {
+      "code": "27576",
+      "desc": "topping, dried fruit",
+      "n": 125
+    }
+  ],
+  "n_fixes_proposed": 179,
+  "n_needs_new_concept": 1780
+}

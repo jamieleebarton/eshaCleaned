@@ -1,0 +1,279 @@
+#token	notes — brands to drop from axis assignment but keep for retail-leaf naming
+kellogg	Kellogg's
+kellogs	Kellogg's
+kelloggs	Kellogg's
+kroger	Kroger (private label)
+campbell	Campbell's
+campbells	Campbell's
+pillsbury	Pillsbury
+nabisco	Nabisco
+oreo	Oreo (also flavor)
+betty	Betty Crocker
+crocker	Betty Crocker
+pepperidge	Pepperidge Farm
+pepperidgefarm	Pepperidge Farm
+tyson	Tyson
+cadbury	Cadbury
+yoplait	Yoplait
+hannaford	Hannaford (regional)
+weis	Weis (regional)
+shoprite	ShopRite (regional)
+spartan	Spartan (private label)
+roundy	Roundy's (regional)
+heb	H-E-B (regional)
+publix	Publix (regional)
+wegmans	Wegmans (regional)
+trader	Trader Joe's (compound)
+joes	Trader Joe's (compound)
+joe	Trader Joe / Sloppy Joe
+whole	Whole Foods (compound)
+365	Whole Foods 365 (compound)
+target	Target (private label)
+walmart	Walmart (private label)
+costco	Costco
+sams	Sam's Club
+clubs	Sam's Club / Costco
+aldi	Aldi
+albertsons	Albertsons
+safeway	Safeway
+stop	Stop & Shop (compound)
+shop	Stop & Shop (compound)
+giant	Giant
+food	(generic — also stopword)
+lion	Food Lion (compound)
+hyvee	Hy-Vee
+heinz	Heinz
+delmonte	Del Monte
+dole	Dole
+chiquita	Chiquita
+sunkist	Sunkist
+ocean	Ocean Spray (compound)
+ocean-spray	Ocean Spray
+spray	Ocean Spray (compound)
+juicy	Juicy Juice (also flavor)
+naked	Naked Juice
+welch	Welch's
+welchs	Welch's
+mott	Mott's
+motts	Mott's
+mr	mr brand prefix
+mrs	mrs brand prefix
+sara	Sara Lee (compound)
+lee	Sara Lee (compound)
+saralee	Sara Lee
+hostess	Hostess
+entenmann	Entenmann's
+mccain	McCain
+oreida	Ore-Ida
+greengiant	Green Giant (compound)
+greenpea	Green Giant (compound)
+giant	Green Giant / Stop & Shop
+birdseye	Birds Eye
+hidden	Hidden Valley (compound)
+valley	Hidden Valley / Nature Valley
+hiddenvalley	Hidden Valley
+naturevalley	Nature Valley
+nature	Nature Valley / general
+quaker	Quaker
+oats	(also category)
+cheerios	Cheerios
+fruitloops	Froot Loops
+froot	Froot Loops
+loops	Froot Loops
+captain	Captain Crunch (compound)
+crunchberry	Crunch Berry
+crunchberries	Crunch Berries
+chex	Chex
+wheaties	Wheaties
+generalmills	General Mills
+post	Post (cereal brand)
+kashi	Kashi
+clif	Clif Bar
+luna	LUNA
+kind	KIND (also flavor)
+larabar	LARABAR
+rxbar	RXBAR
+quest	Quest
+oikos	Oikos
+chobani	Chobani
+fage	FAGE
+siggi	siggi's
+silk	Silk
+califia	Califia Farms
+diamond	Blue Diamond / Diamond Crystal (compound)
+breeze	Almond Breeze (compound)
+imperial	Imperial Margarine
+landolakes	Land O Lakes
+landolakers	Land O Lakes
+landolake	Land O Lakes
+land	Land O Lakes (compound)
+lakes	Land O Lakes (compound)
+lake	Land O Lakes (compound)
+horizon	Horizon Organic
+organic	(diet — also brand)
+sargento	Sargento
+kraft	Kraft
+philadelphia	Philadelphia (also cuisine)
+heluva	Heluva Good
+laughingcow	Laughing Cow
+laughing	Laughing Cow (compound)
+cow	Laughing Cow (compound)
+finlandia	Finlandia
+boursin	Boursin
+president	Président
+cabot	Cabot
+tillamook	Tillamook
+plugras	Plugrá
+miyoko	Miyoko's
+violife	Violife
+daiya	Daiya
+follow	Follow Your Heart (compound)
+yourheart	Follow Your Heart (compound)
+gardein	Gardein
+beyond	Beyond Meat (compound)
+impossible	Impossible Foods (compound)
+boca	Boca
+morningstar	MorningStar Farms
+amy	Amy's Kitchen
+annie	Annie's Homegrown
+annies	Annie's
+luna	LUNA Bar
+mochi	Mochi (also category)
+ben	Ben & Jerry's (compound)
+jerry	Ben & Jerry's (compound)
+benjerry	Ben & Jerry's
+jerrys	Ben & Jerry's
+talenti	Talenti
+haagen	Häagen-Dazs (compound)
+dazs	Häagen-Dazs (compound)
+haagendazs	Häagen-Dazs
+graeter	Graeter's
+turkey	(also category — turkey hill brand)
+hill	Turkey Hill / Hill Country (compound)
+hood	Hood
+edy	Edy's / Dreyer's
+dreyer	Dreyer's
+nestle	Nestlé
+hershey	Hershey
+m&m	M&M's
+mmm	M&M's
+mars	Mars
+snickers	Snickers
+twix	Twix
+kitkat	Kit Kat
+reese	Reese's
+reeses	Reese's
+rolo	Rolo
+hostess	Hostess
+butterfinger	Butterfinger
+bounty	Bounty
+mounds	Mounds
+almondjoy	Almond Joy (compound)
+joy	Almond Joy (compound)
+junior	Junior Mints
+mints	(category — also Junior Mints)
+york	York Peppermint
+peppermint	(also flavor — York Peppermint)
+nestea	Nestea
+liptons	Lipton's
+lipton	Lipton
+twining	Twinings
+twinings	Twinings
+celestial	Celestial Seasonings (compound)
+seasonings	Celestial Seasonings
+yogi	Yogi Tea
+honest	Honest Tea
+gold	Gold Peak (compound)
+peak	Gold Peak (compound)
+peaks	peaks
+arizona	Arizona (also state)
+snapple	Snapple
+sunny	Sunny Delight (compound)
+delight	Sunny Delight / general delight
+sunnyd	Sunny D
+gatorade	Gatorade
+powerade	Powerade
+bodyarmor	BodyArmor
+poweraid	Powerade
+red-bull	Red Bull
+redbull	Red Bull
+monster	Monster Energy
+rockstar	Rockstar Energy
+celcius	Celsius
+celsius	Celsius
+prime	Prime
+liquidiv	Liquid IV
+nuun	Nuun
+liquid	Liquid IV / generic
+dasani	Dasani
+aquafina	Aquafina
+fiji	Fiji
+evian	Evian
+poland	Poland Spring (compound)
+spring	(also storage)
+polandspring	Poland Spring
+smartwater	Smart Water
+smart	(also marketing)
+glaceau	Glaceau
+vitaminwater	Vitamin Water (compound)
+fanta	Fanta
+sprite	Sprite
+mountaindew	Mountain Dew
+dew	Mountain Dew
+pepsi	Pepsi
+coca	Coca-Cola (compound)
+cola	(also category)
+cokie	Coke (slang)
+diet	(also DIET — Diet Pepsi/Coke)
+dr	Dr Pepper (compound)
+pepper	(also category — Dr Pepper)
+drpepper	Dr Pepper
+crush	Crush
+fuze	Fuze Tea
+honest	Honest brand
+suja	Suja
+boll	Boll & Branch (off-topic) / GT's
+gt	GT's Kombucha
+synergy	GT's Synergy
+healthade	Health-Ade
+brewdr	Brew Dr.
+ginginsuave	Gin Gin (Ginger drink)
+breitsamer	(German brand)
+unilever	Unilever
+nestleusa	Nestlé USA
+mars	Mars
+pepsico	PepsiCo
+cocacola	Coca-Cola
+generalmills	General Mills
+mondelez	Mondelez
+mondelēz	Mondelēz
+kellogg	Kellogg
+ferrara	Ferrara
+ferrero	Ferrero
+mondelez	Mondelez
+clif	Clif Bar Co
+goose	Goose Island (beer) / goose meat
+sam	Sam's Choice / Sam Adams
+samadams	Sam Adams
+adams	Adams
+jim	Jim Beam / Slim Jim
+beam	Jim Beam (compound)
+slim	Slim Jim (compound)
+slimjim	Slim Jim
+jack	Jack Daniel's / Jack cheese (already)
+daniel	Jack Daniel's (compound)
+daniels	Jack Daniel's
+heineken	Heineken
+corona	Corona
+tecate	Tecate
+modelo	Modelo
+coors	Coors
+budweiser	Budweiser
+miller	Miller
+michelob	Michelob
+pabst	Pabst
+yuengling	Yuengling
+mike	Mike's Hard
+hard	(also texture)
+chimes	Chimes (Ginger)
+gtsynergy	GT's Synergy

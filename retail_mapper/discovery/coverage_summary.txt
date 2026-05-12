@@ -1,0 +1,58 @@
+=== P1 token coverage  (2026-04-28 17:47:55) ===
+Titles scanned:       462,646
+Unique tokens:         28,196
+Total token mass:   2,782,604
+Mass covered:       2,489,738  (89.5%)
+Mass unassigned:      292,866  (10.5%)
+Top-500 unassigned mass:    106,164
+
+--- Per-axis mass ---
+            CATEGORY     623,104  (22.4%)
+                FORM     552,044  (19.8%)
+            STOPWORD     435,632  (15.7%)
+    FLAVOR_UNIVERSAL     177,950  (6.4%)
+   PREPARATION_STATE     128,812  (4.6%)
+               COLOR      99,569  (3.6%)
+         BRAND_NOISE      89,701  (3.2%)
+           DISH_TYPE      72,247  (2.6%)
+             STORAGE      58,059  (2.1%)
+             CUISINE      57,743  (2.1%)
+                DIET      55,023  (2.0%)
+                 CUT      52,261  (1.9%)
+           SWEETENER      43,461  (1.6%)
+              SODIUM      15,723  (0.6%)
+                 FAT      15,349  (0.6%)
+            AUDIENCE       8,947  (0.3%)
+        COMBO_FORMAT       4,113  (0.1%)
+
+--- Top 30 unassigned tokens (head sample) ---
+      567  semi                      cats: Baking Decorations & Dessert Toppings=295; Cheese=82
+      476  jalapenos                 cats: Pickles, Olives, Peppers & Relishes=144; Frozen Appetizers & Hors D'oeuvres=85
+      464  alternative               cats: Yogurt=243; Cheese=102
+      462  cappuccino                cats: Powdered Drinks=222; Other Drinks=39
+      460  fiesta                    cats: Frozen Dinners & Entrees=46; Dips & Salsa=41
+      456  rising                    cats: Pizza=271; Flours & Corn Meal=88
+      455  drizzle                   cats: Popcorn, Peanuts, Seeds & Related Snacks=129; Cakes, Cupcakes, Snack Cakes=81
+      455  skillet                   cats: Pasta Dinners=123; Frozen Dinners & Entrees=109
+      440  flamin                    cats: Other Snacks=177; Chips, Pretzels & Snacks=168
+      435  atlantic                  cats: Fish & Seafood=192; Frozen Fish & Seafood=163
+      427  stone                     cats: Ketchup, Mustard, BBQ & Cheese Sauce=93; Pizza=72
+      424  color                     cats: Pasta by Shape & Type=105; Other Grains & Seeds=62
+      422  dipping                   cats: Ketchup, Mustard, BBQ & Cheese Sauce=94; Oriental, Mexican & Ethnic Sauces=66
+      419  decorating                cats: Baking Decorations & Dessert Toppings=334; Cookies & Biscuits=37
+      417  clover                    cats: Honey=232; Popcorn, Peanuts, Seeds & Related Snacks=23
+      417  classics                  cats: Chips, Pretzels & Snacks=43; Pasta by Shape & Type=34
+      415  cuts                      cats: Cheese=139; Frozen Vegetables=105
+      412  praline                   cats: Ice Cream & Frozen Yogurt=141; Popcorn, Peanuts, Seeds & Related Snacks=117
+      409  pulled                    cats: Cooked & Prepared=121; Frozen Dinners & Entrees=84
+      409  steam                     cats: Frozen Vegetables=254; Pre-Packaged Fruit & Vegetables=64
+      409  pimiento                  cats: Pickles, Olives, Peppers & Relishes=366; Cheese=34
+      403  company                   cats: Popcorn, Peanuts, Seeds & Related Snacks=99; Candy=47
+      394  snap                      cats: Frozen Vegetables=112; Pre-Packaged Fruit & Vegetables=85
+      388  layer                     cats: Cakes, Cupcakes, Snack Cakes=148; Dips & Salsa=32
+      387  easy                      cats: Frozen Fish & Seafood=65; Frozen Vegetables=49
+      384  chick                     cats: Canned & Bottled Beans=96; Vegetarian Frozen Meats=53
+      383  base                      cats: Other Soups=153; Seasoning Mixes, Salts, Marinades & Tenderizers=105
+      383  star                      cats: Candy=109; Cookies & Biscuits=38
+      380  granulated                cats: Granulated, Brown & Powdered Sugar=311; Seasoning Mixes, Salts, Marinades & Tenderizers=32
+      375  value                     cats: Candy=21; Popcorn, Peanuts, Seeds & Related Snacks=21

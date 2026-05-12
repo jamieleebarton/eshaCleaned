@@ -1,0 +1,49 @@
+=== consensus_taxonomy_v2  (2026-04-28 22:31:53) ===
+
+Total products: 462,646
+Confidence v2:  high=156,143 (33.7%)  medium=116,416 (25.2%)  low=190,087 (41.1%)
+
+Support count (# signals supporting canonical leaf):
+  0: 190,087
+  1: 62,917
+  2: 53,499
+  3: 60,836
+  4: 62,870
+  5: 32,437
+
+Canonical leaf source:
+  v6_fndds: 456,371
+  v6_esha: 5,665
+  funnel_tree: 610
+
+Consensus supercategory distribution:
+    36,503  candy_or_chocolate
+    34,569  snack_bar
+    31,026  bakery_dessert
+    26,148  cheese
+    23,944  unknown
+    22,486  chips_popcorn
+    21,911  spice_seasoning
+    20,643  dairy_milk_or_cream
+    17,806  cracker_pretzel
+    16,432  frozen_meal
+    14,691  bakery_bread
+    11,968  juice
+    11,713  vegetable
+    11,478  fresh_meat
+    10,826  cereal
+     9,852  deli_meat
+     9,763  pasta
+     9,375  butter_spread
+     8,737  seafood
+     8,521  soup_broth
+     8,233  soda
+     8,146  pizza
+     7,815  yogurt
+     7,581  water
+     7,453  hotdog_sausage
+     7,426  salsa_dip
+     6,226  pre_packaged_fruit_veg
+     6,190  dressing_mayo
+     5,827  sweetener
+     4,702  pet_food

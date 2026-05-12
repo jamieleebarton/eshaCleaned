@@ -1,0 +1,71 @@
+# Consensus Snack Taxonomy Overrides
+
+Approved rows fix false `Veggie Straws` identities by routing to the actual snack form.
+
+Approved overrides: `682`
+Review rows: `0`
+
+## Issue Counts
+
+- `amaranth_sticks_routed_as_veggie_straws`: `3`
+- `apple_straws_routed_as_veggie_straws`: `3`
+- `artichoke_chips_routed_as_veggie_straws`: `1`
+- `bean_crisps_routed_as_veggie_straws`: `12`
+- `beet_chips_routed_as_veggie_straws`: `5`
+- `cassava_chips_routed_as_veggie_straws`: `1`
+- `cheese_snack_routed_as_veggie_straws`: `1`
+- `chickpea_snack_routed_as_veggie_straws`: `7`
+- `chips_routed_as_veggie_straws`: `3`
+- `coconut_chips_routed_as_veggie_straws`: `1`
+- `corn_potato_fries_routed_as_veggie_straws`: `14`
+- `corn_snack_routed_as_veggie_straws`: `23`
+- `corn_sticks_routed_as_veggie_straws`: `5`
+- `crisps_routed_as_veggie_straws`: `40`
+- `crunchy_bites_routed_as_veggie_straws`: `2`
+- `edamame_snack_routed_as_veggie_straws`: `1`
+- `generic_veggie_snack_routed_as_veggie_straws`: `2`
+- `grain_mix_routed_as_veggie_straws`: `1`
+- `kale_snack_routed_as_veggie_straws`: `16`
+- `lentil_snack_routed_as_veggie_straws`: `4`
+- `onion_rings_routed_as_veggie_straws`: `43`
+- `pasta_straws_routed_as_veggie_straws`: `1`
+- `pea_snack_routed_as_veggie_straws`: `65`
+- `plant_thins_routed_as_veggie_straws`: `1`
+- `plantain_snack_routed_as_veggie_straws`: `11`
+- `popped_corn_chips_routed_as_veggie_straws`: `1`
+- `pork_rinds_routed_as_veggie_straws`: `1`
+- `potato_chips_routed_as_veggie_straws`: `1`
+- `potato_crisps_routed_as_veggie_straws`: `22`
+- `potato_snack_routed_as_veggie_straws`: `15`
+- `potato_sticks_routed_as_veggie_straws`: `11`
+- `produce_potato_routed_as_veggie_straws`: `4`
+- `produce_vegetable_routed_as_veggie_straws`: `1`
+- `protein_sticks_routed_as_veggie_straws`: `5`
+- `puffed_ring_routed_as_veggie_straws`: `1`
+- `puffed_snack_routed_as_veggie_straws`: `7`
+- `puffed_wheat_snack_routed_as_veggie_straws`: `6`
+- `puffs_routed_as_veggie_straws`: `91`
+- `quinoa_sticks_routed_as_veggie_straws`: `4`
+- `ramen_snack_routed_as_veggie_straws`: `1`
+- `rice_crisps_routed_as_veggie_straws`: `5`
+- `rice_snack_routed_as_veggie_straws`: `5`
+- `salad_snack_routed_as_veggie_straws`: `1`
+- `salad_topping_routed_as_veggie_straws`: `5`
+- `seaweed_snack_routed_as_veggie_straws`: `10`
+- `sesame_sticks_routed_as_veggie_straws`: `1`
+- `snack_curls_routed_as_veggie_straws`: `10`
+- `snack_fries_routed_as_veggie_straws`: `12`
+- `snack_strips_routed_as_veggie_straws`: `1`
+- `snack_twists_routed_as_veggie_straws`: `3`
+- `soup_routed_as_veggie_straws`: `2`
+- `spirulina_routed_as_veggie_straws`: `1`
+- `superfood_sticks_routed_as_veggie_straws`: `1`
+- `sweet_potato_chips_routed_as_veggie_straws`: `2`
+- `sweet_potato_sticks_routed_as_veggie_straws`: `4`
+- `true_veggie_straws_kept`: `90`
+- `vegetable_chips_routed_as_veggie_straws`: `13`
+- `vegetable_snack_routed_as_veggie_straws`: `51`
+- `veggie_chips_routed_as_veggie_straws`: `19`
+- `veggie_crisps_routed_as_veggie_straws`: `39`
+- `veggie_sticks_routed_as_veggie_straws`: `59`
+- `water_lily_pops_routed_as_veggie_straws`: `1`

@@ -1,0 +1,1167 @@
+from __future__ import annotations
+
+# Reviewed alias evidence comes from corpus display glosses or exact observed item strings.
+ALIASES = {
+    "flour, all purpose": {
+        "canonical": "all purpose flour",
+        "evidence": "reverse-order recipe surface collapsed to SR28 all-purpose flour",
+    },
+    "vanilla": {
+        "canonical": "vanilla extract",
+        "evidence": "recipe shorthand; high-volume tsp/tbsp surfaces mean extract, not generic vanilla-flavored products",
+    },
+    "powdered milk": {
+        "canonical": "dry milk",
+        "evidence": "dry milk/powdered milk surface; keep separate from fluid milk",
+    },
+    "dry powdered milk": {
+        "canonical": "dry milk",
+        "evidence": "dry powdered milk surface; keep separate from fluid milk",
+    },
+    "brinjal": {
+        "canonical": "eggplant",
+        "evidence": "display gloss: brinjal (eggplant)",
+    },
+    "tuvar dal": {
+        "canonical": "pigeon peas",
+        "evidence": "display gloss: tuvar dal (pigeon peas)",
+    },
+    "masoor dal": {
+        "canonical": "red lentils",
+        "evidence": "display gloss: masoor dal (red lentils)",
+    },
+    "yellow moong dal": {
+        "canonical": "yellow lentils",
+        "evidence": "display gloss: yellow moong dal (yellow lentils / split yellow gram)",
+    },
+    "onion soup mix": {
+        "canonical": "onion soup dry mix",
+        "evidence": "FNDDS exact row: Onion soup, dry mix, not reconstituted",
+    },
+    "dry onion soup mix": {
+        "canonical": "onion soup dry mix",
+        "evidence": "FNDDS exact row: Onion soup, dry mix, not reconstituted",
+    },
+    "dry onion soup": {
+        "canonical": "onion soup dry mix",
+        "evidence": "corpus shorthand for FNDDS dry onion soup mix",
+    },
+    "dried onion soup mix": {
+        "canonical": "onion soup dry mix",
+        "evidence": "FNDDS exact row: Onion soup, dry mix, not reconstituted",
+    },
+    "lipton onion soup mix": {
+        "canonical": "onion soup dry mix",
+        "evidence": "brand-specific dry mix collapsed to generic FNDDS dry onion soup mix",
+    },
+    "lipton dry onion soup mix": {
+        "canonical": "onion soup dry mix",
+        "evidence": "brand-specific dry mix collapsed to generic FNDDS dry onion soup mix",
+    },
+    "lipton recipe secrets onion soup mix": {
+        "canonical": "onion soup dry mix",
+        "evidence": "brand-specific dry mix collapsed to generic FNDDS dry onion soup mix",
+    },
+    "french onion soup mix": {
+        "canonical": "onion soup dry mix",
+        "evidence": "recipe ingredient is dry mix; use dry-mix anchor rather than prepared soup",
+    },
+    "env. onion soup mix": {
+        "canonical": "onion soup dry mix",
+        "evidence": "envelope abbreviation collapsed to generic FNDDS dry onion soup mix",
+    },
+    "onion flakes": {
+        "canonical": "dried onion flakes",
+        "evidence": "SR28 exact row: Onions, dehydrated flakes",
+    },
+    "dehydrated onion flakes": {
+        "canonical": "dried onion flakes",
+        "evidence": "SR28 exact row: Onions, dehydrated flakes",
+    },
+    "dehydrated onion": {
+        "canonical": "dried onion flakes",
+        "evidence": "SR28 exact row used only for dehydrated onion surfaces",
+    },
+    "instant minced onion": {
+        "canonical": "dried onion flakes",
+        "evidence": "reviewed recipe and retail dry minced onion surface; SR28 exact row: Onions, dehydrated flakes",
+    },
+    "dried minced onion": {
+        "canonical": "dried onion flakes",
+        "evidence": "reviewed dry minced onion surface; SR28 exact row: Onions, dehydrated flakes",
+    },
+    "onion pwdr": {
+        "canonical": "onion powder",
+        "evidence": "corpus abbreviation collapsed to SR28 onion powder",
+    },
+    "crispy french fried onions": {
+        "canonical": "french fried onions",
+        "evidence": "reviewed local-label crispy onion topping cluster",
+    },
+    "french fried onions": {
+        "canonical": "french fried onions",
+        "evidence": "reviewed local-label crispy onion topping cluster",
+    },
+    "durkee french fried onions": {
+        "canonical": "french fried onions",
+        "evidence": "brand-specific surface collapsed to reviewed local-label crispy onion topping cluster",
+    },
+    "hard cooked eggs": {
+        "canonical": "eggs",
+        "evidence": "display variant should choose boiled/poached egg code",
+    },
+    "hard boiled eggs": {
+        "canonical": "eggs",
+        "evidence": "display variant should choose boiled/poached egg code",
+    },
+    "granulated garlic": {
+        "canonical": "garlic powder",
+        "evidence": "SR28 exact row: Spices, garlic powder; keep separate from raw garlic",
+    },
+    "garlic granules": {
+        "canonical": "garlic powder",
+        "evidence": "garlic granules collapsed to SR28 garlic powder/granules anchor",
+    },
+    "granulated garlic powder": {
+        "canonical": "garlic powder",
+        "evidence": "SR28 exact row: Spices, garlic powder",
+    },
+    "garlic pwdr": {
+        "canonical": "garlic powder",
+        "evidence": "corpus abbreviation collapsed to SR28 garlic powder",
+    },
+    "garlic salt": {
+        "canonical": "garlic salt",
+        "evidence": "reviewed local-label seasoning cluster; keep separate from raw garlic and garlic powder",
+    },
+    "turbinado sugar": {
+        "canonical": "raw sugar",
+        "evidence": "SR28 exact row: Sugar, turbinado",
+    },
+    "hot sauce": {
+        "canonical": "hot pepper sauce",
+        "evidence": "FNDDS exact row: Hot pepper sauce",
+    },
+    "tabasco sauce": {
+        "canonical": "hot pepper sauce",
+        "evidence": "Tabasco sauce collapsed to FNDDS hot pepper sauce",
+    },
+    "white tuna in water": {
+        "canonical": "tuna in water",
+        "evidence": "surface variant of FNDDS canned tuna water pack",
+    },
+    "light tuna in water": {
+        "canonical": "tuna in water",
+        "evidence": "surface variant of FNDDS canned tuna water pack",
+    },
+    "small pkg. instant vanilla pudding": {
+        "canonical": "instant vanilla pudding",
+        "evidence": "packaging prefix retained in corpus; SR28 exact dry instant vanilla pudding row",
+    },
+    "small pkg. vanilla instant pudding": {
+        "canonical": "instant vanilla pudding",
+        "evidence": "word-order surface variant; SR28 exact dry instant vanilla pudding row",
+    },
+    "ginger-garlic paste": {
+        "canonical": "ginger garlic paste",
+        "evidence": "hyphenated surface variant of reviewed ginger garlic paste local-label anchor",
+    },
+    "chili-garlic sauce": {
+        "canonical": "chili garlic sauce",
+        "evidence": "hyphenated surface variant of reviewed chili garlic sauce local-label anchor",
+    },
+    "crushed pineapple (undrained)": {
+        "canonical": "crushed pineapple undrained",
+        "evidence": "parenthetical pack-state surface variant of reviewed canned pineapple solids-and-liquid proxy",
+    },
+}
+
+
+EXACT_USDA_ANCHORS = {
+    "milk": {
+        "system": "FNDDS",
+        "code": "11100000",
+        "description": "Milk, NFS",
+        "product_rule": "milk",
+    },
+    "whole milk": {
+        "system": "FNDDS",
+        "code": "11111000",
+        "description": "Milk, whole",
+        "product_rule": "whole_milk",
+    },
+    "skim milk": {
+        "system": "FNDDS",
+        "code": "11113000",
+        "description": "Milk, fat free (skim)",
+        "product_rule": "skim_milk",
+    },
+    "buttermilk": {
+        "system": "FNDDS",
+        "code": "11115100",
+        "description": "Buttermilk, low fat (1%)",
+        "product_rule": "buttermilk",
+    },
+    "coconut milk": {
+        "system": "FNDDS",
+        "code": "11370000",
+        "description": "Coconut milk",
+        "product_rule": "coconut_milk",
+    },
+    "milk chocolate": {
+        "system": "FNDDS",
+        "code": "91705010",
+        "description": "Milk chocolate candy, plain",
+        "product_rule": None,
+    },
+    "egg": {
+        "system": "FNDDS",
+        "code": "31101010",
+        "description": "Egg, whole, raw",
+        "product_rule": "shell_eggs",
+    },
+    "eggs": {
+        "system": "FNDDS",
+        "code": "31101010",
+        "description": "Egg, whole, raw",
+        "product_rule": "shell_eggs",
+    },
+    "egg yolk": {
+        "system": "FNDDS",
+        "code": "31110010",
+        "description": "Egg, yolk only, raw",
+        "product_rule": "shell_eggs",
+    },
+    "egg white": {
+        "system": "FNDDS",
+        "code": "31108010",
+        "description": "Egg, white only, raw",
+        "product_rule": "shell_eggs",
+    },
+    "butter": {
+        "system": "FNDDS",
+        "code": "81100500",
+        "description": "Butter, NFS",
+        "product_rule": "butter",
+    },
+    "sugar": {
+        "system": "FNDDS",
+        "code": "91101010",
+        "description": "Sugar, white, granulated or lump",
+        "product_rule": "granulated_sugar",
+    },
+    "all purpose flour": {
+        "system": "SR28",
+        "code": "168894",
+        "description": "Wheat flour, white, all-purpose, enriched, bleached",
+        "product_rule": "all_purpose_flour",
+    },
+    "dry milk": {
+        "system": "FNDDS",
+        "code": "11810000",
+        "description": "Milk, dry, not reconstituted, NS as to fat content",
+        "product_rule": "dry_milk",
+    },
+    "baking powder": {
+        "system": "SR28",
+        "code": "172803",
+        "description": "Leavening agents, baking powder, double-acting, sodium aluminum sulfate",
+        "product_rule": "baking_powder",
+    },
+    "salt": {
+        "system": "SR28",
+        "code": "173468",
+        "description": "Salt, table",
+        "product_rule": "table_salt",
+    },
+    "walnuts": {
+        "system": "FNDDS",
+        "code": "42116050",
+        "description": "Walnuts",
+        "product_rule": "walnuts",
+    },
+    "blueberries": {
+        "system": "FNDDS",
+        "code": "63203010",
+        "description": "Blueberries, raw",
+        "product_rule": "blueberries",
+    },
+    "olive oil": {
+        "system": "FNDDS",
+        "code": "82104000",
+        "description": "Olive oil",
+        "product_rule": "olive_oil",
+    },
+    "carrots": {
+        "system": "FNDDS",
+        "code": "73101010",
+        "description": "Carrots, raw",
+        "product_rule": None,
+    },
+    "vanilla yogurt": {
+        "system": "FNDDS",
+        "code": "11422000",
+        "description": "Yogurt, vanilla, lemon, maple, or coffee flavor, lowfat milk",
+        "product_rule": None,
+    },
+    "soy sauce": {
+        "system": "FNDDS",
+        "code": "41420300",
+        "description": "Soy sauce",
+        "product_rule": "soy_sauce",
+    },
+    "fish sauce": {
+        "system": "FNDDS",
+        "code": "27150210",
+        "description": "Fish sauce",
+        "product_rule": "fish_sauce",
+    },
+    "ghee": {
+        "system": "FNDDS",
+        "code": "81204000",
+        "description": "Ghee, clarified butter",
+        "product_rule": "ghee",
+    },
+    "club soda": {
+        "system": "FNDDS",
+        "code": "92410210",
+        "description": "Carbonated water, unsweetened",
+        "product_rule": "club_soda",
+    },
+    "vanilla extract": {
+        "system": "SR28",
+        "code": "173471",
+        "description": "Vanilla extract",
+        "product_rule": "vanilla_extract",
+    },
+    "saffron threads": {
+        "system": "SR28",
+        "code": "170934",
+        "description": "Spices, saffron",
+        "product_rule": "saffron_threads",
+    },
+    "ground mace": {
+        "system": "SR28",
+        "code": "170927",
+        "description": "Spices, mace, ground",
+        "product_rule": "ground_mace",
+    },
+    "cardamom seeds": {
+        "system": "SR28",
+        "code": "170919",
+        "description": "Spices, cardamom",
+        "product_rule": "cardamom_seeds",
+    },
+    "red wine vinegar": {
+        "system": "SR28",
+        "code": "172240",
+        "description": "Vinegar, red wine",
+        "product_rule": "red_wine_vinegar",
+    },
+    "lemon zest": {
+        "system": "SR28",
+        "code": "167749",
+        "description": "Lemon peel, raw",
+        "product_rule": "lemon_zest",
+    },
+    "lemon juice": {
+        "system": "FNDDS",
+        "code": "61204000",
+        "description": "Lemon juice, 100%, NS as to form",
+        "product_rule": "lemon_juice",
+    },
+    "fresh lemon juice": {
+        "system": "SR28",
+        "code": "167747",
+        "description": "Lemon juice, raw",
+        "product_rule": "lemon_zest",
+    },
+    "extra firm tofu": {
+        "system": "SR28",
+        "code": "174290",
+        "description": "Tofu, extra firm, prepared with nigari",
+        "product_rule": "extra_firm_tofu",
+    },
+    "green beans": {
+        "system": "SR28",
+        "code": "169961",
+        "description": "Beans, snap, green, raw",
+        "product_rule": "green_beans",
+    },
+    "eggplant": {
+        "system": "FNDDS",
+        "code": "75111200",
+        "description": "Eggplant, raw",
+        "product_rule": None,
+    },
+    "pigeon peas": {
+        "system": "SR28",
+        "code": "172436",
+        "description": "Pigeon peas (red gram), mature seeds, raw",
+        "product_rule": None,
+    },
+    "red lentils": {
+        "system": "SR28",
+        "code": "174284",
+        "description": "Lentils, pink or red, raw",
+        "product_rule": None,
+    },
+    "garlic": {
+        "system": "FNDDS",
+        "code": "75111500",
+        "description": "Garlic, raw",
+        "product_rule": "garlic",
+    },
+    "onion soup dry mix": {
+        "system": "FNDDS",
+        "code": "75608300",
+        "description": "Onion soup, dry mix, not reconstituted",
+        "product_rule": "onion_soup_mix",
+    },
+    "pork and beans": {
+        "system": "FNDDS",
+        "code": "41208030",
+        "description": "Pork and beans",
+        "product_rule": "pork_and_beans",
+    },
+    "french onion soup": {
+        "system": "FNDDS",
+        "code": "75608100",
+        "description": "Onion soup, French",
+        "product_rule": "french_onion_soup",
+    },
+    "dried onion flakes": {
+        "system": "SR28",
+        "code": "170002",
+        "description": "Onions, dehydrated flakes",
+        "product_rule": "onion_flakes",
+    },
+    "garlic powder": {
+        "system": "SR28",
+        "code": "171325",
+        "description": "Spices, garlic powder",
+        "product_rule": "garlic_powder",
+    },
+    "onion powder": {
+        "system": "SR28",
+        "code": "171327",
+        "description": "Spices, onion powder",
+        "product_rule": "onion_powder",
+    },
+    "raw sugar": {
+        "system": "SR28",
+        "code": "170674",
+        "description": "Sugar, turbinado",
+        "product_rule": "raw_sugar",
+    },
+    "hot pepper sauce": {
+        "system": "FNDDS",
+        "code": "75511010",
+        "description": "Hot pepper sauce",
+        "product_rule": "hot_pepper_sauce",
+    },
+    "worcestershire sauce": {
+        "system": "FNDDS",
+        "code": "41420450",
+        "description": "Worcestershire sauce",
+        "product_rule": "worcestershire_sauce",
+    },
+    "raw shrimp": {
+        "system": "SR28",
+        "code": "175179",
+        "description": "Crustaceans, shrimp, raw",
+        "product_rule": "raw_shrimp",
+    },
+    "cooked shrimp": {
+        "system": "SR28",
+        "code": "175180",
+        "description": "Crustaceans, shrimp, cooked",
+        "product_rule": "cooked_shrimp",
+    },
+    "tuna in water": {
+        "system": "FNDDS",
+        "code": "26155190",
+        "description": "Tuna, canned, water pack",
+        "product_rule": "tuna_in_water",
+    },
+    "instant vanilla pudding": {
+        "system": "SR28",
+        "code": "168784",
+        "description": "Puddings, vanilla, dry mix, instant",
+        "product_rule": "instant_vanilla_pudding",
+    },
+}
+
+
+DISPLAY_VARIANTS = {
+    "eggs": [
+        {
+            "contains_any": ["hard-boiled", "hard boiled", "hard-cooked", "hard cooked", "boiled", "poached"],
+            "system": "FNDDS",
+            "code": "31103010",
+            "description": "Egg, whole, boiled or poached",
+            "product_rule": "hard_cooked_eggs",
+        }
+    ]
+}
+
+
+REVIEWED_LOCAL_LABEL_ANCHORS = {
+    "rose water": {
+        "query": "rose water",
+        "anchor_name": "reviewed_rose_water",
+        "nutrition_basis": "stable zero-calorie retail extract cluster",
+        "product_rule": "rose_water",
+        "review_notes": "Reviewed low-impact local label anchor; beverage and syrup rows rejected.",
+    },
+    "french fried onions": {
+        "query": "french fried onions",
+        "anchor_name": "reviewed_french_fried_onions",
+        "nutrition_basis": "reviewed retail crispy onion topping cluster",
+        "product_rule": "french_fried_onions",
+        "review_notes": "No clean USDA equivalent for crispy canned topping; retail labels are safer than onion-ring proxy.",
+    },
+    "garlic paste": {
+        "query": "garlic paste",
+        "anchor_name": "reviewed_garlic_paste",
+        "nutrition_basis": "reviewed retail garlic paste cluster",
+        "product_rule": "garlic_paste",
+        "review_notes": "Local-label anchor; do not collapse to raw garlic, garlic powder, chili garlic paste, or tomato garlic paste.",
+    },
+    "ginger garlic paste": {
+        "query": "ginger garlic paste",
+        "anchor_name": "reviewed_ginger_garlic_paste",
+        "nutrition_basis": "reviewed retail ginger garlic paste cluster",
+        "product_rule": "ginger_garlic_paste",
+        "review_notes": "Local-label anchor; keep separate from garlic paste and raw ginger/garlic.",
+    },
+    "chili garlic sauce": {
+        "query": "chili garlic sauce",
+        "anchor_name": "reviewed_chili_garlic_sauce",
+        "nutrition_basis": "reviewed retail chili garlic sauce cluster",
+        "product_rule": "chili_garlic_sauce",
+        "review_notes": "Local-label sauce anchor; keep separate from chili garlic paste and prepared meals.",
+    },
+    "garlic salt": {
+        "query": "garlic salt",
+        "anchor_name": "reviewed_garlic_salt",
+        "nutrition_basis": "reviewed retail garlic salt seasoning cluster",
+        "product_rule": "garlic_salt",
+        "review_notes": "No clean SR28/FNDDS garlic-salt row in local files; keep separate from raw garlic and garlic powder.",
+    },
+}
+
+
+REVIEWED_PROXIES = {
+    "rice wine vinegar": {
+        "target_system": "FNDDS",
+        "target_code": "64401000",
+        "target_description": "Vinegar",
+        "proxy_class": "same-family acidifier",
+        "impact_class": "medium",
+        "error_budget": {
+            "calories_pct": 15,
+            "sodium_pct": 10,
+            "sugar_pct": 10,
+            "fat_pct": 0,
+        },
+        "product_rule": "rice_wine_vinegar",
+    },
+    "banana extract": {
+        "target_system": "SR28",
+        "target_code": "173471",
+        "target_description": "Vanilla extract",
+        "proxy_class": "same-family extract",
+        "impact_class": "low",
+        "error_budget": {
+            "calories_pct": 15,
+            "sodium_pct": 0,
+            "sugar_pct": 15,
+            "fat_pct": 0,
+        },
+        "product_rule": "banana_extract",
+    },
+    "crushed pineapple undrained": {
+        "target_system": "SR28",
+        "target_code": "169125",
+        "target_description": "Pineapple, canned, water pack, solids and liquids",
+        "proxy_class": "same-food canned solids-and-liquid pack-state",
+        "impact_class": "medium",
+        "error_budget": {
+            "calories_pct": 25,
+            "sodium_pct": 10,
+            "sugar_pct": 25,
+            "fat_pct": 0,
+        },
+        "product_rule": "crushed_pineapple",
+    },
+}
+
+
+SHOPPING_ONLY_ITEMS = {
+    "gochujang": {
+        "reason": "retail candidates exist, but nutrition cluster is too noisy for promotion",
+        "product_rule": "gochujang",
+    },
+    "tamarind paste": {
+        "reason": "retail candidates exist, but no reviewed local anchor or safe proxy yet",
+        "product_rule": "tamarind_paste",
+    },
+    "oat milk": {
+        "reason": "post-2018 retail form; shop by label, do not fake USDA nutrition",
+        "product_rule": "oat_milk",
+    },
+}
+
+
+NON_FOOD_TOKENS = {
+    "skewer",
+    "skewers",
+    "foil",
+    "parchment",
+    "paper",
+    "toothpick",
+    "toothpicks",
+    "twine",
+    "cheesecloth",
+    "bag",
+    "bags",
+    "stick",
+    "sticks",
+}
+
+
+PRODUCT_RULES = {
+    "milk": {
+        "query": "milk",
+        "allowed_categories": ["Milk"],
+        "required_all": ["milk"],
+        "preferred_any": ["2% reduced fat milk", "reduced fat milk", "whole milk", "grade a milk"],
+        "forbidden_tokens": [
+            "yogurt",
+            "chocolate",
+            "candy",
+            "bar",
+            "shake",
+            "ice cream",
+            "cream top",
+            "condensed",
+            "creamer",
+            "strawberry",
+            "latte",
+            "coffee",
+            "powder",
+        ],
+    },
+    "whole_milk": {
+        "query": "whole milk",
+        "allowed_categories": ["Milk"],
+        "required_all": ["whole", "milk"],
+        "preferred_any": ["whole milk", "grade a whole milk", "vitamin d whole milk"],
+        "forbidden_tokens": ["yogurt", "cheese", "latte", "strawberry", "shake", "ice cream"],
+    },
+    "skim_milk": {
+        "query": "skim milk",
+        "allowed_categories": ["Milk"],
+        "required_any": ["skim milk", "fat free skim milk", "skim fat free milk"],
+        "preferred_any": ["skim milk", "fat free skim milk"],
+        "forbidden_tokens": ["latte", "strawberry", "yogurt", "cheese", "powder", "spread"],
+    },
+    "buttermilk": {
+        "query": "buttermilk",
+        "allowed_categories": ["Milk"],
+        "required_all": ["buttermilk"],
+        "preferred_any": ["buttermilk"],
+        "forbidden_tokens": ["ranch", "dressing", "pancake", "waffle", "biscuit", "bread", "sausage"],
+    },
+    "coconut_milk": {
+        "query": "coconut milk",
+        "allowed_categories": ["Plant Based Milk", "Baking Additives & Extracts"],
+        "required_all": ["coconut", "milk"],
+        "forbidden_tokens": ["yogurt", "frozen dessert", "chocolate", "latte", "creamer"],
+    },
+    "shell_eggs": {
+        "query": "large eggs",
+        "allowed_categories": ["Eggs & Egg Substitutes"],
+        "required_all": ["eggs"],
+        "preferred_any": ["large eggs", "grade a large", "large brown eggs", "fresh eggs"],
+        "forbidden_tokens": [
+            "substitute",
+            "product",
+            "whites",
+            "salad",
+            "burrito",
+            "roll",
+            "noodle",
+            "pasta",
+            "sandwich",
+            "potato",
+        ],
+    },
+    "butter": {
+        "query": "sweet cream butter",
+        "allowed_categories": ["Butter & Spread"],
+        "required_all": ["butter"],
+        "preferred_any": [
+            "unsalted sweet cream butter",
+            "salted sweet cream butter",
+            "sweet cream butter",
+            "butter with sweet cream",
+        ],
+        "forbidden_tokens": [
+            "spreadable",
+            "canola",
+            "garlic",
+            "herb",
+            "whipped",
+            "margarine",
+            "vegetable oil spread",
+            "peanut",
+            "almond",
+            "walnut",
+            "coconut",
+            "cookie",
+        ],
+    },
+    "granulated_sugar": {
+        "query": "granulated sugar",
+        "allowed_categories": ["Granulated, Brown & Powdered Sugar"],
+        "required_any": [
+            "granulated sugar",
+            "granulated white pure cane sugar",
+            "premium pure cane granulated sugar",
+            "pure cane granulated white sugar",
+        ],
+        "preferred_any": ["granulated sugar", "granulated white pure cane sugar"],
+        "forbidden_tokens": ["powdered", "confectioners", "brown", "stevia", "sweetener", "raw", "cube"],
+    },
+    "all_purpose_flour": {
+        "query": "all purpose flour",
+        "allowed_categories": ["Flours & Corn Meal"],
+        "required_all": ["all", "purpose", "flour"],
+        "preferred_any": ["all purpose flour"],
+        "forbidden_tokens": ["gluten free", "cookie", "brownie", "cake", "biscuit", "mix"],
+    },
+    "dry_milk": {
+        "query": "dry milk",
+        "allowed_categories": ["Milk Additives", "Milk", "Milk/Milk Substitutes"],
+        "required_any": ["dry milk", "powdered milk"],
+        "forbidden_tokens": ["chocolate", "cocoa", "malted", "toddler", "kinder", "pre-school", "straw", "goat"],
+    },
+    "baking_powder": {
+        "query": "baking powder",
+        "allowed_categories": ["Baking Additives & Extracts"],
+        "required_all": ["baking", "powder"],
+        "preferred_any": ["baking powder", "double acting baking powder", "reduced sodium baking powder"],
+        "forbidden_tokens": ["cocoa", "cacao", "biscuit"],
+    },
+    "table_salt": {
+        "query": "table salt",
+        "allowed_categories": ["Seasoning Mixes, Salts, Marinades & Tenderizers"],
+        "required_any": ["table salt", "table & cooking salt", "fine table sea salt"],
+        "preferred_any": ["table salt", "table & cooking salt"],
+        "forbidden_tokens": ["pepper", "caramel", "coconut milk", "lemon pepper", "shakers"],
+    },
+    "walnuts": {
+        "query": "walnuts",
+        "allowed_categories": ["Popcorn, Peanuts, Seeds & Related Snacks"],
+        "required_all": ["walnuts"],
+        "preferred_any": ["walnuts", "chopped walnuts", "black walnuts"],
+        "forbidden_tokens": ["cookie", "salad", "cranberries", "raisins", "trail mix", "muesli", "chocolate", "topping", "granola", "blueberries", "strawberries"],
+    },
+    "blueberries": {
+        "query": "blueberries",
+        "allowed_categories": ["Pre-Packaged Fruit & Vegetables", "Frozen Fruit & Fruit Juice Concentrates", "Canned Fruit"],
+        "required_all": ["blueberries"],
+        "preferred_any": ["blueberries", "organic blueberries", "wild blueberries"],
+        "forbidden_tokens": ["strawberries", "raspberries", "blackberries", "cranberries", "medley", "blend", "cream", "pops", "granola", "salad", "dried", "syrup"],
+    },
+    "olive_oil": {
+        "query": "olive oil",
+        "allowed_categories": ["Vegetable & Cooking Oils"],
+        "required_all": ["olive", "oil"],
+        "forbidden_tokens": ["cracker", "tomato", "chip", "bar", "dressing mix"],
+    },
+    "soy_sauce": {
+        "query": "soy sauce",
+        "allowed_categories": [
+            "Oriental, Mexican & Ethnic Sauces",
+            "Ketchup, Mustard, BBQ & Cheese Sauce",
+            "Other Cooking Sauces",
+        ],
+        "required_any": ["soy sauce", "shoyu", "tamari"],
+        "forbidden_tokens": ["cracker", "noodle bowl", "rice crackers", "pulled pork", "bowl", "seasoning"],
+    },
+    "fish_sauce": {
+        "query": "fish sauce",
+        "allowed_categories": [
+            "Oriental, Mexican & Ethnic Sauces",
+            "Seasoning Mixes, Salts, Marinades & Tenderizers",
+        ],
+        "required_all": ["fish", "sauce"],
+        "forbidden_tokens": ["cocktail", "tartar", "shrimp", "poke", "salmon", "tempura", "teriyaki"],
+    },
+    "ghee": {
+        "query": "ghee",
+        "allowed_categories": ["Butter & Spread"],
+        "required_any": ["ghee", "clarified butter"],
+        "forbidden_tokens": ["granola", "snack", "cookie", "bar"],
+    },
+    "club_soda": {
+        "query": "club soda",
+        "allowed_categories": ["Water", "Soda"],
+        "required_all": ["club", "soda"],
+        "forbidden_tokens": ["lemonade", "sparkling wine", "mixer syrup"],
+    },
+    "vanilla_extract": {
+        "query": "vanilla extract",
+        "allowed_categories": ["Baking Additives & Extracts"],
+        "required_all": ["vanilla", "extract"],
+        "forbidden_tokens": ["ice cream", "chocolate", "stevia", "sweetener"],
+    },
+    "saffron_threads": {
+        "query": "saffron threads",
+        "allowed_categories": ["Herbs & Spices"],
+        "required_all": ["saffron", "threads"],
+        "forbidden_tokens": ["road", "rice", "meal", "bowl"],
+    },
+    "ground_mace": {
+        "query": "ground mace",
+        "allowed_categories": ["Herbs & Spices"],
+        "required_all": ["mace"],
+        "forbidden_tokens": ["yogurt", "pomace", "maceys"],
+    },
+    "cardamom_seeds": {
+        "query": "cardamom",
+        "allowed_categories": ["Herbs & Spices"],
+        "required_all": ["cardamom"],
+        "forbidden_tokens": ["cookie", "chocolate", "gelato", "pasta sauce", "butter"],
+    },
+    "red_wine_vinegar": {
+        "query": "red wine vinegar",
+        "allowed_categories": ["Other Cooking Sauces"],
+        "required_all": ["vinegar", "red", "wine"],
+        "forbidden_tokens": ["dressing"],
+    },
+    "rice_wine_vinegar": {
+        "query": "rice wine vinegar",
+        "allowed_categories": ["Other Cooking Sauces"],
+        "required_all": ["rice", "wine", "vinegar"],
+        "forbidden_tokens": ["dressing", "marinade"],
+    },
+    "lemon_zest": {
+        "query": "lemons",
+        "allowed_categories": ["Pre-Packaged Fruit & Vegetables"],
+        "required_all": ["lemons"],
+        "preferred_any": ["lemons", "fresh lemons", "organic lemons"],
+        "forbidden_tokens": ["preserved", "water", "oil", "sorbet", "mineral"],
+    },
+    "lemon_juice": {
+        "query": "lemon juice",
+        "allowed_categories": ["Fruit & Vegetable Juice, Nectars & Fruit Drinks"],
+        "required_all": ["lemon", "juice"],
+        "preferred_any": ["100% lemon juice", "lemon juice, lemon", "reconstituted lemon juice"],
+        "forbidden_tokens": [
+            "beverage",
+            "drink",
+            "sparkling",
+            "lemonade",
+            "limonata",
+            "peach",
+            "peaches",
+            "pear",
+            "pears",
+            "mango",
+            "passionfruit",
+            "pomegranate",
+            "tropical",
+            "hibiscus",
+            "watermelon",
+            "pineapple",
+            "orange",
+            "tea",
+            "mint",
+            "celery",
+            "grape",
+            "blend",
+            "cocktail",
+        ],
+    },
+    "extra_firm_tofu": {
+        "query": "extra firm tofu",
+        "allowed_categories": ["Other Meats"],
+        "required_all": ["tofu"],
+        "required_any": ["extra firm", "tofu"],
+        "forbidden_tokens": ["burger", "sausage", "pepperoni", "seitan", "frozen dessert"],
+    },
+    "green_beans": {
+        "query": "green beans",
+        "allowed_categories": ["Canned Vegetables", "Frozen Vegetables"],
+        "required_all": ["green", "beans"],
+        "forbidden_tokens": [
+            "meatloaf",
+            "teriyaki",
+            "jelly beans",
+            "salsa",
+            "burger",
+            "refried",
+            "black beans",
+            "dinner",
+            "entrees",
+            "broccoli",
+            "corn",
+            "peas",
+            "blend",
+            "mixed",
+        ],
+    },
+    "garlic": {
+        "query": "peeled garlic",
+        "allowed_categories": ["Pre-Packaged Fruit & Vegetables"],
+        "required_all": ["garlic"],
+        "preferred_any": ["peeled garlic", "fresh peeled garlic", "peeled garlic cloves"],
+        "forbidden_tokens": [
+            "bread",
+            "sauce",
+            "spread",
+            "butter",
+            "dressing",
+            "marinade",
+            "salt",
+            "powder",
+            "seasoning",
+            "paste",
+            "tomatoes",
+            "basil",
+            "hummus",
+        ],
+    },
+    "hard_cooked_eggs": {
+        "query": "hard cooked eggs",
+        "allowed_categories": ["Eggs & Egg Substitutes"],
+        "required_any": ["hard cooked eggs", "hard-cooked eggs"],
+        "preferred_any": ["hard cooked eggs", "hard-cooked eggs"],
+        "forbidden_tokens": ["salad", "potato", "deviled", "sandwich"],
+    },
+    "onion_soup_mix": {
+        "query": "onion soup mix",
+        "allowed_categories": ["Other Soups"],
+        "required_all": ["onion", "soup", "mix"],
+        "forbidden_tokens": ["beefy", "beef", "pasta", "dip", "burger", "prepared", "condensed"],
+    },
+    "pork_and_beans": {
+        "query": "pork and beans",
+        "allowed_categories": ["Chili & Stew", "Vegetables  Prepared/Processed"],
+        "required_all": ["pork", "beans"],
+        "forbidden_tokens": ["burrito", "maple", "brown sugar", "chipotle", "sweet onion", "great northern"],
+    },
+    "french_onion_soup": {
+        "query": "french onion soup",
+        "allowed_categories": ["Prepared Soups", "Other Soups"],
+        "required_all": ["french", "onion", "soup"],
+        "forbidden_tokens": ["mix", "burgers", "frozen", "concentrate"],
+    },
+    "onion_flakes": {
+        "query": "onion flakes",
+        "allowed_categories": ["Herbs & Spices"],
+        "required_all": ["onion"],
+        "required_any": ["flakes", "minced onion"],
+        "forbidden_tokens": ["rings", "breaded", "fresh"],
+    },
+    "garlic_powder": {
+        "query": "granulated garlic",
+        "allowed_categories": ["Herbs & Spices"],
+        "required_any": ["garlic powder", "granulated garlic", "garlic granulated"],
+        "forbidden_tokens": ["salt", "seasoning", "blend", "parsley", "sauce", "paste", "marinade", "bread"],
+    },
+    "garlic_salt": {
+        "query": "garlic salt",
+        "allowed_categories": ["Seasoning Mixes, Salts, Marinades & Tenderizers", "Herbs & Spices"],
+        "required_all": ["garlic", "salt"],
+        "forbidden_tokens": ["cracker", "bread", "chips", "marinade", "sauce", "butter"],
+    },
+    "onion_powder": {
+        "query": "onion powder",
+        "allowed_categories": ["Herbs & Spices", "Seasoning Mixes, Salts, Marinades & Tenderizers"],
+        "required_all": ["onion", "powder"],
+        "forbidden_tokens": ["parsley", "salt", "seasoning", "blend", "sauce", "rings"],
+    },
+    "raw_sugar": {
+        "query": "raw sugar",
+        "allowed_categories": ["Granulated, Brown & Powdered Sugar"],
+        "required_any": ["raw cane sugar", "turbinado raw cane sugar", "turbinado sugar", "raw sugar"],
+        "forbidden_tokens": ["powdered", "protein", "formula", "greens", "stevia", "sweetener"],
+    },
+    "hot_pepper_sauce": {
+        "query": "hot sauce",
+        "allowed_categories": [
+            "Ketchup, Mustard, BBQ & Cheese Sauce",
+            "Oriental, Mexican & Ethnic Sauces",
+            "Seasoning Mixes, Salts, Marinades & Tenderizers",
+        ],
+        "required_any": ["hot sauce", "pepper sauce", "tabasco"],
+        "forbidden_tokens": ["chicken", "wings", "crackers", "stick", "chocolate", "jelly beans", "olive oil", "seasoning spray"],
+    },
+    "worcestershire_sauce": {
+        "query": "worcestershire sauce",
+        "allowed_categories": ["Ketchup, Mustard, BBQ & Cheese Sauce"],
+        "required_all": ["worcestershire"],
+        "required_any": ["sauce"],
+        "forbidden_tokens": ["marinade", "tenderizer", "chips", "snack"],
+    },
+    "raw_shrimp": {
+        "query": "raw shrimp",
+        "allowed_categories": ["Frozen Fish & Seafood", "Shellfish Unprepared/Unprocessed", "Fish & Seafood"],
+        "required_all": ["shrimp", "raw"],
+        "forbidden_tokens": ["cooked", "fried", "breaded", "popcorn", "salad", "rice", "meal", "cocktail", "sauce", "bait"],
+        "forbidden_brand_tokens": ["bait"],
+    },
+    "cooked_shrimp": {
+        "query": "cooked shrimp",
+        "allowed_categories": ["Frozen Fish & Seafood", "Shellfish Unprepared/Unprocessed", "Fish & Seafood"],
+        "required_all": ["shrimp", "cooked"],
+        "forbidden_tokens": ["raw", "fried", "breaded", "popcorn", "salad", "rice", "meal", "cocktail", "bait"],
+        "forbidden_brand_tokens": ["bait"],
+    },
+    "tuna_in_water": {
+        "query": "tuna",
+        "allowed_categories": ["Canned Tuna"],
+        "required_all": ["tuna", "water"],
+        "forbidden_tokens": ["salmon", "salad", "casserole", "meal", "pouch with crackers", "oil"],
+    },
+    "french_fried_onions": {
+        "query": "french fried onions",
+        "allowed_categories": ["Salad Dressing & Mayonnaise", "French Fries, Potatoes & Onion Rings", "Other Snacks"],
+        "required_all": ["french", "fried", "onions"],
+        "forbidden_tokens": ["green bean casserole", "soup", "potatoes"],
+    },
+    "rose_water": {
+        "query": "rose water",
+        "allowed_categories": ["Baking Additives & Extracts"],
+        "required_all": ["rose", "water"],
+        "forbidden_tokens": ["beverage", "syrup", "juice", "botanical"],
+    },
+    "banana_extract": {
+        "query": "banana extract",
+        "allowed_categories": ["Baking Additives & Extracts"],
+        "required_all": ["banana", "extract"],
+        "forbidden_tokens": ["bowl", "granola", "acai", "frozen"],
+    },
+    "instant_vanilla_pudding": {
+        "query": "instant vanilla pudding",
+        "allowed_categories": ["Puddings & Custards"],
+        "required_all": ["instant", "vanilla", "pudding"],
+        "forbidden_tokens": ["prepared", "ready to eat", "chocolate", "banana", "rice"],
+    },
+    "garlic_paste": {
+        "query": "garlic paste",
+        "allowed_categories": [
+            "Pre-Packaged Fruit & Vegetables",
+            "Ketchup, Mustard, BBQ & Cheese Sauce",
+            "Pickles, Olives, Peppers & Relishes",
+            "Other Cooking Sauces",
+            "Herbs & Spices",
+            "Oriental, Mexican & Ethnic Sauces",
+        ],
+        "required_all": ["garlic", "paste"],
+        "forbidden_tokens": ["ginger", "chili", "chilli", "tomato", "guacamole", "sauce"],
+    },
+    "ginger_garlic_paste": {
+        "query": "ginger garlic paste",
+        "allowed_categories": [
+            "Pre-Packaged Fruit & Vegetables",
+            "Other Cooking Sauces",
+            "Oriental, Mexican & Ethnic Sauces",
+        ],
+        "required_all": ["ginger", "garlic", "paste"],
+        "forbidden_tokens": ["chili", "chilli", "tomato", "sauce", "guacamole"],
+    },
+    "chili_garlic_sauce": {
+        "query": "chili garlic sauce",
+        "allowed_categories": [
+            "Oriental, Mexican & Ethnic Sauces",
+            "Ketchup, Mustard, BBQ & Cheese Sauce",
+            "Other Cooking Sauces",
+        ],
+        "required_all": ["chili", "garlic", "sauce"],
+        "forbidden_tokens": ["chicken", "shrimp", "spring rolls", "battered", "tempura", "rice", "broccoli", "meal"],
+    },
+    "crushed_pineapple": {
+        "query": "crushed pineapple",
+        "allowed_categories": ["Canned Fruit"],
+        "required_all": ["crushed", "pineapple"],
+        "forbidden_tokens": ["cocktail", "gel", "cake", "dessert"],
+    },
+    "gochujang": {
+        "query": "gochujang",
+        "allowed_categories": [
+            "Oriental, Mexican & Ethnic Sauces",
+            "Pickles, Olives, Peppers & Relishes",
+            "Ketchup, Mustard, BBQ & Cheese Sauce",
+        ],
+        "required_all": ["gochujang"],
+        "forbidden_tokens": ["bowl", "wings", "salad", "rice", "chicken", "beef", "meal", "bbq", "hot sauce"],
+    },
+    "tamarind_paste": {
+        "query": "tamarind paste",
+        "allowed_categories": ["Oriental, Mexican & Ethnic Sauces"],
+        "required_all": ["tamarind", "paste"],
+        "forbidden_tokens": ["stir-fry"],
+    },
+    "oat_milk": {
+        "query": "oat milk",
+        "allowed_categories": ["Plant Based Milk"],
+        "required_all": ["oat", "milk"],
+        "forbidden_tokens": ["latte", "creamer", "chocolate", "choco", "frozen dessert", "cultured", "berry", "berries", "maple", "coconut", "nuts &"],
+    },
+}
+
+
+PROTECTED_FAILURE_MATRIX = {
+    "fabricated_or_invalid_codes": [
+        "registry_validation",
+    ],
+    "valid_code_wrong_food": [
+        "whole_milk_blocks_strawberry_and_yogurt",
+        "skim_milk_blocks_latte",
+        "buttermilk_blocks_ranch",
+        "butter_blocks_spreads",
+        "egg_blocks_substitutes_and_salads",
+        "granulated_sugar_blocks_powdered_and_brown",
+    ],
+    "embedding_trap_vanilla_extract_vs_ice_cream": [
+        "vanilla_extract_blocks_ice_cream",
+    ],
+    "prepared_food_drift_green_beans_vs_dishes": [
+        "green_beans_blocks_frozen_dinners",
+        "blueberries_block_blends_and_granola",
+    ],
+    "shopping_layer_lookup_contamination": [
+        "all_purpose_flour_blocks_gluten_free_and_mixes",
+        "lemon_zest_shops_lemons",
+    ],
+    "head_noun_collision_milk_vs_coconut_milk_vs_milk_chocolate": [
+        "milk_and_coconut_milk_are_distinct",
+        "milk_chocolate_not_milk",
+    ],
+    "non_food_zero_gram_collapse": [
+        "barbecue_skewers_non_food",
+        "sour_cream_zero_gram_not_non_food",
+    ],
+    "local_label_cluster_contamination": [
+        "rose_water_extract_only",
+        "gochujang_shopping_only",
+    ],
+    "unsafe_proxy_generation": [
+        "rice_wine_vinegar_reviewed_proxy",
+        "tamarind_paste_refuses_proxy",
+        "banana_extract_is_approximate_not_exact",
+    ],
+    "regional_alias_failure": [
+        "brinjal_alias_to_eggplant",
+        "tuvar_dal_alias_to_pigeon_peas",
+    ],
+    "post_2018_data_drift": [
+        "oat_milk_shopping_only",
+    ],
+}

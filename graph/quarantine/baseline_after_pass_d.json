@@ -1,0 +1,9 @@
+{
+  "brand_signal_rows": 98301,
+  "category_signal_rows": 147663,
+  "quarantined_input": 173547,
+  "quarantined_proposed": 165322,
+  "quarantined_unhealable": 8225,
+  "quarantined_with_target_family": 169660,
+  "wweia_signal_rows": 103139
+}

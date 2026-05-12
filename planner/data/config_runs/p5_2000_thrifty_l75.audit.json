@@ -1,0 +1,469 @@
+{
+  "plan": "planner/data/config_runs/p5_2000_thrifty_l75.json",
+  "config": {
+    "mode": "thrifty",
+    "weeks": 12,
+    "people": 5,
+    "cal": 2000.0,
+    "protein_pct": 15.0,
+    "leftover_pct": 0.75
+  },
+  "totals": {
+    "total_cost": 1444.2,
+    "total_whole_cart_cost": 1444.2,
+    "avg_weekly_cost": 120.35,
+    "avg_whole_cart_cost": 120.35,
+    "avg_veg_compliance": 0.454,
+    "avg_protein_pct": 12.3,
+    "total_unique_recipes": 243,
+    "repeat_picks": 40
+  },
+  "derived": {
+    "per_person_day": 3.44,
+    "purchase_rows": 538,
+    "blank_selected_sku_rows": 0,
+    "mixed_package_rows": 33,
+    "known_bad_sku_hits": 0,
+    "package_flag_rows": 10
+  },
+  "bad_hits": [],
+  "blank_rows": [],
+  "package_flags": [
+    {
+      "week": 4,
+      "concept_key": "Dairy > Yogurt|1205000J",
+      "name": "Kroger\u00ae Unicorn and Mermaid Low Fat Yogurt Tubes",
+      "grams": 453.6,
+      "cents": 199,
+      "display": "8 ct / 16 oz",
+      "flags": [
+        "package_grams_under_declared_size"
+      ]
+    },
+    {
+      "week": 5,
+      "concept_key": "Pantry > Spices & Seasonings > Basil|E302400V",
+      "name": "Gourmet Garden Lightly Dried Basil",
+      "grams": 9.1,
+      "cents": 399,
+      "display": "0.42 oz",
+      "flags": [
+        "very_high_cpg"
+      ]
+    },
+    {
+      "week": 5,
+      "concept_key": "Produce > Vegetables > Shallots|650D000N",
+      "name": "Shallots",
+      "grams": 45.4,
+      "cents": 40,
+      "display": "1 lb",
+      "flags": [
+        "package_grams_under_declared_size"
+      ]
+    },
+    {
+      "week": 6,
+      "concept_key": "Bakery > Buns > Hamburger Buns|G005000*",
+      "name": "Kroger\u00ae 100% Whole Wheat Hamburger Buns",
+      "grams": 399.2,
+      "cents": 179,
+      "display": "8 ct / 14 oz",
+      "flags": [
+        "package_grams_under_declared_size"
+      ]
+    },
+    {
+      "week": 6,
+      "concept_key": "Bakery > Tortillas > Taco Shells|820H0001",
+      "name": "Kroger\u00ae Jumbo Original Taco Shells",
+      "grams": 254.0,
+      "cents": 269,
+      "display": "12 ct / 8.45 oz",
+      "flags": [
+        "package_grams_under_declared_size"
+      ]
+    },
+    {
+      "week": 6,
+      "concept_key": "Dairy > Milk > Powdered Milk|1001400Q",
+      "name": "Great Value Instant Nonfat Dry Milk, 3.2 oz Pouches, 3 Count, Makes 3 Quarts Total, 12 Servings per Container",
+      "grams": 272.2,
+      "cents": 343,
+      "display": "9.6 oz (272g)",
+      "flags": [
+        "package_grams_under_declared_size"
+      ]
+    },
+    {
+      "week": 6,
+      "concept_key": "Produce > Vegetables > Jalapenos|6622100V",
+      "name": "Fresh Jalapeno Peppers",
+      "grams": 68.0,
+      "cents": 27,
+      "display": "1 lb",
+      "flags": [
+        "package_grams_under_declared_size"
+      ]
+    },
+    {
+      "week": 6,
+      "concept_key": "Produce > Vegetables > Peppers|6608100S",
+      "name": "Fresh Green Serrano Peppers",
+      "grams": 28.1,
+      "cents": 25,
+      "display": "1 lb",
+      "flags": [
+        "package_grams_under_declared_size"
+      ]
+    },
+    {
+      "week": 7,
+      "concept_key": "Pantry > Spices & Seasonings > Dill|E305400P",
+      "name": "Litehouse Freeze Dried Dill, 0.35 oz.",
+      "grams": 9.9,
+      "cents": 522,
+      "display": "0.35 oz",
+      "flags": [
+        "very_high_cpg"
+      ]
+    },
+    {
+      "week": 11,
+      "concept_key": "Produce > Vegetables > Baby Carrots|6104000Y",
+      "name": "Carrots",
+      "grams": 68.0,
+      "cents": 22,
+      "display": "1 lb",
+      "flags": [
+        "package_grams_under_declared_size"
+      ]
+    }
+  ],
+  "cheapest_cpg": [
+    {
+      "week": 1,
+      "concept_key": "Produce > Vegetables > Celery|6A080006",
+      "name": "Celery Sticks",
+      "grams": 453.6,
+      "cents": 33,
+      "cpg": 0.0728
+    },
+    {
+      "week": 5,
+      "concept_key": "Produce > Vegetables > Celery|6A080006",
+      "name": "Celery Sticks",
+      "grams": 453.6,
+      "cents": 33,
+      "cpg": 0.0728
+    },
+    {
+      "week": 7,
+      "concept_key": "Produce > Vegetables > Celery|6A080006",
+      "name": "Celery Sticks",
+      "grams": 453.6,
+      "cents": 33,
+      "cpg": 0.0728
+    },
+    {
+      "week": 11,
+      "concept_key": "Produce > Vegetables > Celery|6A080006",
+      "name": "Celery Sticks",
+      "grams": 453.6,
+      "cents": 33,
+      "cpg": 0.0728
+    },
+    {
+      "week": 1,
+      "concept_key": "Pantry > Flour|870Z000G",
+      "name": "Great Value All-Purpose Unbleached Flour, 5 lb Bag",
+      "grams": 2268.0,
+      "cents": 197,
+      "cpg": 0.0869
+    },
+    {
+      "week": 2,
+      "concept_key": "Pantry > Flour|870Z000G",
+      "name": "Great Value All-Purpose Unbleached Flour, 5 lb Bag",
+      "grams": 2268.0,
+      "cents": 197,
+      "cpg": 0.0869
+    },
+    {
+      "week": 8,
+      "concept_key": "Produce > Fruit > Limes|7237100*",
+      "name": "Fresh Limes - Each",
+      "grams": 453.6,
+      "cents": 40,
+      "cpg": 0.0882
+    },
+    {
+      "week": 2,
+      "concept_key": "Dairy > Milk|1001600U",
+      "name": "Great Value Milk 1% Low-fat, Half Gallon, 64 fl oz",
+      "grams": 1892.7,
+      "cents": 172,
+      "cpg": 0.0909
+    },
+    {
+      "week": 5,
+      "concept_key": "Dairy > Milk|1001600U",
+      "name": "Great Value Milk 1% Low-fat, Half Gallon, 64 fl oz",
+      "grams": 1892.7,
+      "cents": 172,
+      "cpg": 0.0909
+    },
+    {
+      "week": 6,
+      "concept_key": "Dairy > Milk|1001600U",
+      "name": "Great Value Milk 1% Low-fat, Half Gallon, 64 fl oz",
+      "grams": 1892.7,
+      "cents": 172,
+      "cpg": 0.0909
+    },
+    {
+      "week": 7,
+      "concept_key": "Dairy > Milk|1001600U",
+      "name": "Great Value Milk 1% Low-fat, Half Gallon, 64 fl oz",
+      "grams": 1892.7,
+      "cents": 172,
+      "cpg": 0.0909
+    },
+    {
+      "week": 9,
+      "concept_key": "Dairy > Milk|1001600U",
+      "name": "Great Value Milk 1% Low-fat, Half Gallon, 64 fl oz",
+      "grams": 1892.7,
+      "cents": 172,
+      "cpg": 0.0909
+    },
+    {
+      "week": 10,
+      "concept_key": "Dairy > Milk|1001600U",
+      "name": "Great Value Milk 1% Low-fat, Half Gallon, 64 fl oz",
+      "grams": 1892.7,
+      "cents": 172,
+      "cpg": 0.0909
+    },
+    {
+      "week": 11,
+      "concept_key": "Dairy > Milk|1001600U",
+      "name": "Great Value Milk 1% Low-fat, Half Gallon, 64 fl oz",
+      "grams": 1892.7,
+      "cents": 172,
+      "cpg": 0.0909
+    },
+    {
+      "week": 1,
+      "concept_key": "Pantry > Spices & Seasonings > Salt|E001000X",
+      "name": "Kroger\u00ae Salt",
+      "grams": 739.4,
+      "cents": 79,
+      "cpg": 0.1068
+    }
+  ],
+  "highest_package_prices": [
+    {
+      "week": 3,
+      "concept_key": "Pantry > Canned Seafood > Anchovies|J0HV000B",
+      "name": "(6 pack) Vigo Flat Anchovies 2oz, 4g Protein, 2 Servings Per Container",
+      "grams": 340.2,
+      "cents": 1548,
+      "cpg": 4.5503
+    },
+    {
+      "week": 5,
+      "concept_key": "Beverage > Wine|D8000007",
+      "name": "Franzia Sunset Blush, Pink Wine, 5L",
+      "grams": 5000.0,
+      "cents": 1198,
+      "cpg": 0.2396
+    },
+    {
+      "week": 5,
+      "concept_key": "Meat & Seafood > Poultry > Whole Chicken|300B000V",
+      "name": "Tyson\u00ae All Natural Premium Cornish Hen Twin Pack",
+      "grams": 1360.8,
+      "cents": 1099,
+      "cpg": 0.8076
+    },
+    {
+      "week": 1,
+      "concept_key": "Meat & Seafood > Beef > Ground Beef|2001002A",
+      "name": "Tyson Ground 80% Lean/20% Fat Beef & Pork",
+      "grams": 907.2,
+      "cents": 800,
+      "cpg": 0.8818
+    },
+    {
+      "week": 10,
+      "concept_key": "Meat & Seafood > Beef > Ground Beef|2001002A",
+      "name": "Tyson Ground 80% Lean/20% Fat Beef & Pork",
+      "grams": 907.2,
+      "cents": 800,
+      "cpg": 0.8818
+    },
+    {
+      "week": 5,
+      "concept_key": "Pantry > Oil|B02N6006",
+      "name": "Star Organic Canola Refined Oil, 750ml Bottle",
+      "grams": 709.8,
+      "cents": 797,
+      "cpg": 1.1229
+    },
+    {
+      "week": 2,
+      "concept_key": "Meat & Seafood > Poultry > Chicken Breast|3001000K",
+      "name": "Marketside Antibiotic-Free Boneless Skinless Chicken Breasts, 1.3 - 3.0 lb",
+      "grams": 1360.8,
+      "cents": 757,
+      "cpg": 0.5563
+    },
+    {
+      "week": 3,
+      "concept_key": "Meat & Seafood > Poultry > Chicken Breast|3001000K",
+      "name": "Marketside Antibiotic-Free Boneless Skinless Chicken Breasts, 1.3 - 3.0 lb",
+      "grams": 1360.8,
+      "cents": 757,
+      "cpg": 0.5563
+    },
+    {
+      "week": 5,
+      "concept_key": "Meat & Seafood > Poultry > Chicken Breast|3001000K",
+      "name": "Marketside Antibiotic-Free Boneless Skinless Chicken Breasts, 1.3 - 3.0 lb",
+      "grams": 1360.8,
+      "cents": 757,
+      "cpg": 0.5563
+    },
+    {
+      "week": 2,
+      "concept_key": "Pantry > Oil > Extra Virgin Olive Oil|B04J6003",
+      "name": "Pompeian Bold Spanish Extra Virgin Olive Oil - 16 fl oz",
+      "grams": 473.2,
+      "cents": 738,
+      "cpg": 1.5596
+    },
+    {
+      "week": 10,
+      "concept_key": "Pantry > Oil > Extra Virgin Olive Oil|B04J6003",
+      "name": "Pompeian Bold Spanish Extra Virgin Olive Oil - 16 fl oz",
+      "grams": 473.2,
+      "cents": 738,
+      "cpg": 1.5596
+    },
+    {
+      "week": 5,
+      "concept_key": "Frozen > Single Entrees|H002200R",
+      "name": "Bibigo Frozen Tteokbokki Rice Cakes with Sweet & Spicy Sauce",
+      "grams": 476.3,
+      "cents": 699,
+      "cpg": 1.4676
+    },
+    {
+      "week": 3,
+      "concept_key": "Meat & Seafood > Poultry > Chicken Breast|30011007",
+      "name": "Foster Farms Fresh & Natural Half Chicken Breasts with Ribs",
+      "grams": 1814.4,
+      "cents": 690,
+      "cpg": 0.3803
+    },
+    {
+      "week": 11,
+      "concept_key": "Meat & Seafood > Sausage|240J000=",
+      "name": "Bar M Beef Hot Links",
+      "grams": 907.2,
+      "cents": 652,
+      "cpg": 0.7187
+    },
+    {
+      "week": 5,
+      "concept_key": "Pantry > Spices & Seasonings > Bay Leaf|E30N000Z",
+      "name": "True Goodness Organic Bay Leaf, .11 oz",
+      "grams": 311.9,
+      "cents": 649,
+      "cpg": 2.0808
+    }
+  ],
+  "top_concepts": [
+    [
+      "Pantry > Canned Vegetables > Tomatoes",
+      15
+    ],
+    [
+      "Dairy > Cheese",
+      12
+    ],
+    [
+      "Dairy > Eggs",
+      12
+    ],
+    [
+      "Pantry > Broth & Stock > Chicken Broth",
+      12
+    ],
+    [
+      "Produce > Vegetables > Onions",
+      12
+    ],
+    [
+      "Produce > Vegetables > Potatoes",
+      11
+    ],
+    [
+      "Dairy > Butter",
+      10
+    ],
+    [
+      "Pantry > Beans > Black Beans",
+      10
+    ],
+    [
+      "Pantry > Flour",
+      10
+    ],
+    [
+      "Pantry > Pasta",
+      9
+    ],
+    [
+      "Meat & Seafood > Beef > Ground Beef",
+      8
+    ],
+    [
+      "Pantry > Sauces & Salsas > Tomato Sauce",
+      8
+    ],
+    [
+      "Pantry > Sauces & Salsas > Salsa",
+      8
+    ],
+    [
+      "Meat & Seafood > Hot Dogs & Sausages > Hot Dogs",
+      7
+    ],
+    [
+      "Pantry > Spices & Seasonings > Black Pepper",
+      7
+    ],
+    [
+      "Dairy > Milk",
+      7
+    ],
+    [
+      "Pantry > Broth & Stock > Beef Broth",
+      6
+    ],
+    [
+      "Dairy > Sour Cream",
+      6
+    ],
+    [
+      "Pantry > Grain > Oats",
+      6
+    ],
+    [
+      "Bakery > Bread",
+      6
+    ]
+  ]
+}

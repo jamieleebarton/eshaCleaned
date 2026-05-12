@@ -1,0 +1,10 @@
+{
+  "ingredient_signal_count": 1498,
+  "joint_signal_count": 357,
+  "proposals_with_target_code": 256488,
+  "quarantined_input": 266153,
+  "with_both_joint_and_ingredient": 125383,
+  "with_ingredient_signal": 263380,
+  "with_joint_signal": 126769,
+  "with_target_family": 266140
+}

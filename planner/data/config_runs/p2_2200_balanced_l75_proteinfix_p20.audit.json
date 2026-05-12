@@ -1,0 +1,382 @@
+{
+  "plan": "planner/data/config_runs/p2_2200_balanced_l75_proteinfix_p20.json",
+  "config": {
+    "mode": "balanced",
+    "weeks": 12,
+    "people": 2,
+    "cal": 2200.0,
+    "protein_pct": 20.0,
+    "effective_protein_pct_target": 20.0,
+    "leftover_pct": 0.75
+  },
+  "totals": {
+    "total_cost": 816.48,
+    "total_whole_cart_cost": 816.48,
+    "avg_weekly_cost": 68.04,
+    "avg_whole_cart_cost": 68.04,
+    "avg_veg_compliance": 0.307,
+    "avg_protein_pct": 18.1,
+    "total_unique_recipes": 190,
+    "repeat_picks": 36
+  },
+  "derived": {
+    "per_person_day": 4.86,
+    "purchase_rows": 369,
+    "blank_selected_sku_rows": 0,
+    "mixed_package_rows": 17,
+    "known_bad_sku_hits": 0,
+    "package_flag_rows": 0,
+    "package_info_rows": 1
+  },
+  "bad_hits": [],
+  "blank_rows": [],
+  "package_flags": [],
+  "package_info": [
+    {
+      "week": 4,
+      "concept_key": "Produce > Vegetables > Shallots|650D000N",
+      "name": "Shallots",
+      "grams": 45.4,
+      "cents": 40,
+      "display": "1 lb",
+      "flags": [
+        "random_weight_average_unit"
+      ],
+      "details": [
+        {
+          "flag": "random_weight_average_unit",
+          "severity": "info",
+          "expected_g": 453.6,
+          "source": "size_display",
+          "ratio": 0.1
+        }
+      ]
+    }
+  ],
+  "cheapest_cpg": [
+    {
+      "week": 1,
+      "concept_key": "Produce > Vegetables > Celery|6A080006",
+      "name": "Celery Sticks",
+      "grams": 453.6,
+      "cents": 33,
+      "cpg": 0.0728
+    },
+    {
+      "week": 6,
+      "concept_key": "Produce > Vegetables > Celery|6A080006",
+      "name": "Celery Sticks",
+      "grams": 453.6,
+      "cents": 33,
+      "cpg": 0.0728
+    },
+    {
+      "week": 7,
+      "concept_key": "Produce > Vegetables > Celery|6A080006",
+      "name": "Celery Sticks",
+      "grams": 453.6,
+      "cents": 33,
+      "cpg": 0.0728
+    },
+    {
+      "week": 10,
+      "concept_key": "Produce > Vegetables > Celery|6A080006",
+      "name": "Celery Sticks",
+      "grams": 453.6,
+      "cents": 33,
+      "cpg": 0.0728
+    },
+    {
+      "week": 1,
+      "concept_key": "Dairy > Milk|1001600U",
+      "name": "Great Value Milk 1% Low-fat, Half Gallon, 64 fl oz",
+      "grams": 1892.7,
+      "cents": 172,
+      "cpg": 0.0909
+    },
+    {
+      "week": 2,
+      "concept_key": "Dairy > Milk|1001600U",
+      "name": "Great Value Milk 1% Low-fat, Half Gallon, 64 fl oz",
+      "grams": 1892.7,
+      "cents": 172,
+      "cpg": 0.0909
+    },
+    {
+      "week": 4,
+      "concept_key": "Dairy > Milk|1001600U",
+      "name": "Great Value Milk 1% Low-fat, Half Gallon, 64 fl oz",
+      "grams": 1892.7,
+      "cents": 172,
+      "cpg": 0.0909
+    },
+    {
+      "week": 5,
+      "concept_key": "Dairy > Milk|1001600U",
+      "name": "Great Value Milk 1% Low-fat, Half Gallon, 64 fl oz",
+      "grams": 1892.7,
+      "cents": 172,
+      "cpg": 0.0909
+    },
+    {
+      "week": 6,
+      "concept_key": "Dairy > Milk|1001600U",
+      "name": "Great Value Milk 1% Low-fat, Half Gallon, 64 fl oz",
+      "grams": 1892.7,
+      "cents": 172,
+      "cpg": 0.0909
+    },
+    {
+      "week": 7,
+      "concept_key": "Dairy > Milk|1001600U",
+      "name": "Great Value Milk 1% Low-fat, Half Gallon, 64 fl oz",
+      "grams": 1892.7,
+      "cents": 172,
+      "cpg": 0.0909
+    },
+    {
+      "week": 9,
+      "concept_key": "Dairy > Milk|1001600U",
+      "name": "Great Value Milk 1% Low-fat, Half Gallon, 64 fl oz",
+      "grams": 1892.7,
+      "cents": 172,
+      "cpg": 0.0909
+    },
+    {
+      "week": 11,
+      "concept_key": "Dairy > Milk|1001600U",
+      "name": "Great Value Milk 1% Low-fat, Half Gallon, 64 fl oz",
+      "grams": 1892.7,
+      "cents": 172,
+      "cpg": 0.0909
+    },
+    {
+      "week": 1,
+      "concept_key": "Pantry > Spices & Seasonings > Salt|E001000X",
+      "name": "Kroger\u00ae Salt",
+      "grams": 739.4,
+      "cents": 79,
+      "cpg": 0.1068
+    },
+    {
+      "week": 9,
+      "concept_key": "Produce > Fruit > Bananas|7101100$",
+      "name": "Fresh Bunch of Bananas \u2013 5-7 Bananas",
+      "grams": 952.6,
+      "cents": 103,
+      "cpg": 0.1081
+    },
+    {
+      "week": 5,
+      "concept_key": "Pantry > Broth & Stock > Chicken Broth|J0066005",
+      "name": "Great Value Reduced Sodium Gluten-Free Chicken Broth, 32 oz Carton (Shelf-Stable)",
+      "grams": 975.9,
+      "cents": 127,
+      "cpg": 0.1301
+    }
+  ],
+  "highest_package_prices": [
+    {
+      "week": 1,
+      "concept_key": "Meat & Seafood > Bacon|24020000",
+      "name": "Smithfield\u00ae Hometown Original Bacon",
+      "grams": 453.6,
+      "cents": 599,
+      "cpg": 1.3205
+    },
+    {
+      "week": 10,
+      "concept_key": "Meat & Seafood > Beef > Ground Beef|2001002A",
+      "name": "Kroger\u00ae 73/27 Ground Beef Roll 1 LB",
+      "grams": 453.6,
+      "cents": 599,
+      "cpg": 1.3205
+    },
+    {
+      "week": 4,
+      "concept_key": "Meat & Seafood > Bacon|24020000",
+      "name": "Smithfield Thick Cut Premium Maple Bacon",
+      "grams": 340.2,
+      "cents": 599,
+      "cpg": 1.7607
+    },
+    {
+      "week": 5,
+      "concept_key": "Meat & Seafood > Bacon|24020000",
+      "name": "Smithfield Thick Cut Premium Maple Bacon",
+      "grams": 340.2,
+      "cents": 599,
+      "cpg": 1.7607
+    },
+    {
+      "week": 6,
+      "concept_key": "Meat & Seafood > Bacon|24020000",
+      "name": "Smithfield Thick Cut Premium Maple Bacon",
+      "grams": 340.2,
+      "cents": 599,
+      "cpg": 1.7607
+    },
+    {
+      "week": 8,
+      "concept_key": "Meat & Seafood > Bacon|24020000",
+      "name": "Smithfield Thick Cut Premium Maple Bacon",
+      "grams": 340.2,
+      "cents": 599,
+      "cpg": 1.7607
+    },
+    {
+      "week": 10,
+      "concept_key": "Meat & Seafood > Bacon|24020000",
+      "name": "Smithfield Thick Cut Premium Maple Bacon",
+      "grams": 340.2,
+      "cents": 599,
+      "cpg": 1.7607
+    },
+    {
+      "week": 11,
+      "concept_key": "Pantry > Oil > Olive Oil|B001600=",
+      "name": "Great Value Extra Virgin Olive Oil, 17 fl oz",
+      "grams": 502.7,
+      "cents": 597,
+      "cpg": 1.1876
+    },
+    {
+      "week": 3,
+      "concept_key": "Frozen > Frozen Fruit > Strawberries|739K000M",
+      "name": "Edy\u2019s/Dreyer\u2019s Strawberry, 1.5 Qt",
+      "grams": 1419.5,
+      "cents": 512,
+      "cpg": 0.3607
+    },
+    {
+      "week": 4,
+      "concept_key": "Meat & Seafood > Bacon|24020000",
+      "name": "HORMEL BLACK LABEL Real Chopped Bacon Topping, 30 Calories per Serving, Shelf Stable, 3.5 oz Plastic Pouch",
+      "grams": 99.2,
+      "cents": 512,
+      "cpg": 5.1613
+    },
+    {
+      "week": 10,
+      "concept_key": "Bakery > Dough > Biscuit Dough|G0PD600K",
+      "name": "Pillsbury Grands Southern Homestyle Buttermilk Biscuit Dough, 2 Pack, 16 Biscuits, 32.6 oz",
+      "grams": 1848.4,
+      "cents": 496,
+      "cpg": 0.2683
+    },
+    {
+      "week": 8,
+      "concept_key": "Meat & Seafood > Fish > Fish Fillets|402T292C",
+      "name": "Gorton\u2019s Beer Battered Fish 100% Whole Fish Fillets (Not Minced), Wild Caught Pollock, Frozen, 10 Count, 18.2 Ounce Resealable Bag",
+      "grams": 516.0,
+      "cents": 487,
+      "cpg": 0.9438
+    },
+    {
+      "week": 5,
+      "concept_key": "Pantry > Spices & Seasonings > Marjoram|E30V000N",
+      "name": "Great Value Organic Marjoram, 0.4 oz",
+      "grams": 11.3,
+      "cents": 480,
+      "cpg": 42.4779
+    },
+    {
+      "week": 4,
+      "concept_key": "Produce > Vegetables > Carrots|61021009",
+      "name": "Fresh Whole Carrots, 5 lb Bag",
+      "grams": 2268.0,
+      "cents": 477,
+      "cpg": 0.2103
+    },
+    {
+      "week": 2,
+      "concept_key": "Meat & Seafood > Sausage > Italian Sausage|241M0003",
+      "name": "Bird Farm Italian Sausage Roll",
+      "grams": 453.6,
+      "cents": 469,
+      "cpg": 1.034
+    }
+  ],
+  "top_concepts": [
+    [
+      "Pantry > Canned Vegetables > Tomatoes",
+      21
+    ],
+    [
+      "Dairy > Cheese",
+      12
+    ],
+    [
+      "Dairy > Eggs",
+      12
+    ],
+    [
+      "Produce > Vegetables > Onions",
+      12
+    ],
+    [
+      "Pantry > Soup",
+      10
+    ],
+    [
+      "Produce > Vegetables > Potatoes",
+      10
+    ],
+    [
+      "Pantry > Broth & Stock > Chicken Broth",
+      9
+    ],
+    [
+      "Pantry > Beans > Black Beans",
+      9
+    ],
+    [
+      "Bakery > Bread",
+      8
+    ],
+    [
+      "Dairy > Butter",
+      8
+    ],
+    [
+      "Dairy > Milk",
+      8
+    ],
+    [
+      "Frozen > Vegetables > Broccoli",
+      8
+    ],
+    [
+      "Pantry > Flour",
+      8
+    ],
+    [
+      "Meat & Seafood > Bacon",
+      7
+    ],
+    [
+      "Pantry > Broth & Stock > Vegetable Broth",
+      7
+    ],
+    [
+      "Pantry > Canned Vegetables > Green Beans",
+      5
+    ],
+    [
+      "Pantry > Pasta",
+      5
+    ],
+    [
+      "Frozen > Vegetables > Corn",
+      5
+    ],
+    [
+      "Pantry > Canned Vegetables > Corn",
+      5
+    ],
+    [
+      "Frozen > Vegetables > Spinach",
+      4
+    ]
+  ]
+}

@@ -1,0 +1,348 @@
+#token	notes
+juice	beverage form
+beverage	generic drink form
+drink	generic drink form
+milk	liquid dairy/plant form
+butter	spread form (peanut, almond, dairy)
+sauce	thick liquid form
+syrup	sweet liquid
+jam	fruit spread
+jelly	fruit gel
+preserves	fruit preserve
+spread	generic spread
+dip	dip form
+dressing	salad dressing
+marinade	marinade
+salsa	salsa form
+hummus	hummus form
+guacamole	guac form
+relish	relish
+chutney	chutney
+pickle	pickled form
+pickles	pickled form
+powder	dry powder form
+flour	dry milled form
+meal	dry milled form
+pulp	pulp form
+puree	pureed form
+paste	paste form
+flake	flake form
+flakes	flake form
+chip	chip form
+chips	chip form
+crisp	crisp form
+crisps	crisp form
+crackers	cracker form
+cracker	cracker
+pretzel	pretzel form
+pretzels	pretzel form
+popcorn	popcorn form
+nuts	nut form
+seed	seed form
+seeds	seed form
+trail	trail mix component (form-ish)
+granola	granola form
+cereal	cereal form
+oats	oats form
+bar	bar form
+bars	bar form
+candy	candy form
+chocolate	chocolate confection (also flavor)
+cookie	cookie form
+cookies	cookie form
+cake	cake form
+cakes	cake form
+cupcake	cupcake form
+cupcakes	cupcake form
+muffin	muffin form
+muffins	muffin form
+pie	pie form
+pies	pie form
+tart	tart form
+tarts	tart form
+pastry	pastry form
+pastries	pastry form
+donut	donut form
+donuts	donut form
+brownie	brownie form
+brownies	brownie form
+bread	bread form
+breads	bread form
+roll	bread roll form
+rolls	bread roll form
+bagel	bagel form
+bagels	bagel form
+biscuit	biscuit form
+biscuits	biscuit form
+tortilla	tortilla form
+tortillas	tortilla form
+wrap	wrap form (also dish_type)
+shake	shake form
+smoothie	smoothie form
+latte	latte form
+espresso	espresso form
+cocktail	cocktail form
+soda	soda form
+seltzer	seltzer form
+tea	tea form
+coffee	coffee form
+broth	broth form
+stock	stock form
+soup	soup form (also dish)
+stew	stew form (also dish)
+chili	chili form (also dish)
+curry	curry (also dish)
+pasta	pasta form (also dish)
+noodle	noodle form
+noodles	noodle form
+pizza	pizza form (also dish)
+salad	salad form (also dish)
+sandwich	sandwich form (also dish)
+sub	sub form (also dish)
+burrito	burrito (also dish)
+taco	taco (also dish)
+quesadilla	quesadilla
+kit	meal kit (also dish)
+tray	tray form (also combo/dish)
+plate	plate (also combo/dish)
+bowl	bowl (also combo/dish)
+dinner	dinner (also dish)
+entree	entree (also dish)
+side	side (also dish)
+sides	sides (also dish)
+meal	meal form (also dish)
+nugget	nugget form
+nuggets	nugget form
+patty	patty form
+patties	patty form
+strip	strip form (cut)
+strips	strip form
+fillet	fillet form (cut)
+fillets	fillet form
+roast	roasted form (also prep)
+yogurt	yogurt form
+kefir	kefir form
+kombucha	kombucha form
+gelato	gelato form
+sorbet	sorbet form
+sherbet	sherbet form
+custard	custard form
+pudding	pudding form
+mousse	mousse form
+cream	cream form
+creamer	creamer form
+cheese	cheese form
+oil	oil form
+egg	egg form
+eggs	egg form
+omelet	omelet (also dish)
+omelette	omelette
+frittata	frittata
+quiche	quiche
+casserole	casserole (also dish)
+lasagna	lasagna (also dish)
+mac	mac & cheese
+kugel	kugel (also dish)
+meatloaf	meatloaf (also dish)
+meatballs	meatballs
+nogg	eggnog form
+nog	eggnog form
+eggnog	eggnog
+mix	mix form (cake mix, drink mix, trail mix)
+mixes	mix forms
+mixed	mixed (mixed berries / mixed nuts)
+blend	blend form
+blends	blend forms
+blended	blended
+concentrate	concentrated liquid form
+extract	extract form (small bottle, baking)
+extracts	extract forms
+infusion	infusion (cold-brew, infused water)
+crunch	crunch form (cereal/snack)
+crust	crust form
+dough	dough form
+batter	batter form
+filling	filling form (pie filling)
+icing	icing form (frosting)
+frosting	frosting form
+topping	topping form
+toppings	topping forms
+sprinkles	sprinkles form
+bites	bite-sized form
+bite	bite form
+puffs	puffed form (cereal puffs, snack puffs)
+clusters	cluster form (cereal clusters, granola clusters)
+crumble	crumble form (also dessert)
+crumbles	crumble form plural
+dessert	dessert form (generic frozen dessert)
+desserts	dessert forms
+gummy	gummy candy form
+gummi	gummi candy form
+hardcandy	hard candy form
+softcandy	soft candy form
+truffle	truffle (chocolate confection)
+truffles	truffles
+fudge	fudge form
+fudges	fudge form
+pop	popsicle / soda pop (context)
+pops	pops
+popsicle	popsicle form
+shells	shell-shaped form (pasta or seafood)
+sticks	stick form (cheese sticks, fish sticks)
+stick	stick form
+buns	bun form (bread buns)
+bun	bun form
+balls	ball form (matzo balls, doughnut holes)
+ball	ball form
+spread	spread (also category)
+gravy	gravy form
+icingmix	frosting mix
+fries	fries form
+frenchfry	french fry form
+nachos	nacho chips
+queso	cheese sauce form
+salsa	salsa form
+guac	guacamole form
+candies	candy plural
+chocolates	chocolate plural
+mints	mints form
+gum	gum form
+liquid	liquid form (when modifier)
+solid	solid form
+crystals	crystal form
+granules	granule form
+pellets	pellet form
+mash	mashed form (potato mash)
+mashed	mashed form
+hash	hash form
+seasoning	seasoning blend form
+seasonings	seasoning forms
+spice	spice form
+spices	spice forms
+rub	rub (spice rub)
+herb	herb form (also category)
+herbs	herbs form
+sandwich	sandwich form (also dish)
+sandwiches	sandwich plural
+hotdog	hotdog form
+hotdogs	hotdog form
+hamburger	hamburger form
+burger	burger form
+burgers	burger form
+slider	slider form
+sliders	slider form
+toast	toast form
+toasted	toasted form
+roasted	roasted form (also prep)
+smoked	smoked form (also prep)
+grilled	grilled form (also prep)
+fried	fried form (also prep)
+baked	baked form (also prep)
+broiled	broiled form (also prep)
+braised	braised form (also prep)
+poached	poached form (also prep)
+steamed	steamed form (also prep)
+boiled	boiled form (also prep)
+seared	seared form (also prep)
+glazed	glazed form
+caramelized	caramelized form
+candied	candied form
+panko	panko coating
+breaded	breaded form (also prep)
+battered	battered form (also prep)
+crackers	cracker form
+risotto	risotto form
+paella	paella form
+parm	parmigiana form
+parmigiana	parmigiana
+piccata	piccata
+marsala	marsala
+stroganoff	stroganoff
+goulash	goulash
+biryani	biryani
+poke	poke bowl form
+sushi	sushi form
+roll	roll form (sushi or bread)
+rolls	roll plural
+maki	maki form
+nigiri	nigiri form
+sashimi	sashimi form
+hashbrown	hash brown form
+hashbrowns	hash browns
+crepes	crepes form
+crepe	crepe form
+waffle	waffle form
+waffles	waffles form
+pancake	pancake form
+pancakes	pancakes form
+frenchtoast	french toast
+oatmeal	oatmeal form
+porridge	porridge form
+parfait	parfait form
+sundae	sundae form
+trifle	trifle
+shortcake	shortcake form
+cobbler	cobbler form
+streusel	streusel form
+mousse	mousse form
+flan	flan form
+tiramisu	tiramisu form
+brittle	brittle form (peanut brittle)
+toffee	toffee form
+caramel	caramel form (also flavor)
+butterscotch	butterscotch form (also flavor)
+nougat	nougat form
+marzipan	marzipan
+fondant	fondant
+ganache	ganache
+buttercream	buttercream
+whipped	whipped form (whipped cream)
+ice	ice (compound 'ice cream', 'iced tea')
+medley	medley (vegetable/fruit medley)
+coating	coating
+crouton	crouton (also category)
+croutons	croutons
+puffs	puffed snacks form
+spoonsize	spoon-size cereal
+sprinkles	sprinkles
+nibs	cacao nibs
+hearts	hearts (palm/artichoke/candy — context)
+square	square form (cereal/chocolate)
+squares	squares
+twists	twists (pretzel)
+swirls	swirls (cinnamon swirls)
+clusters	clusters
+smear	smear (cream cheese)
+schmear	schmear (cream cheese)
+bears	gummy bears
+worms	gummy worms
+ribbons	ribbons (candy)
+slabs	slabs
+mounds	mounds
+piles	piles
+dollop	dollop
+bakery	bakery item (form bucket)
+bake	bake (cooking method noun)
+thins	thin form (cookie thins, cracker thins, chocolate thins)
+bark	bark (chocolate bark, peppermint bark)
+cotton	cotton candy (compound)
+candyfloss	cotton candy
+cottoncandy	cotton candy
+icecreamcake	ice cream cake
+nut-cluster	nut cluster
+clusters	clusters (already)
+brittle	brittle (already)
+rice-cake	rice cake
+ricecake	rice cake (already)
+jerky-stick	jerky stick
+sticks	sticks (already)
+snowcone	snow cone
+snocone	sno cone
+shavedice	shaved ice
+italianice	italian ice
+sorbetto	sorbetto
+gelato	gelato (already)
+custards	custards
+mousses	mousses
+puddings	puddings (already)
+flans	flans

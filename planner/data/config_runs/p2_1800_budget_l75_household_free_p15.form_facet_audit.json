@@ -1,0 +1,9 @@
+{
+  "plan": "planner/data/config_runs/p2_1800_budget_l75_household_free_p15.json",
+  "recipes_selected": 217,
+  "lines_scanned": 1776,
+  "finding_count": 1,
+  "by_issue_type": {
+    "wrong_form": 1
+  }
+}

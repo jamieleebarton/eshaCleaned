@@ -1,0 +1,67 @@
+{
+  "category": "Breads & Buns",
+  "n_products": 10540,
+  "verdict_distribution": {
+    "STRONG": 806,
+    "NEEDS_NEW_CONCEPT": 2594,
+    "EXACT": 3497,
+    "WEAK": 3450,
+    "COMPOSITE": 151,
+    "NO_MATCH": 20,
+    "NO_IDENTITY": 22
+  },
+  "top_esha_codes": [
+    {
+      "code": "8269",
+      "desc": "Shortening, bread, cottonseed & hydrogenated soy oil",
+      "n": 321
+    },
+    {
+      "code": "26789",
+      "desc": "bread, 7 grain",
+      "n": 254
+    },
+    {
+      "code": "52454",
+      "desc": "bread, 100% whole wheat",
+      "n": 223
+    },
+    {
+      "code": "26730",
+      "desc": "bun, hamburger",
+      "n": 222
+    },
+    {
+      "code": "36160",
+      "desc": "bread, white",
+      "n": 204
+    },
+    {
+      "code": "15455",
+      "desc": "bun, hot dog",
+      "n": 183
+    },
+    {
+      "code": "",
+      "desc": "",
+      "n": 181
+    },
+    {
+      "code": "72866",
+      "desc": "Bread, sourdough wheat",
+      "n": 169
+    },
+    {
+      "code": "15497",
+      "desc": "Snack, bread, Gardetto's, chips, rosemary & olive oil",
+      "n": 147
+    },
+    {
+      "code": "72908",
+      "desc": "Bread, 100% whole wheat, classic, with calcium & vitamin D",
+      "n": 135
+    }
+  ],
+  "n_fixes_proposed": 137,
+  "n_needs_new_concept": 2594
+}

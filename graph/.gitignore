@@ -1,0 +1,4 @@
+db/
+diagnostics/
+*.tmp
+__pycache__/

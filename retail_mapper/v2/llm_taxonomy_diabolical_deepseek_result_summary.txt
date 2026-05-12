@@ -1,0 +1,574 @@
+MODEL USED: deepseek-ai/DeepSeek-V3.2
+OUTPUT FILE: retail_mapper/v2/llm_taxonomy_diabolical_deepseek.live.jsonl
+SCORE FILE: retail_mapper/v2/llm_taxonomy_diabolical_deepseek.score.json
+
+CORE PASSED: 2 / 17
+EXACT PASSED: 0 / 17
+====================================================================================================
+diabolical_gluten_free_chocolate_chip_cookies
+  CORE: PASS    EXACT: FAIL
+  retail_type
+    expected: single
+    actual:   single
+  category_path
+    expected: Snack > Cookies
+    actual:   Snack > Cookies
+  product_identity
+    expected: Cookies
+    actual:   Cookies
+  variant
+    expected: []
+    actual:   []
+  flavor
+    expected: ['chocolate_chip']
+    actual:   ['chocolate_chip']
+  form_texture_cut
+    expected: []
+    actual:   []
+  processing_storage
+    expected: []
+    actual:   []
+  claims
+    expected: ['gluten_free']
+    actual:   ['gluten_free']
+  components
+    expected: []
+    actual:   []
+----------------------------------------------------------------------------------------------------
+diabolical_organic_low_sodium_chicken_broth_claim_order
+  CORE: FAIL    EXACT: FAIL
+  retail_type
+    expected: single
+    actual:   single
+  category_path
+    expected: Pantry > Broth & Stock
+    actual:   Pantry > Broth & Stock
+  product_identity
+    expected: Chicken Broth
+    actual:   Chicken Broth
+  variant
+    expected: []
+    actual:   []
+  flavor
+    expected: []
+    actual:   []
+  form_texture_cut
+    expected: []
+    actual:   []
+  processing_storage
+    expected: []
+    actual:   []
+  claims
+    expected: ['low_sodium', 'organic']
+    actual:   ['organic', 'low_sodium']
+  components
+    expected: []
+    actual:   []
+  core_errors:
+    - claims_out_of_order
+    - core_mismatch:claims:expected=['low_sodium', 'organic']:actual=['organic', 'low_sodium']
+----------------------------------------------------------------------------------------------------
+diabolical_whole_peeled_tomatoes_basil
+  CORE: FAIL    EXACT: FAIL
+  retail_type
+    expected: single
+    actual:   single
+  category_path
+    expected: Pantry > Canned Vegetables
+    actual:   Pantry > Canned Vegetables
+  product_identity
+    expected: Tomatoes
+    actual:   Tomatoes
+  variant
+    expected: []
+    actual:   []
+  flavor
+    expected: ['basil']
+    actual:   ['basil']
+  form_texture_cut
+    expected: ['whole_peeled']
+    actual:   ['whole', 'peeled']
+  processing_storage
+    expected: ['canned']
+    actual:   ['canned']
+  claims
+    expected: []
+    actual:   []
+  components
+    expected: []
+    actual:   []
+  core_errors:
+    - core_mismatch:form_texture_cut:expected=['whole_peeled']:actual=['whole', 'peeled']
+----------------------------------------------------------------------------------------------------
+diabolical_honey_mustard_pretzel_pieces
+  CORE: FAIL    EXACT: FAIL
+  retail_type
+    expected: single
+    actual:   single
+  category_path
+    expected: Snack > Pretzels
+    actual:   Snack > Pretzels
+  product_identity
+    expected: Pretzels
+    actual:   Pretzel Pieces
+  variant
+    expected: []
+    actual:   []
+  flavor
+    expected: ['honey_mustard']
+    actual:   ['honey_mustard']
+  form_texture_cut
+    expected: ['pieces']
+    actual:   ['pieces']
+  processing_storage
+    expected: []
+    actual:   []
+  claims
+    expected: []
+    actual:   []
+  components
+    expected: []
+    actual:   []
+  core_errors:
+    - core_mismatch:product_identity:expected='Pretzels':actual='Pretzel Pieces'
+    - core_mismatch:canonical_path:expected='Snack > Pretzels > Pretzels':actual='Snack > Pretzels > Pretzel Pieces'
+----------------------------------------------------------------------------------------------------
+diabolical_everything_bagel_seasoning
+  CORE: FAIL    EXACT: FAIL
+  retail_type
+    expected: single
+    actual:   single
+  category_path
+    expected: Pantry > Spices & Seasonings
+    actual:   Pantry > Seasonings & Spices
+  product_identity
+    expected: Seasoning
+    actual:   Seasoning Blend
+  variant
+    expected: ['everything_bagel']
+    actual:   ['everything_bagel']
+  flavor
+    expected: []
+    actual:   []
+  form_texture_cut
+    expected: []
+    actual:   ['blend']
+  processing_storage
+    expected: []
+    actual:   ['shelf_stable']
+  claims
+    expected: []
+    actual:   []
+  components
+    expected: []
+    actual:   []
+  core_errors:
+    - core_mismatch:category_path:expected='Pantry > Spices & Seasonings':actual='Pantry > Seasonings & Spices'
+    - core_mismatch:product_identity:expected='Seasoning':actual='Seasoning Blend'
+    - core_mismatch:canonical_path:expected='Pantry > Spices & Seasonings > Seasoning':actual='Pantry > Seasonings & Spices > Seasoning Blend'
+    - core_mismatch:form_texture_cut:expected=[]:actual=['blend']
+    - core_mismatch:processing_storage:expected=[]:actual=['shelf_stable']
+----------------------------------------------------------------------------------------------------
+diabolical_gluten_free_almond_flour_tortillas
+  CORE: FAIL    EXACT: FAIL
+  retail_type
+    expected: single
+    actual:   single
+  category_path
+    expected: Pantry > Tortillas
+    actual:   Bakery > Tortillas & Wraps
+  product_identity
+    expected: Tortillas
+    actual:   Tortillas
+  variant
+    expected: ['almond_flour']
+    actual:   ['almond_flour']
+  flavor
+    expected: []
+    actual:   []
+  form_texture_cut
+    expected: []
+    actual:   []
+  processing_storage
+    expected: []
+    actual:   []
+  claims
+    expected: ['gluten_free']
+    actual:   ['gluten_free']
+  components
+    expected: ['Almond Flour']
+    actual:   []
+  core_errors:
+    - core_mismatch:category_path:expected='Pantry > Tortillas':actual='Bakery > Tortillas & Wraps'
+    - core_mismatch:canonical_path:expected='Pantry > Tortillas > Tortillas':actual='Bakery > Tortillas & Wraps > Tortillas'
+    - core_mismatch:component_identities:expected=['almond_flour']:actual=[]
+----------------------------------------------------------------------------------------------------
+diabolical_pineapple_coconut_water
+  CORE: FAIL    EXACT: FAIL
+  retail_type
+    expected: single
+    actual:   single
+  category_path
+    expected: Beverage > Coconut Water
+    actual:   Beverage > Coconut Water
+  product_identity
+    expected: Coconut Water
+    actual:   Coconut Water
+  variant
+    expected: []
+    actual:   []
+  flavor
+    expected: ['pineapple']
+    actual:   ['pineapple']
+  form_texture_cut
+    expected: []
+    actual:   []
+  processing_storage
+    expected: []
+    actual:   []
+  claims
+    expected: []
+    actual:   []
+  components
+    expected: []
+    actual:   []
+  core_errors:
+    - canonical_path_mismatch:Beverage > Coconut Water > Coconut Water
+    - core_mismatch:canonical_path:expected='Beverage > Coconut Water > Coconut Water':actual='Beverage > Coconut Water'
+----------------------------------------------------------------------------------------------------
+diabolical_spinach_artichoke_dip_components
+  CORE: FAIL    EXACT: FAIL
+  retail_type
+    expected: single
+    actual:   single
+  category_path
+    expected: Pantry > Dips & Spreads
+    actual:   Pantry > Dips & Spreads
+  product_identity
+    expected: Dip
+    actual:   Dip
+  variant
+    expected: ['spinach_artichoke']
+    actual:   ['spinach_artichoke']
+  flavor
+    expected: []
+    actual:   []
+  form_texture_cut
+    expected: []
+    actual:   []
+  processing_storage
+    expected: []
+    actual:   []
+  claims
+    expected: []
+    actual:   []
+  components
+    expected: ['Spinach', 'Artichoke']
+    actual:   []
+  core_errors:
+    - core_mismatch:component_identities:expected=['artichoke', 'spinach']:actual=[]
+----------------------------------------------------------------------------------------------------
+diabolical_broccoli_cheddar_soup_not_cheese
+  CORE: FAIL    EXACT: FAIL
+  retail_type
+    expected: single
+    actual:   single
+  category_path
+    expected: Pantry > Soup
+    actual:   Pantry > Soup
+  product_identity
+    expected: Broccoli Cheddar Soup
+    actual:   Soup
+  variant
+    expected: []
+    actual:   ['broccoli_cheddar']
+  flavor
+    expected: []
+    actual:   []
+  form_texture_cut
+    expected: []
+    actual:   []
+  processing_storage
+    expected: []
+    actual:   ['canned', 'shelf_stable']
+  claims
+    expected: []
+    actual:   []
+  components
+    expected: ['Broccoli', 'Cheddar Cheese']
+    actual:   []
+  core_errors:
+    - core_mismatch:product_identity:expected='Broccoli Cheddar Soup':actual='Soup'
+    - core_mismatch:canonical_path:expected='Pantry > Soup > Broccoli Cheddar Soup':actual='Pantry > Soup > Soup'
+    - core_mismatch:variant:expected=[]:actual=['broccoli_cheddar']
+    - core_mismatch:processing_storage:expected=[]:actual=['canned', 'shelf_stable']
+    - core_mismatch:component_identities:expected=['broccoli', 'cheddar_cheese']:actual=[]
+----------------------------------------------------------------------------------------------------
+diabolical_pizza_crust_mix_not_pizza
+  CORE: FAIL    EXACT: FAIL
+  retail_type
+    expected: single
+    actual:   single
+  category_path
+    expected: Pantry > Baking Mixes
+    actual:   Pantry > Baking Mixes
+  product_identity
+    expected: Pizza Crust Mix
+    actual:   Pizza Crust Mix
+  variant
+    expected: []
+    actual:   []
+  flavor
+    expected: []
+    actual:   []
+  form_texture_cut
+    expected: []
+    actual:   ['mix']
+  processing_storage
+    expected: []
+    actual:   ['shelf_stable']
+  claims
+    expected: ['gluten_free']
+    actual:   ['gluten_free']
+  components
+    expected: []
+    actual:   []
+  core_errors:
+    - core_mismatch:form_texture_cut:expected=[]:actual=['mix']
+    - core_mismatch:processing_storage:expected=[]:actual=['shelf_stable']
+----------------------------------------------------------------------------------------------------
+diabolical_protein_parfait_not_cereal
+  CORE: FAIL    EXACT: FAIL
+  retail_type
+    expected: composite_dish
+    actual:   composite_dish
+  category_path
+    expected: Meal > Composite Dishes
+    actual:   Meal > Composite Dishes
+  product_identity
+    expected: Parfait
+    actual:   Parfait
+  variant
+    expected: []
+    actual:   ['cinnamon_granola_topping', 'apple', 'coconut', 'protein']
+  flavor
+    expected: ['cinnamon', 'apple', 'coconut']
+    actual:   ['cinnamon', 'apple', 'coconut']
+  form_texture_cut
+    expected: []
+    actual:   ['diced', 'sauced']
+  processing_storage
+    expected: []
+    actual:   ['canned', 'shelf_stable']
+  claims
+    expected: ['high_protein']
+    actual:   ['high_protein', 'fortified']
+  components
+    expected: ['Granola Topping', 'Apple', 'Coconut Pudding']
+    actual:   ['Cinnamon Granola Topping', 'Apple Dices', 'Coconut Pudding']
+  core_errors:
+    - core_mismatch:variant:expected=[]:actual=['cinnamon_granola_topping', 'apple', 'coconut', 'protein']
+    - core_mismatch:form_texture_cut:expected=[]:actual=['diced', 'sauced']
+    - core_mismatch:processing_storage:expected=[]:actual=['canned', 'shelf_stable']
+    - core_mismatch:claims:expected=['high_protein']:actual=['high_protein', 'fortified']
+    - core_mismatch:component_identities:expected=['apple', 'coconut_pudding', 'granola_topping']:actual=['apple_dices', 'cinnamon_granola_topping', 'coconut_pudding']
+----------------------------------------------------------------------------------------------------
+diabolical_chicken_burgers_not_cheese_or_vegetarian
+  CORE: FAIL    EXACT: FAIL
+  retail_type
+    expected: single
+    actual:   single
+  category_path
+    expected: Meat & Seafood > Poultry
+    actual:   Meat & Seafood > Poultry
+  product_identity
+    expected: Chicken Burgers
+    actual:   Chicken Burgers
+  variant
+    expected: ['red_pepper_feta']
+    actual:   ['red_pepper_feta']
+  flavor
+    expected: []
+    actual:   []
+  form_texture_cut
+    expected: []
+    actual:   ['patty']
+  processing_storage
+    expected: ['seasoned']
+    actual:   ['frozen']
+  claims
+    expected: []
+    actual:   []
+  components
+    expected: []
+    actual:   ['Chicken Patty']
+  core_errors:
+    - core_mismatch:form_texture_cut:expected=[]:actual=['patty']
+    - core_mismatch:processing_storage:expected=['seasoned']:actual=['frozen']
+    - core_mismatch:component_identities:expected=[]:actual=['chicken_patty']
+----------------------------------------------------------------------------------------------------
+diabolical_vague_tuscan_meat_cheese_infer_sandwich
+  CORE: FAIL    EXACT: FAIL
+  retail_type
+    expected: composite_dish
+    actual:   composite_dish
+  category_path
+    expected: Meal > Sandwiches
+    actual:   Deli & Prepared > Sandwiches
+  product_identity
+    expected: Sandwich
+    actual:   Sandwich
+  variant
+    expected: ['tuscan_meat_cheese']
+    actual:   ['tuscan_meat_cheese']
+  flavor
+    expected: []
+    actual:   []
+  form_texture_cut
+    expected: []
+    actual:   []
+  processing_storage
+    expected: []
+    actual:   []
+  claims
+    expected: []
+    actual:   []
+  components
+    expected: ['French Roll', 'Provolone Cheese', 'Smoked Ham', 'Mortadella', 'Tomato']
+    actual:   ['French Roll', 'Provolone Cheese', 'Smoked Ham', 'Mortadella', 'Tomato']
+  core_errors:
+    - core_mismatch:category_path:expected='Meal > Sandwiches':actual='Deli & Prepared > Sandwiches'
+    - core_mismatch:canonical_path:expected='Meal > Sandwiches > Sandwich':actual='Deli & Prepared > Sandwiches > Sandwich'
+----------------------------------------------------------------------------------------------------
+diabolical_hard_aged_cheese_no_unproven_specific_guess
+  CORE: FAIL    EXACT: FAIL
+  retail_type
+    expected: single
+    actual:   single
+  category_path
+    expected: Dairy > Cheese
+    actual:   Dairy > Cheese
+  product_identity
+    expected: Cheese
+    actual:   Cheese
+  variant
+    expected: ['aged']
+    actual:   ['aged', 'hard']
+  flavor
+    expected: []
+    actual:   []
+  form_texture_cut
+    expected: ['hard']
+    actual:   []
+  processing_storage
+    expected: []
+    actual:   []
+  claims
+    expected: []
+    actual:   []
+  components
+    expected: []
+    actual:   []
+  core_errors:
+    - core_mismatch:variant:expected=['aged']:actual=['aged', 'hard']
+    - core_mismatch:form_texture_cut:expected=['hard']:actual=[]
+----------------------------------------------------------------------------------------------------
+diabolical_hatch_green_chile_asiago_cheese_crisps
+  CORE: FAIL    EXACT: FAIL
+  retail_type
+    expected: single
+    actual:   single
+  category_path
+    expected: Snack > Cheese Crisps
+    actual:   Snack > Cheese Crisps
+  product_identity
+    expected: Cheese Crisps
+    actual:   Cheese Crisps
+  variant
+    expected: ['asiago']
+    actual:   ['hatch_green_chile_asiago']
+  flavor
+    expected: ['hatch_green_chile']
+    actual:   ['hatch_green_chile']
+  form_texture_cut
+    expected: []
+    actual:   ['crisps']
+  processing_storage
+    expected: []
+    actual:   ['shelf_stable']
+  claims
+    expected: []
+    actual:   ['real_cheese']
+  components
+    expected: []
+    actual:   []
+  core_errors:
+    - core_mismatch:variant:expected=['asiago']:actual=['hatch_green_chile_asiago']
+    - core_mismatch:form_texture_cut:expected=[]:actual=['crisps']
+    - core_mismatch:processing_storage:expected=[]:actual=['shelf_stable']
+    - core_mismatch:claims:expected=[]:actual=['real_cheese']
+----------------------------------------------------------------------------------------------------
+diabolical_sesame_garlic_chicken_meal_starter
+  CORE: FAIL    EXACT: FAIL
+  retail_type
+    expected: meal_kit
+    actual:   composite_dish
+  category_path
+    expected: Meal > Meal Starters
+    actual:   Meal > Meal Starters
+  product_identity
+    expected: Meal Starter
+    actual:   Meal Starter
+  variant
+    expected: ['sesame_garlic_chicken']
+    actual:   ['sesame_garlic_chicken']
+  flavor
+    expected: []
+    actual:   []
+  form_texture_cut
+    expected: []
+    actual:   []
+  processing_storage
+    expected: []
+    actual:   ['frozen']
+  claims
+    expected: []
+    actual:   []
+  components
+    expected: ['Chicken']
+    actual:   ['Sesame Garlic Chicken Breast Strips', 'Rice Noodles']
+  core_errors:
+    - core_mismatch:retail_type:expected='meal_kit':actual='composite_dish'
+    - core_mismatch:processing_storage:expected=[]:actual=['frozen']
+    - core_mismatch:component_identities:expected=['chicken']:actual=['rice_noodles', 'sesame_garlic_chicken_breast_strips']
+----------------------------------------------------------------------------------------------------
+diabolical_chicken_apple_sausage_flatbread_breakfast_sandwich
+  CORE: PASS    EXACT: FAIL
+  retail_type
+    expected: composite_dish
+    actual:   composite_dish
+  category_path
+    expected: Frozen > Breakfast Sandwiches
+    actual:   Frozen > Breakfast Sandwiches
+  product_identity
+    expected: Breakfast Sandwich
+    actual:   Breakfast Sandwich
+  variant
+    expected: ['chicken_apple_sausage', 'egg_white_cheddar']
+    actual:   ['chicken_apple_sausage', 'egg_white_cheddar']
+  flavor
+    expected: []
+    actual:   []
+  form_texture_cut
+    expected: ['flatbread']
+    actual:   ['flatbread']
+  processing_storage
+    expected: ['frozen']
+    actual:   ['frozen']
+  claims
+    expected: []
+    actual:   []
+  components
+    expected: ['Chicken Apple Sausage Patty', 'Egg White Patty', 'Cheddar Cheese', 'Multi-Grain Flatbread']
+    actual:   ['Egg White Patty', 'Multi-Grain Flatbread', 'Chicken Apple Sausage Patty', 'Cheddar Cheese']
+----------------------------------------------------------------------------------------------------

@@ -1,0 +1,744 @@
+{
+  "from_plan": "planner/data/gramfix_p4_2000_thrifty_l75_p15_12wk_regressionfix4.json",
+  "to_plan": "planner/data/config_runs/p4_2000_budget_l75_p15_regression_audit.json",
+  "from_summary": {
+    "avg_weekly_cost": 88.99,
+    "avg_protein_pct": 16.0,
+    "avg_veg_compliance": 0.417,
+    "daily_protein_g": 75.0,
+    "effective_scoring": {
+      "protein_pct_target": 15.0,
+      "enable_protein_prefilter": false,
+      "protein_filter_margin": 5.0,
+      "enable_protein_density_bonus": true,
+      "protein_density_value": 4.0,
+      "macro_deviation_weight": 0.21999999999999997,
+      "auto_protein_targeting": true,
+      "enable_produce_bonus": true,
+      "produce_value_breakfast": 0.0,
+      "produce_value_lunch": 0.002,
+      "produce_value_dinner": 0.005
+    }
+  },
+  "to_summary": {
+    "avg_weekly_cost": 91.45,
+    "avg_protein_pct": 16.3,
+    "avg_veg_compliance": 0.347,
+    "daily_protein_g": 75.0,
+    "effective_scoring": {
+      "protein_pct_target": 15.0,
+      "enable_protein_prefilter": false,
+      "protein_filter_margin": 5.0,
+      "enable_protein_density_bonus": true,
+      "protein_density_value": 4.0,
+      "macro_deviation_weight": 0.21999999999999997,
+      "auto_protein_targeting": true,
+      "enable_produce_bonus": false,
+      "produce_value_breakfast": 0.0,
+      "produce_value_lunch": 0.003,
+      "produce_value_dinner": 0.01
+    }
+  },
+  "delta": {
+    "avg_weekly_cost": 2.46,
+    "avg_protein_pct": 0.3
+  },
+  "by_department": [
+    {
+      "department": "Pantry",
+      "from": 424.34,
+      "to": 475.02,
+      "delta": 50.68
+    },
+    {
+      "department": "Produce",
+      "from": 119.32,
+      "to": 91.04,
+      "delta": -28.28
+    },
+    {
+      "department": "Dairy",
+      "from": 250.29,
+      "to": 231.21,
+      "delta": -19.08
+    },
+    {
+      "department": "Bakery",
+      "from": 62.32,
+      "to": 81.09,
+      "delta": 18.77
+    },
+    {
+      "department": "Meat & Seafood",
+      "from": 134.04,
+      "to": 144.55,
+      "delta": 10.51
+    },
+    {
+      "department": "Beverage",
+      "from": 16.6,
+      "to": 10.8,
+      "delta": -5.8
+    },
+    {
+      "department": "Snack",
+      "from": 12.66,
+      "to": 16.64,
+      "delta": 3.98
+    },
+    {
+      "department": "Frozen",
+      "from": 40.04,
+      "to": 36.78,
+      "delta": -3.26
+    },
+    {
+      "department": "Meal",
+      "from": 8.3,
+      "to": 10.3,
+      "delta": 2.0
+    }
+  ],
+  "by_protein_source": [
+    {
+      "protein_source": "poultry",
+      "from": 90.17,
+      "to": 67.46,
+      "delta": -22.71
+    },
+    {
+      "protein_source": "legumes_nuts",
+      "from": 48.95,
+      "to": 69.33,
+      "delta": 20.38
+    },
+    {
+      "protein_source": "pork",
+      "from": 23.91,
+      "to": 43.48,
+      "delta": 19.57
+    },
+    {
+      "protein_source": "red_meat",
+      "from": 19.96,
+      "to": 33.61,
+      "delta": 13.65
+    },
+    {
+      "protein_source": "eggs",
+      "from": 37.84,
+      "to": 34.82,
+      "delta": -3.02
+    },
+    {
+      "protein_source": "untagged",
+      "from": 847.08,
+      "to": 848.73,
+      "delta": 1.65
+    }
+  ],
+  "by_concept": [
+    {
+      "concept_key": "Meat & Seafood > Poultry > Chicken Breast|3001000K",
+      "from": 83.27,
+      "to": 60.56,
+      "delta": -22.71,
+      "packages_from": 11.0,
+      "packages_to": 8.0,
+      "packages_delta": -3.0,
+      "top_to_skus": [
+        [
+          "Marketside Antibiotic-Free Boneless Skinless Chicken Breasts, 1.3 - 3.0 lb",
+          6
+        ]
+      ]
+    },
+    {
+      "concept_key": "Produce > Vegetables > Potatoes|6101000=",
+      "from": 40.08,
+      "to": 17.64,
+      "delta": -22.44,
+      "packages_from": 32.0,
+      "packages_to": 21.0,
+      "packages_delta": -11.0,
+      "top_to_skus": [
+        [
+          "White Potatoes",
+          8
+        ]
+      ]
+    },
+    {
+      "concept_key": "Dairy > Butter|14010003",
+      "from": 42.88,
+      "to": 21.44,
+      "delta": -21.44,
+      "packages_from": 16.0,
+      "packages_to": 8.0,
+      "packages_delta": -8.0,
+      "top_to_skus": [
+        [
+          "Land O Lakes Salted Butter in Half Sticks, 4 Half Sticks, 8 oz Pack",
+          7
+        ]
+      ]
+    },
+    {
+      "concept_key": "Pantry > Beans > Black Beans|9001000B",
+      "from": 29.24,
+      "to": 44.86,
+      "delta": 15.62,
+      "packages_from": 34.0,
+      "packages_to": 52.0,
+      "packages_delta": 18.0,
+      "top_to_skus": [
+        [
+          "Great Value Black Beans, 15 oz",
+          11
+        ],
+        [
+          "Mixed: 6x Great Value Black Beans, 15 oz + 1x Kroger\u00ae Black Beans",
+          1
+        ]
+      ]
+    },
+    {
+      "concept_key": "Dairy > Milk|1001600U",
+      "from": 32.68,
+      "to": 20.64,
+      "delta": -12.04,
+      "packages_from": 19.0,
+      "packages_to": 12.0,
+      "packages_delta": -7.0,
+      "top_to_skus": [
+        [
+          "Great Value Milk 1% Low-fat, Half Gallon, 64 fl oz",
+          11
+        ]
+      ]
+    },
+    {
+      "concept_key": "Dairy > Cheese > Mozzarella|11020058",
+      "from": 13.92,
+      "to": 24.36,
+      "delta": 10.44,
+      "packages_from": 4.0,
+      "packages_to": 7.0,
+      "packages_delta": 3.0,
+      "top_to_skus": [
+        [
+          "Great Value Low-Moisture Part-Skim Mozzarella Shredded Cheese, 16 oz Bag",
+          6
+        ]
+      ]
+    },
+    {
+      "concept_key": "Pantry > Canned Vegetables > Tomatoes|67010007",
+      "from": 12.86,
+      "to": 22.26,
+      "delta": 9.4,
+      "packages_from": 12.0,
+      "packages_to": 21.0,
+      "packages_delta": 9.0,
+      "top_to_skus": [
+        [
+          "Red Gold\u00ae Stewed Tomatoes",
+          8
+        ],
+        [
+          "Mixed: 1x Great Value Whole Peeled Tomatoes, 28 oz + 3x Red Gold\u00ae Stewed Tomatoes",
+          1
+        ],
+        [
+          "Mixed: 1x Great Value Whole Peeled Tomatoes, 28 oz + 1x Red Gold\u00ae Stewed Tomatoes",
+          1
+        ],
+        [
+          "Mixed: 1x Great Value Whole Peeled Tomatoes, 28 oz + 2x Red Gold\u00ae Stewed Tomatoes",
+          1
+        ]
+      ]
+    },
+    {
+      "concept_key": "Meat & Seafood > Pepperoni|24070004",
+      "from": 2.69,
+      "to": 10.94,
+      "delta": 8.25,
+      "packages_from": 1.0,
+      "packages_to": 4.0,
+      "packages_delta": 3.0,
+      "top_to_skus": [
+        [
+          "Armour\u00ae Pepperoni Slices",
+          2
+        ],
+        [
+          "Great Value Original Pepperoni Slices, 6 oz",
+          1
+        ]
+      ]
+    },
+    {
+      "concept_key": "Pantry > Broth & Stock > Chicken Broth|J0066005",
+      "from": 39.25,
+      "to": 31.08,
+      "delta": -8.17,
+      "packages_from": 40.0,
+      "packages_to": 34.0,
+      "packages_delta": -6.0,
+      "top_to_skus": [
+        [
+          "Great Value Chicken Broth, 14.5 oz (Shelf-Stable)",
+          5
+        ],
+        [
+          "Mixed: 2x Great Value Reduced Sodium Gluten-Free Chicken B + 1x Great Value Chicken Broth, 14.5 oz (Shelf-Stable",
+          3
+        ],
+        [
+          "Mixed: 2x Great Value Reduced Sodium Gluten-Free Chicken B + 6x Great Value Chicken Broth, 14.5 oz (Shelf-Stable",
+          1
+        ],
+        [
+          "Great Value Reduced Sodium Gluten-Free Chicken Broth, 32 oz Carton (Shelf-Stable)",
+          1
+        ],
+        [
+          "Mixed: 3x Great Value Reduced Sodium Gluten-Free Chicken B + 2x Great Value Chicken Broth, 14.5 oz (Shelf-Stable",
+          1
+        ]
+      ]
+    },
+    {
+      "concept_key": "Bakery > Bread|80030009",
+      "from": 14.67,
+      "to": 22.82,
+      "delta": 8.15,
+      "packages_from": 9.0,
+      "packages_to": 14.0,
+      "packages_delta": 5.0,
+      "top_to_skus": [
+        [
+          "Great Value White Round Top Bread Loaf, 20 oz",
+          7
+        ]
+      ]
+    },
+    {
+      "concept_key": "Bakery > Tortillas|G020000M",
+      "from": 24.92,
+      "to": 32.24,
+      "delta": 7.32,
+      "packages_from": 14.0,
+      "packages_to": 18.0,
+      "packages_delta": 4.0,
+      "top_to_skus": [
+        [
+          "CHI-CHI'S Flour Tortillas Burrito Size, Tortilla Wrap, Shelf-Stable, 17 oz Resealable Package, (8 Tortillas)",
+          9
+        ],
+        [
+          "Great Value Medium White Corn Tortillas, 30 Count",
+          1
+        ]
+      ]
+    },
+    {
+      "concept_key": "Frozen > Vegetables > Peas|6303000A",
+      "from": 1.52,
+      "to": 8.36,
+      "delta": 6.84,
+      "packages_from": 2.0,
+      "packages_to": 11.0,
+      "packages_delta": 9.0,
+      "top_to_skus": [
+        [
+          "Great Value No Salt Added Green Peas, 15 oz",
+          6
+        ]
+      ]
+    },
+    {
+      "concept_key": "Meat & Seafood > Hot Dogs & Sausages > Hot Dogs|2416000E",
+      "from": 14.55,
+      "to": 8.52,
+      "delta": -6.03,
+      "packages_from": 5.0,
+      "packages_to": 3.0,
+      "packages_delta": -2.0,
+      "top_to_skus": [
+        [
+          "Ball Park Classic Bun Size Hot Dogs, 15 oz, 8 Count",
+          3
+        ]
+      ]
+    },
+    {
+      "concept_key": "Meat & Seafood > Beef > Ground Beef|2001002A",
+      "from": 17.97,
+      "to": 23.96,
+      "delta": 5.99,
+      "packages_from": 3.0,
+      "packages_to": 4.0,
+      "packages_delta": 1.0,
+      "top_to_skus": [
+        [
+          "Kroger\u00ae 73/27 Ground Beef Roll 1 LB",
+          4
+        ]
+      ]
+    },
+    {
+      "concept_key": "Meat & Seafood > Bacon|24020000",
+      "from": 0.0,
+      "to": 5.99,
+      "delta": 5.99,
+      "packages_from": 0.0,
+      "packages_to": 1.0,
+      "packages_delta": 1.0,
+      "top_to_skus": [
+        [
+          "Smithfield Thick Cut Premium Maple Bacon",
+          1
+        ]
+      ]
+    },
+    {
+      "concept_key": "Dairy > Cream > Half and Half|1367000Q",
+      "from": 5.97,
+      "to": 0.0,
+      "delta": -5.97,
+      "packages_from": 3.0,
+      "packages_to": 0.0,
+      "packages_delta": -3.0
+    },
+    {
+      "concept_key": "Pantry > Oil > Olive Oil|B001600=",
+      "from": 5.97,
+      "to": 11.94,
+      "delta": 5.97,
+      "packages_from": 1.0,
+      "packages_to": 2.0,
+      "packages_delta": 1.0,
+      "top_to_skus": [
+        [
+          "Great Value Extra Virgin Olive Oil, 17 fl oz",
+          2
+        ]
+      ]
+    },
+    {
+      "concept_key": "Produce > Vegetables > Red Onions|652C000V",
+      "from": 2.98,
+      "to": 8.94,
+      "delta": 5.96,
+      "packages_from": 2.0,
+      "packages_to": 6.0,
+      "packages_delta": 4.0,
+      "top_to_skus": [
+        [
+          "Red Onions",
+          5
+        ]
+      ]
+    },
+    {
+      "concept_key": "Pantry > Baking Mixes > Pizza Crust Mix|8703090Y",
+      "from": 2.88,
+      "to": 8.58,
+      "delta": 5.7,
+      "packages_from": 3.0,
+      "packages_to": 9.0,
+      "packages_delta": 6.0,
+      "top_to_skus": [
+        [
+          "\"JIFFY\" Pie Crust Mix, 9 oz Box",
+          2
+        ],
+        [
+          "Mixed: 2x Great Value Pizza Crust Mix, 6.5 oz + 1x \"JIFFY\" Pie Crust Mix, 9 oz Box",
+          1
+        ],
+        [
+          "Great Value Pizza Crust Mix, 6.5 oz",
+          1
+        ]
+      ]
+    },
+    {
+      "concept_key": "Dairy > Cheese|110Q0005",
+      "from": 79.91,
+      "to": 85.57,
+      "delta": 5.66,
+      "packages_from": 38.0,
+      "packages_to": 43.0,
+      "packages_delta": 5.0,
+      "top_to_skus": [
+        [
+          "Kroger\u00ae Low Fat Neufchatel Cheese",
+          12
+        ]
+      ]
+    }
+  ],
+  "by_sku": [
+    {
+      "sku": "Kroger\u00ae Low Fat Neufchatel Cheese",
+      "from": 59.7,
+      "to": 85.57,
+      "delta": 25.87,
+      "packages_from": 30.0,
+      "packages_to": 43.0,
+      "packages_delta": 13.0,
+      "top_to_concepts": [
+        [
+          "Dairy > Cheese|110Q0005",
+          12
+        ]
+      ]
+    },
+    {
+      "sku": "Marketside Antibiotic-Free Boneless Skinless Chicken Breasts, 1.3 - 3.0 lb",
+      "from": 83.27,
+      "to": 60.56,
+      "delta": -22.71,
+      "packages_from": 11.0,
+      "packages_to": 8.0,
+      "packages_delta": -3.0,
+      "top_to_concepts": [
+        [
+          "Meat & Seafood > Poultry > Chicken Breast|3001000K",
+          6
+        ]
+      ]
+    },
+    {
+      "sku": "Land O Lakes Salted Butter in Half Sticks, 4 Half Sticks, 8 oz Pack",
+      "from": 42.88,
+      "to": 21.44,
+      "delta": -21.44,
+      "packages_from": 16.0,
+      "packages_to": 8.0,
+      "packages_delta": -8.0,
+      "top_to_concepts": [
+        [
+          "Dairy > Butter|14010003",
+          7
+        ]
+      ]
+    },
+    {
+      "sku": "Great Value Milk 1% Low-fat, Half Gallon, 64 fl oz",
+      "from": 32.68,
+      "to": 20.64,
+      "delta": -12.04,
+      "packages_from": 19.0,
+      "packages_to": 12.0,
+      "packages_delta": -7.0,
+      "top_to_concepts": [
+        [
+          "Dairy > Milk|1001600U",
+          11
+        ]
+      ]
+    },
+    {
+      "sku": "Mixed: 1x Kroger\u00ae Russet Potatoes + 4x White Potatoes",
+      "from": 11.7,
+      "to": 0.0,
+      "delta": -11.7,
+      "packages_from": 10.0,
+      "packages_to": 0.0,
+      "packages_delta": -10.0
+    },
+    {
+      "sku": "Mixed: 4x Kroger\u00ae Low Fat Neufchatel Cheese + 1x Buitoni\u00ae 5 Cheese Tortellini",
+      "from": 10.95,
+      "to": 0.0,
+      "delta": -10.95,
+      "packages_from": 5.0,
+      "packages_to": 0.0,
+      "packages_delta": -5.0
+    },
+    {
+      "sku": "Great Value Low-Moisture Part-Skim Mozzarella Shredded Cheese, 16 oz Bag",
+      "from": 13.92,
+      "to": 24.36,
+      "delta": 10.44,
+      "packages_from": 4.0,
+      "packages_to": 7.0,
+      "packages_delta": 3.0,
+      "top_to_concepts": [
+        [
+          "Dairy > Cheese > Mozzarella|11020058",
+          6
+        ]
+      ]
+    },
+    {
+      "sku": "Great Value Black Beans, 15 oz",
+      "from": 29.24,
+      "to": 38.7,
+      "delta": 9.46,
+      "packages_from": 34.0,
+      "packages_to": 45.0,
+      "packages_delta": 11.0,
+      "top_to_concepts": [
+        [
+          "Pantry > Beans > Black Beans|9001000B",
+          11
+        ]
+      ]
+    },
+    {
+      "sku": "Mixed: 2x Great Value Reduced Sodium Gluten-Free Chicken B + 3x Great Value Chicken Broth, 14.5 oz (Shelf-Stable",
+      "from": 9.4,
+      "to": 0.0,
+      "delta": -9.4,
+      "packages_from": 10.0,
+      "packages_to": 0.0,
+      "packages_delta": -10.0
+    },
+    {
+      "sku": "Mixed: 1x Great Value Reduced Fat Melt 'n Dip Easy Melt Ch + 2x Kroger\u00ae Low Fat Neufchatel Cheese",
+      "from": 9.26,
+      "to": 0.0,
+      "delta": -9.26,
+      "packages_from": 3.0,
+      "packages_to": 0.0,
+      "packages_delta": -3.0
+    },
+    {
+      "sku": "White Potatoes",
+      "from": 8.4,
+      "to": 17.64,
+      "delta": 9.24,
+      "packages_from": 10.0,
+      "packages_to": 21.0,
+      "packages_delta": 11.0,
+      "top_to_concepts": [
+        [
+          "Produce > Vegetables > Potatoes|6101000=",
+          8
+        ]
+      ]
+    },
+    {
+      "sku": "Mixed: 2x Kroger\u00ae Russet Potatoes + 4x White Potatoes",
+      "from": 8.34,
+      "to": 0.0,
+      "delta": -8.34,
+      "packages_from": 6.0,
+      "packages_to": 0.0,
+      "packages_delta": -6.0
+    },
+    {
+      "sku": "Great Value White Round Top Bread Loaf, 20 oz",
+      "from": 14.67,
+      "to": 22.82,
+      "delta": 8.15,
+      "packages_from": 9.0,
+      "packages_to": 14.0,
+      "packages_delta": 5.0,
+      "top_to_concepts": [
+        [
+          "Bakery > Bread|80030009",
+          7
+        ]
+      ]
+    },
+    {
+      "sku": "Private Selection\u00ae Sourdough Bread Wide Pan",
+      "from": 7.5,
+      "to": 0.0,
+      "delta": -7.5,
+      "packages_from": 3.0,
+      "packages_to": 0.0,
+      "packages_delta": -3.0
+    },
+    {
+      "sku": "Mixed: 2x Great Value Reduced Sodium Gluten-Free Chicken B + 6x Great Value Chicken Broth, 14.5 oz (Shelf-Stable",
+      "from": 0.0,
+      "to": 6.86,
+      "delta": 6.86,
+      "packages_from": 0.0,
+      "packages_to": 8.0,
+      "packages_delta": 8.0,
+      "top_to_concepts": [
+        [
+          "Pantry > Broth & Stock > Chicken Broth|J0066005",
+          1
+        ]
+      ]
+    },
+    {
+      "sku": "Great Value No Salt Added Green Peas, 15 oz",
+      "from": 1.52,
+      "to": 8.36,
+      "delta": 6.84,
+      "packages_from": 2.0,
+      "packages_to": 11.0,
+      "packages_delta": 9.0,
+      "top_to_concepts": [
+        [
+          "Frozen > Vegetables > Peas|6303000A",
+          6
+        ]
+      ]
+    },
+    {
+      "sku": "Mixed: 1x Kroger\u00ae Russet Potatoes + 1x White Potatoes",
+      "from": 6.66,
+      "to": 0.0,
+      "delta": -6.66,
+      "packages_from": 4.0,
+      "packages_to": 0.0,
+      "packages_delta": -4.0
+    },
+    {
+      "sku": "Mixed: 2x Great Value Reduced Sodium Gluten-Free Chicken B + 1x Great Value Chicken Broth, 14.5 oz (Shelf-Stable",
+      "from": 3.26,
+      "to": 9.78,
+      "delta": 6.52,
+      "packages_from": 3.0,
+      "packages_to": 9.0,
+      "packages_delta": 6.0,
+      "top_to_concepts": [
+        [
+          "Pantry > Broth & Stock > Chicken Broth|J0066005",
+          3
+        ]
+      ]
+    },
+    {
+      "sku": "Great Value Chicken Broth, 14.5 oz (Shelf-Stable)",
+      "from": 1.44,
+      "to": 7.92,
+      "delta": 6.48,
+      "packages_from": 2.0,
+      "packages_to": 11.0,
+      "packages_delta": 9.0,
+      "top_to_concepts": [
+        [
+          "Pantry > Broth & Stock > Chicken Broth|J0066005",
+          5
+        ]
+      ]
+    },
+    {
+      "sku": "Mixed: 6x Great Value Black Beans, 15 oz + 1x Kroger\u00ae Black Beans",
+      "from": 0.0,
+      "to": 6.16,
+      "delta": 6.16,
+      "packages_from": 0.0,
+      "packages_to": 7.0,
+      "packages_delta": 7.0,
+      "top_to_concepts": [
+        [
+          "Pantry > Beans > Black Beans|9001000B",
+          1
+        ]
+      ]
+    }
+  ]
+}

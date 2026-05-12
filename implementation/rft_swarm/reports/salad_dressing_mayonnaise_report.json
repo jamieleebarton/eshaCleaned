@@ -1,0 +1,67 @@
+{
+  "category": "Salad Dressing & Mayonnaise",
+  "n_products": 6179,
+  "verdict_distribution": {
+    "NEEDS_NEW_CONCEPT": 2590,
+    "COMPOSITE": 198,
+    "STRONG": 499,
+    "WEAK": 2064,
+    "EXACT": 819,
+    "NO_MATCH": 7,
+    "NO_IDENTITY": 2
+  },
+  "top_esha_codes": [
+    {
+      "code": "44948",
+      "desc": "Salad Dressing, sun dried tomato",
+      "n": 445
+    },
+    {
+      "code": "18324",
+      "desc": "Salad Dressing, vinaigrette, balsamic",
+      "n": 277
+    },
+    {
+      "code": "8503",
+      "desc": "Dressing, mayonnaise, real",
+      "n": 233
+    },
+    {
+      "code": "44924",
+      "desc": "Salad Dressing, Italian, roasted red pepper, with parmesan",
+      "n": 227
+    },
+    {
+      "code": "8035",
+      "desc": "Salad Dressing, vinegar & oil, prepared from recipe",
+      "n": 194
+    },
+    {
+      "code": "8046",
+      "desc": "Dressing, mayonnaise",
+      "n": 122
+    },
+    {
+      "code": "8575",
+      "desc": "Salad Dressing, ranch, with buttermilk",
+      "n": 106
+    },
+    {
+      "code": "44871",
+      "desc": "Salad Dressing, sweet onion & garlic, fat free",
+      "n": 103
+    },
+    {
+      "code": "90837",
+      "desc": "Salad Dressing, ranch, garlic",
+      "n": 92
+    },
+    {
+      "code": "8014",
+      "desc": "Salad Dressing, French, reduced fat",
+      "n": 83
+    }
+  ],
+  "n_fixes_proposed": 545,
+  "n_needs_new_concept": 2590
+}

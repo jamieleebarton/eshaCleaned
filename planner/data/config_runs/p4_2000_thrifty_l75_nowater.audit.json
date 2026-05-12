@@ -1,0 +1,458 @@
+{
+  "plan": "planner/data/config_runs/p4_2000_thrifty_l75_nowater.json",
+  "config": {
+    "mode": "thrifty",
+    "weeks": 12,
+    "people": 4,
+    "cal": 2000.0,
+    "protein_pct": 15.0,
+    "leftover_pct": 0.75
+  },
+  "totals": {
+    "total_cost": 1007.08,
+    "total_whole_cart_cost": 1007.08,
+    "avg_weekly_cost": 83.92,
+    "avg_whole_cart_cost": 83.92,
+    "avg_veg_compliance": 0.433,
+    "avg_protein_pct": 12.7,
+    "total_unique_recipes": 248,
+    "repeat_picks": 43
+  },
+  "derived": {
+    "per_person_day": 3.0,
+    "purchase_rows": 430,
+    "blank_selected_sku_rows": 0,
+    "mixed_package_rows": 23,
+    "known_bad_sku_hits": 0,
+    "package_flag_rows": 9
+  },
+  "bad_hits": [],
+  "blank_rows": [],
+  "package_flags": [
+    {
+      "week": 2,
+      "concept_key": "Dairy > Yogurt|1205000J",
+      "name": "Kroger\u00ae Unicorn and Mermaid Low Fat Yogurt Tubes",
+      "grams": 453.6,
+      "cents": 199,
+      "display": "8 ct / 16 oz",
+      "flags": [
+        "package_grams_under_declared_size"
+      ]
+    },
+    {
+      "week": 2,
+      "concept_key": "Produce > Vegetables > Peppers|6608100S",
+      "name": "Fresh Green Serrano Peppers",
+      "grams": 28.1,
+      "cents": 25,
+      "display": "1 lb",
+      "flags": [
+        "package_grams_under_declared_size"
+      ]
+    },
+    {
+      "week": 4,
+      "concept_key": "Produce > Vegetables > Jalapenos|6622100V",
+      "name": "Fresh Jalapeno Peppers",
+      "grams": 68.0,
+      "cents": 27,
+      "display": "1 lb",
+      "flags": [
+        "package_grams_under_declared_size"
+      ]
+    },
+    {
+      "week": 5,
+      "concept_key": "Produce > Vegetables > Peppers|6608100S",
+      "name": "Fresh Green Serrano Peppers",
+      "grams": 28.1,
+      "cents": 25,
+      "display": "1 lb",
+      "flags": [
+        "package_grams_under_declared_size"
+      ]
+    },
+    {
+      "week": 6,
+      "concept_key": "Bakery > Bagels|G00G000T",
+      "name": "Kroger\u00ae 100% Whole Wheat Bagels",
+      "grams": 567.0,
+      "cents": 249,
+      "display": "6 ct / 20 oz",
+      "flags": [
+        "package_grams_under_declared_size"
+      ]
+    },
+    {
+      "week": 6,
+      "concept_key": "Dairy > Yogurt|1205000J",
+      "name": "Kroger\u00ae Unicorn and Mermaid Low Fat Yogurt Tubes",
+      "grams": 453.6,
+      "cents": 199,
+      "display": "8 ct / 16 oz",
+      "flags": [
+        "package_grams_under_declared_size"
+      ]
+    },
+    {
+      "week": 7,
+      "concept_key": "Meat & Seafood > Pork > Pork Chops|2102003H",
+      "name": "Pork Center Cut Loin Chops Bone-In, 2 count, 1.01 - 1.37 lb Tray",
+      "grams": 1242.8,
+      "cents": 520,
+      "display": "14.28 lbs",
+      "flags": [
+        "package_grams_under_declared_size"
+      ]
+    },
+    {
+      "week": 9,
+      "concept_key": "Produce > Vegetables > Shallots|650D000N",
+      "name": "Shallots",
+      "grams": 45.4,
+      "cents": 40,
+      "display": "1 lb",
+      "flags": [
+        "package_grams_under_declared_size"
+      ]
+    },
+    {
+      "week": 11,
+      "concept_key": "Produce > Vegetables > Jalapenos|6622100V",
+      "name": "Fresh Jalapeno Peppers",
+      "grams": 68.0,
+      "cents": 27,
+      "display": "1 lb",
+      "flags": [
+        "package_grams_under_declared_size"
+      ]
+    }
+  ],
+  "cheapest_cpg": [
+    {
+      "week": 6,
+      "concept_key": "Produce > Vegetables > Celery|6A080006",
+      "name": "Celery Sticks",
+      "grams": 453.6,
+      "cents": 33,
+      "cpg": 0.0728
+    },
+    {
+      "week": 7,
+      "concept_key": "Produce > Vegetables > Celery|6A080006",
+      "name": "Celery Sticks",
+      "grams": 453.6,
+      "cents": 33,
+      "cpg": 0.0728
+    },
+    {
+      "week": 8,
+      "concept_key": "Produce > Vegetables > Celery|6A080006",
+      "name": "Celery Sticks",
+      "grams": 453.6,
+      "cents": 33,
+      "cpg": 0.0728
+    },
+    {
+      "week": 10,
+      "concept_key": "Produce > Vegetables > Celery|6A080006",
+      "name": "Celery Sticks",
+      "grams": 453.6,
+      "cents": 33,
+      "cpg": 0.0728
+    },
+    {
+      "week": 11,
+      "concept_key": "Produce > Vegetables > Celery|6A080006",
+      "name": "Celery Sticks",
+      "grams": 453.6,
+      "cents": 33,
+      "cpg": 0.0728
+    },
+    {
+      "week": 2,
+      "concept_key": "Beverage > Sparkling Water|D206600V",
+      "name": "Clear American Fuji Apple Sparkling Water, 1 Liter Bottle",
+      "grams": 999.6,
+      "cents": 84,
+      "cpg": 0.084
+    },
+    {
+      "week": 1,
+      "concept_key": "Pantry > Flour|870Z000G",
+      "name": "Great Value All-Purpose Unbleached Flour, 5 lb Bag",
+      "grams": 2268.0,
+      "cents": 197,
+      "cpg": 0.0869
+    },
+    {
+      "week": 11,
+      "concept_key": "Produce > Fruit > Limes|7237100*",
+      "name": "Fresh Limes - Each",
+      "grams": 453.6,
+      "cents": 40,
+      "cpg": 0.0882
+    },
+    {
+      "week": 1,
+      "concept_key": "Dairy > Milk|1001600U",
+      "name": "Great Value Milk 1% Low-fat, Half Gallon, 64 fl oz",
+      "grams": 1892.7,
+      "cents": 172,
+      "cpg": 0.0909
+    },
+    {
+      "week": 2,
+      "concept_key": "Dairy > Milk|1001600U",
+      "name": "Great Value Milk 1% Low-fat, Half Gallon, 64 fl oz",
+      "grams": 1892.7,
+      "cents": 172,
+      "cpg": 0.0909
+    },
+    {
+      "week": 3,
+      "concept_key": "Dairy > Milk|1001600U",
+      "name": "Great Value Milk 1% Low-fat, Half Gallon, 64 fl oz",
+      "grams": 1892.7,
+      "cents": 172,
+      "cpg": 0.0909
+    },
+    {
+      "week": 4,
+      "concept_key": "Dairy > Milk|1001600U",
+      "name": "Great Value Milk 1% Low-fat, Half Gallon, 64 fl oz",
+      "grams": 1892.7,
+      "cents": 172,
+      "cpg": 0.0909
+    },
+    {
+      "week": 5,
+      "concept_key": "Dairy > Milk|1001600U",
+      "name": "Great Value Milk 1% Low-fat, Half Gallon, 64 fl oz",
+      "grams": 1892.7,
+      "cents": 172,
+      "cpg": 0.0909
+    },
+    {
+      "week": 6,
+      "concept_key": "Dairy > Milk|1001600U",
+      "name": "Great Value Milk 1% Low-fat, Half Gallon, 64 fl oz",
+      "grams": 1892.7,
+      "cents": 172,
+      "cpg": 0.0909
+    },
+    {
+      "week": 7,
+      "concept_key": "Dairy > Milk|1001600U",
+      "name": "Great Value Milk 1% Low-fat, Half Gallon, 64 fl oz",
+      "grams": 1892.7,
+      "cents": 172,
+      "cpg": 0.0909
+    }
+  ],
+  "highest_package_prices": [
+    {
+      "week": 5,
+      "concept_key": "Meat & Seafood > Poultry > Chicken Breast|3001000K",
+      "name": "Marketside Antibiotic-Free Boneless Skinless Chicken Breasts, 1.3 - 3.0 lb",
+      "grams": 1360.8,
+      "cents": 757,
+      "cpg": 0.5563
+    },
+    {
+      "week": 8,
+      "concept_key": "Meat & Seafood > Poultry > Chicken Breast|3001000K",
+      "name": "Marketside Antibiotic-Free Boneless Skinless Chicken Breasts, 1.3 - 3.0 lb",
+      "grams": 1360.8,
+      "cents": 757,
+      "cpg": 0.5563
+    },
+    {
+      "week": 9,
+      "concept_key": "Meat & Seafood > Beef > Ground Beef|2001002A",
+      "name": "Kroger\u00ae 73/27 Ground Beef Roll 1 LB",
+      "grams": 453.6,
+      "cents": 599,
+      "cpg": 1.3205
+    },
+    {
+      "week": 10,
+      "concept_key": "Meat & Seafood > Beef > Ground Beef|2001002A",
+      "name": "Kroger\u00ae 73/27 Ground Beef Roll 1 LB",
+      "grams": 453.6,
+      "cents": 599,
+      "cpg": 1.3205
+    },
+    {
+      "week": 6,
+      "concept_key": "Pantry > Oil > Olive Oil|B001600=",
+      "name": "Great Value Extra Virgin Olive Oil, 17 fl oz",
+      "grams": 502.7,
+      "cents": 597,
+      "cpg": 1.1876
+    },
+    {
+      "week": 9,
+      "concept_key": "Pantry > Oil > Olive Oil|B001600=",
+      "name": "Great Value Extra Virgin Olive Oil, 17 fl oz",
+      "grams": 502.7,
+      "cents": 597,
+      "cpg": 1.1876
+    },
+    {
+      "week": 7,
+      "concept_key": "Meat & Seafood > Pork > Pork Chops|2102003H",
+      "name": "Pork Center Cut Loin Chops Bone-In, 2 count, 1.01 - 1.37 lb Tray",
+      "grams": 1242.8,
+      "cents": 520,
+      "cpg": 0.4184
+    },
+    {
+      "week": 10,
+      "concept_key": "Meat & Seafood > Bacon|24020000",
+      "name": "HORMEL BLACK LABEL Real Chopped Bacon Topping, 30 Calories per Serving, Shelf Stable, 3.5 oz Plastic Pouch",
+      "grams": 99.2,
+      "cents": 512,
+      "cpg": 5.1613
+    },
+    {
+      "week": 7,
+      "concept_key": "Produce > Vegetables > Carrots|61021009",
+      "name": "Fresh Whole Carrots, 5 lb Bag",
+      "grams": 2268.0,
+      "cents": 477,
+      "cpg": 0.2103
+    },
+    {
+      "week": 11,
+      "concept_key": "Meat & Seafood > Bacon > Canadian Bacon|245J843D",
+      "name": "Jones Dairy Farm Hickory Smoked Canadian Pork Loin Bacon, 6 oz \u2013 No MSG, 97% Fat Free, Certified Gluten Free",
+      "grams": 170.1,
+      "cents": 447,
+      "cpg": 2.6279
+    },
+    {
+      "week": 7,
+      "concept_key": "Snack > Nuts > Mixed Nuts|A004000H",
+      "name": "Kroger\u00ae Unsalted Mixed Nuts",
+      "grams": 290.3,
+      "cents": 429,
+      "cpg": 1.4778
+    },
+    {
+      "week": 7,
+      "concept_key": "Pantry > Baking Extracts > Vanilla Extract|E503000V",
+      "name": "Great Value Pure Vanilla Extract, 1 fl oz",
+      "grams": 29.6,
+      "cents": 414,
+      "cpg": 13.9865
+    },
+    {
+      "week": 6,
+      "concept_key": "Pantry > Spices & Seasonings > Spice Blend|E611000$",
+      "name": "McCormick Pure Pumpkin Pie Spice Blend Extract, 1.0 fl oz Box",
+      "grams": 29.6,
+      "cents": 400,
+      "cpg": 13.5135
+    },
+    {
+      "week": 7,
+      "concept_key": "Pantry > Sweeteners > Honey|C0010007",
+      "name": "Great Value Honey, 12 oz Plastic Bear",
+      "grams": 340.2,
+      "cents": 394,
+      "cpg": 1.1581
+    },
+    {
+      "week": 5,
+      "concept_key": "Dairy > Cream|130B600Y",
+      "name": "Cacique Crema Mexicana Table Cream, 15 oz Jar (Refrigerated)",
+      "grams": 443.6,
+      "cents": 387,
+      "cpg": 0.8724
+    }
+  ],
+  "top_concepts": [
+    [
+      "Pantry > Canned Vegetables > Tomatoes",
+      16
+    ],
+    [
+      "Dairy > Cheese",
+      12
+    ],
+    [
+      "Dairy > Eggs",
+      12
+    ],
+    [
+      "Dairy > Milk",
+      12
+    ],
+    [
+      "Pantry > Beans > Black Beans",
+      12
+    ],
+    [
+      "Pantry > Broth & Stock > Chicken Broth",
+      12
+    ],
+    [
+      "Pantry > Flour",
+      11
+    ],
+    [
+      "Produce > Vegetables > Onions",
+      11
+    ],
+    [
+      "Bakery > Bread",
+      10
+    ],
+    [
+      "Dairy > Butter",
+      9
+    ],
+    [
+      "Produce > Vegetables > Potatoes",
+      9
+    ],
+    [
+      "Pantry > Sauces & Salsas > Salsa",
+      8
+    ],
+    [
+      "Dairy > Sour Cream",
+      7
+    ],
+    [
+      "Bakery > Tortillas",
+      7
+    ],
+    [
+      "Pantry > Canned Vegetables > Corn",
+      7
+    ],
+    [
+      "Pantry > Baking Mixes > Pizza Crust Mix",
+      7
+    ],
+    [
+      "Pantry > Broth & Stock > Vegetable Broth",
+      6
+    ],
+    [
+      "Pantry > Oil > Vegetable Oil",
+      6
+    ],
+    [
+      "Pantry > Pasta",
+      6
+    ],
+    [
+      "Pantry > Beans > Kidney Beans",
+      6
+    ]
+  ]
+}

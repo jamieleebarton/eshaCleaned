@@ -1,0 +1,206 @@
+#token	notes
+raw	raw uncooked
+uncooked	uncooked
+cooked	cooked
+fully	fully cooked (compound)
+partially	partially cooked
+parboiled	par-boiled
+parbaked	par-baked
+roasted	roasted (also form)
+baked	baked (also form)
+grilled	grilled (also form)
+fried	fried (also form)
+sauteed	sauteed
+seared	seared
+boiled	boiled
+poached	poached
+steamed	steamed
+braised	braised
+smoked	smoked (also storage)
+cured	cured (also storage)
+hardboiled	hard-boiled
+softboiled	soft-boiled
+ready	ready-to-* compound
+heat	'ready to heat' compound
+microwave	microwave-ready
+microwaveable	microwaveable
+ovenready	oven-ready
+servable	ready-to-serve
+preboiled	pre-boiled
+precooked	pre-cooked
+prepared	prepared
+prebaked	pre-baked
+heatable	heatable
+warmed	pre-warmed
+toasted	toasted (also form)
+caramelized	caramelized
+candied	candied
+glazed	glazed
+seasoned	seasoned (mild prep modifier)
+marinated	marinated
+breaded	breaded
+batterdipped	batter-dipped
+battered	battered
+panko	panko-coated
+crispy	crispy texture/prep
+crunchy	crunchy texture/prep
+chewy	chewy texture
+soft	soft texture
+hard	hard texture
+thin	thin texture/cut
+thick	thick texture/cut
+creamy	creamy texture
+smooth	smooth texture
+chunky	chunky texture (also flavor for salsa)
+flaky	flaky texture
+crumbly	crumbly texture
+fluffy	fluffy texture
+moist	moist texture
+juicy	juicy
+melty	melty
+gooey	gooey
+buttery	buttery
+crusty	crusty
+extra	'extra crispy' compound
+crisp	crisp (also form)
+frosted	frosted (top with frosting)
+iced	iced (drink form OR icing-topped — context)
+topped	topped
+dipped	dipped
+coated	coated
+covered	covered
+filled	filled
+stuffed	stuffed
+swirled	swirled
+swirl	swirl
+whipped	whipped
+chocolatey	chocolate-covered/coated
+chocolatecovered	chocolate-covered
+yogurtcovered	yogurt-covered
+caramelized	caramelized
+glazed	glazed
+honeyed	honey-coated
+sugared	sugared / sugar-coated
+salted	salted (also sodium)
+unsalted	unsalted (also sodium)
+peppered	peppered (also flavor)
+herbed	herbed (also flavor)
+spiced	spiced (also flavor)
+fired	wood-fired / oven-fired
+flame	flame-grilled (compound)
+charbroiled	charbroiled
+charred	charred
+blackened	blackened (cajun-spiced)
+sundried	sun-dried
+firedried	fire-dried
+oven	oven-baked / oven-roasted (compound prefix)
+kettle	kettle-cooked (compound)
+slow	slow-cooked (compound)
+pressure	pressure-cooked
+crockpot	crockpot
+deepfried	deep-fried (compound)
+shallow	shallow-fried
+panfried	pan-fried (compound)
+stirfried	stir-fried (compound)
+flame	flame-grilled
+grill	grill / grilled
+charcoal	charcoal-grilled
+hardened	hardened
+softened	softened
+smoothed	smoothed
+chunked	chunked
+shredded	shredded (also cut)
+ground	ground (also cut)
+diced	diced (also cut)
+sliced	sliced (also cut)
+peeled	peeled (also cut)
+seedless	seedless (also CUT/state)
+boneless	boneless (also CUT/state)
+bonein	bone-in (compound)
+skinless	skinless
+skinon	skin-on (compound)
+trimmed	trimmed
+brined	brined (also storage)
+fermented	fermented
+proofed	proofed
+risen	risen
+unrisen	unrisen
+leavened	leavened
+unleavened	unleavened
+yeasted	yeasted
+sourdough	sourdough (also flavor)
+hardwood	hardwood-smoked compound
+applewood	applewood-smoked
+cherrywood	cherrywood-smoked
+hickorywood	hickorywood-smoked
+mesquite	mesquite-smoked (also flavor)
+sun	sun-dried (compound)
+sundried	sun-dried
+oven-roasted	oven-roasted
+slow-cooked	slow-cooked
+slow-roasted	slow-roasted
+slow-baked	slow-baked
+stir	stir-fried (compound)
+stirfried	stir-fried
+stir-fry	stir fry
+panfried	pan-fried
+pan-fried	pan-fried
+deepfried	deep-fried
+flame-grilled	flame-grilled
+flame	flame (compound 'flame grilled')
+charcoal	charcoal-grilled
+woodfired	wood-fired
+wood-fired	wood-fired
+oak-smoked	oak-smoked
+beech-smoked	beech-smoked
+woodsmoked	wood-smoked
+firegrilled	fire-grilled
+firebaked	fire-baked
+firetoasted	fire-toasted
+slowsmoked	slow-smoked
+hot-smoked	hot-smoked
+cold-smoked	cold-smoked
+double-smoked	double-smoked
+bake	bake (also form)
+toaster	toaster (compound — toaster pastry/strudel)
+toasterpastry	toaster pastry
+cultured	cultured (yogurt/milk/butter)
+strained	strained (yogurt — Greek)
+brewed	brewed
+unbrewed	unbrewed
+smoke	smoke flavor (compound)
+hatched	hatched eggs
+peel	peel-off
+deveined	deveined
+shelled	shelled (de-shelled)
+unshelled	unshelled
+splatter	splatter
+splash	splash
+ripe	ripe
+ripened	ripened
+unripe	unripe
+overripe	overripe
+ripens	ripens
+loaded	loaded (toppings)
+filled	filled (already)
+stuffed	stuffed (already)
+double-stuffed	double-stuffed
+extra-stuffed	extra-stuffed
+rolled	rolled (oats, fondant, dough)
+shaped	shaped
+refried	refried (beans)
+powdered	powdered
+pre	pre- (compound prefix)
+precut	pre-cut
+presliced	pre-sliced
+preheated	pre-heated
+preformed	pre-formed
+preroasted	pre-roasted
+quick	quick-cooking (oats)
+quickcook	quick-cook
+oldfashion	old-fashion
+oldfashioned	old-fashioned
+process	processed
+processed	processed (already in diet)
+layered	layered
+laminated	laminated (dough)

@@ -1,0 +1,7 @@
+{
+  "plan": "planner/data/config_runs/p5_2000_thrifty_l75_formgramfix_p15.json",
+  "recipes_selected": 248,
+  "lines_scanned": 2427,
+  "finding_count": 0,
+  "by_issue_type": {}
+}

@@ -1,0 +1,215 @@
+#token	notes
+organic	usda organic
+nongmo	non-gmo
+gmo	gmo flag (usually 'non-gmo')
+glutenfree	gluten-free
+gluten	'gluten free' compound
+dairyfree	dairy-free
+dairy	'dairy free' / 'non dairy' compound
+nondairy	non-dairy
+plantbased	plant-based
+plant	'plant based' compound
+vegan	vegan
+vegetarian	vegetarian
+keto	keto
+ketogenic	ketogenic
+paleo	paleo
+lactose	'lactose free' compound
+lactosefree	lactose-free
+kosher	kosher
+halal	halal
+allnatural	all-natural
+natural	natural (claim)
+antibiotic	'no antibiotics' compound
+hormone	'no hormones' compound
+grassfed	grass-fed
+pasture	pasture-raised (compound)
+freerange	free-range
+cagefree	cage-free
+wild	wild caught/wild
+sustainable	sustainable
+fairtrade	fair-trade
+nonbioengineered	non-bioengineered
+bioengineered	bioengineered
+caffeinefree	caffeine-free
+decaf	decaffeinated
+decaffeinated	decaffeinated
+caffeine	caffeine (also functional)
+diabetic	diabetic-friendly
+diabeticfriendly	diabetic-friendly
+heartsmart	heart-healthy claim
+hearthealthy	heart-healthy
+whole30	whole30
+fodmap	low-fodmap
+lowfodmap	low-fodmap
+nutfree	nut-free
+soyfree	soy-free
+eggfree	egg-free
+peanutfree	peanut-free
+treenutfree	tree-nut-free
+fishfree	fish-free
+shellfishfree	shellfish-free
+gluten-free	gluten-free
+gf	gluten-free abbrev
+veg	vegetarian abbrev
+vg	vegan abbrev
+enriched	enriched (claim)
+fortified	fortified
+unfortified	unfortified
+unrefined	unrefined
+refined	refined
+unbleached	unbleached
+bleached	bleached
+unprocessed	unprocessed
+processed	processed
+minimally	minimally processed (compound)
+clean	clean label
+cleanlabel	clean label
+zero	zero (compound 'zero sugar', 'zero calorie')
+free	free (compound suffix)
+no	no- (compound 'no sugar', 'no salt')
+caught	wild-caught (compound)
+range	free-range (compound)
+fed	fed (grass-fed compound)
+raised	pasture-raised
+gluten-free	gluten-free
+sprouted	sprouted (also flavor)
+ancient	ancient grains (compound)
+multigrain	multi-grain (also flavor)
+wholegrain	whole grain (also flavor)
+wholewheat	whole wheat (also flavor)
+probiotic	probiotic (claim)
+prebiotic	prebiotic
+microbiome	microbiome
+gut	gut health
+collagen	collagen
+protein	protein (also category — claim when modifier)
+adaptogen	adaptogen
+adaptogenic	adaptogenic
+energizing	energizing
+hydrating	hydrating
+calming	calming
+focus	focus
+memory	memory
+immune	immune
+immunity	immunity
+omega	omega-3 (also fat)
+omega3	omega-3
+electrolyte	electrolyte
+electrolytes	electrolytes
+stevia	stevia (also sweetener)
+monkfruit	monk fruit
+allulose	allulose
+xylitol	xylitol
+erythritol	erythritol
+mct	MCT oil
+nofatadded	no fat added
+nooiladded	no oil added
+nopreservatives	no preservatives
+preservativefree	preservative-free
+preservatives	preservatives
+artificial	artificial (usually 'no artificial...')
+nothing	'nothing artificial' compound
+authentic	authentic (claim)
+recognizable	recognizable ingredients
+simple	simple (claim)
+simpleingredients	simple ingredients
+realingredients	real ingredients
+wholesome	wholesome
+nutritious	nutritious
+balanced	balanced
+complete	complete (nutrition)
+fortified	fortified
+enriched	enriched
+clean	clean
+recipe	recipe (claim)
+authentic	authentic
+heritage	heritage
+craft	craft
+crafted	crafted
+handcrafted	handcrafted
+smallbatch	small-batch
+artisan	artisan (also flavor)
+artisanal	artisanal
+freshly	freshly (compound)
+locally	locally sourced (compound)
+sourced	sourced (compound)
+farmtotable	farm-to-table
+single	single-source / single-origin (compound)
+origin	origin (compound)
+small	small batch (compound)
+batch	batch (compound)
+virgin	virgin (extra-virgin oil)
+extra-virgin	extra-virgin
+extravirgin	extra-virgin
+naturally	naturally (claim)
+naturally-flavored	naturally flavored
+diet	diet (low-calorie product line)
+calorie	calorie (compound)
+nature	nature (claim/marketing)
+multi	multi (compound multigrain/multivitamin)
+multivitamin	multi-vitamin
+multigrain	multi-grain (already)
+vitamin	vitamin
+vitamins	vitamins
+vitaminc	vitamin c
+vitamind	vitamin d
+vitaminb	vitamin b
+b12	B12
+folate	folate
+folicacid	folic acid
+biotin	biotin
+ironfortified	iron fortified
+calcium	calcium fortified
+zinc	zinc
+magnesium	magnesium
+selenium	selenium
+chromium	chromium
+copper	copper
+manganese	manganese
+fortified	fortified (already)
+enriched	enriched (already)
+nopreservatives	no preservatives
+nopreservative	no preservative
+nooil	no oil added
+noflavor	no artificial flavors
+nocolor	no artificial colors
+artificial	artificial (claim — usually negated)
+high-protein	high-protein (compound)
+highfiber	high fiber
+highprotein	high protein
+highcalcium	high calcium
+lowcarb	low-carb
+nocarb	no-carb
+zerocarb	zero carb
+sugarsfromfruits	sugars from fruits (compound)
+allergyfriendly	allergy-friendly
+free-from	free-from (compound)
+top9free	top-9 free
+top8free	top-8 free
+nutrition	nutrition (claim)
+nutritional	nutritional (claim)
+healthy	healthy (claim)
+hearthealthy	heart healthy
+heartsmart	heart smart
+hearty	keep
+heart	heart (claim 'heart-healthy')
+superfood	superfood claim
+superfoods	superfoods
+supergrain	super grain
+supergrains	super grains
+clean	clean (claim)
+cleanse	cleanse
+detox	detox claim
+boost	boost (claim)
+boosted	boosted
+power	power (claim 'power up')
+powered	powered
+energy	energy (claim — also category)
+grass	grass-fed (compound)
+fiber	high-fiber claim
+herbal	herbal claim
+whey	whey (protein source)
+angus	angus (beef quality grade)
+grade	grade (A eggs etc.)
+gradea	grade A

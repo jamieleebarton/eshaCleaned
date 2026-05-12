@@ -1,0 +1,25 @@
+{
+  "category": "Yogurt",
+  "n_products": 7137,
+  "verdict_distribution": {
+    "NEEDS_NEW_CONCEPT": 3086,
+    "WEAK": 2149,
+    "COMPOSITE": 213,
+    "STRONG": 617,
+    "EXACT": 1072
+  },
+  "reason_distribution": {
+    "kept_orig_no_match": 3012,
+    "kept_orig_weak": 1282,
+    "kept_orig_composite": 202,
+    "kept_orig_no_rft_esha": 163,
+    "kept_agree_weak": 780,
+    "replaced_exact": 614,
+    "replaced_inherited": 168,
+    "kept_agree_exact": 815,
+    "kept_agree_inherited": 16,
+    "still_empty": 85
+  },
+  "n_findings": 0,
+  "findings": []
+}

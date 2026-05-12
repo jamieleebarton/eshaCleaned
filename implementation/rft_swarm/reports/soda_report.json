@@ -1,0 +1,67 @@
+{
+  "category": "Soda",
+  "n_products": 8233,
+  "verdict_distribution": {
+    "EXACT": 1536,
+    "WEAK": 2423,
+    "NEEDS_NEW_CONCEPT": 3432,
+    "STRONG": 779,
+    "NO_IDENTITY": 18,
+    "COMPOSITE": 37,
+    "NO_MATCH": 8
+  },
+  "top_esha_codes": [
+    {
+      "code": "807",
+      "desc": "Drink, flavored water, strawberry watermelon",
+      "n": 552
+    },
+    {
+      "code": "36269",
+      "desc": "Drink, flavored water, lemon, with artificial sweetener",
+      "n": 307
+    },
+    {
+      "code": "14406",
+      "desc": "Soda, cola, lime",
+      "n": 285
+    },
+    {
+      "code": "4788",
+      "desc": "Soda, ginger ale, cranberry",
+      "n": 269
+    },
+    {
+      "code": "14399",
+      "desc": "Soda, cola, lime, diet, with aspartame",
+      "n": 212
+    },
+    {
+      "code": "4796",
+      "desc": "soda",
+      "n": 202
+    },
+    {
+      "code": "274",
+      "desc": "Soda, grape",
+      "n": 198
+    },
+    {
+      "code": "23940",
+      "desc": "Soda, energy, Vault, citrus",
+      "n": 186
+    },
+    {
+      "code": "4795",
+      "desc": "soda, orange",
+      "n": 183
+    },
+    {
+      "code": "271",
+      "desc": "Soda, orange creme",
+      "n": 181
+    }
+  ],
+  "n_fixes_proposed": 652,
+  "n_needs_new_concept": 3432
+}

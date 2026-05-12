@@ -1,0 +1,11 @@
+{
+  "joint_signal_count": 403,
+  "quarantined_input": 246360,
+  "quarantined_proposed": 237503,
+  "quarantined_unhealable": 8857,
+  "quarantined_with_joint_signal": 119469,
+  "quarantined_with_target_family": 241550,
+  "single_source_brand_signal_count": 1242,
+  "single_source_pc_signal_count": 141,
+  "single_source_wweia_signal_count": 127
+}

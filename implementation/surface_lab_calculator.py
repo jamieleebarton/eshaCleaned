@@ -14,6 +14,7 @@ from esha_nutrition import nutrition_for_esha
 from product_matcher import match_products, search_products
 from schema import NutritionEstimate, NutritionState, ShoppingState
 from sr28_nutrition import nutrition_for_grams, sr28_per_100g
+from taxonomy_lookup import lookup_taxonomy, metadata_kwargs
 
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -91,6 +92,22 @@ class LabResolution:
     rejected_products: list[LabProduct]
     path: list[str]
     notes: str
+    canonical_path: str = ""
+    retail_leaf_path: str = ""
+    canonical_label: str = ""
+    product_identity_fixed: str = ""
+    htc_code: str = ""
+    htc_sku_code: str = ""
+    htc_group: str = ""
+    htc_family: str = ""
+    htc_food: str = ""
+    htc_form: str = ""
+    htc_processing: str = ""
+    htc_ptype: str = ""
+    htc_check: str = ""
+    htc_confidence: float | None = None
+    htc_source: str = ""
+    taxonomy_source: str = ""
 
 
 _SURFACE_ROWS: list[dict[str, str]] | None = None
@@ -1071,14 +1088,21 @@ def _load_canonical_retail_bridge() -> dict[str, dict]:
     out: dict[str, dict] = {}
     try:
         conn = sqlite3.connect(_BRIDGE_DB_PATH)
-        for ck, exp_path, allowed_var, allowed_form, allowed_proc, forbid, allow_fl, allow_co, n in conn.execute(
-            "SELECT canonical_key, expected_canonical_path, allowed_variants, "
+        for ck, exp_path, exp_paths, allowed_var, allowed_form, allowed_proc, forbid, allow_fl, allow_co, n in conn.execute(
+            "SELECT canonical_key, expected_canonical_path, expected_canonical_paths, allowed_variants, "
             "allowed_forms, allowed_processing_storage, forbidden_modifiers, "
             "allow_flavored, allow_combo, audit_row_count "
             "FROM canonical_retail_bridge"
         ):
+            expected_paths = []
+            if exp_paths:
+                try:
+                    expected_paths = json.loads(exp_paths)
+                except Exception:
+                    expected_paths = []
             out[ck] = {
                 "expected_canonical_path": exp_path,
+                "expected_canonical_paths": expected_paths,
                 "allowed_variants": json.loads(allowed_var) if allowed_var else None,
                 "allowed_forms": json.loads(allowed_form) if allowed_form else None,
                 "allowed_processing_storage": json.loads(allowed_proc) if allowed_proc else None,
@@ -2534,20 +2558,25 @@ def _accept_batch11_product(product: LabProduct, canonical_key: str) -> tuple[bo
     if canonical_key in {"butter", "salted butter", "unsalted butter"}:
         if "butter" not in tokens and "beurre" not in tokens:
             return False, "missing_butter_identity"
+        desc_tokens = set(desc.split())
         if canonical_key == "unsalted butter" and "unsalted" not in tokens:
             return False, "missing_unsalted_butter_identity"
         if canonical_key == "salted butter" and "unsalted" in tokens:
             return False, "not_salted_butter:unsalted"
         if {"dairy", "free"} <= tokens or {"plant", "based"} <= tokens:
             return False, "not_plain_butter:plant_or_dairy_free"
-        reject = tokens & {"biscuit", "biscuits", "chip", "chips", "flavor", "flavored", "garlic", "glaze", "ham", "herb", "pickle", "pickles", "plant", "powder", "sauce", "spread", "syrup", "vegetable"}
+        reject = desc_tokens & {
+            "biscuit", "biscuits", "canola", "chip", "chips", "flavor", "flavored",
+            "garlic", "glaze", "ham", "herb", "oil", "olive", "pickle", "pickles",
+            "plant", "powder", "sauce", "spread", "spreadable", "syrup", "vegetable",
+        }
         if reject:
             return False, "not_plain_butter:" + "/".join(sorted(reject))
         if _contains_phrase(desc, "bread and butter") or _contains_phrase(desc, "bread & butter"):
             return False, "not_plain_butter:bread_and_butter"
         if _contains_phrase(desc, "spreadable butter") or _contains_phrase(desc, "butter spread") or _contains_phrase(desc, "butter blend"):
             return False, "not_plain_butter:spread_or_blend"
-        if any(term in category for term in ("butter", "dairy")) or _is_retail_bridge_product(product):
+        if any(term in category for term in ("butter", "dairy")) or _is_retail_bridge_product(product) or product.source == "api_cache_exact":
             return True, "plain_butter_label"
         return False, "butter_requires_dairy_category"
 
@@ -2583,6 +2612,7 @@ def _accept_batch11_product(product: LabProduct, canonical_key: str) -> tuple[bo
             "snack",
             "snacker",
             "snackers",
+            "snacking",
             "spicy",
             "swiss",
             "taco",
@@ -4063,12 +4093,30 @@ def accept_via_audit(product: LabProduct, canonical: str) -> tuple[bool, str] | 
                            this UPC, or classification_method=='unclassified').
     """
     canonical_key = normalize_key(canonical)
-    spec = _CANONICAL_AUDIT_EXPECTATION.get(canonical_key)
-    if spec is None:
+    hard_spec = _CANONICAL_AUDIT_EXPECTATION.get(canonical_key)
+    if hard_spec is None:
         return None
-    expected_prefixes, forbidden_modifiers = spec
-    if isinstance(expected_prefixes, str):  # back-compat: single string
-        expected_prefixes = [expected_prefixes]
+    bridge_spec = _load_canonical_retail_bridge().get(canonical_key)
+    expected_prefixes: list[str] = []
+    forbidden_modifiers: set[str] = set()
+    hard_prefixes, hard_forbidden = hard_spec
+    if isinstance(hard_prefixes, str):  # back-compat: single string
+        hard_prefixes = [hard_prefixes]
+    expected_prefixes.extend(hard_prefixes)
+    forbidden_modifiers.update(hard_forbidden or set())
+    if bridge_spec:
+        raw_paths = bridge_spec.get("expected_canonical_paths") or []
+        if isinstance(raw_paths, list):
+            expected_prefixes.extend(str(p) for p in raw_paths if str(p).strip())
+        if bridge_spec.get("expected_canonical_path"):
+            expected_prefixes.append(str(bridge_spec["expected_canonical_path"]))
+        raw_forbidden = bridge_spec.get("forbidden_modifiers") or []
+        if isinstance(raw_forbidden, (list, tuple, set)):
+            forbidden_modifiers.update(str(t).strip().lower() for t in raw_forbidden if str(t).strip())
+        elif isinstance(raw_forbidden, str):
+            forbidden_modifiers.update(t.strip().lower() for t in raw_forbidden.split(",") if t.strip())
+    # Deduplicate while preserving the hard guardrail prefixes first.
+    expected_prefixes = list(dict.fromkeys(expected_prefixes))
     upc = (product.gtin_upc or "").strip()
     if not upc:
         return None
@@ -4325,7 +4373,14 @@ def _product_acceptance_reason(product: LabProduct, canonical: str) -> tuple[boo
     if canonical_key == "garlic":
         if "garlic" not in tokens:
             return False, "missing_garlic_identity"
-        reject = tokens & {"bread", "butter", "diced", "dip", "dressing", "minced", "oil", "paste", "powder", "salt", "sauce", "seasoning", "spread", "stir"}
+        reject = tokens & {
+            "black", "blend", "bread", "butter", "cauliflower", "chives", "chopped",
+            "crushed", "crouton", "diced", "dip", "dressing", "frozen", "herb",
+            "mashed", "minced", "mushroom", "mushrooms", "oil", "parmesan", "paste",
+            "pea", "peas", "pickled", "potato", "potatoes", "powder", "puree", "salt",
+            "sauce", "seasoning", "spread", "stir", "sweet", "uncrooton", "uncrouton",
+            "water",
+        }
         if reject:
             return False, "not_plain_fresh_garlic:" + "/".join(sorted(reject))
         if any(term in _product_category(product) for term in ("fruit", "produce", "vegetable")) or _is_retail_bridge_product(product):
@@ -5026,9 +5081,15 @@ def calculate_lab(display: str, item: str = "", grams: float | None = None) -> L
     )
     raw_products: list[LabProduct] = []
     product_path = "shopping_query_override" if prefer_shopping_query else "product_code_tags"
+    if esha_code and not prefer_shopping_query:
+        reviewed_products = _esha_pack_products(esha_code)
+        if reviewed_products and reviewed_products[0].source == "esha_reviewed_lookup":
+            raw_products = reviewed_products
+            product_path = reviewed_products[0].source
     if shopping_query:
-        raw_products = _retail_surface_products(shopping_query)
-        if raw_products:
+        retail_products = _retail_surface_products(shopping_query)
+        if retail_products and not raw_products:
+            raw_products = retail_products
             product_path = "retail_surface_bridge"
     if not raw_products and esha_code and not prefer_shopping_query:
         raw_products = _esha_pack_products(esha_code)
@@ -5101,6 +5162,20 @@ def calculate_lab(display: str, item: str = "", grams: float | None = None) -> L
         if products
         else ShoppingState.SHOPPING_GAP
     )
+    taxonomy_meta = lookup_taxonomy(
+        item=item,
+        display=display,
+        canonical_name=nutrition_canonical,
+        shopping_canonical=shopping_query,
+        fndds_code=fndds,
+        sr28_fdc_id=sr28,
+        esha_code=esha_code,
+    )
+    if taxonomy_meta.htc_code:
+        path.append(
+            f"taxonomy_lookup:{taxonomy_meta.taxonomy_source}:"
+            f"{taxonomy_meta.htc_code}:{taxonomy_meta.retail_leaf_path}"
+        )
     return LabResolution(
         input_item=item,
         input_display=display,
@@ -5119,6 +5194,7 @@ def calculate_lab(display: str, item: str = "", grams: float | None = None) -> L
         rejected_products=rejected_products,
         path=path,
         notes=row.get("notes", ""),
+        **metadata_kwargs(taxonomy_meta),
     )
 
 
@@ -5136,6 +5212,10 @@ def _current_calculator_result(display: str, item: str, grams: float | None) -> 
         "grams": current.grams,
         "nutrition": asdict(current.nutrition) if current.nutrition else None,
         "product_count": len(current.products or []),
+        "canonical_path": current.canonical_path,
+        "retail_leaf_path": current.retail_leaf_path,
+        "htc_code": current.htc_code,
+        "taxonomy_source": current.taxonomy_source,
         "path": current.path,
     }
 

@@ -13,6 +13,37 @@ __pycache__/
 .vscode/
 *.swp
 
+# --- Local tool / agent caches ---
+.claude/
+.playwright-mcp/
+.venv/
+venv/
+**/.foodner_venv/
+node_modules/
+
+# --- Manual snapshot backups (always re-derivable) ---
+*.before_*
+*.before-*
+*.csv.before_*
+*.csv.before-*
+*.jsonl.before_*
+
+# --- Partial / superseded run outputs ---
+*.v1_partial.jsonl
+*.partial.jsonl
+
+# --- Old planner comparison version snapshots (keep only latest) ---
+planner/data/recipe_line_comparison_FULL_v3*.csv
+planner/data/recipe_line_comparison_FULL_v4*.csv
+planner/data/recipe_line_comparison_FULL_v5*.csv
+planner/data/recipe_line_comparison_FULL_v6*.csv
+
+# --- Local secrets ---
+.env
+.env.*
+!.env.example
+!.env.*.example
+
 # --- Generated outputs ---
 output/
 implementation/output/

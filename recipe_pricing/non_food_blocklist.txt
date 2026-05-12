@@ -1,0 +1,188 @@
+# R12 — last-line non-food safety gate.
+#
+# Normal fix path:
+#   1. Move a bad SKU to the correct canonical_path in
+#      reclassify_canonical_paths.py.
+#   2. Re-encode HTC so htc_code/htc_form_code/htc_full_code agree with that
+#      corrected path.
+#
+# This file is only for broad, proven non-food leakage that still reaches a
+# food path after source reclassification. Do not add a phrase here when the
+# SKU can be moved to a specific Non-Food path instead.
+#
+# Rationale: the LLM SKU classifier keeps placing cleaning/garden/personal-
+# care products at food paths (Mrs Meyer's at "Pantry > Spices > Basil",
+# Bonnie Plants at "Snack > Candy > Mints", Magic Man Chili Plant-Based at
+# "Pantry > Oil"). The source DB should be fixed first; this catches residual
+# leakage before concept_index can price recipes with it.
+#
+# Format: one phrase per line, blank lines & "#"-comments ignored.
+# Phrases are matched as substrings (after normalization: lowercase,
+# punctuation→space, multi-space collapsed). Stem-aware: "plants" matches
+# "plant" too.
+#
+# DO NOT add "spray" alone — it has many cooking uses (cooking spray,
+# vegetable spray). Add specific anti-food spray phrases instead.
+
+# Cleaning / personal care
+multi-surface
+multi surface cleaner
+all-purpose cleaner
+all purpose cleaner
+glass cleaner
+floor cleaner
+toilet cleaner
+laundry detergent
+dish detergent
+dishwasher detergent
+fabric softener
+hand soap
+body wash
+shampoo
+conditioner
+deodorant
+antiperspirant
+toothpaste
+mouthwash
+shaving cream
+lotion
+moisturizer
+sunscreen
+hand sanitizer
+body lotion
+body spray
+fragrance mist
+perfume
+cologne
+hair spray
+fabric refresher
+febreze
+
+# Candles / scent / decor
+candle
+votive
+tealight
+tea light
+wick
+diffuser
+essential oil
+oil diffuser
+reed diffuser
+potpourri
+scented sachet
+air freshener
+plug-in freshener
+plug in freshener
+room spray
+linen spray
+
+# Lawn / garden / live plants
+seed starter
+seedling
+fertilizer
+mulch
+potting soil
+garden soil
+plant food
+weed killer
+herbicide
+pesticide
+insect spray
+bug spray
+ant killer
+roach killer
+mouse trap
+flytrap
+fly trap
+bonnie plants
+live plant
+mum plant
+hosta
+petunia
+geranium
+marigold plant
+bouquet
+floral arrangement
+flower arrangement
+centerpiece
+
+# Wax / polish / surface care
+furniture polish
+wood polish
+shoe polish
+car wax
+car polish
+floor wax
+silver polish
+brass polish
+
+# Pet — pet-food is fine but block toys/litter
+cat litter
+dog toy
+cat toy
+flea collar
+flea spray
+pet shampoo
+
+# Kitchenware (not food). NOTE: "plastic wrap" alone matches legit cheese
+# SKUs ("Individually Plastic Wrapped Singles"). Use "plastic wrap roll"
+# / "saran wrap" / "cling wrap" to scope.
+paper towel
+paper plate
+saran wrap
+cling wrap
+plastic wrap roll
+aluminum foil roll
+parchment paper roll
+trash bag
+ziploc bag
+freezer bag
+sandwich bag
+ice cube tray
+cookie cutter
+ceramic mug
+desk top mug
+ceramic nonstick
+
+# Children — block toddler/baby food when at adult food paths
+toddler food
+baby food puff
+baby cereal
+infant formula
+infant food
+
+# Brand-specific known-non-food (case-insensitive substring)
+mrs meyer
+mrs. meyer
+method cleaner
+clorox
+lysol
+glade
+yankee candle
+tide
+febreze
+windex
+swiffer
+pledge
+pine-sol
+pine sol
+ajax
+fabuloso
+mr clean
+mr. clean
+seventh generation cleaner
+mrs. meyer's clean day
+mrs meyers clean day
+
+# Misc non-food edge cases caught in audit
+magic man chili - plant-based
+magic man chili plant-based
+magic man chili plant based
+plant based detroit
+plant-based detroit
+nature's song
+natures song
+high energy suet
+peanut treat suet
+berry treat suet
+burpee

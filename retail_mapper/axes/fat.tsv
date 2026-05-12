@@ -1,0 +1,33 @@
+#token	notes
+fat	fat (modifier when paired)
+fats	fats
+fatfree	fat-free
+nonfat	non-fat
+lowfat	low-fat
+reduced	'reduced fat' compound
+fullfat	full-fat
+full	'full fat' compound
+skim	skim
+skimmed	skimmed
+lean	lean
+extralean	extra lean
+light	light (lite)
+lite	lite
+percent	N% fat compound
+two	'two percent' compound
+whole	'whole milk' (fat-loaded)
+half	'half and half' (cream)
+twopercent	2 percent
+onepercent	1 percent
+fattyacid	fatty acid
+omega	omega-3 (also diet/claim)
+saturated	saturated
+unsaturated	unsaturated
+trans	trans fat
+mufa	monounsaturated
+pufa	polyunsaturated
+butterfat	butterfat
+milkfat	milkfat
+part	part-skim (compound, mozzarella)
+heavy	heavy cream (full fat)
+light	light (low-fat)

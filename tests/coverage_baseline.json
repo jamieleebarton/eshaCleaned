@@ -1,0 +1,31 @@
+{
+  "_comment": "V9 baseline (2026-05-10). Set after Class-2 architectural fixes + grams normalize. V7's 95.37% was inflated by false-positive substitutions; V9's 90.43% is honest. Any change that drops coverage below this without explicit approval is a regression.",
+  "version": "V9",
+  "date": "2026-05-10",
+  "recipes_total": 489430,
+  "recipes_fully_calculable": 442578,
+  "calculable_pct": 90.43,
+  "concept_keys_total": 7687,
+  "concept_keys_no_match": 1014,
+  "no_match_pct": 13.19,
+  "tier_breakdown_in_picks": {
+    "exact": 0.888,
+    "path_only": 0.093,
+    "sibling_path": 0.009,
+    "manual_override": 0.009,
+    "alias_exact": 0.001,
+    "parent_path_only": 0.001
+  },
+  "tolerance_pct": 1.0,
+  "_tolerance_note": "Allow 1% drift on either side. Drops > 1% require investigation; rises > 1% should also be examined to ensure they're real (not from new false-positive matching).",
+  "12wk_plan_metrics": {
+    "total_cost": 928.70,
+    "people": 4,
+    "calories_per_day": 2000,
+    "mode": "thrifty",
+    "weeks": 12,
+    "unique_recipes": 248,
+    "avg_veg_compliance": 0.4894,
+    "avg_protein_pct": 12.8
+  }
+}

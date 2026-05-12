@@ -10,9 +10,18 @@ Path defect rows: `0`
 
 ## Override Stats
 
+- `shape_taxonomy:applied`: `467`
+- `shape_taxonomy:changed_fields`: `2,951`
+- `shape_taxonomy:loaded`: `467`
+- `snack_taxonomy:applied`: `682`
+- `snack_taxonomy:changed_fields`: `4,258`
+- `snack_taxonomy:loaded`: `682`
 - `source_conflict:applied`: `1,559`
 - `source_conflict:changed_fields`: `6,236`
 - `source_conflict:loaded`: `1,559`
+- `storage_taxonomy:applied`: `564`
+- `storage_taxonomy:changed_fields`: `2,657`
+- `storage_taxonomy:loaded`: `564`
 - `taxonomy:applied`: `1,891`
 - `taxonomy:changed_fields`: `10,930`
 - `taxonomy:loaded`: `1,891`

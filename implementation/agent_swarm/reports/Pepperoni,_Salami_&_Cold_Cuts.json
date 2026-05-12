@@ -1,0 +1,28 @@
+{
+  "category": "Pepperoni, Salami & Cold Cuts",
+  "n_products": 4993,
+  "verdict_distribution": {
+    "NEEDS_NEW_CONCEPT": 1958,
+    "EXACT": 739,
+    "WEAK": 1384,
+    "STRONG": 737,
+    "COMPOSITE": 118,
+    "NO_IDENTITY": 42,
+    "NO_MATCH": 15
+  },
+  "reason_distribution": {
+    "kept_orig_no_match": 1860,
+    "replaced_exact": 679,
+    "kept_agree_weak": 192,
+    "kept_agree_exact": 287,
+    "kept_orig_weak": 797,
+    "kept_orig_no_rft_esha": 810,
+    "replaced_inherited": 74,
+    "kept_orig_composite": 99,
+    "kept_agree_inherited": 5,
+    "filled_weak_exact": 5,
+    "still_empty": 185
+  },
+  "n_findings": 0,
+  "findings": []
+}

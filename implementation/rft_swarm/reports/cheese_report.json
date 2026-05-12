@@ -1,0 +1,67 @@
+{
+  "category": "Cheese",
+  "n_products": 18587,
+  "verdict_distribution": {
+    "WEAK": 4809,
+    "EXACT": 6890,
+    "STRONG": 2369,
+    "NEEDS_NEW_CONCEPT": 4044,
+    "COMPOSITE": 430,
+    "NO_IDENTITY": 27,
+    "NO_MATCH": 18
+  },
+  "top_esha_codes": [
+    {
+      "code": "47809",
+      "desc": "cheese, cheddar, sharp",
+      "n": 540
+    },
+    {
+      "code": "47800",
+      "desc": "cheese, cheddar, mild",
+      "n": 476
+    },
+    {
+      "code": "48506",
+      "desc": "Cheese, cheddar, extra sharp, pasteurized processed, 1\"",
+      "n": 401
+    },
+    {
+      "code": "",
+      "desc": "",
+      "n": 348
+    },
+    {
+      "code": "33342",
+      "desc": "cheese, cheddar",
+      "n": 346
+    },
+    {
+      "code": "1249",
+      "desc": "cheese, mozzarella, low moisture, partially skim",
+      "n": 340
+    },
+    {
+      "code": "1325",
+      "desc": "Cheese, pepper jack",
+      "n": 333
+    },
+    {
+      "code": "33366",
+      "desc": "cheese, swiss",
+      "n": 271
+    },
+    {
+      "code": "48252",
+      "desc": "cheese, mozzarella, string, low moisture, partially skim",
+      "n": 263
+    },
+    {
+      "code": "1504",
+      "desc": "cottage cheese, small curd",
+      "n": 257
+    }
+  ],
+  "n_fixes_proposed": 240,
+  "n_needs_new_concept": 4044
+}

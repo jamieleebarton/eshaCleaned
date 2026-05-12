@@ -1,0 +1,31 @@
+=== fixy v6 marry summary  (2026-04-28 16:47:34) ===
+Input rows: 462,646
+Rows with v6 FNDDS assigned: 456,613  (98.7%)
+Rows changed vs original: 279,531  (60.4%)
+Unmapped: 6,033
+
+By source:
+  title_exact                                  205,972
+  fixy_done_truth_agree                        127,847
+  fixy_done_truth_fill                          66,075
+  title_category_bridge                         49,244
+  none                                           6,024
+  title_category_bridge+esha_authority           2,523
+  esha_authority                                 2,522
+  title_fuzzy                                    1,226
+  fixy_done_truth_overwrite                      1,034
+  title_fuzzy+esha_authority                       179
+
+Authoritative ESHA codes: 4,898
+Phase 1 overwrites: 1,034
+Phase 1 fills: 66,075
+Phase 1 agrees: 127,847
+Phase 2 title_exact: 205,972
+Phase 2 title_fuzzy: 1,405
+Phase 3 authority overrides: 5,224
+
+Outputs:
+  /Users/jamiebarton/Desktop/esha_audit_bundle/retail_mapper/product_esha_fixy.v6.csv
+  /Users/jamiebarton/Desktop/esha_audit_bundle/retail_mapper/fixy_v6_change_log.csv
+  /Users/jamiebarton/Desktop/esha_audit_bundle/retail_mapper/esha_to_fndds_authority.csv
+  /Users/jamiebarton/Desktop/esha_audit_bundle/retail_mapper/product_esha_fixy.v6.unmapped.csv

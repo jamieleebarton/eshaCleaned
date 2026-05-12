@@ -17,6 +17,7 @@ Outputs:
 from __future__ import annotations
 
 import csv
+import os
 import re
 import sys
 from collections import Counter, defaultdict
@@ -24,8 +25,8 @@ from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[2]
 V2 = REPO / "retail_mapper" / "v2"
-SRC = V2 / "full_corpus_audit.csv"
-OUT = V2 / "fndds_canonical_map.py"
+SRC = Path(os.environ.get("AUDIT_CSV") or (V2 / "full_corpus_audit.csv"))
+OUT = Path(os.environ.get("FNDDS_MAP_OUT") or (V2 / "fndds_canonical_map.py"))
 
 DOMINANCE_THRESHOLD = 0.6
 MIN_SKUS = 3

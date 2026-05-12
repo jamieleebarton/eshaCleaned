@@ -1,0 +1,72 @@
+Parsed: 462,646 rows  (2026-04-28 17:42:04)
+
+TYPE distribution:
+  single                390,528
+  composite_dish         70,903
+  combo_pack              1,215
+
+Confidence:
+  high                  188,595
+  medium                178,442
+  low                    95,609
+
+No-CATEGORY rows: 154,568
+
+Supercategory distribution:
+  (none)                            154,568
+  Produce                           123,889
+  Meat & Seafood                     50,489
+  Pantry                             44,809
+  Snack                              28,099
+  Dairy                              19,612
+  Beverage|Pantry                    12,948
+  Beverage                            9,706
+  Snack|Pantry                        8,087
+  Beverage|Snack                      4,965
+  Pantry|Frozen                       1,118
+  Bakery                              1,065
+  Beverage|Produce                      650
+  Pantry|Bakery                         606
+  Frozen|Snack                          476
+  Pantry|Beverage                       328
+  Pantry|Snack                          307
+  Dairy|Pantry                          300
+  Snack|Frozen                          251
+  Beverage|Functional                   137
+  Frozen|Pantry                         120
+  Functional                             69
+  Cereal                                 37
+  Frozen                                 10
+
+Unique retail_leaf names: 84,782
+Top 30 retail_leaves:
+   5,930  Chocolate
+   3,229  Mix
+   3,012  Peanut Butter
+   2,907  Milk
+   2,716  Cheese
+   2,634  Sauce
+   2,604  Beef
+   2,564  Candy
+   2,186  Chicken
+   1,870  Cookies
+   1,617  Salsa
+   1,605  Cheddar Cheese
+   1,508  Chip
+   1,499  Olive Oil
+   1,184  Potato Chips
+   1,179  Dark Chocolate
+   1,120  Almonds
+   1,109  Tomato Sauce
+   1,102  Pork
+   1,102  Beans
+   1,082  Cream Cream
+   1,068  Breast Chicken
+   1,054  Shrimp
+   1,018  Tomato
+     984  Butter
+     934  Chips
+     905  Peas
+     902  Caramel
+     891  Sharp Cheddar Cheese
+     877  Coconut

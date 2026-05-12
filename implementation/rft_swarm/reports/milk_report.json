@@ -1,0 +1,67 @@
+{
+  "category": "Milk",
+  "n_products": 4732,
+  "verdict_distribution": {
+    "EXACT": 2589,
+    "WEAK": 702,
+    "NEEDS_NEW_CONCEPT": 523,
+    "STRONG": 892,
+    "NO_IDENTITY": 9,
+    "COMPOSITE": 14,
+    "NO_MATCH": 3
+  },
+  "top_esha_codes": [
+    {
+      "code": "55040",
+      "desc": "milk, reduced fat, 1 5%",
+      "n": 742
+    },
+    {
+      "code": "24340",
+      "desc": "milk",
+      "n": 549
+    },
+    {
+      "code": "35402",
+      "desc": "milk, whole",
+      "n": 498
+    },
+    {
+      "code": "20969",
+      "desc": "milk, skim, calcium fortified",
+      "n": 467
+    },
+    {
+      "code": "51291",
+      "desc": "milk, chocolate",
+      "n": 278
+    },
+    {
+      "code": "41694",
+      "desc": "milk, low fat",
+      "n": 172
+    },
+    {
+      "code": "20952",
+      "desc": "milk, evaporated",
+      "n": 161
+    },
+    {
+      "code": "17",
+      "desc": "eggnog",
+      "n": 131
+    },
+    {
+      "code": "20950",
+      "desc": "milk, condensed, sweetened",
+      "n": 110
+    },
+    {
+      "code": "41695",
+      "desc": "milk, chocolate, reduced fat",
+      "n": 73
+    }
+  ],
+  "n_fixes_proposed": 12,
+  "n_needs_new_concept": 523
+}

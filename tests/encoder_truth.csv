@@ -1,0 +1,150 @@
+item,expected_group,expected_cp_contains,note
+chicken broth,J,Broth & Stock,Phase 0 REAL_BUG cluster A — was wrongly Poultry
+beef broth,J,Broth & Stock,Phase 0 — was wrongly Red Meat
+vegetable broth,J,Broth & Stock,Phase 0 — was wrongly Vegetables
+fish stock,J,Stock,Phase 0 — was wrongly Fish; lands at Pantry > Soup > Fish Stock
+chicken stock,J,Broth & Stock,Phase 0 — same as chicken broth
+low sodium chicken broth,J,Broth & Stock,Phase 0 variant
+reduced-sodium chicken broth,J,Broth & Stock,Phase 0 variant
+fat-free chicken broth,J,Broth & Stock,Phase 0 variant
+beef stock,J,Broth & Stock,Phase 0 variant
+vegetable stock,J,Broth & Stock,Phase 0 variant
+bouillon,J,Broth & Stock,Phase 0
+bouillon cube,J,Broth & Stock,Phase 0
+baking soda,J,Baking Additives,Phase 0 REAL_BUG cluster B — was wrongly Beverage/Soda
+bicarbonate of soda,J,Baking Additives,Phase 0 same as baking soda
+baking powder,J,Baking,Phase 0 — was unresolved
+cream of tartar,E,Cream of Tartar,Phase 0 — already had a guard
+almond extract,E,Baking Extracts,V10 override → parent (Phase 0 REAL_BUG cluster C — was wrongly Nuts)
+rum extract,E,Baking Extracts,V10 override → parent (specific Rum Extract leaf has 0 priced)
+maple extract,E,Baking Extracts,V10 override → parent (specific Maple Extract leaf has 0 priced)
+vanilla extract,E,Vanilla Extract,baseline test (specific leaf has SKUs)
+peppermint extract,E,Baking Extracts,V10 override → parent
+coconut extract,E,Baking Extracts,V10 override → parent
+vanilla bean,E,Vanilla Bean,Phase 0 REAL_BUG — was wrongly Legumes via "bean"
+vanilla bean paste,E,Vanilla Bean Paste,Phase 0 baseline
+peanut butter,A,Nut Butters,Class-2 fixed via override — points to Pantry > Nut Butters > Peanut Butter
+creamy peanut butter,A,Nut Butters,Class-2 fixed via override
+almond butter,A,Nut Butters,Class-2 fixed via override
+milk chocolate chips,J,Chocolate Chips,Phase 0 REAL_BUG — was Dairy via "milk"
+semi-sweet chocolate chips,J,Chocolate Chips,Phase 0
+dark chocolate chips,J,Chocolate Chips,Phase 0
+white chocolate chips,J,Chocolate Chips,Phase 0
+sweetened flaked coconut,J,Flakes,Phase 0 REAL_BUG — was Dairy via fallback; cp = Pantry > Flakes > Coconut
+flaked coconut,J,Coconut Flakes,Phase 0
+shredded coconut,J,Coconut Flakes,Phase 0
+desiccated coconut,J,Coconut Flakes,Phase 0
+ground red pepper,E,Cayenne Pepper,Phase 0 REAL_BUG — was Vegetables via bell-pepper rule
+cayenne pepper,E,Cayenne Pepper,Phase 0
+crushed red pepper,E,Crushed Red Pepper,Phase 0 — own leaf
+red pepper flakes,E,Crushed Red Pepper,Phase 0 — own leaf
+dried onion flakes,E,Spice,Phase 0 REAL_BUG — was Vegetables
+onion flakes,E,Spice,Phase 0
+sauerkraut,J,Sauerkraut,Phase 0 — was wrongly Vegetable Spread
+red wine,D,Wine,Phase 0 cluster E baseline
+sherry wine,D,Cooking Wines,Class-2 fixed via override — points to Pantry > Cooking Wines
+chicken breast,3,Chicken Breast,negative control — must STAY Poultry
+ground chicken,3,Chicken,negative control
+ground turkey,3,Turkey,negative control
+turkey breast,3,Turkey,negative control
+ground beef,2,Beef,negative control — must STAY Red Meat
+salmon,4,Salmon,negative control
+shrimp,4,Shrimp,negative control
+milk,1,Milk,negative control — must STAY Dairy
+whole milk,1,Milk,negative control
+skim milk,1,Milk,negative control
+almond milk,1,Plant Milk,plant milk in dairy group
+heavy cream,1,Cream,baseline
+plain yogurt,1,Yogurt,baseline
+unsalted butter,1,Butter,baseline
+butter,1,Butter,baseline
+almonds,A,Almonds,negative control — must STAY Nuts
+walnuts,A,Walnuts,baseline
+pecans,A,Pecans,baseline
+hazelnuts,A,Mixed Nuts,via override
+sunflower seeds,A,Seeds,baseline
+sesame seeds,E,Sesame Seed,seed-spice guard
+poppy seeds,E,Poppy Seed,seed-spice guard
+garlic powder,E,Garlic Powder,must STAY Spices via existing guard
+onion powder,E,Spice,KNOWN Class-2 — htc maps to generic Seasoning leaf via FNDDS
+ground cinnamon,E,Cinnamon,ground-spice guard
+ground cumin,E,Cumin,ground-spice guard
+ground ginger,E,Ginger,ground-spice guard
+fresh garlic,6,Garlic,must STAY Vegetables
+garlic,6,Garlic,must STAY Vegetables
+yellow onion,6,Onion,must STAY Vegetables
+red onion,6,Onion,must STAY Vegetables
+red bell pepper,6,Bell Pepper,must STAY Vegetables
+green bell pepper,6,Pepper,must STAY Vegetables; cp = Produce > Vegetables > Green Peppers
+jalapeno,6,Jalapeno,must STAY Vegetables
+broccoli,6,Broccoli,baseline
+spinach,6,Spinach,baseline
+kale,6,Kale,baseline
+russet potatoes,6,Potato,baseline
+sweet potato,6,Potato,baseline
+carrots,6,Carrot,baseline
+fresh tomato,6,Tomato,baseline
+apple,7,Apple,baseline fruit
+banana,7,Banana,baseline
+orange,7,Orange,baseline
+lemon,7,Lemon,baseline
+lime,7,Lime,baseline
+strawberries,7,Strawberr,baseline
+blueberries,7,Blueberr,baseline
+plantain,7,Plantain,encoder routes to Fruit (g7) which is botanically correct; override sends cp to Produce > Vegetables > Plantains for retail shelving
+avocado,7,Avocado,encoder routes to Fruit (g7) botanically; override sends cp to Produce > Vegetables > Avocado
+egg,5,Egg,baseline
+eggs,5,Egg,baseline
+egg yolk,5,Egg,baseline
+olive oil,B,Oil,baseline
+vegetable oil,B,Oil,baseline
+canola oil,B,Oil,baseline
+sesame oil,B,Oil,baseline
+brown sugar,C,Sugar,baseline
+white sugar,C,Sugar,baseline
+honey,C,Honey,baseline
+maple syrup,C,Syrup,baseline
+flour,8,Flour,baseline
+all purpose flour,8,Flour,baseline
+white rice,8,Rice,baseline
+brown rice,8,Rice,baseline
+oatmeal,8,Oat,baseline
+pasta,8,Pasta,baseline
+spaghetti,8,Spaghetti,baseline
+black beans,9,Beans,baseline
+kidney beans,9,Beans,baseline
+chickpeas,9,Garbanzo,override (was Snack > Chips)
+lentils,9,Lentil,baseline
+tomato sauce,F,Tomato Sauce,override target
+marinara sauce,F,Marinara,override target
+pasta sauce,F,Pasta Sauce,override target
+ketchup,F,Ketchup,baseline
+mustard,F,Mustard,baseline
+mayonnaise,F,Mayonnaise,baseline
+soy sauce,F,Soy Sauce,baseline
+hot sauce,F,Hot Sauce,baseline
+salsa,F,Salsa,baseline
+orange juice,D,Juice,baseline beverage
+coffee,D,Coffee,baseline beverage
+black tea,D,Tea,baseline beverage
+club soda,D,Soda,negative control — actual soda
+red wine vinegar,F,Vinegar,vinegar = condiment not wine
+applesauce,7,Applesauce,override target
+mozzarella,1,Mozzarella,cheese baseline
+cheddar,1,Cheddar,cheese baseline
+parmesan,1,Parmesan,cheese baseline
+ice cream,1,Ice Cream,dairy frozen
+breadcrumbs,8,Bread Crumbs,override target Pantry > Bread Crumbs
+margarine,1,Margarine,butter substitute
+shortening,B,Shortening,encoder routes to Oil (B); override puts at Dairy > Butter > Shortening
+nutmeg,E,Nutmeg,Class-2 architectural fix — distinct htc E204000V at Pantry > Spices > Nutmeg
+ground nutmeg,E,Nutmeg,same htc as nutmeg
+cardamom,E,Cardamom,Class-2 architectural fix — distinct htc E207000P
+cloves,E,Cloves,Class-2 architectural fix — distinct htc E205000D
+ground cloves,E,Cloves,same
+star anise,E,Star Anise,Class-2 architectural fix — distinct htc E2080008
+fenugreek,E,Fenugreek,Class-2 architectural fix — distinct htc E20M000S
+sumac,E,Sumac,Class-2 architectural fix — distinct htc E20R0006
+saffron,E,Saffron,Class-2 architectural fix — distinct htc E20B0003
+allspice,E,Allspice,distinct htc E206000U
+

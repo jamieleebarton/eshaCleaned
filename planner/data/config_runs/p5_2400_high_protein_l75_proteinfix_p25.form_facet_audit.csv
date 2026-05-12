@@ -1,0 +1,3 @@
+week,recipe_id,recipe_title,line_index,display,ingredient_item,grams_resolved,recipe_concept_key,priced_concept_key,selected_sku,issue_type,severity,message,expected,actual
+10,45066,Delicious Vegetable Lasagna,8,1/2 teaspoon aha herb seasoning or low-salt seasoning,aha herb seasoning,1.43,Pantry > Spices & Seasonings > Seasoning|E602000R,Pantry > Spices & Seasonings > Seasoning|E602000R,,bad_grams,warning,Salt teaspoon grams outside expected household bridge range.,2.0-3.8g,1.43g
+10,498163,Sweet & Spicy Pecan Bacon,1,1 lb thick-sliced bacon (about 12 to 15 slices),thick-sliced bacon,454.00,Meat & Seafood > Bacon|24020011,Meat & Seafood > Bacon|2402840*,,bad_grams,blocker,Pound quantity drifted away from lb-to-gram bridge.,5443g +/-18%,454g

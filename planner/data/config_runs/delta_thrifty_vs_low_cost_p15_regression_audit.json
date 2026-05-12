@@ -1,0 +1,752 @@
+{
+  "from_plan": "planner/data/gramfix_p4_2000_thrifty_l75_p15_12wk_regressionfix4.json",
+  "to_plan": "planner/data/config_runs/p4_2000_low_cost_l75_p15_regression_audit.json",
+  "from_summary": {
+    "avg_weekly_cost": 88.99,
+    "avg_protein_pct": 16.0,
+    "avg_veg_compliance": 0.417,
+    "daily_protein_g": 75.0,
+    "effective_scoring": {
+      "protein_pct_target": 15.0,
+      "enable_protein_prefilter": false,
+      "protein_filter_margin": 5.0,
+      "enable_protein_density_bonus": true,
+      "protein_density_value": 4.0,
+      "macro_deviation_weight": 0.21999999999999997,
+      "auto_protein_targeting": true,
+      "enable_produce_bonus": true,
+      "produce_value_breakfast": 0.0,
+      "produce_value_lunch": 0.002,
+      "produce_value_dinner": 0.005
+    }
+  },
+  "to_summary": {
+    "avg_weekly_cost": 108.82,
+    "avg_protein_pct": 18.2,
+    "avg_veg_compliance": 0.403,
+    "daily_protein_g": 75.0,
+    "effective_scoring": {
+      "protein_pct_target": 15.0,
+      "enable_protein_prefilter": false,
+      "protein_filter_margin": 5.0,
+      "enable_protein_density_bonus": true,
+      "protein_density_value": 4.0,
+      "macro_deviation_weight": 0.21999999999999997,
+      "auto_protein_targeting": true,
+      "enable_produce_bonus": true,
+      "produce_value_breakfast": 0.0,
+      "produce_value_lunch": 0.002,
+      "produce_value_dinner": 0.005
+    }
+  },
+  "delta": {
+    "avg_weekly_cost": 19.83,
+    "avg_protein_pct": 2.2
+  },
+  "by_department": [
+    {
+      "department": "Meat & Seafood",
+      "from": 134.04,
+      "to": 377.54,
+      "delta": 243.5
+    },
+    {
+      "department": "Snack",
+      "from": 12.66,
+      "to": 32.39,
+      "delta": 19.73
+    },
+    {
+      "department": "Bakery",
+      "from": 62.32,
+      "to": 49.15,
+      "delta": -13.17
+    },
+    {
+      "department": "Beverage",
+      "from": 16.6,
+      "to": 6.67,
+      "delta": -9.93
+    },
+    {
+      "department": "Frozen",
+      "from": 40.04,
+      "to": 32.91,
+      "delta": -7.13
+    },
+    {
+      "department": "Produce",
+      "from": 119.32,
+      "to": 123.78,
+      "delta": 4.46
+    },
+    {
+      "department": "Dairy",
+      "from": 250.29,
+      "to": 252.21,
+      "delta": 1.92
+    },
+    {
+      "department": "Meal",
+      "from": 8.3,
+      "to": 7.54,
+      "delta": -0.76
+    },
+    {
+      "department": "Pantry",
+      "from": 424.34,
+      "to": 423.7,
+      "delta": -0.64
+    }
+  ],
+  "by_protein_source": [
+    {
+      "protein_source": "poultry",
+      "from": 90.17,
+      "to": 225.73,
+      "delta": 135.56
+    },
+    {
+      "protein_source": "pork",
+      "from": 23.91,
+      "to": 93.23,
+      "delta": 69.32
+    },
+    {
+      "protein_source": "red_meat",
+      "from": 19.96,
+      "to": 47.58,
+      "delta": 27.62
+    },
+    {
+      "protein_source": "untagged",
+      "from": 847.08,
+      "to": 825.49,
+      "delta": -21.59
+    },
+    {
+      "protein_source": "eggs",
+      "from": 37.84,
+      "to": 51.55,
+      "delta": 13.71
+    },
+    {
+      "protein_source": "fish",
+      "from": 0.0,
+      "to": 11.0,
+      "delta": 11.0
+    },
+    {
+      "protein_source": "legumes_nuts",
+      "from": 48.95,
+      "to": 51.31,
+      "delta": 2.36
+    }
+  ],
+  "by_concept": [
+    {
+      "concept_key": "Meat & Seafood > Poultry > Chicken Breast|3001000K",
+      "from": 83.27,
+      "to": 181.68,
+      "delta": 98.41,
+      "packages_from": 11.0,
+      "packages_to": 24.0,
+      "packages_delta": 13.0,
+      "top_to_skus": [
+        [
+          "Marketside Antibiotic-Free Boneless Skinless Chicken Breasts, 1.3 - 3.0 lb",
+          12
+        ]
+      ]
+    },
+    {
+      "concept_key": "Meat & Seafood > Bacon|24020000",
+      "from": 0.0,
+      "to": 23.96,
+      "delta": 23.96,
+      "packages_from": 0.0,
+      "packages_to": 4.0,
+      "packages_delta": 4.0,
+      "top_to_skus": [
+        [
+          "Smithfield Thick Cut Premium Maple Bacon",
+          4
+        ]
+      ]
+    },
+    {
+      "concept_key": "Meat & Seafood > Sausage > Pork Sausage|2422000X",
+      "from": 3.49,
+      "to": 24.43,
+      "delta": 20.94,
+      "packages_from": 1.0,
+      "packages_to": 7.0,
+      "packages_delta": 6.0,
+      "top_to_skus": [
+        [
+          "Kroger\u00ae Maple Pork Sausage",
+          6
+        ]
+      ]
+    },
+    {
+      "concept_key": "Meat & Seafood > Beef > Ground Beef|2001002A",
+      "from": 17.97,
+      "to": 35.94,
+      "delta": 17.97,
+      "packages_from": 3.0,
+      "packages_to": 6.0,
+      "packages_delta": 3.0,
+      "top_to_skus": [
+        [
+          "Kroger\u00ae 73/27 Ground Beef Roll 1 LB",
+          5
+        ]
+      ]
+    },
+    {
+      "concept_key": "Pantry > Flour|870Z000G",
+      "from": 44.13,
+      "to": 29.76,
+      "delta": -14.37,
+      "packages_from": 18.0,
+      "packages_to": 12.0,
+      "packages_delta": -6.0,
+      "top_to_skus": [
+        [
+          "Pillsbury All Purpose Flour, 2 Lb Bag",
+          9
+        ]
+      ]
+    },
+    {
+      "concept_key": "Snack > Nuts > Mixed Nuts|A004000H",
+      "from": 4.29,
+      "to": 17.16,
+      "delta": 12.87,
+      "packages_from": 1.0,
+      "packages_to": 4.0,
+      "packages_delta": 3.0,
+      "top_to_skus": [
+        [
+          "Kroger\u00ae Unsalted Mixed Nuts",
+          4
+        ]
+      ]
+    },
+    {
+      "concept_key": "Meat & Seafood > Sausage > Breakfast Sausage|30002009",
+      "from": 0.0,
+      "to": 12.42,
+      "delta": 12.42,
+      "packages_from": 0.0,
+      "packages_to": 1.0,
+      "packages_delta": 1.0,
+      "top_to_skus": [
+        [
+          "Applegate Naturals Chicken & Maple Breakfast Sausage Links, 20oz (Frozen)",
+          1
+        ]
+      ]
+    },
+    {
+      "concept_key": "Dairy > Milk|1001600U",
+      "from": 32.68,
+      "to": 20.64,
+      "delta": -12.04,
+      "packages_from": 19.0,
+      "packages_to": 12.0,
+      "packages_delta": -7.0,
+      "top_to_skus": [
+        [
+          "Great Value Milk 1% Low-fat, Half Gallon, 64 fl oz",
+          9
+        ]
+      ]
+    },
+    {
+      "concept_key": "Bakery > Bread > Sourdough Bread|8008000D",
+      "from": 14.36,
+      "to": 2.5,
+      "delta": -11.86,
+      "packages_from": 6.0,
+      "packages_to": 1.0,
+      "packages_delta": -5.0,
+      "top_to_skus": [
+        [
+          "Private Selection\u00ae Sourdough Bread Wide Pan",
+          1
+        ]
+      ]
+    },
+    {
+      "concept_key": "Pantry > Broth & Stock > Chicken Broth|J0066005",
+      "from": 39.25,
+      "to": 27.48,
+      "delta": -11.77,
+      "packages_from": 40.0,
+      "packages_to": 29.0,
+      "packages_delta": -11.0,
+      "top_to_skus": [
+        [
+          "Great Value Chicken Broth, 14.5 oz (Shelf-Stable)",
+          5
+        ],
+        [
+          "Mixed: 2x Great Value Reduced Sodium Gluten-Free Chicken B + 1x Great Value Chicken Broth, 14.5 oz (Shelf-Stable",
+          2
+        ],
+        [
+          "Great Value Reduced Sodium Gluten-Free Chicken Broth, 32 oz Carton (Shelf-Stable)",
+          2
+        ],
+        [
+          "Mixed: 2x Great Value Reduced Sodium Gluten-Free Chicken B + 4x Great Value Chicken Broth, 14.5 oz (Shelf-Stable",
+          1
+        ],
+        [
+          "Mixed: 1x Great Value Reduced Sodium Gluten-Free Chicken B + 2x Great Value Chicken Broth, 14.5 oz (Shelf-Stable",
+          1
+        ]
+      ]
+    },
+    {
+      "concept_key": "Meat & Seafood > Fish > Tuna|400B0001",
+      "from": 0.0,
+      "to": 11.0,
+      "delta": 11.0,
+      "packages_from": 0.0,
+      "packages_to": 11.0,
+      "packages_delta": 11.0,
+      "top_to_skus": [
+        [
+          "Chicken of the Sea Wild Caught Light Tuna Packet, Sweet & Spicy 2.5 oz",
+          4
+        ],
+        [
+          "StarKist Tuna Creations BOLD Thai Chili Style Pouch",
+          1
+        ]
+      ]
+    },
+    {
+      "concept_key": "Pantry > Sauces & Salsas > Mayonnaise|F0010003",
+      "from": 2.12,
+      "to": 12.72,
+      "delta": 10.6,
+      "packages_from": 1.0,
+      "packages_to": 6.0,
+      "packages_delta": 5.0,
+      "top_to_skus": [
+        [
+          "Great Value Mayonnaise, 15 fl oz",
+          6
+        ]
+      ]
+    },
+    {
+      "concept_key": "Meat & Seafood > Pork|2109000V",
+      "from": 0.0,
+      "to": 10.47,
+      "delta": 10.47,
+      "packages_from": 0.0,
+      "packages_to": 3.0,
+      "packages_delta": 3.0,
+      "top_to_skus": [
+        [
+          "Kroger\u00ae Mild Pork Sausage Roll",
+          3
+        ]
+      ]
+    },
+    {
+      "concept_key": "Dairy > Eggs|5005000P",
+      "from": 34.98,
+      "to": 44.52,
+      "delta": 9.54,
+      "packages_from": 22.0,
+      "packages_to": 28.0,
+      "packages_delta": 6.0,
+      "top_to_skus": [
+        [
+          "Kroger\u00ae Medium Grade A White Eggs",
+          12
+        ]
+      ]
+    },
+    {
+      "concept_key": "Pantry > Baking Extracts > Vanilla Extract|E503000V",
+      "from": 16.56,
+      "to": 8.28,
+      "delta": -8.28,
+      "packages_from": 4.0,
+      "packages_to": 2.0,
+      "packages_delta": -2.0,
+      "top_to_skus": [
+        [
+          "Great Value Pure Vanilla Extract, 1 fl oz",
+          2
+        ]
+      ]
+    },
+    {
+      "concept_key": "Meat & Seafood > Turkey|31060006",
+      "from": 0.0,
+      "to": 7.99,
+      "delta": 7.99,
+      "packages_from": 0.0,
+      "packages_to": 1.0,
+      "packages_delta": 1.0,
+      "top_to_skus": [
+        [
+          "Grabill Country Meats Boneless Turkey",
+          1
+        ]
+      ]
+    },
+    {
+      "concept_key": "Pantry > Beans > Black Beans|9001000B",
+      "from": 29.24,
+      "to": 21.5,
+      "delta": -7.74,
+      "packages_from": 34.0,
+      "packages_to": 25.0,
+      "packages_delta": -9.0,
+      "top_to_skus": [
+        [
+          "Great Value Black Beans, 15 oz",
+          10
+        ]
+      ]
+    },
+    {
+      "concept_key": "Produce > Vegetables > Bell Peppers|6604000K",
+      "from": 10.77,
+      "to": 3.59,
+      "delta": -7.18,
+      "packages_from": 3.0,
+      "packages_to": 1.0,
+      "packages_delta": -2.0,
+      "top_to_skus": [
+        [
+          "Simple Truth Organic\u00ae Mixed Bell Peppers",
+          1
+        ]
+      ]
+    },
+    {
+      "concept_key": "Pantry > Sauces & Salsas > Salsa|F6070002",
+      "from": 17.46,
+      "to": 10.67,
+      "delta": -6.79,
+      "packages_from": 18.0,
+      "packages_to": 11.0,
+      "packages_delta": -7.0,
+      "top_to_skus": [
+        [
+          "San Marcos Shelf Stable Chipotle Salsa, 7 oz Can",
+          6
+        ]
+      ]
+    },
+    {
+      "concept_key": "Pantry > Spices & Seasonings > Bay Leaf|E30N000Z",
+      "from": 0.0,
+      "to": 6.49,
+      "delta": 6.49,
+      "packages_from": 0.0,
+      "packages_to": 1.0,
+      "packages_delta": 1.0,
+      "top_to_skus": [
+        [
+          "True Goodness Organic Bay Leaf, .11 oz",
+          1
+        ]
+      ]
+    }
+  ],
+  "by_sku": [
+    {
+      "sku": "Marketside Antibiotic-Free Boneless Skinless Chicken Breasts, 1.3 - 3.0 lb",
+      "from": 83.27,
+      "to": 181.68,
+      "delta": 98.41,
+      "packages_from": 11.0,
+      "packages_to": 24.0,
+      "packages_delta": 13.0,
+      "top_to_concepts": [
+        [
+          "Meat & Seafood > Poultry > Chicken Breast|3001000K",
+          12
+        ]
+      ]
+    },
+    {
+      "sku": "Smithfield Thick Cut Premium Maple Bacon",
+      "from": 0.0,
+      "to": 23.96,
+      "delta": 23.96,
+      "packages_from": 0.0,
+      "packages_to": 4.0,
+      "packages_delta": 4.0,
+      "top_to_concepts": [
+        [
+          "Meat & Seafood > Bacon|24020000",
+          4
+        ]
+      ]
+    },
+    {
+      "sku": "Kroger\u00ae Maple Pork Sausage",
+      "from": 3.49,
+      "to": 24.43,
+      "delta": 20.94,
+      "packages_from": 1.0,
+      "packages_to": 7.0,
+      "packages_delta": 6.0,
+      "top_to_concepts": [
+        [
+          "Meat & Seafood > Sausage > Pork Sausage|2422000X",
+          6
+        ]
+      ]
+    },
+    {
+      "sku": "Kroger\u00ae 73/27 Ground Beef Roll 1 LB",
+      "from": 17.97,
+      "to": 35.94,
+      "delta": 17.97,
+      "packages_from": 3.0,
+      "packages_to": 6.0,
+      "packages_delta": 3.0,
+      "top_to_concepts": [
+        [
+          "Meat & Seafood > Beef > Ground Beef|2001002A",
+          5
+        ]
+      ]
+    },
+    {
+      "sku": "Kroger\u00ae Low Fat Neufchatel Cheese",
+      "from": 59.7,
+      "to": 43.78,
+      "delta": -15.92,
+      "packages_from": 30.0,
+      "packages_to": 22.0,
+      "packages_delta": -8.0,
+      "top_to_concepts": [
+        [
+          "Dairy > Cheese|110Q0005",
+          8
+        ]
+      ]
+    },
+    {
+      "sku": "Mixed: 5x Kroger\u00ae Low Fat Neufchatel Cheese + 1x Buitoni\u00ae 5 Cheese Tortellini",
+      "from": 0.0,
+      "to": 12.94,
+      "delta": 12.94,
+      "packages_from": 0.0,
+      "packages_to": 6.0,
+      "packages_delta": 6.0,
+      "top_to_concepts": [
+        [
+          "Dairy > Cheese|110Q0005",
+          1
+        ]
+      ]
+    },
+    {
+      "sku": "Kroger\u00ae Unsalted Mixed Nuts",
+      "from": 4.29,
+      "to": 17.16,
+      "delta": 12.87,
+      "packages_from": 1.0,
+      "packages_to": 4.0,
+      "packages_delta": 3.0,
+      "top_to_concepts": [
+        [
+          "Snack > Nuts > Mixed Nuts|A004000H",
+          4
+        ]
+      ]
+    },
+    {
+      "sku": "Applegate Naturals Chicken & Maple Breakfast Sausage Links, 20oz (Frozen)",
+      "from": 0.0,
+      "to": 12.42,
+      "delta": 12.42,
+      "packages_from": 0.0,
+      "packages_to": 1.0,
+      "packages_delta": 1.0,
+      "top_to_concepts": [
+        [
+          "Meat & Seafood > Sausage > Breakfast Sausage|30002009",
+          1
+        ]
+      ]
+    },
+    {
+      "sku": "Pillsbury All Purpose Flour, 2 Lb Bag",
+      "from": 42.16,
+      "to": 29.76,
+      "delta": -12.4,
+      "packages_from": 17.0,
+      "packages_to": 12.0,
+      "packages_delta": -5.0,
+      "top_to_concepts": [
+        [
+          "Pantry > Flour|870Z000G",
+          9
+        ]
+      ]
+    },
+    {
+      "sku": "Great Value Milk 1% Low-fat, Half Gallon, 64 fl oz",
+      "from": 32.68,
+      "to": 20.64,
+      "delta": -12.04,
+      "packages_from": 19.0,
+      "packages_to": 12.0,
+      "packages_delta": -7.0,
+      "top_to_concepts": [
+        [
+          "Dairy > Milk|1001600U",
+          9
+        ]
+      ]
+    },
+    {
+      "sku": "Mixed: 1x Kroger\u00ae Russet Potatoes + 4x White Potatoes",
+      "from": 11.7,
+      "to": 0.0,
+      "delta": -11.7,
+      "packages_from": 10.0,
+      "packages_to": 0.0,
+      "packages_delta": -10.0
+    },
+    {
+      "sku": "Mixed: 1x Great Value Reduced Fat Melt 'n Dip Easy Melt Ch + 3x Kroger\u00ae Low Fat Neufchatel Cheese",
+      "from": 0.0,
+      "to": 11.25,
+      "delta": 11.25,
+      "packages_from": 0.0,
+      "packages_to": 4.0,
+      "packages_delta": 4.0,
+      "top_to_concepts": [
+        [
+          "Dairy > Cheese|110Q0005",
+          1
+        ]
+      ]
+    },
+    {
+      "sku": "Great Value Mayonnaise, 15 fl oz",
+      "from": 2.12,
+      "to": 12.72,
+      "delta": 10.6,
+      "packages_from": 1.0,
+      "packages_to": 6.0,
+      "packages_delta": 5.0,
+      "top_to_concepts": [
+        [
+          "Pantry > Sauces & Salsas > Mayonnaise|F0010003",
+          6
+        ]
+      ]
+    },
+    {
+      "sku": "Kroger\u00ae Mild Pork Sausage Roll",
+      "from": 0.0,
+      "to": 10.47,
+      "delta": 10.47,
+      "packages_from": 0.0,
+      "packages_to": 3.0,
+      "packages_delta": 3.0,
+      "top_to_concepts": [
+        [
+          "Meat & Seafood > Pork|2109000V",
+          3
+        ]
+      ]
+    },
+    {
+      "sku": "Mixed: 1x Kroger\u00ae Russet Potatoes + 3x White Potatoes",
+      "from": 0.0,
+      "to": 10.02,
+      "delta": 10.02,
+      "packages_from": 0.0,
+      "packages_to": 8.0,
+      "packages_delta": 8.0,
+      "top_to_concepts": [
+        [
+          "Produce > Vegetables > Potatoes|6101000=",
+          2
+        ]
+      ]
+    },
+    {
+      "sku": "Kroger\u00ae Medium Grade A White Eggs",
+      "from": 34.98,
+      "to": 44.52,
+      "delta": 9.54,
+      "packages_from": 22.0,
+      "packages_to": 28.0,
+      "packages_delta": 6.0,
+      "top_to_concepts": [
+        [
+          "Dairy > Eggs|5005000P",
+          12
+        ]
+      ]
+    },
+    {
+      "sku": "Mixed: 2x Great Value Reduced Sodium Gluten-Free Chicken B + 3x Great Value Chicken Broth, 14.5 oz (Shelf-Stable",
+      "from": 9.4,
+      "to": 0.0,
+      "delta": -9.4,
+      "packages_from": 10.0,
+      "packages_to": 0.0,
+      "packages_delta": -10.0
+    },
+    {
+      "sku": "Mixed: 1x Great Value Reduced Fat Melt 'n Dip Easy Melt Ch + 2x Kroger\u00ae Low Fat Neufchatel Cheese",
+      "from": 9.26,
+      "to": 0.0,
+      "delta": -9.26,
+      "packages_from": 3.0,
+      "packages_to": 0.0,
+      "packages_delta": -3.0
+    },
+    {
+      "sku": "White Potatoes",
+      "from": 8.4,
+      "to": 17.64,
+      "delta": 9.24,
+      "packages_from": 10.0,
+      "packages_to": 21.0,
+      "packages_delta": 11.0,
+      "top_to_concepts": [
+        [
+          "Produce > Vegetables > Potatoes|6101000=",
+          6
+        ]
+      ]
+    },
+    {
+      "sku": "Chicken of the Sea Wild Caught Light Tuna Packet, Sweet & Spicy 2.5 oz",
+      "from": 0.0,
+      "to": 9.0,
+      "delta": 9.0,
+      "packages_from": 0.0,
+      "packages_to": 9.0,
+      "packages_delta": 9.0,
+      "top_to_concepts": [
+        [
+          "Meat & Seafood > Fish > Tuna|400B0001",
+          4
+        ]
+      ]
+    }
+  ]
+}

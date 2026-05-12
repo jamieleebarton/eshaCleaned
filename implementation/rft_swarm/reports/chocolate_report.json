@@ -1,0 +1,67 @@
+{
+  "category": "Chocolate",
+  "n_products": 10875,
+  "verdict_distribution": {
+    "NEEDS_NEW_CONCEPT": 6822,
+    "EXACT": 809,
+    "WEAK": 2477,
+    "STRONG": 348,
+    "NO_IDENTITY": 29,
+    "COMPOSITE": 363,
+    "NO_MATCH": 27
+  },
+  "top_esha_codes": [
+    {
+      "code": "36372",
+      "desc": "Chocolate, dark, Promises",
+      "n": 907
+    },
+    {
+      "code": "",
+      "desc": "",
+      "n": 892
+    },
+    {
+      "code": "41973",
+      "desc": "Chocolate, sugar free",
+      "n": 660
+    },
+    {
+      "code": "28608",
+      "desc": "Hot Cocoa, white chocolate, with soy milk & whip, venti",
+      "n": 336
+    },
+    {
+      "code": "24144",
+      "desc": "Chocolate, milk, tasting square",
+      "n": 317
+    },
+    {
+      "code": "36373",
+      "desc": "Candy, milk chocolate, Promises, with almond",
+      "n": 260
+    },
+    {
+      "code": "41973",
+      "desc": "chocolate, sugar free",
+      "n": 245
+    },
+    {
+      "code": "23488",
+      "desc": "Candy, caramel, milk chocolate, grain sweetened",
+      "n": 210
+    },
+    {
+      "code": "46686",
+      "desc": "Candy, toffee, english, with milk chocolate",
+      "n": 209
+    },
+    {
+      "code": "92690",
+      "desc": "Candy, hard, lollipop, with gum, assorted flavors, super",
+      "n": 208
+    }
+  ],
+  "n_fixes_proposed": 216,
+  "n_needs_new_concept": 6822
+}

@@ -1,0 +1,29 @@
+{
+  "category": "Candy",
+  "n_products": 23151,
+  "verdict_distribution": {
+    "EXACT": 1528,
+    "NEEDS_NEW_CONCEPT": 12413,
+    "COMPOSITE": 343,
+    "WEAK": 6469,
+    "STRONG": 2222,
+    "NO_MATCH": 52,
+    "NO_IDENTITY": 124
+  },
+  "reason_distribution": {
+    "replaced_exact": 2028,
+    "replaced_inherited": 325,
+    "kept_orig_no_match": 12001,
+    "kept_orig_composite": 328,
+    "kept_orig_weak": 4492,
+    "kept_agree_exact": 1016,
+    "kept_orig_no_rft_esha": 1458,
+    "kept_agree_weak": 849,
+    "kept_agree_inherited": 8,
+    "filled_weak_exact": 3,
+    "filled_exact": 1,
+    "still_empty": 642
+  },
+  "n_findings": 0,
+  "findings": []
+}

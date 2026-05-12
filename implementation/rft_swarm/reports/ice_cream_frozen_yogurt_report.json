@@ -1,0 +1,65 @@
+{
+  "category": "Ice Cream & Frozen Yogurt",
+  "n_products": 13688,
+  "verdict_distribution": {
+    "COMPOSITE": 286,
+    "NEEDS_NEW_CONCEPT": 9771,
+    "WEAK": 3422,
+    "EXACT": 68,
+    "STRONG": 141
+  },
+  "top_esha_codes": [
+    {
+      "code": "",
+      "desc": "",
+      "n": 772
+    },
+    {
+      "code": "36034",
+      "desc": "Frozen Dessert, sundae, fudge blast, with vanilla ice cream, kids'",
+      "n": 361
+    },
+    {
+      "code": "72119",
+      "desc": "Ice Cream, vanilla, fat free",
+      "n": 256
+    },
+    {
+      "code": "43967",
+      "desc": "Frozen Dessert, Blendrrr, Oreo cookies & cream, large",
+      "n": 255
+    },
+    {
+      "code": "46739",
+      "desc": "Ice Cream Sandwich, sublime, chocolate chip cookie",
+      "n": 202
+    },
+    {
+      "code": "18387",
+      "desc": "Ice Cream, chocolate, light",
+      "n": 196
+    },
+    {
+      "code": "72509",
+      "desc": "Yogurt, Boston cream pie, light, nonfat, with aspartame",
+      "n": 145
+    },
+    {
+      "code": "39769",
+      "desc": "Frozen Dessert Bar, sorbet & cream, raspberry, low fat",
+      "n": 137
+    },
+    {
+      "code": "72700",
+      "desc": "Ice Cream, mango",
+      "n": 129
+    },
+    {
+      "code": "72821",
+      "desc": "Ice Cream, black cherry",
+      "n": 125
+    }
+  ],
+  "n_fixes_proposed": 66,
+  "n_needs_new_concept": 9771
+}

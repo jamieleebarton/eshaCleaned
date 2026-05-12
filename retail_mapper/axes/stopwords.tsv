@@ -1,0 +1,1216 @@
+#token	notes
+oz	size
+fl	fluid
+ml	size
+gal	size
+quart	size
+pint	size
+tbsp	size
+tsp	size
+gram	size
+grams	size
+kg	size
+lb	size
+lbs	size
+pound	size
+pounds	size
+count	size
+ct	size
+ea	size
+case	size
+size	noise
+large	size descriptor
+small	size descriptor
+mini	size descriptor (also CUT)
+jumbo	size descriptor
+family	size descriptor
+single	size descriptor
+double	size descriptor
+triple	size descriptor
+twin	size descriptor
+plus	noise / size
+xtra	noise
+new	noise
+the	noise
+of	noise
+a	noise
+an	noise
+in	noise
+on	noise
+at	noise
+by	noise
+for	noise
+to	noise
+or	noise
+de	noise (Spanish)
+la	noise (Spanish)
+el	noise (Spanish)
+y	noise (Spanish)
+con	noise (Spanish)
+sin	noise (Spanish)
+all	noise
+made	noise
+crafted	noise
+contains	noise
+includes	noise
+serves	noise
+servings	noise
+serving	noise
+inc	corp suffix
+llc	corp suffix
+co	corp suffix
+corp	corp suffix
+brand	noise
+brands	noise
+foods	corp/brand noise
+food	context — sometimes noise
+favorite	marketing fluff
+delicious	marketing fluff
+tasty	marketing fluff
+yummy	marketing fluff
+enjoy	marketing fluff
+perfect	marketing fluff
+best	marketing fluff
+great	marketing fluff
+good	marketing fluff
+super	marketing fluff
+ultra	marketing fluff
+limited	limited edition
+edition	edition
+real	noise
+true	noise
+pure	keep — sometimes flavor
+simply	noise
+simple	noise
+just	noise
+only	noise
+even	noise
+much	noise
+more	noise
+less	noise
+better	marketing fluff
+nutritious	marketing fluff
+hearty	marketing fluff
+indulgent	marketing fluff
+craft	marketing fluff
+each	size
+unit	size
+units	size
+total	noise
+net	noise
+weight	noise
+wt	noise
+each	size
+piece	size
+pieces	size
+style	style (compound; the cuisine word carries signal — leave 'style' here)
+product	noise
+oz	size
+pkg	size
+ozs	size
+sz	size
+qty	size
+pcs	size
+size	size
+fashion	fashion (often 'old fashioned' compound)
+fashioned	old-fashioned (compound — paired w/ 'old')
+favorite	marketing
+top	marketing
+no	keep — paired with claim ('no salt added')
+non	keep — paired with diet ('non dairy')
+low	keep — paired with claim ('low fat')
+high	keep — paired with claim ('high protein')
+reduced	keep — paired ('reduced fat')
+zero	keep — paired ('zero sugar')
+free	keep — paired ('sugar free')
+added	keep — paired ('no salt added')
+extra	keep — paired ('extra crispy')
+fancy	marketing
+supreme	marketing (sometimes flavor)
+deluxe	marketing
+premium	marketing
+gourmet	marketing
+authentic	marketing
+heritage	marketing
+classic	marketing (sometimes flavor)
+traditional	marketing
+homestyle	homestyle (also cuisine)
+homemade	marketing
+oldfashioned	old-fashioned
+farm	farm-marketing
+farms	farm-marketing
+market	farm-marketing
+country	country-style (also cuisine)
+garden	garden-marketing (sometimes flavor)
+village	village-marketing (also cuisine)
+harvest	harvest-marketing
+ranch	keep — flavor (ranch dressing)
+recipe	noise (marketing)
+secret	noise
+signature	noise
+choice	noise
+chefs	chefs (marketing)
+chef	chef (marketing)
+choice	choice
+quality	quality
+finest	finest
+purest	purest
+freshest	freshest
+real	real
+true	true
+authentic	authentic
+brand	brand
+name	name
+name-brand	name-brand
+your	noise
+my	noise
+our	noise
+its	noise
+us	noise
+we	noise
+i	noise
+me	noise
+you	noise
+your	noise
+this	noise
+that	noise
+those	noise
+these	noise
+each	noise
+every	noise
+some	noise
+any	noise
+much	noise
+more	noise
+most	noise
+many	noise
+few	noise
+one	noise
+two	noise
+three	noise
+four	noise
+five	noise
+six	noise
+seven	noise
+eight	noise
+nine	noise
+ten	noise
+hundred	noise
+thousand	noise
+million	noise
+half	noise (compound 'half and half' uses 'half')
+quarter	noise
+several	noise
+many	noise
+both	noise
+neither	noise
+either	noise
+this	noise
+that	noise
+go	'on the go' compound
+ago	noise
+not	noise
+now	noise
+then	noise
+when	noise
+where	noise
+how	noise
+why	noise
+what	noise
+which	noise
+who	noise
+whom	noise
+whose	noise
+because	noise
+since	noise
+until	noise
+while	noise
+during	noise
+before	noise
+after	noise
+ago	noise
+around	noise
+about	noise
+across	noise
+through	noise
+between	noise
+within	noise
+without	noise
+along	noise
+over	noise
+under	noise
+above	noise
+below	noise
+inside	noise
+outside	noise
+near	noise
+far	noise
+ounce	size word
+ounces	size word
+gramme	size word
+mililiter	size word
+liter	size word
+liters	size word
+litre	size word
+litres	size word
+oz.	size word
+floz	size word
+ml.	size word
+g	size word
+gr	size word
+lbs.	size word
+lb.	size word
+oz.	size word
+qt	size word
+qts	size word
+pint	size
+pints	size
+gallon	size
+gallons	size
+gal.	size word
+party	marketing (party size)
+familysize	family size
+sharingsize	sharing size
+snackables	marketing
+goto	go-to marketing
+top	top marketing
+selling	selling
+choice	choice marketing
+favorites	favorites marketing
+beloved	marketing
+yourway	your way marketing
+#	hash
+&	ampersand
++	plus
+=	equal
+%	percent
+inch	size
+inches	size
+in.	size
+gluten	keep — diet compound
+crust	keep — category/form
+non-gmo	diet compound
+no-sugar	keep — claim
+yum	marketing
+feed	noise
+on	noise
+go	'on-the-go' compound
+go-to	noise
+inspired	noise (marketing)
+adventure	noise
+fun	noise
+taste	noise
+tastes	noise
+flavor	keep — flavor axis
+flavors	keep — flavor axis
+limited	noise
+seasonal	keep — soft signal
+released	noise
+new	noise
+edition	noise
+release	noise
+introducing	noise
+since	noise
+established	noise
+est	noise
+oz	size
+fl	size
+fluid	size
+ounce	size
+servings	size
+serving	size
+container	size word
+package	size word
+packed	noise (also storage)
+boxes	size
+bag	size
+bags	size
+box	size word
+crate	size word
+container	size
+containers	size
+size	size
+sizes	size
+formula	noise (claim)
+classic	keep — flavor
+crisp	keep — form
+soft	keep — texture
+hard	keep — texture
+thin	keep — texture/cut
+thick	keep — texture/cut
+mild	keep — flavor
+medium	keep — flavor
+rich	noise
+delicate	noise
+bright	noise
+bold	noise
+deep	noise
+robust	noise
+hearty	noise
+chefs	noise
+chef	noise
+favorite	noise
+selection	noise
+collection	noise
+selection	noise
+recipe	keep ('original recipe' is a flavor)
+treat	noise
+treats	noise
+variety	noise (also COMBO_FORMAT)
+choice	noise
+brand	noise
+brands	noise
+made	noise
+made-with	noise
+quality	noise
+extras	noise
+includes	noise
+served	noise
+serve	noise
+serves	noise
+drink	keep — form
+beverage	keep — form
+tasting	noise
+tastes	noise
+recipes	noise
+recipe	noise
+choices	noise
+options	noise
+collection	noise
+selection	noise
+favorite	noise
+favorites	noise
+authentic	noise
+genuine	noise
+finer	noise
+better-tasting	noise
+handcrafted	noise
+small-batch	noise
+homestyle	keep (cuisine)
+homemade	noise
+craft	noise
+crafted	noise
+masterpiece	noise
+masterful	noise
+made	noise
+crafted	noise
+done	noise
+true	noise
+real	noise
+pure	keep — sometimes claim (pure honey)
+all-natural	keep — diet
+brand	noise
+exclusive	noise
+exclusively	noise
+specialty	noise
+specialties	noise
+unique	noise
+uncommon	noise
+rare	noise
+common	noise
+ordinary	noise
+extraordinary	noise
+amazing	noise
+incredible	noise
+wonderful	noise
+lovely	noise
+beautiful	noise
+stunning	noise
+gorgeous	noise
+luscious	noise
+heavenly	noise
+sinful	noise
+guilty	noise
+guilt-free	keep — diet ('guilt free')
+indulgent	noise
+indulgence	noise
+dreamy	noise
+dreamy-creamy	noise
+ozs	size
+oz.	size
+pkg	size word
+gms	size
+qt	size word
+qty	size word
+upc	noise
+gtin	noise
+sku	noise
+brand	noise
+inc	noise
+co	noise
+corp	noise
+corporation	noise
+incorporated	noise
+limited	noise
+ltd	noise
+holdings	noise
+group	noise
+groups	noise
+l.l.c	noise
+llc	noise
+plc	noise
+gmbh	noise
+americas	noise
+international	noise
+global	noise
+worldwide	noise
+us	noise
+usa	noise
+domestic	noise
+imported	noise
+import	noise
+export	noise
+local	noise
+regional	noise
+national	noise
+private	noise
+public	noise
+generic	noise
+namebrand	noise
+storebrand	noise
+ownerbrand	noise
+exclusive	noise
+limited-edition	noise
+limited	noise
+edition	noise
+specialedition	noise
+specialty	noise
+variety	noise
+varieties	noise
+ozs.	size
+ounce.	size
+oz.	size
+sz	size
+ct	size
+ct.	size
+units	size
+unit	size
+ea	size
+ea.	size
+each	size
+piece	size
+pieces	size
+slice	keep — cut
+slices	keep — cut
+package	size
+packages	size
+packet	size
+packets	size
+sachet	size
+sachets	size
+sticks	keep — form
+stick	keep — form (cheese stick)
+roll	keep — form
+rolls	keep — form
+log	noise (size)
+logs	noise (size)
+plastic	noise
+glass	noise
+foil	noise
+bag	noise
+bags	noise
+sealable	noise
+resealable	noise
+zipper	noise
+zip	noise
+gallon	size
+quart	size
+half-gallon	size
+litre	size
+liter	size
+recyclable	noise
+biodegradable	noise
+compostable	noise
+made-in	noise
+imported-from	noise
+new	noise
+fresh	keep — storage
+freshly	keep — diet
+made-fresh	noise
+made-with	noise
+made-by	noise
+from	noise
+from-scratch	noise
+out-of	noise
+straight-from	noise
+straight	noise
+right-from	noise
+just	noise
+exclusively	noise
+uniquely	noise
+specially	noise
+specifically	noise
+thoughtfully	noise
+carefully	noise
+expertly	noise
+masterfully	noise
+mindfully	noise
+sustainably	noise
+ethically	noise
+responsibly	noise
+sustainably-sourced	noise
+responsibly-sourced	noise
+nutritionally	noise
+deliciously	noise
+amazingly	noise
+incredibly	noise
+wonderfully	noise
+beautifully	noise
+gorgeously	noise
+sinfully	noise
+guiltlessly	noise
+endlessly	noise
+truly	noise
+really	noise
+absolutely	noise
+positively	noise
+wonderfully	noise
+delightfully	noise
+freshly	noise
+finely	noise
+roughly	noise
+loosely	noise
+tightly	noise
+gently	noise
+fully	keep — prep ('fully cooked')
+partially	keep — prep ('partially cooked')
+heavily	noise
+slightly	noise
+mostly	noise
+mainly	noise
+mostly	noise
+mainly	noise
+generally	noise
+typically	noise
+usually	noise
+rarely	noise
+seldom	noise
+often	noise
+sometimes	noise
+always	noise
+never	noise
+ever	noise
+forever	noise
+nowadays	noise
+today	noise
+tomorrow	noise
+yesterday	noise
+recently	noise
+soon	noise
+later	noise
+afterwards	noise
+beforehand	noise
+already	noise
+yet	noise
+still	keep — storage ('still water')
+already	noise
+absolutely	noise
+quite	noise
+rather	noise
+fairly	noise
+moderately	noise
+extremely	noise
+exceedingly	noise
+exceptionally	noise
+particularly	noise
+especially	noise
+notably	noise
+remarkably	noise
+strikingly	noise
+distinctly	noise
+clearly	noise
+plainly	noise
+obviously	noise
+evidently	noise
+apparently	noise
+seemingly	noise
+ostensibly	noise
+clearly	noise
+visibly	noise
+audibly	noise
+tangibly	noise
+palpably	noise
+significantly	noise
+substantially	noise
+considerably	noise
+appreciably	noise
+noticeably	noise
+markedly	noise
+distinctly	noise
+indeed	noise
+even	noise
+well	noise
+also	noise
+moreover	noise
+furthermore	noise
+additionally	noise
+besides	noise
+besides	noise
+but	noise
+yet	noise
+nevertheless	noise
+nonetheless	noise
+however	noise
+still	keep — storage
+though	noise
+although	noise
+even-though	noise
+even	noise
+whereas	noise
+because	noise
+since	noise
+as	noise
+when	noise
+while	noise
+where	noise
+wherever	noise
+whenever	noise
+whatever	noise
+whoever	noise
+whichever	noise
+how	noise
+howsoever	noise
+why	noise
+what	noise
+which	noise
+who	noise
+whom	noise
+whose	noise
+that	noise
+this	noise
+these	noise
+those	noise
+own	noise
+self	noise
+itself	noise
+themselves	noise
+ourselves	noise
+yourself	noise
+yourselves	noise
+herself	noise
+himself	noise
+oneself	noise
+each-other	noise
+one-another	noise
+between	noise
+among	noise
+throughout	noise
+beyond	noise
+within	noise
+inside	noise
+outside	noise
+upon	noise
+onto	noise
+into	noise
+unto	noise
+until	noise
+till	noise
+since	noise
+ago	noise
+ahead	noise
+behind	noise
+along	noise
+across	noise
+through	noise
+around	noise
+about	noise
+above	noise
+below	noise
+under	noise
+over	noise
+near	noise
+far	noise
+nearby	noise
+nearest	noise
+furthest	noise
+farthest	noise
+top	noise
+bottom	noise
+side	keep — form ('side dish')
+sides	keep — form
+front	noise
+back	noise
+forward	noise
+backward	noise
+upward	noise
+downward	noise
+inward	noise
+outward	noise
+sideways	noise
+otherwise	noise
+nationwide	noise
+worldwide	noise
+nation	noise
+world	noise
+universe	noise
+universal	noise
+global	noise
+local	noise
+regional	noise
+national	noise
+international	noise
+domestic	noise
+foreign	noise
+imported	noise
+exported	noise
+homegrown	noise
+locally-grown	noise
+locally	noise
+specialty	noise
+specially	noise
+generic	noise
+brand-name	noise
+brand	noise
+private	noise
+public	noise
+exclusive	noise
+inclusive	noise
+selective	noise
+choice	noise
+preferred	noise
+favored	noise
+favorited	noise
+recommended	noise
+suggested	noise
+proposed	noise
+endorsed	noise
+approved	noise
+certified	keep — diet ('certified organic')
+qualified	noise
+graded	noise
+rated	noise
+ranked	noise
+top-rated	noise
+high-rated	noise
+well-known	noise
+famous	noise
+celebrated	noise
+acclaimed	noise
+award-winning	noise
+recognized	noise
+respected	noise
+trusted	noise
+beloved	noise
+adored	noise
+loved	noise
+appreciated	noise
+valued	noise
+prized	noise
+treasured	noise
+cherished	noise
+favored	noise
+preferred	noise
+desired	noise
+sought	noise
+wanted	noise
+hot	keep — flavor/storage
+cold	keep — storage
+warm	keep — storage
+mild	keep — flavor
+strong	noise
+weak	noise
+faint	noise
+intense	noise
+mild	keep — flavor
+medium	keep — flavor
+spicy	keep — flavor
+hot	keep — flavor
+sweet	keep — flavor/sweetener
+salty	keep — sodium
+sour	keep — flavor
+bitter	noise
+tart	keep — flavor
+tangy	keep — flavor
+savory	keep — flavor
+umami	keep — flavor
+mellow	keep — flavor
+robust	noise
+bold	noise
+delicate	noise
+subtle	noise
+nuanced	noise
+complex	noise
+simple	noise
+straightforward	noise
+basic	noise
+plain	keep — flavor
+fancy	noise
+elaborate	noise
+ornate	noise
+decorated	noise
+plain	keep — flavor
+fresh	keep — storage
+freshness	noise
+freshly	noise
+freshest	noise
+fresh-from	noise
+fresh-cut	noise
+fresh-baked	noise
+fresh-made	noise
+fresh-pressed	noise
+fresh-roasted	noise
+fresh-ground	noise
+fresh-frozen	noise
+made-with	noise
+made-from	noise
+made-by	noise
+made-in	noise
+crafted	noise
+hand	noise
+handcrafted	noise
+hand-crafted	noise
+hand-made	noise
+handmade	noise
+hand-baked	noise
+hand-rolled	noise
+hand-cut	keep — cut compound
+hand-tossed	noise
+hand-stretched	noise
+hand-formed	noise
+hand-pressed	noise
+hand-pulled	noise
+hand-shaped	noise
+hand-stuffed	noise
+hand-tossed	noise
+hand-tied	noise
+hand-rolled	noise
+hand-chopped	noise
+hand-picked	noise
+hand-sliced	noise
+hand-trimmed	noise
+hand-rolled	noise
+hand-mixed	noise
+small-batch	noise
+small-batch-crafted	noise
+microbatch	noise
+micro-batch	noise
+artisanal	noise
+artisan	noise
+artisan-crafted	noise
+artisan-made	noise
+craft-brewed	noise
+craft-made	noise
+small-farm	noise
+single-source	noise
+single-origin	noise
+single-estate	noise
+estate	noise
+estate-grown	noise
+estate-bottled	noise
+single-batch	noise
+batch-made	noise
+oz	size
+fl	size
+ml	size
+gal	size
+qt	size
+pt	size
+tbsp	size
+tsp	size
+gram	size
+gms	size
+kg	size
+lbs	size
+lb	size
+ozs	size
+ozs.	size
+oz.	size
+ml.	size
+g	size
+gr	size
+lbs.	size
+lb.	size
+oz.	size
+ml.	size
+in	noise
+in.	size
+inch	size
+inches	size
+cm	size
+mm	size
+m	size
+sq	size
+square	size
+cu	size
+cubic	size
+ct	size
+ct.	size
+each	size
+ea	size
+ea.	size
+unit	size
+units	size
+gallons	size
+gallon	size
+quarts	size
+quart	size
+pints	size
+pint	size
+bottles	size
+bottle	size
+cans	size
+can	size
+case	size
+cases	size
+crate	size
+crates	size
+pack	size (combo too — keep)
+packs	size
+package	size
+packages	size
+serving	size
+servings	size
+container	size
+containers	size
+piece	size
+pieces	size
+slice	keep — cut
+slices	keep — cut
+sticks	keep — form
+stick	keep — form
+roll	keep — form
+rolls	keep — form
+boxes	size
+box	size
+bag	size
+bags	size
+plastic	size
+glass	size
+foil	size
+sealable	noise
+resealable	noise
+zipper	noise
+zip	noise
+ozs	size
+oz.	size
+pkg	size
+qt	size
+qts	size
+qty	size
+upc	noise
+gtin	noise
+sku	noise
+inc	corp
+co	corp
+corp	corp
+corporation	corp
+incorporated	corp
+limited	corp
+ltd	corp
+holdings	corp
+group	corp
+plc	corp
+gmbh	corp
+us	noise
+usa	noise
+americas	noise
+international	noise
+global	noise
+worldwide	noise
+nationwide	noise
+national	noise
+regional	noise
+local	noise
+imported	noise
+import	noise
+export	noise
+domestic	noise
+foreign	noise
+generic	noise
+namebrand	noise
+storebrand	noise
+ownerbrand	noise
+exclusive	noise
+limited-edition	noise
+specialedition	noise
+specialty	noise
+variety	noise (also combo)
+varieties	noise
+each	size
+piece	size
+pieces	size
+package	size
+packages	size
+packet	size
+packets	size
+sachet	size
+sachets	size
+party	noise
+sharingsize	size
+familysize	size
+goto	noise
+go-to	noise
+top	noise
+selling	noise
+choice	noise
+favorites	noise
+beloved	noise
+yourway	noise
+yum	noise
+feed	noise
+inspired	noise
+adventure	noise
+fun	noise
+taste	noise
+tastes	noise
+flavor	noise (also flavor axis — leave there)
+flavors	noise
+limited	noise
+released	noise
+new	noise
+edition	noise
+release	noise
+introducing	noise
+since	noise
+established	noise
+est	noise
+formula	noise
+recipe	noise
+homemade	noise
+home	noise
+country	keep — cuisine
+homestyle	keep — cuisine
+old	keep — paired with 'fashioned'
+fashion	noise
+fashioned	keep — old-fashioned
+party	noise
+giant	noise
+super	noise
+mega	noise
+ultra	noise
+maxi	noise
+maximum	noise
+minimum	noise
+moderate	noise
+medium	keep — flavor
+small	noise
+large	noise
+mini	keep — cut
+miniature	keep — cut
+mid	noise
+mid-size	noise
+mid-sized	noise
+mid-strength	noise
+all	noise
+some	noise
+any	noise
+each	noise
+every	noise
+several	noise
+many	noise
+few	noise
+more	noise
+most	noise
+both	noise
+neither	noise
+either	noise
+none	noise
+nothing	noise
+something	noise
+anything	noise
+everything	keep — flavor
+nobody	noise
+somebody	noise
+anybody	noise
+everybody	noise
+no-one	noise
+someone	noise
+anyone	noise
+everyone	noise
+this	noise
+that	noise
+these	noise
+those	noise
+the	noise
+a	noise
+an	noise
+and	noise
+or	noise
+but	noise
+nor	noise
+yet	noise
+so	noise
+not	noise
+also	noise
+if	noise
+because	noise
+since	noise
+as	noise
+when	noise
+while	noise
+unless	noise
+until	noise
+till	noise
+in	noise
+on	noise
+at	noise
+by	noise
+for	noise
+from	noise
+to	noise
+of	noise
+with	keep — combo signal
+without	noise
+about	noise
+above	noise
+below	noise
+across	noise
+through	noise
+into	noise
+onto	noise
+over	noise
+under	noise
+upon	noise
+toward	noise
+towards	noise
+between	noise
+among	noise
+amongst	noise
+during	noise
+behind	noise
+beside	noise
+besides	noise
+beyond	noise
+within	noise
+inside	noise
+outside	noise
+near	noise
+nearby	noise
+far	noise
+faraway	noise
+furthest	noise
+farthest	noise
+ago	noise
+ahead	noise
+forward	noise
+backward	noise
+sideways	noise
+upward	noise
+downward	noise
+inward	noise
+outward	noise
+otherwise	noise
+nation	noise
+world	noise
+universe	noise
+universal	noise
+assorted	assorted (marketing — variety)
+kellogg	brand name (Kellogg's)
+nature	nature (often marketing)
+cooking	cooking (modifier — keep partial)
+baking	baking (modifier — keep partial)
+based	based (compound suffix — kept by 'plant based' compound)
+purpose	purpose (compound 'all-purpose flour')
+big	big (marketing — Big Bag, Big Pack)
+restaurant	restaurant (marketing — restaurant style)
+house	house (compound — house brand, in-house)
+special	special (marketing)
+very	very (modifier)
+chocolaty	chocolaty alt-spelling — keep in flavor_universal too
+nutrition	nutrition (claim — keep mostly in DIET)
+nutritional	nutritional (claim — keep in DIET)
+select	select (marketing)
+assortment	assortment (marketing — variety)
+quick	quick (marketing — quick oats kept in PREP)
+thirst	thirst (marketing — thirst quencher)
+blast	blast (marketing — flavor blast)

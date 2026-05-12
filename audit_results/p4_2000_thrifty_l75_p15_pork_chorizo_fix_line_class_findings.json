@@ -1,0 +1,10 @@
+{
+  "summary": {
+    "csv": "recipe_pricing/picked_recipe_audit_lines.csv",
+    "lines_scanned": 1942,
+    "finding_count": 0,
+    "by_issue_type": {},
+    "by_tier": {}
+  },
+  "findings": []
+}

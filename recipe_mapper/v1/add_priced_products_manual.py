@@ -37,7 +37,7 @@ MANUAL_PRODUCTS = [
      70.87, 1099,                                  # 2.5 oz = 70.87 g; ~$10.99
      "2.5 oz",
      "Home Page/Food/Pantry/Spices/Cardamom",
-     "Spice Blend", "Pantry > Spices & Seasonings > Spice Blend > Cardamom",
+     "Spice Blend", "Pantry > Spices & Seasonings > Spice Blend",
      "Cardamom"),
     ("walmart", "075732035063",
      "Spice Islands Spanish Threads Saffron, Kosher, 0.9 g",
@@ -45,7 +45,7 @@ MANUAL_PRODUCTS = [
      0.9, 999,                                     # 0.9 g, ~$9.99
      "0.9 g",
      "Home Page/Food/Pantry/Spices/Saffron",
-     "Spice Blend", "Pantry > Spices & Seasonings > Spice Blend > Saffron",
+     "Spice Blend", "Pantry > Spices & Seasonings > Spice Blend",
      "Saffron"),
     # While we're here — coriander seeds, cumin seeds, ground mace
     # (the other "no priced match" spices in the biryani test)
@@ -55,23 +55,23 @@ MANUAL_PRODUCTS = [
      35.43, 549,
      "1.25 oz",
      "Home Page/Food/Pantry/Spices/Coriander",
-     "Spice Blend", "Pantry > Spices & Seasonings > Spice Blend > Coriander",
-     "Coriander"),
+     "Coriander Seed", "Pantry > Spices & Seasonings > Coriander Seed",
+     "Whole"),
     ("walmart", "041565013108",
      "McCormick Whole Cumin Seed, 1.5 oz",
      "McCormick",
      42.52, 599,
      "1.5 oz",
      "Home Page/Food/Pantry/Spices/Cumin",
-     "Spice Blend", "Pantry > Spices & Seasonings > Spice Blend > Cumin",
-     "Cumin"),
+     "Cumin Seed", "Pantry > Spices & Seasonings > Cumin Seed",
+     "Whole"),
     ("walmart", "041565052103",
      "McCormick Ground Mace, 0.9 oz",
      "McCormick",
      25.51, 749,
      "0.9 oz",
      "Home Page/Food/Pantry/Spices/Mace",
-     "Spice Blend", "Pantry > Spices & Seasonings > Spice Blend > Mace",
+     "Spice Blend", "Pantry > Spices & Seasonings > Spice Blend",
      "Mace"),
     ("walmart", "078742368429",
      "Great Value Saffron Threads, 0.5 g",
@@ -79,7 +79,7 @@ MANUAL_PRODUCTS = [
      0.5, 599,
      "0.5 g",
      "Home Page/Food/Pantry/Spices/Saffron",
-     "Spice Blend", "Pantry > Spices & Seasonings > Spice Blend > Saffron",
+     "Spice Blend", "Pantry > Spices & Seasonings > Spice Blend",
      "Saffron"),
     # Whole green cardamom (the actual cardamom seeds, not ground)
     ("walmart", "858049002184",
@@ -88,7 +88,7 @@ MANUAL_PRODUCTS = [
      42.52, 1099,                                  # 1.5 oz = 42.5 g; ~$10.99
      "1.5 oz",
      "Home Page/Food/Pantry/Spices/Cardamom",
-     "Spice Blend", "Pantry > Spices & Seasonings > Spice Blend > Cardamom",
+     "Spice Blend", "Pantry > Spices & Seasonings > Spice Blend",
      "Cardamom"),
     # Whole black peppercorns
     ("walmart", "041565051090",
@@ -97,7 +97,7 @@ MANUAL_PRODUCTS = [
      53.0, 599,
      "1.87 oz",
      "Home Page/Food/Pantry/Spices/Pepper",
-     "Spice Blend", "Pantry > Spices & Seasonings > Spice Blend > Black Pepper",
+     "Spice Blend", "Pantry > Spices & Seasonings > Spice Blend",
      "Black Pepper"),
     # Poppy seeds (proper spice, not bulk)
     ("walmart", "041565132904",
@@ -106,8 +106,44 @@ MANUAL_PRODUCTS = [
      35.4, 449,
      "1.25 oz",
      "Home Page/Food/Pantry/Spices/Poppy Seed",
-     "Spice Blend", "Pantry > Spices & Seasonings > Spice Blend > Poppy Seeds",
-     "Poppy Seeds"),
+     "Poppy Seeds", "Pantry > Spices & Seasonings > Poppy Seeds",
+     ""),
+    # Great Value Poppy Seeds 2.37 oz — user-pasted Walmart link
+    # https://www.walmart.com/ip/Great-Value-Poppy-Seeds-2-37-oz/876731438
+    ("walmart", "078742231570",
+     "Great Value Poppy Seeds, 2.37 oz",
+     "Great Value",
+     67.18, 348,                                   # 2.37 oz = 67.18 g; ~$3.48
+     "2.37 oz",
+     "Home Page/Food/Pantry/Spices/Poppy Seed",
+     "Poppy Seeds", "Pantry > Spices & Seasonings > Poppy Seeds",
+     ""),
+    # Great Value Organic Marjoram — user-flagged coverage gap. Walmart link:
+    # https://www.walmart.com/ip/Great-Value-Organic-Marjoram-0-4-oz/158851667
+    # No UPC visible on page; using Walmart product ID padded to 12 digits.
+    # Inserting directly at Marjoram path (not Spice Blend) so recipe lookups
+    # for "marjoram" find it.
+    ("walmart", "000158851667",
+     "Great Value Organic Marjoram, 0.4 oz",
+     "Great Value",
+     11.34, 480,                                   # 0.4 oz = 11.34 g; $4.80 ($12/oz)
+     "0.4 oz",
+     "Home Page/Food/Pantry/Spices/Marjoram",
+     "Marjoram", "Pantry > Spices & Seasonings > Marjoram",
+     "Organic"),
+    # Fresh Organic Mint clamshell — user-pasted link, fetched live ($1.92).
+    # Consensus tree has no PID for fresh mint herb (only Mint Sauce / Mint
+    # Paste / Mints candy / Peppermint). Insert with empty PID so head-noun
+    # fallback (Path C) picks it for recipe ingredient 'mint'.
+    # https://www.walmart.com/ip/Fresh-Organic-Mint-0-5-oz-Clamshell/452355097
+    ("walmart", "768573010047",
+     "Fresh Organic Mint, 0.5 oz Clamshell",
+     "",
+     14.17, 192,
+     "0.5 oz",
+     "Home Page/Food/Produce/Herbs",
+     "", "",
+     ""),
 ]
 
 

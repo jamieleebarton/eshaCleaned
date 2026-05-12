@@ -1,0 +1,22 @@
+loading data…
+  concept_keys recipes use: 5,411
+  scanning recipes_unified for determinism…
+    1,000,000 rows…
+    2,000,000 rows…
+    3,000,000 rows…
+    4,000,000 rows…
+
+# HTC Concept-Key Coverage Audit
+
+Total recipe-side concepts: 5,411
+Total recipe-uses: 4,503,738
+
+Verdict (by concepts / by recipe-use volume):
+  GREEN   1,797 concepts ( 33.2%)   2,097,271 recipe-uses ( 46.6%)
+  YELLOW      5 concepts (  0.1%)           7 recipe-uses (  0.0%)
+  RED     3,609 concepts ( 66.7%)   2,406,460 recipe-uses ( 53.4%)
+
+Top 30 RED by recipe-impact:
+
+→ /Users/jamiebarton/Desktop/esha_audit_bundle/recipe_pricing/htc_coverage_audit.csv
+→ /Users/jamiebarton/Desktop/esha_audit_bundle/recipe_pricing/htc_coverage_summary.txt

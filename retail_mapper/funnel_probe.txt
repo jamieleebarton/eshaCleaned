@@ -1,0 +1,114 @@
+=== Funnel probe  (2026-04-28 20:17:35) ===
+
+=== Query: 'ALMOND BREEZE ORIGINAL' ===
+  (anchor not found)
+
+=== Query: 'ALMOND BREEZE CHOCOLATE' ===
+  (anchor not found)
+
+=== Query: 'ALMOND BREEZE PUMPKIN SPICE' ===
+  (anchor not found)
+
+=== Query: 'ALMOND NOG' ===
+  anchor: ORIGINAL ALMOND NOG, ORIGINAL
+     bfc: Plant Based Milk
+  L1  cluster 662: 'Almond Milk, plain'  (cosine=0.778, modal_bfc='Plant Based Milk')
+     L1 top n-grams: almondmilk(59) | unsweet(31) | soymilk(28) | chocolate(52) | silk(20) | almondmilk dark(12) | almondmilk dark chocolate(12) | dark chocolate(26) | dark(26) | almond(23) | dark chocolate almondmilk(11) | unsweet almondmilk(10)
+  L2  sub-leaf: L1_662_other (93 members)
+     ingredient signature: has_milk=92/93 (98%) | has_cocoa=13/93 (13%) | has_cream=7/93 (7%)
+
+=== Query: 'EGG NOG' ===
+  anchor: EGG NOG
+     bfc: Milk
+  L1  cluster 799: 'Ice Cream, egg nog'  (cosine=0.752, modal_bfc='Milk')
+     L1 top n-grams: nog(115) | egg nog(95) | egg(100) | holiday(18) | holiday nog(11) | old(13) | light egg nog(7) | light egg(7) | light(14) | dairy beverage(8) | nog light(6) | spice(11)
+  L2  sub-leaf: L1_799_egg_nog (85 members)
+     ingredient signature: has_milk=85/85 (100%) | has_egg=83/85 (97%) | has_cream=79/85 (92%) | has_cocoa=2/85 (2%)
+
+=== Query: 'CORN DOG' ===
+  anchor: CORN DOG
+     bfc: Frozen Appetizers & Hors D'oeuvres
+  L1  cluster 1590: 'Corn Dog, turkey, Popcorn, bite size, frozen'  (cosine=0.795, modal_bfc="Frozen Appetizers & Hors D'oeuvres")
+     L1 top n-grams: dogs(179) | corn dogs(149) | corn(164) | batter(61) | honey(77) | classic(58) | wrapped(44) | classic corn dogs(30) | classic corn(30) | batter wrapped(27) | dogs honey(26) | franks(36)
+  L2  sub-leaf: L1_1590_other (25 members)
+     ingredient signature: has_corn_meal=16/25 (64%) | has_milk=15/25 (60%) | has_beef=13/25 (52%) | has_batter=13/25 (52%) | has_chicken=12/25 (48%) | has_hot_dog=10/25 (40%) | has_egg=9/25 (36%) | has_pork=7/25 (28%)
+
+=== Query: 'CHICKEN NUGGETS' ===
+  anchor: CHICKEN NUGGETS
+     bfc: Frozen Appetizers & Hors D'oeuvres
+  L1  cluster 1912: 'Nuggets, chicken, frozen'  (cosine=0.818, modal_bfc="Frozen Appetizers & Hors D'oeuvres")
+     L1 top n-grams: nuggets(172) | chicken(197) | chicken nuggets(97) | breaded(69) | breast nuggets(46) | chicken breast nuggets(43) | chicken breast(62) | breast(66) | breaded chicken(35) | shaped(33) | nuggets breaded(20) | shaped chicken(22)
+  L2  sub-leaf: L1_1912_chicken_nuggets (86 members)
+     ingredient signature: has_chicken=84/86 (97%) | has_corn_meal=59/86 (68%) | has_breading=44/86 (51%) | has_batter=28/86 (32%) | has_cream=21/86 (24%) | has_milk=7/86 (8%) | has_egg=3/86 (3%) | has_cheese=2/86 (2%)
+
+=== Query: 'ICE CREAM SANDWICH' ===
+  anchor: ICE CREAM SANDWICH
+     bfc: Ice Cream & Frozen Yogurt
+  L1  cluster 20: 'Ice Cream Sandwich, vanilla'  (cosine=0.83, modal_bfc='Ice Cream & Frozen Yogurt')
+     L1 top n-grams: sandwiches(173) | ice cream(225) | ice(225) | ice cream sandwiches(129) | cream sandwiches(129) | vanilla(214) | cream(235) | sandwiches vanilla(70) | cream sandwiches vanilla(56) | cream sandwich(56) | ice cream sandwich(55) | sandwich(76)
+  L2  sub-leaf: L1_20_ice_cream_sandwich (55 members)
+     ingredient signature: has_milk=55/55 (100%) | has_cream=54/55 (98%) | has_cocoa=40/55 (72%) | has_egg=36/55 (65%) | has_corn_meal=12/55 (21%) | has_cheese=1/55 (1%)
+
+=== Query: 'PEANUT BUTTER' ===
+  anchor: PEANUT BUTTER
+     bfc: Snack, Energy & Granola Bars
+  L1  cluster 664: 'Bar, snack, chocolate peanut butter'  (cosine=0.875, modal_bfc='Snack, Energy & Granola Bars')
+     L1 top n-grams: peanut(816) | peanut butter(742) | butter(812) | chocolate(427) | chocolate peanut(202) | chocolate peanut butter(185) | bar(225) | bars(225) | butter chocolate(154) | peanut butter chocolate(141) | bar peanut(126) | bar peanut butter(122)
+  L2  sub-leaf: L1_664_peanut_butter (144 members)
+     ingredient signature: has_milk=64/144 (44%) | has_cocoa=58/144 (40%) | has_egg=7/144 (4%) | has_cream=4/144 (2%) | has_corn_meal=2/144 (1%)
+
+=== Query: 'CHOCOLATE MILK' ===
+  anchor: CHOCOLATE MILK
+     bfc: Milk
+  L1  cluster 1947: 'Milk'  (cosine=0.71, modal_bfc='Milk')
+     L1 top n-grams: milk(190) | whole milk(57) | whole(61) | strawberry(25) | homogenized(10) | homogenized milk(9) | milk strawberry(9) | dairy(14) | nog(9) | farms(11) | holiday nog(7) | cow(8)
+  L2  sub-leaf: L1_1947_other (130 members)
+     ingredient signature: has_milk=117/130 (90%) | has_cocoa=13/130 (10%) | has_cream=11/130 (8%) | has_egg=4/130 (3%) | has_cheese=1/130 (0%)
+
+=== Query: 'MILK CHOCOLATE' ===
+  anchor: MILK CHOCOLATE
+     bfc: Chocolate
+  L1  cluster 2586: 'Milk, chocolate'  (cosine=0.836, modal_bfc='Chocolate')
+     L1 top n-grams: milk chocolate(839) | milk(921) | chocolate(964) | solid(71) | solid milk(54) | solid milk chocolate(53) | creamy(80) | creamy milk(40) | chocolate milk(36) | hearts(40) | chocolates(37) | milk chocolate milk(29)
+  L2  sub-leaf: L1_2586_milk_chocolate (539 members)
+     ingredient signature: has_cocoa=300/539 (55%) | has_milk=300/539 (55%) | has_cream=22/539 (4%) | has_egg=8/539 (1%) | has_cheese=6/539 (1%) | has_corn_meal=5/539 (0%)
+
+=== Query: 'GREEK YOGURT VANILLA' ===
+  anchor: ZONEPERFECT, NUTRITION BARS, GREEK YOGURT VANILLA BERRY, GRE
+     bfc: Snack, Energy & Granola Bars
+  L1  cluster 1929: 'Bar, energy, Protein Plus, chocolate crisp'  (cosine=0.82, modal_bfc='Snack, Energy & Granola Bars')
+     L1 top n-grams: vanilla(187) | vanilla almond(69) | protein(80) | almond(71) | bar vanilla(40) | bar(68) | protein bar vanilla(26) | protein bar(34) | bar vanilla almond(22) | energy(36) | protein energy(22) | bars vanilla(24)
+  L2  sub-leaf: L1_1929_other (22 members)
+     ingredient signature: has_milk=11/22 (50%) | has_cocoa=3/22 (13%) | has_egg=2/22 (9%) | has_corn_meal=1/22 (4%)
+
+=== Query: 'FRIED APPLES' ===
+  anchor: FRIED APPLES
+     bfc: Canned Fruit
+  L1  cluster 1143: 'Fruit, mixed, with heavy syrup, canned'  (cosine=0.869, modal_bfc='Canned Fruit')
+     L1 top n-grams: fruit(94) | syrup(53) | jackfruit(21) | tropical(29) | tropical fruit(20) | added(22) | water(30) | no sugar added(18) | sugar added(18) | no sugar(18) | mixed fruit(19) | parfait(17)
+  L2  sub-leaf: L1_1143_other (164 members)
+     ingredient signature: has_milk=9/164 (5%) | has_cream=4/164 (2%) | has_cocoa=3/164 (1%) | has_egg=3/164 (1%) | has_cheese=1/164 (0%)
+
+=== Query: 'CHIPOTLE MAYO' ===
+  anchor: CHIPOTLE MAYO
+     bfc: Seasoning Mixes, Salts, Marinades & Tenderizers
+  L1  cluster 571: 'Seasoning, smokey chipotle, dry mix'  (cosine=0.767, modal_bfc='Seasoning Mixes, Salts, Marinades & Tenderizers')
+     L1 top n-grams: chipotle(150) | seasoning(46) | chipotle seasoning(20) | chipotle taco(11) | marinade(19) | southwest chipotle(10) | smoky(14) | seasoning chipotle(9) | taco(13) | chipotle marinade(7) | southwest(10) | rub(10)
+  L2  sub-leaf: L1_571_other (55 members)
+     ingredient signature: has_milk=4/55 (7%) | has_cheese=4/55 (7%) | has_egg=2/55 (3%) | has_corn_meal=1/55 (1%)
+
+=== Query: 'CHUNKY MONKEY' ===
+  anchor: CHUNKY MONKEY BANANA ICE CREAM WITH FUDGE CHUNKS & WALNUTS, 
+     bfc: Ice Cream & Frozen Yogurt
+  L1  cluster 1344: 'Frozen Yogurt, chocolate fudge brownie'  (cosine=0.865, modal_bfc='Ice Cream & Frozen Yogurt')
+     L1 top n-grams: fudge(499) | ice(164) | ice cream(157) | cream(162) | chocolate(193) | almond fudge(59) | chocolate fudge(72) | bars(98) | fudge bars(43) | almond(76) | bars fudge(43) | frozen(71)
+  L2  sub-leaf: L1_1344_ice_cream (148 members)
+     ingredient signature: has_cocoa=148/148 (100%) | has_milk=148/148 (100%) | has_cream=127/148 (85%) | has_egg=46/148 (31%) | has_corn_meal=6/148 (4%)
+
+=== Query: 'LIME MAYONNAISE' ===
+  anchor: AVOCADO OIL WITH A HINT OF LIME MAYONNAISE DRESSING, AVOCADO
+     bfc: Salad Dressing & Mayonnaise
+  L1  cluster 2320: 'Dressing, mayonnaise, with olive oil'  (cosine=0.893, modal_bfc='Salad Dressing & Mayonnaise')
+     L1 top n-grams: oil(146) | olive oil(93) | olive(93) | mayonnaise(57) | avocado(54) | avocado oil(43) | mayonnaise dressing(34) | dressing(57) | dressing olive(24) | dressing olive oil(24) | oil mayonnaise(23) | mayonnaise dressing olive(20)
+  L2  sub-leaf: L1_2320_avocado_oil (31 members)
+     ingredient signature: has_egg=25/31 (80%)

@@ -1,0 +1,124 @@
+====================================================================================================
+CONSOLIDATION REPORT
+====================================================================================================
+category                                   cases   gold_ids    llm_ids    ratio  status
+----------------------------------------------------------------------------------------------------
+Bakery > Bread                                 6          2          1     0.50  COLLAPSED (-1)
+Bakery > Cake                                  4          4          3     0.75  COLLAPSED (-1)
+Bakery > Cupcakes                              2          1          1     1.00  OK
+Bakery > Muffins                               1          1          1     1.00  OK
+Bakery > Toaster Pastries                      1          1          1     1.00  OK
+Beverage > Coconut Water                       1          1          1     1.00  OK
+Beverage > Coffee                              1          1          1     1.00  OK
+Beverage > Eggnog                              2          1          1     1.00  OK
+Beverage > Juice                               2          1          2     2.00  EXPLOSION (+1)
+Beverage > Kombucha                            1          1          1     1.00  OK
+Beverage > Plant Milk                          2          2          2     1.00  OK
+Beverage > Protein Drinks                      1          1          1     1.00  OK
+Beverage > Sparkling Water                     1          1          1     1.00  OK
+Beverage > Wellness Shots                      1          1          1     1.00  OK
+Dairy > Butter                                 1          1          1     1.00  OK
+Dairy > Flavored Milk                          5          4          4     1.00  OK
+Dairy > Kefir                                  1          1          1     1.00  OK
+Frozen > Asian Meals                           1          1          1     1.00  OK
+Frozen > Gelato                                1          1          1     1.00  OK
+Frozen > Ice Cream                             5          1          1     1.00  OK
+Frozen > Juice Concentrate                     2          1          1     1.00  OK
+Frozen > Kids Meals                            1          1          1     1.00  OK
+Frozen > Pizza                                10          2          2     1.00  OK
+Frozen > Pot Pies                              1          1          1     1.00  OK
+Frozen > Prepared Vegetables                   1          1          1     1.00  OK
+Frozen > Single Entrees                        2          2          2     1.00  OK
+Frozen > Skillet Meals                         1          1          1     1.00  OK
+Frozen > Stuffed Sandwiches                    1          1          1     1.00  OK
+Frozen > TV Dinners                            2          1          1     1.00  OK
+Frozen > Vegetables                            4          4          3     0.75  COLLAPSED (-1)
+Meal > Pasta Dishes                            1          1          1     1.00  OK
+Meat & Seafood > Beef                          4          4          4     1.00  OK
+Meat & Seafood > Pork                          2          2          2     1.00  OK
+Meat & Seafood > Poultry                       4          4          4     1.00  OK
+Pantry > Applesauce                            1          1          1     1.00  OK
+Pantry > Canned Vegetables                     3          2          2     1.00  OK
+Pantry > Drink Mixes                           5          5          5     1.00  OK
+Pantry > Pie Fillings                          1          1          1     1.00  OK
+Pantry > Salad Dressings                       2          2          1     0.50  COLLAPSED (-1)
+Pantry > Sauces & Salsas                       2          2          2     1.00  OK
+Pantry > Spices & Seasonings                  10          5          1     0.20  COLLAPSED (-4)
+Pantry > Spreads                               1          1          1     1.00  OK
+Produce > Snack Packs                          2          1          2     2.00  EXPLOSION (+1)
+Produce > Vegetables                           2          2          2     1.00  OK
+Refrigerated > Lunch Kits                      1          1          1     1.00  OK
+Snack > Bars                                  17          8          7     0.88  COLLAPSED (-1)
+Snack > Candy                                  5          5          4     0.80  COLLAPSED (-1)
+Snack > Chocolate Candy                        6          4          4     1.00  OK
+Snack > Cookies                                1          1          1     1.00  OK
+Snack > Crackers                               1          1          1     1.00  OK
+Snack > Dried Fruit                            1          1          1     1.00  OK
+Snack > Fruit Leather                          2          2          2     1.00  OK
+Snack > Granola                                7          1          1     1.00  OK
+Snack > Nuts                                   1          1          1     1.00  OK
+Snack > Snack Cakes                            1          1          1     1.00  OK
+Snack > Snack Packs                            1          1          1     1.00  OK
+Snack > Trail Mix                              9          1          1     1.00  OK
+Snack > Veggie Snacks                          1          1          1     1.00  OK
+----------------------------------------------------------------------------------------------------
+TOTAL                                        159        105         97
+
+====================================================================================================
+LLM-INVENTED IDENTITIES (not in gold for that category)
+====================================================================================================
+
+Beverage > Juice:
+  gold:     ['Juice']
+  invented: ['Apple Juice', 'Orange Juice']
+
+Dairy > Flavored Milk:
+  gold:     ['Banana Milk', 'Chocolate Milk', 'Strawberry Milk', 'Vanilla Milk']
+  invented: ['Coconut Milk Drink', 'Milk', 'Plant Milk']
+
+Frozen > Stuffed Sandwiches:
+  gold:     ['Pizza Pocket']
+  invented: ['Sandwich']
+
+Meat & Seafood > Beef:
+  gold:     ['Filet Mignon', 'Ground Beef', 'Ribeye Steak', 'Skirt Steak']
+  invented: ['Beef Steak']
+
+Pantry > Drink Mixes:
+  gold:     ['Chocolate Milk Mix', 'Hot Cocoa Mix', 'Latte Mix', 'Lemonade Mix', 'Sports Drink Mix']
+  invented: ['Drink Mix']
+
+Produce > Snack Packs:
+  gold:     ['Apple Snack Pack']
+  invented: ['Apple']
+
+Snack > Bars:
+  gold:     ['Breakfast Bars', 'Cereal Bars', 'Energy Bars', 'Fruit Bars', 'Granola Bars', 'Kids Bars', 'Meal Replacement Bars', 'Protein Bars']
+  invented: ['Cereal Bar', 'Fruit & Nut Bar', 'Meal Replacement Bar']
+
+Snack > Chocolate Candy:
+  gold:     ['Candy Bar', 'Chocolate Bar', 'Chocolate Candy', 'Chocolate Squares']
+  invented: ['Candy', 'Chocolate']
+
+Snack > Crackers:
+  gold:     ['Flatbread Crisps']
+  invented: ['Cracker']
+
+Snack > Snack Cakes:
+  gold:     ['Snack Cakes']
+  invented: ['Cake']
+
+Snack > Snack Packs:
+  gold:     ['Cheese and Crackers Pack']
+  invented: ['Cheese']
+
+====================================================================================================
+INVALID retail_type VALUES (model emitted values outside enum)
+====================================================================================================
+  hot_cocoa_dry_mix: retail_type='pantry'
+  hungryman_salisbury_steak_dinner: retail_type='frozen_meal'
+  salt_and_pepper_combo: retail_type='pantry'
+  honey_mustard_dressing: retail_type='shelf_stable'
+  apple_juice_concentrate: retail_type='shelf_stable'
+
+Distinct LLM category_paths emitted: 60

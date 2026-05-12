@@ -1,0 +1,31 @@
+fdc_id,gtin_upc,title,branded_food_category,source,_smoke_category,_known_fdc_id
+WM-78742146294,78742146294,"Great Value Sliced Bananas, 16 oz Bag",fresh banana,walmart,walmart_fdc_known,2328338
+WM-78742126258,78742126258,"Great Value Strawberry Banana Blend, 48 oz (Frozen)",fresh banana,walmart,walmart_fdc_known,2504961
+WM-79900007532,79900007532,"Wyman's Just Fruit & Banana Bites, 4 Pack of 2.3 oz Cups (Frozen)",fresh banana,walmart,walmart_fdc_known,2296616
+WM-78742373942,78742373942,"Great Value All Natural Boneless Skinless Chicken Breasts, 3 lb (Frozen)",chicken breast,walmart,walmart_fdc_known,2327532
+WM-78742026619,78742026619,"Great Value All Natural Boneless Skinless Chicken Breasts, 5 lb (Frozen)",chicken breast,walmart,walmart_fdc_known,2294755
+WA-Nc5e7bbef,,"Savor Banana Slices, 30 Pound - 1 each.",fresh banana,walmart,walmart_novel,
+WM-461046933286,461046933286,"The Perfect Puree Banana Puree, 30 Ounce -- 6 per case",fresh banana,walmart,walmart_novel,
+WM-882193014565,882193014565,"Nature's Premium Fruit Pearls, Frozen Fruit Snack, Strawberry Banana, 2.3 oz, 4 Count Box",fresh banana,walmart,walmart_novel,
+WM-78742361871,78742361871,"Great Value Organic Strawberry Banana Blend, 10 oz (Frozen)",fresh banana,walmart,walmart_novel,
+WM-460813396361,460813396361,"(2 pack) Pitaya Foods Energy Ready-to-Eat Frozen Smoothie Bowl, Acai, Blueberry, & Banana, Organic, 6 oz.",fresh banana,walmart,walmart_novel,
+KR-7274554618,7274554618,Perdue® Harvestland® Individually Wrapped Boneless Skinless Chicken Breast,chicken breast,kroger,kroger_fdc_known,577591
+KR-8259219464,8259219464,"Naked Boosted Smoothie Strawberry Banana Machine, 64 fl oz Bottle",banana,kroger,kroger_fdc_known,2386183
+KR-7146427040,7146427040,Bolthouse Farms® Strawberry Banana Fruit Juice Smoothie,banana,kroger,kroger_fdc_known,2420478
+KR-7146427080,7146427080,Bolthouse Farms Strawberry Banana 100% Juice Smoothie 52 fl oz,banana,kroger,kroger_fdc_known,2211145
+KR-7640602310,7640602310,Jumex® Strawberry-Banana Nectar Can,banana,kroger,kroger_fdc_known,2083603
+KR-24061550000,24061550000,Simple Truth Natural Chicken Breasts,chicken breast,kroger,kroger_novel,
+KR-20094700000,20094700000,Simple Truth® Natural Boneless Skinless Fresh Chicken Breast Family Pack BIG DEAL!,chicken breast,kroger,kroger_novel,
+KR-26066400000,26066400000,Tyson All Natural Fresh Chicken Breast Tenderloins,chicken breast,kroger,kroger_novel,
+KR-20265500000,20265500000,Miller Poultry Boneless Chicken Breast Strips,chicken breast,kroger,kroger_novel,
+KR-24058150000,24058150000,Simple Truth® Natural Boneless & Skinless Fresh Chicken Breast Tenders,chicken breast,kroger,kroger_novel,
+RI-ccf6184e,,garlic,,recipe,recipe_ingredient,
+RI-d60536f7,,almond milk,,recipe,recipe_ingredient,
+RI-168e9ebd,,kielbasa,,recipe,recipe_ingredient,
+RI-cec9497c,,lit'l smokies sausages,,recipe,recipe_ingredient,
+RI-214ac16c,,extra virgin olive oil,,recipe,recipe_ingredient,
+RI-043bf319,,sharp cheddar cheese,,recipe,recipe_ingredient,
+RI-b616f646,,ground cumin,,recipe,recipe_ingredient,
+RI-0a0a2391,,blueberries,,recipe,recipe_ingredient,
+RI-9c3855e5,,kosher salt,,recipe,recipe_ingredient,
+RI-577d88dd,,rice vinegar,,recipe,recipe_ingredient,

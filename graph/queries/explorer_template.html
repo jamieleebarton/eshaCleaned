@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Graph Explorer</title>
+<style>
+  html, body { margin: 0; height: 100%; background: #0b0d12; color: #e6e8ec;
+               font-family: ui-sans-serif, system-ui, sans-serif; }
+  #root { display: grid; grid-template-columns: 1fr 320px; height: 100vh; }
+  #scene { position: relative; }
+  #toolbar { position: absolute; top: 8px; left: 8px; right: 8px; z-index: 2;
+             display: flex; gap: 8px; flex-wrap: wrap; }
+  #toolbar > * { background: #1a1d24; color: #e6e8ec; border: 1px solid #2b2f38;
+                 padding: 4px 8px; border-radius: 4px; font: inherit; }
+  #panel { padding: 12px; overflow-y: auto; border-left: 1px solid #2b2f38;
+           background: #11141a; }
+  #panel h2 { margin: 0 0 6px; font-size: 14px; }
+  #panel pre { white-space: pre-wrap; font-size: 12px; }
+  .legend { font-size: 11px; padding: 6px 8px; }
+</style>
+</head>
+<body>
+<div id="root">
+  <div id="scene">
+    <div id="toolbar">
+      <select id="projection">
+        <option value="pca">PCA</option>
+        <option value="umap" selected>UMAP</option>
+      </select>
+      <select id="colorBy">
+        <option value="esha_family">color: esha_family</option>
+        <option value="category">color: category</option>
+        <option value="suspicion" selected>color: suspicion</option>
+        <option value="disagreement_kind">color: disagreement_kind</option>
+        <option value="kind">color: node kind</option>
+      </select>
+      <input id="search" type="search" placeholder="search label/id…" />
+      <label class="legend"><input type="checkbox" id="show_products" checked /> Products</label>
+      <label class="legend"><input type="checkbox" id="show_codes" checked /> ESHACodes</label>
+      <label class="legend"><input type="checkbox" id="show_categories" /> Categories</label>
+      <span class="legend" id="counts"></span>
+    </div>
+  </div>
+  <div id="panel"><h2>Click a point</h2><div id="detail">Nothing selected.</div></div>
+</div>
+<script src="https://unpkg.com/deck.gl@9.0.33/dist.min.js"
+        crossorigin="anonymous"></script>
+<script>
+const DATA = __DATA__;
+
+function colorFor(node, mode) {
+  if (mode === "suspicion") {
+    const s = node.suspicion ?? 0;
+    return [Math.round(255 * s), Math.round(255 * (1 - s)), 60, 220];
+  }
+  if (mode === "kind") {
+    return ({Product:[120,180,255], ESHACode:[255,200,80],
+             ProductCategory:[180,120,255], ESHACategory:[120,255,180]}[node.kind])
+           .concat([220]);
+  }
+  const key = node[mode] || "_";
+  let h = 0; for (let i=0;i<key.length;i++) h = (h*31 + key.charCodeAt(i)) >>> 0;
+  return [(h*73)%256, (h*151)%256, (h*229)%256, 220];
+}
+
+let projection = "umap";
+let colorBy = "suspicion";
+let visibleKinds = new Set(["Product","ESHACode"]);
+let searchTerm = "";
+
+function visibleNodes() {
+  return DATA.nodes.filter(n => {
+    if (!visibleKinds.has(n.kind)) return false;
+    if (searchTerm && !(n.label||"").toLowerCase().includes(searchTerm)
+                   && !(n.id||"").toLowerCase().includes(searchTerm)) return false;
+    return true;
+  });
+}
+
+const {Deck, OrbitView, ScatterplotLayer} = deck;
+const view = new OrbitView({orbitAxis: "Y", fov: 50});
+
+const deckgl = new Deck({
+  parent: document.getElementById("scene"),
+  views: view,
+  initialViewState: {target: [0,0,0], rotationX: 30, rotationOrbit: 30, zoom: 2.5},
+  controller: true,
+  layers: [],
+  onClick: (info) => {
+    const n = info.object;
+    document.getElementById("detail").innerHTML = n
+      ? `<pre>${JSON.stringify(n, null, 2)}</pre>`
+      : "Nothing selected.";
+  },
+});
+
+function rebuild() {
+  const nodes = visibleNodes();
+  document.getElementById("counts").textContent =
+    `${nodes.length.toLocaleString()} / ${DATA.nodes.length.toLocaleString()} nodes`;
+  const layer = new ScatterplotLayer({
+    id: "nodes",
+    data: nodes,
+    getPosition: d => d[projection] || [0,0,0],
+    getFillColor: d => colorFor(d, colorBy),
+    getRadius: d => d.kind === "Product" ? 0.05 : 0.18,
+    radiusUnits: "common",
+    pickable: true,
+  });
+  deckgl.setProps({layers: [layer]});
+}
+
+document.getElementById("projection").addEventListener("change", e => { projection = e.target.value; rebuild(); });
+document.getElementById("colorBy").addEventListener("change",   e => { colorBy = e.target.value; rebuild(); });
+document.getElementById("search").addEventListener("input",     e => { searchTerm = e.target.value.toLowerCase(); rebuild(); });
+for (const [id, kind] of [["show_products","Product"],["show_codes","ESHACode"],["show_categories","ProductCategory"]]) {
+  document.getElementById(id).addEventListener("change", e => {
+    if (e.target.checked) visibleKinds.add(kind); else visibleKinds.delete(kind);
+    rebuild();
+  });
+}
+
+rebuild();
+</script>
+</body>
+</html>

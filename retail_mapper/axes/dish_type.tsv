@@ -1,0 +1,111 @@
+#token	notes	composite_dish_strong
+soup	soup	1
+stew	stew	1
+chili	chili	1
+chowder	chowder	1
+bisque	bisque	1
+gumbo	gumbo	1
+casserole	casserole	1
+lasagna	lasagna	1
+pizza	pizza	1
+pasta	pasta dish	0
+noodles	noodle dish	0
+ramen	ramen	1
+pho	pho	1
+curry	curry	1
+risotto	risotto	1
+paella	paella	1
+quiche	quiche	1
+frittata	frittata	1
+omelet	omelet	1
+omelette	omelette	1
+souffle	souffle	1
+souffl	souffle (no e)	1
+quesadilla	quesadilla	1
+enchilada	enchilada	1
+burrito	burrito	1
+taco	taco	1
+fajita	fajita	1
+chimichanga	chimichanga	1
+empanada	empanada	1
+calzone	calzone	1
+stromboli	stromboli	1
+panini	panini	1
+sandwich	sandwich	1
+sub	sub sandwich	1
+hoagie	hoagie	1
+wrap	wrap (composite)	1
+pita	pita sandwich	0
+gyro	gyro	1
+salad	salad	1
+slaw	slaw / coleslaw	0
+bowl	bowl meal	1
+plate	composed plate	1
+tray	composed tray	0
+platter	platter	1
+kit	meal kit	1
+dinner	dinner entree	1
+entree	entree	1
+mealkit	meal kit	1
+casserola	casserola	1
+kugel	kugel	1
+meatloaf	meatloaf	1
+meatballs	meatballs	1
+pierogi	pierogi	0
+dumpling	dumpling	0
+dumplings	dumplings	0
+ravioli	ravioli	0
+tortellini	tortellini	0
+gnocchi	gnocchi	0
+linguine	linguine pasta	0
+fettuccine	fettuccine pasta	0
+spaghetti	spaghetti	0
+macaroni	macaroni	0
+ziti	ziti	0
+penne	penne	0
+parmigiana	parm dish	1
+piccata	piccata	1
+marsala	marsala	1
+stroganoff	stroganoff	1
+goulash	goulash	1
+biryani	biryani	1
+fried-rice	fried rice	1
+kabob	kabob	1
+kebab	kebab	1
+shawarma	shawarma	1
+souvlaki	souvlaki	1
+satay	satay	1
+poke	poke bowl	1
+sushi	sushi	1
+nigiri	nigiri	0
+sashimi	sashimi	0
+maki	maki rolls	0
+roll	roll (sushi or bread)	0
+hash	hash	1
+breakfast	breakfast plate (compound)	0
+benedict	eggs benedict	1
+hashbrown	hash brown	0
+quesadilla	quesadilla	1
+crepe	crepe	0
+crepes	crepes	0
+waffle	waffle	0
+waffles	waffles	0
+pancake	pancake	0
+pancakes	pancakes	0
+frenchtoast	french toast	1
+oatmeal	oatmeal bowl	0
+porridge	porridge	0
+parfait	parfait	1
+sundae	sundae	1
+trifle	trifle	1
+shortcake	shortcake	1
+pudding	pudding	0
+mousse	mousse	0
+flan	flan	0
+tiramisu	tiramisu	1
+cobbler	cobbler	1
+crisp	dessert crisp (compound)	1
+crumble	crumble	1
+streusel	streusel	1
+tartar	steak tartare	1
+tartare	tartare	1

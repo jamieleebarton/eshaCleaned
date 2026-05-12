@@ -1,0 +1,80 @@
+#token	notes
+fresh	fresh
+frozen	frozen
+refrigerated	refrigerated
+chilled	chilled
+canned	canned
+jarred	jarred
+bottled	bottled
+bagged	bagged
+boxed	boxed
+packaged	packaged
+prepackaged	prepackaged
+packed	packed
+shelfstable	shelf stable
+shelf	shelf-stable compound
+stable	shelf-stable compound
+asep	aseptic
+aseptic	aseptic
+aseptically	aseptic
+vacuum	vacuum sealed
+sealed	sealed
+wrapped	wrapped
+individually	individually wrapped
+ambient	ambient
+dry	dry
+dried	dried (storage form)
+dehydrated	dehydrated
+freezedried	freeze dried
+freeze	freeze-dried compound
+flash	flash frozen
+iqf	individually quick frozen
+ultrapasteurized	ultra-pasteurized
+upht	ultra-high-temp
+uht	uht
+pasteurized	pasteurized
+unpasteurized	unpasteurized
+homogenized	homogenized
+unhomogenized	unhomogenized
+cured	cured
+brined	brined
+preserved	preserved
+fermented	fermented
+pickled	pickled
+salted	salted (also sodium)
+smoked	smoked (also form)
+sparkling	sparkling / carbonated
+carbonated	carbonated
+still	still (non-carbonated)
+flat	flat (non-carbonated)
+liquid	liquid form/storage
+condensed	condensed (canned milk/soup)
+evaporated	evaporated (canned milk)
+instant	instant (rehydrate)
+spring	spring water (storage type)
+mountain	mountain spring
+artesian	artesian
+distilled	distilled
+purified	purified
+mineral	mineral water
+filtered	filtered
+alkaline	alkaline water
+electrolyte	electrolyte water (also functional)
+infused	infused (storage process for water)
+uncured	uncured (also prep)
+cold	cold (cold-brew, cold-pressed)
+pressed	cold-pressed compound
+brew	cold brew compound
+hot	hot (served hot)
+warm	served warm
+heatandserve	heat-and-serve
+ovenready	oven-ready (also prep)
+microwaveable	microwaveable (also prep)
+moisture	low-moisture (compound, paired with cheese)
+heavy	heavy syrup / heavy cream (compound storage/form)
+light	light syrup (compound)
+toaster	toaster-ready (toaster pastry)
+microwave	microwave (also prep)
+microwavable	microwavable
+microwaveable	microwaveable (already)
+ovenready	oven-ready (already)

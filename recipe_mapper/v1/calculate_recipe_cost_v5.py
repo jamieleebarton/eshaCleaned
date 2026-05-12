@@ -59,6 +59,29 @@ RULE_B_PIDS = {"Spice Blend", "Seasoning", "Single Entree", "Family Entree",
                "Sandwich", "Salad", "Composite Dish", "Pasta Dish", "Sauce",
                "Soup", "Salsa", "Dip"}
 
+# Name-level reject — applies to ALL priced products regardless of bridge.
+# Catches Kroger items with no Walmart categoryPath (e.g. "Kroger Mouthwash
+# Powerful Fresh Mint" bridged to nothing but slipped through head-noun) and
+# joke/decoration products that bridged to a real food PID
+# (e.g. "Easter Cascaron Confetti Eggs" → PID=Eggs).
+NON_FOOD_NAME = re.compile(
+    r"\b(cascaron|confetti|easter|christmas|halloween|"
+    r"mouthwash|toothpaste|deodorant|shampoo|conditioner|soap|lotion|"
+    r"listerine|colgate|crest|scope|dental|oral\s*care|"
+    r"detergent|laundry|cleaner|cleaning|bleach|"
+    r"vitamins?|supplements?|protein\s*(?:powder|shake|drink|bar)|"
+    r"pet\s*food|cat\s*food|dog\s*food|bird\s*food|fish\s*food|"
+    r"candle|fragrance|perfume|cologne|"
+    r"decoration|decorat(?:ive|ion)|toy|gift\s*set)\b",
+    re.I,
+)
+
+# Saffron-tablespoon defense — recipe sources sometimes specify "1 tbsp
+# saffron threads" which is ~2-3 g, far above the realistic max for a
+# single recipe. SR-28 (FDC 170934) lists 1 tsp saffron = 0.7 g; a real
+# "pinch" is ~1/16 tsp ≈ 0.04 g. Cap at 1 tsp regardless of source claim.
+SAFFRON_CAP_GRAMS = 0.7
+
 
 def toks(s: str) -> set[str]:
     s = WS.sub(" ", (s or "").lower())
@@ -86,12 +109,21 @@ def build_ingredient_targets(items_filter: set[str] | None = None) -> dict[str, 
             it = r["item"].lower()
             if items_filter and it not in items_filter:
                 continue
-            ing_htc[it] = (r["htc_code"], r["htc_group"])
+            ing_htc[it] = (
+                r["htc_code"],
+                r["htc_group"],
+                r.get("htc_full_code", ""),
+                r.get("retail_leaf_path", ""),
+                r.get("canonical_path", ""),
+            )
 
-    # Pre-aggregate consensus: dedupe by (group+family, pid) and (group+family, modifier)
-    # so we don't iterate 50k SKUs per ingredient.
-    by_gf_pids: dict[str, dict[str, str]] = defaultdict(dict)   # gf → {pid_lc: pid}
-    by_gf_mods: dict[str, dict[str, str]] = defaultdict(dict)   # gf → {mod_lc: (pid, mod)}
+    # Pre-aggregate consensus into (gf, pid_lc) → set of canonical_paths and
+    # (gf, mod_lc) → set of canonical_paths. Canonical path is the source of
+    # truth — the tree was built to produce these. Match on path, not PID.
+    by_gf_pids: dict[str, dict[str, str]] = defaultdict(dict)
+    by_gf_mods: dict[str, dict[str, str]] = defaultdict(dict)
+    pid_to_canonicals: dict[tuple[str, str], set[str]] = defaultdict(set)
+    mod_to_canonicals: dict[tuple[str, str], set[str]] = defaultdict(set)
     with CON_TAGS.open() as f:
         for r in csv.DictReader(f):
             pid = (r.get("product_identity_fixed") or "").strip()
@@ -102,55 +134,74 @@ def build_ingredient_targets(items_filter: set[str] | None = None) -> dict[str, 
             if len(code) < 2:
                 continue
             gf = code[:2]
+            canonical = (r.get("canonical_path") or "").strip()
             by_gf_pids[gf][pid.lower()] = pid
+            if canonical:
+                pid_to_canonicals[(gf, pid.lower())].add(canonical)
             if mod and pid in RULE_B_PIDS:
                 by_gf_mods[gf][mod.lower()] = mod
+                if canonical:
+                    mod_to_canonicals[(gf, mod.lower())].add(canonical)
 
     out: dict[str, dict] = {}
-    for item, (code, grp) in ing_htc.items():
+    for item, ing_data in ing_htc.items():
+        code, grp, full_code, rlp, canonical = ing_data
         item_tokens = toks(item)
         if not item_tokens or not code:
             continue
-        gf = code[:2] if len(code) >= 2 else ""
+        # htc_code may be `~GFFOPTC` (with prefix) — strip for gf extraction
+        bare = code.lstrip("~")
+        gf = bare[:2] if len(bare) >= 2 else ""
         primary = primary_noun(item)
 
         # 1. EXACT pid (case-insensitive) at same htc — gold
         # 2. Rule-B: pid in RULE_B_PIDS AND modifier token-overlap
         # 3. all-tokens-in-pid
         # 4. partial overlap (only if narrow)
-        valid_pids: set[str] = set()
-        valid_modifiers: set[str] = set()
+        # Concept = (canonical_path, modifier_or_empty). For Rule-B PIDs the
+        # modifier IS the leaf (Spice Blend > Cardamom). For non-Rule-B the
+        # canonical already carries the leaf and we ignore mod.
+        valid_concepts: set[tuple[str, str]] = set()
 
         pid_pool = by_gf_pids.get(gf, {})
         mod_pool = by_gf_mods.get(gf, {})
 
         for pid_lc, pid in pid_pool.items():
             pid_tokens = toks(pid_lc)
-            # 1. EXACT pid match (case-insensitive)
+            matched = False
             if pid_lc == item:
-                valid_pids.add(pid)
-                continue
-            # 2. PID contains the primary noun AND all item tokens are in pid
-            if primary and primary in pid_tokens and item_tokens.issubset(pid_tokens):
-                valid_pids.add(pid)
+                matched = True
+            elif primary and primary in pid_tokens and item_tokens.issubset(pid_tokens):
+                matched = True
+            if matched:
+                # Non-Rule-B: pair canonical with empty modifier.
+                # Rule-B (e.g. ingredient is exactly 'sauce'): pair with all mods.
+                for canon in pid_to_canonicals.get((gf, pid_lc), set()):
+                    if pid in RULE_B_PIDS:
+                        # Recipe asks for 'sauce' generically — match any mod.
+                        valid_concepts.add((canon, "*"))
+                    else:
+                        valid_concepts.add((canon, ""))
 
         for mod_lc, mod in mod_pool.items():
             mod_tokens = toks(mod_lc)
-            # Rule-B: the modifier IS the recipe ingredient.
-            # Match if ANY of:
-            #   - exact modifier == item ('cardamom' == 'cardamom')
-            #   - modifier ⊂ item    ('cardamom' ⊂ {cardamom, seeds})
-            #   - primary noun in modifier ('saffron' in modifier='saffron')
-            if (mod_lc == item
-                    or (mod_tokens and mod_tokens.issubset(item_tokens))
-                    or (primary and primary in mod_tokens)):
-                valid_modifiers.add(mod)
+            # Modifier matches the ingredient ONLY if the modifier IS the
+            # ingredient or a strict subset. We do NOT loosen this to "primary
+            # noun overlap" — that's what made 'cilantro' leak into Rule-B
+            # Sauce > 'Cilantro Lime'. For 'cardamom seeds' (mod='Cardamom') the
+            # subset rule still passes; for 'cilantro' (mod='Cilantro Lime') it
+            # correctly fails.
+            if mod_lc == item or (mod_tokens and mod_tokens.issubset(item_tokens)):
+                for canon in mod_to_canonicals.get((gf, mod_lc), set()):
+                    valid_concepts.add((canon, mod_lc))
 
         out[item] = {
             "htc_code": code,
+            "htc_full_code": full_code,
+            "rlp": rlp,
+            "canonical": canonical,
             "htc_gf": gf,
-            "valid_pids": valid_pids,
-            "valid_modifiers": valid_modifiers,
+            "valid_concepts": valid_concepts,
             "item_tokens": item_tokens,
             "primary": primary,
         }
@@ -166,15 +217,23 @@ def load_priced_products() -> tuple[dict, dict]:
     for r in con.execute("""
         SELECT source, upc, name, brand, grams, cents, htc_code, htc_group,
                consensus_pid, consensus_canonical, consensus_modifier,
-               bridge_status, non_food_path
+               bridge_status, non_food_path,
+               htc_full_code, retail_leaf_path
         FROM priced_products
         WHERE marketplace = 0 AND available = 1
           AND grams > 0 AND cents > 0
           AND htc_group NOT IN ('0','N')
           AND (non_food_path = 0 OR non_food_path IS NULL)
     """):
-        src, upc, name, brand, g, c, hc, hg, cpid, ccan, cmod, bs, nfp = r
-        gf = (hc or "")[:2] if hc else ""
+        src, upc, name, brand, g, c, hc, hg, cpid, ccan, cmod, bs, nfp, hfc, rlp = r
+        # Name-level non-food reject (catches Kroger items with no Walmart
+        # categoryPath, and joke/decoration products that mis-bridged to a
+        # real food PID via the consensus tagger)
+        if name and NON_FOOD_NAME.search(name):
+            continue
+        # Strip the `~` Excel-safe prefix when computing the (group, family) bucket.
+        bare = (hc or "").lstrip("~")
+        gf = bare[:2] if bare else ""
         rec = {
             "source": src, "upc": upc, "name": name or "", "brand": brand or "",
             "name_tokens": toks(name or ""),
@@ -182,6 +241,8 @@ def load_priced_products() -> tuple[dict, dict]:
             "grams": float(g), "cents": int(c),
             "cpg": float(c) / float(g) if g else 1e9,
             "htc": hc or "", "htc_gf": gf, "htc_group": hg or "",
+            "htc_full": hfc or "",
+            "rlp": rlp or "",
             "pid": cpid or "", "canonical": ccan or "",
             "modifier": (cmod or "").split(" > ")[0].strip(),
             "bridged": bs == "bridged",
@@ -198,19 +259,61 @@ def pick(item: str, info: dict, by_gf: dict, all_food: list) -> dict | None:
         return None
     item_tokens = info["item_tokens"]
     primary = info["primary"]
-    valid_pids_lc = {p.lower() for p in info["valid_pids"]}
-    valid_mods_lc = {m.lower() for m in info["valid_modifiers"]}
+    valid_concepts = info["valid_concepts"]
 
     cands = []
     pool = by_gf.get(gf, [])
-
-    # Path A: exact PID OR exact modifier match (Rule B). Hard gate on group+family.
     seen = set()
+
+    # Strict-then-relaxed cascade. Higher-tier hits get higher score and win
+    # over wider matches. Within a tier, cheapest cents-per-gram wins.
+    recipe_full = info.get("htc_full_code", "")
+    recipe_htc = info.get("htc_code", "")
+    recipe_canonical = info.get("canonical", "")
+
+    # Tier 1 (12.0): htc_full_code exact match — same retail_leaf_path AND claims.
+    #                "organic cheddar" matches only organic cheddar walmart products.
+    if recipe_full and "-" in recipe_full:
+        for p in pool:
+            if p.get("htc_full") and p["htc_full"] == recipe_full:
+                cands.append((12.0, p))
+                seen.add(p["upc"])
+
+    # Tier 2 (9.0): htc_code bucket match — same food_slot identity, possibly
+    #               different variant or claims. "lime seltzer" matches all
+    #               lime sparkling-water buckets; "butter" matches all butter
+    #               (any sub-identity).
+    if recipe_htc:
+        for p in pool:
+            if p["upc"] in seen:
+                continue
+            if p.get("htc") == recipe_htc:
+                cands.append((9.0, p))
+                seen.add(p["upc"])
+
+    # Tier 3 (10.0 → keep existing concept matching as a parallel high-trust tier).
+    # Concept = (canonical_path, modifier) for Rule-B PIDs, else (canonical_path, '').
     for p in pool:
-        if (p["pid"] and p["pid"].lower() in valid_pids_lc) or \
-           (p["modifier"] and p["modifier"].lower() in valid_mods_lc):
+        if p["upc"] in seen:
+            continue
+        if not p["canonical"]:
+            continue
+        product_concept_strict = (p["canonical"], p["modifier"].lower() if p["pid"] in RULE_B_PIDS else "")
+        product_concept_wild = (p["canonical"], "*")
+        if product_concept_strict in valid_concepts or product_concept_wild in valid_concepts:
             cands.append((10.0, p))
             seen.add(p["upc"])
+
+    # Tier 4 (6.0): canonical_path direct match — recipe's canonical agrees
+    #               with product's canonical. Catches cases where concept
+    #               tuples didn't fire because the modifier rules were narrow.
+    if recipe_canonical and not cands:
+        for p in pool:
+            if p["upc"] in seen:
+                continue
+            if p["canonical"] == recipe_canonical:
+                cands.append((6.0, p))
+                seen.add(p["upc"])
 
     # Path C: un-bridged head-noun match. STRICT: primary noun must be in
     # the product head AND a qualifier token must also appear in the name.
@@ -326,6 +429,10 @@ def main() -> int:
                 grams = float(grams_raw) if grams_raw else 0.0
             except ValueError:
                 grams = 0.0
+            # Saffron-data sanity cap: 1 tbsp saffron threads in source data
+            # is a recipe error (real biryani uses a pinch); cap at 1 g
+            if "saffron" in item and grams > SAFFRON_CAP_GRAMS:
+                grams = SAFFRON_CAP_GRAMS
             info = ingredients.get(item)
             tag = "literal"
             pkg = pick(item, info, by_gf, all_food) if info else None

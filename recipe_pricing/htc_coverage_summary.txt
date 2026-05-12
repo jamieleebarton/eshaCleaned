@@ -1,0 +1,80 @@
+# HTC Concept-Key Coverage Audit
+
+Total recipe-side concepts: 7,692
+Total recipe-uses: 4,489,966
+
+Verdict (by concepts / by recipe-use volume):
+  GREEN     790 concepts ( 10.3%)   2,342,961 recipe-uses ( 52.2%)
+  YELLOW  4,284 concepts ( 55.7%)   1,453,829 recipe-uses ( 32.4%)
+  RED     2,618 concepts ( 34.0%)     693,176 recipe-uses ( 15.4%)
+
+Top 30 RED by recipe-impact:
+  [126177] 'Dairy > Eggs                       ' tier=exact              → 'Kroger® Medium Grade A White Eggs ' :: gram_drift(2distinct,modal=86%)
+  [112553] 'Pantry > Flour                     ' tier=exact              → 'Great Value All-Purpose Unbleached' :: gram_drift(2distinct,modal=95%)
+  [29059] 'Produce > Vegetables > Potatoes    ' tier=exact              → 'White Potatoes                    ' :: gram_drift(11distinct,modal=84%)
+  [14586] 'Produce > Fruit > Apples           ' tier=exact              → 'Large Gala Apple - Each           ' :: gram_drift(7distinct,modal=47%)|sku_leaf_miss
+  [11714] 'Dairy > Cheese > Mozzarella        ' tier=manual_override    → 'Great Value Low-Moisture Part-Skim' :: gram_drift(2distinct,modal=95%)
+  [11237] 'Produce > Fruit > Bananas          ' tier=path_only          → 'Fresh Bunch of Bananas – 5-7 Banan' :: gram_drift(4distinct,modal=57%)
+  [10316] 'Dairy > Butter > Margarine         ' tier=path_only          → 'Imperial Vegetable Oil Spread, 16 ' :: sku_leaf_miss
+  [10154] 'Produce > Vegetables > Zucchini    ' tier=exact              → 'Zucchini                          ' :: gram_drift(9distinct,modal=74%)
+  [ 9534] 'Bakery > Tortillas                 ' tier=exact              → 'CHI-CHI'S Flour Tortillas Burrito ' :: no_bridge|gram_drift(22distinct,modal=10%)
+  [ 7420] 'Pantry > Spices & Seasonings > Seas' tier=exact              → 'Great Value Onion Powder, 3.25 oz ' :: no_bridge|sku_leaf_miss
+  [ 7372] 'Pantry > Cooking Oils > Cooking Spr' tier=exact              → 'Great Value Butter Cooking Spray, ' :: no_bridge|gram_drift(3distinct,modal=71%)
+  [ 6332] 'Pantry > Spices & Seasonings > Whit' tier=NO_MATCH           → '                                  ' :: NO_PICK(NO_MATCH)
+  [ 6275] 'Dairy > Cream > Whipping Cream     ' tier=exact              → 'Kroger® Whipping Cream Pint       ' :: no_bridge|gram_drift(3distinct,modal=86%)
+  [ 6219] 'Produce > Herbs > Fresh Herb       ' tier=exact              → 'True Goodness Organic Thyme, 0.5 o' :: no_bridge|sku_leaf_miss
+  [ 5897] 'Bakery > Cookies                   ' tier=exact              → 'El Mexicano Marias Cookies, 6 oz  ' :: gram_drift(2distinct,modal=68%)
+  [ 5642] 'Pantry > Canned Vegetables > Corn  ' tier=exact              → 'Great Value Golden Sweet Whole Ker' :: gram_drift(60distinct,modal=34%)
+  [ 5558] 'Dairy > Cream > Whipped Topping    ' tier=exact              → 'Great Value Original Dairy Whipped' :: gram_drift(2distinct,modal=99%)
+  [ 5440] 'Frozen > Frozen Fruit > Strawberrie' tier=exact              → 'Edy’s/Dreyer’s Strawberry, 1.5 Qt ' :: gram_drift(4distinct,modal=55%)
+  [ 4952] 'Pantry > Flour > Cornmeal          ' tier=exact              → 'Quaker® Yellow Corn Meal For Bakin' :: sku_leaf_miss
+  [ 4881] 'Pantry > Baking Decorations > Candi' tier=NO_MATCH           → '                                  ' :: no_bridge|NO_PICK(NO_MATCH)
+  [ 4550] 'Dairy > Pudding > Pudding Mix      ' tier=exact              → 'Dove Dark Chocolate Instant Puddin' :: no_bridge|gram_drift(21distinct,modal=41%)
+  [ 4298] 'Pantry > Canned Vegetables > Green ' tier=exact              → 'Old El Paso Mild Chopped Green Chi' :: gram_drift(19distinct,modal=66%)
+  [ 4085] 'Pantry > Peppers > Chili Peppers   ' tier=exact              → 'Red Fresno Pepper                 ' :: gram_drift(10distinct,modal=79%)
+  [ 4057] 'Snack > Candy > Mints              ' tier=exact              → 'Tic Tac Freshmints On-the-Go Breat' :: no_bridge|gram_drift(6distinct,modal=80%)
+  [ 4036] 'Produce > Vegetables > Jalapeno Pep' tier=sibling_path       → 'Fresh Poblano Peppers             ' :: gram_drift(2distinct,modal=57%)
+  [ 3659] 'Frozen > Single Entrees            ' tier=path_only          → 'El Monterey Bean & Cheese Burritos' :: no_bridge|sku_leaf_miss
+  [ 3634] 'Dairy > Cream > Heavy Whipping Crea' tier=exact              → 'Great Value Heavy Whipping Cream, ' :: no_bridge|gram_drift(2distinct,modal=91%)
+  [ 3413] 'Snack > Nuts > Mixed Nuts          ' tier=exact              → 'Great Value Sliced Almonds, 4 oz  ' :: no_bridge|sku_leaf_miss
+  [ 3195] 'Pantry > Baking Mixes > Breadcrumbs' tier=exact              → 'Progresso, Bread Crumbs, Plain, Co' :: sku_leaf_miss
+  [ 3135] 'Pantry > Sweeteners > Sugar Substit' tier=exact              → 'Great Value No Calorie Sweetener, ' :: sku_leaf_miss
+
+Top 20 YELLOW by recipe-impact:
+  [100148] 'Beverage > Water                   ' :: no_bridge
+  [69430] 'Dairy > Milk                       ' :: no_bridge
+  [67916] 'Pantry > Oil > Olive Oil           ' :: no_bridge
+  [47014] 'Pantry > Oil > Vegetable Oil       ' :: no_bridge
+  [44930] 'Beverage > Juice > Lemon Juice     ' :: no_bridge
+  [36967] 'Pantry > Baking Extracts > Baking P' :: no_bridge
+  [34982] 'Pantry > Broth & Stock > Chicken Br' :: no_bridge
+  [31551] 'Pantry > Baking Additives & Extract' :: no_bridge
+  [29880] 'Dairy > Sour Cream                 ' :: no_bridge
+  [28153] 'Pantry > Spices & Seasonings > Cinn' :: no_bridge
+  [26284] 'Dairy > Cheese > Cream Cheese      ' :: no_bridge
+  [24787] 'Meat & Seafood > Beef > Ground Beef' :: no_bridge
+  [24068] 'Pantry > Sweeteners > Sugar > Powde' :: no_bridge
+  [23546] 'Pantry > Sauces & Salsas > Soy Sauc' :: no_bridge
+  [21211] 'Pantry > Spices & Seasonings > Garl' :: no_bridge
+  [18150] 'Pantry > Oil > Extra Virgin Olive O' :: no_bridge
+  [17241] 'Pantry > Spices & Seasonings > Cumi' :: no_bridge
+  [16460] 'Produce > Vegetables > Parsley     ' :: no_bridge
+  [16347] 'Pantry > Sauces & Salsas > Worceste' :: no_bridge
+  [16107] 'Pantry > Spices & Seasonings > Chil' :: no_bridge
+
+Top 15 GREEN (proof of working end-to-end):
+  [256907] 'Pantry > Spices & Seasonings >' 0.5 tsp=3.0g           → 'Kroger® Salt                  ' ($0.79)
+  [157595] 'Pantry > Spices & Seasonings >' 0.25 tsp=0.6g          → 'Great Value Restaurant Style P' ($6.17)
+  [140479] 'Dairy > Butter                ' 2.0 tbsp=28.4g         → 'Land O Lakes Salted Butter in ' ($2.68)
+  [121770] 'Pantry > Sweeteners > Sugar   ' 1.0 cup=200.0g         → 'Smart Way 4lb Granulated Sugar' ($2.49)
+  [110032] 'Produce > Vegetables > Garlic ' 2.0 clove=6.0g         → 'Garlic                        ' ($0.79)
+  [104274] 'Produce > Vegetables > Onions ' 0.5 cup=80.0g          → 'Jumbo Yellow Onions           ' ($0.44)
+  [100921] 'Dairy > Cheese                ' 0.25 cup=25.0g         → 'Kroger® Low Fat Neufchatel Che' ($1.99)
+  [57388] 'Pantry > Baking Extracts > Van' 1.0 tsp=4.2g           → 'Private Selection® Pure Vanill' ($10.99)
+  [54142] 'Pantry > Canned Vegetables > T' 1.0 can=170.0g         → 'Red Gold® Crushed Tomatoes    ' ($0.99)
+  [52709] 'Snack > Nuts > Mixed Nuts     ' 0.5 cup=62.5g          → 'Kroger® Unsalted Mixed Nuts   ' ($4.29)
+  [49402] 'Pantry > Sweeteners > Sugar > ' 0.5 cup=110.0g         → 'Great Value Light Brown Sugar,' ($1.94)
+  [40233] 'Produce > Vegetables > Bell Pe' 0.5 cup=74.5g          → 'Simple Truth Organic® Mixed Be' ($3.59)
+  [35176] 'Meat & Seafood > Poultry > Chi' 1.5 lb=680.4g          → 'Heritage Farm® Boneless Skinle' ($6.60)
+  [34349] 'Produce > Vegetables > Green O' 0.25 cup=25.0g         → 'Green Onions                  ' ($0.99)
+  [29342] 'Produce > Vegetables > Carrots' 1.0 cup=128.0g         → 'Fresh Whole Carrots, 5 lb Bag ' ($4.77)

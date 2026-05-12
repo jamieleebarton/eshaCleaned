@@ -1,0 +1,67 @@
+{
+  "category": "Popcorn, Peanuts, Seeds & Related Snacks",
+  "n_products": 22351,
+  "verdict_distribution": {
+    "NEEDS_NEW_CONCEPT": 9196,
+    "EXACT": 3342,
+    "WEAK": 7393,
+    "NO_MATCH": 14,
+    "STRONG": 1710,
+    "COMPOSITE": 660,
+    "NO_IDENTITY": 36
+  },
+  "top_esha_codes": [
+    {
+      "code": "",
+      "desc": "",
+      "n": 1486
+    },
+    {
+      "code": "951",
+      "desc": "Snack, mix, nut chocolate, Lurps, freeze dried, can",
+      "n": 443
+    },
+    {
+      "code": "52259",
+      "desc": "Vegetarian Meat, protein, vegetable, textured, textured vegetable protein, NutriSoy",
+      "n": 442
+    },
+    {
+      "code": "61538",
+      "desc": "Corn Nuts, salsa jalisco flavor",
+      "n": 434
+    },
+    {
+      "code": "14494",
+      "desc": "Nuts, almonds, oil roasted, salt 'n vinegar",
+      "n": 311
+    },
+    {
+      "code": "35469",
+      "desc": "nuts, almonds, pieces",
+      "n": 273
+    },
+    {
+      "code": "44454",
+      "desc": "Oil, corn peanut & olive",
+      "n": 266
+    },
+    {
+      "code": "49507",
+      "desc": "Pretzels, peanut butter filled",
+      "n": 263
+    },
+    {
+      "code": "61734",
+      "desc": "popcorn, original",
+      "n": 249
+    },
+    {
+      "code": "4571",
+      "desc": "Nuts, almonds, dry roasted, salted, whole",
+      "n": 248
+    }
+  ],
+  "n_fixes_proposed": 683,
+  "n_needs_new_concept": 9196
+}

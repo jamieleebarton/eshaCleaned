@@ -1,0 +1,7 @@
+{
+  "plan": "planner/data/config_runs/p2_1800_budget_l75_formgramfix_p15.json",
+  "recipes_selected": 210,
+  "lines_scanned": 1780,
+  "finding_count": 0,
+  "by_issue_type": {}
+}

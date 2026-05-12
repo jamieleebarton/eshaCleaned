@@ -1,0 +1,220 @@
+#token	notes
+italian	italian
+mexican	mexican
+greek	greek
+french	french (multi-meaning — used in 2gram context)
+asian	asian (broad)
+mediterranean	mediterranean
+spanish	spanish
+chinese	chinese
+japanese	japanese
+korean	korean
+vietnamese	vietnamese
+thai	thai
+indian	indian
+caribbean	caribbean
+hawaiian	hawaiian
+american	american (cheese, classic)
+southern	southern
+cajun	cajun
+creole	creole
+tex	tex-mex (compound)
+mex	tex-mex (compound)
+texmex	tex-mex
+swedish	swedish
+german	german
+polish	polish
+russian	russian
+british	british
+irish	irish
+scottish	scottish
+peruvian	peruvian
+brazilian	brazilian
+moroccan	moroccan
+ethiopian	ethiopian
+lebanese	lebanese
+turkish	turkish
+egyptian	egyptian
+israeli	israeli
+filipino	filipino
+indonesian	indonesian
+malaysian	malaysian
+cuban	cuban
+puerto	puerto rican (compound)
+rican	puerto rican
+hawaii	hawaiian
+california	california (style)
+new	new york / new england (compound)
+york	new york (compound)
+england	new england
+chicago	chicago style
+nashville	nashville
+philly	philly
+buffalo	buffalo
+texas	texas
+kansas	kansas city style
+santa	santa fe
+fe	santa fe
+neapolitan	neapolitan
+sicilian	sicilian
+tuscan	tuscan
+romano	romano (also cheese)
+parmesan	parmesan (also cheese — keep here too)
+swiss	swiss (also cheese — keep here too)
+country	country style
+farmhouse	farmhouse style
+rustic	rustic style
+artisan	artisan style
+village	village style
+mediterranean	mediterranean
+provence	provence
+provencal	provencal
+english	english
+british	british
+welsh	welsh
+scottish	scottish
+irish	irish
+danish	danish
+dutch	dutch
+swedish	swedish
+norwegian	norwegian
+finnish	finnish
+icelandic	icelandic
+russian	russian
+polish	polish
+ukrainian	ukrainian
+belgian	belgian
+austrian	austrian
+swiss	swiss
+spanish	spanish
+portuguese	portuguese
+catalan	catalan
+basque	basque
+sicilian	sicilian
+neapolitan	neapolitan
+tuscan	tuscan
+roman	roman
+venetian	venetian
+sardinian	sardinian
+lombard	lombard
+canadian	canadian
+mexican	mexican
+texmex	tex-mex
+peruvian	peruvian
+brazilian	brazilian
+argentinian	argentinian
+chilean	chilean
+colombian	colombian
+cuban	cuban
+puertorican	puerto rican
+jamaican	jamaican
+haitian	haitian
+caribbean	caribbean
+hawaiian	hawaiian
+african	african
+moroccan	moroccan
+egyptian	egyptian
+ethiopian	ethiopian
+nigerian	nigerian
+southafrican	south african
+korean	korean
+vietnamese	vietnamese
+thai	thai
+laotian	laotian
+cambodian	cambodian
+filipino	filipino
+indonesian	indonesian
+malaysian	malaysian
+singaporean	singaporean
+taiwanese	taiwanese
+chinese	chinese
+japanese	japanese
+indian	indian
+nepali	nepali
+bangladeshi	bangladeshi
+sri	sri lankan
+lankan	sri lankan
+pakistani	pakistani
+afghan	afghan
+iranian	iranian
+turkish	turkish
+lebanese	lebanese
+syrian	syrian
+israeli	israeli
+greek	greek
+mediterranean	mediterranean
+levantine	levantine
+australian	australian
+kiwi	kiwi (also fruit — context)
+cajun	cajun
+creole	creole
+acadian	acadian
+southern	southern (US)
+midwestern	midwestern
+northeastern	northeastern
+southwestern	southwestern (US)
+southwest	southwest (US)
+texan	texan
+newengland	new england
+newyork	new york
+chicago	chicago style
+philadelphia	philadelphia (philly)
+boston	boston
+detroit	detroit
+nashville	nashville
+memphis	memphis
+kansas	kansas (city)
+santafe	santa fe
+portland	portland
+california	california
+mediterranean	mediterranean
+provence	provence
+provencal	provencal
+parisian	parisian
+brittany	brittany
+basque	basque
+oaxacan	oaxacan
+yucatan	yucatan
+chesapeake	chesapeake
+maryland	maryland
+maine	maine
+vermont	vermont
+texas	texas
+oregonian	oregonian
+washington	washington (state)
+colorado	colorado
+arizona	arizona
+montana	montana
+wisconsin	wisconsin
+ohio	ohio
+michigan	michigan
+illinois	illinois
+indiana	indiana
+kentucky	kentucky
+tennessee	tennessee
+alabama	alabama
+georgia	georgia
+florida	florida
+carolina	carolina
+virginia	virginia
+westvirginia	west virginia
+pennsylvania	pennsylvania
+modena	modena (italy — balsamic)
+parma	parma (italy — prosciutto)
+emilia	emilia
+romagna	romagna
+oaxaca	oaxaca
+yucatan	yucatan
+veracruz	veracruz
+michoacan	michoacan
+neapolitan	neapolitan
+sicilian	sicilian
+tuscan	tuscan
+asian	asian (broad)
+eastern	eastern (european)
+western	western
+northern	northern
+oriental	oriental (older term, still used in product cats)
+ethnic	ethnic (broad)
+international	international
+fusion	fusion

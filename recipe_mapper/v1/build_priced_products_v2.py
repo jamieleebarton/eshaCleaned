@@ -40,12 +40,21 @@ SIZE_RE = re.compile(
     re.I,
 )
 COUNT_RE = re.compile(r"(\d+)\s*(?:ct|count|pack|pk)\b", re.I)
+EGG_COUNT_RE = re.compile(r"(\d+)\s*(?:large|medium|small|jumbo|extra\s+large|ct|count)?\b", re.I)
 UNIT_TO_G = {
     "oz": 28.3495, "fl oz": 29.5735, "fl. oz": 29.5735, "fl.oz": 29.5735,
     "fl  oz": 29.5735,
     "lb": 453.592, "lbs": 453.592, "pound": 453.592,
     "g": 1.0, "gm": 1.0, "gram": 1.0, "kg": 1000.0,
     "ml": 1.0, "liter": 1000.0, "litre": 1000.0, "l": 1000.0,
+}
+
+EGG_SIZE_GRAMS = {
+    "jumbo": 70.0,
+    "extra large": 56.0,
+    "large": 50.0,
+    "medium": 44.0,
+    "small": 38.0,
 }
 
 
@@ -72,6 +81,19 @@ def parse_grams(size: str, name: str = "") -> float | None:
             if grams < 1:
                 return None
             return grams
+    if re.search(r"\beggs?\b", name or "", re.I):
+        count_match = COUNT_RE.search(text) or EGG_COUNT_RE.search(size or "")
+        if count_match:
+            count = int(count_match.group(1))
+            size_lc = f"{size or ''} {name or ''}".lower()
+            grams_per_egg = 50.0
+            for label, weight in EGG_SIZE_GRAMS.items():
+                if label in size_lc:
+                    grams_per_egg = weight
+                    break
+            grams = count * grams_per_egg
+            if 100 <= grams <= 6000:
+                return grams
     return None
 
 

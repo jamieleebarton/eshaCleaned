@@ -1,0 +1,67 @@
+{
+  "category": "Cereal",
+  "n_products": 8471,
+  "verdict_distribution": {
+    "NEEDS_NEW_CONCEPT": 4145,
+    "WEAK": 2015,
+    "STRONG": 871,
+    "COMPOSITE": 640,
+    "EXACT": 796,
+    "NO_MATCH": 3,
+    "NO_IDENTITY": 1
+  },
+  "top_esha_codes": [
+    {
+      "code": "",
+      "desc": "",
+      "n": 400
+    },
+    {
+      "code": "61223",
+      "desc": "Cereal, oat corn & wheat, maple flavor, squares, with added sugar",
+      "n": 264
+    },
+    {
+      "code": "36497",
+      "desc": "Cereal, hot, oatmeal, instant",
+      "n": 188
+    },
+    {
+      "code": "36502",
+      "desc": "cereal, original",
+      "n": 153
+    },
+    {
+      "code": "93120",
+      "desc": "oats, whole, instant",
+      "n": 132
+    },
+    {
+      "code": "37953",
+      "desc": "Cereal, Corn Flakes, simply cinnamon",
+      "n": 120
+    },
+    {
+      "code": "9922",
+      "desc": "Raisins, freeze dried, Just Raisins, serving",
+      "n": 112
+    },
+    {
+      "code": "40063",
+      "desc": "Cereal, granola, oats & honey",
+      "n": 106
+    },
+    {
+      "code": "61329",
+      "desc": "Cereal, rice flakes, sweetened, whole grain",
+      "n": 100
+    },
+    {
+      "code": "25978",
+      "desc": "Cereal, hot, oatmeal, maple, instant",
+      "n": 99
+    }
+  ],
+  "n_fixes_proposed": 113,
+  "n_needs_new_concept": 4145
+}

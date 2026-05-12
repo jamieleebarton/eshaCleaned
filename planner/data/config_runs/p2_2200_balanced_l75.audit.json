@@ -1,0 +1,381 @@
+{
+  "plan": "planner/data/config_runs/p2_2200_balanced_l75.json",
+  "config": {
+    "mode": "balanced",
+    "weeks": 12,
+    "people": 2,
+    "cal": 2200.0,
+    "protein_pct": 20.0,
+    "leftover_pct": 0.75
+  },
+  "totals": {
+    "total_cost": 651.0,
+    "total_whole_cart_cost": 650.49,
+    "avg_weekly_cost": 54.25,
+    "avg_whole_cart_cost": 54.21,
+    "avg_veg_compliance": 0.404,
+    "avg_protein_pct": 10.9,
+    "total_unique_recipes": 202,
+    "repeat_picks": 35
+  },
+  "derived": {
+    "per_person_day": 3.87,
+    "purchase_rows": 323,
+    "blank_selected_sku_rows": 0,
+    "mixed_package_rows": 15,
+    "known_bad_sku_hits": 0,
+    "package_flag_rows": 2
+  },
+  "bad_hits": [],
+  "blank_rows": [],
+  "package_flags": [
+    {
+      "week": 1,
+      "concept_key": "Produce > Vegetables > Peppers|6608100S",
+      "name": "Fresh Green Serrano Peppers",
+      "grams": 28.1,
+      "cents": 25,
+      "display": "1 lb",
+      "flags": [
+        "package_grams_under_declared_size"
+      ]
+    },
+    {
+      "week": 6,
+      "concept_key": "Pantry > Spices & Seasonings > Basil|E302400V",
+      "name": "Gourmet Garden Lightly Dried Basil",
+      "grams": 9.1,
+      "cents": 399,
+      "display": "0.42 oz",
+      "flags": [
+        "very_high_cpg"
+      ]
+    }
+  ],
+  "cheapest_cpg": [
+    {
+      "week": 1,
+      "concept_key": "Produce > Vegetables > Celery|6A080006",
+      "name": "Celery Sticks",
+      "grams": 453.6,
+      "cents": 33,
+      "cpg": 0.0728
+    },
+    {
+      "week": 4,
+      "concept_key": "Produce > Vegetables > Celery|6A080006",
+      "name": "Celery Sticks",
+      "grams": 453.6,
+      "cents": 33,
+      "cpg": 0.0728
+    },
+    {
+      "week": 6,
+      "concept_key": "Produce > Vegetables > Celery|6A080006",
+      "name": "Celery Sticks",
+      "grams": 453.6,
+      "cents": 33,
+      "cpg": 0.0728
+    },
+    {
+      "week": 11,
+      "concept_key": "Produce > Vegetables > Celery|6A080006",
+      "name": "Celery Sticks",
+      "grams": 453.6,
+      "cents": 33,
+      "cpg": 0.0728
+    },
+    {
+      "week": 12,
+      "concept_key": "Produce > Vegetables > Celery|6A080006",
+      "name": "Celery Sticks",
+      "grams": 453.6,
+      "cents": 33,
+      "cpg": 0.0728
+    },
+    {
+      "week": 8,
+      "concept_key": "Dairy > Milk|1001600U",
+      "name": "Great Value Milk 1% Low-fat, Half Gallon, 64 fl oz",
+      "grams": 1892.7,
+      "cents": 172,
+      "cpg": 0.0909
+    },
+    {
+      "week": 1,
+      "concept_key": "Pantry > Spices & Seasonings > Salt|E001000X",
+      "name": "Kroger\u00ae Salt",
+      "grams": 739.4,
+      "cents": 79,
+      "cpg": 0.1068
+    },
+    {
+      "week": 1,
+      "concept_key": "Produce > Vegetables > Potatoes|6101000=",
+      "name": "Kroger\u00ae Russet Potatoes",
+      "grams": 2268.0,
+      "cents": 249,
+      "cpg": 0.1098
+    },
+    {
+      "week": 4,
+      "concept_key": "Produce > Vegetables > Potatoes|6101000=",
+      "name": "Kroger\u00ae Russet Potatoes",
+      "grams": 2268.0,
+      "cents": 249,
+      "cpg": 0.1098
+    },
+    {
+      "week": 7,
+      "concept_key": "Produce > Vegetables > Potatoes|6101000=",
+      "name": "Kroger\u00ae Russet Potatoes",
+      "grams": 2268.0,
+      "cents": 249,
+      "cpg": 0.1098
+    },
+    {
+      "week": 1,
+      "concept_key": "Pantry > Broth & Stock > Chicken Broth|J0066005",
+      "name": "Great Value Reduced Sodium Gluten-Free Chicken Broth, 32 oz Carton (Shelf-Stable)",
+      "grams": 975.9,
+      "cents": 127,
+      "cpg": 0.1301
+    },
+    {
+      "week": 3,
+      "concept_key": "Pantry > Broth & Stock > Chicken Broth|J0066005",
+      "name": "Great Value Reduced Sodium Gluten-Free Chicken Broth, 32 oz Carton (Shelf-Stable)",
+      "grams": 975.9,
+      "cents": 127,
+      "cpg": 0.1301
+    },
+    {
+      "week": 6,
+      "concept_key": "Pantry > Broth & Stock > Chicken Broth|J0066005",
+      "name": "Great Value Reduced Sodium Gluten-Free Chicken Broth, 32 oz Carton (Shelf-Stable)",
+      "grams": 975.9,
+      "cents": 127,
+      "cpg": 0.1301
+    },
+    {
+      "week": 8,
+      "concept_key": "Pantry > Broth & Stock > Chicken Broth|J0066005",
+      "name": "Great Value Reduced Sodium Gluten-Free Chicken Broth, 32 oz Carton (Shelf-Stable)",
+      "grams": 975.9,
+      "cents": 127,
+      "cpg": 0.1301
+    },
+    {
+      "week": 9,
+      "concept_key": "Pantry > Broth & Stock > Chicken Broth|J0066005",
+      "name": "Great Value Reduced Sodium Gluten-Free Chicken Broth, 32 oz Carton (Shelf-Stable)",
+      "grams": 975.9,
+      "cents": 127,
+      "cpg": 0.1301
+    }
+  ],
+  "highest_package_prices": [
+    {
+      "week": 5,
+      "concept_key": "Snack > Nuts > Mixed Nuts|A004000H",
+      "name": "Kroger\u00ae Unsalted Mixed Nuts with Peanuts",
+      "grams": 394.6,
+      "cents": 789,
+      "cpg": 1.9995
+    },
+    {
+      "week": 1,
+      "concept_key": "Pantry > Oil > Olive Oil|B001600=",
+      "name": "Great Value Extra Virgin Olive Oil, 17 fl oz",
+      "grams": 502.7,
+      "cents": 597,
+      "cpg": 1.1876
+    },
+    {
+      "week": 6,
+      "concept_key": "Pantry > Oil > Olive Oil|B001600=",
+      "name": "Great Value Extra Virgin Olive Oil, 17 fl oz",
+      "grams": 502.7,
+      "cents": 597,
+      "cpg": 1.1876
+    },
+    {
+      "week": 8,
+      "concept_key": "Pantry > Oil > Olive Oil|B001600=",
+      "name": "Great Value Extra Virgin Olive Oil, 17 fl oz",
+      "grams": 502.7,
+      "cents": 597,
+      "cpg": 1.1876
+    },
+    {
+      "week": 12,
+      "concept_key": "Pantry > Oil > Olive Oil|B001600=",
+      "name": "Great Value Extra Virgin Olive Oil, 17 fl oz",
+      "grams": 502.7,
+      "cents": 597,
+      "cpg": 1.1876
+    },
+    {
+      "week": 10,
+      "concept_key": "Produce > Vegetables > Carrots|61021009",
+      "name": "Fresh Whole Carrots, 5 lb Bag",
+      "grams": 2268.0,
+      "cents": 477,
+      "cpg": 0.2103
+    },
+    {
+      "week": 11,
+      "concept_key": "Pantry > Beans > Red Lentils|9018000M",
+      "name": "Authentic Royal Masoor Dal or Red Lentils, 2lbs (32oz) - Premium Split Red Lentils - A Natural Source of Fiber and Protein",
+      "grams": 907.2,
+      "cents": 447,
+      "cpg": 0.4927
+    },
+    {
+      "week": 11,
+      "concept_key": "Snack > Dried Fruit > Dates|7805000K",
+      "name": "Simple Truth Organic\u00ae Pitted Deglet Dates",
+      "grams": 226.8,
+      "cents": 439,
+      "cpg": 1.9356
+    },
+    {
+      "week": 6,
+      "concept_key": "Pantry > Grain > Oats > Steel Cut Oats|8509000S",
+      "name": "Simple Truth Organic\u00ae 100% Whole Grain Steel Cut Oats",
+      "grams": 680.4,
+      "cents": 429,
+      "cpg": 0.6305
+    },
+    {
+      "week": 9,
+      "concept_key": "Snack > Nuts > Mixed Nuts|A004000H",
+      "name": "Kroger\u00ae Unsalted Mixed Nuts",
+      "grams": 290.3,
+      "cents": 429,
+      "cpg": 1.4778
+    },
+    {
+      "week": 12,
+      "concept_key": "Meat & Seafood > Ham|2401000E",
+      "name": "Great Value Black Forest Ham, 16 oz",
+      "grams": 453.6,
+      "cents": 412,
+      "cpg": 0.9083
+    },
+    {
+      "week": 4,
+      "concept_key": "Meat & Seafood > Bacon|2402840*",
+      "name": "Jimmy Dean Premium Bacon Hickory Smoked",
+      "grams": 340.2,
+      "cents": 399,
+      "cpg": 1.1728
+    },
+    {
+      "week": 5,
+      "concept_key": "Pantry > Spices & Seasonings > Black Pepper|E1040029",
+      "name": "Kroger\u00ae Pure Ground Black Pepper Shaker",
+      "grams": 113.4,
+      "cents": 399,
+      "cpg": 3.5185
+    },
+    {
+      "week": 11,
+      "concept_key": "Pantry > Spices & Seasonings > Coriander|E400002E",
+      "name": "Simple Truth Organic\u00ae Ground Coriander Shaker",
+      "grams": 40.8,
+      "cents": 399,
+      "cpg": 9.7794
+    },
+    {
+      "week": 6,
+      "concept_key": "Pantry > Spices & Seasonings > Basil|E302400V",
+      "name": "Gourmet Garden Lightly Dried Basil",
+      "grams": 9.1,
+      "cents": 399,
+      "cpg": 43.8462
+    }
+  ],
+  "top_concepts": [
+    [
+      "Pantry > Canned Vegetables > Tomatoes",
+      17
+    ],
+    [
+      "Dairy > Eggs",
+      12
+    ],
+    [
+      "Produce > Vegetables > Onions",
+      12
+    ],
+    [
+      "Pantry > Broth & Stock > Chicken Broth",
+      11
+    ],
+    [
+      "Produce > Vegetables > Potatoes",
+      11
+    ],
+    [
+      "Pantry > Beans > Black Beans",
+      9
+    ],
+    [
+      "Pantry > Beans > Lentils",
+      8
+    ],
+    [
+      "Dairy > Cheese",
+      7
+    ],
+    [
+      "Pantry > Pasta",
+      7
+    ],
+    [
+      "Dairy > Butter",
+      6
+    ],
+    [
+      "Pantry > Beans > Garbanzo Beans",
+      6
+    ],
+    [
+      "Pantry > Spices & Seasonings > Black Pepper",
+      5
+    ],
+    [
+      "Produce > Vegetables > Celery",
+      5
+    ],
+    [
+      "Pantry > Oil > Olive Oil",
+      4
+    ],
+    [
+      "Frozen > Vegetables > Broccoli",
+      4
+    ],
+    [
+      "Pantry > Spices & Seasonings > Seasoning",
+      4
+    ],
+    [
+      "Pantry > Pasta > Spaghetti",
+      4
+    ],
+    [
+      "Pantry > Beans > Kidney Beans",
+      4
+    ],
+    [
+      "Produce > Fruit > Apples",
+      4
+    ],
+    [
+      "Frozen > Vegetables > Peas",
+      3
+    ]
+  ]
+}

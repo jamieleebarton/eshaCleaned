@@ -1,0 +1,138 @@
+fdc_id,title,current_cp,new_cp,pid
+1905791,"GOYA, CLASICO REFRESCO COLA CHAMPAGNE",Beverage > Carbonated > Cola,Beverage > Wine,Cola
+1908880,COLA CHAMPAGNE,Beverage > Carbonated > Cola,Beverage > Wine,Cola
+1909710,COLA CHAMPAGNE,Beverage > Carbonated > Cola,Beverage > Wine,Cola
+1911252,COLA CHAMPAGNE,Beverage > Carbonated > Cola,Beverage > Wine,Cola
+2043992,"CUZCATLAN, COLA CHAMPAGNE",Beverage > Carbonated > Cola,Beverage > Wine,Cola
+2082074,"AMBASSADOR, COLOMBIAN STYLE CHAMPAGNE COLA",Beverage > Carbonated > Cola,Beverage > Wine,Cola
+2171717,COLA CHAMPAGNE,Beverage > Carbonated > Cola,Beverage > Wine,Cola
+2365123,"CHAMPAGNE POTENT BRAIN AND BODY FUEL, CHAMPAGNE",Beverage > Energy Drinks,Beverage > Wine,Energy Drink
+2300362,"CHERRY ROSE VINEYARD ENRICHED WATER BEVERAGE WITH RED WINE'S ANTIOXIDANTS, CHERR",Beverage > Functional Drinks,Beverage > Wine,Functional Drink
+2510315,PINOT NOIR,Beverage > Functional Drinks,Beverage > Wine,Functional Drink
+2174487,"LEMON CHARDONNAY VINEYARD ENRICHED WATER WITH RED WINE ANTIOXIDANTS, LEMON CHARD",Beverage > Functional Drinks,Beverage > Wine,Functional Drink
+2454785,"CHAMPAGNE PUNCH CONCENTRATE, CHAMPAGNE",Beverage > Juice > Concentrate,Beverage > Wine,Juice Concentrate
+2652665,"CHAMPAGNE OAK CASK HONEY KOMBUCHA, CHAMPAGNE",Beverage > Kombucha,Beverage > Wine,Kombucha
+2408838,"CHARDONNAY GRAPE SPARKLING NATURAL MINERAL WATER, CHARDONNAY GRAPE",Beverage > Sparkling Water,Beverage > Wine,Sparkling Water
+2174417,"CHERRY ROSE SPARKLING WATER WITH RED WINE'S ANTIOXIDANTS, CHERRY ROSE",Beverage > Sparkling Water,Beverage > Wine,Sparkling Water
+2174416,"LEMON CHARDONNAY SPARKLING WATER WITH RED WINE'S ANTIOXIDANTS, LEMON CHARDONNAY",Beverage > Sparkling Water,Beverage > Wine,Sparkling Water
+2174418,"PEACH GRIGIO SPARKLING WATER WITH RED WINE'S ANTIOXIDANTS, PEACH GRIGIO",Beverage > Sparkling Water,Beverage > Wine,Sparkling Water
+2174419,"PINOT BERRY SPARKLING WATER WITH RED WINE'S ANTIOXIDANTS, PINOT BERRY",Beverage > Sparkling Water,Beverage > Wine,Sparkling Water
+2552828,"POMEGRANATE CHAMPAGNE PREMIUM SELTZER, POMEGRANATE CHAMPAGNE",Beverage > Sparkling Water,Beverage > Wine,Sparkling Water
+2657518,"POMEGRANATE CHAMPAGNE SELTZER, POMEGRANATE",Beverage > Sparkling Water,Beverage > Wine,Sparkling Water
+2657547,"POMEGRANATE CHAMPAGNE SELTZER, POMEGRANATE",Beverage > Sparkling Water,Beverage > Wine,Sparkling Water
+498924,"TRADER JOE'S, SPARKLING WHITE CHARDONNAY GRAPE JUICE, CHARDONNAY GRAPE",Beverage > Sparkling Water,Beverage > Wine,Sparkling Water
+1950643,"PEACH GRIGIO VINEYARD ENRICHED WATER BEVERAGE WITH RED WINE'S ANTIOXIDANTS, PEAC",Beverage > Water,Beverage > Wine,Water
+2451032,"PINOT BERRY VINEYARD ENRICHED WATER WITH RED WINE'S ANTIOXIDANTS, PINOT BERRY",Beverage > Water,Beverage > Wine,Water
+2398260,CHARDONNAY BELLAVITANO,Dairy > Cheese,Beverage > Wine,Cheese
+2541056,"VINTAGE CHEDDAR PAIR WITH RED WINE, VINTAGE CHEDDAR",Dairy > Cheese > Cheddar,Beverage > Wine,Cheddar
+1885910,"CHEDDAR PORT WINE, PECANS & ALMONDS",Dairy > Cheese > Cheddar,Beverage > Wine,Cheddar
+2057051,CHEDDAR PORT WINE,Dairy > Cheese > Cheddar,Beverage > Wine,Cheddar
+2057055,CHEDDAR PORT WINE WITH REAL ALMONDS,Dairy > Cheese > Cheddar,Beverage > Wine,Cheddar
+2544611,CHEDDAR PORT WINE WITH REAL PECANS & ALMONDS,Dairy > Cheese > Cheddar,Beverage > Wine,Cheddar
+2401076,CUBED MERLOT,Dairy > Cheese,Beverage > Wine,Cheese
+2509277,"PORT WINE DERBY, PORT WINE",Dairy > Cheese,Beverage > Wine,Cheese
+2567651,"MANGO CHAMPAGNE FRENCH STYLE YOGURT, MANGO CHAMPAGNE",Dairy > Yogurt,Beverage > Wine,Yogurt
+2567649,"MANGO CHAMPAGNE COCONUT DAIRY ALTERNATIVE, MANGO CHAMPAGNE",Dairy > Yogurt,Beverage > Wine,Yogurt
+2393888,ORGANIC CABERNET GRAPES WITH SEEDS,Frozen > Frozen Fruit > Grape,Beverage > Wine,Grapes
+1849893,"SORBETTO, BLACKBERRY CABERNET",Frozen > Sorbet,Beverage > Wine,Sorbet
+2435642,"SORBETTO, CHAMPAGNE MANGO",Frozen > Sorbet,Beverage > Wine,Sorbet
+2027719,"SEATTLE, SORBET, CHAMPAGNE ORANGE, CHAMPAGNE ORANGE",Frozen > Sorbet,Beverage > Wine,Sorbet
+1900636,"ORGANIC SORBET, CRANBERRY PINOT NOIR",Frozen > Sorbet,Beverage > Wine,Sorbet
+1864487,"SEATTLE, SORBET, RASPBERRY MERLOT , RASPBERRY MERLOT",Frozen > Sorbet,Beverage > Wine,Sorbet
+1900637,"ORGANIC SORBET, STRAWBERRY CHARDONNAY",Frozen > Sorbet,Beverage > Wine,Sorbet
+2285730,WHITE PEACH CHAMPAGNE SORBET,Frozen > Sorbet,Beverage > Wine,Sorbet
+2338361,"GARLIC & WHITE WINE MUSHROOMS SKILLETS, GARLIC & WHITE WINE MUSHROOMS",Frozen > Vegetables > Mushrooms,Beverage > Wine,Mushrooms
+2279149,"MARINATED BLEND OF OILS, SPICES & WHITE WINE MUSHROOMS, MARINATED",Frozen > Vegetables > Mushrooms,Beverage > Wine,Mushrooms
+2521190,"Turkey Marsala, 70 OZ",Meal > Meal Starters > Frozen Entree,Beverage > Wine,Frozen Entree
+2033640,"OLLI SALUMERIA, PEPPER+GARLIC SALAME WITH SANGIOVESE WINE",Meat & Seafood > Charcuterie > Salame,Beverage > Wine,Salame
+1924516,"SMALL PLATES APPLE CHARDONNAY, APPLE CHARDONNAY",Meat & Seafood > Pork,Beverage > Wine,Pork
+2280160,"SOPRESSATA SLICED SALAMI WITH WHITE WINE AND A BLEND OF SPICES, SOPRESSATA",Meat & Seafood > Pork > Sopressata,Beverage > Wine,Sopressata
+2151197,"DUCK MOUSSE WITH PORT WITH PORT WINE - TOPPED WITH ASPIC, DUCK MOUSSE WITH PORT",Meat & Seafood > Poultry > Duck Mousse,Beverage > Wine,Duck Mousse
+2011262,"COLUMBUS, CABERNET SAUVIGNON WINE SALAME",Meat & Seafood > Salami,Beverage > Wine,Salami
+2059522,"PUBLIX DELI, DRY SALAMI WITH RED WINE",Meat & Seafood > Salami,Beverage > Wine,Salami
+2145099,"BAROLO RED WINE UNCURED ITALIAN SALAMI, BAROLO",Meat & Seafood > Salami,Beverage > Wine,Salami
+1851997,"COLUMBUS, PINOT GRIGIO WINE SALAME, LEMON PEEL, LEMON PEEL",Meat & Seafood > Salami,Beverage > Wine,Salami
+2011263,"COLUMBUS, PINOT NOIR WINE SALAME",Meat & Seafood > Salami,Beverage > Wine,Salami
+2029345,"VOLPI, PROSECCO SPARKLING WINE SALAMI",Meat & Seafood > Salami,Beverage > Wine,Salami
+1865581,RED WINE SALAMI,Meat & Seafood > Salami,Beverage > Wine,Salami
+2484716,SANGIOVESE WINE SALAMI,Meat & Seafood > Salami,Beverage > Wine,Salami
+2121791,SLICED SOPRESSATA SALAMI WITH WHITE WINE AND A BLEND OF SPICES,Meat & Seafood > Salami,Beverage > Wine,Salami
+2029356,"WHITE WINE SALAME, WHITE WINE",Meat & Seafood > Salami,Beverage > Wine,Salami
+2446457,"SALAME WITH WHITE WINE, WHITE WINE",Meat & Seafood > Salami,Beverage > Wine,Salami
+2135406,"MOUSSE BASQUAISE ARTISAN COLLECTION MADE WITH DUCK LIVER, DUCK FAT, MILK, BELL P",Pantry > Flakes > Mousse,Beverage > Wine,Mousse
+2565746,ALL NATURAL WITH WHITE WINE SALAME,Meat & Seafood > Sausage,Beverage > Wine,Sausage
+1462934,PEARS HALVES IN DILUTED RED WINE,Pantry > Canned Fruit > Pears,Beverage > Wine,Pears
+2031494,GOOSE PATE WITH PORT WINE,Pantry > Canned Meat > Pate,Beverage > Wine,Pate
+2031523,MUSHROOM PATE WITH MARSALA WINE,Pantry > Canned Meat > Pate,Beverage > Wine,Pate
+399591,"PIER 33 GOURMET, MUSSELS IN WHITE WINE SUACE",Pantry > Canned Seafood > Mussels,Beverage > Wine,Mussels
+1883542,"DOUX SOUTH, DRUNKEN TOMATOES - PICKLED RED WINE TOMATOES",Pantry > Canned Vegetables > Tomatoes,Beverage > Wine,Tomatoes
+2031748,"VICTORIA AMORY, CHAMPAGNE KETCHUP",Pantry > Condiments > Ketchup,Beverage > Wine,Ketchup
+1867082,"VICTORIA AMORY, SHERRY KETCHUP",Pantry > Condiments > Ketchup,Beverage > Wine,Ketchup
+2438836,"HERB N ZEST, APPLE CHAMPAGNE MUSTARD",Pantry > Condiments > Mustard,Beverage > Wine,Mustard
+2538575,"BURGUNDY MUSTARD, BURGUNDY",Pantry > Condiments > Mustard,Beverage > Wine,Mustard
+1917704,CHAMPAGNE MUSTARD,Pantry > Condiments > Mustard,Beverage > Wine,Mustard
+2008800,"WEIS, GOURMET CHAMPAGNE DILL MUSTARD",Pantry > Condiments > Mustard,Beverage > Wine,Mustard
+2017206,"WOEBER'S, RESERVE CHAMPAGNE DILL MUSTARD",Pantry > Condiments > Mustard,Beverage > Wine,Mustard
+2064899,CHAMPAGNE DILL MUSTARD,Pantry > Condiments > Mustard,Beverage > Wine,Mustard
+2500460,"CHAMPAGNE DILL MUSTARD, CHAMPAGNE DILL",Pantry > Condiments > Mustard,Beverage > Wine,Mustard
+2598606,RESERVE CHAMPAGNE DILL  MUSTARD,Pantry > Condiments > Mustard,Beverage > Wine,Mustard
+2393162,"CHAMPAGNE DILL HONEY MUSTARD, CHAMPAGNE DILL HONEY",Pantry > Condiments > Mustard,Beverage > Wine,Mustard
+2540754,"CHAMPAGNE GARLIC HONEY MUSTARD, CHAMPAGNE GARLIC HONEY",Pantry > Condiments > Mustard,Beverage > Wine,Mustard
+1892228,"ROBERT'S RESERVE, CHAMPAGNE GRAPEFRUIT CARDAMOM MUSTARD",Pantry > Condiments > Mustard,Beverage > Wine,Mustard
+2431132,"CHAMPAGNE MUSTARD, MAINE MAPLE",Pantry > Condiments > Mustard,Beverage > Wine,Mustard
+2618342,"CHARDONNAY MUSTARD, CHARDONNAY",Pantry > Condiments > Mustard,Beverage > Wine,Mustard
+1870102,"DIETZ & WATSON, CHAMPAGNE DILL MUSTARD DELI COMPLEMENTS, MUSTARD, MUSTARD",Pantry > Condiments > Mustard,Beverage > Wine,Mustard
+1914000,DELICATESSEN STYLE MUSTARD WITH WHITE WINE,Pantry > Condiments > Mustard,Beverage > Wine,Mustard
+1851340,"DIJON STONE GROUND MUSTARD, RED WINE & HERBS",Pantry > Condiments > Mustard,Beverage > Wine,Mustard
+1106323,"DIJON MUSTARD MADE WITH WHITE WINE, DIJON",Pantry > Condiments > Mustard,Beverage > Wine,Mustard
+1434760,"COUNTRY DIJON MUSTARD, WHITE WINE",Pantry > Condiments > Mustard,Beverage > Wine,Mustard
+1514781,"DIJON MUSTARD MADE WITH WHITE WINE, DIJON",Pantry > Condiments > Mustard,Beverage > Wine,Mustard
+1645510,"DIJON MUSTARD WITH WHITE WINE, DIJON WITH WHITE WINE",Pantry > Condiments > Mustard,Beverage > Wine,Mustard
+1864862,"TRADER JOE'S, DIJON MUSTARD WITH WHITE WINE",Pantry > Condiments > Mustard,Beverage > Wine,Mustard
+2015117,"KEY FOOD, DIJON MUSTARD WITH WHITE WINE",Pantry > Condiments > Mustard,Beverage > Wine,Mustard
+2173555,"DIJON MUSTARD MADE WITH WHITE WINE, DIJON",Pantry > Condiments > Mustard,Beverage > Wine,Mustard
+2213419,"DIJON MUSTARD MADE WITH WHITE WINE, DIJON",Pantry > Condiments > Mustard,Beverage > Wine,Mustard
+2633171,"DIJON MUSTARD WITH WHITE WINE, DIJON WITH WHITE WINE",Pantry > Condiments > Mustard,Beverage > Wine,Mustard
+1893478,"MARDI GRAS MUSTARD, WHITE WINE",Pantry > Condiments > Mustard,Beverage > Wine,Mustard
+2596664,"DELICATESSEN STYLE WHITE WINE & HORSERADISH MUSTARD, WHITE WINE; HORSERADISH",Pantry > Condiments > Mustard,Beverage > Wine,Mustard
+2508659,"CHARDONNAY GRAPESEED FLOUR, CHARDONNAY",Pantry > Flour,Beverage > Wine,Flour
+2508661,"CHARDONNAY GRAPESEED FLOUR, CHARDONNAY",Pantry > Flour,Beverage > Wine,Flour
+2508660,"MERLOT GRAPESEED FLOUR, MERLOT",Pantry > Flour,Beverage > Wine,Flour
+2508662,"MERLOT GRAPESEED FLOUR, MERLOT",Pantry > Flour,Beverage > Wine,Flour
+2535491,SHERRY GELATIN DESSERT,Pantry > Gelatin > Gelatin Dessert,Beverage > Wine,Gelatin Dessert
+2508447,"SHERRY GELATIN DESSERT, SHERRY",Pantry > Gelatin > Gelatin Dessert,Beverage > Wine,Gelatin Dessert
+2401166,"CHAMPAGNE HONEY MUSTARD, CHAMPAGNE HONEY",Pantry > Salad Dressings,Beverage > Wine,Salad Dressing
+1930625,RED WINE SWEET ITALIAN,Pantry > Salad Dressings,Beverage > Wine,Salad Dressing
+2545992,VIDALIA ONION BURGUNDY POPPY SEED,Pantry > Salad Dressings > Poppyseed Dressing,Beverage > Wine,Poppyseed Dressing
+2031385,"BUSHA BROWNE'S, SPICY & HOT PEPPER SHERRY",Pantry > Sauces & Salsas > Hot Sauce,Beverage > Wine,Hot Sauce
+2276286,"MARINARA WITH MERLOT, MERLOT",Pantry > Sauces & Salsas > Marinara Sauce,Beverage > Wine,Marinara Sauce
+2624587,MERLOT  MARINARA,Pantry > Sauces & Salsas > Marinara Sauce,Beverage > Wine,Marinara Sauce
+1903740,"ARTISAN RED WINE MARINARA, CAJUN & CREOLE",Pantry > Sauces & Salsas > Marinara Sauce,Beverage > Wine,Marinara Sauce
+1958804,MARSALA,Pantry > Sauces & Salsas > Marsala,Beverage > Wine,Marsala
+2084811,"MARSALA COOKING WINE, MARSALA",Pantry > Sauces & Salsas > Marsala Cooking Wine,Pantry > Cooking Wines,Marsala Cooking Wine
+2025653,APPLE RIESLING SALSA,Pantry > Sauces & Salsas > Salsa,Beverage > Wine,Salsa
+1549929,"COWBOY IKE'S, SPICY CABERNET SAUVISNON WINE VELLY",Pantry > Sauces & Salsas > Wine Jelly,Beverage > Wine,Wine Jelly
+2592503,"WHITE WINE SAUERKRAUT, WHITE WINE",Pantry > Sauerkraut,Beverage > Wine,Sauerkraut
+483134,DUCK FOIE GRAS MOUSSE WITH PORT WINE,Pantry > Flakes > Mousse,Beverage > Wine,Mousse
+2132290,"MERLOT SALT, MERLOT",Pantry > Spices & Seasonings > Seasoning,Beverage > Wine,Seasoning
+1500058,"JACOBSEN SALT CO., PINOT NOIR, PURE FLAKE, LEMON ZEST",Pantry > Spices & Seasonings > Seasoning,Beverage > Wine,Seasoning
+1857153,"CHILEPACIFIC, SMOKED WINE SALT, CABERNET, CABERNET",Pantry > Spices & Seasonings > Seasoning,Beverage > Wine,Seasoning
+1371082,CHAMPAGNE MANGO,Produce > Fruit > Mango,Beverage > Wine,Mango
+2445848,"WHITE WINE BALSAMIC MARINATED BABY BEETS, WHITE WINE BALSAMIC",Produce > Vegetables > Beets,Beverage > Wine,Beets
+1885911,"CHEDDAR PORT WINE, PECANS, ALMONDS",Snack > Bars,Beverage > Wine,Snack Bars
+2509977,CHAMPAGNE BEARS,Snack > Candy > Gummy Candy,Beverage > Wine,Gummy Candy
+2543717,CHAMPAGNE BEARS,Snack > Candy > Gummy Candy,Beverage > Wine,Gummy Candy
+1946515,"COCKTAIL GUMMIES, MOSCOW MULE, CHAMPAGNE DREAMS, OLD FASHIONED",Snack > Candy > Gummy Candy,Beverage > Wine,Gummy Candy
+2593315,"STRAWBERRY CHAMPAGNE BEARS, STRAWBERRY",Snack > Candy > Gummy Candy,Beverage > Wine,Gummy Candy
+2051598,"SUGARFINA, CHAMPAGNE BUBBLES",Snack > Candy > Gummy Candy,Beverage > Wine,Gummy Candy
+2073063,CHAMPAGNE MIX,Snack > Candy > Hard Candy,Beverage > Wine,Hard Candy
+2131392,CHAMPAGNE MIX,Snack > Candy > Hard Candy,Beverage > Wine,Hard Candy
+2217209,CHAMPAGNE MIX,Snack > Candy > Hard Candy,Beverage > Wine,Hard Candy
+2287315,"BIG WIN, CHAMPAGNE MIX",Snack > Candy > Hard Candy,Beverage > Wine,Hard Candy
+2301455,"COCKTAIL LOLLIPOPS, CHAMPAGNE & STRAWBERRY",Snack > Candy > Lollipops,Beverage > Wine,Lollipops
+2166826,"CAROLINA RED WINE STICKS, CAROLINA RED",Snack > Crackers,Beverage > Wine,Crackers
+2668819,"RED WINE & ROSEMARY  GOURMET CRACKERS, RED WINE; ROSEMARY",Snack > Crackers,Beverage > Wine,Crackers
+2668817,"WHITE WINE & BASIL GOURMET CRACKERS, WHITE WINE; BASIL",Snack > Crackers,Beverage > Wine,Crackers
+1646507,ARTISANAL CHARDONNAY THYME TURKEY JERKEY,Snack > Jerky > Turkey Jerky,Beverage > Wine,Turkey Jerky
+2132922,WALNUTS IN A RED WINE HONEY,Snack > Nuts > Walnuts,Beverage > Wine,Walnuts
+2525319,"STRAWBERRY PROSECCO TRAIL MIX, STRAWBERRY",Snack > Trail Mix,Beverage > Wine,Trail Mix

@@ -1,0 +1,7 @@
+{
+  "plan": "planner/data/config_runs/p2_2200_balanced_l75_household_free_p20.json",
+  "recipes_selected": 205,
+  "lines_scanned": 1722,
+  "finding_count": 0,
+  "by_issue_type": {}
+}

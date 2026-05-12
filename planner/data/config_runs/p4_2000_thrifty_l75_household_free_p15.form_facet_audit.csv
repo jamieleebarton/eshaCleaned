@@ -1,0 +1,2 @@
+week,recipe_id,recipe_title,line_index,display,ingredient_item,grams_resolved,recipe_concept_key,priced_concept_key,selected_sku,issue_type,severity,message,expected,actual
+11,45482,French Toasted Ham and Cheese Sandwich,4,4 slices ham,ham,112.00,Meat & Seafood > Ham|2401000E,Meat & Seafood > Ham|2401000E,Armour LunchMaker® Ham Smalls,wrong_form,blocker,Ham recipe line selected a lunch/snack kit instead of ham.,"standalone ham product, or route LunchMaker-style products to lunch kits",Armour LunchMaker® Ham Smalls

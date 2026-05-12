@@ -1,0 +1,128 @@
+=== v7 preview summary  (2026-04-28 18:26:36) ===
+
+Source rows:            462,646
+Matched to parsed:      462,646  (100.0%)
+Needs review:            98,574  (21.3% of matched)
+
+retail_type distribution:
+  single                387,251
+  composite_dish         50,004
+  combo_pack             25,391
+
+Unique retail_leaves: 118,536
+
+Top 50 supercategories:
+     107,905  'Snack'
+      87,821  'Pantry'
+      66,416  'Produce'
+      50,004  'Meal'
+      47,672  'Beverage'
+      33,716  'Dairy'
+      31,099  'Meat & Seafood'
+      22,416  'Other'
+       8,913  'Bakery'
+       6,001  'Frozen'
+         643  'Cereal'
+          40  'Functional'
+
+Top 100 retail_leaves:
+   7,121  Other > Unclassified
+   3,989  Snack > Milk Chocolate
+   3,309  Beverage > Dairy Milk
+   2,615  Snack > Chocolate
+   1,991  Snack > Chocolate > Dark
+   1,674  Snack > Candy
+   1,475  Pantry > Oils > Olive > Oil
+   1,309  Snack > Chocolate > Chip
+   1,297  Beverage > Fruit-based Drinks > Juice > Orange
+   1,260  Dairy > Cheese
+   1,247  Snack > Nuts & Seeds > Peanut > Peanut Butter
+   1,231  Pantry > Pasta > Macaroni
+   1,007  Meat & Seafood > Beef
+     956  Beverage > Fruit-based Drinks > Juice > Apple
+     887  Meat & Seafood > Poultry > Chicken
+     879  Beverage > Plant-based Milk > Coconut Milk > Plain
+     853  Dairy > Cheese > Cheddar > Sharp
+     837  Other > Mix
+     835  Pantry > Legume > Beans > Green
+     833  Dairy > Butter
+     825  Frozen > Ice Cream > Vanilla
+     789  Pantry > Sweeteners > Honey
+     756  Produce > Fruit > Apple > Apple Sauce
+     743  Produce > Vegetable > Potato > Chips
+     732  Dairy > Cheese > Cottage
+     719  Meat & Seafood > Pork
+     701  Beverage > Carbonated > Cola
+     693  Pantry > Sauces & Salsas > Sauce
+     685  Beverage > Beverages > Soda
+     678  Produce > Vegetable > Tomato > Sauce
+     635  Pantry > Sweeteners > Sugar
+     633  Pantry > Bread > Tortilla > Chips
+     625  Produce > Vegetable > Corn
+     599  Snack > Nuts & Seeds > Peanut > Peanut Butter > Creamy
+     581  Other > Unclassified > Fruit
+     581  Beverage > Beverages > Tea
+     577  Beverage > Beverages > Tea > Green
+     569  Dairy > Cheese > Cheddar
+     565  Pantry > Pasta
+     560  Frozen > Ice Cream > Premium
+     559  Produce > Fruit > Strawberry
+     546  Beverage > Dairy Milk > Chocolate Milk
+     538  Dairy > Yogurt > Vanilla
+     537  Pantry > Legume > Beans
+     536  Beverage > Fruit-based Drinks > Juice > Pineapple
+     530  Produce > Fruit > Apple
+     527  Pantry > Hot Cereal > Oat Meal
+     524  Snack > Cookies
+     522  Snack > Combo Packs
+     521  Produce > Vegetable > Ginger
+     514  Pantry > Spices > Salt
+     512  Dairy > Yogurt > Greek
+     512  Beverage > Fruit-based Drinks > Juice > Grape
+     501  Dairy > Cheese > Jack
+     493  Produce > Vegetable > Tomato > Ketchup
+     478  Snack > Milk Chocolate > Covered
+     478  Pantry > Sauces & Salsas > Sauce > Original
+     475  Pantry > Sauces & Salsas > Sauce > Hot
+     468  Snack > Nuts & Seeds > Almonds
+     466  Dairy > Cream
+     466  Dairy > Cheese > Mozzarella
+     464  Dairy > Sour Cream
+     461  Pantry > Spices > Sea Salt
+     459  Produce > Vegetable > Broccoli
+     456  Produce > Vegetable > Peas
+     452  Meat & Seafood > Beef > Ground
+     451  Produce > Fruit > Mango
+     449  Meat & Seafood > Shrimp
+     446  Meat & Seafood > Poultry > Turkey
+     432  Beverage > Fruit-based Drinks > Juice > Cranberry
+     431  Pantry > Sauces & Salsas > Salsa > Medium
+     431  Produce > Vegetable > Potato > Chips > Sour Cream
+     430  Produce > Vegetable > Garlic
+     419  Snack > Chocolate > Bar > Milk Chocolate
+     418  Beverage > Fruit-based Drinks > Juice
+     414  Produce > Vegetable > Tomatoes > Diced
+     413  Snack > Crackers
+     412  Beverage > Fruit-based Drinks > Juice > Vegetable
+     410  Pantry > Sweeteners > Honey > Roasted
+     407  Pantry > Legume > Beans > Black
+     404  Snack > Trail Mix
+     401  Dairy > Cheese > Parmesan
+     401  Produce > Fruit > Orange
+     400  Pantry > Spices > Seasoning
+     399  Beverage > Beverages > Soda > Orange
+     397  Pantry > Grain > Wheat > Bread
+     396  Pantry > Legume > Pinto
+     391  Produce > Vegetable > Spinach
+     387  Other > Unclassified > Original
+     386  Dairy > Yogurt > Plain
+     380  Pantry > Condiments > Mayonnaise
+     379  Pantry > Flour
+     379  Snack > Chocolate > Bar > Dark
+     377  Pantry > Grain
+     374  Produce > Fruit > Strawberry > Yogurt
+     373  Snack > Nuts & Seeds > Cashews > Roasted
+     371  Beverage > Fruit-based Drinks > Juice > Concentrate
+     371  Produce > Vegetable > Oil
+     370  Pantry > Sweeteners > Maple > Syrup
+     367  Beverage > Beverages > Soda > Lemon

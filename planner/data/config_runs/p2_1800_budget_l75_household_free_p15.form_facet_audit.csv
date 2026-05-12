@@ -1,0 +1,2 @@
+week,recipe_id,recipe_title,line_index,display,ingredient_item,grams_resolved,recipe_concept_key,priced_concept_key,selected_sku,issue_type,severity,message,expected,actual
+3,378609,Easy Noodle Soup,4,1/4 cup shredded ham,ham,30.00,Meat & Seafood > Ham|2401000E,Meat & Seafood > Ham|2401000E,Buddig Black Forest Ham Lunch Meat 2oz,wrong_form,blocker,Ham recipe line selected deli/lunchmeat-style ham.,"ham cut/steak/roast product, or route deli ham to lunch meat",Buddig Black Forest Ham Lunch Meat 2oz

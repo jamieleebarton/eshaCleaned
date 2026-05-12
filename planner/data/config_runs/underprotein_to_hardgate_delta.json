@@ -1,0 +1,1029 @@
+{
+  "from_plan": "planner/data/config_runs/p4_2000_thrifty_l75_household_free_p15.json",
+  "to_plan": "planner/data/config_runs/p4_2000_thrifty_l75_proteingate_p15.json",
+  "from_summary": {
+    "avg_weekly_cost": 83.92,
+    "avg_protein_pct": 12.7,
+    "avg_veg_compliance": 0.433,
+    "daily_protein_g": null,
+    "effective_scoring": null
+  },
+  "to_summary": {
+    "avg_weekly_cost": 103.11,
+    "avg_protein_pct": 14.8,
+    "avg_veg_compliance": 0.48,
+    "daily_protein_g": null,
+    "effective_scoring": {
+      "protein_pct_target": 15.0,
+      "enable_protein_prefilter": true,
+      "protein_filter_margin": 3.0,
+      "enable_protein_density_bonus": true,
+      "protein_density_value": 4.0,
+      "macro_deviation_weight": 0.21999999999999997
+    }
+  },
+  "delta": {
+    "avg_weekly_cost": 19.19,
+    "avg_protein_pct": 2.1
+  },
+  "by_department": [
+    {
+      "department": "Pantry",
+      "from": 447.57,
+      "to": 552.6,
+      "delta": 105.03
+    },
+    {
+      "department": "Dairy",
+      "from": 238.68,
+      "to": 275.65,
+      "delta": 36.97
+    },
+    {
+      "department": "Frozen",
+      "from": 27.79,
+      "to": 54.12,
+      "delta": 26.33
+    },
+    {
+      "department": "Produce",
+      "from": 126.32,
+      "to": 150.98,
+      "delta": 24.66
+    },
+    {
+      "department": "Bakery",
+      "from": 69.46,
+      "to": 89.49,
+      "delta": 20.03
+    },
+    {
+      "department": "Meal",
+      "from": 0.0,
+      "to": 10.94,
+      "delta": 10.94
+    },
+    {
+      "department": "Meat & Seafood",
+      "from": 75.75,
+      "to": 82.17,
+      "delta": 6.42
+    },
+    {
+      "department": "Beverage",
+      "from": 11.8,
+      "to": 10.57,
+      "delta": -1.23
+    },
+    {
+      "department": "Snack",
+      "from": 9.71,
+      "to": 10.84,
+      "delta": 1.13
+    }
+  ],
+  "by_protein_source": [
+    {
+      "protein_source": "untagged",
+      "from": 809.68,
+      "to": 992.28,
+      "delta": 182.6
+    },
+    {
+      "protein_source": "legumes_nuts",
+      "from": 71.92,
+      "to": 114.98,
+      "delta": 43.06
+    },
+    {
+      "protein_source": "red_meat",
+      "from": 22.75,
+      "to": 41.24,
+      "delta": 18.49
+    },
+    {
+      "protein_source": "pork",
+      "from": 35.67,
+      "to": 25.79,
+      "delta": -9.88
+    },
+    {
+      "protein_source": "poultry",
+      "from": 17.33,
+      "to": 15.14,
+      "delta": -2.19
+    },
+    {
+      "protein_source": "eggs",
+      "from": 49.73,
+      "to": 47.93,
+      "delta": -1.8
+    }
+  ],
+  "by_concept": [
+    {
+      "concept_key": "Dairy > Cheese|110Q0005",
+      "from": 71.64,
+      "to": 107.46,
+      "delta": 35.82,
+      "packages_from": 36.0,
+      "packages_to": 54.0,
+      "packages_delta": 18.0,
+      "top_to_skus": [
+        [
+          "Kroger\u00ae Low Fat Neufchatel Cheese",
+          12
+        ]
+      ]
+    },
+    {
+      "concept_key": "Pantry > Beans > Black Beans|9001000B",
+      "from": 44.72,
+      "to": 76.54,
+      "delta": 31.82,
+      "packages_from": 52.0,
+      "packages_to": 89.0,
+      "packages_delta": 37.0,
+      "top_to_skus": [
+        [
+          "Great Value Black Beans, 15 oz",
+          12
+        ]
+      ]
+    },
+    {
+      "concept_key": "Bakery > Tortillas|G020000M",
+      "from": 21.36,
+      "to": 50.04,
+      "delta": 28.68,
+      "packages_from": 12.0,
+      "packages_to": 28.0,
+      "packages_delta": 16.0,
+      "top_to_skus": [
+        [
+          "CHI-CHI'S Flour Tortillas Burrito Size, Tortilla Wrap, Shelf-Stable, 17 oz Resealable Package, (8 Tortillas)",
+          10
+        ],
+        [
+          "Mixed: 1x Great Value Medium White Corn Tortillas, 30 Coun + 3x CHI-CHI'S Flour Tortillas Burrito Size, Tortilla",
+          1
+        ]
+      ]
+    },
+    {
+      "concept_key": "Pantry > Sauces & Salsas > Salsa|F6070002",
+      "from": 17.49,
+      "to": 39.86,
+      "delta": 22.37,
+      "packages_from": 17.0,
+      "packages_to": 38.0,
+      "packages_delta": 21.0,
+      "top_to_skus": [
+        [
+          "San Marcos Shelf Stable Chipotle Salsa, 7 oz Can",
+          9
+        ],
+        [
+          "Mixed: 1x Great Value Medium Picante Salsa, 16 oz + 3x San Marcos Shelf Stable Chipotle Salsa, 7 oz Can",
+          1
+        ],
+        [
+          "Great Value Medium Picante Salsa, 16 oz",
+          1
+        ],
+        [
+          "Mixed: 1x Great Value Medium Picante Salsa, 16 oz + 4x San Marcos Shelf Stable Chipotle Salsa, 7 oz Can",
+          1
+        ]
+      ]
+    },
+    {
+      "concept_key": "Bakery > Bread|80030009",
+      "from": 29.34,
+      "to": 16.3,
+      "delta": -13.04,
+      "packages_from": 18.0,
+      "packages_to": 10.0,
+      "packages_delta": -8.0,
+      "top_to_skus": [
+        [
+          "Great Value White Round Top Bread Loaf, 20 oz",
+          9
+        ]
+      ]
+    },
+    {
+      "concept_key": "Meat & Seafood > Beef > Ground Beef|2001002A",
+      "from": 11.98,
+      "to": 23.96,
+      "delta": 11.98,
+      "packages_from": 2.0,
+      "packages_to": 4.0,
+      "packages_delta": 2.0,
+      "top_to_skus": [
+        [
+          "Kroger\u00ae 73/27 Ground Beef Roll 1 LB",
+          3
+        ]
+      ]
+    },
+    {
+      "concept_key": "Meal > Sandwiches > Lunch Meat|H0000013",
+      "from": 0.0,
+      "to": 10.94,
+      "delta": 10.94,
+      "packages_from": 0.0,
+      "packages_to": 8.0,
+      "packages_delta": 8.0,
+      "top_to_skus": [
+        [
+          "Carl Buddig Original Honey Ham Lunchmeat 2oz (56 gram) Plastic Pouch, 9 Grams of Protein per Serving, Refrigerated",
+          3
+        ],
+        [
+          "Oscar Mayer Honey Chopped Ham Sliced Lunch Meat, 16 oz. Pack",
+          1
+        ],
+        [
+          "Eckrich Sliced Old Fashion Loaf Lunch Meat",
+          1
+        ]
+      ]
+    },
+    {
+      "concept_key": "Dairy > Butter|14010003",
+      "from": 34.84,
+      "to": 24.12,
+      "delta": -10.72,
+      "packages_from": 13.0,
+      "packages_to": 9.0,
+      "packages_delta": -4.0,
+      "top_to_skus": [
+        [
+          "Land O Lakes Salted Butter in Half Sticks, 4 Half Sticks, 8 oz Pack",
+          7
+        ]
+      ]
+    },
+    {
+      "concept_key": "Dairy > Cheese > Mozzarella|11020058",
+      "from": 20.88,
+      "to": 10.44,
+      "delta": -10.44,
+      "packages_from": 6.0,
+      "packages_to": 3.0,
+      "packages_delta": -3.0,
+      "top_to_skus": [
+        [
+          "Great Value Low-Moisture Part-Skim Mozzarella Shredded Cheese, 16 oz Bag",
+          3
+        ]
+      ]
+    },
+    {
+      "concept_key": "Dairy > Eggs|5005000P",
+      "from": 48.3,
+      "to": 38.16,
+      "delta": -10.14,
+      "packages_from": 30.0,
+      "packages_to": 24.0,
+      "packages_delta": -6.0,
+      "top_to_skus": [
+        [
+          "Kroger\u00ae Medium Grade A White Eggs",
+          12
+        ]
+      ]
+    },
+    {
+      "concept_key": "Produce > Vegetables > Potatoes|6101000=",
+      "from": 44.28,
+      "to": 34.35,
+      "delta": -9.93,
+      "packages_from": 37.0,
+      "packages_to": 35.0,
+      "packages_delta": -2.0,
+      "top_to_skus": [
+        [
+          "White Potatoes",
+          7
+        ],
+        [
+          "Mixed: 1x Kroger\u00ae Russet Potatoes + 3x White Potatoes",
+          1
+        ],
+        [
+          "Kroger\u00ae Russet Potatoes",
+          1
+        ],
+        [
+          "Mixed: 1x Kroger\u00ae Russet Potatoes + 4x White Potatoes",
+          1
+        ]
+      ]
+    },
+    {
+      "concept_key": "Dairy > Eggs > Hard-Boiled Eggs|50106301",
+      "from": 0.0,
+      "to": 8.34,
+      "delta": 8.34,
+      "packages_from": 0.0,
+      "packages_to": 2.0,
+      "packages_delta": 2.0,
+      "top_to_skus": [
+        [
+          "Great Day Farms Hard-Boiled Cage Free Eggs, 6 Eggs",
+          2
+        ]
+      ]
+    },
+    {
+      "concept_key": "Frozen > Vegetables > Broccoli|6201200Z",
+      "from": 3.52,
+      "to": 11.44,
+      "delta": 7.92,
+      "packages_from": 4.0,
+      "packages_to": 13.0,
+      "packages_delta": 9.0,
+      "top_to_skus": [
+        [
+          "Kroger\u00ae Frozen Broccoli Cuts",
+          6
+        ]
+      ]
+    },
+    {
+      "concept_key": "Dairy > Cream|130B600Y",
+      "from": 7.74,
+      "to": 0.0,
+      "delta": -7.74,
+      "packages_from": 2.0,
+      "packages_to": 0.0,
+      "packages_delta": -2.0
+    },
+    {
+      "concept_key": "Pantry > Oil > Vegetable Oil|B00W600V",
+      "from": 13.41,
+      "to": 5.96,
+      "delta": -7.45,
+      "packages_from": 9.0,
+      "packages_to": 4.0,
+      "packages_delta": -5.0,
+      "top_to_skus": [
+        [
+          "Smart Way\u2122 Vegetable Oil",
+          4
+        ]
+      ]
+    },
+    {
+      "concept_key": "Pantry > Oil > Extra Virgin Olive Oil|B04J6003",
+      "from": 0.0,
+      "to": 7.38,
+      "delta": 7.38,
+      "packages_from": 0.0,
+      "packages_to": 1.0,
+      "packages_delta": 1.0,
+      "top_to_skus": [
+        [
+          "Pompeian Bold Spanish Extra Virgin Olive Oil - 16 fl oz",
+          1
+        ]
+      ]
+    },
+    {
+      "concept_key": "Dairy > Cheese > Shredded Cheese|110Q005A",
+      "from": 3.48,
+      "to": 10.44,
+      "delta": 6.96,
+      "packages_from": 1.0,
+      "packages_to": 3.0,
+      "packages_delta": 2.0,
+      "top_to_skus": [
+        [
+          "Great Value Medium Cheddar Shredded Cheese, 16 oz Bag",
+          3
+        ]
+      ]
+    },
+    {
+      "concept_key": "Pantry > Flour|870Z000G",
+      "from": 29.25,
+      "to": 36.18,
+      "delta": 6.93,
+      "packages_from": 12.0,
+      "packages_to": 15.0,
+      "packages_delta": 3.0,
+      "top_to_skus": [
+        [
+          "Pillsbury All Purpose Flour, 2 Lb Bag",
+          8
+        ],
+        [
+          "Mixed: 1x Great Value All-Purpose Unbleached Flour, 5 lb B + 1x Pillsbury All Purpose Flour, 2 Lb Bag",
+          1
+        ],
+        [
+          "Great Value All-Purpose Unbleached Flour, 5 lb Bag",
+          1
+        ]
+      ]
+    },
+    {
+      "concept_key": "Dairy > Milk > Powdered Milk|1001400Q",
+      "from": 0.0,
+      "to": 6.86,
+      "delta": 6.86,
+      "packages_from": 0.0,
+      "packages_to": 2.0,
+      "packages_delta": 2.0,
+      "top_to_skus": [
+        [
+          "Great Value Instant Nonfat Dry Milk, 3.2 oz Pouches, 3 Count, Makes 3 Quarts Total, 12 Servings per Container",
+          2
+        ]
+      ]
+    },
+    {
+      "concept_key": "Frozen > Vegetables > Spinach|6001200W",
+      "from": 3.72,
+      "to": 9.93,
+      "delta": 6.21,
+      "packages_from": 3.0,
+      "packages_to": 8.0,
+      "packages_delta": 5.0,
+      "top_to_skus": [
+        [
+          "Great Value Chopped Spinach, 10 oz (Frozen)",
+          5
+        ],
+        [
+          "Mixed: 1x Kroger\u00ae Frozen Spinach Cut + 1x Great Value Chopped Spinach, 10 oz (Frozen)",
+          1
+        ]
+      ]
+    },
+    {
+      "concept_key": "Frozen > Potatoes > Sweet Potatoes|61EM0009",
+      "from": 1.0,
+      "to": 6.92,
+      "delta": 5.92,
+      "packages_from": 1.0,
+      "packages_to": 4.0,
+      "packages_delta": 3.0,
+      "top_to_skus": [
+        [
+          "Bruce's Yams Cut Sweet Potatoes in Syrup, 29 oz Can, Allergen-Free",
+          2
+        ],
+        [
+          "Organic Gold Jewel Sweet Potatoes",
+          1
+        ],
+        [
+          "Princella Cut Sweet Potatoes, 15 oz., Can",
+          1
+        ]
+      ]
+    },
+    {
+      "concept_key": "Produce > Vegetables > Baby Spinach|6003100C",
+      "from": 0.0,
+      "to": 5.82,
+      "delta": 5.82,
+      "packages_from": 0.0,
+      "packages_to": 2.0,
+      "packages_delta": 2.0,
+      "top_to_skus": [
+        [
+          "Marketside Fresh Baby Spinach, 6 oz Bag (Fresh)",
+          1
+        ],
+        [
+          "Marketside Fresh Baby Spinach, 11 oz",
+          1
+        ]
+      ]
+    },
+    {
+      "concept_key": "Meat & Seafood > Pork > Pork Chops|2102003H",
+      "from": 5.2,
+      "to": 0.0,
+      "delta": -5.2,
+      "packages_from": 1.0,
+      "packages_to": 0.0,
+      "packages_delta": -1.0
+    },
+    {
+      "concept_key": "Pantry > Broth & Stock > Beef Broth|J014600X",
+      "from": 7.68,
+      "to": 2.66,
+      "delta": -5.02,
+      "packages_from": 6.0,
+      "packages_to": 2.0,
+      "packages_delta": -4.0,
+      "top_to_skus": [
+        [
+          "Swanson 100% Natural Beef Broth Can",
+          2
+        ]
+      ]
+    },
+    {
+      "concept_key": "Pantry > Canned Vegetables > Green Chiles|660A0009",
+      "from": 0.0,
+      "to": 5.01,
+      "delta": 5.01,
+      "packages_from": 0.0,
+      "packages_to": 3.0,
+      "packages_delta": 3.0,
+      "top_to_skus": [
+        [
+          "Old El Paso Mild Chopped Green Chiles, Meal Prep, 4 oz",
+          2
+        ]
+      ]
+    },
+    {
+      "concept_key": "Pantry > Canned Vegetables > Corn|6801300W",
+      "from": 2.0,
+      "to": 7.0,
+      "delta": 5.0,
+      "packages_from": 2.0,
+      "packages_to": 7.0,
+      "packages_delta": 5.0,
+      "top_to_skus": [
+        [
+          "Kroger\u00ae Canned Cream Style Golden Corn",
+          6
+        ]
+      ]
+    },
+    {
+      "concept_key": "Produce > Vegetables > Lettuce|6010000S",
+      "from": 2.49,
+      "to": 7.47,
+      "delta": 4.98,
+      "packages_from": 1.0,
+      "packages_to": 3.0,
+      "packages_delta": 2.0,
+      "top_to_skus": [
+        [
+          "Private Selection\u00ae Living Lettuce",
+          2
+        ]
+      ]
+    },
+    {
+      "concept_key": "Pantry > Baking Mixes > Pizza Crust Mix|8703090Y",
+      "from": 12.44,
+      "to": 7.54,
+      "delta": -4.9,
+      "packages_from": 13.0,
+      "packages_to": 8.0,
+      "packages_delta": -5.0,
+      "top_to_skus": [
+        [
+          "Great Value Pizza Crust Mix, 6.5 oz",
+          3
+        ],
+        [
+          "\"JIFFY\" Pie Crust Mix, 9 oz Box",
+          2
+        ]
+      ]
+    },
+    {
+      "concept_key": "Pantry > Baking Mixes > Bread Flour|80J10002",
+      "from": 0.0,
+      "to": 4.88,
+      "delta": 4.88,
+      "packages_from": 0.0,
+      "packages_to": 1.0,
+      "packages_delta": 1.0,
+      "top_to_skus": [
+        [
+          "Pillsbury Best Bread Flour, 5 Lb Bag",
+          1
+        ]
+      ]
+    },
+    {
+      "concept_key": "Pantry > Broth & Stock > Vegetable Broth|J03Q600E",
+      "from": 7.88,
+      "to": 12.58,
+      "delta": 4.7,
+      "packages_from": 8.0,
+      "packages_to": 12.0,
+      "packages_delta": 4.0,
+      "top_to_skus": [
+        [
+          "Kroger\u00ae Vegetable Broth",
+          5
+        ],
+        [
+          "Great Value Gluten-Free Vegetable Broth, 32 oz Carton (Shelf-Stable)",
+          5
+        ]
+      ]
+    }
+  ],
+  "by_sku": [
+    {
+      "sku": "Kroger\u00ae Low Fat Neufchatel Cheese",
+      "from": 71.64,
+      "to": 107.46,
+      "delta": 35.82,
+      "packages_from": 36.0,
+      "packages_to": 54.0,
+      "packages_delta": 18.0,
+      "top_to_concepts": [
+        [
+          "Dairy > Cheese|110Q0005",
+          12
+        ]
+      ]
+    },
+    {
+      "sku": "Great Value Black Beans, 15 oz",
+      "from": 44.72,
+      "to": 76.54,
+      "delta": 31.82,
+      "packages_from": 52.0,
+      "packages_to": 89.0,
+      "packages_delta": 37.0,
+      "top_to_concepts": [
+        [
+          "Pantry > Beans > Black Beans|9001000B",
+          12
+        ]
+      ]
+    },
+    {
+      "sku": "CHI-CHI'S Flour Tortillas Burrito Size, Tortilla Wrap, Shelf-Stable, 17 oz Resealable Package, (8 Tortillas)",
+      "from": 21.36,
+      "to": 42.72,
+      "delta": 21.36,
+      "packages_from": 12.0,
+      "packages_to": 24.0,
+      "packages_delta": 12.0,
+      "top_to_concepts": [
+        [
+          "Bakery > Tortillas|G020000M",
+          10
+        ]
+      ]
+    },
+    {
+      "sku": "White Potatoes",
+      "from": 5.88,
+      "to": 21.0,
+      "delta": 15.12,
+      "packages_from": 7.0,
+      "packages_to": 25.0,
+      "packages_delta": 18.0,
+      "top_to_concepts": [
+        [
+          "Produce > Vegetables > Potatoes|6101000=",
+          7
+        ]
+      ]
+    },
+    {
+      "sku": "Great Value White Round Top Bread Loaf, 20 oz",
+      "from": 29.34,
+      "to": 16.3,
+      "delta": -13.04,
+      "packages_from": 18.0,
+      "packages_to": 10.0,
+      "packages_delta": -8.0,
+      "top_to_concepts": [
+        [
+          "Bakery > Bread|80030009",
+          9
+        ]
+      ]
+    },
+    {
+      "sku": "San Marcos Shelf Stable Chipotle Salsa, 7 oz Can",
+      "from": 14.55,
+      "to": 27.16,
+      "delta": 12.61,
+      "packages_from": 15.0,
+      "packages_to": 28.0,
+      "packages_delta": 13.0,
+      "top_to_concepts": [
+        [
+          "Pantry > Sauces & Salsas > Salsa|F6070002",
+          9
+        ]
+      ]
+    },
+    {
+      "sku": "Kroger\u00ae 73/27 Ground Beef Roll 1 LB",
+      "from": 11.98,
+      "to": 23.96,
+      "delta": 11.98,
+      "packages_from": 2.0,
+      "packages_to": 4.0,
+      "packages_delta": 2.0,
+      "top_to_concepts": [
+        [
+          "Meat & Seafood > Beef > Ground Beef|2001002A",
+          3
+        ]
+      ]
+    },
+    {
+      "sku": "Land O Lakes Salted Butter in Half Sticks, 4 Half Sticks, 8 oz Pack",
+      "from": 34.84,
+      "to": 24.12,
+      "delta": -10.72,
+      "packages_from": 13.0,
+      "packages_to": 9.0,
+      "packages_delta": -4.0,
+      "top_to_concepts": [
+        [
+          "Dairy > Butter|14010003",
+          7
+        ]
+      ]
+    },
+    {
+      "sku": "Great Value Low-Moisture Part-Skim Mozzarella Shredded Cheese, 16 oz Bag",
+      "from": 20.88,
+      "to": 10.44,
+      "delta": -10.44,
+      "packages_from": 6.0,
+      "packages_to": 3.0,
+      "packages_delta": -3.0,
+      "top_to_concepts": [
+        [
+          "Dairy > Cheese > Mozzarella|11020058",
+          3
+        ]
+      ]
+    },
+    {
+      "sku": "Mixed: 1x Kroger\u00ae Russet Potatoes + 7x White Potatoes",
+      "from": 8.37,
+      "to": 0.0,
+      "delta": -8.37,
+      "packages_from": 8.0,
+      "packages_to": 0.0,
+      "packages_delta": -8.0
+    },
+    {
+      "sku": "Great Day Farms Hard-Boiled Cage Free Eggs, 6 Eggs",
+      "from": 0.0,
+      "to": 8.34,
+      "delta": 8.34,
+      "packages_from": 0.0,
+      "packages_to": 2.0,
+      "packages_delta": 2.0,
+      "top_to_concepts": [
+        [
+          "Dairy > Eggs > Hard-Boiled Eggs|50106301",
+          2
+        ]
+      ]
+    },
+    {
+      "sku": "Kroger\u00ae Frozen Broccoli Cuts",
+      "from": 3.52,
+      "to": 11.44,
+      "delta": 7.92,
+      "packages_from": 4.0,
+      "packages_to": 13.0,
+      "packages_delta": 9.0,
+      "top_to_concepts": [
+        [
+          "Frozen > Vegetables > Broccoli|6201200Z",
+          6
+        ]
+      ]
+    },
+    {
+      "sku": "Cacique Crema Mexicana Table Cream, 15 oz Jar (Refrigerated)",
+      "from": 7.74,
+      "to": 0.0,
+      "delta": -7.74,
+      "packages_from": 2.0,
+      "packages_to": 0.0,
+      "packages_delta": -2.0
+    },
+    {
+      "sku": "Mixed: 1x Kroger\u00ae Russet Potatoes + 6x White Potatoes",
+      "from": 7.53,
+      "to": 0.0,
+      "delta": -7.53,
+      "packages_from": 7.0,
+      "packages_to": 0.0,
+      "packages_delta": -7.0
+    },
+    {
+      "sku": "Smart Way\u2122 Vegetable Oil",
+      "from": 13.41,
+      "to": 5.96,
+      "delta": -7.45,
+      "packages_from": 9.0,
+      "packages_to": 4.0,
+      "packages_delta": -5.0,
+      "top_to_concepts": [
+        [
+          "Pantry > Oil > Vegetable Oil|B00W600V",
+          4
+        ]
+      ]
+    },
+    {
+      "sku": "Pompeian Bold Spanish Extra Virgin Olive Oil - 16 fl oz",
+      "from": 0.0,
+      "to": 7.38,
+      "delta": 7.38,
+      "packages_from": 0.0,
+      "packages_to": 1.0,
+      "packages_delta": 1.0,
+      "top_to_concepts": [
+        [
+          "Pantry > Oil > Extra Virgin Olive Oil|B04J6003",
+          1
+        ]
+      ]
+    },
+    {
+      "sku": "Mixed: 1x Great Value Medium White Corn Tortillas, 30 Coun + 3x CHI-CHI'S Flour Tortillas Burrito Size, Tortilla",
+      "from": 0.0,
+      "to": 7.32,
+      "delta": 7.32,
+      "packages_from": 0.0,
+      "packages_to": 4.0,
+      "packages_delta": 4.0,
+      "top_to_concepts": [
+        [
+          "Bakery > Tortillas|G020000M",
+          1
+        ]
+      ]
+    },
+    {
+      "sku": "Great Value Medium Cheddar Shredded Cheese, 16 oz Bag",
+      "from": 3.48,
+      "to": 10.44,
+      "delta": 6.96,
+      "packages_from": 1.0,
+      "packages_to": 3.0,
+      "packages_delta": 2.0,
+      "top_to_concepts": [
+        [
+          "Dairy > Cheese > Shredded Cheese|110Q005A",
+          3
+        ]
+      ]
+    },
+    {
+      "sku": "Mixed: 2x Kroger\u00ae Extra Large White Eggs + 2x Kroger\u00ae Medium Grade A White Eggs",
+      "from": 6.96,
+      "to": 0.0,
+      "delta": -6.96,
+      "packages_from": 4.0,
+      "packages_to": 0.0,
+      "packages_delta": -4.0
+    },
+    {
+      "sku": "Great Value Instant Nonfat Dry Milk, 3.2 oz Pouches, 3 Count, Makes 3 Quarts Total, 12 Servings per Container",
+      "from": 0.0,
+      "to": 6.86,
+      "delta": 6.86,
+      "packages_from": 0.0,
+      "packages_to": 2.0,
+      "packages_delta": 2.0,
+      "top_to_concepts": [
+        [
+          "Dairy > Milk > Powdered Milk|1001400Q",
+          2
+        ]
+      ]
+    },
+    {
+      "sku": "Great Value Gluten-Free Vegetable Broth, 32 oz Carton (Shelf-Stable)",
+      "from": 0.0,
+      "to": 6.35,
+      "delta": 6.35,
+      "packages_from": 0.0,
+      "packages_to": 5.0,
+      "packages_delta": 5.0,
+      "top_to_concepts": [
+        [
+          "Pantry > Broth & Stock > Vegetable Broth|J03Q600E",
+          5
+        ]
+      ]
+    },
+    {
+      "sku": "Great Value Unsalted Gluten-Free Beef Broth, 32 oz Carton (Shelf Stable)",
+      "from": 6.35,
+      "to": 0.0,
+      "delta": -6.35,
+      "packages_from": 5.0,
+      "packages_to": 0.0,
+      "packages_delta": -5.0
+    },
+    {
+      "sku": "Mixed: 3x Great Value Reduced Sodium Gluten-Free Chicken B + 3x Great Value Chicken Broth, 14.5 oz (Shelf-Stable",
+      "from": 5.97,
+      "to": 0.0,
+      "delta": -5.97,
+      "packages_from": 6.0,
+      "packages_to": 0.0,
+      "packages_delta": -6.0
+    },
+    {
+      "sku": "Great Value Corned Beef, 12 oz Can",
+      "from": 0.0,
+      "to": 5.94,
+      "delta": 5.94,
+      "packages_from": 0.0,
+      "packages_to": 2.0,
+      "packages_delta": 2.0,
+      "top_to_concepts": [
+        [
+          "Meat & Seafood > Beef > Corned Beef|200K000F",
+          2
+        ]
+      ]
+    },
+    {
+      "sku": "Red Gold\u00ae Stewed Tomatoes",
+      "from": 14.85,
+      "to": 20.79,
+      "delta": 5.94,
+      "packages_from": 15.0,
+      "packages_to": 21.0,
+      "packages_delta": 6.0,
+      "top_to_concepts": [
+        [
+          "Pantry > Canned Vegetables > Tomatoes|67010007",
+          10
+        ]
+      ]
+    },
+    {
+      "sku": "Mixed: 1x Great Value Medium Picante Salsa, 16 oz + 4x San Marcos Shelf Stable Chipotle Salsa, 7 oz Can",
+      "from": 0.0,
+      "to": 5.85,
+      "delta": 5.85,
+      "packages_from": 0.0,
+      "packages_to": 5.0,
+      "packages_delta": 5.0,
+      "top_to_concepts": [
+        [
+          "Pantry > Sauces & Salsas > Salsa|F6070002",
+          1
+        ]
+      ]
+    },
+    {
+      "sku": "Mixed: 2x Kroger\u00ae Russet Potatoes + 1x White Potatoes",
+      "from": 5.82,
+      "to": 0.0,
+      "delta": -5.82,
+      "packages_from": 3.0,
+      "packages_to": 0.0,
+      "packages_delta": -3.0
+    },
+    {
+      "sku": "Ball Park Classic Bun Size Hot Dogs, 15 oz, 8 Count",
+      "from": 8.52,
+      "to": 2.84,
+      "delta": -5.68,
+      "packages_from": 3.0,
+      "packages_to": 1.0,
+      "packages_delta": -2.0,
+      "top_to_concepts": [
+        [
+          "Meat & Seafood > Hot Dogs & Sausages > Hot Dogs|2416000E",
+          1
+        ]
+      ]
+    },
+    {
+      "sku": "Pork Center Cut Loin Chops Bone-In, 2 count, 1.01 - 1.37 lb Tray",
+      "from": 5.2,
+      "to": 0.0,
+      "delta": -5.2,
+      "packages_from": 1.0,
+      "packages_to": 0.0,
+      "packages_delta": -1.0
+    },
+    {
+      "sku": "Buddig Corned Beef Lunch Meat 2oz",
+      "from": 5.1,
+      "to": 0.0,
+      "delta": -5.1,
+      "packages_from": 6.0,
+      "packages_to": 0.0,
+      "packages_delta": -6.0
+    }
+  ]
+}

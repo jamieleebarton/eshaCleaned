@@ -29,6 +29,9 @@ from taxonomy_finalizer import (
 V2 = Path(__file__).resolve().parent
 DEFAULT_SOURCE = V2 / "consensus_full_corpus_audit.csv"
 DEFAULT_TAXONOMY_OVERRIDES = V2 / "consensus_taxonomy_overrides.csv"
+DEFAULT_STORAGE_TAXONOMY_OVERRIDES = V2 / "consensus_storage_taxonomy_overrides.csv"
+DEFAULT_SHAPE_TAXONOMY_OVERRIDES = V2 / "consensus_shape_taxonomy_overrides.csv"
+DEFAULT_SNACK_TAXONOMY_OVERRIDES = V2 / "consensus_snack_taxonomy_overrides.csv"
 DEFAULT_REFERENCE_OVERRIDES = V2 / "consensus_reference_overrides.csv"
 DEFAULT_SOURCE_CONFLICTS = V2 / "consensus_source_conflicts.csv"
 DEFAULT_OUT = V2 / "consensus_full_corpus_audit.v2.csv"
@@ -159,7 +162,7 @@ def normalize_legacy_override(override_type: str, override: Mapping[str, str], s
     """
     row = dict(override)
     mapped = False
-    if override_type == "taxonomy":
+    if override_type in {"taxonomy", "storage_taxonomy", "shape_taxonomy", "snack_taxonomy"}:
         if has_override_value(row, "new_product_identity") and not has_override_value(row, "product_identity_fixed"):
             row["product_identity_fixed"] = row.get("new_product_identity", "") or ""
             mapped = True
@@ -258,7 +261,7 @@ def repair_taxonomy_after_override(row: dict[str, str], provided_fields: set[str
 
     if (category_changed or canonical_changed or modifier_changed) and not leaf_changed:
         canonical = normalize_path(row.get("canonical_path", "") or "")
-        modifier = current_modifier_tail(row)
+        modifier = normalize_path(row.get("modifier", "") or "") if modifier_changed else current_modifier_tail(row)
         if canonical and modifier:
             row["retail_leaf_path"] = PATH_SEP.join(dedupe_segments(split_path(canonical) + split_path(modifier)))
         else:
@@ -378,7 +381,7 @@ def apply_override_rows(
 
         before = dict(row)
         changes, provided = apply_field_updates(row, override, fields)
-        if override_type == "taxonomy" and provided:
+        if override_type in {"taxonomy", "storage_taxonomy", "shape_taxonomy", "snack_taxonomy"} and provided:
             repair_taxonomy_after_override(row, provided)
             for field in TAXONOMY_FIELDS:
                 if before.get(field, "") != row.get(field, "") and all(change[0] != field for change in changes):
@@ -470,6 +473,9 @@ def apply_overrides(
     *,
     source: Path = DEFAULT_SOURCE,
     taxonomy_overrides: Path = DEFAULT_TAXONOMY_OVERRIDES,
+    storage_taxonomy_overrides: Path = DEFAULT_STORAGE_TAXONOMY_OVERRIDES,
+    shape_taxonomy_overrides: Path = DEFAULT_SHAPE_TAXONOMY_OVERRIDES,
+    snack_taxonomy_overrides: Path = DEFAULT_SNACK_TAXONOMY_OVERRIDES,
     reference_overrides: Path = DEFAULT_REFERENCE_OVERRIDES,
     source_conflicts: Path = DEFAULT_SOURCE_CONFLICTS,
     out: Path = DEFAULT_OUT,
@@ -489,6 +495,9 @@ def apply_overrides(
     stats: Counter[str] = Counter()
 
     _, taxonomy_rows = load_override_rows(taxonomy_overrides)
+    _, storage_taxonomy_rows = load_override_rows(storage_taxonomy_overrides)
+    _, shape_taxonomy_rows = load_override_rows(shape_taxonomy_overrides)
+    _, snack_taxonomy_rows = load_override_rows(snack_taxonomy_overrides)
     _, reference_rows = load_override_rows(reference_overrides)
     _, conflict_rows = load_override_rows(source_conflicts)
 
@@ -496,6 +505,36 @@ def apply_overrides(
         rows_by_fdc,
         taxonomy_rows,
         override_type="taxonomy",
+        fields=TAXONOMY_FIELDS,
+        apply_draft=apply_draft,
+        decisions=decisions,
+        summaries=summaries,
+        stats=stats,
+    )
+    apply_override_rows(
+        rows_by_fdc,
+        storage_taxonomy_rows,
+        override_type="storage_taxonomy",
+        fields=TAXONOMY_FIELDS,
+        apply_draft=apply_draft,
+        decisions=decisions,
+        summaries=summaries,
+        stats=stats,
+    )
+    apply_override_rows(
+        rows_by_fdc,
+        shape_taxonomy_rows,
+        override_type="shape_taxonomy",
+        fields=TAXONOMY_FIELDS,
+        apply_draft=apply_draft,
+        decisions=decisions,
+        summaries=summaries,
+        stats=stats,
+    )
+    apply_override_rows(
+        rows_by_fdc,
+        snack_taxonomy_rows,
+        override_type="snack_taxonomy",
         fields=TAXONOMY_FIELDS,
         apply_draft=apply_draft,
         decisions=decisions,
@@ -538,6 +577,9 @@ def apply_overrides(
         "sources": {
             "consensus": str(source),
             "taxonomy_overrides": str(taxonomy_overrides),
+            "storage_taxonomy_overrides": str(storage_taxonomy_overrides),
+            "shape_taxonomy_overrides": str(shape_taxonomy_overrides),
+            "snack_taxonomy_overrides": str(snack_taxonomy_overrides),
             "reference_overrides": str(reference_overrides),
             "source_conflicts": str(source_conflicts),
         },
@@ -565,6 +607,9 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--source", type=Path, default=DEFAULT_SOURCE)
     parser.add_argument("--taxonomy-overrides", type=Path, default=DEFAULT_TAXONOMY_OVERRIDES)
+    parser.add_argument("--storage-taxonomy-overrides", type=Path, default=DEFAULT_STORAGE_TAXONOMY_OVERRIDES)
+    parser.add_argument("--shape-taxonomy-overrides", type=Path, default=DEFAULT_SHAPE_TAXONOMY_OVERRIDES)
+    parser.add_argument("--snack-taxonomy-overrides", type=Path, default=DEFAULT_SNACK_TAXONOMY_OVERRIDES)
     parser.add_argument("--reference-overrides", type=Path, default=DEFAULT_REFERENCE_OVERRIDES)
     parser.add_argument("--source-conflicts", type=Path, default=DEFAULT_SOURCE_CONFLICTS)
     parser.add_argument("--out", type=Path, default=DEFAULT_OUT)
@@ -585,6 +630,9 @@ def main() -> None:
     report = apply_overrides(
         source=args.source,
         taxonomy_overrides=args.taxonomy_overrides,
+        storage_taxonomy_overrides=args.storage_taxonomy_overrides,
+        shape_taxonomy_overrides=args.shape_taxonomy_overrides,
+        snack_taxonomy_overrides=args.snack_taxonomy_overrides,
         reference_overrides=args.reference_overrides,
         source_conflicts=args.source_conflicts,
         out=args.out,

@@ -1,5 +1,14 @@
 retail_mapper/v2/full_corpus_audit.csv filter=lfs diff=lfs merge=lfs -text
 retail_mapper/v2/*.csv filter=lfs diff=lfs merge=lfs -text
+*.jsonl filter=lfs diff=lfs merge=lfs -text
+audit_results/V10_snapshot/*.csv filter=lfs diff=lfs merge=lfs -text
+planner/data/*.csv filter=lfs diff=lfs merge=lfs -text
+planner/data/*.json filter=lfs diff=lfs merge=lfs -text
+recipe_pricing/*.csv filter=lfs diff=lfs merge=lfs -text
+retail_mapper/*.csv filter=lfs diff=lfs merge=lfs -text
+*.pt filter=lfs diff=lfs merge=lfs -text
+planner/data/recipe_concept_grams.json* filter=lfs diff=lfs merge=lfs -text
+audit_results/V10_snapshot/*.json filter=lfs diff=lfs merge=lfs -text
 graph/**/*.csv filter=lfs diff=lfs merge=lfs -text
 implementation/*.csv filter=lfs diff=lfs merge=lfs -text
 implementation/**/*.csv filter=lfs diff=lfs merge=lfs -text

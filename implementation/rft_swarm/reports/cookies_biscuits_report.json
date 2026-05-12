@@ -1,0 +1,67 @@
+{
+  "category": "Cookies & Biscuits",
+  "n_products": 13653,
+  "verdict_distribution": {
+    "EXACT": 2739,
+    "WEAK": 4349,
+    "NEEDS_NEW_CONCEPT": 4979,
+    "STRONG": 1308,
+    "COMPOSITE": 195,
+    "NO_IDENTITY": 32,
+    "NO_MATCH": 51
+  },
+  "top_esha_codes": [
+    {
+      "code": "",
+      "desc": "",
+      "n": 611
+    },
+    {
+      "code": "25393",
+      "desc": "cookie, sugar",
+      "n": 537
+    },
+    {
+      "code": "91543",
+      "desc": "Cookie, chocolate, wheat free",
+      "n": 460
+    },
+    {
+      "code": "49081",
+      "desc": "Bar, sandwich, chocolate, bavarian creme filled, low fat",
+      "n": 363
+    },
+    {
+      "code": "9296",
+      "desc": "cookie, chocolate chip",
+      "n": 362
+    },
+    {
+      "code": "41685",
+      "desc": "cookie, m m",
+      "n": 348
+    },
+    {
+      "code": "47484",
+      "desc": "Crust, cookie, chocolate sandwich, Oreo",
+      "n": 318
+    },
+    {
+      "code": "25393",
+      "desc": "Cookie, sugar",
+      "n": 223
+    },
+    {
+      "code": "17475",
+      "desc": "Cookie, sugar, dry mix, serving",
+      "n": 199
+    },
+    {
+      "code": "49708",
+      "desc": "Topping, dessert, Oreo cookies",
+      "n": 183
+    }
+  ],
+  "n_fixes_proposed": 47,
+  "n_needs_new_concept": 4979
+}

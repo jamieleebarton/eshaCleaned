@@ -1,0 +1,366 @@
+ 23151  Candy
+ 22351  Popcorn, Peanuts, Seeds & Related Snacks
+ 18587  Cheese
+ 13688  Ice Cream & Frozen Yogurt
+ 13653  Cookies & Biscuits
+ 12672  Chips, Pretzels & Snacks
+ 10875  Chocolate
+ 10576  Pickles, Olives, Peppers & Relishes
+ 10540  Breads & Buns
+  9580  Cakes, Cupcakes, Snack Cakes
+  9321  Fruit & Vegetable Juice, Nectars & Fruit Drinks
+  8722  Seasoning Mixes, Salts, Marinades & Tenderizers
+  8607  Snack, Energy & Granola Bars
+  8546  Other Snacks
+  8471  Cereal
+  8233  Soda
+  7251  Dips & Salsa
+  7243  Ketchup, Mustard, BBQ & Cheese Sauce
+  7137  Yogurt
+  6843  Pasta by Shape & Type
+  6375  Wholesome Snacks
+  6223  Pre-Packaged Fruit & Vegetables
+  6179  Salad Dressing & Mayonnaise
+  5954  Water
+  5746  Frozen Dinners & Entrees
+  4993  Pepperoni, Salami & Cold Cuts
+  4990  Other Drinks
+  4927  Frozen Appetizers & Hors D'oeuvres
+  4880  Sausages, Hotdogs & Brats
+  4732  Milk
+  4563  Vegetable & Cooking Oils
+  4464  Canned Vegetables
+  4462  Powdered Drinks
+  4308  Crackers & Biscotti
+  4305  Frozen Vegetables
+  4219  Baking Decorations & Dessert Toppings
+  3859  Prepared Pasta & Pizza Sauces
+  3778  Frozen Fish & Seafood
+  3766  Oriental, Mexican & Ethnic Sauces
+  3697  Pizza
+  3592  Cake, Cookie & Cupcake Mixes
+  3559  Other Deli
+  3545  Jam, Jelly & Fruit Spreads
+  3239  Canned & Bottled Beans
+  3145  Canned Fruit
+  3128  Tomatoes
+  3076  Other Soups
+  2852  Croissants, Sweet Rolls, Muffins & Other Pastries
+  2784  Nut & Seed Butters
+  2413  Herbs & Spices
+  2407  Canned Soup
+  2391  Other Meats
+  2308  Iced & Bottle Tea
+  2267  Other Cooking Sauces
+  2241  Frozen Fruit & Fruit Juice Concentrates
+  2059  Meat/Poultry/Other Animals  Prepared/Processed
+  2042  Other Frozen Desserts
+  2032  Processed Cereal Products
+  2017  Rice
+  2017  Syrups & Molasses
+  1947  Energy, Protein & Muscle Recovery Drinks
+  1911  Butter & Spread
+  1875  Vegetable and Lentil Mixes
+  1852  Granulated, Brown & Powdered Sugar
+  1827  Milk Additives
+  1788  Biscuits/Cookies
+  1772  Snacks
+  1722  Cream
+  1719  Chewing Gum & Mints
+  1712  Mexican Dinner Mixes
+  1688  Bacon, Sausages & Ribs
+  1663  Pasta Dinners
+  1607  Tea Bags
+  1546  Plant Based Milk
+  1541  Entrees, Sides & Small Meals
+  1485  Crusts & Dough
+  1412  Honey
+  1385  Flours & Corn Meal
+  1347  Canned Seafood
+  1327  Cooked & Prepared
+  1320  Deli Salads
+  1311  Puddings & Custards
+  1306  Fish & Seafood
+  1235  Chili & Stew
+  1227  Non Alcoholic Beverages  Ready to Drink
+  1206  Frozen Patties and Burgers
+  1155  Frozen Bread & Dough
+  1147  Other Grains & Seeds
+  1146  Alcohol
+  1139  Bread & Muffin Mixes
+  1081  Prepared Subs & Sandwiches
+  1034  Canned Tuna
+  1015  All Noodles
+  1007  Frozen Breakfast Sandwiches, Biscuits & Meals
+   986  Frozen Pancakes, Waffles, French Toast & Crepes
+   984  Confectionery Products
+   961  French Fries, Potatoes & Onion Rings
+   961  Sauces/Spreads/Dips/Condiments
+   932  Gelatin, Gels, Pectins & Desserts
+   932  Eggs & Egg Substitutes
+   911  Lunch Snacks & Combinations
+   908  Canned Condensed Soup
+   894  Meat/Poultry/Other Animals  Unprepared/Unprocessed
+   893  Prepared Soups
+   881  Baking Additives & Extracts
+   866  Frozen Prepared Sides
+   863  Gravy Mix
+   842  Baking/Cooking Mixes/Supplies
+   815  Poultry, Chicken & Turkey
+   803  Flavored Rice Dishes
+   803  Flavored Snack Crackers
+   798  Canned Meat
+   788  Liquid Water Enhancer
+   788  Sport Drinks
+   786  Savoury Bakery Products
+   720  Prepared Wraps and Burittos
+   720  Plant Based Water
+   645  Vegetables  Prepared/Processed
+   643  Yogurt/Yogurt Substitutes
+   627  Other Condiments
+   615  Sweet Bakery Products
+   603  Bread
+   586  Pizza Mixes & Other Dry Dinners
+   553  Sushi
+   546  Fish  Unprepared/Unprocessed
+   498  Dough Based Products / Meals
+   494  Shellfish Unprepared/Unprocessed
+   483  Coffee
+   483  Pastry Shells & Fillings
+   462  Non Alcoholic Beverages - Ready to Drink
+   449  Frozen Poultry, Chicken & Turkey
+   410  Vegetable Based Products / Meals
+   400  Desserts/Dessert Sauces/Toppings
+   382  Frozen Bacon, Sausages & Ribs
+   355  Sandwiches/Filled Rolls/Wraps
+   339  Stuffing
+   334  Biscuits/Cookies (Shelf Stable)
+   325  Vegetarian Frozen Meats
+   297  
+   297  Breakfast Sandwiches, Biscuits & Meals
+   264  Ready-Made Combination Meals
+   261  Vegetables - Prepared/Processed
+   253  Specialty Formula Supplements
+   241  Meat/Poultry/Other Animals Sausages  Prepared/Processed
+   239  Cheese/Cheese Substitutes
+   238  Meat/Poultry/Other Animals - Prepared/Processed
+   231  Frozen Sausages, Hotdogs & Brats
+   227  Pasta/Noodles
+   218  Fruit  Prepared/Processed
+   190  Other Frozen Meats
+   183  Grains/Flour
+   170  Meal Replacement Supplements
+   168  Pancakes, Waffles, French Toast & Crepes
+   165  Cream/Cream Substitutes
+   154  Non Alcoholic Beverages  Not Ready to Drink
+   153  Herbs/Spices/Extracts
+   148  Grain Based Products / Meals
+   119  Baby/Infant  Foods/Beverages
+   117  Prepared/Preserved Foods Variety Packs
+   112  Cereals Products - Ready to Eat (Shelf Stable)
+   107  Cereal/Muesli Bars
+   104  Chips/Crisps/Snack Mixes - Natural/Extruded (Shelf Stable)
+   104  Frozen Fish/Seafood
+   102  Oils Edible
+    96  Pickles/Relishes/Chutneys/Olives
+    85  Confectionery
+    78  Breakfast Drinks
+    76  Fruit - Prepared/Processed (Shelf Stable)
+    72  Nuts/Seeds  Prepared/Processed
+    72  Weight Control
+    69  Non Alcoholic Beverages - Not Ready to Drink
+    69  Milk/Milk Substitutes
+    65  Spreads
+    62  Fruit - Prepared/Processed
+    61  Canned Fish and Meat
+    59  Butter/Butter Substitutes
+    58  Coffee/Tea/Substitutes
+    56  Health Care
+    51  Bread/Bakery Products Variety Packs
+    50  Vegetable Based Products / Meals - Not Ready to Eat (Frozen)
+    50  Sweet Spreads
+    50  Prepared Meals
+    42  Fish  Prepared/Processed
+    40  Cakes - Sweet (Frozen)
+    38  Pies/Pastries - Sweet (Shelf Stable)
+    38  Seafood Miscellaneous
+    38  Sauces
+    37  Drinks Flavoured - Ready to Drink
+    34  Seasonings/Preservatives/Extracts Variety Packs
+    34  Green Supplements
+    34  Dairy Foods/Yoghurts
+    32  Breakfast Cereals - Hot And Cold
+    31  Snack Foods - Other
+    29  Nuts/Seeds - Prepared/Processed
+    27  Cheese - Speciality
+    26  Fruit/Nuts/Seeds Combination
+    26  Meat/Poultry/Other Animals Sausages - Prepared/Processed
+    26  Baking Needs
+    25  Sugars/Sugar Substitute Products
+    25  Drinks - Juices, Drinks and Cordials
+    24  Coffee/Coffee Substitutes
+    23  Alcoholic Beverages
+    23  Eggs/Eggs Substitutes
+    23  Herbal Supplements
+    22  Digestive & Fiber Supplements
+    21  Dairy/Egg Based Products / Meals
+    21  Tea and Infusions/Tisanes
+    21  Sausages/Smallgoods
+    20  Ice Cream/Ice Novelties (Shelf Stable)
+    17  Frozen Meals
+    17  Frozen Chicken - Processed
+    16  Bread - Incl. Buns And Rolls
+    15  Baking/Cooking Supplies (Shelf Stable)
+    15  Sugar And Flour
+    15  Snack Foods - Chips
+    15  Ice-Cream Take Home
+    13  Fish - Prepared/Processed
+    13  Bacon
+    12  Vegetables - Prepared/Processed (Shelf Stable)
+    12  Biscuits Cracker
+    12  Frozen Meat
+    11  Pies/Pastries/Pizzas/Quiches - Savoury (Frozen)
+    11  Children's Nutritional Supplements
+    11  Dips/Hummus/Pate
+    11  Canned/Dried Veges
+    11  Milk/Cream - Shelf Stable
+    11  Cheese - Block
+    10  Food/Beverage/Tobacco Variety Packs
+    10  Fats Edible
+    10  Vitamins
+    10  Biscuits Chocolate
+    10  Drinks - Soft Drinks
+    10  Frozen Fruit
+    10  Salad Dressings
+    10  Vegetarian
+     9  Nuts/Seeds - Prepared/Processed (Shelf Stable)
+     9  Smoked fish
+     9  Herbs And Spices
+     9  Health Supplements and Vitamins
+     8  Cereals Products - Not Ready to Eat (Shelf Stable)
+     8  Wrapped Snacks - Muesli Bars
+     8  Snack Foods - Cereal Snacks
+     8  Cakes and Slices
+     7  Baking
+     7  Meat/Poultry/Other Animals - Unprepared/Unprocessed
+     7  Frozen Foods
+     7  Taco Shells
+     7  Sauces- Cooking
+     7  Desserts & Custard
+     7  Salads
+     7  Salami / Cured Meat
+     7  Pickles, Relishes and Vinegar
+     7  Snack Foods - Nuts
+     6  Fatty Acid Supplements
+     6  Wrapped Snacks - Nut Bars
+     6  Fresh Meat
+     6  Pastries/Pies/Pizzas
+     5  Popcorn (Shelf Stable)
+     5  Dough Based Products / Meals - Not Ready to Eat - Savoury (Shelf Stable)
+     5  Baking/Cooking Mixes (Shelf Stable)
+     5  Shellfish Prepared/Processed
+     5  Vegetables  Unprepared/Unprocessed (Frozen)
+     5  Includes products from animals of the species Meleagris gallopavo that have been subjected to one or more further manufacturing processes such as being cooked, dried, cured, ground, or reformed.
+     5  Aquatic Invertebrates/Fish/Shellfish/Seafood Combination
+     5  Fruits  Unprepared/Unprocessed (Frozen)
+     5  Biscuits Plain/Sweet
+     5  Cooking Oils and Fats
+     5  Frozen Potato
+     5  Puddings and desserts
+     5  Sports and Weight Management
+     4  Egg Based Products / Meals - Not Ready to Eat (Frozen)
+     4  Soups - Prepared (Shelf Stable)
+     4  Includes any products that can be described/observed as a frozen substance, which can be heated and combined with other ingredients, such as pasta, rice and chicken, to produce a specific recipe, such as Bolognese, Carbonara, Chicken Korma or Thai Curry.
+     4  Yogurt/Yogurt Substitutes (Perishable)
+     4  Vegetables  Unprepared/Unprocessed (Shelf Stable)
+     4  Beer
+     4  Includes products from mature animals of the genus Bos that have been subjected to one or more further manufacturing processes such as being cooked, dried, cured, ground, or reformed.
+     4  Milk/Cream
+     4  Eggs
+     4  Fresh Chicken - Processed
+     4  Ham/Cold Meats
+     4  Drinks - Powdered
+     4  Frozen Pies/Savouries
+     3  Baking/Cooking Mixes (Perishable)
+     3  Includes any products that can be described/observed as frozen food made from the curd of milk, separated from the whey, sometimes fermented, and usually pressed, cooked, smoked, matured, or heated and mixed with artificial ingredients, such as emulsifiers, colourings and flavourings. These products must be frozen to extend their consumable life. These products include natural, processed cheese, cheese with added ingredients, such as herbs and nuts, in blocks, rolls, slices, grated, cubes, spreadable and portions.
+     3  Fruits  Unprepared/Unprocessed (Shelf Stable)
+     3  Baking Accessories
+     3  Vegetables
+     3  Wrapped Snacks - Cereal
+     3  Pasta
+     3  Rice & Grains
+     3  Frozen Chicken - Portions
+     3  Frozen Desserts
+     3  Fruit
+     2  Fish Substitutes
+     2  Vinegars/Cooking Wines
+     2  Pork Sausages - Prepared/Processed
+     2  Dressings/Dips (Shelf Stable)
+     2  Berries/Small Fruit
+     2  Fruits/Vegetables/Nuts/Seeds Variety Packs
+     2  Oral Hygiene Products
+     2  Miscellanious
+     2  Fruits, Vegetables & Produce
+     2  Dips - Shelf Stable
+     2  Snack Foods - Corn Chips
+     2  Antipasto
+     2  Pasta - Instant Meals
+     2  Ready To Drink
+     2  Deli and Chilled Foods
+     2  Ice-Cream/Ice-Block Multi Pack
+     2  Drinks - Energy Drinks
+     2  Frozen Snack
+     2  Coffee - Instant, Roast and Ground
+     2  Tea - Bags, Loose Leaf, Speciality
+     1  Vegetables - Unprepared/Unprocessed (Frozen)
+     1  Vegetables - Unprepared/Unprocessed (Shelf Stable)
+     1  Grain Based Products / Meals - Not Ready to Eat - Savoury (Shelf Stable)
+     1  Flour - Cereal/Pulse (Shelf Stable)
+     1  Cakes - Sweet (Shelf Stable)
+     1  Dough Based Products / Meals - Not Ready to Eat - Savoury (Frozen)
+     1  Meat Substitutes
+     1  Packaged Meals & Sides
+     1  Baking/Cooking Mixes/Supplies Variety Packs
+     1  Includes any products that can be described/observed as a food made from ground turkey meat, which may be prepared using a specific, regionally based process. The ground meat is mixed with other ingredients such as animal fat, salt, spices, herbs, vegetables or fruit and then typically packed in a casing, which may be link shaped or form a rope or ring, or sold without a casing such as bologna and some frankfurters. Some sausages are cooked during processing and may be preserved by curing, drying in cool air, or smoking.
+     1  Includes all products which can be described/observed as a healthy food alternative to meat vegetable and egg proteins. These products are non animal based and an imitation of meat products, meant to simulate the taste and mouthfeel of real meat but are normally made from a combination of non animal based ingredients. Includes products such as soya, fungus, beans, lentils, peas and chickpeas based products. These products must be frozen to extend their consumable life.
+     1  Pork - Prepared/Processed
+     1  Turkey - Unprepared/Unprocessed
+     1  Peppers
+     1  Nuts/Seeds  Unprepared/Unprocessed (Shelf Stable)
+     1  Sauces - Cooking (Shelf Stable)
+     1  Protein Drinks
+     1  Vitamins/Minerals/Nutritional Supplements
+     1  Nut Butters
+     1  Breakfast Foods
+     1  Media
+     1  Includes any products that can be described/observed as a savoury dough-based not ready to eat, prepared/processed product, such as Pasta, Gnocchi, Noodles or Batter, with other ingredients, such as meat, dairy, eggs, fish, vegetables and/or seasoning. An optional seasoning/flavour packet may be present. These ingredients form a valuable part of the product, such as the meat/tomato sauce in Spaghetti Bolognaise, or cheese sauce in Macaroni and Cheese. They may or may not contain a sauce. These products are not ready to eat and require cooking prior to consumption. These products may have a main component which is considered a meal without any additional components. These products must be fro
+     1  Beef - Prepared/Processed
+     1  Fruits - Unprepared/Unprocessed (Frozen)
+     1  Includes products from mature animals of the genus Bos that have been subjected to one or more further manufacturing processes such as being cooked, dried, cured, ground, or reformed. Specifically excludes Meat/Poultry Sausages - Prepared/Processed. Excludes Beef - Unprepared/Unprocessed.
+     1  Chickpeas
+     1  Gardening
+     1  Amino Acid Supplements
+     1  Processed Cheese & Cheese Novelties
+     1  Minerals
+     1  Children's Natural Remedies
+     1  Antioxidant Supplements
+     1  Pork - Unprepared/Unprocessed
+     1  Snack Foods - Dried Fruit
+     1  Margarine/Butter
+     1  Biscuits Kids
+     1  Snack Foods - Multi Packs
+     1  Potato - Instant Meals
+     1  Fresh Meat, Poultry and Seafood
+     1  Wrapped Snacks - Fruit Bars
+     1  Ice-Cream/Block Single
+     1  S/O Fresh Fish Fillets/Steaks
+     1  Fresh Chicken - Whole
+     1  Pastry
+     1  Tofu
+     1  Fresh Chicken - Portions
+     1  Mussels
+     1  Cakes/Slices/Biscuits
+     1  Fresh Pasta
+     1  Noodles
+     1  Fresh Fruit and Vegetables
+     1  Infant Formula

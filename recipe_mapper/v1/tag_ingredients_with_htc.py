@@ -87,19 +87,20 @@ def main() -> int:
             # 'salad' into Vegetables; "1 tbsp saffron, soaked in milk" leaks
             # 'milk' into Dairy). Form/processing/ptype are facet-extracted
             # separately by match_recipes_unified.py against per-HTC vocabs.
-            h = encode(category="", description=item, extra="")
+            h = encode(category="", description=item, extra="", food_name=item)
             source = h.source
             confidence = h.confidence
             group = h.group
             if group == "0":
                 fb = aggressive_token_fallback(item)
                 if fb:
-                    h = encode(category="", description=item + " " + fb, extra="")
+                    h = encode(category="", description=item + " " + fb, extra="", food_name=item)
                     if h.group == "0":
                         # force the group via fallback by re-encoding with fallback hint
                         # (extra route: prepend a synthetic category-like token)
                         from htc.encoder import (FORM_RULES, FAMILY_RULES, PROC_RULES,
-                                                 PTYPE_RULES, crockford_check)
+                                                 PTYPE_RULES, HTC, code_from_parts)
+                        from htc.food_slots import default_registry
                         combined = f"{item} {sample_disp}"
                         form = _match_first(FORM_RULES, combined)
                         family = "0"
@@ -109,11 +110,17 @@ def main() -> int:
                                 break
                         proc = _match_first(PROC_RULES, combined)
                         ptype = _match_first(PTYPE_RULES, combined)
-                        code_7 = f"{fb}{family}00{form}{proc}{ptype}"
-                        check = crockford_check(code_7)
-                        from htc.encoder import HTC
-                        h = HTC(code=code_7 + check, group=fb, family=family, food="00",
-                                form=form, processing=proc, ptype=ptype, check=check,
+                        registry = default_registry()
+                        entry = registry.lookup(fb, family, item) or registry.lookup_any(item)
+                        if entry:
+                            fb = entry.htc_group
+                            family = entry.htc_family
+                            food = entry.food_slot
+                        else:
+                            food = "00"
+                        code = code_from_parts(fb, family, food)
+                        h = HTC(code=code, group=fb, family=family, food=food,
+                                form="0", processing="0", ptype="0", check=code[-1],
                                 confidence=0.5, source="token_fallback")
                     fallback_used += 1
                     source = "token_fallback"
@@ -130,7 +137,7 @@ def main() -> int:
 
             w.writerow([
                 item, row.get("recipe_count", ""), row.get("grams_total", ""),
-                h.code, h.group, h.family, h.food,
+                "~" + h.code, h.group, h.family, h.food,
                 h.form, h.processing, h.ptype, h.check,
                 f"{confidence:.2f}", source,
             ])

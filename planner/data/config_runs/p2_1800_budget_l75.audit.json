@@ -1,0 +1,414 @@
+{
+  "plan": "planner/data/config_runs/p2_1800_budget_l75.json",
+  "config": {
+    "mode": "budget",
+    "weeks": 12,
+    "people": 2,
+    "cal": 1800.0,
+    "protein_pct": 15.0,
+    "leftover_pct": 0.75
+  },
+  "totals": {
+    "total_cost": 563.01,
+    "total_whole_cart_cost": 563.01,
+    "avg_weekly_cost": 46.92,
+    "avg_whole_cart_cost": 46.92,
+    "avg_veg_compliance": 0.252,
+    "avg_protein_pct": 11.6,
+    "total_unique_recipes": 200,
+    "repeat_picks": 49
+  },
+  "derived": {
+    "per_person_day": 3.35,
+    "purchase_rows": 318,
+    "blank_selected_sku_rows": 0,
+    "mixed_package_rows": 6,
+    "known_bad_sku_hits": 0,
+    "package_flag_rows": 5
+  },
+  "bad_hits": [],
+  "blank_rows": [],
+  "package_flags": [
+    {
+      "week": 5,
+      "concept_key": "Produce > Vegetables > Baby Carrots|6104000Y",
+      "name": "Carrots",
+      "grams": 68.0,
+      "cents": 22,
+      "display": "1 lb",
+      "flags": [
+        "package_grams_under_declared_size"
+      ]
+    },
+    {
+      "week": 7,
+      "concept_key": "Frozen > Waffles|8004000*",
+      "name": "Kroger\u00ae Homestyle Waffles",
+      "grams": 344.7,
+      "cents": 188,
+      "display": "10 ct / 12.3 oz",
+      "flags": [
+        "package_grams_under_declared_size"
+      ]
+    },
+    {
+      "week": 10,
+      "concept_key": "Dairy > Milk > Powdered Milk|1001400Q",
+      "name": "Great Value Instant Nonfat Dry Milk, 3.2 oz Pouches, 3 Count, Makes 3 Quarts Total, 12 Servings per Container",
+      "grams": 272.2,
+      "cents": 343,
+      "display": "9.6 oz (272g)",
+      "flags": [
+        "package_grams_under_declared_size"
+      ]
+    },
+    {
+      "week": 11,
+      "concept_key": "Produce > Vegetables > Peppers|6608100S",
+      "name": "Fresh Green Serrano Peppers",
+      "grams": 28.1,
+      "cents": 25,
+      "display": "1 lb",
+      "flags": [
+        "package_grams_under_declared_size"
+      ]
+    },
+    {
+      "week": 12,
+      "concept_key": "Produce > Vegetables > Jalapenos|6622100V",
+      "name": "Fresh Jalapeno Peppers",
+      "grams": 68.0,
+      "cents": 27,
+      "display": "1 lb",
+      "flags": [
+        "package_grams_under_declared_size"
+      ]
+    }
+  ],
+  "cheapest_cpg": [
+    {
+      "week": 1,
+      "concept_key": "Bakery > Rolls > Dinner Rolls|G01Q000=",
+      "name": "Great Value Brown and Serve White Dinner Rolls, 12 oz, 12 Count",
+      "grams": 4082.3,
+      "cents": 196,
+      "cpg": 0.048
+    },
+    {
+      "week": 1,
+      "concept_key": "Produce > Vegetables > Celery|6A080006",
+      "name": "Celery Sticks",
+      "grams": 453.6,
+      "cents": 33,
+      "cpg": 0.0728
+    },
+    {
+      "week": 2,
+      "concept_key": "Produce > Vegetables > Celery|6A080006",
+      "name": "Celery Sticks",
+      "grams": 453.6,
+      "cents": 33,
+      "cpg": 0.0728
+    },
+    {
+      "week": 3,
+      "concept_key": "Produce > Vegetables > Celery|6A080006",
+      "name": "Celery Sticks",
+      "grams": 453.6,
+      "cents": 33,
+      "cpg": 0.0728
+    },
+    {
+      "week": 5,
+      "concept_key": "Produce > Vegetables > Celery|6A080006",
+      "name": "Celery Sticks",
+      "grams": 453.6,
+      "cents": 33,
+      "cpg": 0.0728
+    },
+    {
+      "week": 10,
+      "concept_key": "Produce > Vegetables > Celery|6A080006",
+      "name": "Celery Sticks",
+      "grams": 453.6,
+      "cents": 33,
+      "cpg": 0.0728
+    },
+    {
+      "week": 1,
+      "concept_key": "Dairy > Milk|1001600U",
+      "name": "Great Value Milk 1% Low-fat, Half Gallon, 64 fl oz",
+      "grams": 1892.7,
+      "cents": 172,
+      "cpg": 0.0909
+    },
+    {
+      "week": 4,
+      "concept_key": "Dairy > Milk|1001600U",
+      "name": "Great Value Milk 1% Low-fat, Half Gallon, 64 fl oz",
+      "grams": 1892.7,
+      "cents": 172,
+      "cpg": 0.0909
+    },
+    {
+      "week": 11,
+      "concept_key": "Dairy > Milk|1001600U",
+      "name": "Great Value Milk 1% Low-fat, Half Gallon, 64 fl oz",
+      "grams": 1892.7,
+      "cents": 172,
+      "cpg": 0.0909
+    },
+    {
+      "week": 12,
+      "concept_key": "Dairy > Milk|1001600U",
+      "name": "Great Value Milk 1% Low-fat, Half Gallon, 64 fl oz",
+      "grams": 1892.7,
+      "cents": 172,
+      "cpg": 0.0909
+    },
+    {
+      "week": 1,
+      "concept_key": "Pantry > Spices & Seasonings > Salt|E001000X",
+      "name": "Kroger\u00ae Salt",
+      "grams": 739.4,
+      "cents": 79,
+      "cpg": 0.1068
+    },
+    {
+      "week": 8,
+      "concept_key": "Pantry > Canned Vegetables > Green Beans|63010001",
+      "name": "Great Value Cut Green Beans, Gluten-Free, 28 oz Can",
+      "grams": 793.8,
+      "cents": 96,
+      "cpg": 0.1209
+    },
+    {
+      "week": 2,
+      "concept_key": "Pantry > Broth & Stock > Chicken Broth|J0066005",
+      "name": "Great Value Reduced Sodium Gluten-Free Chicken Broth, 32 oz Carton (Shelf-Stable)",
+      "grams": 975.9,
+      "cents": 127,
+      "cpg": 0.1301
+    },
+    {
+      "week": 6,
+      "concept_key": "Pantry > Broth & Stock > Chicken Broth|J0066005",
+      "name": "Great Value Reduced Sodium Gluten-Free Chicken Broth, 32 oz Carton (Shelf-Stable)",
+      "grams": 975.9,
+      "cents": 127,
+      "cpg": 0.1301
+    },
+    {
+      "week": 10,
+      "concept_key": "Pantry > Broth & Stock > Chicken Broth|J0066005",
+      "name": "Great Value Reduced Sodium Gluten-Free Chicken Broth, 32 oz Carton (Shelf-Stable)",
+      "grams": 975.9,
+      "cents": 127,
+      "cpg": 0.1301
+    }
+  ],
+  "highest_package_prices": [
+    {
+      "week": 8,
+      "concept_key": "Pantry > Oil|B02N6006",
+      "name": "Star Organic Canola Refined Oil, 750ml Bottle",
+      "grams": 709.8,
+      "cents": 797,
+      "cpg": 1.1229
+    },
+    {
+      "week": 3,
+      "concept_key": "Pantry > Oil > Olive Oil|B001600=",
+      "name": "Great Value Extra Virgin Olive Oil, 17 fl oz",
+      "grams": 502.7,
+      "cents": 597,
+      "cpg": 1.1876
+    },
+    {
+      "week": 9,
+      "concept_key": "Pantry > Oil > Olive Oil|B001600=",
+      "name": "Great Value Extra Virgin Olive Oil, 17 fl oz",
+      "grams": 502.7,
+      "cents": 597,
+      "cpg": 1.1876
+    },
+    {
+      "week": 6,
+      "concept_key": "Meat & Seafood > Ham|2401001F",
+      "name": "Oscar Mayer Chopped Ham Thin Sliced Lunchmeat",
+      "grams": 453.6,
+      "cents": 479,
+      "cpg": 1.056
+    },
+    {
+      "week": 4,
+      "concept_key": "Pantry > Baking Extracts > Vanilla Extract|E503000V",
+      "name": "Great Value Pure Vanilla Extract, 1 fl oz",
+      "grams": 29.6,
+      "cents": 414,
+      "cpg": 13.9865
+    },
+    {
+      "week": 12,
+      "concept_key": "Produce > Vegetables > Leeks|650Q000X",
+      "name": "Organic Leeks-Order by the Bunch (2-3 leeks per bunch)",
+      "grams": 453.6,
+      "cents": 399,
+      "cpg": 0.8796
+    },
+    {
+      "week": 1,
+      "concept_key": "Meat & Seafood > Bacon|2402840*",
+      "name": "Jimmy Dean Premium Bacon Hickory Smoked",
+      "grams": 340.2,
+      "cents": 399,
+      "cpg": 1.1728
+    },
+    {
+      "week": 9,
+      "concept_key": "Pantry > Spices & Seasonings > Black Pepper|E1040029",
+      "name": "Kroger\u00ae Pure Ground Black Pepper Shaker",
+      "grams": 113.4,
+      "cents": 399,
+      "cpg": 3.5185
+    },
+    {
+      "week": 10,
+      "concept_key": "Dairy > Cream > Whipping Cream|1309600N",
+      "name": "Kroger\u00ae Whipping Cream Pint",
+      "grams": 471.7,
+      "cents": 349,
+      "cpg": 0.7399
+    },
+    {
+      "week": 5,
+      "concept_key": "Meat & Seafood > Pork|2109000V",
+      "name": "Kroger\u00ae Mild Pork Sausage Roll",
+      "grams": 453.6,
+      "cents": 349,
+      "cpg": 0.7694
+    },
+    {
+      "week": 6,
+      "concept_key": "Pantry > Grain > Oats > Rolled Oats|80300002",
+      "name": "Simple Truth\u00ae Protein Classic Rolled Oats",
+      "grams": 453.6,
+      "cents": 349,
+      "cpg": 0.7694
+    },
+    {
+      "week": 7,
+      "concept_key": "Meat & Seafood > Pork|2109000V",
+      "name": "Kroger\u00ae Mild Pork Sausage Roll",
+      "grams": 453.6,
+      "cents": 349,
+      "cpg": 0.7694
+    },
+    {
+      "week": 8,
+      "concept_key": "Meat & Seafood > Pork|2109000V",
+      "name": "Kroger\u00ae Mild Pork Sausage Roll",
+      "grams": 453.6,
+      "cents": 349,
+      "cpg": 0.7694
+    },
+    {
+      "week": 7,
+      "concept_key": "Dairy > Cheese > Mozzarella|11020058",
+      "name": "Great Value Low-Moisture Part-Skim Mozzarella Shredded Cheese, 16 oz Bag",
+      "grams": 473.2,
+      "cents": 348,
+      "cpg": 0.7354
+    },
+    {
+      "week": 10,
+      "concept_key": "Dairy > Milk > Powdered Milk|1001400Q",
+      "name": "Great Value Instant Nonfat Dry Milk, 3.2 oz Pouches, 3 Count, Makes 3 Quarts Total, 12 Servings per Container",
+      "grams": 272.2,
+      "cents": 343,
+      "cpg": 1.2601
+    }
+  ],
+  "top_concepts": [
+    [
+      "Dairy > Eggs",
+      12
+    ],
+    [
+      "Pantry > Canned Vegetables > Tomatoes",
+      12
+    ],
+    [
+      "Produce > Vegetables > Onions",
+      12
+    ],
+    [
+      "Produce > Vegetables > Potatoes",
+      12
+    ],
+    [
+      "Pantry > Broth & Stock > Chicken Broth",
+      11
+    ],
+    [
+      "Dairy > Cheese",
+      9
+    ],
+    [
+      "Pantry > Beans > Lentils",
+      7
+    ],
+    [
+      "Pantry > Pasta > Spaghetti",
+      7
+    ],
+    [
+      "Dairy > Butter",
+      7
+    ],
+    [
+      "Frozen > Vegetables > Broccoli",
+      6
+    ],
+    [
+      "Pantry > Beans > Black Beans",
+      6
+    ],
+    [
+      "Pantry > Pasta",
+      6
+    ],
+    [
+      "Frozen > Vegetables > Peas",
+      5
+    ],
+    [
+      "Pantry > Sauces & Salsas > Tomato Sauce",
+      5
+    ],
+    [
+      "Pantry > Spices & Seasonings > Black Pepper",
+      5
+    ],
+    [
+      "Produce > Vegetables > Celery",
+      5
+    ],
+    [
+      "Dairy > Milk",
+      4
+    ],
+    [
+      "Pantry > Baking Mixes",
+      4
+    ],
+    [
+      "Pantry > Flour",
+      4
+    ],
+    [
+      "Frozen > Potatoes > Sweet Potatoes",
+      4
+    ]
+  ]
+}

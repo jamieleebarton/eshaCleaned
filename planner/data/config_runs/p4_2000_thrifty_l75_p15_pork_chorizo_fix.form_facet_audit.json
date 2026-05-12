@@ -1,0 +1,7 @@
+{
+  "plan": "planner/data/config_runs/p4_2000_thrifty_l75_p15_pork_chorizo_fix.json",
+  "recipes_selected": 251,
+  "lines_scanned": 2268,
+  "finding_count": 0,
+  "by_issue_type": {}
+}

@@ -1,0 +1,9 @@
+{
+  "plan": "planner/data/config_runs/p5_2400_high_protein_l75_proteinfix_p25.json",
+  "recipes_selected": 239,
+  "lines_scanned": 2707,
+  "finding_count": 2,
+  "by_issue_type": {
+    "bad_grams": 2
+  }
+}

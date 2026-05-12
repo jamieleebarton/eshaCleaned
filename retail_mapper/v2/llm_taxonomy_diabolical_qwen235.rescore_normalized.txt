@@ -1,0 +1,19 @@
+live=llm_taxonomy_diabolical_qwen235.live.jsonl  normalizer=on  core=7/17  exact=3/17
+====================================================================================================
+diabolical_gluten_free_chocolate_chip_cookies: core=PASS exact=PASS
+diabolical_organic_low_sodium_chicken_broth_claim_order: core=PASS exact=FAIL
+diabolical_whole_peeled_tomatoes_basil: core=FAIL exact=FAIL
+diabolical_honey_mustard_pretzel_pieces: core=PASS exact=PASS
+diabolical_everything_bagel_seasoning: core=FAIL exact=FAIL
+diabolical_gluten_free_almond_flour_tortillas: core=FAIL exact=FAIL
+diabolical_pineapple_coconut_water: core=PASS exact=FAIL
+diabolical_spinach_artichoke_dip_components: core=FAIL exact=FAIL
+diabolical_broccoli_cheddar_soup_not_cheese: core=FAIL exact=FAIL
+diabolical_pizza_crust_mix_not_pizza: core=PASS exact=FAIL
+diabolical_protein_parfait_not_cereal: core=FAIL exact=FAIL
+diabolical_chicken_burgers_not_cheese_or_vegetarian: core=FAIL exact=FAIL
+diabolical_vague_tuscan_meat_cheese_infer_sandwich: core=FAIL exact=FAIL
+diabolical_hard_aged_cheese_no_unproven_specific_guess: core=PASS exact=PASS
+diabolical_hatch_green_chile_asiago_cheese_crisps: core=FAIL exact=FAIL
+diabolical_sesame_garlic_chicken_meal_starter: core=FAIL exact=FAIL
+diabolical_chicken_apple_sausage_flatbread_breakfast_sandwich: core=PASS exact=FAIL

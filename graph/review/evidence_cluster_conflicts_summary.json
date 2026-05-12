@@ -1,0 +1,244 @@
+{
+  "conflict_clusters": 2940,
+  "conflicts": "/Users/jamiebarton/Desktop/esha_audit_bundle/graph/review/evidence_cluster_conflicts_from_graph.csv",
+  "flag_counts": {
+    "cluster_top_unassigned": 639,
+    "current_top_code_structural_reject": 653,
+    "no_dominant_vM_code": 234,
+    "same_ingredient_category_maps_to_many_codes": 1802
+  },
+  "graph_db": "/Users/jamiebarton/Desktop/esha_audit_bundle/graph/db/kuzu",
+  "ingredient_cluster_nodes": 7482,
+  "product_to_ingredient_cluster_edges": 110391,
+  "structural_reject_clusters": 653,
+  "structural_rejects": "/Users/jamiebarton/Desktop/esha_audit_bundle/graph/review/evidence_cluster_structural_rejects_from_graph.csv",
+  "top_structural_rejects": [
+    {
+      "audit_flags": "current_top_code_structural_reject|same_ingredient_category_maps_to_many_codes",
+      "current_reject_reason": "category_head_mismatch:popcorn_nuts_seeds:Salad",
+      "current_top_code": "34735",
+      "current_top_description": "Salad, fruit & walnut",
+      "dominant_category": "Popcorn, Peanuts, Seeds & Related Snacks",
+      "ingredient_signature": "walnut",
+      "n_products": 479
+    },
+    {
+      "audit_flags": "current_top_code_structural_reject|same_ingredient_category_maps_to_many_codes",
+      "current_reject_reason": "category_head_mismatch:vegetable_oils:Spread",
+      "current_top_code": "35289",
+      "current_top_description": "Spread, buttery, 79% vegetable oil",
+      "dominant_category": "Vegetable & Cooking Oils",
+      "ingredient_signature": "oil soybean",
+      "n_products": 294
+    },
+    {
+      "audit_flags": "current_top_code_structural_reject|same_ingredient_category_maps_to_many_codes",
+      "current_reject_reason": "candidate_extra_components_absent:cream",
+      "current_top_code": "49954",
+      "current_top_description": "Pie, ice cream, caramel apple, 9\" round",
+      "dominant_category": "Wholesome Snacks",
+      "ingredient_signature": "apple vitamin water",
+      "n_products": 137
+    },
+    {
+      "audit_flags": "current_top_code_structural_reject|same_ingredient_category_maps_to_many_codes",
+      "current_reject_reason": "milk_state_mismatch:evaporated_without_product_evidence",
+      "current_top_code": "134",
+      "current_top_description": "Milk, evaporated, with added vitamin A, canned",
+      "dominant_category": "Milk",
+      "ingredient_signature": "grade milk vitamin",
+      "n_products": 126
+    },
+    {
+      "audit_flags": "current_top_code_structural_reject|same_ingredient_category_maps_to_many_codes",
+      "current_reject_reason": "canned_vegetable_component_mismatch:pumpkin",
+      "current_top_code": "63211",
+      "current_top_description": "Peas, puree, frozen, bulk, SD",
+      "dominant_category": "Canned Vegetables",
+      "ingredient_signature": "pumpkin",
+      "n_products": 120
+    },
+    {
+      "audit_flags": "current_top_code_structural_reject|same_ingredient_category_maps_to_many_codes",
+      "current_reject_reason": "candidate_extra_components_absent:cream",
+      "current_top_code": "49954",
+      "current_top_description": "Pie, ice cream, caramel apple, 9\" round",
+      "dominant_category": "Wholesome Snacks",
+      "ingredient_signature": "apple maintain vitamin water",
+      "n_products": 111
+    },
+    {
+      "audit_flags": "current_top_code_structural_reject|same_ingredient_category_maps_to_many_codes",
+      "current_reject_reason": "head_without_product_form_support:salsa",
+      "current_top_code": "53488",
+      "current_top_description": "Salsa, black bean & corn, medium",
+      "dominant_category": "Pickles, Olives, Peppers & Relishes",
+      "ingredient_signature": "ferrou gluconate olif ripe salt stabilize water",
+      "n_products": 110
+    },
+    {
+      "audit_flags": "current_top_code_structural_reject|same_ingredient_category_maps_to_many_codes",
+      "current_reject_reason": "dried_fruit_cluster_to_non_dried_candidate",
+      "current_top_code": "49560",
+      "current_top_description": "Chips, taco",
+      "dominant_category": "Wholesome Snacks",
+      "ingredient_signature": "banana coconut oil sugar",
+      "n_products": 92
+    },
+    {
+      "audit_flags": "current_top_code_structural_reject|same_ingredient_category_maps_to_many_codes",
+      "current_reject_reason": "category_head_mismatch:popcorn_nuts_seeds:Salad",
+      "current_top_code": "51901",
+      "current_top_description": "Salad, Health Nut",
+      "dominant_category": "Popcorn, Peanuts, Seeds & Related Snacks",
+      "ingredient_signature": "nut pine",
+      "n_products": 91
+    },
+    {
+      "audit_flags": "current_top_code_structural_reject|same_ingredient_category_maps_to_many_codes",
+      "current_reject_reason": "narrow_head_without_title_support:Burrito",
+      "current_top_code": "83095",
+      "current_top_description": "Burrito, black bean, with vegetables, frozen",
+      "dominant_category": "Vegetable and Lentil Mixes",
+      "ingredient_signature": "bean black",
+      "n_products": 89
+    },
+    {
+      "audit_flags": "current_top_code_structural_reject|same_ingredient_category_maps_to_many_codes",
+      "current_reject_reason": "head_without_product_form_support:soup",
+      "current_top_code": "7161",
+      "current_top_description": "Soup, lentil, country, hearty, in a cup, dry",
+      "dominant_category": "Vegetable and Lentil Mixes",
+      "ingredient_signature": "lentil",
+      "n_products": 79
+    },
+    {
+      "audit_flags": "current_top_code_structural_reject|same_ingredient_category_maps_to_many_codes",
+      "current_reject_reason": "head_without_product_form_support:salsa",
+      "current_top_code": "53488",
+      "current_top_description": "Salsa, black bean & corn, medium",
+      "dominant_category": "Pickles, Olives, Peppers & Relishes",
+      "ingredient_signature": "ferrou gluconate olif ripe salt sea stabilize water",
+      "n_products": 76
+    },
+    {
+      "audit_flags": "current_top_code_structural_reject",
+      "current_reject_reason": "candidate_extra_components_absent:rice",
+      "current_top_code": "91578",
+      "current_top_description": "Flour, rice, pure",
+      "dominant_category": "Flours & Corn Meal",
+      "ingredient_signature": "cornstarch",
+      "n_products": 72
+    },
+    {
+      "audit_flags": "current_top_code_structural_reject|same_ingredient_category_maps_to_many_codes",
+      "current_reject_reason": "dried_fruit_cluster_to_non_dried_candidate",
+      "current_top_code": "16980",
+      "current_top_description": "Biscuit, large",
+      "dominant_category": "Wholesome Snacks",
+      "ingredient_signature": "potassium prune sorbate",
+      "n_products": 69
+    },
+    {
+      "audit_flags": "current_top_code_structural_reject|same_ingredient_category_maps_to_many_codes",
+      "current_reject_reason": "head_without_product_form_support:salsa",
+      "current_top_code": "53488",
+      "current_top_description": "Salsa, black bean & corn, medium",
+      "dominant_category": "Pickles, Olives, Peppers & Relishes",
+      "ingredient_signature": "ferrou gluconate olif salt sea stabilize water",
+      "n_products": 68
+    },
+    {
+      "audit_flags": "current_top_code_structural_reject",
+      "current_reject_reason": "category_head_mismatch:milk_additives:Cookie",
+      "current_top_code": "47065",
+      "current_top_description": "Cookie, sugar, sugar & sodium free, medium, 1 5/8\"",
+      "dominant_category": "Milk Additives",
+      "ingredient_signature": "cane carrageenan caseinate derivative diglyceride dipotassium lactylate les milk mono oil palm phosphate salt sodium stearoyl sugar water",
+      "n_products": 57
+    },
+    {
+      "audit_flags": "current_top_code_structural_reject|same_ingredient_category_maps_to_many_codes",
+      "current_reject_reason": "category_head_mismatch:popcorn_nuts_seeds:Topping",
+      "current_top_code": "49721",
+      "current_top_description": "Topping, dessert, pistachios",
+      "dominant_category": "Popcorn, Peanuts, Seeds & Related Snacks",
+      "ingredient_signature": "pistachio",
+      "n_products": 56
+    },
+    {
+      "audit_flags": "current_top_code_structural_reject",
+      "current_reject_reason": "category_head_mismatch:salad_dressing:Marinade",
+      "current_top_code": "44990",
+      "current_top_description": "Marinade, Italian",
+      "dominant_category": "Salad Dressing & Mayonnaise",
+      "ingredient_signature": "annatto bell calcium canola caramel disodium distilled edta extract garlic gum juice lemon les maltodextrin oil onion pepper red salt soybean spice sugar vegetable vinegar water xanthan yeast",
+      "n_products": 52
+    },
+    {
+      "audit_flags": "current_top_code_structural_reject",
+      "current_reject_reason": "head_without_product_form_support:salsa",
+      "current_top_code": "53488",
+      "current_top_description": "Salsa, black bean & corn, medium",
+      "dominant_category": "Pickles, Olives, Peppers & Relishes",
+      "ingredient_signature": "ferrou gluconate olif ripe salt water",
+      "n_products": 49
+    },
+    {
+      "audit_flags": "current_top_code_structural_reject|same_ingredient_category_maps_to_many_codes",
+      "current_reject_reason": "dried_fruit_cluster_to_non_dried_candidate",
+      "current_top_code": "73000",
+      "current_top_description": "Ice Cream Bar, creamy banana",
+      "dominant_category": "Wholesome Snacks",
+      "ingredient_signature": "banana",
+      "n_products": 47
+    },
+    {
+      "audit_flags": "current_top_code_structural_reject|same_ingredient_category_maps_to_many_codes",
+      "current_reject_reason": "head_without_product_form_support:salsa",
+      "current_top_code": "53488",
+      "current_top_description": "Salsa, black bean & corn, medium",
+      "dominant_category": "Pickles, Olives, Peppers & Relishes",
+      "ingredient_signature": "ferrou gluconate olif salt stabilize water",
+      "n_products": 43
+    },
+    {
+      "audit_flags": "current_top_code_structural_reject|same_ingredient_category_maps_to_many_codes",
+      "current_reject_reason": "dried_fruit_cluster_to_non_dried_candidate",
+      "current_top_code": "72700",
+      "current_top_description": "Ice Cream, mango",
+      "dominant_category": "Wholesome Snacks",
+      "ingredient_signature": "dried mango",
+      "n_products": 43
+    },
+    {
+      "audit_flags": "current_top_code_structural_reject|same_ingredient_category_maps_to_many_codes",
+      "current_reject_reason": "candidate_extra_components_absent:cream",
+      "current_top_code": "49954",
+      "current_top_description": "Pie, ice cream, caramel apple, 9\" round",
+      "dominant_category": "Wholesome Snacks",
+      "ingredient_signature": "apple sugar vitamin water",
+      "n_products": 43
+    },
+    {
+      "audit_flags": "current_top_code_structural_reject|same_ingredient_category_maps_to_many_codes|no_dominant_vM_code",
+      "current_reject_reason": "category_head_mismatch:dry_pasta:Salad",
+      "current_top_code": "52036",
+      "current_top_description": "Salad, pasta, Italian, FS",
+      "dominant_category": "Pasta by Shape & Type",
+      "ingredient_signature": "durum ferrou folic iron lactate niacin riboflavin semolina thiamine wheat",
+      "n_products": 42
+    },
+    {
+      "audit_flags": "current_top_code_structural_reject|same_ingredient_category_maps_to_many_codes",
+      "current_reject_reason": "head_without_product_form_support:pudding",
+      "current_top_code": "5366",
+      "current_top_description": "Pudding, corn, prepared from recipe",
+      "dominant_category": "Cereal",
+      "ingredient_signature": "ascorbate b12 barley corn folic iron malted milled mineral niacinamide riboflavin salt sodium sugar syrup thiamine vitamin",
+      "n_products": 42
+    }
+  ],
+  "total_esha_nodes": 39689,
+  "total_product_nodes": 462646
+}

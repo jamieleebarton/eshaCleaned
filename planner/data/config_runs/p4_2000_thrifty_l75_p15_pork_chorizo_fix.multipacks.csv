@@ -1,0 +1,44 @@
+week,status,concept_key,upc,name,display,grams,cents,expected_g,expected_source,ratio
+1,ok,Bakery > Biscuits|G03F600Y,078742128696,"Great Value Flaky Jumbo Buttermilk Biscuits, 16 oz, 8 Count",16 oz,453.6,174,453.592,display_total_size,1.0
+1,review_no_expected_weight,Dairy > Eggs|5005000P,0001111060902,Kroger® Medium Grade A White Eggs,12 ct,626.0,159,,count_without_parseable_weight,
+1,review_no_expected_weight,Produce > Vegetables > Bell Peppers|66041007,0000000004065,Fresh Large Green Bell Pepper,1 ct,453.6,89,,count_without_parseable_weight,
+1,review_no_expected_weight,Produce > Vegetables > Garlic|6504000U,0000000004608,Garlic,1 ct,453.6,79,,count_without_parseable_weight,
+2,review_no_expected_weight,Dairy > Eggs|5005000P,0001111060902,Kroger® Medium Grade A White Eggs,12 ct,626.0,159,,count_without_parseable_weight,
+2,ok,Meat & Seafood > Hot Dogs & Sausages > Hot Dogs|2416000E,054500193274,"Ball Park Classic Bun Size Hot Dogs, 15 oz, 8 Count",425.242 g 0.938 lb 15 oz,425.5,284,425.469,display_total_size,1.0
+2,ok,Pantry > Applesauce|J005600K,0001111089895,Kroger® Classic Apple Applesauce Cups,6 ct / 4 oz,675.9,199,680.388,display_count_x_small_unit,0.993
+2,review_no_expected_weight,Produce > Vegetables > Parsley|601M0004,0000000004899,Parsley,1 ct,453.6,119,,count_without_parseable_weight,
+3,ok,Bakery > Bagels|G00G000T,0001111000923,Kroger® 100% Whole Wheat Bagels,6 ct / 20 oz,567.0,249,566.99,display_count_with_total_net_weight,1.0
+3,review_no_expected_weight,Dairy > Eggs|5005000P,0001111060902,Kroger® Medium Grade A White Eggs,12 ct,626.0,159,,count_without_parseable_weight,
+3,review_no_expected_weight,Produce > Vegetables > Cilantro|6013000M,0000000004889,Cilantro,1 ct,453.6,89,,count_without_parseable_weight,
+4,review_no_expected_weight,Dairy > Eggs|5005000P,0001111060902,Kroger® Medium Grade A White Eggs,12 ct,626.0,159,,count_without_parseable_weight,
+4,ok,Meat & Seafood > Hot Dogs & Sausages > Hot Dogs|2416000E,054500193274,"Ball Park Classic Bun Size Hot Dogs, 15 oz, 8 Count",425.242 g 0.938 lb 15 oz,425.5,284,425.469,display_total_size,1.0
+4,review_no_expected_weight,Produce > Vegetables > Bell Peppers|66041007,0000000004065,Fresh Large Green Bell Pepper,1 ct,453.6,89,,count_without_parseable_weight,
+5,review_no_expected_weight,Dairy > Eggs|5005000P,0001111060902,Kroger® Medium Grade A White Eggs,12 ct,626.0,159,,count_without_parseable_weight,
+5,review_no_expected_weight,Produce > Fruit > Oranges|720H000V,0000000003110,Cara Cara Navel Oranges,1 ct,453.6,125,,count_without_parseable_weight,
+5,review_no_expected_weight,Produce > Vegetables > Red Onions|652C000V,0000000003244,Red Onions,1 ct,453.6,149,,count_without_parseable_weight,
+6,review_no_expected_weight,Dairy > Eggs|5005000P,0001111060902,Kroger® Medium Grade A White Eggs,12 ct,626.0,159,,count_without_parseable_weight,
+6,review_no_expected_weight,Produce > Vegetables > Bell Peppers|66041007,0000000004065,Fresh Large Green Bell Pepper,1 ct,453.6,89,,count_without_parseable_weight,
+6,review_no_expected_weight,Produce > Vegetables > Romaine Lettuce|600D000*,0000000004640,Romaine Lettuce,1 ct,453.6,239,,count_without_parseable_weight,
+7,review_no_expected_weight,Dairy > Eggs|5005000P,0001111060902,Kroger® Medium Grade A White Eggs,12 ct,626.0,159,,count_without_parseable_weight,
+7,ok,Pantry > Baking Extracts > Yeast|E500400N,078742365725,"Great Value Active Dry Yeast, 0.25 oz, 3 Count","0.25 oz, 3 Count",21.3,114,21.262,display_small_unit_x_count,1.002
+7,review_no_expected_weight,Produce > Vegetables > Bell Peppers|66041007,0000000004065,Fresh Large Green Bell Pepper,1 ct,453.6,89,,count_without_parseable_weight,
+8,ok,Bakery > Buns > Hamburger Buns|G005000*,078742223759,"Great Value Hamburger Buns, 11 oz, 8 Count",11 oz,311.8,148,311.844,display_total_size,1.0
+8,review_no_expected_weight,Dairy > Eggs|5005000P,0001111060902,Kroger® Medium Grade A White Eggs,12 ct,626.0,159,,count_without_parseable_weight,
+8,review_no_expected_weight,Produce > Vegetables > Bell Peppers|66041007,0000000004065,Fresh Large Green Bell Pepper,1 ct,453.6,89,,count_without_parseable_weight,
+9,ok,Bakery > Tortillas|G020000M,078742294759,"Great Value Medium White Corn Tortillas, 30 Count",25 oz,708.7,198,708.737,display_total_size,1.0
+9,review_no_expected_weight,Dairy > Eggs|5005000P,0001111060902,Kroger® Medium Grade A White Eggs,12 ct,626.0,159,,count_without_parseable_weight,
+9,ok,Frozen > Frozen Fruit > Pancakes|801S000Y,0003800029369,Eggo® Minis Birthday Cake Pancakes,5 ct / 1.68 oz,240.4,349,238.136,display_count_x_small_unit,1.01
+9,ok,Pantry > Rice & Grains > White Rice|841J000Q,194346407774,"Great Value Ready to Heat Long Grain White Rice Cups, 8.8 oz, 2 Count",8.8 oz; 250g,250.0,194,250.0,display_total_size,1.0
+9,review_no_expected_weight,Produce > Vegetables > Bell Peppers|66041007,0000000004065,Fresh Large Green Bell Pepper,1 ct,453.6,89,,count_without_parseable_weight,
+9,review_no_expected_weight,Produce > Vegetables > Red Onions|652C000V,0000000003244,Red Onions,1 ct,453.6,149,,count_without_parseable_weight,
+10,review_no_expected_weight,Dairy > Eggs|5005000P,0001111060902,Kroger® Medium Grade A White Eggs,12 ct,626.0,159,,count_without_parseable_weight,
+10,ok,Meat & Seafood > Hot Dogs & Sausages > Hot Dogs|2416000E,054500193274,"Ball Park Classic Bun Size Hot Dogs, 15 oz, 8 Count",425.242 g 0.938 lb 15 oz,425.5,284,425.469,display_total_size,1.0
+10,ok,Pantry > Baking Extracts > Yeast|E500400N,078742365725,"Great Value Active Dry Yeast, 0.25 oz, 3 Count","0.25 oz, 3 Count",21.3,114,21.262,display_small_unit_x_count,1.002
+10,review_no_expected_weight,Produce > Vegetables > Bell Peppers|6604000K,0001111090010,Simple Truth Organic® Mixed Bell Peppers,2 ct,417.3,359,,count_without_parseable_weight,
+10,review_no_expected_weight,Produce > Vegetables > Bell Peppers|66041007,0000000004065,Fresh Large Green Bell Pepper,1 ct,453.6,89,,count_without_parseable_weight,
+11,ok,Bakery > Buns > Hamburger Buns|G005000*,078742223759,"Great Value Hamburger Buns, 11 oz, 8 Count",11 oz,311.8,148,311.844,display_total_size,1.0
+11,review_no_expected_weight,Dairy > Eggs|5005000P,0001111060902,Kroger® Medium Grade A White Eggs,12 ct,626.0,159,,count_without_parseable_weight,
+12,ok,Bakery > Bagels|G00G000T,0001111000923,Kroger® 100% Whole Wheat Bagels,6 ct / 20 oz,567.0,249,566.99,display_count_with_total_net_weight,1.0
+12,review_no_expected_weight,Dairy > Eggs|5005000P,0001111060902,Kroger® Medium Grade A White Eggs,12 ct,626.0,159,,count_without_parseable_weight,
+12,review_no_expected_weight,Produce > Vegetables > Bell Peppers|66041007,0000000004065,Fresh Large Green Bell Pepper,1 ct,453.6,89,,count_without_parseable_weight,
+12,review_no_expected_weight,Produce > Vegetables > Garlic|6504000U,0000000004608,Garlic,1 ct,453.6,79,,count_without_parseable_weight,

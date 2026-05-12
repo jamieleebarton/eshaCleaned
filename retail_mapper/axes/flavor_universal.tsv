@@ -1,0 +1,721 @@
+#token	notes
+plain	flavor: plain/unflavored
+original	flavor: original/baseline (also brand-noise)
+flavored	generic flavored marker
+flavor	generic flavor marker
+classic	flavor: classic
+seasoned	flavor: seasoned
+spiced	flavor: spiced
+herbed	flavor: herbed
+smoked	flavor: smoked (also prep)
+vanilla	vanilla
+chocolate	chocolate (also category sometimes)
+chocolatey	chocolatey
+cocoa	cocoa
+cacao	cacao
+mocha	mocha
+matcha	matcha
+caramel	caramel
+butterscotch	butterscotch
+toffee	toffee
+maple	maple (also sweetener)
+honey	honey (also sweetener)
+molasses	molasses (also sweetener)
+cinnamon	cinnamon
+ginger	ginger
+turmeric	turmeric
+nutmeg	nutmeg
+clove	clove
+cloves	clove
+cardamom	cardamom
+allspice	allspice
+saffron	saffron
+sumac	sumac
+peppermint	peppermint
+mint	mint
+spearmint	spearmint
+wintergreen	wintergreen
+licorice	licorice
+anise	anise
+fennel	fennel
+strawberry	strawberry
+blueberry	blueberry
+raspberry	raspberry
+blackberry	blackberry
+cranberry	cranberry
+boysenberry	boysenberry
+elderberry	elderberry
+cherry	cherry
+peach	peach
+mango	mango
+pineapple	pineapple
+banana	banana
+coconut	coconut
+lemon	lemon
+lime	lime
+orange	orange
+tangerine	tangerine
+mandarin	mandarin
+clementine	clementine
+grapefruit	grapefruit
+grape	grape
+watermelon	watermelon
+melon	melon
+cantaloupe	cantaloupe
+honeydew	honeydew
+apple	apple (also category)
+apricot	apricot
+plum	plum
+pomegranate	pomegranate
+passion	passion fruit (compound)
+passionfruit	passion fruit
+dragonfruit	dragon fruit
+guava	guava
+papaya	papaya
+acai	acai
+goji	goji
+acerola	acerola
+berry	berry (generic)
+berries	berries
+fruit	fruit (generic flavor when modifier)
+tropical	tropical (flavor blend hint)
+citrus	citrus blend
+pumpkin	pumpkin (compound 'pumpkin spice')
+spice	spice (compound 'pumpkin spice')
+horchata	horchata
+chai	chai
+toasted	toasted (also prep)
+smoky	smoky
+spicy	spicy
+sweet	sweet (also sweetener)
+savory	savory
+sour	sour
+tart	tart
+hot	hot/spicy
+mild	mild
+medium	medium
+zesty	zesty
+tangy	tangy
+bbq	bbq
+barbecue	barbecue
+ranch	ranch
+buffalo	buffalo
+jalapeno	jalapeño
+jalapeño	jalapeño
+chipotle	chipotle
+habanero	habanero
+sriracha	sriracha
+tabasco	tabasco
+wasabi	wasabi
+horseradish	horseradish
+dill	dill
+onion	onion (flavor mod)
+garlic	garlic
+rosemary	rosemary
+basil	basil
+oregano	oregano
+thyme	thyme
+sage	sage
+parsley	parsley
+cilantro	cilantro
+cumin	cumin
+coriander	coriander
+paprika	paprika
+pepper	pepper (flavor mod)
+peppercorn	peppercorn
+peppered	peppered
+mustard	mustard
+ketchup	ketchup
+mayo	mayonnaise (also category)
+sweetnsour	sweet & sour
+teriyaki	teriyaki
+soy	soy sauce flavor (also category)
+hoisin	hoisin
+ponzu	ponzu
+tamari	tamari
+miso	miso
+worcestershire	worcestershire
+oldfashioned	old fashioned
+roasted	roasted (also prep)
+caramelized	caramelized (also prep)
+glazed	glazed (also prep)
+candied	candied (also prep)
+nutmeg	nutmeg
+pecan	pecan
+walnut	walnut
+hazelnut	hazelnut
+pistachio	pistachio
+macadamia	macadamia
+almond	almond (often category but can be flavor for cookie/ice cream)
+cashew	cashew
+peanut	peanut
+sunflower	sunflower
+pumpkinseed	pumpkin seed
+chia	chia (often inclusion)
+flax	flax (often inclusion)
+hemp	hemp
+sesame	sesame
+poppyseed	poppy seed
+quinoa	quinoa
+buckwheat	buckwheat
+amaranth	amaranth
+millet	millet
+spelt	spelt
+sprouted	sprouted
+ancient	ancient grains (compound)
+multigrain	multigrain
+wholegrain	whole grain
+wholewheat	whole wheat
+sourdough	sourdough
+ryebread	rye bread (compound)
+rye	rye
+barley	barley
+oat	oat
+oats	oats
+sea	sea (compound 'sea salt')
+fire	fire-roasted (compound)
+hickory	hickory smoke flavor
+mesquite	mesquite
+applewood	applewood
+cherrywood	cherrywood
+oak	oak
+beech	beech
+balsamic	balsamic
+vinaigrette	vinaigrette
+caesar	caesar
+italian	italian (also cuisine)
+ranch	ranch
+greek	greek (also cuisine)
+poppy	poppy seed (compound)
+everything	everything bagel (everything seasoning)
+bagel	bagel seasoning
+nacho	nacho (cheesy chip flavor)
+queso	queso (cheesy)
+cheesy	cheesy
+buttermilk	buttermilk (flavor)
+sourcream	sour cream (flavor)
+ranch	ranch dressing flavor
+aioli	aioli flavor
+pesto	pesto flavor (also category)
+alfredo	alfredo flavor
+marinara	marinara flavor
+garlic	garlic flavor
+gingerbread	gingerbread
+cookiedough	cookie dough (compound)
+cookiesncream	cookies and cream
+cookiesandcream	cookies and cream
+strawberriesandcream	strawberries and cream
+peanutbutter	peanut butter (flavor & category)
+sugarcookie	sugar cookie
+gingersnap	ginger snap
+oatmealraisin	oatmeal raisin
+chocolatechip	chocolate chip
+chocolatecovered	chocolate-covered
+yogurtcovered	yogurt-covered
+honeyroasted	honey-roasted
+maplebrown	maple brown
+brown	brown sugar (compound — also COLOR)
+sugarcoated	sugar-coated
+mores	s'mores
+smores	s'mores
+rocky	rocky road (compound)
+neapolitan	neapolitan
+spumoni	spumoni
+rumraisin	rum raisin
+moosetracks	moose tracks
+mintchip	mint chip
+mintchocolate	mint chocolate
+chocolatemint	chocolate mint
+butterpecan	butter pecan
+maplewalnut	maple walnut
+mapleleaf	maple leaf
+caramelapple	caramel apple
+applepie	apple pie
+pumpkinpie	pumpkin pie
+sweetpotatopie	sweet potato pie
+blueberrymuffin	blueberry muffin
+gingersnap	gingersnap
+graham	graham (cracker)
+grahamcracker	graham cracker
+crouton	crouton (flavor for soups/salads)
+hotcocoa	hot cocoa
+darkchocolate	dark chocolate
+milkchocolate	milk chocolate
+whitechocolate	white chocolate
+semisweet	semi-sweet
+bittersweet	bittersweet
+lightlysweetened	lightly sweetened
+extradark	extra dark
+extracrispy	extra crispy
+dijon	dijon
+chipotle	chipotle
+truffle	truffle (flavor)
+oaky	oaky
+woodfired	wood-fired
+coldbrew	cold brew (flavor)
+cold	cold (cold-brew compound)
+brew	brew (compound)
+chunky	chunky (texture-flavor for salsa)
+peppered	peppered
+peppery	peppery
+minty	minty
+fruity	fruity
+nutty	nutty
+buttery	buttery
+toffee	toffee
+crunch	crunch (cereal/snack flavor concept)
+crunchy	crunchy
+sweetheat	sweet heat
+honeymustard	honey mustard
+honeybarbecue	honey BBQ
+honeybbq	honey BBQ
+hotandspicy	hot and spicy
+sweetnspicy	sweet & spicy
+sweetnsour	sweet & sour
+sourcreamnonion	sour cream & onion
+saltnvinegar	salt & vinegar
+aged	aged (cheese, vinegar)
+extraaged	extra-aged
+sharp	sharp (cheese)
+extrasharp	extra sharp
+mellow	mellow
+mild	mild
+deli	deli style (compound)
+country	country style (also cuisine)
+homestyle	homestyle (also cuisine)
+oldfashioned	old-fashioned
+farmhouse	farmhouse style
+artisan	artisan
+artisanal	artisanal
+gourmet	gourmet
+deluxe	deluxe (marketing)
+royal	royal
+imperial	imperial
+king	king (king-size, etc)
+queen	queen
+prince	prince
+dynasty	dynasty
+golden	golden (color also)
+silver	silver (color also)
+ruby	ruby (color)
+fire	fire (compound 'fire-roasted')
+flame	flame
+charred	charred
+charbroiled	charbroiled
+cracker	cracker (also category)
+graham	graham (flavor for ice cream/cookies)
+gingerbread	gingerbread
+pinacolada	piña colada
+pinya	piña colada compound
+colada	colada compound
+mojito	mojito
+margarita	margarita
+sangria	sangria
+bourbon	bourbon (flavor)
+rum	rum (flavor)
+whiskey	whiskey (flavor)
+vodka	vodka (flavor)
+gin	gin (flavor)
+tequila	tequila (flavor)
+pinot	pinot wine flavor
+red	red (color also; red velvet flavor)
+velvet	red velvet (compound)
+birthday	birthday cake flavor
+cakebatter	cake batter
+gold	gold (color/flavor brand mod)
+key	key lime (compound)
+lime	lime (also fruit)
+keylime	key lime
+lemonpepper	lemon pepper
+salty	salty (taste)
+umami	umami
+acidic	acidic
+bright	bright
+fresh	fresh (also storage)
+zesty	zesty
+hearty	hearty
+robust	robust
+bold	bold
+rich	rich
+deep	deep
+delicate	delicate
+floral	floral
+earthy	earthy
+woodsy	woodsy
+herby	herby
+green	green (color, also flavor for green tea)
+black	black (color, also flavor for black tea/black coffee)
+white	white (also color/flavor for white chocolate)
+dark	dark (also color)
+milk	milk (compound 'milk chocolate')
+toasted	toasted
+caramelized	caramelized
+candied	candied
+pecan	pecan
+walnut	walnut
+nut	nut (generic)
+chip	chip (chocolate chip)
+chunk	chunk (chocolate chunk)
+swirl	swirl (flavor pattern)
+ripple	ripple
+ribbon	ribbon
+marbled	marbled
+twist	twist
+twisted	twisted
+fudge	fudge (flavor)
+nougat	nougat
+brittle	brittle
+peanutbrittle	peanut brittle
+toffee	toffee
+caramel	caramel
+butterscotch	butterscotch
+cinnamonroll	cinnamon roll
+cinnamonbun	cinnamon bun
+streusel	streusel
+crumble	crumble flavor
+buttery	buttery
+candycane	candy cane
+candycorn	candy corn
+peppermintbark	peppermint bark
+mintsandwich	mint sandwich
+gingerbreadhouse	gingerbread house
+rainbow	rainbow (color/sprinkles)
+unicorn	unicorn (theme)
+patriotic	patriotic
+fall	fall (seasonal)
+autumn	autumn
+winter	winter
+spring	spring (also water)
+summer	summer
+holiday	holiday
+christmas	christmas
+halloween	halloween
+easter	easter
+valentine	valentine
+patrick	st patrick / irish
+saint	saint (compound)
+fourth	fourth of july
+july	july 4th
+barbeque	barbecue alt-spelling
+bbqsauce	bbq sauce flavor
+oreo	oreo flavor (brand)
+choco	chocolate alt
+chocolatey	chocolatey
+malt	malt flavor
+malty	malty
+maltedmilk	malted milk
+masala	masala
+tikka	tikka masala
+adobo	adobo
+jerk	jerk
+poblano	poblano
+hatch	hatch chile
+chipotle	chipotle
+ancho	ancho
+guajillo	guajillo
+chilipowder	chili powder
+peppered	peppered
+peppercorn	peppercorn
+cracked	cracked pepper (compound)
+cayenne	cayenne
+paprika	paprika
+smokypaprika	smoky paprika
+hibiscus	hibiscus
+elderflower	elderflower
+lavender	lavender
+rose	rose flavor
+rosewater	rosewater
+saffron	saffron
+sumac	sumac
+cardamom	cardamom
+fennel	fennel
+caraway	caraway
+nigella	nigella
+za	za'atar (compound)
+zaatar	za'atar
+fivespice	five-spice (compound)
+italianseasoning	italian seasoning
+montrealsteak	montreal steak (compound)
+montreal	montreal (also cuisine)
+oldbay	old bay (compound)
+bay	bay leaf
+bayleaf	bay leaf
+lemonpepper	lemon pepper
+lemonherb	lemon herb
+garlicherb	garlic herb
+garlicparmesan	garlic parmesan
+sweetheat	sweet heat
+hotnspicy	hot & spicy
+sweetnsour	sweet & sour
+sourcream	sour cream
+sourcreamandonion	sour cream and onion
+saltandvinegar	salt and vinegar
+maple-bacon	maple bacon
+maplebacon	maple bacon
+cinnamonsugar	cinnamon sugar
+cinnamonbun	cinnamon bun
+cinnamonroll	cinnamon roll
+gingerbread	gingerbread
+spicedrum	spiced rum
+applepie	apple pie
+pumpkinpie	pumpkin pie
+sweetpotatopie	sweet potato pie
+keylime	key lime
+strawberrylemonade	strawberry lemonade
+strawberrycheesecake	strawberry cheesecake
+nyc	new york cheesecake (compound)
+banananut	banana nut
+banananutbread	banana nut bread
+zucchinibread	zucchini bread
+carrotcake	carrot cake
+redvelvet	red velvet
+funfetti	funfetti
+confetti	confetti (rainbow sprinkles)
+cookieanddough	cookie dough (compound)
+cookiedough	cookie dough
+cookiesncream	cookies & cream
+cookiesandcream	cookies & cream
+neapolitan	neapolitan
+spumoni	spumoni
+rocky	rocky road (compound)
+road	rocky road
+mountain	mountain (compound — high mountain)
+moose	moose tracks (compound)
+tracks	tracks (compound)
+bunny	bunny tracks (compound — H-E-B / Wells)
+moosetracks	moose tracks
+bunnytracks	bunny tracks
+phishfood	phish food (Ben & Jerry's)
+chunkymonkey	chunky monkey
+cherrygarcia	cherry garcia
+halfbaked	half baked (Ben & Jerry's)
+americone	americone dream
+amazonrainforest	amazon rainforest
+mangosalsa	mango salsa
+guacasalsa	guac & salsa
+brownsugar	brown sugar
+honeyroasted	honey roasted
+honeymustard	honey mustard
+honeybarbecue	honey barbecue
+honeybbq	honey bbq
+honeyteriyaki	honey teriyaki
+teriyaki	teriyaki
+sweetnsmoky	sweet n smoky
+hotandsour	hot and sour
+sweetnsavory	sweet & savory
+salt-and-pepper	salt & pepper
+salt-pepper	salt pepper
+seasaltcaramel	sea salt caramel
+seasalt	sea salt (compound)
+mediterranean	mediterranean
+greek	greek (also cuisine)
+italian	italian (also cuisine)
+mexican	mexican (also cuisine)
+asian	asian (also cuisine)
+hawaiian	hawaiian
+caribbean	caribbean
+southern	southern
+cajun	cajun
+creole	creole
+texas	texas style
+nashville-hot	nashville hot
+nashvillehot	nashville hot
+buffalowing	buffalo wing
+buffaloranch	buffalo ranch
+ranchbuffalo	ranch buffalo
+southwestern	southwestern flavor
+southwest	southwest flavor
+ranchstyle	ranch style
+homestyle	home style
+oldfashioned	old fashioned
+old	old (compound 'old fashioned')
+fashioned	fashioned (compound)
+country	country style (also cuisine)
+village	village style
+farmhouse	farmhouse style
+rustic	rustic
+artisan	artisan
+gourmet	gourmet
+legendary	legendary
+classic	classic flavor
+delight	delight (marketing flavor)
+favorites	favorites
+premium	premium
+tropical	tropical (flavor blend)
+exotic	exotic flavor
+brewed	brewed (tea/coffee)
+roasted	roasted (also prep)
+aroma	aroma
+aromatic	aromatic
+zesty	zesty
+zest	zest
+peel	peel (lemon peel flavor)
+twist	twist
+splash	splash (a hint of)
+hint	hint (a hint of)
+infused	infused (compound)
+loaded	loaded (loaded chips/baked potato)
+ultimate	ultimate flavor
+deluxe	deluxe flavor
+maxsize	max
+mega	mega
+super	super
+party	party (compound — party mix)
+delight	delight
+indulgence	indulgence (marketing)
+splurge	splurge
+treat	treat
+fancy	fancy
+gourmet	gourmet
+deluxe	deluxe
+royal	royal
+crown	crown
+king	king (king crab, king cake, etc.)
+queen	queen
+prince	prince
+emperor	emperor
+bourbon	bourbon
+rum	rum
+whiskey	whiskey
+vodka	vodka
+gin	gin
+tequila	tequila
+sangria	sangria
+margarita	margarita
+mojito	mojito
+pina	piña colada (compound)
+colada	piña colada (compound)
+pinacolada	piña colada
+bloody	bloody mary (compound)
+mary	mary (compound)
+bloodymary	bloody mary
+sailing	cooking sailing flavor
+cherry-bourbon	cherry bourbon
+maplewhiskey	maple whiskey
+malta	malta
+chocolatemint	chocolate mint
+mintchocolatechip	mint chocolate chip
+mintchip	mint chip
+chocolatecaramel	chocolate caramel
+caramelchocolate	caramel chocolate
+saltedcaramel	salted caramel
+chocolatestrawberry	chocolate strawberry
+strawberrychocolate	strawberry chocolate
+strawberriesncream	strawberries and cream
+peachesncream	peaches and cream
+brownbutter	brown butter
+caramelapple	caramel apple
+maplebrown	maple brown
+maplebrownsugar	maple brown sugar
+peanutbuttercup	peanut butter cup
+peanutbuttercups	peanut butter cups
+peanutbutterchocolate	peanut butter chocolate
+peanutbutterhoney	peanut butter honey
+nutella	nutella (brand-flavor)
+oreocrunch	oreo crunch
+oreocheesecake	oreo cheesecake
+verde	verde (green salsa/sauce)
+roja	roja (red salsa/sauce)
+blanco	blanco (white)
+negro	negro (black)
+amarillo	amarillo (yellow chile)
+concord	concord grape
+juicy	juicy
+delicious	delicious (apple variety!)
+honeycrisp	honeycrisp (apple)
+fuji	fuji (apple)
+gala	gala (apple)
+granny	granny (granny smith — compound)
+smith	granny smith (compound)
+grannysmith	granny smith
+mcintosh	mcintosh (apple)
+bartlett	bartlett (pear)
+anjou	anjou (pear)
+seckel	seckel (pear)
+maraschino	maraschino (cherry)
+bing	bing (cherry)
+rainier	rainier (cherry)
+darksweetcherry	dark sweet cherry
+clingstone	cling (peach — compound)
+cling	cling peaches (compound)
+freestone	freestone peaches
+yukon	yukon gold (potato)
+russet	russet (potato)
+yam	yam
+sweetpotato	sweet potato
+butternut	butternut (also category)
+acorn	acorn squash
+spaghetti-squash	spaghetti squash
+delicata	delicata
+hubbard	hubbard
+kabocha	kabocha
+honeycomb	honeycomb (cereal)
+toastedoats	toasted oats
+oat-bran	oat bran
+wheat-bran	wheat bran
+bran	bran (also category)
+flax-meal	flaxmeal
+flaxseed	flax seed
+crispyrice	crispy rice
+honeynut	honey nut (compound)
+nutty	nutty
+poppy	poppy (poppy seed)
+chocomint	choco mint
+mintchoco	mint choco
+verdesalsa	salsa verde
+salsaverde	salsa verde
+chiliverde	chili verde
+honeylime	honey lime
+honeylemon	honey lemon
+lemonherb	lemon herb
+herblemon	herb lemon
+butter-toffee	butter toffee
+buttertoffee	butter toffee
+chocolatetoffee	chocolate toffee
+pumpkinspice	pumpkin spice (compound)
+applepie	apple pie
+applecinnamon	apple cinnamon
+applesauce	apple sauce flavor
+caramelsauce	caramel sauce
+butterscotchsauce	butterscotch sauce
+hotfudge	hot fudge
+hotcocoa	hot cocoa
+sloppy	sloppy joe (compound)
+cheesy	cheesy
+chunkymonkey	chunky monkey (Ben & Jerry's)
+phishfood	phish food
+phish	phish food
+americone	americone dream
+cherrygarcia	cherry garcia
+halfbaked	half baked
+nyc	new york cheesecake
+peppermintbark	peppermint bark
+sea-salt-caramel	sea salt caramel
+seasaltcaramel	sea salt caramel
+island	thousand island (compound)
+thousand	thousand island (compound)
+thousandisland	thousand island
+blood	blood orange (compound)
+bloodorange	blood orange
+forest	black forest (compound)
+blackforest	black forest
+bavarian	bavarian
+swissmiss	swiss miss
+bubblegum	bubble gum
+bubble	bubble (gum/tea)
+caferoyal	cafe royal
+chocolatesyrup	chocolate syrup
+caramelsyrup	caramel syrup
+maplesyrup	maple syrup
+hotchocolate	hot chocolate
+icedchocolate	iced chocolate
+deepchocolate	deep chocolate
+darkchocolate	dark chocolate
+milkchocolate	milk chocolate
+whitechocolate	white chocolate
+whitevanilla	white vanilla
+fluffer	fluffernutter (compound)
+nutter	fluffernutter (compound)
+fluffernutter	fluffernutter
+peanutbutterjelly	peanut butter jelly
+pbj	PB&J

@@ -1,0 +1,45 @@
+{
+  "category": "Sausages, Hotdogs & Brats",
+  "n_products": 4880,
+  "verdict_distribution": {
+    "NEEDS_NEW_CONCEPT": 1608,
+    "STRONG": 675,
+    "WEAK": 1686,
+    "EXACT": 737,
+    "COMPOSITE": 148,
+    "NO_IDENTITY": 14,
+    "NO_MATCH": 12
+  },
+  "reason_distribution": {
+    "kept_orig_no_match": 1470,
+    "replaced_exact": 508,
+    "kept_orig_no_rft_esha": 547,
+    "kept_agree_exact": 389,
+    "kept_agree_weak": 269,
+    "filled_weak_exact": 5,
+    "kept_orig_weak": 1053,
+    "kept_orig_composite": 118,
+    "replaced_inherited": 257,
+    "kept_agree_inherited": 1,
+    "still_empty": 263
+  },
+  "n_findings": 1,
+  "findings": [
+    {
+      "gtin_upc": "35826107053",
+      "fdc_id": "1947401",
+      "product_description": "BREAKFAST SAUSAGE PATTIES, MAPLE",
+      "current_code": "33326",
+      "current_desc": "Sausage, patty",
+      "current_reason": "kept_orig_weak",
+      "current_verdict": "WEAK",
+      "proposed_code": "13079",
+      "proposed_desc": "sausage, breakfast, patty",
+      "coverage": 0.5,
+      "shared_tokens": "breakfast|sausage",
+      "missing_tokens": "maple|patties",
+      "extra_tokens": "patty",
+      "upgrade_type": "superset"
+    }
+  ]
+}

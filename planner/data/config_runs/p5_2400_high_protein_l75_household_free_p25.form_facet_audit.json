@@ -1,0 +1,9 @@
+{
+  "plan": "planner/data/config_runs/p5_2400_high_protein_l75_household_free_p25.json",
+  "recipes_selected": 240,
+  "lines_scanned": 2806,
+  "finding_count": 5,
+  "by_issue_type": {
+    "wrong_form": 5
+  }
+}

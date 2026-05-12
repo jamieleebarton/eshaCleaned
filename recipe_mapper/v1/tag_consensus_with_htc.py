@@ -19,6 +19,8 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from htc.encoder import encode  # noqa: E402
+from htc.food_slots import effective_food_name  # noqa: E402
+from htc.full_code import compose_full_code  # noqa: E402
 
 csv.field_size_limit(sys.maxsize)
 
@@ -43,9 +45,10 @@ def main() -> int:
         w = csv.writer(g)
         w.writerow([
             "fdc_id", "title", "branded_food_category",
-            "product_identity_fixed", "canonical_path", "modifier",
+            "product_identity_fixed", "canonical_path", "retail_leaf_path", "modifier",
             "fndds_code", "sr28_code",
-            "htc_code", "htc_group", "htc_family", "htc_food",
+            "htc_code", "htc_full_code",
+            "htc_group", "htc_family", "htc_food",
             "htc_form", "htc_processing", "htc_ptype", "htc_check",
             "htc_confidence", "htc_source",
         ])
@@ -55,18 +58,41 @@ def main() -> int:
             title = row.get("title") or ""
             pid = row.get("product_identity_fixed") or ""
             mod = row.get("modifier") or ""
-            extra = f"{pid} {mod}".strip()
-            h = encode(category=bfc, description=title, extra=extra)
+            canonical_path = row.get("canonical_path", "")
+            flavor_or_variant = row.get("flavor", "") or row.get("variant", "")
+            food_name = effective_food_name(
+                canonical_path,
+                pid,
+                mod,
+                " || ".join(
+                    row.get(field, "") or ""
+                    for field in ("title", "canonical_label", "retail_leaf_path", "fndds_desc", "sr28_desc")
+                ),
+                flavor=flavor_or_variant,
+            )
+            h = encode(
+                category=bfc,
+                description=title,
+                extra="",
+                food_name=food_name,
+                canonical_path=canonical_path,
+                modifier=mod,
+            )
             if h.group != "0":
                 tagged += 1
             else:
                 unresolved += 1
             by_group[h.group] = by_group.get(h.group, 0) + 1
+            htc_code = "~" + h.code
+            rlp = row.get("retail_leaf_path", "")
+            full = compose_full_code(htc_code, canonical_path, rlp,
+                                     row.get("claims", "") or mod)
             w.writerow([
                 row.get("fdc_id", ""), title, bfc, pid,
-                row.get("canonical_path", ""), mod,
+                canonical_path, rlp, mod,
                 row.get("fndds_code", ""), row.get("sr28_code", ""),
-                h.code, h.group, h.family, h.food,
+                htc_code, full,
+                h.group, h.family, h.food,
                 h.form, h.processing, h.ptype, h.check,
                 f"{h.confidence:.2f}", h.source,
             ])

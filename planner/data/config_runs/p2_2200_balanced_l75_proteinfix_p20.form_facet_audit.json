@@ -1,0 +1,7 @@
+{
+  "plan": "planner/data/config_runs/p2_2200_balanced_l75_proteinfix_p20.json",
+  "recipes_selected": 190,
+  "lines_scanned": 1680,
+  "finding_count": 0,
+  "by_issue_type": {}
+}

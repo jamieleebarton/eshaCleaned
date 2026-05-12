@@ -1,0 +1,524 @@
+{
+  "plan": "planner/data/config_runs/p4_2000_thrifty_l75.json",
+  "config": {
+    "mode": "thrifty",
+    "weeks": 12,
+    "people": 4,
+    "cal": 2000.0,
+    "protein_pct": 15.0,
+    "leftover_pct": 0.75
+  },
+  "totals": {
+    "total_cost": 1345.81,
+    "total_whole_cart_cost": 1345.81,
+    "avg_weekly_cost": 112.15,
+    "avg_whole_cart_cost": 112.15,
+    "avg_veg_compliance": 0.465,
+    "avg_protein_pct": 13.2,
+    "total_unique_recipes": 237,
+    "repeat_picks": 37
+  },
+  "derived": {
+    "per_person_day": 4.01,
+    "purchase_rows": 498,
+    "blank_selected_sku_rows": 0,
+    "mixed_package_rows": 27,
+    "known_bad_sku_hits": 0,
+    "package_flag_rows": 15
+  },
+  "bad_hits": [],
+  "blank_rows": [],
+  "package_flags": [
+    {
+      "week": 1,
+      "concept_key": "Bakery > Bagels|G00G000T",
+      "name": "Kroger\u00ae 100% Whole Wheat Bagels",
+      "grams": 567.0,
+      "cents": 249,
+      "display": "6 ct / 20 oz",
+      "flags": [
+        "package_grams_under_declared_size"
+      ]
+    },
+    {
+      "week": 2,
+      "concept_key": "Produce > Vegetables > Baby Carrots|6104000Y",
+      "name": "Carrots",
+      "grams": 68.0,
+      "cents": 22,
+      "display": "1 lb",
+      "flags": [
+        "package_grams_under_declared_size"
+      ]
+    },
+    {
+      "week": 3,
+      "concept_key": "Produce > Vegetables > Baby Carrots|6104000Y",
+      "name": "Carrots",
+      "grams": 68.0,
+      "cents": 22,
+      "display": "1 lb",
+      "flags": [
+        "package_grams_under_declared_size"
+      ]
+    },
+    {
+      "week": 4,
+      "concept_key": "Bakery > English Muffins|G008000V",
+      "name": "Kroger\u00ae 100% Whole Wheat English Muffins",
+      "grams": 367.4,
+      "cents": 169,
+      "display": "6 ct / 13 oz",
+      "flags": [
+        "package_grams_under_declared_size"
+      ]
+    },
+    {
+      "week": 4,
+      "concept_key": "Dairy > Yogurt|1205000J",
+      "name": "Kroger\u00ae Unicorn and Mermaid Low Fat Yogurt Tubes",
+      "grams": 453.6,
+      "cents": 199,
+      "display": "8 ct / 16 oz",
+      "flags": [
+        "package_grams_under_declared_size"
+      ]
+    },
+    {
+      "week": 6,
+      "concept_key": "Pantry > Spices & Seasonings > Basil|E302400V",
+      "name": "Gourmet Garden Lightly Dried Basil",
+      "grams": 9.1,
+      "cents": 399,
+      "display": "0.42 oz",
+      "flags": [
+        "very_high_cpg"
+      ]
+    },
+    {
+      "week": 6,
+      "concept_key": "Produce > Vegetables > Ginger Root|60700001",
+      "name": "Ginger Root",
+      "grams": 49.9,
+      "cents": 44,
+      "display": "1 lb",
+      "flags": [
+        "package_grams_under_declared_size"
+      ]
+    },
+    {
+      "week": 6,
+      "concept_key": "Produce > Vegetables > Peppers|6608100S",
+      "name": "Fresh Green Serrano Peppers",
+      "grams": 28.1,
+      "cents": 25,
+      "display": "1 lb",
+      "flags": [
+        "package_grams_under_declared_size"
+      ]
+    },
+    {
+      "week": 7,
+      "concept_key": "Produce > Vegetables > Peppers|6608100S",
+      "name": "Fresh Green Serrano Peppers",
+      "grams": 28.1,
+      "cents": 25,
+      "display": "1 lb",
+      "flags": [
+        "package_grams_under_declared_size"
+      ]
+    },
+    {
+      "week": 7,
+      "concept_key": "Produce > Vegetables > Shallots|650D000N",
+      "name": "Shallots",
+      "grams": 45.4,
+      "cents": 40,
+      "display": "1 lb",
+      "flags": [
+        "package_grams_under_declared_size"
+      ]
+    },
+    {
+      "week": 8,
+      "concept_key": "Bakery > Bagels|G00G000T",
+      "name": "Kroger\u00ae 100% Whole Wheat Bagels",
+      "grams": 567.0,
+      "cents": 249,
+      "display": "6 ct / 20 oz",
+      "flags": [
+        "package_grams_under_declared_size"
+      ]
+    },
+    {
+      "week": 9,
+      "concept_key": "Produce > Vegetables > Shallots|650D000N",
+      "name": "Shallots",
+      "grams": 45.4,
+      "cents": 40,
+      "display": "1 lb",
+      "flags": [
+        "package_grams_under_declared_size"
+      ]
+    },
+    {
+      "week": 10,
+      "concept_key": "Dairy > Yogurt|1205000J",
+      "name": "Kroger\u00ae Unicorn and Mermaid Low Fat Yogurt Tubes",
+      "grams": 453.6,
+      "cents": 199,
+      "display": "8 ct / 16 oz",
+      "flags": [
+        "package_grams_under_declared_size"
+      ]
+    },
+    {
+      "week": 11,
+      "concept_key": "Meat & Seafood > Pork > Pork Chops|2102003H",
+      "name": "Pork Center Cut Loin Chops Bone-In, 2 count, 1.01 - 1.37 lb Tray",
+      "grams": 1242.8,
+      "cents": 520,
+      "display": "14.28 lbs",
+      "flags": [
+        "package_grams_under_declared_size"
+      ]
+    },
+    {
+      "week": 12,
+      "concept_key": "Produce > Vegetables > Ginger Root|60700001",
+      "name": "Ginger Root",
+      "grams": 49.9,
+      "cents": 44,
+      "display": "1 lb",
+      "flags": [
+        "package_grams_under_declared_size"
+      ]
+    }
+  ],
+  "cheapest_cpg": [
+    {
+      "week": 1,
+      "concept_key": "Produce > Vegetables > Celery|6A080006",
+      "name": "Celery Sticks",
+      "grams": 453.6,
+      "cents": 33,
+      "cpg": 0.0728
+    },
+    {
+      "week": 3,
+      "concept_key": "Produce > Vegetables > Celery|6A080006",
+      "name": "Celery Sticks",
+      "grams": 453.6,
+      "cents": 33,
+      "cpg": 0.0728
+    },
+    {
+      "week": 4,
+      "concept_key": "Produce > Vegetables > Celery|6A080006",
+      "name": "Celery Sticks",
+      "grams": 453.6,
+      "cents": 33,
+      "cpg": 0.0728
+    },
+    {
+      "week": 9,
+      "concept_key": "Produce > Vegetables > Celery|6A080006",
+      "name": "Celery Sticks",
+      "grams": 453.6,
+      "cents": 33,
+      "cpg": 0.0728
+    },
+    {
+      "week": 10,
+      "concept_key": "Produce > Vegetables > Celery|6A080006",
+      "name": "Celery Sticks",
+      "grams": 453.6,
+      "cents": 33,
+      "cpg": 0.0728
+    },
+    {
+      "week": 11,
+      "concept_key": "Produce > Vegetables > Celery|6A080006",
+      "name": "Celery Sticks",
+      "grams": 453.6,
+      "cents": 33,
+      "cpg": 0.0728
+    },
+    {
+      "week": 11,
+      "concept_key": "Beverage > Sparkling Water|D206600V",
+      "name": "Clear American Fuji Apple Sparkling Water, 1 Liter Bottle",
+      "grams": 999.6,
+      "cents": 84,
+      "cpg": 0.084
+    },
+    {
+      "week": 6,
+      "concept_key": "Produce > Fruit > Limes|7237100*",
+      "name": "Fresh Limes - Each",
+      "grams": 453.6,
+      "cents": 40,
+      "cpg": 0.0882
+    },
+    {
+      "week": 1,
+      "concept_key": "Dairy > Milk|1001600U",
+      "name": "Great Value Milk 1% Low-fat, Half Gallon, 64 fl oz",
+      "grams": 1892.7,
+      "cents": 172,
+      "cpg": 0.0909
+    },
+    {
+      "week": 2,
+      "concept_key": "Dairy > Milk|1001600U",
+      "name": "Great Value Milk 1% Low-fat, Half Gallon, 64 fl oz",
+      "grams": 1892.7,
+      "cents": 172,
+      "cpg": 0.0909
+    },
+    {
+      "week": 11,
+      "concept_key": "Dairy > Milk|1001600U",
+      "name": "Great Value Milk 1% Low-fat, Half Gallon, 64 fl oz",
+      "grams": 1892.7,
+      "cents": 172,
+      "cpg": 0.0909
+    },
+    {
+      "week": 1,
+      "concept_key": "Pantry > Spices & Seasonings > Salt|E001000X",
+      "name": "Kroger\u00ae Salt",
+      "grams": 739.4,
+      "cents": 79,
+      "cpg": 0.1068
+    },
+    {
+      "week": 1,
+      "concept_key": "Produce > Vegetables > Potatoes|6101000=",
+      "name": "Kroger\u00ae Russet Potatoes",
+      "grams": 2268.0,
+      "cents": 249,
+      "cpg": 0.1098
+    },
+    {
+      "week": 3,
+      "concept_key": "Produce > Vegetables > Potatoes|6101000=",
+      "name": "Kroger\u00ae Russet Potatoes",
+      "grams": 2268.0,
+      "cents": 249,
+      "cpg": 0.1098
+    },
+    {
+      "week": 5,
+      "concept_key": "Produce > Vegetables > Potatoes|6101000=",
+      "name": "Kroger\u00ae Russet Potatoes",
+      "grams": 2268.0,
+      "cents": 249,
+      "cpg": 0.1098
+    }
+  ],
+  "highest_package_prices": [
+    {
+      "week": 3,
+      "concept_key": "Pantry > Canned Seafood > Anchovies|J0HV000B",
+      "name": "(6 pack) Vigo Flat Anchovies 2oz, 4g Protein, 2 Servings Per Container",
+      "grams": 340.2,
+      "cents": 1548,
+      "cpg": 4.5503
+    },
+    {
+      "week": 10,
+      "concept_key": "Pantry > Beans > Split Peas|900Y000C",
+      "name": "Sadaf Yellow Split Peas 24 Oz. (Quick Cook)",
+      "grams": 680.4,
+      "cents": 799,
+      "cpg": 1.1743
+    },
+    {
+      "week": 4,
+      "concept_key": "Meat & Seafood > Poultry > Chicken Breast|3001000K",
+      "name": "Marketside Antibiotic-Free Boneless Skinless Chicken Breasts, 1.3 - 3.0 lb",
+      "grams": 1360.8,
+      "cents": 757,
+      "cpg": 0.5563
+    },
+    {
+      "week": 8,
+      "concept_key": "Meat & Seafood > Poultry > Chicken Breast|3001000K",
+      "name": "Marketside Antibiotic-Free Boneless Skinless Chicken Breasts, 1.3 - 3.0 lb",
+      "grams": 1360.8,
+      "cents": 757,
+      "cpg": 0.5563
+    },
+    {
+      "week": 1,
+      "concept_key": "Pantry > Oil > Extra Virgin Olive Oil|B04J6003",
+      "name": "Pompeian Bold Spanish Extra Virgin Olive Oil - 16 fl oz",
+      "grams": 473.2,
+      "cents": 738,
+      "cpg": 1.5596
+    },
+    {
+      "week": 10,
+      "concept_key": "Pantry > Oil > Extra Virgin Olive Oil|B04J6003",
+      "name": "Pompeian Bold Spanish Extra Virgin Olive Oil - 16 fl oz",
+      "grams": 473.2,
+      "cents": 738,
+      "cpg": 1.5596
+    },
+    {
+      "week": 3,
+      "concept_key": "Meat & Seafood > Poultry > Whole Chicken|300B100F",
+      "name": "Foster Farms Fresh & Natural Cage Free Whole Chicken",
+      "grams": 2857.6,
+      "cents": 695,
+      "cpg": 0.2432
+    },
+    {
+      "week": 1,
+      "concept_key": "Meat & Seafood > Poultry > Chicken Breast|30011007",
+      "name": "Foster Farms Fresh & Natural Half Chicken Breasts with Ribs",
+      "grams": 1814.4,
+      "cents": 690,
+      "cpg": 0.3803
+    },
+    {
+      "week": 5,
+      "concept_key": "Pantry > Spices & Seasonings > Bay Leaf|E30N000Z",
+      "name": "True Goodness Organic Bay Leaf, .11 oz",
+      "grams": 311.9,
+      "cents": 649,
+      "cpg": 2.0808
+    },
+    {
+      "week": 2,
+      "concept_key": "Meat & Seafood > Beef > Ground Beef|2001002A",
+      "name": "Kroger\u00ae 73/27 Ground Beef Roll 1 LB",
+      "grams": 453.6,
+      "cents": 599,
+      "cpg": 1.3205
+    },
+    {
+      "week": 3,
+      "concept_key": "Meat & Seafood > Beef > Ground Beef|2001002A",
+      "name": "Kroger\u00ae 73/27 Ground Beef Roll 1 LB",
+      "grams": 453.6,
+      "cents": 599,
+      "cpg": 1.3205
+    },
+    {
+      "week": 4,
+      "concept_key": "Meat & Seafood > Beef > Ground Beef|2001002A",
+      "name": "Kroger\u00ae 73/27 Ground Beef Roll 1 LB",
+      "grams": 453.6,
+      "cents": 599,
+      "cpg": 1.3205
+    },
+    {
+      "week": 9,
+      "concept_key": "Meat & Seafood > Beef > Ground Beef|2001002A",
+      "name": "Kroger\u00ae 73/27 Ground Beef Roll 1 LB",
+      "grams": 453.6,
+      "cents": 599,
+      "cpg": 1.3205
+    },
+    {
+      "week": 4,
+      "concept_key": "Meat & Seafood > Bacon|24020000",
+      "name": "Smithfield Thick Cut Premium Maple Bacon",
+      "grams": 340.2,
+      "cents": 599,
+      "cpg": 1.7607
+    },
+    {
+      "week": 6,
+      "concept_key": "Meat & Seafood > Bacon|24020000",
+      "name": "Smithfield Thick Cut Premium Maple Bacon",
+      "grams": 340.2,
+      "cents": 599,
+      "cpg": 1.7607
+    }
+  ],
+  "top_concepts": [
+    [
+      "Pantry > Canned Vegetables > Tomatoes",
+      18
+    ],
+    [
+      "Pantry > Broth & Stock > Chicken Broth",
+      13
+    ],
+    [
+      "Dairy > Cheese",
+      12
+    ],
+    [
+      "Dairy > Eggs",
+      12
+    ],
+    [
+      "Pantry > Beans > Black Beans",
+      12
+    ],
+    [
+      "Produce > Vegetables > Onions",
+      12
+    ],
+    [
+      "Produce > Vegetables > Potatoes",
+      11
+    ],
+    [
+      "Bakery > Bread",
+      10
+    ],
+    [
+      "Dairy > Butter",
+      9
+    ],
+    [
+      "Pantry > Pasta",
+      7
+    ],
+    [
+      "Pantry > Canned Vegetables > Corn",
+      6
+    ],
+    [
+      "Pantry > Spices & Seasonings > Black Pepper",
+      6
+    ],
+    [
+      "Produce > Vegetables > Celery",
+      6
+    ],
+    [
+      "Meat & Seafood > Pork",
+      6
+    ],
+    [
+      "Pantry > Sauces & Salsas > Tomato Sauce",
+      6
+    ],
+    [
+      "Pantry > Spices & Seasonings > Seasoning",
+      5
+    ],
+    [
+      "Produce > Herbs > Basil",
+      5
+    ],
+    [
+      "Pantry > Baking Mixes > Pizza Crust Mix",
+      5
+    ],
+    [
+      "Frozen > Vegetables > Spinach",
+      5
+    ],
+    [
+      "Meat & Seafood > Ham",
+      5
+    ]
+  ]
+}

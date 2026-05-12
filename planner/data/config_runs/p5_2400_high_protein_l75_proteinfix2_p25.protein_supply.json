@@ -1,0 +1,1177 @@
+{
+  "recipe_supply": {
+    "untagged": {
+      "recipes": 95099,
+      "protein_pct": {
+        "median": 8.0,
+        "p75": 12.7,
+        "p90": 17.8
+      },
+      "recipes_ge_15pct": 15902,
+      "recipes_ge_20pct": 6291,
+      "recipes_ge_25pct": 2774
+    },
+    "red_meat": {
+      "recipes": 69049,
+      "protein_pct": {
+        "median": 24.0,
+        "p75": 30.3,
+        "p90": 37.5
+      },
+      "recipes_ge_15pct": 58399,
+      "recipes_ge_20pct": 46291,
+      "recipes_ge_25pct": 31427
+    },
+    "pork": {
+      "recipes": 0,
+      "protein_pct": {
+        "median": 0.0,
+        "p75": 0.0,
+        "p90": 0.0
+      },
+      "recipes_ge_15pct": 0,
+      "recipes_ge_20pct": 0,
+      "recipes_ge_25pct": 0
+    },
+    "poultry": {
+      "recipes": 50801,
+      "protein_pct": {
+        "median": 29.7,
+        "p75": 38.6,
+        "p90": 47.3
+      },
+      "recipes_ge_15pct": 46722,
+      "recipes_ge_20pct": 41152,
+      "recipes_ge_25pct": 33329
+    },
+    "fish": {
+      "recipes": 21360,
+      "protein_pct": {
+        "median": 23.0,
+        "p75": 31.0,
+        "p90": 38.8
+      },
+      "recipes_ge_15pct": 17550,
+      "recipes_ge_20pct": 13262,
+      "recipes_ge_25pct": 9142
+    },
+    "eggs": {
+      "recipes": 84905,
+      "protein_pct": {
+        "median": 7.1,
+        "p75": 12.2,
+        "p90": 18.8
+      },
+      "recipes_ge_15pct": 14727,
+      "recipes_ge_20pct": 6833,
+      "recipes_ge_25pct": 2441
+    },
+    "legumes_nuts": {
+      "recipes": 44381,
+      "protein_pct": {
+        "median": 8.3,
+        "p75": 13.8,
+        "p90": 18.2
+      },
+      "recipes_ge_15pct": 8894,
+      "recipes_ge_20pct": 3097,
+      "recipes_ge_25pct": 1007
+    },
+    "total": {
+      "recipes": 365595
+    }
+  },
+  "package_supply": {
+    "untagged": {
+      "concepts": 4676,
+      "packages": 20240,
+      "top_canonical_paths_by_packages": [
+        [
+          "Pantry",
+          173
+        ],
+        [
+          "Pantry > Spices & Seasonings > Seasoning",
+          144
+        ],
+        [
+          "Bakery > Cookies",
+          126
+        ],
+        [
+          "Dairy > Cheese",
+          124
+        ],
+        [
+          "Meal > Salads > Meal Starter",
+          119
+        ],
+        [
+          "Pantry > Canned Vegetables > Tomatoes",
+          119
+        ],
+        [
+          "Pantry > Canned Fruit > Pie Filling",
+          118
+        ],
+        [
+          "Frozen > Vegetables > Potatoes",
+          110
+        ],
+        [
+          "Pantry > Dips & Spreads > Dip",
+          102
+        ],
+        [
+          "Snack > Chips > Potato Chips",
+          102
+        ],
+        [
+          "Snack > Chocolate Candy",
+          98
+        ],
+        [
+          "Meal > Sandwiches > Breakfast Sandwiches",
+          95
+        ]
+      ],
+      "cheapest_packages": [
+        {
+          "concept_key": "Meal > Pizza|H107200B",
+          "name": "Great Value Sausage & Pepperoni Pizza Snack Rolls, 4 lb 1 oz, 130 Count (Frozen)",
+          "grams": 235867.8,
+          "cents": 964,
+          "cpg": 0.0041,
+          "display": "65oz"
+        },
+        {
+          "concept_key": "Meal > Pizza|H107200B",
+          "name": "Great Value Combo Pizza Snack Rolls, 25 oz, 50 Count (Frozen)",
+          "grams": 35436.9,
+          "cents": 497,
+          "cpg": 0.014,
+          "display": "25oz"
+        },
+        {
+          "concept_key": "Frozen > Ice Cream|1510680*",
+          "name": "Great Value Mini Vanilla Flavored Ice Cream Sandwiches, 36.8 fl oz, 16 Pack",
+          "grams": 17412.9,
+          "cents": 297,
+          "cpg": 0.0171,
+          "display": "36.8 fl oz"
+        },
+        {
+          "concept_key": "Beverage > Juice > Juice Drink|D129600Z",
+          "name": "Hawaiian Punch Pineapple Plunge Juice Drink",
+          "grams": 16955.3,
+          "cents": 329,
+          "cpg": 0.0194,
+          "display": "1 gal"
+        },
+        {
+          "concept_key": "Beverage > Sparkling Water > Mineral Water|D24J300V",
+          "name": "S.Pellegrino Sparkling Natural Unflavored Bottled Drinks Mineral Water for Holiday, 202.8 fl oz, 12 Pack Plastic Bottles",
+          "grams": 71970.0,
+          "cents": 1396,
+          "cpg": 0.0194,
+          "display": "16.9 oz"
+        },
+        {
+          "concept_key": "Frozen > Ice Cream|1510600=",
+          "name": "Great Value Neapolitan Ice Cream Sandwiches, 42 fl oz, 12 Pack",
+          "grams": 14905.0,
+          "cents": 297,
+          "cpg": 0.0199,
+          "display": "42 fl oz"
+        },
+        {
+          "concept_key": "Frozen > Ice Cream Sandwiches > Ice Cream Sandwich|153S6807",
+          "name": "Great Value Vanilla Flavored Ice Cream Sandwiches, 42 fl oz, 12 Pack",
+          "grams": 14905.0,
+          "cents": 297,
+          "cpg": 0.0199,
+          "display": "42 fl oz"
+        },
+        {
+          "concept_key": "Beverage > Juice > Juice Drink|D129600Z",
+          "name": "Hawaiian Punch Fruit Juicy Red Juice Drink Bottle",
+          "grams": 15490.2,
+          "cents": 329,
+          "cpg": 0.0212,
+          "display": "1 gal"
+        },
+        {
+          "concept_key": "Frozen > Ice Cream Sandwiches > Ice Cream Sandwich|153S6807",
+          "name": "Great Value Vanilla Flavored Low Fat Ice Cream Sandwiches, 42 fl oz, 12 Pack",
+          "grams": 14905.0,
+          "cents": 327,
+          "cpg": 0.0219,
+          "display": "42 fl oz"
+        },
+        {
+          "concept_key": "Frozen > Desserts|H000200F",
+          "name": "Blue Ribbon Classics Orange Dream Frozen Dessert Treat Bar, 45 fl oz, 20 Pack",
+          "grams": 26616.1,
+          "cents": 678,
+          "cpg": 0.0255,
+          "display": "45 fl oz"
+        },
+        {
+          "concept_key": "Frozen > Desserts|H000280C",
+          "name": "Blue Ribbon Classics Chocolate Flavored Fudge Frozen Dessert Treat Bar, 45 fl oz, 20 Pack",
+          "grams": 26616.1,
+          "cents": 678,
+          "cpg": 0.0255,
+          "display": "45 fl oz"
+        },
+        {
+          "concept_key": "Frozen > Desserts|H000280C",
+          "name": "Blue Ribbon Classics Star Chocolate Flavored Coated Artificially Vanilla Flavored Frozen Dessert Treat Bar, 45 fl oz, 20 Pack",
+          "grams": 26616.1,
+          "cents": 678,
+          "cpg": 0.0255,
+          "display": "45 fl oz"
+        }
+      ]
+    },
+    "red_meat": {
+      "concepts": 354,
+      "packages": 927,
+      "top_canonical_paths_by_packages": [
+        [
+          "Meat & Seafood > Bacon",
+          55
+        ],
+        [
+          "Meat & Seafood > Beef > Ground Beef",
+          49
+        ],
+        [
+          "Meat & Seafood > Pepperoni",
+          45
+        ],
+        [
+          "Meat & Seafood > Plant-Based",
+          44
+        ],
+        [
+          "Meat & Seafood > Sausage > Smoked Sausage",
+          35
+        ],
+        [
+          "Meat & Seafood > Ham",
+          35
+        ],
+        [
+          "Meat & Seafood > Hot Dogs & Sausages > Hot Dogs",
+          34
+        ],
+        [
+          "Meat & Seafood > Pork",
+          33
+        ],
+        [
+          "Meat & Seafood > Pork > Pork Chops",
+          30
+        ],
+        [
+          "Meat & Seafood > Beef > Ribeye Steak",
+          25
+        ],
+        [
+          "Meat & Seafood > Sausage > Bologna",
+          23
+        ],
+        [
+          "Meat & Seafood > Beef",
+          21
+        ]
+      ],
+      "cheapest_packages": [
+        {
+          "concept_key": "Meat & Seafood > Sausage > Bologna|241B001K",
+          "name": "Wunderbar German Brand Beef Bologna, Deli Sliced",
+          "grams": 9752.2,
+          "cents": 698,
+          "cpg": 0.0716,
+          "display": "21.5 lbs"
+        },
+        {
+          "concept_key": "Meat & Seafood > Ham|2401001F",
+          "name": "Kroger\u00ae Spiral Sliced Honey Ham Half (8-10 Lb) (limit 2 At Sale Price)",
+          "grams": 4472.5,
+          "cents": 838,
+          "cpg": 0.1874,
+          "display": "1 lb"
+        },
+        {
+          "concept_key": "Meat & Seafood > Pork > Pork Chops|2102003H",
+          "name": "Pork Center Cut Loin Chops Thin Boneless, 5 count, 0.83 - 1.03 lb",
+          "grams": 2336.0,
+          "cents": 537,
+          "cpg": 0.2299,
+          "display": "14.455 lb"
+        },
+        {
+          "concept_key": "Meat & Seafood > Beef > Beef Tripe|200D070V",
+          "name": "Beef Tripe, Scalded Tripas, Ready to Cook",
+          "grams": 1134.0,
+          "cents": 277,
+          "cpg": 0.2443,
+          "display": "1.134 KGM 2.5 lb 40 oz"
+        },
+        {
+          "concept_key": "Meat & Seafood > Hot Dogs & Sausages > Hot Dogs|2416130R",
+          "name": "Bar S Classic Fully Cooked Franks, 8 Count, 12oz (Refrigerated)",
+          "grams": 340.2,
+          "cents": 100,
+          "cpg": 0.2939,
+          "display": "12 oz"
+        },
+        {
+          "concept_key": "Meat & Seafood > Plant-Based|240008C0",
+          "name": "MorningStar Farms Veggie Breakfast Vegan Maple Flavored Plant Based Sausage Patties, 8 oz, 6 Count Bag",
+          "grams": 1360.8,
+          "cents": 458,
+          "cpg": 0.3366,
+          "display": "8 oz"
+        },
+        {
+          "concept_key": "Meat & Seafood > Hot Dogs & Sausages > Hot Dogs|2416000E",
+          "name": "Bun Length Franks Hot Dogs",
+          "grams": 1360.8,
+          "cents": 469,
+          "cpg": 0.3447,
+          "display": "3 lbs"
+        },
+        {
+          "concept_key": "Meat & Seafood > Hot Dogs & Sausages > Hot Dogs|2416130R",
+          "name": "Bar-S Classic Fully Cooked Jumbo Franks Hot Dogs, 8 Count, 16oz (Refrigerated)",
+          "grams": 453.6,
+          "cents": 177,
+          "cpg": 0.3902,
+          "display": "16 OZ|1 LB"
+        },
+        {
+          "concept_key": "Meat & Seafood > Sausage > Bologna|241B001K",
+          "name": "Bar-S Classic Bologna Sliced Deli-Style Lunch Meat, 14 Slices per Package, 1 lb Pack",
+          "grams": 453.6,
+          "cents": 178,
+          "cpg": 0.3924,
+          "display": "16 oz"
+        },
+        {
+          "concept_key": "Meat & Seafood > Sausage > Bologna|241B001K",
+          "name": "Bar-S Thick Bologna Sliced Deli-Style Lunch Meat, 8 Slices per Package, 1 lb Pack",
+          "grams": 453.6,
+          "cents": 178,
+          "cpg": 0.3924,
+          "display": "16 oz"
+        },
+        {
+          "concept_key": "Meat & Seafood > Sausage > Bologna|241B001K",
+          "name": "Bar-S Classic Bologna Gluten Free No MSG Sliced Deli Lunch Meat",
+          "grams": 453.6,
+          "cents": 189,
+          "cpg": 0.4167,
+          "display": "1 lb"
+        },
+        {
+          "concept_key": "Meat & Seafood > Pork > Pork Chops|2102003H",
+          "name": "Pork Center Cut Loin Chops Bone-In, 2 count, 1.01 - 1.37 lb Tray",
+          "grams": 1242.8,
+          "cents": 520,
+          "cpg": 0.4184,
+          "display": "14.28 lbs"
+        }
+      ]
+    },
+    "poultry": {
+      "concepts": 187,
+      "packages": 536,
+      "top_canonical_paths_by_packages": [
+        [
+          "Meat & Seafood > Turkey > Turkey Breast",
+          83
+        ],
+        [
+          "Meat & Seafood > Poultry > Chicken Wings",
+          50
+        ],
+        [
+          "Meat & Seafood > Nuggets > Chicken Nuggets",
+          49
+        ],
+        [
+          "Meat & Seafood > Poultry > Chicken Breast",
+          48
+        ],
+        [
+          "Meat & Seafood > Poultry > Chicken Strips",
+          37
+        ],
+        [
+          "Meat & Seafood > Poultry > Ground Turkey",
+          27
+        ],
+        [
+          "Meat & Seafood > Poultry > Chicken Thighs",
+          20
+        ],
+        [
+          "Meat & Seafood > Turkey",
+          19
+        ],
+        [
+          "Meat & Seafood > Sausage > Turkey Sausage",
+          17
+        ],
+        [
+          "Meat & Seafood > Poultry > Whole Chicken",
+          16
+        ],
+        [
+          "Meat & Seafood > Sausage > Chicken Sausage",
+          16
+        ],
+        [
+          "Meat & Seafood > Poultry",
+          14
+        ]
+      ],
+      "cheapest_packages": [
+        {
+          "concept_key": "Meat & Seafood > Turkey > Turkey Breast|3101031S",
+          "name": "Sara Lee Premium Meats Gluten Free Honey Roasted Turkey Breast, Deli Sliced",
+          "grams": 8845.0,
+          "cents": 994,
+          "cpg": 0.1124,
+          "display": "19.5 lbs"
+        },
+        {
+          "concept_key": "Meat & Seafood > Poultry > Chicken Leg|302T000Z",
+          "name": "Heritage Farm\u00ae Bone In Skin On Chicken Leg Quarters",
+          "grams": 4535.9,
+          "cents": 799,
+          "cpg": 0.1761,
+          "display": "10 lb"
+        },
+        {
+          "concept_key": "Meat & Seafood > Poultry > Chicken Leg Quarters|302V1005",
+          "name": "Foster Farms Fresh & Natural Leg Quarters - 10 lbs.",
+          "grams": 4535.9,
+          "cents": 872,
+          "cpg": 0.1922,
+          "display": "10 lbs"
+        },
+        {
+          "concept_key": "Meat & Seafood > Poultry > Whole Chicken|300B100F",
+          "name": "Foster Farms Fresh Young Whole Chicken - Twin Pack, 21g Protein per 4 oz Serving, 10.0 - 12 lb Bag",
+          "grams": 5851.3,
+          "cents": 1210,
+          "cpg": 0.2068,
+          "display": "8.6 - 12.9 lb"
+        },
+        {
+          "concept_key": "Meat & Seafood > Poultry > Chicken Drumsticks|300G100K",
+          "name": "Foster Farms Fresh & Natural Cage Free Drumsticks Value Pack",
+          "grams": 2585.5,
+          "cents": 544,
+          "cpg": 0.2104,
+          "display": "4.0 - 5.7 lb"
+        },
+        {
+          "concept_key": "Meat & Seafood > Poultry > Chicken Drumsticks|300G100K",
+          "name": "Freshness Guaranteed Fresh Chicken Drumsticks, 5 lb Bag",
+          "grams": 2268.0,
+          "cents": 546,
+          "cpg": 0.2407,
+          "display": "5 lbs"
+        },
+        {
+          "concept_key": "Meat & Seafood > Poultry > Whole Chicken|300B100F",
+          "name": "Foster Farms Fresh & Natural Cage Free Whole Chicken",
+          "grams": 2857.6,
+          "cents": 695,
+          "cpg": 0.2432,
+          "display": "4.2 - 6.3 lb"
+        },
+        {
+          "concept_key": "Meat & Seafood > Poultry > Chicken Drumsticks|300G110E",
+          "name": "Kroger\u00ae Fresh Uncooked Chicken Drumsticks",
+          "grams": 2041.2,
+          "cents": 500,
+          "cpg": 0.245,
+          "display": "4.5 lb"
+        },
+        {
+          "concept_key": "Meat & Seafood > Poultry > Chicken Leg Quarters|302V1005",
+          "name": "Fresh Chicken Leg Quarters, 4.25-6 lb Tray",
+          "grams": 2721.6,
+          "cents": 707,
+          "cpg": 0.2598,
+          "display": "Random Weight"
+        },
+        {
+          "concept_key": "Meat & Seafood > Poultry > Chicken Thighs|3006100B",
+          "name": "Foster Farms Fresh & Natural Cage Free Fresh Chicken Picnic pack - Thighs & Drums",
+          "grams": 2154.6,
+          "cents": 636,
+          "cpg": 0.2952,
+          "display": "4-4.75 lbs"
+        },
+        {
+          "concept_key": "Meat & Seafood > Poultry > Whole Turkey|312E200A",
+          "name": "Jennie-O Fresh (Not Frozen) Whole Turkey,10-18 lbs., Serves 6-11, Refrigerated, No Thaw Required, Ready for Quick Prep",
+          "grams": 8164.7,
+          "cents": 2463,
+          "cpg": 0.3017,
+          "display": "4"
+        },
+        {
+          "concept_key": "Meat & Seafood > Poultry|3000100N",
+          "name": "Foster Farms Fresh & Natural Cage Free Chicken Gizzards & Hearts",
+          "grams": 907.2,
+          "cents": 276,
+          "cpg": 0.3042,
+          "display": "0.9 - 2.00 lb"
+        }
+      ]
+    },
+    "fish": {
+      "concepts": 142,
+      "packages": 333,
+      "top_canonical_paths_by_packages": [
+        [
+          "Meat & Seafood > Shellfish > Shrimp",
+          64
+        ],
+        [
+          "Meat & Seafood > Fish > Tuna",
+          51
+        ],
+        [
+          "Meat & Seafood > Fish > Salmon",
+          36
+        ],
+        [
+          "Meat & Seafood > Fish > Fish Fillets",
+          12
+        ],
+        [
+          "Meat & Seafood > Fish",
+          11
+        ],
+        [
+          "Meat & Seafood > Fish > Fish Sticks",
+          11
+        ],
+        [
+          "Meat & Seafood > Fish > Tilapia",
+          11
+        ],
+        [
+          "Meat & Seafood > Fish > Cod",
+          10
+        ],
+        [
+          "Meat & Seafood > Fish > Salmon Fillets",
+          10
+        ],
+        [
+          "Meat & Seafood > Seafood > Steelhead Trout",
+          8
+        ],
+        [
+          "Pantry",
+          7
+        ],
+        [
+          "Meat & Seafood > Shellfish > Clam",
+          7
+        ]
+      ],
+      "cheapest_packages": [
+        {
+          "concept_key": "Meat & Seafood > Fish > Steelhead|421Q000H",
+          "name": "Gamakatsu Salmon/Steelhead Leader",
+          "grams": 4535.9,
+          "cents": 976,
+          "cpg": 0.2152,
+          "display": "1/10lb."
+        },
+        {
+          "concept_key": "Pantry|40000007",
+          "name": "(2 pack) Blue Runner Foods Shrimp Creole Base, 25 oz Can",
+          "grams": 1417.5,
+          "cents": 694,
+          "cpg": 0.4896,
+          "display": "25 oz"
+        },
+        {
+          "concept_key": "Meat & Seafood > Fish > Mackerel|402R000",
+          "name": "California Girl Cal Girl Pacific Premium Mackerel",
+          "grams": 425.2,
+          "cents": 217,
+          "cpg": 0.5103,
+          "display": "15 oz"
+        },
+        {
+          "concept_key": "Meat & Seafood > Fish|406E0806",
+          "name": "Zatarain's Gluten Free Seasoned Fish Fri, 24.0 oz Box",
+          "grams": 680.4,
+          "cents": 386,
+          "cpg": 0.5673,
+          "display": "7.822IN X4.911IN"
+        },
+        {
+          "concept_key": "Meat & Seafood > Fish|406E0806",
+          "name": "New Orleans Kosher Seasoned Fish Fry, 10.0 oz Bag",
+          "grams": 283.5,
+          "cents": 172,
+          "cpg": 0.6067,
+          "display": "8.5 X4.25"
+        },
+        {
+          "concept_key": "Meat & Seafood > Shellfish > Clam|40036004",
+          "name": "SNOW'S by BUMBLE BEE Italian Style White Clam Sauce, Made with Fresh Clams, 6g Protein Per Serving, Shelf Stable Can, 15 oz",
+          "grams": 425.2,
+          "cents": 264,
+          "cpg": 0.6209,
+          "display": "1"
+        },
+        {
+          "concept_key": "Meat & Seafood > Shellfish > Lobster|40051010",
+          "name": "Marketside Lobster Bisque, Fresh Deli Soup, 16 oz Cup",
+          "grams": 473.2,
+          "cents": 297,
+          "cpg": 0.6277,
+          "display": "16 fl oz"
+        },
+        {
+          "concept_key": "Meat & Seafood > Fish > Tilapia|4007000M",
+          "name": "Kroger\u00ae Mercado Farm Raised Whole Tilapia",
+          "grams": 1360.8,
+          "cents": 899,
+          "cpg": 0.6607,
+          "display": "48 oz"
+        },
+        {
+          "concept_key": "Meat & Seafood > Shellfish > Crab|4004080P",
+          "name": "Louis Kemp Crabjoy Crab Flavored Seafood Flake, Gluten-Free, 6g Protein, 24 oz Pouch",
+          "grams": 680.4,
+          "cents": 476,
+          "cpg": 0.6996,
+          "display": "24 oz"
+        },
+        {
+          "concept_key": "Meat & Seafood > Fish|406E0009",
+          "name": "Sand Bar\u2122 Pacific Whiting Dressed & Headless Fish",
+          "grams": 1360.8,
+          "cents": 999,
+          "cpg": 0.7341,
+          "display": "3 lb"
+        },
+        {
+          "concept_key": "Meat & Seafood > Shellfish > Mussel|4042200D",
+          "name": "Sam's Choice Frozen Mussels, 2 lb",
+          "grams": 907.2,
+          "cents": 672,
+          "cpg": 0.7408,
+          "display": "2 lbs"
+        },
+        {
+          "concept_key": "Meat & Seafood > Shellfish > Clam|40030002",
+          "name": "Snow's Wild Caught Chopped Ocean Clams, Gluten Free, No MSG, 7g Protein per Serving, Shelf Stable Can, 51oz",
+          "grams": 1508.2,
+          "cents": 1182,
+          "cpg": 0.7837,
+          "display": "51 fl oz"
+        }
+      ]
+    },
+    "eggs": {
+      "concepts": 26,
+      "packages": 93,
+      "top_canonical_paths_by_packages": [
+        [
+          "Pantry > Pasta > Noodles > Egg Noodles",
+          27
+        ],
+        [
+          "Dairy > Eggs",
+          22
+        ],
+        [
+          "Frozen > Appetizers > Egg Rolls",
+          13
+        ],
+        [
+          "Dairy > Eggs > Egg Whites",
+          6
+        ],
+        [
+          "Meal > Salads > Egg Salad",
+          5
+        ],
+        [
+          "Dairy > Eggs > Egg Substitute",
+          4
+        ],
+        [
+          "Produce > Vegetables > Pickled Eggs",
+          2
+        ],
+        [
+          "Dairy > Eggs > Hard Boiled Eggs",
+          2
+        ],
+        [
+          "Pantry > Soup > Egg Drop Soup",
+          2
+        ],
+        [
+          "Dairy > Eggs > Hard-Cooked Eggs",
+          2
+        ],
+        [
+          "Dairy > Eggs > Deviled Eggs",
+          2
+        ],
+        [
+          "Dairy > Eggs > Hard-Boiled Eggs",
+          1
+        ]
+      ],
+      "cheapest_packages": [
+        {
+          "concept_key": "Dairy > Eggs|5005000P",
+          "name": "Kroger\u00ae Extra Large White Eggs",
+          "grams": 825.5,
+          "cents": 189,
+          "cpg": 0.2289,
+          "display": "12 ct"
+        },
+        {
+          "concept_key": "Dairy > Eggs|5005000P",
+          "name": "Kroger\u00ae Grade A Jumbo White Eggs",
+          "grams": 852.8,
+          "cents": 209,
+          "cpg": 0.2451,
+          "display": "12 ct"
+        },
+        {
+          "concept_key": "Dairy > Eggs|5005000P",
+          "name": "Kroger\u00ae Medium Grade A White Eggs",
+          "grams": 626.0,
+          "cents": 159,
+          "cpg": 0.254,
+          "display": "12 ct"
+        },
+        {
+          "concept_key": "Dairy > Eggs|5005000P",
+          "name": "Great Value Cage-Free White Eggs, Large, 18 Count",
+          "grams": 900.0,
+          "cents": 247,
+          "cpg": 0.2744,
+          "display": "18 Large"
+        },
+        {
+          "concept_key": "Pantry > Pasta > Noodles > Egg Noodles|5004000U",
+          "name": "Great Value Wide Egg Noodles, 16 oz",
+          "grams": 453.6,
+          "cents": 143,
+          "cpg": 0.3153,
+          "display": "16.0 oz"
+        },
+        {
+          "concept_key": "Pantry > Pasta > Noodles > Egg Noodles|5004000U",
+          "name": "Great Value Medium Egg Noodles, 16 oz",
+          "grams": 453.6,
+          "cents": 143,
+          "cpg": 0.3153,
+          "display": "16.0 oz"
+        },
+        {
+          "concept_key": "Pantry > Pasta > Noodles > Egg Noodles|5004000U",
+          "name": "Kroger\u00ae Medium Egg Noodles",
+          "grams": 453.6,
+          "cents": 179,
+          "cpg": 0.3946,
+          "display": "16 oz"
+        },
+        {
+          "concept_key": "Pantry > Pasta > Noodles > Egg Noodles|5004000U",
+          "name": "Kroger\u00ae Wide Egg Noodles",
+          "grams": 453.6,
+          "cents": 179,
+          "cpg": 0.3946,
+          "display": "16 oz"
+        },
+        {
+          "concept_key": "Pantry > Pasta > Noodles > Egg Noodles|5004000U",
+          "name": "Kroger\u00ae Extra Wide Egg Noodles",
+          "grams": 453.6,
+          "cents": 179,
+          "cpg": 0.3946,
+          "display": "16 oz"
+        },
+        {
+          "concept_key": "Pantry > Pasta > Noodles > Egg Noodles|5004000U",
+          "name": "Great Value Extra Wide Egg Noodles, 16 oz",
+          "grams": 453.6,
+          "cents": 214,
+          "cpg": 0.4718,
+          "display": "16 oz"
+        },
+        {
+          "concept_key": "Dairy > Eggs|5005000P",
+          "name": "Simple Truth\u2122 Natural Cage Free Grade A Large Brown Eggs",
+          "grams": 680.4,
+          "cents": 329,
+          "cpg": 0.4835,
+          "display": "12 ct / 24 oz"
+        },
+        {
+          "concept_key": "Dairy > Eggs|5005000P",
+          "name": "Simple Truth\u2122 Natural Cage Free Grade A Large Brown Eggs",
+          "grams": 961.6,
+          "cents": 479,
+          "cpg": 0.4981,
+          "display": "18 ct / 36 oz"
+        }
+      ]
+    },
+    "legumes_nuts": {
+      "concepts": 142,
+      "packages": 552,
+      "top_canonical_paths_by_packages": [
+        [
+          "Snack > Nuts > Mixed Nuts",
+          115
+        ],
+        [
+          "Pantry > Beans > Baked Beans",
+          45
+        ],
+        [
+          "Snack > Nuts > Snack Pack",
+          38
+        ],
+        [
+          "Pantry > Beans > Black Beans",
+          32
+        ],
+        [
+          "Pantry > Beans > Pinto Beans",
+          30
+        ],
+        [
+          "Snack > Nuts & Seeds > Sunflower Seeds",
+          27
+        ],
+        [
+          "Pantry > Beans > Refried Beans",
+          25
+        ],
+        [
+          "Pantry > Beans > Kidney Beans",
+          24
+        ],
+        [
+          "Snack > Candy > Jelly Beans",
+          24
+        ],
+        [
+          "Pantry > Beans > Lentils",
+          16
+        ],
+        [
+          "Snack > Nuts > Peanuts",
+          13
+        ],
+        [
+          "Snack > Nuts > Cashews",
+          12
+        ]
+      ],
+      "cheapest_packages": [
+        {
+          "concept_key": "Snack > Candy > Jelly Beans|90040006",
+          "name": "Brach's Tiny Easter Jelly Beans, 9 oz, 18 Count",
+          "grams": 4592.6,
+          "cents": 449,
+          "cpg": 0.0978,
+          "display": "18 ct / 9 oz"
+        },
+        {
+          "concept_key": "Pantry > Canned Beans > Pork and Beans|900M0004",
+          "name": "Kroger\u00ae Pork and Beans",
+          "grams": 508.0,
+          "cents": 89,
+          "cpg": 0.1752,
+          "display": "16 oz"
+        },
+        {
+          "concept_key": "Pantry > Beans > Kidney Beans|900J300",
+          "name": "Bush's Low Sodium Dark Red Kidney Beans, Canned Dark Red Kidney Beans, 111 oz Can",
+          "grams": 3146.8,
+          "cents": 598,
+          "cpg": 0.19,
+          "display": "111 oz"
+        },
+        {
+          "concept_key": "Pantry > Beans > Cannellini Beans|900B000K",
+          "name": "Great Value Cannellini Beans, 15.5 oz",
+          "grams": 439.4,
+          "cents": 86,
+          "cpg": 0.1957,
+          "display": "15.5 oz"
+        },
+        {
+          "concept_key": "Pantry > Beans > Kidney Beans|900J000*",
+          "name": "Great Value Dark Red Kidney Beans, 15.5 oz",
+          "grams": 439.4,
+          "cents": 86,
+          "cpg": 0.1957,
+          "display": "15.5 oz (439g)"
+        },
+        {
+          "concept_key": "Pantry > Beans > Kidney Beans|900J000*",
+          "name": "Great Value Light Red Kidney Beans, 15.5 oz",
+          "grams": 439.4,
+          "cents": 86,
+          "cpg": 0.1957,
+          "display": "15.5 oz"
+        },
+        {
+          "concept_key": "Pantry > Beans > Kidney Beans|900J000*",
+          "name": "Great Value Dark Red Kidney Beans, No Salt Added, 15.5 oz",
+          "grams": 439.4,
+          "cents": 86,
+          "cpg": 0.1957,
+          "display": "15.5 oz"
+        },
+        {
+          "concept_key": "Pantry > Beans > Great Northern Beans|900C0005",
+          "name": "Great Value Great Northern Beans, 15.5 oz",
+          "grams": 439.4,
+          "cents": 86,
+          "cpg": 0.1957,
+          "display": "15.5 oz"
+        },
+        {
+          "concept_key": "Pantry > Beans > Red Beans|900F0000",
+          "name": "Great Value Red Bean, 15.5 oz",
+          "grams": 439.4,
+          "cents": 86,
+          "cpg": 0.1957,
+          "display": "15.5 oz"
+        },
+        {
+          "concept_key": "Pantry > Beans > Navy Beans|900E000E",
+          "name": "Great Value Navy Bean, 15.5 oz Can",
+          "grams": 439.4,
+          "cents": 86,
+          "cpg": 0.1957,
+          "display": "15.5 oz"
+        },
+        {
+          "concept_key": "Pantry > Canned Beans > Pork and Beans|900M0004",
+          "name": "Kroger\u00ae Pork & Beans",
+          "grams": 453.6,
+          "cents": 89,
+          "cpg": 0.1962,
+          "display": "16 oz"
+        },
+        {
+          "concept_key": "Pantry > Beans > Great Northern Beans|900C0005",
+          "name": "(12 pack) Great Value Great Northern Beans, 15.5 oz",
+          "grams": 5273.0,
+          "cents": 1062,
+          "cpg": 0.2014,
+          "display": "15.5 oz"
+        }
+      ]
+    }
+  },
+  "plan": "planner/data/config_runs/p5_2400_high_protein_l75_proteinfix2_p25.json",
+  "plan_purchase_mix": {
+    "untagged": {
+      "purchase_rows": 458,
+      "packages": 895.0,
+      "grams": 346850.8,
+      "cost": 1344.71,
+      "top_skus": [
+        [
+          "Jumbo Yellow Onions",
+          12
+        ],
+        [
+          "Land O Lakes Salted Butter in Half Sticks, 4 Half Sticks, 8 oz Pack",
+          10
+        ],
+        [
+          "White Potatoes",
+          10
+        ],
+        [
+          "Great Value Milk 1% Low-fat, Half Gallon, 64 fl oz",
+          9
+        ],
+        [
+          "Great Value No Salt Added Diced Tomatoes, 14.5 oz",
+          9
+        ],
+        [
+          "Red Gold\u00ae Stewed Tomatoes",
+          8
+        ],
+        [
+          "Great Value Tomato Sauce, 8 oz Can",
+          8
+        ],
+        [
+          "CHI-CHI'S Flour Tortillas Burrito Size, Tortilla Wrap, Shelf-Stable, 17 oz Resealable Package, (8 Tortillas)",
+          8
+        ],
+        [
+          "Great Value White Round Top Bread Loaf, 20 oz",
+          7
+        ],
+        [
+          "Kroger\u00ae Traditional Favorites Frozen Corn Super Sweet",
+          7
+        ]
+      ]
+    },
+    "red_meat": {
+      "purchase_rows": 43,
+      "packages": 87.0,
+      "grams": 41736.7,
+      "cost": 460.34,
+      "top_skus": [
+        [
+          "Kroger\u00ae Maple Pork Sausage",
+          6
+        ],
+        [
+          "Bristol Brewing Company Brand Smoke Flavor Cooked Ham, High Protein, 16 oz Aluminum Can",
+          4
+        ],
+        [
+          "Kroger\u00ae 73/27 Ground Beef Roll 1 LB",
+          4
+        ],
+        [
+          "Smithfield Thick Cut Premium Maple Bacon",
+          3
+        ],
+        [
+          "Odom's Tennessee Pride Mild Sausage Breakfast Sausage Roll",
+          2
+        ],
+        [
+          "Jimmy Dean Premium Bacon Hickory Smoked",
+          2
+        ],
+        [
+          "Mixed: 1x Tyson Ground 80% Lean/20% Fat Beef & Pork + 1x Kroger\u00ae 73/27 Ground Beef Roll 1 LB",
+          2
+        ],
+        [
+          "John Morrell\u00ae Smoked Sausage",
+          2
+        ],
+        [
+          "Smithfield\u00ae Hometown Original Bacon",
+          2
+        ],
+        [
+          "Mixed: 1x Tyson Ground 80% Lean/20% Fat Beef & Pork + 3x Kroger\u00ae 73/27 Ground Beef Roll 1 LB",
+          2
+        ]
+      ]
+    },
+    "poultry": {
+      "purchase_rows": 10,
+      "packages": 30.0,
+      "grams": 39916.2,
+      "cost": 224.52,
+      "top_skus": [
+        [
+          "Marketside Antibiotic-Free Boneless Skinless Chicken Breasts, 1.3 - 3.0 lb",
+          9
+        ],
+        [
+          "Kroger\u00ae 99% Fat Free Ground Turkey Breast - 1 LB",
+          1
+        ]
+      ]
+    },
+    "eggs": {
+      "purchase_rows": 14,
+      "packages": 46.0,
+      "grams": 28276.9,
+      "cost": 72.66,
+      "top_skus": [
+        [
+          "Kroger\u00ae Medium Grade A White Eggs",
+          12
+        ],
+        [
+          "Great Value Wide Egg Noodles, 16 oz",
+          2
+        ]
+      ]
+    },
+    "legumes_nuts": {
+      "purchase_rows": 38,
+      "packages": 65.0,
+      "grams": 27948.0,
+      "cost": 65.51,
+      "top_skus": [
+        [
+          "Great Value Black Beans, 15 oz",
+          8
+        ],
+        [
+          "Great Value Pinto Beans, 15.5 oz",
+          8
+        ],
+        [
+          "Great Value Dark Red Kidney Beans, 15.5 oz",
+          7
+        ],
+        [
+          "Great Value Traditional Refried Beans, 16 oz",
+          6
+        ],
+        [
+          "Great Value Mayocoba Beans, 1 lb",
+          3
+        ],
+        [
+          "Great Value Canned Black Eyed Peas, 15.5 oz Can",
+          1
+        ],
+        [
+          "Kroger\u00ae Pork & Beans",
+          1
+        ],
+        [
+          "Kroger\u00ae Unsalted Mixed Nuts",
+          1
+        ],
+        [
+          "Light Red Kidney Beans",
+          1
+        ],
+        [
+          "DAVID Sunflower Seeds, Original Flavor, 5.25 oz.",
+          1
+        ]
+      ]
+    }
+  }
+}

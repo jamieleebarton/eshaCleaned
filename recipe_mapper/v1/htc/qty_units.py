@@ -62,6 +62,8 @@ QTY_RE = re.compile(
 
 def _replace_unicode_fractions(s: str) -> str:
     out = s
+    for slash in ("⁄", "∕", "／"):
+        out = out.replace(slash, "/")
     for k, v in UNI_FRAC.items():
         out = out.replace(k, " " + v + " ")
     return out

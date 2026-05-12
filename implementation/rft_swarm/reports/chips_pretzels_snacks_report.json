@@ -1,0 +1,67 @@
+{
+  "category": "Chips, Pretzels & Snacks",
+  "n_products": 12672,
+  "verdict_distribution": {
+    "EXACT": 2662,
+    "STRONG": 637,
+    "WEAK": 3254,
+    "NEEDS_NEW_CONCEPT": 5590,
+    "COMPOSITE": 506,
+    "NO_IDENTITY": 16,
+    "NO_MATCH": 7
+  },
+  "top_esha_codes": [
+    {
+      "code": "",
+      "desc": "",
+      "n": 944
+    },
+    {
+      "code": "53909",
+      "desc": "chips, potato",
+      "n": 545
+    },
+    {
+      "code": "12950",
+      "desc": "Chips, potato, original",
+      "n": 445
+    },
+    {
+      "code": "33745",
+      "desc": "Snack, crisps, risotto chips, sea salt, baked",
+      "n": 291
+    },
+    {
+      "code": "61106",
+      "desc": "Pretzels, with Cheeze dip, snack",
+      "n": 259
+    },
+    {
+      "code": "49465",
+      "desc": "Chips, potato, with sea salt",
+      "n": 256
+    },
+    {
+      "code": "12952",
+      "desc": "chips, potato, sour cream onion",
+      "n": 243
+    },
+    {
+      "code": "44330",
+      "desc": "chips, tortilla",
+      "n": 211
+    },
+    {
+      "code": "49464",
+      "desc": "chips, potato, kettle cooked",
+      "n": 194
+    },
+    {
+      "code": "49464",
+      "desc": "Chips, potato, kettle cooked",
+      "n": 182
+    }
+  ],
+  "n_fixes_proposed": 62,
+  "n_needs_new_concept": 5590
+}

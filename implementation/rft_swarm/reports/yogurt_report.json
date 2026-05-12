@@ -1,0 +1,65 @@
+{
+  "category": "Yogurt",
+  "n_products": 7137,
+  "verdict_distribution": {
+    "NEEDS_NEW_CONCEPT": 3014,
+    "WEAK": 2159,
+    "EXACT": 1118,
+    "STRONG": 624,
+    "COMPOSITE": 222
+  },
+  "top_esha_codes": [
+    {
+      "code": "11973",
+      "desc": "yogurt, vanilla, lowfat",
+      "n": 161
+    },
+    {
+      "code": "11961",
+      "desc": "Yogurt, honey, whole milk",
+      "n": 137
+    },
+    {
+      "code": "11965",
+      "desc": "Yogurt, plain, whole milk, serving",
+      "n": 131
+    },
+    {
+      "code": "39882",
+      "desc": "yogurt, greek, vanilla, nonfat",
+      "n": 126
+    },
+    {
+      "code": "39881",
+      "desc": "yogurt, greek, plain, nonfat",
+      "n": 125
+    },
+    {
+      "code": "16435",
+      "desc": "yogurt, greek",
+      "n": 121
+    },
+    {
+      "code": "11972",
+      "desc": "yogurt, strawberry, lowfat",
+      "n": 112
+    },
+    {
+      "code": "17807",
+      "desc": "Yogurt, mango, low fat",
+      "n": 103
+    },
+    {
+      "code": "39883",
+      "desc": "yogurt, greek, strawberry, nonfat",
+      "n": 92
+    },
+    {
+      "code": "",
+      "desc": "",
+      "n": 90
+    }
+  ],
+  "n_fixes_proposed": 47,
+  "n_needs_new_concept": 3014
+}

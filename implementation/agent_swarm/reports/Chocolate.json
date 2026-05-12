@@ -1,0 +1,30 @@
+{
+  "category": "Chocolate",
+  "n_products": 10875,
+  "verdict_distribution": {
+    "EXACT": 957,
+    "WEAK": 2761,
+    "COMPOSITE": 525,
+    "STRONG": 544,
+    "NEEDS_NEW_CONCEPT": 6056,
+    "NO_IDENTITY": 7,
+    "NO_MATCH": 25
+  },
+  "reason_distribution": {
+    "replaced_exact": 828,
+    "replaced_inherited": 164,
+    "kept_orig_weak": 1948,
+    "kept_orig_composite": 473,
+    "kept_orig_no_rft_esha": 377,
+    "kept_orig_no_match": 5322,
+    "kept_agree_exact": 411,
+    "kept_agree_weak": 399,
+    "filled_weak_inherited": 1,
+    "filled_weak_exact": 31,
+    "kept_agree_inherited": 3,
+    "filled_exact": 25,
+    "still_empty": 893
+  },
+  "n_findings": 0,
+  "findings": []
+}

@@ -1,0 +1,2 @@
+week,recipe_id,recipe_title,line_index,display,ingredient_item,grams_resolved,recipe_concept_key,priced_concept_key,selected_sku,issue_type,severity,message,expected,actual
+10,355648,Sweetbread Salad with Lemon and Mayonnaise,3,"1 head butterhead lettuce, leaves separated and chilled",butterhead lettuce,163.00,Produce > Vegetables > Lettuce|6010000S,Produce > Vegetables > Lettuce|6010000S,,bad_grams,blocker,Head lettuce line has implausible grams.,head lettuce roughly 250-900g,163g

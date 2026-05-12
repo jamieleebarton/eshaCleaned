@@ -1,0 +1,54 @@
+=== Consensus taxonomy build  (2026-04-28 22:29:14) ===
+
+Total products: 462,646
+Confidence: high=11,525 medium=255,845 low=195,276
+Disagreements (≥3 conflicting signals): 449,533
+
+Agreement distribution (n_agree, n_signals):
+  agree=1 of 3 signals  →           5
+  agree=1 of 4 signals  →       1,193
+  agree=1 of 5 signals  →      22,509
+  agree=1 of 6 signals  →     171,569
+  agree=2 of 3 signals  →           1
+  agree=2 of 4 signals  →         479
+  agree=2 of 5 signals  →      16,793
+  agree=2 of 6 signals  →     193,093
+  agree=3 of 4 signals  →           2
+  agree=3 of 5 signals  →       1,101
+  agree=3 of 6 signals  →      44,376
+  agree=4 of 5 signals  →         193
+  agree=4 of 6 signals  →       8,516
+  agree=5 of 6 signals  →       2,794
+  agree=6 of 6 signals  →          22
+
+Consensus supercategory distribution:
+    36,503  candy_or_chocolate
+    34,569  snack_bar
+    31,026  bakery_dessert
+    26,148  cheese
+    23,944  unknown
+    22,486  chips_popcorn
+    21,911  spice_seasoning
+    20,643  dairy_milk_or_cream
+    17,806  cracker_pretzel
+    16,432  frozen_meal
+    14,691  bakery_bread
+    11,968  juice
+    11,713  vegetable
+    11,478  fresh_meat
+    10,826  cereal
+     9,852  deli_meat
+     9,763  pasta
+     9,375  butter_spread
+     8,737  seafood
+     8,521  soup_broth
+     8,233  soda
+     8,146  pizza
+     7,815  yogurt
+     7,581  water
+     7,453  hotdog_sausage
+     7,426  salsa_dip
+     6,226  pre_packaged_fruit_veg
+     6,190  dressing_mayo
+     5,827  sweetener
+     4,702  pet_food

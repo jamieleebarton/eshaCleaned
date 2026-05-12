@@ -1,0 +1,7 @@
+{
+  "plan": "planner/data/config_runs/p4_2000_thrifty_l75_p15_identity_rebuild2.json",
+  "recipes_selected": 256,
+  "lines_scanned": 2356,
+  "finding_count": 0,
+  "by_issue_type": {}
+}

@@ -1,0 +1,342 @@
+Lonely-hint audit — identities where the model emitted them
+but title doesn't contain the natural keyword.
+
+identity                              suspect   total      %
+----------------------------------------------------------------------
+Mixed Nuts                               9073    9896    92%
+Hard Candy                               6018    6559    92%
+Salad Dressing                           4269    4804    89%
+Frozen Entree                            3931    4115    96%
+Ice Cream                                3199   12393    26%
+Gummy Candy                              2951    4267    69%
+Trail Mix                                2841    5010    57%
+Barbecue Sauce                           2785    3491    80%
+Seasoning                                2240    6094    37%
+Chocolate Candy                          1541   12010    13%
+Meal Starter                             1514    1885    80%
+Pretzels                                 1365    3094    44%
+Bubble Gum                               1354    1679    81%
+Cheese                                   1342   18045     7%
+Protein Bars                             1251    3695    34%
+Sparkling Water                          1228    5152    24%
+Sandwich                                 1088    2051    53%
+Granola Bars                             1034    2291    45%
+Vegetable Blend                           973    1758    55%
+Cheese Crisps                             970    1921    50%
+Dip                                       953    3354    28%
+Breakfast Sandwich                        922    1208    76%
+Candied Fruit                             910     927    98%
+Lollipops                                 813    1124    72%
+Protein Shake                             794    2601    31%
+Applesauce                                714    1480    48%
+Marshmallows                              700    1130    62%
+Spice Blend                               627     977    64%
+BBQ Rub                                   544     701    78%
+Veggie Straws                             529     774    68%
+Sour Candy                                500    1465    34%
+Muffins                                   458    1698    27%
+Butter                                    433    4121    11%
+Cereal Bars                               428     811    53%
+Bark                                      409     892    46%
+Tomatoes                                  404    2931    14%
+Mac and Cheese                            402    2123    19%
+Tortillas                                 387    1556    25%
+Fruit Snacks                              368    2286    16%
+Energy Bars                               368    1097    34%
+Fruit Bars                                355    1142    31%
+Green Beans                               352    1655    21%
+TV Dinner                                 351     351   100%
+Mayonnaise                                347     995    35%
+Pie Filling                               344     983    35%
+Toaster Pastries                          338     998    34%
+Flatbread Crisps                          331     480    69%
+Cold Brew Coffee                          323     996    32%
+Cheese and Crackers Pack                  316     931    34%
+Wellness Shot                             315     366    86%
+Granola                                   307    2249    14%
+Sports Drink Mix                          298     317    94%
+Pizza                                     283    4570     6%
+Latte Mix                                 276     483    57%
+Hot Cocoa Mix                             270    1259    21%
+Lunch Kit                                 259     342    76%
+Potatoes                                  255    1972    13%
+Cupcakes                                  240    1214    20%
+Licorice                                  218     537    41%
+Ground Beef                               195     949    21%
+Kombucha                                  187    1075    17%
+Juice Concentrate                         177     398    44%
+Pizza Crust Mix                           176     554    32%
+Fruit Chews                               175     561    31%
+Chicken Burgers                           169     217    78%
+Caramel Candy                             167    1404    12%
+Apple Chips                               158     449    35%
+Penne Alfredo                             147     271    54%
+Baby Carrots                              146     262    56%
+Eggnog                                    141     256    55%
+Fruit Candy                               135     251    54%
+Pot Pie                                   135     362    37%
+Lasagna                                   131     722    18%
+Nutrition Bars                            127     452    28%
+Pizza Pocket                              113     167    68%
+Marshmallow Squares                       108     345    31%
+Aioli                                     107     205    52%
+Sourdough Bread                            90     474    19%
+Energy Gels                                90     219    41%
+Skillet Meal                               88     326    27%
+Chocolate Milk Mix                         85     307    28%
+Whole Chicken                              83     136    61%
+Pound Cake                                 81     302    27%
+Apple Cider Vinegar Drink                  73     231    32%
+Chicken Breast                             69    1713     4%
+Apple Snack Pack                           56     338    17%
+Chocolate Milk                             56     738     8%
+Fudge                                      52     307    17%
+Truffle                                    52    1217     4%
+Pork Ribs                                  46     353    13%
+Parfait                                    44     218    20%
+Chocolate Bar                              41    1212     3%
+Toffee                                     40     435     9%
+Chicken Broth                              38     960     4%
+Coconut Water                              37     749     5%
+Broccoli with Cheese Sauce                 36     173    21%
+Fruit Leather                              34     316    11%
+Filet Mignon                               34      62    55%
+Lemonade Mix                               33     388     9%
+Gelato                                     22     904     2%
+Kids Meal                                  20      21    95%
+Pork Chops                                 17     244     7%
+Almond Milk                                16     670     2%
+Fruit and Veggie Strips                    16      70    23%
+Kefir                                      16     315     5%
+Ribeye Steak                               15     100    15%
+Apple Butter                               15     129    12%
+Jelly Beans                                13     752     2%
+Breakfast Bars                             11     156     7%
+Broccoli Cheddar Soup                      11     159     7%
+Ground Turkey                              11     269     4%
+Angel Food Cake                            10     100    10%
+Kids Bars                                   9      39    23%
+Peas                                        8    1185     1%
+Cotton Candy                                7     288     2%
+Broccoli                                    7     598     1%
+Chicken Thighs                              6     118     5%
+Oat Milk                                    6     233     3%
+French Bread Pizza                          6      79     8%
+Skirt Steak                                 4      22    18%
+Yogurt Bars                                 3      59     5%
+Strawberry Milk                             1     102     1%
+Ranch Dressing                              1      98     1%
+Salt and Pepper                             1      35     3%
+
+
+Samples per identity (first 5):
+
+  === Mixed Nuts ===
+    fdc=2116852  title=GOJI BERRY BLEND DRY ROASTED EDAMAME, GOJI BERRY BLEND
+    fdc=1932150  title=CALIFORNIA FLAVORED NUTS, PAPAYA W/CHILE & TAMARINDO
+    fdc=2438527  title=CALIFORNIA FLAVORED NUTS, PINEAPPLE CHILI AND LEMON
+    fdc=2438519  title=CALIFORNIA FLAVORED NUTS, MANGO, SALT & LEMON, SALT & LEMON
+    fdc=1940838  title=PREMIUM TOASTED BLACK EDAMAME, SALTED CARAMEL COCONUT
+
+  === Hard Candy ===
+    fdc=2452428  title=DOUBLE CHOCOLATE KRAVEN APPLE, DOUBLE CHOCOLATE
+    fdc=2071940  title=DOUBLE DIPPED FREEZE DRIED APPLES
+    fdc=2369632  title=CANDY FLAVORED APPLE, CANDY
+    fdc=2055011  title=QUICKCHEK, APPLES AND CANDY CORN
+    fdc=450371  title=CHERRYCANDY APPLES WITH PEANUTS
+
+  === Salad Dressing ===
+    fdc=1587643  title=BUTTERMILK RANCH, WITH SOUR CREAM, ONION, & HERBS
+    fdc=2568717  title=HONEY BARBECUE RANCH YOGURT DRESSING & DIP, HONEY; BARBECUE
+    fdc=2568700  title=HONEY BARBECUE RANCH YOGURT DRESSING, HONEY; BARBECUE
+    fdc=2598028  title=LIGHT CAESAR DRESSING
+    fdc=1845836  title=LEMON TURMERIC DRESSING, LEMON TURMERIC
+
+  === Frozen Entree ===
+    fdc=2541773  title=CHILE VERDE COOKED BEEF WITH TACO SAUCE, CHILE VERDE BEEF WITH TACO SAUCE
+    fdc=2517674  title=MARIE CALLENDERS Mongolian Style Dinner, 13 OZ
+    fdc=2037519  title=ITALIAN STYLE GRAVY & SLICED BEEF
+    fdc=2091986  title=ITALIAN STYLE GRAVY AND BEEF
+    fdc=2406884  title=BEEF PEPPER STEAK BEEF STRIPS IN ASIAN STYLE PEPPER SAUCE, BEEF PEPPER STEAK
+
+  === Ice Cream ===
+    fdc=2584098  title=BIRTHDAY CAKE BITES CHOCOLATE-COVERED FROZEN DESSERT
+    fdc=1973783  title=CHEESECAKE CHOCOLATE FLAVOR DAIRY DESSERT, CHEESECAKE CHOCOLATE
+    fdc=1984432  title=CHERRY CHEESECAKE DAIRY DESSERT, CHERRY
+    fdc=2294173  title=SALTED CARAMEL CHEESECAKE DAIRY DESSERT, SALTED CARAMEL
+    fdc=2271042  title=CHEESECAKE SALTED CARAMEL DAIRY DESSERT, CHEESECAKE SALTED CARAMEL
+
+  === Gummy Candy ===
+    fdc=2073193  title=GUMMI CHEESE CAKE
+    fdc=2149358  title=ORANGE COOL COSMIC CUBES, ORANGE
+    fdc=2509404  title=CHEESECAKE CRISPY BASE GUMMI CANDY, CHEESECAKE
+    fdc=1946302  title=GOURMET PARTY MIX GUMMIES, RAINBOW ICE, BIRTHDAY CAKE, FRONT PORCH LEMONADE
+    fdc=1877999  title=CHERRY JELLIES COLLECTION, CHERRY DAIQUIRI, CHERRY COLA, WILD CHERRY, KIWI CHERR
+
+  === Trail Mix ===
+    fdc=2072470  title=DRIED FIGS + WALNUTS TAPAS
+    fdc=2408121  title=DRIED POMEGRANATE SEEDS
+    fdc=1886919  title=FIG WEDGE WITH ALMONDS
+    fdc=2585631  title=PINEAPPLE COCONUT CHIA, PINEAPPLE COCONUT CHIA
+    fdc=2470036  title=ORGANIC SAFARI MIX WITH ROASTED SOYA BEANS, PINEAPPLE & BLUEBERRIES, SAFARI MIX
+
+  === Barbecue Sauce ===
+    fdc=2630229  title=APPLE BUTTER MESQUITE SAUCE, APPLE BUTTER MESQUITE
+    fdc=2138211  title=CHICKEN & BAKED BEANS SAUCE, CHICKEN
+    fdc=2031445  title=SEASONED SHREDDED BEEF IN ORIGINAL BBQ SAUCE, ORIGINAL BBQ
+    fdc=2595154  title=SUGAR FREE MANGO HABANERO WING SAUCE, MANGO; HABANERO
+    fdc=2595152  title=SUGAR FREE CARIBBEAN JERK WING SAUCE
+
+  === Seasoning ===
+    fdc=2596451  title=GLUTEN FREE SEASONED WITH PECORINO ROMANO CHEESE  CRUMBS
+    fdc=2656240  title=SEASONED GLUTEN FREE CRUMBS WITH PECORINO ROMANO CHEESE, SEASONED
+    fdc=1868489  title=SPARTAN, HOMESTYLE CHICKEN SEASONED COATING MIX
+    fdc=2617482  title=SPICY FISH N' CHICKEN MIX
+    fdc=2303053  title=CAJUN FISH BREADING, CAJUN
+
+  === Chocolate Candy ===
+    fdc=2618950  title=CARAMEL APPLE GOURMET M&M, CARAMEL APPLE
+    fdc=1831707  title=PEANUT BUTTER CUP BANANA BABIES, PEANUT BUTTER CUP
+    fdc=1976602  title=BIRTHDAY CAKE FLAVOR HOLLOW MAGICAL EASTER UNICORN, BIRTHDAY CAKE
+    fdc=2564891  title=HOLLOW BIRTHDAY CAKE FLAVOR MAGICAL EASTER UNICORN
+    fdc=1897473  title=CHEESECAKE, STRAWBERRY
+
+  === Meal Starter ===
+    fdc=2593984  title=Beef Pasta Hamburger Helper
+    fdc=2682584  title=Old El Paso Tortilla Pockets Dinner Kit
+    fdc=2682598  title=Old El Paso Tortilla Pockets Dinner Kit
+    fdc=2682591  title=Old El Paso Tortilla Pockets Dinner Kit
+    fdc=2682597  title=Old El Paso Asado Chicken Taco Kit
+
+  === Pretzels ===
+    fdc=2054709  title=ACME, BAGEL PRETZEL
+    fdc=2556877  title=Whole Grain-Rich Pretzel Bites
+    fdc=2115181  title=UNSALTED SOFT PRETZEL
+    fdc=2309552  title=ONE BITES PRETZEL
+    fdc=2167007  title=CHEESE SOFT PRETZEL BREAD BITES, CHEESE
+
+  === Bubble Gum ===
+    fdc=2070978  title=MINI CINNAMON
+    fdc=917220  title=CONCORD CONFECTIONS
+    fdc=1633734  title=ORBIT WHITE
+    fdc=2047238  title=SO TWEET GLITTER EGG WITH SHIMMER GUMBALLS
+    fdc=2385907  title=SLAM DUNK BASKETBALL GUMBALLS
+
+  === Cheese ===
+    fdc=2682750  title=Handhelds, Whole Grain, Mozzarella Dippinz Bites, 2.375" x 1"
+    fdc=1922150  title=SINGLES DELUXE AMERICAN
+    fdc=2477425  title=AMERICAN SINGLES
+    fdc=1856640  title=AMERICAN SINGLES
+    fdc=2105316  title=CHEESY BLISS, AMERICAN STYLE SINGLES
+
+  === Protein Bars ===
+    fdc=2740921  title=EPIC Grass Fed Bison Uncured Bacon + Cranberry Bar
+    fdc=2740798  title=EPIC Beef Apple + Uncured Bacon Bars 12 Count
+    fdc=2741050  title=EPIC Beef Apple + Uncured Bacon Bar
+    fdc=2740922  title=EPIC Maple Uncured Bacon and Pork Bar
+    fdc=2623475  title=UNCURED BACON + CRANBERRY BISON BAR
+
+  === Sparkling Water ===
+    fdc=2083570  title=FUDGE CHEESECAKE
+    fdc=2557850  title=16.9OZ BOTTLE BLACK CHERRY SELTZER
+    fdc=2557816  title=20OZ BOTTLE BLACK CHERRY SELTZER
+    fdc=1876287  title=SELTZER WATER, COCONUT
+    fdc=2658756  title=COCONUT SELTZER WATER, COCONUT
+
+  === Sandwich ===
+    fdc=2564596  title=BREAKFAST AVOCADO TOAST
+    fdc=2610372  title=Flame Grilled Bacon Cheeseburger On A Bun
+    fdc=2649365  title=Flamebroiled Bacon Cheeseburger
+    fdc=2648956  title=Bacon Cheeseburger
+    fdc=484125  title=OPEN FACED SALMON BAGEL
+
+  === Granola Bars ===
+    fdc=1868800  title=PUMPKIN TREE, ORGANIC OAT CRUSH, RASPBERRY & BLUEBERRY, RASPBERRY & BLUEBERRY
+    fdc=2111740  title=CINNAMON BUN SOFT BAKED BARS, CINNAMON BUN
+    fdc=1868840  title=CHIA BARS, APPLE CINNAMON
+    fdc=1908673  title=BANANA BREAD FLAX BAR
+    fdc=2664430  title=BANANA NUT BREAD BARS
+
+  === Vegetable Blend ===
+    fdc=2068673  title=FINGERLING POTATO FUSION
+    fdc=2474112  title=CORN, BLACK BEANS, ONIONS, GREEN PEPPERS, RED PEPPERS FIESTA CORN BLEND
+    fdc=2160117  title=SOUTHWEST STYLE A BLEND OF BLACK BEANS, CORN, LENTILS, WHOLE GRAINS, RED BELL PE
+    fdc=1633848  title=LIGHTLY SAUCED HEALTHY WEIGHT SLICED CARROTS, SUGAR SNAP PEAS, BLACK BEANS AND E
+    fdc=2383849  title=THE ULTIMATE SOUTHWEST BLEND PETITE SUPER SWEET CORN, BLACK BEANS, MILD POBLANO 
+
+  === Cheese Crisps ===
+    fdc=1926683  title=BAKED SNACK CRACKERS, CHEDDAR
+    fdc=2271358  title=CHEDDAR JACK BAKED SNACK CRACKERS, CHEDDAR JACK
+    fdc=2594999  title=SCORCHIN' HOT CHEDDAR CRUNCHY SNACK CRACKERS, CHEDDAR
+    fdc=2500638  title=CLASSIC CHEDDAR CRACKERFULS FILLED CRACKERS, CLASSIC CHEDDAR
+    fdc=2470208  title=CHEDDAR BAKED SNACK CRACKERS, CHEDDAR
+
+  === Dip ===
+    fdc=2626819  title=BACON SPREAD, BACON
+    fdc=2391226  title=FRENCH ONION BUTTER WITH ASIAGO CHEESE, ASIAGO CHEESE
+    fdc=2603961  title=SUNNYSIDE FRESH CARROTS STICKS WITH RANCH, 6.50 OZ
+    fdc=2290403  title=CARROTS & FETA
+    fdc=2021489  title=PIMENTO SPREAD
+
+  === Breakfast Sandwich ===
+    fdc=2648897  title=Bacon Egg & Cheese On a Biscuit
+    fdc=2610536  title=Canadian Bacon, Egg and Cheese On a Muffin
+    fdc=2736917  title=Jimmy Dean Canadian Bacon, Whole Cracked Egg & Cheese English Muffin Sandwiches,
+    fdc=2648896  title=Canadian Bacon Muffin Made With Whole Grain Egg White & Cheese
+    fdc=2145392  title=BISTRO EVERYTHING BAGEL WITH EGG, SAUSAGE, CHEDDAR CHEESE AND BACON
+
+  === Candied Fruit ===
+    fdc=2018193  title=NATURAL DELIGHTS, SPICED DATE ROLLS, PECAN PUMPKIN PIE, PECAN PUMPKIN PIE
+    fdc=2306163  title=CRYSTALLIZED SLICED GINGER DRIED FRUIT, CRYSTALLIZED SLICED GINGER
+    fdc=1899997  title=BOSTON BAKED BEANS
+    fdc=2652209  title=MANGO EXTRA PICOSO MEXICAN CANDY, MANGO EXTRA PICOSO
+    fdc=2175453  title=ORGANIC GINGER CANDY BITES, TURMERIC
+
+  === Lollipops ===
+    fdc=2494850  title=RAINBOW SHERBET, WATERMELON, VANILLA CUPCAKE VALENTINE POPS, RAINBOW SHERBET, WA
+    fdc=1912185  title=TWIRL POPS, HELLO KITTY LOLLIPOP, BOOBERRY CUPCAKE, BOOBERRY CUPCAKE
+    fdc=2081599  title=SUMMERTIME FAVORITES POPS, LEMON SHAKE-UP, CARAMEL APPLE, COTTON CANDY, PEACH TE
+    fdc=2168842  title=COTTON CANDY, TOASTED MARSHMALLOW, HOT CHOCOLATE, CARAMEL CORN, APPLE PIE, BLUEB
+    fdc=2373693  title=ASSORTED STICK CANDY, BUBBLEGUM, PEPPERMINT, ROOTBEER, TANGERINE, TUTTI FRUTTI, 
+
+  === Protein Shake ===
+    fdc=1977361  title=RICH CHOCOLATE MOBILITY DAILY NUTRITIONAL DRINK, RICH CHOCOLATE
+    fdc=2436775  title=CHOCOLATE MILKSHAKE
+    fdc=1428213  title=APPLE CLEAR THERAPEUTIC NUTRITION, APPLE
+    fdc=1837846  title=THERAPEUTIC NUTRITION, APPLE
+    fdc=2468113  title=BANANAS & CREAM FLAVORED ADVANCED NUTRITION MEAL REPLACEMENT SHAKE, BANANAS & CR
+
+  === Applesauce ===
+    fdc=2064221  title=BIG SLICE KETTLE COOKED APPLES
+    fdc=384411  title=A SMOOTH PUREE OF FRESHLY COOKED APPLES FRUIT POUCHES
+    fdc=2023854  title=PURE KETTLE COOKED APPLES
+    fdc=2575066  title=SMOOTH APPLE-STRAWBERRY SAUCE WITH DICES OF APPLE, APPLE STRAWBERRY
+    fdc=2187429  title=FRIED APPLES
+
+  === Marshmallows ===
+    fdc=2182259  title=SEA SALT HANDMADE MARSHMALLOW COATED WITH DARK CHOCOLATE TOPPED W/SEASALT & CASH
+    fdc=2631283  title=BIRTHDAY CAKE FILLED MARSHMALLOW BITES, BIRTHDAY CAKE
+    fdc=2196015  title=MARSHMALLOW CRISPY RICE TREATS BIRTHDAY CAKE, MARSHMALLOW
+    fdc=2577922  title=BIRTHDAY CAKE FLAVORED COATED MARSHMALLOW BITES, BIRTHDAY CAKE
+    fdc=2265697  title=CINNAMON CHURRO DIPPED MARSHMALLOW RICE TREATS, CINNAMON CHURRO
+
+  === Spice Blend ===
+    fdc=2039049  title=CHILI POWDER WITH LEMON
+    fdc=2558214  title=JALAPENO POWDER, ORGANIC
+    fdc=2544510  title=MINCED GARLIC & RED CHILI PEPPER
+    fdc=2068441  title=RED CHILE, HOT
+    fdc=2284206  title=QUINOA GINGER SESAME
+
+  === BBQ Rub ===
+    fdc=2008560  title=DRY RUB SMOKED PORK
+    fdc=2289616  title=LAWRY'S, PIT BARBECUE SEASONING
+    fdc=2289563  title=JACK DANIEL'S, PORK RUB
+    fdc=2061273  title=LAMBERT'S, SWEET RUB O'MINE BARBEQUE
+    fdc=2626701  title=RICHIN TRADING INC., FIVE SPICED BARBECUE POWDER
+
+  === Veggie Straws ===
+    fdc=2463103  title=BRUSSELS SPROUT CHIPS
+    fdc=2395848  title=SEA SALTED OKRA CHIPS, SEA SALTED
+    fdc=2652035  title=STAR-BERRY BEET WITH ORGANIC COCONUT OIL LIL' SNACK PACK PUFFS, STAR-BERRY BEET
+    fdc=2090872  title=BOLTHOUSE FARMS, CARROT CHIPS
+    fdc=2284497  title=ORGANIC CARROTS & BROCCOLI

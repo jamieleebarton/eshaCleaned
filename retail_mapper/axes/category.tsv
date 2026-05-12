@@ -1,0 +1,807 @@
+#token	supercategory	category_group	notes
+apple	Produce	Fruit	apple
+apples	Produce	Fruit	apple plural
+pear	Produce	Fruit	pear
+pears	Produce	Fruit	pears
+banana	Produce	Fruit	banana
+bananas	Produce	Fruit	bananas
+orange	Produce	Fruit	orange
+oranges	Produce	Fruit	oranges
+mango	Produce	Fruit	mango
+peach	Produce	Fruit	peach
+peaches	Produce	Fruit	peaches
+pineapple	Produce	Fruit	pineapple
+strawberry	Produce	Fruit	strawberry
+strawberries	Produce	Fruit	strawberries
+blueberry	Produce	Fruit	blueberry
+blueberries	Produce	Fruit	blueberries
+raspberry	Produce	Fruit	raspberry
+raspberries	Produce	Fruit	raspberries
+blackberry	Produce	Fruit	blackberry
+blackberries	Produce	Fruit	blackberries
+cranberry	Produce	Fruit	cranberry
+cranberries	Produce	Fruit	cranberries
+cherry	Produce	Fruit	cherry
+cherries	Produce	Fruit	cherries
+grape	Produce	Fruit	grape
+grapes	Produce	Fruit	grapes
+grapefruit	Produce	Fruit	grapefruit
+grapefruits	Produce	Fruit	grapefruits
+watermelon	Produce	Fruit	watermelon
+melon	Produce	Fruit	melon
+plum	Produce	Fruit	plum
+apricot	Produce	Fruit	apricot
+fig	Produce	Fruit	fig
+date	Produce	Fruit	date
+dates	Produce	Fruit	dates
+acai	Produce	Fruit	acai
+goji	Produce	Fruit	goji
+pomegranate	Produce	Fruit	pomegranate
+passion	Produce	Fruit	passion fruit
+papaya	Produce	Fruit	papaya
+guava	Produce	Fruit	guava
+kiwi	Produce	Fruit	kiwi
+lemon	Produce	Fruit	lemon (also flavor)
+lime	Produce	Fruit	lime (also flavor)
+raisin	Produce	Fruit	dried grape (also flavor)
+raisins	Produce	Fruit	dried grapes
+broccoli	Produce	Vegetable	broccoli
+cauliflower	Produce	Vegetable	cauliflower
+spinach	Produce	Vegetable	spinach
+kale	Produce	Vegetable	kale
+lettuce	Produce	Vegetable	lettuce
+arugula	Produce	Vegetable	arugula
+cabbage	Produce	Vegetable	cabbage
+brussels	Produce	Vegetable	brussels sprouts
+carrot	Produce	Vegetable	carrot
+carrots	Produce	Vegetable	carrots
+celery	Produce	Vegetable	celery
+cucumber	Produce	Vegetable	cucumber
+zucchini	Produce	Vegetable	zucchini
+squash	Produce	Vegetable	squash
+pumpkin	Produce	Vegetable	pumpkin (also flavor)
+sweetpotato	Produce	Vegetable	sweet potato
+potato	Produce	Vegetable	potato
+potatoes	Produce	Vegetable	potatoes
+onion	Produce	Vegetable	onion (also flavor)
+onions	Produce	Vegetable	onions
+garlic	Produce	Vegetable	garlic (also flavor)
+ginger	Produce	Vegetable	ginger (also flavor)
+beet	Produce	Vegetable	beet
+beets	Produce	Vegetable	beets
+radish	Produce	Vegetable	radish
+turnip	Produce	Vegetable	turnip
+parsnip	Produce	Vegetable	parsnip
+asparagus	Produce	Vegetable	asparagus
+artichoke	Produce	Vegetable	artichoke
+eggplant	Produce	Vegetable	eggplant
+pepper	Produce	Vegetable	bell pepper (also flavor)
+peppers	Produce	Vegetable	peppers
+tomato	Produce	Vegetable	tomato
+tomatoes	Produce	Vegetable	tomatoes
+corn	Produce	Vegetable	corn
+mushroom	Produce	Vegetable	mushroom
+mushrooms	Produce	Vegetable	mushrooms
+peas	Produce	Vegetable	peas
+greens	Produce	Vegetable	salad greens
+chile	Produce	Vegetable	chile pepper
+chiles	Produce	Vegetable	chiles
+jalapeno	Produce	Vegetable	jalapeño (also flavor)
+avocado	Produce	Vegetable	avocado
+vegetable	Produce	Vegetable	generic
+vegetables	Produce	Vegetable	generic plural
+veggie	Produce	Vegetable	veggie generic
+veggies	Produce	Vegetable	veggies
+beef	Meat & Seafood	Meat	beef
+steak	Meat & Seafood	Meat	steak
+brisket	Meat & Seafood	Meat	brisket
+roast	Meat & Seafood	Meat	roast (also form)
+ribeye	Meat & Seafood	Meat	ribeye
+sirloin	Meat & Seafood	Meat	sirloin
+ribs	Meat & Seafood	Meat	ribs
+rib	Meat & Seafood	Meat	rib
+pork	Meat & Seafood	Meat	pork
+ham	Meat & Seafood	Meat	ham
+bacon	Meat & Seafood	Meat	bacon
+sausage	Meat & Seafood	Meat	sausage
+sausages	Meat & Seafood	Meat	sausages
+chorizo	Meat & Seafood	Meat	chorizo
+prosciutto	Meat & Seafood	Meat	prosciutto
+salami	Meat & Seafood	Meat	salami
+pepperoni	Meat & Seafood	Meat	pepperoni
+jerky	Meat & Seafood	Meat	jerky
+chicken	Meat & Seafood	Poultry	chicken
+turkey	Meat & Seafood	Poultry	turkey
+duck	Meat & Seafood	Poultry	duck
+goose	Meat & Seafood	Poultry	goose
+lamb	Meat & Seafood	Meat	lamb
+veal	Meat & Seafood	Meat	veal
+fish	Meat & Seafood	Seafood	fish
+salmon	Meat & Seafood	Seafood	salmon
+tuna	Meat & Seafood	Seafood	tuna
+cod	Meat & Seafood	Seafood	cod
+tilapia	Meat & Seafood	Seafood	tilapia
+shrimp	Meat & Seafood	Seafood	shrimp
+crab	Meat & Seafood	Seafood	crab
+lobster	Meat & Seafood	Seafood	lobster
+scallop	Meat & Seafood	Seafood	scallop
+oyster	Meat & Seafood	Seafood	oyster
+clam	Meat & Seafood	Seafood	clam
+mussel	Meat & Seafood	Seafood	mussel
+meat	Meat & Seafood	Meat	generic meat
+meats	Meat & Seafood	Meat	generic meats
+milk	Beverage	Dairy Milk	cow milk
+cream	Dairy	Cream	cream (also FORM)
+creme	Dairy	Cream	cream alt-spelling
+yogurt	Dairy	Yogurt	yogurt
+cheese	Dairy	Cheese	cheese
+cheeses	Dairy	Cheese	cheeses (plural)
+cheddar	Dairy	Cheese	cheddar
+mozzarella	Dairy	Cheese	mozzarella
+parmesan	Dairy	Cheese	parmesan
+romano	Dairy	Cheese	romano
+provolone	Dairy	Cheese	provolone
+swiss	Dairy	Cheese	swiss (also cuisine)
+gouda	Dairy	Cheese	gouda
+asiago	Dairy	Cheese	asiago
+feta	Dairy	Cheese	feta
+ricotta	Dairy	Cheese	ricotta
+cottage	Dairy	Cheese	cottage cheese
+queso	Dairy	Cheese	queso
+goat	Dairy	Cheese	goat (cheese)
+brie	Dairy	Cheese	brie
+camembert	Dairy	Cheese	camembert
+gorgonzola	Dairy	Cheese	gorgonzola
+mascarpone	Dairy	Cheese	mascarpone
+colby	Dairy	Cheese	colby
+monterey	Dairy	Cheese	monterey jack (compound w jack)
+jack	Dairy	Cheese	monterey jack (compound)
+american	Dairy	Cheese	american cheese (also cuisine)
+butter	Dairy	Butter	butter (also FORM)
+buttermilk	Dairy	Buttermilk	buttermilk
+egg	Dairy	Eggs	egg (also FORM)
+eggs	Dairy	Eggs	eggs
+kefir	Dairy	Probiotic	kefir
+almond	Beverage|Snack	Plant-based Milk|Nuts & Seeds	almond — context-dependent
+almonds	Snack	Nuts & Seeds	almonds (snack)
+oat	Beverage|Pantry	Plant-based Milk|Grain	oat — context-dependent
+oats	Pantry	Grains	oats
+soy	Beverage|Pantry	Plant-based Milk|Soy	soy — context-dependent
+coconut	Beverage|Pantry	Plant-based Milk|Coconut	coconut
+cashew	Beverage|Snack	Plant-based Milk|Nuts & Seeds	cashew
+cashews	Snack	Nuts & Seeds	cashews
+hemp	Beverage|Pantry	Plant-based Milk|Grain	hemp
+rice	Beverage|Pantry	Plant-based Milk|Grain	rice
+pea	Beverage|Pantry	Plant-based Milk|Legume	pea
+flax	Pantry	Seed	flax
+chia	Pantry	Seed	chia (also INCLUSION)
+peanut	Snack|Pantry	Nuts & Seeds|Spreads	peanut
+peanuts	Snack	Nuts & Seeds	peanuts
+walnut	Snack	Nuts & Seeds	walnut
+walnuts	Snack	Nuts & Seeds	walnuts
+pecan	Snack	Nuts & Seeds	pecan
+pecans	Snack	Nuts & Seeds	pecans
+hazelnut	Snack	Nuts & Seeds	hazelnut
+pistachio	Snack	Nuts & Seeds	pistachio
+macadamia	Snack	Nuts & Seeds	macadamia
+sunflower	Snack	Nuts & Seeds	sunflower seed
+pumpkinseed	Snack	Nuts & Seeds	pumpkin seed
+sesame	Pantry	Seed	sesame
+nut	Snack	Nuts & Seeds	generic nut
+nuts	Snack	Nuts & Seeds	generic nuts
+quinoa	Pantry	Grain	quinoa
+wheat	Pantry	Grain	wheat
+rye	Pantry	Grain	rye
+barley	Pantry	Grain	barley
+millet	Pantry	Grain	millet
+spelt	Pantry	Grain	spelt
+buckwheat	Pantry	Grain	buckwheat
+grain	Pantry	Grain	generic grain
+grains	Pantry	Grain	generic grains
+bean	Pantry	Legume	bean
+beans	Pantry	Legume	beans
+lentil	Pantry	Legume	lentil
+lentils	Pantry	Legume	lentils
+chickpea	Pantry	Legume	chickpea
+chickpeas	Pantry	Legume	chickpeas
+hummus	Pantry	Spreads	hummus
+guacamole	Pantry	Spreads	guacamole
+salsa	Pantry	Sauces & Salsas	salsa
+ketchup	Pantry	Condiments	ketchup
+mustard	Pantry	Condiments	mustard
+mayo	Pantry	Condiments	mayonnaise
+mayonnaise	Pantry	Condiments	mayonnaise
+relish	Pantry	Condiments	relish
+pickle	Pantry	Pickled	pickle
+pickles	Pantry	Pickled	pickles
+olive	Pantry	Oils	olive (default to oil; pickled olives use 'olives')
+olives	Pantry	Pickled	olives
+pesto	Pantry	Sauces & Salsas	pesto sauce
+alfredo	Pantry	Sauces & Salsas	alfredo sauce
+marinara	Pantry	Sauces & Salsas	marinara sauce
+gravy	Pantry	Sauces & Salsas	gravy
+icing	Pantry	Frosting/Topping	icing
+frosting	Pantry	Frosting/Topping	frosting
+topping	Pantry	Frosting/Topping	topping
+toppings	Pantry	Frosting/Topping	toppings
+juice	Beverage	Juice	juice (also FORM)
+juices	Beverage	Juice	juices
+soda	Beverage	Carbonated	soda
+seltzer	Beverage	Carbonated	seltzer
+water	Beverage	Water	water
+tea	Beverage	Tea	tea
+coffee	Beverage	Coffee	coffee
+smoothie	Beverage	Fruit-based Drinks	smoothie
+smoothies	Beverage	Fruit-based Drinks	smoothies
+energy	Beverage	Functional	energy drink
+sport	Beverage	Functional	sport drink
+protein	Beverage|Pantry	Functional|Protein Powders	protein
+shake	Beverage	Functional	shake
+nutritional	Beverage	Functional	nutritional drink
+kombucha	Beverage	Probiotic	kombucha
+cola	Beverage	Carbonated	cola (soda)
+beer	Beverage	Beer	beer
+wine	Beverage	Wine	wine (also cooking)
+lemonade	Beverage	Lemonade & Limeades	lemonade
+limeade	Beverage	Lemonade & Limeades	limeade
+punch	Beverage	Fruit-based Drinks	fruit punch
+cider	Beverage	Cider & Apple Juice	cider
+chocolate	Snack	Chocolate	chocolate (also flavor)
+chocolates	Snack	Chocolate	chocolates plural
+candy	Snack	Candy	candy
+candies	Snack	Candy	candies plural
+gummy	Snack	Candy	gummy candy
+gummi	Snack	Candy	gummi candy
+gum	Snack	Candy	chewing gum
+mints	Snack	Mints	mints
+fudge	Snack	Candy|Chocolate	fudge
+truffle	Snack	Chocolate	truffle
+truffles	Snack	Chocolate	truffles
+marshmallow	Snack	Marshmallow	marshmallow
+marshmallows	Snack	Marshmallow	marshmallows
+cookie	Snack	Cookies	cookie
+cookies	Snack	Cookies	cookies
+wafer	Snack	Cookies	wafer
+wafers	Snack	Cookies	wafers
+cracker	Snack	Crackers	cracker
+crackers	Snack	Crackers	crackers
+chip	Snack	Chips	chip
+chips	Snack	Chips	chips
+pretzel	Snack	Pretzels	pretzel
+pretzels	Snack	Pretzels	pretzels
+popcorn	Snack	Popcorn	popcorn
+granola	Snack|Pantry	Granola	granola
+cereal	Pantry	Cereal	cereal
+oatmeal	Pantry	Hot Cereal	oatmeal
+porridge	Pantry	Hot Cereal	porridge
+bread	Pantry	Bread	bread
+breads	Pantry	Bread	breads
+bun	Pantry	Bread	bun
+buns	Pantry	Bread	buns
+roll	Pantry	Bread	roll
+rolls	Pantry	Bread	rolls
+bagel	Pantry	Bread	bagel
+bagels	Pantry	Bread	bagels
+biscuit	Pantry	Bread	biscuit
+biscuits	Pantry	Bread	biscuits
+toast	Pantry	Bread	toast
+tortilla	Pantry	Bread	tortilla
+tortillas	Pantry	Bread	tortillas
+pasta	Pantry	Pasta	pasta
+noodle	Pantry	Pasta	noodle
+noodles	Pantry	Pasta	noodles
+spaghetti	Pantry	Pasta	spaghetti
+ravioli	Pantry	Pasta	ravioli
+tortellini	Pantry	Pasta	tortellini
+penne	Pantry	Pasta	penne
+ziti	Pantry	Pasta	ziti
+linguine	Pantry	Pasta	linguine
+fettuccine	Pantry	Pasta	fettuccine
+macaroni	Pantry	Pasta	macaroni
+flour	Pantry	Flour	flour
+sugar	Pantry	Sweeteners	sugar
+honey	Pantry	Sweeteners	honey (also flavor)
+syrup	Pantry	Sweeteners	syrup (also FORM)
+oil	Pantry	Oils	oil
+vinegar	Pantry	Vinegar	vinegar
+sauce	Pantry	Sauces & Salsas	sauce (also FORM)
+dressing	Pantry	Salad Dressings	dressing (also FORM)
+salt	Pantry	Spices	salt (also sodium)
+seasoning	Pantry	Spices	seasoning
+seasonings	Pantry	Spices	seasonings
+spice	Pantry	Spices	spice
+spices	Pantry	Spices	spices
+herb	Pantry	Herbs	herb
+herbs	Pantry	Herbs	herbs
+rub	Pantry	Spices	rub (spice rub)
+icecream	Frozen	Ice Cream	ice cream
+sorbet	Frozen	Ice Cream	sorbet
+gelato	Frozen	Ice Cream	gelato
+sherbet	Frozen	Ice Cream	sherbet
+custard	Frozen|Dairy	Custard & Pudding	custard
+pudding	Pantry|Dairy	Custard & Pudding	pudding
+puddings	Pantry|Dairy	Custard & Pudding	puddings
+pop	Frozen|Snack	Popsicle	pop (popsicle / soda pop — context)
+pops	Frozen|Snack	Popsicle	pops
+popsicle	Frozen	Popsicle	popsicle
+cake	Bakery	Cake	cake
+cakes	Bakery	Cake	cakes
+cupcake	Bakery	Cake	cupcake
+cupcakes	Bakery	Cake	cupcakes
+cheesecake	Bakery	Cake	cheesecake
+pancake	Bakery	Breakfast Cakes	pancake
+pancakes	Bakery	Breakfast Cakes	pancakes
+bar	Snack	Bars	bar
+bars	Snack	Bars	bars
+muffin	Bakery	Muffin	muffin
+muffins	Bakery	Muffin	muffins
+pie	Bakery	Pie	pie
+pies	Bakery	Pie	pies
+tart	Bakery	Tart	tart
+tarts	Bakery	Tart	tarts
+brownie	Bakery	Brownie	brownie
+brownies	Bakery	Brownie	brownies
+donut	Bakery	Donut	donut
+donuts	Bakery	Donut	donuts
+crust	Bakery	Crust & Dough	crust
+dough	Bakery	Crust & Dough	dough
+batter	Bakery	Batter	batter
+mix	Pantry|Snack	Mixes	mix (cake mix, drink mix, trail mix)
+mixed	Pantry|Snack	Mixes	mixed (mixed nuts/berries)
+trail	Snack	Trail Mix	trail mix component
+blend	Pantry|Beverage	Blends	blend
+blends	Pantry|Beverage	Blends	blends
+concentrate	Beverage	Concentrate	concentrate
+soup	Pantry|Frozen	Soup	soup
+stew	Pantry|Frozen	Stew	stew
+chili	Pantry|Frozen	Chili	chili
+chowder	Pantry|Frozen	Soup	chowder
+broth	Pantry	Broth & Stock	broth
+stock	Pantry	Broth & Stock	stock
+nugget	Frozen|Pantry	Nuggets	nugget
+nuggets	Frozen|Pantry	Nuggets	nuggets
+patty	Frozen|Pantry	Patty	patty
+patties	Frozen|Pantry	Patty	patties
+bites	Snack|Frozen	Bites	bite-sized snack
+bite	Snack|Frozen	Bites	bite
+sandwich	Pantry|Frozen	Sandwich	sandwich
+sandwiches	Pantry|Frozen	Sandwich	sandwiches
+sub	Pantry|Frozen	Sandwich	sub
+hoagie	Pantry|Frozen	Sandwich	hoagie
+wrap	Pantry|Frozen	Wrap	wrap (also dish)
+panini	Pantry|Frozen	Sandwich	panini
+slider	Pantry|Frozen	Sandwich	slider
+sliders	Pantry|Frozen	Sandwich	sliders
+hotdog	Pantry|Frozen	Hotdog	hotdog
+hotdogs	Pantry|Frozen	Hotdog	hotdogs
+hamburger	Pantry|Frozen	Hamburger	hamburger
+burger	Pantry|Frozen	Hamburger	burger
+burgers	Pantry|Frozen	Hamburger	burgers
+fries	Frozen|Snack	French Fries	fries
+frenchfry	Frozen|Snack	French Fries	french fry
+shake	Beverage	Functional	shake
+filling	Pantry|Bakery	Pie & Pastry Fillings	filling
+fillings	Pantry|Bakery	Pie & Pastry Fillings	fillings
+extract	Pantry	Baking Extracts	extract
+extracts	Pantry	Baking Extracts	extracts
+sprinkles	Pantry	Decorations	sprinkles
+decorations	Pantry	Decorations	decorations
+snacks	Snack	Generic	generic snack
+snack	Snack	Generic	generic snack
+shortbread	Snack	Cookies	shortbread cookie
+hearts	Produce|Snack	Vegetable|Candy	artichoke hearts / candy hearts (context)
+heart	Produce|Snack	Vegetable|Candy	heart (palm/artichoke/candy)
+pinto	Pantry	Legume	pinto beans
+kidney	Pantry	Legume	kidney beans
+navy	Pantry	Legume	navy beans
+lima	Pantry	Legume	lima beans
+garbanzo	Pantry	Legume	garbanzo beans
+black-eyed	Pantry	Legume	black-eyed peas
+medley	Pantry	Mixes	vegetable/fruit medley
+root	Beverage|Produce	Soda|Vegetable	root beer / root vegetable
+beer	Beverage	Beer	beer
+bell	Produce	Vegetable	bell pepper (compound)
+bears	Snack	Candy	gummy bears
+worms	Snack	Candy	gummy worms
+nibs	Snack	Chocolate	cacao nibs
+nibblers	Snack	Generic	nibbles/nibblers
+bites	Snack|Frozen	Bites	bite-sized
+bite	Snack|Frozen	Bites	bite
+square	Snack	Generic	square
+squares	Snack	Generic	cereal squares / chocolate squares
+twists	Snack	Generic	pretzel twists
+swirls	Bakery	Pastry	swirls (cinnamon swirls)
+spoons	Cereal	Cereal	spoon-size cereal
+flakes	Cereal	Cereal	flakes
+puffs	Cereal|Snack	Cereal|Snacks	puffs
+crisps	Snack	Chips	crisps
+oat-meal	Pantry	Hot Cereal	oatmeal
+hot-cereal	Pantry	Hot Cereal	hot cereal
+crouton	Pantry	Crouton	crouton
+croutons	Pantry	Crouton	croutons
+breadcrumbs	Pantry	Bread Crumbs	bread crumbs
+pretzels	Snack	Pretzels	pretzels (already)
+goldfish	Snack	Crackers	goldfish crackers
+animal	Snack	Crackers	animal crackers (compound)
+saltines	Snack	Crackers	saltine crackers
+ritz	Snack	Crackers	ritz crackers (brand-flavor)
+graham	Snack	Crackers	graham (also flavor)
+oyster	Snack|Pantry	Crackers|Seafood	oyster crackers / oysters
+matzo	Pantry	Bread	matzo / matzoh
+matzoh	Pantry	Bread	matzo
+pita	Pantry	Bread	pita
+naan	Pantry	Bread	naan
+flatbread	Pantry	Bread	flatbread
+focaccia	Pantry	Bread	focaccia
+ciabatta	Pantry	Bread	ciabatta
+brioche	Pantry	Bread	brioche
+baguette	Pantry	Bread	baguette
+challah	Pantry	Bread	challah
+hamburger	Pantry	Bread|Frozen	hamburger bun (compound)
+hotdog	Pantry	Bread|Frozen	hot dog bun (compound)
+applesauce	Pantry	Fruit Sauces	applesauce
+sauce	Pantry	Sauces & Salsas	sauce
+sauces	Pantry	Sauces & Salsas	sauces
+gravies	Pantry	Sauces & Salsas	gravies
+mayo	Pantry	Condiments	mayo
+mustard	Pantry	Condiments	mustard
+horseradish	Pantry	Condiments	horseradish
+chutney	Pantry	Condiments	chutney
+relish	Pantry	Condiments	relish
+preserves	Pantry	Spreads	preserves
+jam	Pantry	Spreads	jam
+jelly	Pantry	Spreads	jelly
+honey	Pantry	Sweeteners	honey
+maple	Pantry	Sweeteners	maple syrup
+syrup	Pantry	Sweeteners	syrup
+sugar	Pantry	Sweeteners	sugar
+brown-sugar	Pantry	Sweeteners	brown sugar
+powdered-sugar	Pantry	Sweeteners	powdered sugar
+caster-sugar	Pantry	Sweeteners	caster sugar
+turbinado	Pantry	Sweeteners	turbinado
+demerara	Pantry	Sweeteners	demerara
+muscovado	Pantry	Sweeteners	muscovado
+oils	Pantry	Oils	cooking oils
+oils	Pantry	Oils	oils
+olive-oil	Pantry	Oils	olive oil
+extra-virgin	Pantry	Oils	extra virgin (compound)
+canola	Pantry	Oils	canola oil
+sunflower-oil	Pantry	Oils	sunflower oil
+vegetable-oil	Pantry	Oils	vegetable oil
+peanut-oil	Pantry	Oils	peanut oil
+sesame-oil	Pantry	Oils	sesame oil
+ghee	Pantry	Butter	ghee
+shortening	Pantry	Butter	shortening
+margarine	Pantry	Butter	margarine
+spread-butter	Pantry	Butter	butter spread
+gelatin	Pantry	Gelatin	gelatin
+gel	Pantry	Gelatin	gel
+butternut	Produce	Vegetable	butternut squash
+plantain	Produce	Fruit|Snack	plantain (fruit/chips)
+plantains	Produce	Fruit	plantains
+romaine	Produce	Vegetable	romaine lettuce
+sauerkraut	Pantry	Pickled	sauerkraut
+edamame	Produce	Legume	edamame
+tofu	Pantry	Protein	tofu
+tempeh	Pantry	Protein	tempeh
+seitan	Pantry	Protein	seitan
+seafood	Meat & Seafood	Seafood	seafood generic
+sardines	Meat & Seafood	Seafood	sardines
+sardine	Meat & Seafood	Seafood	sardine
+albacore	Meat & Seafood	Seafood	albacore tuna
+anchovy	Meat & Seafood	Seafood	anchovy
+anchovies	Meat & Seafood	Seafood	anchovies
+herring	Meat & Seafood	Seafood	herring
+mackerel	Meat & Seafood	Seafood	mackerel
+halibut	Meat & Seafood	Seafood	halibut
+snapper	Meat & Seafood	Seafood	snapper
+swordfish	Meat & Seafood	Seafood	swordfish
+trout	Meat & Seafood	Seafood	trout
+sole	Meat & Seafood	Seafood	sole
+catfish	Meat & Seafood	Seafood	catfish
+flounder	Meat & Seafood	Seafood	flounder
+bass	Meat & Seafood	Seafood	bass
+mahi	Meat & Seafood	Seafood	mahi-mahi
+bratwurst	Meat & Seafood	Sausage	bratwurst
+chorizo	Meat & Seafood	Sausage	chorizo
+kielbasa	Meat & Seafood	Sausage	kielbasa
+mortadella	Meat & Seafood	Charcuterie	mortadella
+pastrami	Meat & Seafood	Charcuterie	pastrami
+salame	Meat & Seafood	Charcuterie	salame
+soppressata	Meat & Seafood	Charcuterie	soppressata
+capicola	Meat & Seafood	Charcuterie	capicola
+genoa	Meat & Seafood	Charcuterie	genoa salami
+franks	Meat & Seafood	Hotdog	franks
+frank	Meat & Seafood	Hotdog	frank
+dog	Meat & Seafood	Hotdog	hot dog (compound)
+dogs	Meat & Seafood	Hotdog	hot dogs
+muenster	Dairy	Cheese	muenster cheese
+havarti	Dairy	Cheese	havarti cheese
+gorgonzola	Dairy	Cheese	gorgonzola
+mascarpone	Dairy	Cheese	mascarpone
+brie	Dairy	Cheese	brie cheese
+camembert	Dairy	Cheese	camembert
+manchego	Dairy	Cheese	manchego
+gruyere	Dairy	Cheese	gruyere
+emmental	Dairy	Cheese	emmental
+fontina	Dairy	Cheese	fontina
+neufchatel	Dairy	Cheese	neufchatel
+boursin	Dairy	Cheese	boursin
+pistachios	Snack	Nuts & Seeds	pistachios
+hazelnuts	Snack	Nuts & Seeds	hazelnuts
+brazil	Snack	Nuts & Seeds	brazil nuts (compound)
+pepitas	Snack	Nuts & Seeds	pumpkin seeds (Spanish)
+poppy	Pantry	Seed	poppy seed
+basmati	Pantry	Rice	basmati rice
+jasmine	Pantry	Rice	jasmine rice
+arborio	Pantry	Rice	arborio rice
+sushirice	Pantry	Rice	sushi rice
+brownrice	Pantry	Rice	brown rice
+wildrice	Pantry	Rice	wild rice
+shortgrain	Pantry	Rice	short grain
+longgrain	Pantry	Rice	long grain
+medgrain	Pantry	Rice	medium grain
+basmatic	Pantry	Rice	basmati alt-spell
+rotini	Pantry	Pasta	rotini
+rigatoni	Pantry	Pasta	rigatoni
+elbow	Pantry	Pasta	elbow macaroni (compound)
+hair	Pantry	Pasta	angel hair (compound)
+angel	Pantry	Pasta	angel hair (compound)
+durum	Pantry	Pasta	durum (wheat)
+semolina	Pantry	Pasta	semolina
+couscous	Pantry	Pasta|Grain	couscous
+gnocchi	Pantry	Pasta	gnocchi
+pierogi	Pantry	Pasta	pierogi
+dumplings	Pantry|Frozen	Dumplings	dumplings
+dumpling	Pantry|Frozen	Dumplings	dumpling
+ramen	Pantry|Frozen	Ramen	ramen
+udon	Pantry|Frozen	Noodles	udon
+soba	Pantry|Frozen	Noodles	soba
+glassnoodle	Pantry|Frozen	Noodles	glass noodle
+ricecake	Snack|Pantry	Rice Cakes	rice cake
+ricecakes	Snack|Pantry	Rice Cakes	rice cakes
+saltines	Snack	Crackers	saltines
+ritz	Snack	Crackers	ritz crackers
+goldfish	Snack	Crackers	goldfish crackers
+oysters	Snack	Crackers	oyster crackers
+animal-crackers	Snack	Crackers	animal crackers
+graham-cracker	Snack	Crackers	graham cracker
+matzo	Pantry	Bread	matzo
+matzoh	Pantry	Bread	matzo
+flatbread	Pantry	Bread	flatbread
+naan	Pantry	Bread	naan
+pita	Pantry	Bread	pita
+focaccia	Pantry	Bread	focaccia
+ciabatta	Pantry	Bread	ciabatta
+brioche	Pantry	Bread	brioche
+baguette	Pantry	Bread	baguette
+challah	Pantry	Bread	challah
+cornbread	Pantry	Bread	cornbread
+shortbread	Pantry|Bakery	Cookies	shortbread
+biscotti	Pantry|Bakery	Cookies	biscotti
+snickerdoodle	Pantry|Bakery	Cookies	snickerdoodle
+gingersnap	Pantry|Bakery	Cookies	gingersnap
+oreo	Pantry|Bakery	Cookies	oreo (brand-flavor)
+graham	Pantry|Bakery	Cookies	graham (cracker/cookie/flavor)
+grahams	Pantry|Bakery	Cookies	grahams
+wafer	Pantry|Bakery	Cookies	wafer
+wafers	Pantry|Bakery	Cookies	wafers
+croissant	Bakery	Pastry	croissant
+croissants	Bakery	Pastry	croissants
+danish	Bakery	Pastry	danish (also cuisine)
+scone	Bakery	Scone	scone
+scones	Bakery	Scone	scones
+strudel	Bakery	Pastry	strudel
+turnover	Bakery	Pastry	turnover
+turnovers	Bakery	Pastry	turnovers
+cinnabon	Bakery	Pastry	cinnamon roll (brand)
+muffin	Bakery	Muffin	muffin
+muffins	Bakery	Muffin	muffins
+cone	Frozen|Snack	Ice Cream Cone	cone
+cones	Frozen|Snack	Ice Cream Cone	cones
+sundae	Frozen	Ice Cream	sundae
+sundaes	Frozen	Ice Cream	sundaes
+banana-split	Frozen	Ice Cream	banana split
+parfait	Snack|Frozen	Parfait	parfait
+parfaits	Snack|Frozen	Parfait	parfaits
+puffs	Snack	Cereal Puffs	puffs
+crisps	Snack	Crisps	crisps
+chips	Snack	Chips	chips (already)
+fritters	Snack|Frozen	Fritter	fritters
+nuggets	Frozen|Snack	Nuggets	nuggets (already)
+patties	Frozen|Snack	Patties	patties (already)
+links	Meat & Seafood	Sausage	sausage links
+loaves	Pantry|Frozen	Bread|Meatloaf	loaves
+loaf	Pantry|Frozen	Bread|Meatloaf	loaf
+meatloaf	Frozen|Pantry	Meatloaf	meatloaf (already)
+stuffing	Pantry|Frozen	Stuffing	stuffing
+dressing	Pantry|Frozen	Stuffing|Salad Dressing	dressing
+gravy	Pantry|Frozen	Gravy	gravy
+sauce	Pantry|Frozen	Sauces & Salsas	sauce (already)
+glaze	Pantry|Frozen	Glaze	glaze
+brine	Pantry	Brine	brine
+broth	Pantry	Broth & Stock	broth (already)
+stock	Pantry	Broth & Stock	stock (already)
+bouillon	Pantry	Broth & Stock	bouillon
+nectar	Beverage	Juice	nectar (juice)
+ale	Beverage	Beer	ale
+hibiscus	Beverage|Pantry	Tea	hibiscus tea/flower
+aloe	Pantry|Beverage	Aloe	aloe vera
+vera	Pantry|Beverage	Aloe	vera (compound 'aloe vera')
+tonic	Beverage	Tonic	tonic water
+quencher	Beverage	Sport Drink	quencher
+hydration	Beverage	Functional	hydration
+electrolyte	Beverage	Functional	electrolyte
+chai	Beverage	Tea	chai
+matcha	Beverage	Tea	matcha
+masala	Pantry	Spice	masala
+adobo	Pantry	Spice	adobo
+jerk	Pantry	Spice	jerk seasoning
+tikka	Pantry	Spice	tikka masala
+cayenne	Pantry	Spice	cayenne pepper
+oregano	Pantry	Herb	oregano (also flavor)
+basil	Pantry	Herb	basil (also flavor)
+thyme	Pantry	Herb	thyme (also flavor)
+rosemary	Pantry	Herb	rosemary
+sage	Pantry	Herb	sage
+parsley	Pantry	Herb	parsley
+cilantro	Pantry	Herb	cilantro
+mint	Pantry	Herb	mint (also flavor)
+chive	Pantry	Herb	chive
+chives	Pantry	Herb	chives
+dill	Pantry	Herb	dill
+seaweed	Pantry|Snack	Seaweed	seaweed
+nori	Pantry|Snack	Seaweed	nori
+wakame	Pantry|Snack	Seaweed	wakame
+sushi	Pantry|Frozen	Sushi	sushi (also dish)
+gummies	Snack	Candy	gummies (already gummy)
+lollipop	Snack	Candy	lollipop
+lollipops	Snack	Candy	lollipops
+suckers	Snack	Candy	suckers
+chews	Snack	Candy	chews
+chew	Snack	Candy	chew
+drops	Snack|Pantry	Candy|Liquid Drops	drops (candy / cough drops)
+caramels	Snack	Candy	caramels (plural of caramel)
+toffees	Snack	Candy	toffees
+nougat	Snack	Candy	nougat
+brittle	Snack	Candy	brittle
+peanutbrittle	Snack	Candy	peanut brittle
+taffy	Snack	Candy	taffy
+saltwater-taffy	Snack	Candy	saltwater taffy
+licorice	Snack	Candy	licorice
+candycane	Snack	Candy	candy cane
+candycanes	Snack	Candy	candy canes
+canes	Snack	Candy	canes (compound)
+candycorn	Snack	Candy	candy corn
+mints	Snack	Mints	mints (already)
+marshmallows	Snack|Pantry	Marshmallows	marshmallows
+marshmallow	Snack|Pantry	Marshmallows	marshmallow
+peeps	Snack	Marshmallows	peeps (brand-flavor)
+mores	Snack	S'mores	s'mores (compound)
+smores	Snack	S'mores	s'mores
+moose	Snack|Frozen	Ice Cream	moose tracks (compound)
+tracks	Snack|Frozen	Ice Cream	moose tracks / bunny tracks
+spreadable	Dairy|Pantry	Cheese|Spreads	spreadable cheese / butter
+processed	Dairy	Cheese	processed cheese
+singles	Dairy	Cheese	cheese singles
+string	Dairy	Cheese	string cheese (compound)
+curd	Dairy	Cheese	curd / cheese curds
+cheesecake	Bakery|Frozen	Cheesecake	cheesecake
+cake-pop	Bakery	Cake	cake pop
+cakepop	Bakery	Cake	cake pop
+cobbler	Bakery|Frozen	Pie	cobbler
+crumble	Bakery|Snack	Crumble	crumble
+crisp	Bakery|Snack	Crisp	crisp dessert
+streusel	Bakery|Snack	Streusel	streusel
+clusters	Snack|Cereal	Clusters	clusters (cereal/granola)
+granola-bar	Snack	Granola Bar	granola bar
+granola-bars	Snack	Granola Bar	granola bars
+energybar	Snack	Energy Bar	energy bar
+energybars	Snack	Energy Bar	energy bars
+proteinbar	Snack	Protein Bar	protein bar
+proteinbars	Snack	Protein Bar	protein bars
+trailbar	Snack	Trail Bar	trail bar
+fruitbar	Snack	Fruit Bar	fruit bar
+fruitsnack	Snack	Fruit Snack	fruit snack
+fruitsnacks	Snack	Fruit Snack	fruit snacks
+fruit-strip	Snack	Fruit Strip	fruit strip
+fruit-leather	Snack	Fruit Leather	fruit leather
+roll-up	Snack	Roll-Up	fruit roll-up
+rollup	Snack	Roll-Up	roll-up
+rollups	Snack	Roll-Up	roll-ups
+chips	Snack	Chips	chips
+chip	Snack	Chips	chip
+twists	Snack	Pretzels	pretzel twists
+twist	Snack	Pretzels	pretzel twist
+nibs	Snack	Cacao Nibs	cacao nibs
+seedcracker	Snack	Crackers	seed cracker
+crispyrice	Snack	Cereal	crispy rice
+crispysnack	Snack	Crisps	crispy snack
+puffer	Snack	Puffs	puffer (snack)
+puff	Snack	Puffs	puff
+puffsnack	Snack	Puffs	puff snack
+bowls	Frozen|Pantry	Bowl Meals	bowl meals
+ricebowl	Frozen|Pantry	Bowl Meals	rice bowl
+veggiebowl	Frozen|Pantry	Bowl Meals	veggie bowl
+proteinbowl	Frozen|Pantry	Bowl Meals	protein bowl
+kit	Frozen|Pantry	Meal Kit	meal kit (already)
+kits	Frozen|Pantry	Meal Kit	kits
+mealkit	Frozen|Pantry	Meal Kit	meal kit
+sushikit	Frozen|Pantry	Meal Kit	sushi kit
+salad-kit	Pantry|Frozen	Salad Kit	salad kit
+saladkit	Pantry|Frozen	Salad Kit	salad kit
+trail	Snack	Trail Mix	trail (mix)
+trailmix	Snack	Trail Mix	trail mix
+mixednuts	Snack	Mixed Nuts	mixed nuts
+clustersnack	Snack	Clusters	cluster snack
+poppedchip	Snack	Popped Chip	popped chip
+poppedrice	Snack	Popped Rice	popped rice
+popped	Snack	Popped	popped (chips / sorghum)
+roots	Pantry	Root Vegetables	roots (root veg snacks)
+veggiestraws	Snack	Veggie Straws	veggie straws
+straws	Snack	Veggie Straws	straws
+slimjim	Snack	Meat Snacks	slim jim (brand)
+beefjerky	Meat & Seafood	Jerky	beef jerky
+turkeyjerky	Meat & Seafood	Jerky	turkey jerky
+porkjerky	Meat & Seafood	Jerky	pork jerky
+sticky	Snack	Stick	stick snack
+stickrice	Pantry	Rice	sticky rice
+mochi	Bakery|Frozen	Mochi	mochi
+icecreamsandwich	Frozen	Ice Cream	ice cream sandwich
+cheesepuff	Snack	Puffs	cheese puff
+cheesepuffs	Snack	Puffs	cheese puffs
+choco	Snack	Chocolate	choco (chocolate alt)
+chocolatemilk	Beverage	Dairy Milk	chocolate milk
+bran	Pantry	Cereal	bran cereal
+ricebran	Pantry	Cereal	rice bran
+oatbran	Pantry	Cereal	oat bran
+wheatbran	Pantry	Cereal	wheat bran
+toaster	Bakery	Pastry	toaster pastry (compound)
+poptart	Bakery	Pastry	pop tart
+strudel	Bakery	Pastry	strudel
+toasterstrudel	Bakery	Pastry	toaster strudel
+bakery	Bakery	Generic	bakery item
+loaf	Pantry|Frozen	Bread|Meatloaf	loaf
+loaves	Pantry|Frozen	Bread|Meatloaf	loaves (already added but ok)
+crumb	Pantry	Bread Crumbs	crumb
+crumbs	Pantry	Bread Crumbs	bread crumbs
+breadcrumbs	Pantry	Bread Crumbs	breadcrumbs
+panko	Pantry	Bread Crumbs	panko (also prep)
+flake	Pantry	Cereal	flake
+flakes	Pantry	Cereal	flakes
+seaweed	Pantry|Snack	Seaweed	seaweed (already)
+nori	Pantry|Snack	Seaweed	nori (already)
+pot	Pantry|Frozen	Pot Pie	pot pie (compound)
+potpie	Pantry|Frozen	Pot Pie	pot pie
+sprouts	Produce	Vegetable	sprouts (alfalfa, bean, brussels)
+sprout	Produce	Vegetable	sprout
+brussels-sprouts	Produce	Vegetable	brussels sprouts
+beansprouts	Produce	Vegetable	bean sprouts
+alfalfa	Produce	Vegetable	alfalfa
+microgreens	Produce	Vegetable	microgreens
+shoots	Produce	Vegetable	shoots
+enhancer	Beverage	Water Enhancer	water enhancer
+enhancers	Beverage	Water Enhancer	enhancers
+liquid-enhancer	Beverage	Water Enhancer	liquid water enhancer
+flavorshot	Beverage	Water Enhancer	flavor shot
+shot	Beverage|Functional	Shots	wellness shot
+shots	Beverage|Functional	Shots	shots (espresso, wellness)
+gummies	Snack|Functional	Vitamin Gummy	supplement gummies
+chewable	Functional	Vitamin Chewable	chewable
+supplement	Functional	Supplement	supplement
+supplements	Functional	Supplement	supplements
+fiber	Functional|Pantry	Fiber	fiber supplement
+whey	Pantry|Functional	Protein	whey protein
+caseinprotein	Pantry|Functional	Protein	casein protein
+soyprotein	Pantry|Functional	Protein	soy protein
+peaprotein	Pantry|Functional	Protein	pea protein
+collagenprotein	Pantry|Functional	Protein	collagen
+collagen	Pantry|Functional	Protein	collagen
+cafe	Beverage	Coffee	cafe (au lait/mocha)
+caferoyal	Beverage	Coffee	cafe royal
+cafemocha	Beverage	Coffee	cafe mocha
+caféolait	Beverage	Coffee	café au lait
+cafeolait	Beverage	Coffee	cafe au lait
+clubsoda	Beverage	Carbonated	club soda
+clubcracker	Snack	Crackers	club crackers
+club	Beverage|Snack	Carbonated|Crackers	club (soda/cracker context)

@@ -1,0 +1,11 @@
+{
+  "summary": {
+    "concept_index": "/Users/jamiebarton/Desktop/esha_audit_bundle/planner/data/concept_index.json",
+    "concept_resolution": "/Users/jamiebarton/Desktop/esha_audit_bundle/planner/data/concept_resolution.json",
+    "concept_keys_scanned": 5545,
+    "package_rows_scanned": 22740,
+    "finding_count": 0,
+    "by_gate": {}
+  },
+  "findings": []
+}

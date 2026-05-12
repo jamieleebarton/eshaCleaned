@@ -1,0 +1,67 @@
+{
+  "category": "Candy",
+  "n_products": 23151,
+  "verdict_distribution": {
+    "EXACT": 1384,
+    "WEAK": 6438,
+    "NEEDS_NEW_CONCEPT": 12897,
+    "STRONG": 1934,
+    "NO_IDENTITY": 106,
+    "NO_MATCH": 44,
+    "COMPOSITE": 348
+  },
+  "top_esha_codes": [
+    {
+      "code": "91074",
+      "desc": "Candy, candy corn, prepared from recipe",
+      "n": 1598
+    },
+    {
+      "code": "",
+      "desc": "",
+      "n": 979
+    },
+    {
+      "code": "23191",
+      "desc": "Candy, coffee",
+      "n": 708
+    },
+    {
+      "code": "23030",
+      "desc": "Candy, gummy bears",
+      "n": 638
+    },
+    {
+      "code": "49620",
+      "desc": "candy, skittles, original",
+      "n": 495
+    },
+    {
+      "code": "39788",
+      "desc": "Candy, jelly beans, Jolly Rancher",
+      "n": 355
+    },
+    {
+      "code": "24725",
+      "desc": "Candy, mints, fruit punch, sugar free",
+      "n": 297
+    },
+    {
+      "code": "23747",
+      "desc": "Candy, Nerds, lemonade wild cherry apple watermelon",
+      "n": 295
+    },
+    {
+      "code": "23412",
+      "desc": "Candy, gummy worms",
+      "n": 268
+    },
+    {
+      "code": "51291",
+      "desc": "milk, chocolate",
+      "n": 246
+    }
+  ],
+  "n_fixes_proposed": 328,
+  "n_needs_new_concept": 12897
+}

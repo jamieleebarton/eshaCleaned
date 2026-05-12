@@ -1,0 +1,483 @@
+{
+  "plan": "planner/data/config_runs/protein_sweep_p4_2000_thrifty_l75_p18_soft_current.json",
+  "config": {
+    "mode": "thrifty",
+    "weeks": 12,
+    "people": 4,
+    "cal": 2000.0,
+    "protein_pct": 18.0,
+    "effective_protein_pct_target": 18.0,
+    "effective_scoring": {
+      "protein_pct_target": 18.0,
+      "enable_protein_prefilter": false,
+      "protein_filter_margin": 5.0,
+      "enable_protein_density_bonus": true,
+      "protein_density_value": 5.0,
+      "macro_deviation_weight": 0.29,
+      "auto_protein_targeting": true,
+      "enable_produce_bonus": true,
+      "produce_value_breakfast": 0.0,
+      "produce_value_lunch": 0.002,
+      "produce_value_dinner": 0.005
+    },
+    "leftover_pct": 0.75,
+    "planner_leftover_target": null,
+    "daily_protein_g": 90.0,
+    "protein_floor_mode": "pct",
+    "audit_switches": {
+      "disable_produce_bonus": false,
+      "disable_auto_protein_targeting": false,
+      "planner_leftover_target": null
+    }
+  },
+  "totals": {
+    "total_cost": 1157.09,
+    "total_whole_cart_cost": 1157.09,
+    "avg_weekly_cost": 96.42,
+    "avg_whole_cart_cost": 96.42,
+    "avg_veg_compliance": 0.351,
+    "avg_protein_pct": 18.1,
+    "total_unique_recipes": 253,
+    "repeat_picks": 36
+  },
+  "derived": {
+    "per_person_day": 3.44,
+    "purchase_rows": 455,
+    "blank_selected_sku_rows": 0,
+    "mixed_package_rows": 13,
+    "known_bad_sku_hits": 0,
+    "package_flag_rows": 0,
+    "package_info_rows": 5
+  },
+  "bad_hits": [],
+  "blank_rows": [],
+  "package_flags": [],
+  "package_info": [
+    {
+      "week": 1,
+      "concept_key": "Produce > Vegetables > Ginger Root|60700001",
+      "name": "Ginger Root",
+      "grams": 49.9,
+      "cents": 44,
+      "display": "1 lb",
+      "flags": [
+        "random_weight_average_unit"
+      ],
+      "details": [
+        {
+          "flag": "random_weight_average_unit",
+          "severity": "info",
+          "expected_g": 453.6,
+          "source": "size_display",
+          "ratio": 0.11
+        }
+      ]
+    },
+    {
+      "week": 6,
+      "concept_key": "Produce > Vegetables > Peppers|6608100S",
+      "name": "Fresh Green Serrano Peppers",
+      "grams": 28.1,
+      "cents": 25,
+      "display": "1 lb",
+      "flags": [
+        "random_weight_average_unit"
+      ],
+      "details": [
+        {
+          "flag": "random_weight_average_unit",
+          "severity": "info",
+          "expected_g": 453.6,
+          "source": "size_display",
+          "ratio": 0.062
+        }
+      ]
+    },
+    {
+      "week": 11,
+      "concept_key": "Produce > Vegetables > Jalapenos|6622100V",
+      "name": "Fresh Jalapeno Peppers",
+      "grams": 68.0,
+      "cents": 27,
+      "display": "1 lb",
+      "flags": [
+        "random_weight_average_unit"
+      ],
+      "details": [
+        {
+          "flag": "random_weight_average_unit",
+          "severity": "info",
+          "expected_g": 453.6,
+          "source": "size_display",
+          "ratio": 0.15
+        }
+      ]
+    },
+    {
+      "week": 11,
+      "concept_key": "Produce > Vegetables > Peppers|6608100S",
+      "name": "Fresh Green Serrano Peppers",
+      "grams": 28.1,
+      "cents": 25,
+      "display": "1 lb",
+      "flags": [
+        "random_weight_average_unit"
+      ],
+      "details": [
+        {
+          "flag": "random_weight_average_unit",
+          "severity": "info",
+          "expected_g": 453.6,
+          "source": "size_display",
+          "ratio": 0.062
+        }
+      ]
+    },
+    {
+      "week": 12,
+      "concept_key": "Produce > Vegetables > Ginger Root|60700001",
+      "name": "Ginger Root",
+      "grams": 49.9,
+      "cents": 44,
+      "display": "1 lb",
+      "flags": [
+        "random_weight_average_unit"
+      ],
+      "details": [
+        {
+          "flag": "random_weight_average_unit",
+          "severity": "info",
+          "expected_g": 453.6,
+          "source": "size_display",
+          "ratio": 0.11
+        }
+      ]
+    }
+  ],
+  "cheapest_cpg": [
+    {
+      "week": 1,
+      "concept_key": "Produce > Vegetables > Celery|6A080006",
+      "name": "Celery Sticks",
+      "grams": 453.6,
+      "cents": 33,
+      "cpg": 0.0728
+    },
+    {
+      "week": 9,
+      "concept_key": "Produce > Vegetables > Celery|6A080006",
+      "name": "Celery Sticks",
+      "grams": 453.6,
+      "cents": 33,
+      "cpg": 0.0728
+    },
+    {
+      "week": 11,
+      "concept_key": "Produce > Vegetables > Celery|6A080006",
+      "name": "Celery Sticks",
+      "grams": 453.6,
+      "cents": 33,
+      "cpg": 0.0728
+    },
+    {
+      "week": 1,
+      "concept_key": "Beverage > Sparkling Water|D206600V",
+      "name": "Clear American Fuji Apple Sparkling Water, 1 Liter Bottle",
+      "grams": 999.6,
+      "cents": 84,
+      "cpg": 0.084
+    },
+    {
+      "week": 11,
+      "concept_key": "Produce > Fruit > Limes|7237100*",
+      "name": "Fresh Limes - Each",
+      "grams": 453.6,
+      "cents": 40,
+      "cpg": 0.0882
+    },
+    {
+      "week": 1,
+      "concept_key": "Dairy > Milk|1001600U",
+      "name": "Great Value Milk 1% Low-fat, Half Gallon, 64 fl oz",
+      "grams": 1892.7,
+      "cents": 172,
+      "cpg": 0.0909
+    },
+    {
+      "week": 3,
+      "concept_key": "Dairy > Milk|1001600U",
+      "name": "Great Value Milk 1% Low-fat, Half Gallon, 64 fl oz",
+      "grams": 1892.7,
+      "cents": 172,
+      "cpg": 0.0909
+    },
+    {
+      "week": 4,
+      "concept_key": "Dairy > Milk|1001600U",
+      "name": "Great Value Milk 1% Low-fat, Half Gallon, 64 fl oz",
+      "grams": 1892.7,
+      "cents": 172,
+      "cpg": 0.0909
+    },
+    {
+      "week": 5,
+      "concept_key": "Dairy > Milk|1001600U",
+      "name": "Great Value Milk 1% Low-fat, Half Gallon, 64 fl oz",
+      "grams": 1892.7,
+      "cents": 172,
+      "cpg": 0.0909
+    },
+    {
+      "week": 6,
+      "concept_key": "Dairy > Milk|1001600U",
+      "name": "Great Value Milk 1% Low-fat, Half Gallon, 64 fl oz",
+      "grams": 1892.7,
+      "cents": 172,
+      "cpg": 0.0909
+    },
+    {
+      "week": 7,
+      "concept_key": "Dairy > Milk|1001600U",
+      "name": "Great Value Milk 1% Low-fat, Half Gallon, 64 fl oz",
+      "grams": 1892.7,
+      "cents": 172,
+      "cpg": 0.0909
+    },
+    {
+      "week": 8,
+      "concept_key": "Dairy > Milk|1001600U",
+      "name": "Great Value Milk 1% Low-fat, Half Gallon, 64 fl oz",
+      "grams": 1892.7,
+      "cents": 172,
+      "cpg": 0.0909
+    },
+    {
+      "week": 9,
+      "concept_key": "Dairy > Milk|1001600U",
+      "name": "Great Value Milk 1% Low-fat, Half Gallon, 64 fl oz",
+      "grams": 1892.7,
+      "cents": 172,
+      "cpg": 0.0909
+    },
+    {
+      "week": 10,
+      "concept_key": "Dairy > Milk|1001600U",
+      "name": "Great Value Milk 1% Low-fat, Half Gallon, 64 fl oz",
+      "grams": 1892.7,
+      "cents": 172,
+      "cpg": 0.0909
+    },
+    {
+      "week": 11,
+      "concept_key": "Dairy > Milk|1001600U",
+      "name": "Great Value Milk 1% Low-fat, Half Gallon, 64 fl oz",
+      "grams": 1892.7,
+      "cents": 172,
+      "cpg": 0.0909
+    }
+  ],
+  "highest_package_prices": [
+    {
+      "week": 1,
+      "concept_key": "Meat & Seafood > Poultry > Chicken Breast|3001000K",
+      "name": "Marketside Antibiotic-Free Boneless Skinless Chicken Breasts, 1.3 - 3.0 lb",
+      "grams": 1360.8,
+      "cents": 757,
+      "cpg": 0.5563
+    },
+    {
+      "week": 2,
+      "concept_key": "Meat & Seafood > Poultry > Chicken Breast|3001000K",
+      "name": "Marketside Antibiotic-Free Boneless Skinless Chicken Breasts, 1.3 - 3.0 lb",
+      "grams": 1360.8,
+      "cents": 757,
+      "cpg": 0.5563
+    },
+    {
+      "week": 3,
+      "concept_key": "Meat & Seafood > Poultry > Chicken Breast|3001000K",
+      "name": "Marketside Antibiotic-Free Boneless Skinless Chicken Breasts, 1.3 - 3.0 lb",
+      "grams": 1360.8,
+      "cents": 757,
+      "cpg": 0.5563
+    },
+    {
+      "week": 5,
+      "concept_key": "Meat & Seafood > Poultry > Chicken Breast|3001000K",
+      "name": "Marketside Antibiotic-Free Boneless Skinless Chicken Breasts, 1.3 - 3.0 lb",
+      "grams": 1360.8,
+      "cents": 757,
+      "cpg": 0.5563
+    },
+    {
+      "week": 6,
+      "concept_key": "Meat & Seafood > Poultry > Chicken Breast|3001000K",
+      "name": "Marketside Antibiotic-Free Boneless Skinless Chicken Breasts, 1.3 - 3.0 lb",
+      "grams": 1360.8,
+      "cents": 757,
+      "cpg": 0.5563
+    },
+    {
+      "week": 7,
+      "concept_key": "Meat & Seafood > Poultry > Chicken Breast|3001000K",
+      "name": "Marketside Antibiotic-Free Boneless Skinless Chicken Breasts, 1.3 - 3.0 lb",
+      "grams": 1360.8,
+      "cents": 757,
+      "cpg": 0.5563
+    },
+    {
+      "week": 12,
+      "concept_key": "Meat & Seafood > Poultry > Chicken Breast|3001000K",
+      "name": "Marketside Antibiotic-Free Boneless Skinless Chicken Breasts, 1.3 - 3.0 lb",
+      "grams": 1360.8,
+      "cents": 757,
+      "cpg": 0.5563
+    },
+    {
+      "week": 2,
+      "concept_key": "Meat & Seafood > Poultry > Chicken Breast|30011007",
+      "name": "Foster Farms Fresh & Natural Half Chicken Breasts with Ribs",
+      "grams": 1814.4,
+      "cents": 690,
+      "cpg": 0.3803
+    },
+    {
+      "week": 4,
+      "concept_key": "Meat & Seafood > Beef > Ground Beef|2001002A",
+      "name": "Kroger\u00ae 73/27 Ground Beef Roll 1 LB",
+      "grams": 453.6,
+      "cents": 599,
+      "cpg": 1.3205
+    },
+    {
+      "week": 7,
+      "concept_key": "Meat & Seafood > Beef > Ground Beef|2001002A",
+      "name": "Kroger\u00ae 73/27 Ground Beef Roll 1 LB",
+      "grams": 453.6,
+      "cents": 599,
+      "cpg": 1.3205
+    },
+    {
+      "week": 8,
+      "concept_key": "Meat & Seafood > Beef > Ground Beef|2001002A",
+      "name": "Kroger\u00ae 73/27 Ground Beef Roll 1 LB",
+      "grams": 453.6,
+      "cents": 599,
+      "cpg": 1.3205
+    },
+    {
+      "week": 9,
+      "concept_key": "Meat & Seafood > Beef > Ground Beef|2001002A",
+      "name": "Kroger\u00ae 73/27 Ground Beef Roll 1 LB",
+      "grams": 453.6,
+      "cents": 599,
+      "cpg": 1.3205
+    },
+    {
+      "week": 10,
+      "concept_key": "Meat & Seafood > Beef > Ground Beef|2001002A",
+      "name": "Kroger\u00ae 73/27 Ground Beef Roll 1 LB",
+      "grams": 453.6,
+      "cents": 599,
+      "cpg": 1.3205
+    },
+    {
+      "week": 11,
+      "concept_key": "Meat & Seafood > Beef > Ground Beef|2001002A",
+      "name": "Kroger\u00ae 73/27 Ground Beef Roll 1 LB",
+      "grams": 453.6,
+      "cents": 599,
+      "cpg": 1.3205
+    },
+    {
+      "week": 8,
+      "concept_key": "Pantry > Oil > Olive Oil|B001600=",
+      "name": "Great Value Extra Virgin Olive Oil, 17 fl oz",
+      "grams": 502.7,
+      "cents": 597,
+      "cpg": 1.1876
+    }
+  ],
+  "top_concepts": [
+    [
+      "Pantry > Canned Vegetables > Tomatoes",
+      17
+    ],
+    [
+      "Pantry > Broth & Stock > Chicken Broth",
+      13
+    ],
+    [
+      "Dairy > Cheese",
+      12
+    ],
+    [
+      "Dairy > Eggs",
+      12
+    ],
+    [
+      "Pantry > Beans > Black Beans",
+      12
+    ],
+    [
+      "Pantry > Flour",
+      12
+    ],
+    [
+      "Produce > Vegetables > Onions",
+      12
+    ],
+    [
+      "Bakery > Tortillas",
+      11
+    ],
+    [
+      "Dairy > Milk",
+      11
+    ],
+    [
+      "Dairy > Butter",
+      10
+    ],
+    [
+      "Pantry > Canned Vegetables > Corn",
+      10
+    ],
+    [
+      "Pantry > Sauces & Salsas > Salsa",
+      9
+    ],
+    [
+      "Bakery > Bread",
+      9
+    ],
+    [
+      "Meat & Seafood > Poultry > Chicken Breast",
+      8
+    ],
+    [
+      "Produce > Vegetables > Potatoes",
+      8
+    ],
+    [
+      "Frozen > Vegetables > Corn",
+      7
+    ],
+    [
+      "Dairy > Sour Cream",
+      7
+    ],
+    [
+      "Frozen > Vegetables > Broccoli",
+      7
+    ],
+    [
+      "Meat & Seafood > Beef > Ground Beef",
+      6
+    ],
+    [
+      "Pantry > Beans > Refried Beans",
+      5
+    ]
+  ]
+}

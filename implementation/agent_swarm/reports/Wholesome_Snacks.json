@@ -1,0 +1,83 @@
+{
+  "category": "Wholesome Snacks",
+  "n_products": 6375,
+  "verdict_distribution": {
+    "EXACT": 1742,
+    "STRONG": 1009,
+    "WEAK": 1692,
+    "NEEDS_NEW_CONCEPT": 1780,
+    "COMPOSITE": 135,
+    "NO_MATCH": 8,
+    "NO_IDENTITY": 9
+  },
+  "reason_distribution": {
+    "replaced_exact": 1628,
+    "kept_orig_weak": 946,
+    "kept_orig_no_match": 1484,
+    "kept_orig_no_rft_esha": 648,
+    "kept_agree_weak": 266,
+    "kept_agree_exact": 641,
+    "replaced_inherited": 91,
+    "swarm_fix:exact_canonical_mismatch:": 172,
+    "swarm_fix:variant_word:cinnamon:cinnamon": 1,
+    "kept_agree_inherited": 11,
+    "swarm_fix:variant_word:sweetened:sweetened": 1,
+    "swarm_fix:variant_word:peach:peach": 1,
+    "kept_orig_composite": 97,
+    "swarm_fix:variant_word:unsweetened:unsweetened": 4,
+    "filled_weak_exact": 11,
+    "filled_exact": 6,
+    "still_empty": 367
+  },
+  "n_findings": 3,
+  "findings": [
+    {
+      "gtin_upc": "31200034328",
+      "fdc_id": "2563274",
+      "product_description": "50% LESS SUGAR SWEETENED DRIED CRANBERRIES",
+      "current_code": "48557",
+      "current_desc": "Cranberries, dried",
+      "current_reason": "kept_orig_no_match",
+      "current_verdict": "NEEDS_NEW_CONCEPT",
+      "proposed_code": "9754",
+      "proposed_desc": "Cranberries, dried, sweetened",
+      "coverage": 0.6,
+      "shared_tokens": "cranberries|dried|sweetened",
+      "missing_tokens": "less|sugar",
+      "extra_tokens": "",
+      "upgrade_type": "superset"
+    },
+    {
+      "gtin_upc": "70253460685",
+      "fdc_id": "2123859",
+      "product_description": "REDUCED SUGAR DRIED & SWEETENED CRANBERRIES, SWEETENED",
+      "current_code": "48557",
+      "current_desc": "Cranberries, dried",
+      "current_reason": "kept_orig_no_match",
+      "current_verdict": "NEEDS_NEW_CONCEPT",
+      "proposed_code": "9754",
+      "proposed_desc": "Cranberries, dried, sweetened",
+      "coverage": 0.6,
+      "shared_tokens": "cranberries|dried|sweetened",
+      "missing_tokens": "reduced|sugar",
+      "extra_tokens": "",
+      "upgrade_type": "superset"
+    },
+    {
+      "gtin_upc": "64684530499",
+      "fdc_id": "1885200",
+      "product_description": "GOLDEN BOY, DRIED PITTED CALIFORNIA PRUNES",
+      "current_code": "3126",
+      "current_desc": "Prunes, dried",
+      "current_reason": "kept_orig_weak",
+      "current_verdict": "WEAK",
+      "proposed_code": "71967",
+      "proposed_desc": "prunes, dried, pitted",
+      "coverage": 0.5,
+      "shared_tokens": "dried|pitted|prunes",
+      "missing_tokens": "boy|california|golden",
+      "extra_tokens": "",
+      "upgrade_type": "superset"
+    }
+  ]
+}

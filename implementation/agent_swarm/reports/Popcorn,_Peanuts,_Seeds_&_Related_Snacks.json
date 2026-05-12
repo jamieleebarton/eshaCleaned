@@ -1,0 +1,93 @@
+{
+  "category": "Popcorn, Peanuts, Seeds & Related Snacks",
+  "n_products": 22351,
+  "verdict_distribution": {
+    "NEEDS_NEW_CONCEPT": 9196,
+    "EXACT": 3342,
+    "WEAK": 7393,
+    "COMPOSITE": 660,
+    "NO_MATCH": 14,
+    "STRONG": 1710,
+    "NO_IDENTITY": 36
+  },
+  "reason_distribution": {
+    "kept_orig_no_match": 7958,
+    "replaced_exact": 964,
+    "replaced_inherited": 569,
+    "kept_orig_weak": 2314,
+    "kept_agree_weak": 531,
+    "kept_orig_no_rft_esha": 7521,
+    "kept_orig_composite": 571,
+    "kept_agree_inherited": 63,
+    "kept_agree_exact": 368,
+    "filled_weak_exact": 6,
+    "still_empty": 1486
+  },
+  "n_findings": 4,
+  "findings": [
+    {
+      "gtin_upc": "1121325627",
+      "fdc_id": "1899898",
+      "product_description": "DRY HONEY ROASTED PEANUTS, SALTED",
+      "current_code": "49270",
+      "current_desc": "Nuts, peanuts, roasted, salted",
+      "current_reason": "kept_orig_no_rft_esha",
+      "current_verdict": "WEAK",
+      "proposed_code": "4756",
+      "proposed_desc": "nuts, peanuts, dry roasted, salted",
+      "coverage": 0.8,
+      "shared_tokens": "dry|peanuts|roasted|salted",
+      "missing_tokens": "honey",
+      "extra_tokens": "nuts",
+      "upgrade_type": "superset"
+    },
+    {
+      "gtin_upc": "11213256276",
+      "fdc_id": "406878",
+      "product_description": "SPARTAN, DRY HONEY ROASTED PEANUTS, SALTED",
+      "current_code": "49270",
+      "current_desc": "Nuts, peanuts, roasted, salted",
+      "current_reason": "kept_orig_no_rft_esha",
+      "current_verdict": "WEAK",
+      "proposed_code": "4756",
+      "proposed_desc": "nuts, peanuts, dry roasted, salted",
+      "coverage": 0.667,
+      "shared_tokens": "dry|peanuts|roasted|salted",
+      "missing_tokens": "honey|spartan",
+      "extra_tokens": "nuts",
+      "upgrade_type": "superset"
+    },
+    {
+      "gtin_upc": "70552202054",
+      "fdc_id": "1867109",
+      "product_description": "WINCO FOODS, HONEY DRY ROASTED PEANUTS, SALTED, SALTED",
+      "current_code": "49270",
+      "current_desc": "Nuts, peanuts, roasted, salted",
+      "current_reason": "kept_orig_no_rft_esha",
+      "current_verdict": "WEAK",
+      "proposed_code": "4756",
+      "proposed_desc": "nuts, peanuts, dry roasted, salted",
+      "coverage": 0.571,
+      "shared_tokens": "dry|peanuts|roasted|salted",
+      "missing_tokens": "foods|honey|winco",
+      "extra_tokens": "nuts",
+      "upgrade_type": "superset"
+    },
+    {
+      "gtin_upc": "76958620515",
+      "fdc_id": "2052066",
+      "product_description": "WHOLE FOODS MARKET, DRY ROASTED & SALTED VIRGINIA PEANUTS",
+      "current_code": "49270",
+      "current_desc": "Nuts, peanuts, roasted, salted",
+      "current_reason": "kept_orig_no_rft_esha",
+      "current_verdict": "WEAK",
+      "proposed_code": "4756",
+      "proposed_desc": "nuts, peanuts, dry roasted, salted",
+      "coverage": 0.5,
+      "shared_tokens": "dry|peanuts|roasted|salted",
+      "missing_tokens": "foods|market|virginia|whole",
+      "extra_tokens": "nuts",
+      "upgrade_type": "superset"
+    }
+  ]
+}

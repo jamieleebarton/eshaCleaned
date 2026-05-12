@@ -1,0 +1,67 @@
+{
+  "category": "Frozen Vegetables",
+  "n_products": 4305,
+  "verdict_distribution": {
+    "STRONG": 1382,
+    "NEEDS_NEW_CONCEPT": 1195,
+    "WEAK": 776,
+    "EXACT": 765,
+    "COMPOSITE": 160,
+    "NO_IDENTITY": 13,
+    "NO_MATCH": 14
+  },
+  "top_esha_codes": [
+    {
+      "code": "36021",
+      "desc": "broccoli, florets",
+      "n": 317
+    },
+    {
+      "code": "27329",
+      "desc": "Beans, green",
+      "n": 135
+    },
+    {
+      "code": "9821",
+      "desc": "Vegetables, broccoli cauliflower & carrots, Steamfresh, frozen",
+      "n": 122
+    },
+    {
+      "code": "46905",
+      "desc": "Vegetables, classic mixed, frozen",
+      "n": 108
+    },
+    {
+      "code": "24627",
+      "desc": "cauliflower, steamed",
+      "n": 97
+    },
+    {
+      "code": "5116",
+      "desc": "peas, green, fresh",
+      "n": 97
+    },
+    {
+      "code": "9641",
+      "desc": "spinach, cut, frozen",
+      "n": 87
+    },
+    {
+      "code": "51053",
+      "desc": "spinach, chopped, canned",
+      "n": 86
+    },
+    {
+      "code": "6636",
+      "desc": "Vegetables, broccoli green beans onions & peppers, frozen",
+      "n": 73
+    },
+    {
+      "code": "51046",
+      "desc": "peas, with carrots, canned",
+      "n": 70
+    }
+  ],
+  "n_fixes_proposed": 278,
+  "n_needs_new_concept": 1195
+}
