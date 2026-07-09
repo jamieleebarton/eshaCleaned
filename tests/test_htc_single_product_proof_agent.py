@@ -90,6 +90,7 @@ def test_stage_htc_update_same_base_with_full_code_becomes_full_code_repair():
             "accepted_htc_full_code": "~8705000A-4BD00A-1000",
             "staged_change": {
                 "facet_updates": {"modifier": "Buttermilk > High Protein"},
+                "write_scope": ["product_htc_assignment", "full_code_assignment"],
             },
         },
     )

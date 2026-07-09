@@ -1131,6 +1131,22 @@ def final_state_from_fixer(
     else:
         action = "machine_evidence_expansion"
         shared_verdict = "needs_more_evidence"
+    raw_write_scope = staged_change.get("write_scope") if isinstance(staged_change.get("write_scope"), list) else []
+    if action == "stage_full_code_repair":
+        write_scope = [
+            scope for scope in raw_write_scope
+            if scope in {"full_code_assignment", "recipe_join_policy"}
+        ]
+        if "full_code_assignment" not in write_scope:
+            write_scope.insert(0, "full_code_assignment")
+    elif action == "stage_recipe_join_policy":
+        write_scope = raw_write_scope or ["recipe_join_policy"]
+    elif action == "stage_htc_update":
+        write_scope = raw_write_scope or (
+            ["product_htc_assignment", "full_code_assignment"] if accepted_full_code else ["product_htc_assignment"]
+        )
+    else:
+        write_scope = raw_write_scope
     return {
         "verdict": shared_verdict,
         "accepted_htc_code": accepted,
@@ -1138,13 +1154,7 @@ def final_state_from_fixer(
         "facet_updates": staged_change.get("facet_updates") if isinstance(staged_change.get("facet_updates"), dict) else {},
         "recipe_join_policy": recipe_join_policy,
         "evidence_ids": staged_change.get("evidence_ids") if isinstance(staged_change.get("evidence_ids"), list) else [],
-        "write_scope": staged_change.get("write_scope") if isinstance(staged_change.get("write_scope"), list) else (
-            ["recipe_join_policy"] if action == "stage_recipe_join_policy"
-            else ["full_code_assignment"] if action == "stage_full_code_repair"
-            else ["product_htc_assignment", "full_code_assignment"] if action == "stage_htc_update" and accepted_full_code
-            else ["product_htc_assignment"] if action == "stage_htc_update"
-            else []
-        ),
+        "write_scope": write_scope,
         "facet_notes": staged_change.get("facet_notes", ""),
         "action": action,
         "production_writes": False,
