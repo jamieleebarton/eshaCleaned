@@ -1213,7 +1213,8 @@ def validate_final_state_against_packet(final: dict[str, Any], packet: dict[str,
         repaired = dict(final)
         recipe_join_policy = dict(final.get("recipe_join_policy") or {})
         if str(recipe_join_policy.get("join_level") or "").strip().lower() == "full_code":
-            recipe_join_policy["join_level"] = "base_htc"
+            ordinary = str(recipe_join_policy.get("ordinary_ingredient_substitute") or "").strip().lower()
+            recipe_join_policy["join_level"] = "base_htc" if ordinary != "no" else "variant_or_explicit_only"
             recipe_join_policy.setdefault("evidence", [])
             if isinstance(recipe_join_policy["evidence"], list):
                 recipe_join_policy["evidence"].append(

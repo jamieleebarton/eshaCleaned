@@ -248,6 +248,42 @@ def test_full_code_validation_strips_bad_full_code_but_keeps_base_update():
     assert validated["validation_warnings"][0]["absent_modifier_terms"] == ["distilled"]
 
 
+def test_full_code_strip_keeps_variant_join_policy_when_not_ordinary_substitute():
+    final = {
+        "action": "stage_htc_update",
+        "verdict": "verified_update",
+        "accepted_htc_code": "M01D000$",
+        "accepted_htc_full_code": "~M01D000$-96CEA3-0001",
+        "recipe_join_policy": {
+            "join_level": "full_code",
+            "ordinary_ingredient_substitute": "no",
+            "incompatible_recipe_terms": ["ordinary adult recipe ingredient terms"],
+        },
+        "write_scope": ["product_htc_assignment", "full_code_assignment", "recipe_join_policy"],
+        "production_writes": False,
+    }
+    packet = {
+        "product": {
+            "name": "Earth's Best Organic Multi-Grain Infant Baby Cereal",
+            "htc_code": "860W0001",
+        },
+        "direct_consensus_candidates": [
+            {
+                "htc_full_code": "~M01D000$-96CEA3-0001",
+                "modifier": "Plum Berry Barley > Organic",
+                "retail_leaf_path": "Baby & Toddler > Baby Food > Plum Berry Barley > Organic",
+            }
+        ],
+    }
+
+    validated = validate_final_state_against_packet(final, packet)
+
+    assert validated["action"] == "stage_htc_update"
+    assert validated["accepted_htc_full_code"] == ""
+    assert validated["recipe_join_policy"]["join_level"] == "variant_or_explicit_only"
+    assert validated["recipe_join_policy"]["ordinary_ingredient_substitute"] == "no"
+
+
 def test_full_code_validation_accepts_supported_facet_synonyms():
     cases = [
         (
