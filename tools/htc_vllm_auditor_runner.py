@@ -76,6 +76,55 @@ def compact_event(result: dict[str, Any]) -> dict[str, Any]:
     }
 
 
+def decision_signature(final: dict[str, Any]) -> dict[str, Any]:
+    return {
+        "action": final.get("action"),
+        "verdict": final.get("verdict"),
+        "accepted_htc_code": final.get("accepted_htc_code"),
+        "accepted_htc_full_code": final.get("accepted_htc_full_code"),
+        "write_scope": final.get("write_scope") if isinstance(final.get("write_scope"), list) else [],
+    }
+
+
+def duplicate_upc_conflicts(out_dir: Path, rows: list[tuple[int, dict[str, str]]]) -> list[dict[str, Any]]:
+    grouped: dict[str, list[dict[str, Any]]] = {}
+    for row_number, row in rows:
+        upc = str(row.get("upc") or "").strip()
+        if not upc:
+            continue
+        path = proof_path(out_dir, row_number, row)
+        if not path.exists():
+            continue
+        try:
+            proof = json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            continue
+        final = proof.get("final") if isinstance(proof.get("final"), dict) else {}
+        product = proof.get("product") if isinstance(proof.get("product"), dict) else {}
+        grouped.setdefault(upc, []).append({
+            "rowid": product.get("rowid") or row.get("rowid"),
+            "name": product.get("name") or row.get("name"),
+            "from_htc_code": product.get("htc_code") or row.get("htc_code"),
+            "proof": str(path),
+            **decision_signature(final),
+        })
+    conflicts = []
+    for upc, items in grouped.items():
+        if len(items) < 2:
+            continue
+        signatures = {
+            json.dumps(decision_signature(item), sort_keys=True)
+            for item in items
+        }
+        if len(signatures) > 1:
+            conflicts.append({
+                "upc": upc,
+                "conflict": "duplicate_upc_inconsistent_decisions",
+                "items": items,
+            })
+    return conflicts
+
+
 def run_batch(args: argparse.Namespace) -> dict[str, Any]:
     args.out_dir.mkdir(parents=True, exist_ok=True)
     refs, inv, df = build_references(args.consensus)
@@ -139,6 +188,14 @@ def run_batch(args: argparse.Namespace) -> dict[str, Any]:
         append_jsonl(events_path, event)
         print(json.dumps(event, sort_keys=True), flush=True)
 
+    conflicts = duplicate_upc_conflicts(args.out_dir, rows)
+    conflicts_path = args.out_dir / "batch_consistency_conflicts.jsonl"
+    if conflicts:
+        if conflicts_path.exists():
+            conflicts_path.unlink()
+        for conflict in conflicts:
+            append_jsonl(conflicts_path, conflict)
+
     summary = {
         "schema_version": 1,
         "agent": "htc_vllm_auditor_runner",
@@ -167,6 +224,7 @@ def run_batch(args: argparse.Namespace) -> dict[str, Any]:
         "processed_count": processed,
         "skipped_count": skipped,
         "failure_count": failures,
+        "duplicate_upc_conflict_count": len(conflicts),
         "counts": dict(sorted(counts.items())),
         "production_writes": False,
         "elapsed_seconds": round(time.time() - started, 3),
@@ -175,6 +233,7 @@ def run_batch(args: argparse.Namespace) -> dict[str, Any]:
         "staged_full_code_repairs": str(args.out_dir / "staged_full_code_repairs.jsonl"),
         "staged_recipe_join_policies": str(args.out_dir / "staged_recipe_join_policies.jsonl"),
         "machine_evidence_expansion": str(args.out_dir / "machine_evidence_expansion.jsonl"),
+        "batch_consistency_conflicts": str(conflicts_path),
     }
     (args.out_dir / "runner_summary.json").write_text(
         json.dumps(summary, indent=2, sort_keys=True) + "\n",

@@ -1184,8 +1184,11 @@ def validate_final_state_against_packet(final: dict[str, Any], packet: dict[str,
             f"Full-code {full_code} was stripped because modifier terms "
             f"{', '.join(absent)} were not supported by the product."
         )
+        facet_updates = dict(final.get("facet_updates") or {})
+        facet_updates.pop("htc_full_code", None)
         repaired.update({
             "accepted_htc_full_code": "",
+            "facet_updates": facet_updates,
             "recipe_join_policy": recipe_join_policy,
             "facet_notes": f"{facet_notes} {strip_note}".strip(),
             "write_scope": [
@@ -1245,6 +1248,9 @@ def final_state_from_fixer(
     elif verdict == "stage_recipe_join_policy" or (recipe_join_policy and not accepted_full_code and not accepted):
         action = "stage_recipe_join_policy"
         shared_verdict = "verified_current"
+    elif verdict == "no_change_verified_current" and accepted_full_code:
+        action = "stage_full_code_repair"
+        shared_verdict = "verified_current"
     elif verdict == "no_change_verified_current":
         action = "no_change_verified_current"
         shared_verdict = "verified_current"
@@ -1260,7 +1266,7 @@ def final_state_from_fixer(
         if "full_code_assignment" not in write_scope:
             write_scope.insert(0, "full_code_assignment")
     elif action == "stage_recipe_join_policy":
-        write_scope = raw_write_scope or ["recipe_join_policy"]
+        write_scope = ["recipe_join_policy"]
     elif action == "stage_htc_update":
         write_scope = raw_write_scope or (
             ["product_htc_assignment", "full_code_assignment"] if accepted_full_code else ["product_htc_assignment"]

@@ -9,7 +9,8 @@ TOOLS = ROOT / "tools"
 if str(TOOLS) not in sys.path:
     sys.path.insert(0, str(TOOLS))
 
-from htc_single_product_proof_agent import final_state_from_fixer, validate_final_state_against_packet, write_queue_record
+from htc_single_product_proof_agent import final_state_from_fixer, proof_key, validate_final_state_against_packet, write_queue_record
+from htc_vllm_auditor_runner import duplicate_upc_conflicts
 
 
 def test_final_state_stages_recipe_join_policy_from_auditor_compatibility():
@@ -35,6 +36,22 @@ def test_final_state_stages_recipe_join_policy_from_auditor_compatibility():
     assert final["write_scope"] == ["recipe_join_policy"]
     assert final["recipe_join_policy"]["ordinary_ingredient_substitute"] == "no"
     assert final["recipe_join_policy"]["blocks"][0]["recipe_query"] == "oatmeal"
+
+
+def test_recipe_join_policy_scope_drops_product_and_full_code_writes():
+    final = final_state_from_fixer(
+        "N0000009",
+        {
+            "fixer_verdict": "stage_recipe_join_policy",
+            "staged_change": {
+                "recipe_join_policy": {"join_level": "blocked"},
+                "write_scope": ["product_htc_assignment", "full_code_assignment", "recipe_join_policy"],
+            },
+        },
+    )
+
+    assert final["action"] == "stage_recipe_join_policy"
+    assert final["write_scope"] == ["recipe_join_policy"]
 
 
 def test_final_state_does_not_stage_policy_when_auditor_is_unresolved():
@@ -97,6 +114,23 @@ def test_stage_htc_update_same_base_with_full_code_becomes_full_code_repair():
 
     assert final["action"] == "stage_full_code_repair"
     assert final["verdict"] == "verified_current"
+    assert final["write_scope"] == ["full_code_assignment"]
+
+
+def test_no_change_with_full_code_becomes_full_code_repair():
+    final = final_state_from_fixer(
+        "8705000A",
+        {
+            "fixer_verdict": "no_change_verified_current",
+            "accepted_htc_code": "8705000A",
+            "accepted_htc_full_code": "~8705000A-4BD00A-1000",
+            "staged_change": {
+                "write_scope": ["product_htc_assignment", "full_code_assignment"],
+            },
+        },
+    )
+
+    assert final["action"] == "stage_full_code_repair"
     assert final["write_scope"] == ["full_code_assignment"]
 
 
@@ -180,6 +214,7 @@ def test_full_code_validation_strips_bad_full_code_but_keeps_base_update():
         "verdict": "verified_update",
         "accepted_htc_code": "J0130004",
         "accepted_htc_full_code": "~J0130004-40346E-0000",
+        "facet_updates": {"htc_full_code": "~J0130004-40346E-0000", "modifier": "Distilled"},
         "recipe_join_policy": {"join_level": "full_code", "ordinary_ingredient_substitute": "yes"},
         "write_scope": ["product_htc_assignment", "full_code_assignment"],
         "production_writes": False,
@@ -206,7 +241,36 @@ def test_full_code_validation_strips_bad_full_code_but_keeps_base_update():
     assert validated["verdict"] == "verified_update"
     assert validated["accepted_htc_code"] == "J0130004"
     assert validated["accepted_htc_full_code"] == ""
+    assert "htc_full_code" not in validated["facet_updates"]
     assert validated["recipe_join_policy"]["join_level"] == "base_htc"
     assert validated["write_scope"] == ["product_htc_assignment"]
     assert "stripped" in validated["facet_notes"]
     assert validated["validation_warnings"][0]["absent_modifier_terms"] == ["distilled"]
+
+
+def test_duplicate_upc_conflicts_detects_inconsistent_batch_decisions(tmp_path):
+    rows = [
+        (1, {"rowid": "10", "upc": "123", "name": "Same Product"}),
+        (2, {"rowid": "11", "upc": "123", "name": "Same Product"}),
+    ]
+    for row_number, row, action in [
+        (1, rows[0][1], "stage_recipe_join_policy"),
+        (2, rows[1][1], "stage_htc_update"),
+    ]:
+        path = tmp_path / f"proof_{proof_key(row_number, row)}.json"
+        path.write_text(json.dumps({
+            "product": {"rowid": row["rowid"], "upc": row["upc"], "name": row["name"], "htc_code": "D300000J"},
+            "final": {
+                "action": action,
+                "verdict": "verified_current" if action == "stage_recipe_join_policy" else "verified_update",
+                "accepted_htc_code": "" if action == "stage_recipe_join_policy" else "D3C1000Y",
+                "accepted_htc_full_code": "",
+                "write_scope": ["recipe_join_policy"] if action == "stage_recipe_join_policy" else ["product_htc_assignment"],
+            },
+        }), encoding="utf-8")
+
+    conflicts = duplicate_upc_conflicts(tmp_path, rows)
+
+    assert len(conflicts) == 1
+    assert conflicts[0]["upc"] == "123"
+    assert conflicts[0]["conflict"] == "duplicate_upc_inconsistent_decisions"
