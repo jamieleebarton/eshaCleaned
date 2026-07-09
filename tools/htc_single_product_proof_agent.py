@@ -1116,10 +1116,10 @@ def final_state_from_fixer(
     policy_allowed = verdict == "stage_recipe_join_policy" or verifier_verdict in {"verified_current", "verified_update"}
     if not recipe_join_policy and policy_allowed:
         recipe_join_policy = fallback_recipe_policy(proposal or {}, verifier or {})
-    if verdict == "stage_htc_update" and accepted and (accepted != current_htc or accepted_full_code):
+    if verdict == "stage_htc_update" and accepted and accepted != current_htc:
         action = "stage_htc_update"
-        shared_verdict = "verified_update" if accepted != current_htc else "verified_current"
-    elif verdict == "stage_full_code_repair" and accepted_full_code:
+        shared_verdict = "verified_update"
+    elif verdict in {"stage_htc_update", "stage_full_code_repair"} and accepted_full_code:
         action = "stage_full_code_repair"
         shared_verdict = "verified_current" if not accepted or accepted == current_htc else "verified_update"
     elif verdict == "stage_recipe_join_policy" or (recipe_join_policy and not accepted_full_code and not accepted):
@@ -1139,7 +1139,11 @@ def final_state_from_fixer(
         "recipe_join_policy": recipe_join_policy,
         "evidence_ids": staged_change.get("evidence_ids") if isinstance(staged_change.get("evidence_ids"), list) else [],
         "write_scope": staged_change.get("write_scope") if isinstance(staged_change.get("write_scope"), list) else (
-            ["recipe_join_policy"] if action == "stage_recipe_join_policy" else []
+            ["recipe_join_policy"] if action == "stage_recipe_join_policy"
+            else ["full_code_assignment"] if action == "stage_full_code_repair"
+            else ["product_htc_assignment", "full_code_assignment"] if action == "stage_htc_update" and accepted_full_code
+            else ["product_htc_assignment"] if action == "stage_htc_update"
+            else []
         ),
         "facet_notes": staged_change.get("facet_notes", ""),
         "action": action,
@@ -1336,13 +1340,22 @@ def write_queue_record(out_dir: Path, result: dict[str, Any]) -> None:
         })
     elif final.get("action") == "machine_evidence_expansion":
         verifier = result.get("verifier") if isinstance(result.get("verifier"), dict) else {}
+        packet = result.get("evidence_packet") if isinstance(result.get("evidence_packet"), dict) else {}
+        proposal = result.get("proposal") if isinstance(result.get("proposal"), dict) else {}
+        required_next_tools = [
+            str(tool)
+            for tool in (verifier.get("required_next_tools") or [])
+            if valid_machine_tool(tool)
+        ]
+        if not required_next_tools:
+            required_next_tools = machine_tool_requests(packet, proposal, verifier)
         append_jsonl(out_dir / "machine_evidence_expansion.jsonl", {
             "action": "machine_evidence_expansion",
             "upc": product.get("upc"),
             "rowid": product.get("rowid"),
             "name": product.get("name"),
             "current_htc_code": clean_htc(product.get("htc_code")),
-            "required_next_tools": verifier.get("required_next_tools") or [],
+            "required_next_tools": required_next_tools,
             "proof": proof,
             "production_writes": False,
         })

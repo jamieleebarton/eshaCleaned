@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 import sys
 from pathlib import Path
 
@@ -8,7 +9,7 @@ TOOLS = ROOT / "tools"
 if str(TOOLS) not in sys.path:
     sys.path.insert(0, str(TOOLS))
 
-from htc_single_product_proof_agent import final_state_from_fixer, validate_final_state_against_packet
+from htc_single_product_proof_agent import final_state_from_fixer, validate_final_state_against_packet, write_queue_record
 
 
 def test_final_state_stages_recipe_join_policy_from_auditor_compatibility():
@@ -78,6 +79,65 @@ def test_final_state_stages_full_code_repair_action():
     assert final["accepted_htc_code"] == "868E000H"
     assert final["accepted_htc_full_code"] == "~868E000H-ABC123-0001"
     assert final["write_scope"] == ["full_code_assignment"]
+
+
+def test_stage_htc_update_same_base_with_full_code_becomes_full_code_repair():
+    final = final_state_from_fixer(
+        "8705000A",
+        {
+            "fixer_verdict": "stage_htc_update",
+            "accepted_htc_code": "8705000A",
+            "accepted_htc_full_code": "~8705000A-4BD00A-1000",
+            "staged_change": {
+                "facet_updates": {"modifier": "Buttermilk > High Protein"},
+            },
+        },
+    )
+
+    assert final["action"] == "stage_full_code_repair"
+    assert final["verdict"] == "verified_current"
+    assert final["write_scope"] == ["full_code_assignment"]
+
+
+def test_machine_evidence_queue_falls_back_to_packet_tools(tmp_path):
+    write_queue_record(
+        tmp_path,
+        {
+            "output": "proof.json",
+            "product": {
+                "rowid": "1",
+                "upc": "123",
+                "name": "Hard Product",
+                "htc_code": "D000600$",
+            },
+            "proposal": {"selected_htc_code": "D102000R"},
+            "verifier": {
+                "verifier_verdict": "needs_more_evidence",
+                "required_next_tools": [],
+            },
+            "evidence_packet": {
+                "product": {"upc": "123", "name": "Hard Product"},
+                "workbench_dashboard": {
+                    "candidate_families": [
+                        {"family_id": "apple_juice"}
+                    ]
+                },
+            },
+            "final": {
+                "action": "machine_evidence_expansion",
+                "verdict": "needs_more_evidence",
+            },
+        },
+    )
+
+    rows = [
+        json.loads(line)
+        for line in (tmp_path / "machine_evidence_expansion.jsonl").read_text(encoding="utf-8").splitlines()
+    ]
+    tools = rows[0]["required_next_tools"]
+    assert tools
+    assert "expand_candidate_family:apple_juice" in tools
+    assert "fetch_corpus_rows_for_htc_code:D102000R" in tools
 
 
 def test_full_code_validation_blocks_absent_modifier_terms():
