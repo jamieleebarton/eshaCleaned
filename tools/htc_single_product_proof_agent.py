@@ -45,6 +45,7 @@ from htc_workbench_index import (  # noqa: E402
     DEFAULT_DB as DEFAULT_WORKBENCH_DB,
     build_dashboard,
     build_index as build_workbench_index,
+    code_neighbor_fit,
     expand_candidate_family,
 )
 from htc.full_code import parse_full_code  # noqa: E402
@@ -56,7 +57,7 @@ DEFAULT_FACET_VOCAB = ROOT / "recipe_mapper" / "v1" / "output" / "htc_facet_voca
 DEFAULT_RECIPES = ROOT / "data" / "recipes_unified_normalized.csv"
 MAX_INITIAL_CANDIDATES = 5
 MAX_TOOL_ROWS = 8
-MAX_TOOL_REQUESTS = 6
+MAX_TOOL_REQUESTS = 10
 MAX_FULL_CODE_EXAMPLES = 3
 
 SYSTEM_PREFIX = """You are the Hestia HTC product auditor.
@@ -82,6 +83,7 @@ Rules:
   fetch_corpus_rows_for_htc_code:<HTC_CODE>
   fetch_corpus_rows_for_product_title:<PRODUCT TITLE>
   fetch_product_rows_for_upc:<UPC>
+  compare_code_neighbors:<HTC_CODE[,HTC_CODE...]>
   search_store_products:<QUERY>
   search_consensus:<QUERY>
   search_recipe_ingredients:<QUERY>
@@ -561,12 +563,44 @@ def weighted_title_terms(title: str) -> set[str]:
     return weighted_tokens({"name": title, "search_term": title, "tree_product_identity": title})["title"]
 
 
+def compare_code_neighbors(workbench_db: Path, product: dict[str, Any], arg: str) -> dict[str, Any]:
+    codes = [clean_htc(code) for code in re.split(r"[,| ]+", str(arg or "")) if clean_htc(code)]
+    if not codes:
+        return {
+            "tool": "compare_code_neighbors",
+            "argument": arg,
+            "row_count": 0,
+            "rows": [],
+        }
+    if not workbench_db.exists():
+        return {
+            "tool": "compare_code_neighbors",
+            "argument": arg,
+            "error": f"workbench db missing: {workbench_db}",
+            "row_count": 0,
+            "rows": [],
+        }
+    con = sqlite3.connect(workbench_db)
+    con.row_factory = sqlite3.Row
+    try:
+        rows = code_neighbor_fit(con, product, codes)
+    finally:
+        con.close()
+    return {
+        "tool": "compare_code_neighbors",
+        "argument": arg,
+        "row_count": len(rows),
+        "rows": rows,
+    }
+
+
 def execute_machine_tools(
     products_path: Path,
     consensus_path: Path,
     recipes_path: Path,
     workbench_db: Path,
     requested_tools: list[Any],
+    product: dict[str, Any] | None = None,
 ) -> list[dict[str, Any]]:
     results = []
     for tool in requested_tools:
@@ -576,6 +610,9 @@ def execute_machine_tools(
         name, _, arg = spec.partition(":")
         if name == "expand_candidate_family":
             results.append(expand_candidate_family(workbench_db, family_id=arg))
+            continue
+        if name == "compare_code_neighbors":
+            results.append(compare_code_neighbors(workbench_db, product or {}, arg))
             continue
         if name == "get_full_code_summary":
             rows = consensus_rows_for_htc_code(consensus_path, arg)
@@ -618,6 +655,7 @@ def valid_machine_tool(spec: Any) -> bool:
         text.startswith("expand_candidate_family:")
         or text.startswith("get_full_code_summary:")
         or text.startswith("get_recipe_use_examples:")
+        or text.startswith("compare_code_neighbors:")
         or text.startswith("fetch_corpus_rows_for_htc_code:")
         or text.startswith("fetch_corpus_rows_for_product_title:")
         or text.startswith("fetch_product_rows_for_upc:")
@@ -631,39 +669,54 @@ def valid_machine_tool(spec: Any) -> bool:
 def machine_tool_requests(packet: dict[str, Any], proposal: dict[str, Any], verifier: dict[str, Any]) -> list[str]:
     requests = []
     dashboard = packet.get("workbench_dashboard") if isinstance(packet.get("workbench_dashboard"), dict) else {}
-    for family in dashboard.get("candidate_families") or []:
-        if not isinstance(family, dict):
-            continue
-        family_id = str(family.get("family_id") or "").strip()
-        if family_id:
-            requests.append(f"expand_candidate_family:{family_id}")
-        if len(requests) >= 3:
-            break
+    product = packet.get("product") if isinstance(packet.get("product"), dict) else {}
+    name = str(product.get("name") or "").strip()
+    upc = str(product.get("upc") or "").strip()
+    current = clean_htc(product.get("htc_code"))
+    raw = clean_htc(product.get("raw_htc_code"))
+    code_candidates = [
+        code for code in [
+            current,
+            raw,
+            clean_htc(proposal.get("selected_htc_code") or verifier.get("accepted_htc_code") or ""),
+        ]
+        if code
+    ]
+    for cand in packet.get("direct_consensus_candidates") or []:
+        if isinstance(cand, dict):
+            code = clean_htc(cand.get("htc_code"))
+            if code:
+                code_candidates.append(code)
+    ranker = packet.get("supplemental_ranker_witnesses") if isinstance(packet.get("supplemental_ranker_witnesses"), dict) else {}
+    for cand in ranker.get("candidate_htc_concepts") or []:
+        if isinstance(cand, dict):
+            code = clean_htc(cand.get("htc_code"))
+            if code:
+                code_candidates.append(code)
+    unique_codes = list(dict.fromkeys(code_candidates))[:5]
+    if upc:
+        requests.append(f"fetch_product_rows_for_upc:{upc}")
+    if unique_codes:
+        requests.append(f"compare_code_neighbors:{','.join(unique_codes)}")
+    for code in unique_codes[:4]:
+        requests.append(f"get_full_code_summary:{code}")
+        requests.append(f"fetch_corpus_rows_for_htc_code:{code}")
+    if name:
+        requests.append(f"fetch_corpus_rows_for_product_title:{name}")
+        requests.append(f"search_consensus:{name}")
+        requests.append(f"search_recipe_ingredients:{name}")
     for spec in proposal.get("needed_machine_evidence") or []:
         if valid_machine_tool(spec):
             requests.append(str(spec))
     for spec in verifier.get("required_next_tools") or []:
         if valid_machine_tool(spec):
             requests.append(str(spec))
-    selected = clean_htc(proposal.get("selected_htc_code") or verifier.get("accepted_htc_code") or "")
-    if selected:
-        requests.append(f"fetch_corpus_rows_for_htc_code:{selected}")
-    product = packet.get("product") if isinstance(packet.get("product"), dict) else {}
-    name = str(product.get("name") or "").strip()
-    upc = str(product.get("upc") or "").strip()
-    if upc:
-        requests.append(f"fetch_product_rows_for_upc:{upc}")
-    if name:
-        requests.append(f"fetch_corpus_rows_for_product_title:{name}")
-        requests.append(f"search_store_products:{name}")
-        requests.append(f"search_consensus:{name}")
-        requests.append(f"search_recipe_ingredients:{name}")
-    for cand in packet.get("candidate_htc_concepts") or []:
-        if not isinstance(cand, dict):
+    for family in dashboard.get("candidate_families") or []:
+        if not isinstance(family, dict):
             continue
-        code = clean_htc(cand.get("htc_code"))
-        if code:
-            requests.append(f"fetch_corpus_rows_for_htc_code:{code}")
+        family_id = str(family.get("family_id") or "").strip()
+        if family_id:
+            requests.append(f"expand_candidate_family:{family_id}")
         if len(requests) >= 6:
             break
     seen = set()
@@ -818,6 +871,37 @@ def suggested_dashboard_tools(dashboard: dict[str, Any], *, limit: int = 2) -> l
 
 
 def compact_tool_result_for_prompt(result: dict[str, Any]) -> dict[str, Any]:
+    if result.get("tool") == "compare_code_neighbors":
+        return {
+            "tool": "compare_code_neighbors",
+            "argument": result.get("argument"),
+            "row_count": result.get("row_count"),
+            "rows": [
+                {
+                    "htc_code": row.get("htc_code"),
+                    "fit_score": row.get("fit_score"),
+                    "shared_terms": (row.get("shared_terms") or [])[:12],
+                    "product_terms_not_seen_in_neighbors": (row.get("product_terms_not_seen_in_neighbors") or [])[:12],
+                    "neighbor_terms_not_seen_in_product": (row.get("neighbor_terms_not_seen_in_product") or [])[:12],
+                    "risk": row.get("risk"),
+                    "question": row.get("question"),
+                    "examples": [
+                        {
+                            "title": example.get("title"),
+                            "htc_code": example.get("htc_code"),
+                            "htc_full_code": example.get("htc_full_code"),
+                            "canonical_path": example.get("canonical_path"),
+                            "retail_leaf_path": example.get("retail_leaf_path"),
+                            "modifier": example.get("modifier"),
+                        }
+                        for example in (row.get("examples") or [])[:2]
+                        if isinstance(example, dict)
+                    ],
+                }
+                for row in (result.get("rows") or [])[:5]
+                if isinstance(row, dict)
+            ],
+        }
     if result.get("tool") == "expand_candidate_family":
         return {
             "tool": "expand_candidate_family",
@@ -913,6 +997,7 @@ def build_evidence_packet(args: argparse.Namespace, row_number: int, row: dict[s
             "get_full_code_summary:<HTC_CODE>",
             "get_recipe_use_examples:<QUERY>",
             "fetch_product_rows_for_upc:<UPC>",
+            "compare_code_neighbors:<HTC_CODE[,HTC_CODE...]>",
             "search_consensus:<QUERY>",
             "search_store_products:<QUERY>",
             "search_recipe_ingredients:<QUERY>",
@@ -1082,6 +1167,41 @@ def validate_final_state_against_packet(final: dict[str, Any], packet: dict[str,
     absent = full_code_modifier_contradictions(product, witness)
     if not absent:
         return final
+    accepted = clean_htc(final.get("accepted_htc_code"))
+    current = clean_htc(product.get("htc_code"))
+    if accepted and accepted != current and final.get("action") == "stage_htc_update":
+        repaired = dict(final)
+        recipe_join_policy = dict(final.get("recipe_join_policy") or {})
+        if str(recipe_join_policy.get("join_level") or "").strip().lower() == "full_code":
+            recipe_join_policy["join_level"] = "base_htc"
+            recipe_join_policy.setdefault("evidence", [])
+            if isinstance(recipe_join_policy["evidence"], list):
+                recipe_join_policy["evidence"].append(
+                    "Full-code candidate was stripped because its modifier contradicted the product; base HTC update remains supported."
+                )
+        facet_notes = str(final.get("facet_notes") or "").strip()
+        strip_note = (
+            f"Full-code {full_code} was stripped because modifier terms "
+            f"{', '.join(absent)} were not supported by the product."
+        )
+        repaired.update({
+            "accepted_htc_full_code": "",
+            "recipe_join_policy": recipe_join_policy,
+            "facet_notes": f"{facet_notes} {strip_note}".strip(),
+            "write_scope": [
+                scope for scope in (final.get("write_scope") or [])
+                if scope != "full_code_assignment"
+            ] or ["product_htc_assignment"],
+            "validation_warnings": [{
+                "warning": "accepted_full_code_modifier_contradicts_product_full_code_stripped",
+                "rejected_htc_full_code": full_code,
+                "absent_modifier_terms": absent,
+                "witness_modifier": witness.get("modifier"),
+                "witness_retail_leaf_path": witness.get("retail_leaf_path"),
+            }],
+            "production_writes": False,
+        })
+        return repaired
     repaired = dict(final)
     repaired.update({
         "action": "machine_evidence_expansion",
@@ -1180,7 +1300,14 @@ def run_product(args: argparse.Namespace, refs: dict, inv: dict, df: dict, row_n
         )
         planner_timing = round(time.time() - planner_start, 3)
         planned_tools = planner_tool_requests(packet, planner)
-        planned_results = execute_machine_tools(args.products, args.consensus, args.recipes, args.workbench_db, planned_tools)
+        planned_results = execute_machine_tools(
+            args.products,
+            args.consensus,
+            args.recipes,
+            args.workbench_db,
+            planned_tools,
+            product=packet.get("product") if isinstance(packet.get("product"), dict) else {},
+        )
         packet["planned_evidence"] = {
             "planner": planner,
             "requested_tools": planned_tools,
@@ -1223,7 +1350,14 @@ def run_product(args: argparse.Namespace, refs: dict, inv: dict, df: dict, row_n
         requested_tools = machine_tool_requests(packet, proposal, verifier)
         if not requested_tools:
             break
-        tool_results = execute_machine_tools(args.products, args.consensus, args.recipes, args.workbench_db, requested_tools)
+        tool_results = execute_machine_tools(
+            args.products,
+            args.consensus,
+            args.recipes,
+            args.workbench_db,
+            requested_tools,
+            product=packet.get("product") if isinstance(packet.get("product"), dict) else {},
+        )
         machine_evidence_rounds.append({
             "round": round_index + 1,
             "requested_tools": requested_tools,

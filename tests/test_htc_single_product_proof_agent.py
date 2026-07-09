@@ -117,7 +117,7 @@ def test_machine_evidence_queue_falls_back_to_packet_tools(tmp_path):
                 "required_next_tools": [],
             },
             "evidence_packet": {
-                "product": {"upc": "123", "name": "Hard Product"},
+                "product": {"upc": "123", "name": "Hard Product", "htc_code": "D000600$"},
                 "workbench_dashboard": {
                     "candidate_families": [
                         {"family_id": "apple_juice"}
@@ -137,6 +137,8 @@ def test_machine_evidence_queue_falls_back_to_packet_tools(tmp_path):
     ]
     tools = rows[0]["required_next_tools"]
     assert tools
+    assert "compare_code_neighbors:D000600$,D102000R" in tools
+    assert "fetch_corpus_rows_for_htc_code:D000600$" in tools
     assert "expand_candidate_family:apple_juice" in tools
     assert "fetch_corpus_rows_for_htc_code:D102000R" in tools
 
@@ -154,6 +156,7 @@ def test_full_code_validation_blocks_absent_modifier_terms():
             "name": "Earth's Best Organic Whole Grain Oatmeal Baby Cereal",
             "search_term": "baby oatmeal",
             "tree_modifier": "Oatmeal Organic Whole Grain",
+            "htc_code": "M001000N",
         },
         "direct_consensus_candidates": [
             {
@@ -169,3 +172,41 @@ def test_full_code_validation_blocks_absent_modifier_terms():
     assert validated["action"] == "machine_evidence_expansion"
     assert validated["verdict"] == "needs_more_evidence"
     assert validated["validation_errors"][0]["absent_modifier_terms"] == ["apple", "avocado", "spinach"]
+
+
+def test_full_code_validation_strips_bad_full_code_but_keeps_base_update():
+    final = {
+        "action": "stage_htc_update",
+        "verdict": "verified_update",
+        "accepted_htc_code": "J0130004",
+        "accepted_htc_full_code": "~J0130004-40346E-0000",
+        "recipe_join_policy": {"join_level": "full_code", "ordinary_ingredient_substitute": "yes"},
+        "write_scope": ["product_htc_assignment", "full_code_assignment"],
+        "production_writes": False,
+    }
+    packet = {
+        "product": {
+            "name": "Great Value Apple Cider Vinegar, 32 fl oz",
+            "tree_product_identity": "Apple Cider Vinegar",
+            "tree_canonical_path": "Pantry > Vinegar > Apple Cider Vinegar",
+            "htc_code": "FB00000F",
+        },
+        "direct_consensus_candidates": [
+            {
+                "htc_full_code": "~J0130004-40346E-0000",
+                "modifier": "Distilled",
+                "retail_leaf_path": "Pantry > Vinegar > Apple Cider Vinegar > Distilled",
+            }
+        ],
+    }
+
+    validated = validate_final_state_against_packet(final, packet)
+
+    assert validated["action"] == "stage_htc_update"
+    assert validated["verdict"] == "verified_update"
+    assert validated["accepted_htc_code"] == "J0130004"
+    assert validated["accepted_htc_full_code"] == ""
+    assert validated["recipe_join_policy"]["join_level"] == "base_htc"
+    assert validated["write_scope"] == ["product_htc_assignment"]
+    assert "stripped" in validated["facet_notes"]
+    assert validated["validation_warnings"][0]["absent_modifier_terms"] == ["distilled"]
