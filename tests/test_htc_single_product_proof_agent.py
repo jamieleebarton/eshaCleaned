@@ -248,6 +248,60 @@ def test_full_code_validation_strips_bad_full_code_but_keeps_base_update():
     assert validated["validation_warnings"][0]["absent_modifier_terms"] == ["distilled"]
 
 
+def test_full_code_validation_accepts_supported_facet_synonyms():
+    cases = [
+        (
+            {
+                "name": "Great Value No Added Sweeteners 100% Apple Juice",
+                "htc_code": "D102000R",
+            },
+            {
+                "htc_full_code": "~D102000R-2457E3-0000",
+                "modifier": "No Sugar Added",
+                "retail_leaf_path": "Beverage > Juice > Apple Juice > No Sugar Added",
+            },
+        ),
+        (
+            {
+                "name": "Nestle Carnation Vitamin D Added Evaporated Milk",
+                "tree_product_identity": "Evaporated Milk",
+                "htc_code": "1B02000J",
+            },
+            {
+                "htc_full_code": "~1B02000J-EF2CA2-0000",
+                "modifier": "Fortified",
+                "retail_leaf_path": "Dairy > Milk > Evaporated Milk > Fortified",
+            },
+        ),
+        (
+            {
+                "name": "Mott's 100% Original Apple Juice",
+                "htc_code": "D102000R",
+            },
+            {
+                "htc_full_code": "~D102000R-A116C9-0000",
+                "modifier": "Plain",
+                "retail_leaf_path": "Beverage > Juice > Apple Juice > Plain",
+            },
+        ),
+    ]
+    for product, witness in cases:
+        final = {
+            "action": "stage_full_code_repair",
+            "verdict": "verified_current",
+            "accepted_htc_code": product["htc_code"],
+            "accepted_htc_full_code": witness["htc_full_code"],
+            "production_writes": False,
+        }
+        packet = {"product": product, "direct_consensus_candidates": [witness]}
+
+        validated = validate_final_state_against_packet(final, packet)
+
+        assert validated["action"] == "stage_full_code_repair"
+        assert "validation_errors" not in validated
+        assert "validation_warnings" not in validated
+
+
 def test_duplicate_upc_conflicts_detects_inconsistent_batch_decisions(tmp_path):
     rows = [
         (1, {"rowid": "10", "upc": "123", "name": "Same Product"}),

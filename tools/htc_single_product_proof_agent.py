@@ -68,6 +68,7 @@ next-step state: needs_more_evidence, with concrete evidence to gather next.
 
 Rules:
 - Look at the whole HTC picture: base htc_code, htc_full_code examples, variant/modifier, claims, audience/use-case, and recipe substitution consequences.
+- Use product_role_analysis as a hard clue. Non-food blocks recipe joins. Prepared dishes/meals/kits do not satisfy component ingredients. Powders, baby/toddler foods, infant formula, and creamers require variant/full-code or explicit recipe terms.
 - The assignment must prevent bad recipe joins. A retail product can share a broad food family with a recipe ingredient but still be the wrong substitute because of audience, form, processing, flavor, or variant. Example: baby oatmeal cereal is not automatically usable for a recipe that asks for oatmeal.
 - Stage both the base HTC and the best supported full-code/facet target when the evidence proves them. If full-code/facets are not proven, request tools instead of collapsing to the broad bucket.
 - Prefer direct consensus witnesses with matching title/audience/form/modifier over broad candidate families. Never choose a full-code whose modifier contradicts the product identity.
@@ -776,6 +777,7 @@ def compact_workbench_dashboard(dashboard: dict[str, Any]) -> dict[str, Any]:
     return {
         "schema_version": dashboard.get("schema_version"),
         "observed_facets": dashboard.get("observed_facets") or {},
+        "product_role_analysis": dashboard.get("product_role_analysis") or {},
         "candidate_families": [
             {
                 "family_id": family.get("family_id"),
@@ -1143,17 +1145,55 @@ def full_code_modifier_contradictions(product: dict[str, Any], witness: dict[str
     modifier = " ".join(str(witness.get(key) or "") for key in ["modifier", "retail_leaf_path"])
     if not modifier:
         return []
-    product_terms = tokens(" ".join(str(product.get(key) or "") for key in [
+    product_text = " ".join(str(product.get(key) or "") for key in [
         "name", "brand", "search_term", "category_path", "category_path_walmart",
         "tree_product_identity", "tree_canonical_path", "tree_modifier",
-    ]), keep_weak=True)
+    ])
+    product_terms = tokens(product_text, keep_weak=True)
     modifier_terms = tokens(modifier, keep_weak=True)
     ignored = {
-        "baby", "cereal", "food", "foods", "grain", "grow", "hot", "infant", "non",
-        "oat", "oatmeal", "organic", "pantry", "toddler", "whole", "with",
+        "baby", "based", "beverage", "cereal", "dairy", "food", "foods", "grain",
+        "grow", "hot", "infant", "milk", "non", "oat", "oatmeal", "organic",
+        "pantry", "toddler", "whole", "with",
     }
-    absent = sorted(term for term in modifier_terms - product_terms - ignored if len(term) > 3)
+    absent = sorted(
+        term for term in modifier_terms - product_terms - ignored
+        if len(term) > 3 and not modifier_term_supported_by_product(term, product_text, product_terms)
+    )
     return absent[:8]
+
+
+def modifier_term_supported_by_product(term: str, product_text: str, product_terms: set[str]) -> bool:
+    lower = product_text.lower()
+    term = term.lower()
+    if term == "plain":
+        flavor_markers = {
+            "berry", "caramel", "chocolate", "cinnamon", "coconut", "honey",
+            "mango", "strawberry", "vanilla",
+        }
+        return not (product_terms & flavor_markers)
+    if term == "sugar":
+        return any(phrase in lower for phrase in [
+            "no added sweetener", "no added sweeteners", "no added sugar",
+            "unsweetened", "zero sugar", "sugar free", "sugar-free",
+        ])
+    if term == "sweetener":
+        return "no added sugar" in lower or "unsweetened" in lower or "zero sugar" in lower
+    if term == "fortified":
+        return any(phrase in lower for phrase in [
+            "vitamin", "vitamin d", "added", "dha", "iron", "calcium", "fortified",
+        ])
+    if term == "free":
+        return any(phrase in lower for phrase in [
+            "fat free", "fat-free", "non fat", "non-fat", "nonfat", "gluten free",
+            "gluten-free", "dairy free", "dairy-free", "sugar free", "sugar-free",
+            "nut free", "nut-free",
+        ])
+    if term == "fat":
+        return any(phrase in lower for phrase in ["non fat", "non-fat", "nonfat", "fat free", "fat-free"])
+    if term == "plant":
+        return any(phrase in lower for phrase in ["plant based", "plant-based", "dairy free", "dairy-free", "oatmilk", "almond"])
+    return False
 
 
 def validate_final_state_against_packet(final: dict[str, Any], packet: dict[str, Any]) -> dict[str, Any]:

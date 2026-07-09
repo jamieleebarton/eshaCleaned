@@ -133,6 +133,10 @@ def test_dashboard_surfaces_baby_oatmeal_join_risk(tmp_path: Path):
 
     assert meta["product_rows"] == 2
     assert dashboard["observed_facets"]["audience"] == ["baby"]
+    assert dashboard["product_role_analysis"]["product_role"] == "ingredient_variant"
+    assert dashboard["product_role_analysis"]["audience"] == ["baby"]
+    assert dashboard["product_role_analysis"]["join_default"] == "variant_or_full_code_when_facets_match"
+    assert "ordinary adult recipe ingredient terms" in dashboard["product_role_analysis"]["blocked_recipe_terms"]
     assert dashboard["witnesses"]["same_upc"]
     assert dashboard["witnesses"]["code_neighbor_fit"]
     assert dashboard["witnesses"]["recipe_use"]

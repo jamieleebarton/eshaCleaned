@@ -347,6 +347,85 @@ def observed_facets(product: dict[str, Any]) -> dict[str, list[str]]:
     return {name: [term for term in terms if term in text] for name, terms in buckets.items() if any(term in text for term in terms)}
 
 
+def product_role_analysis(product: dict[str, Any]) -> dict[str, Any]:
+    text = " ".join(str(product.get(k) or "") for k in [
+        "name", "brand", "search_term", "category_path", "category_path_walmart",
+        "tree_product_identity", "tree_canonical_path", "tree_modifier",
+    ]).lower()
+    text_terms = tokens(text)
+    evidence = []
+    audience = []
+    role = "single_ingredient"
+    join_default = "base_htc_if_facets_compatible"
+    blocked_recipe_terms: list[str] = []
+
+    def seen(label: str, needles: list[str]) -> bool:
+        hits = [
+            needle for needle in needles
+            if (needle in text if " " in needle or "-" in needle else needle in text_terms)
+        ]
+        if hits:
+            evidence.append(f"{label}:{','.join(hits[:4])}")
+            return True
+        return False
+
+    if str(product.get("non_food_path") or "") == "1":
+        evidence.append("non_food_path:1")
+        role = "non_food"
+        join_default = "blocked"
+        blocked_recipe_terms = ["any human recipe ingredient"]
+    elif seen("non_food", [
+        "non-food", "pet", "dog", "cat", "bird feed", "bird seed", "supplement",
+    ]):
+        role = "non_food"
+        join_default = "blocked"
+        blocked_recipe_terms = ["any human recipe ingredient"]
+    elif seen("meal_kit", ["meal kit", "dinner kit", "taco kit", "salad kit"]):
+        role = "meal_kit"
+        join_default = "explicit_kit_only"
+    elif seen("complete_meal", ["tv dinner", "complete meal", "meal tray", "dinner bowl", "entree with sides"]):
+        role = "complete_meal"
+        join_default = "explicit_meal_only"
+    elif seen("prepared_dish", [
+        "pizza", "lasagna", "burrito", "pot pie", "mac and cheese", "macaroni and cheese",
+        "salisbury steak", "sandwich", "salad", "sushi", "casserole", "single entree",
+        "frozen entree", "frozen dinner",
+    ]):
+        role = "prepared_dish"
+        join_default = "explicit_dish_only"
+    elif seen("snack_product", ["chips", "pretzel", "cracker", "popcorn", "cookie", "candy", "snack mix", "bar"]):
+        role = "snack_product"
+        join_default = "explicit_snack_only"
+    elif seen("prepared_component", ["coffee creamer", "creamer", "sauce", "broth", "stock", "salsa", "dip", "pesto", "dressing"]):
+        role = "prepared_component"
+        join_default = "component_term_only"
+    elif seen("ingredient_variant", [
+        "powder", "powdered", "dry milk", "non-fat dry milk", "evaporated milk",
+        "condensed milk", "baby cereal", "infant cereal", "formula", "instant",
+    ]):
+        role = "ingredient_variant"
+        join_default = "variant_or_full_code_when_facets_match"
+
+    if seen("audience", ["baby", "infant", "toddler"]):
+        audience = [term for term in ["baby", "infant", "toddler"] if term in text]
+        if role == "single_ingredient":
+            role = "ingredient_variant"
+        if join_default == "base_htc_if_facets_compatible":
+            join_default = "explicit_audience_or_variant_only"
+        blocked_recipe_terms.extend(["ordinary adult recipe ingredient terms"])
+
+    if "powder" in text or "powdered" in text or "dry milk" in text:
+        blocked_recipe_terms.extend(["ordinary liquid equivalent", "spread equivalent"])
+
+    return {
+        "product_role": role,
+        "audience": sorted(set(audience)),
+        "join_default": join_default,
+        "evidence": evidence,
+        "blocked_recipe_terms": sorted(set(blocked_recipe_terms)),
+    }
+
+
 def compact_product(row: dict[str, Any]) -> dict[str, Any]:
     keys = [
         "source", "rowid", "upc", "name", "brand", "size_display", "category_path",
@@ -737,6 +816,7 @@ def build_dashboard(db_path: Path = DEFAULT_DB, *, rowid: str = "", upc: str = "
             "schema_version": 1,
             "product": compact_product(product),
             "observed_facets": observed_facets(product),
+            "product_role_analysis": product_role_analysis(product),
             "witnesses": {
                 "same_upc": same_upc,
                 "consensus_direct": consensus_direct,
