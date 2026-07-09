@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import csv
+import sqlite3
 import sys
 from pathlib import Path
 
@@ -9,7 +10,13 @@ TOOLS = ROOT / "tools"
 if str(TOOLS) not in sys.path:
     sys.path.insert(0, str(TOOLS))
 
-from htc_workbench_index import build_dashboard, build_index, expand_candidate_family
+from htc_workbench_index import (
+    build_dashboard,
+    build_index,
+    expand_candidate_family,
+    recipe_intent_analysis,
+    search_recipe_use,
+)
 
 
 def write_csv(path: Path, rows: list[dict[str, str]]) -> None:
@@ -19,6 +26,39 @@ def write_csv(path: Path, rows: list[dict[str, str]]) -> None:
         writer = csv.DictWriter(handle, fieldnames=fieldnames)
         writer.writeheader()
         writer.writerows(rows)
+
+
+def test_recipe_intent_analysis_uses_canonical_name_for_baby_oatmeal():
+    intent = recipe_intent_analysis({
+        "ingredient_item": "oatmeal",
+        "display": "8 ounces baby oatmeal cereal",
+        "normalized_canonical_text": "baby oatmeal cereal",
+        "normalized_identity_phrase": "baby oatmeal cereal",
+        "normalized_form_facets": "cereal",
+    })
+
+    assert intent["canonical_name"] == "baby oatmeal cereal"
+    assert intent["role"] == "audience_specific_ingredient"
+    assert intent["audience"] == ["baby"]
+    assert intent["join_requirement"] == "explicit_audience_or_variant_only"
+    assert "ordinary oatmeal" in intent["blocked_product_intents"]
+    assert intent["source_fields"]["normalized_identity_phrase"] == "baby oatmeal cereal"
+
+
+def test_recipe_intent_analysis_distinguishes_powdered_peanut_butter():
+    intent = recipe_intent_analysis({
+        "ingredient_item": "peanut butter",
+        "display": "2 tbsp powdered peanut butter",
+        "normalized_canonical_text": "powdered peanut butter",
+        "normalized_identity_phrase": "powdered peanut butter",
+        "normalized_form_facets": "powdered",
+    })
+
+    assert intent["canonical_name"] == "powdered peanut butter"
+    assert intent["role"] == "ingredient_variant"
+    assert intent["join_requirement"] == "variant_or_full_code"
+    assert "peanut butter spread" in intent["blocked_product_intents"]
+    assert "spread equivalent" in intent["blocked_product_intents"]
 
 
 def test_dashboard_surfaces_baby_oatmeal_join_risk(tmp_path: Path):
@@ -129,6 +169,16 @@ def test_dashboard_surfaces_baby_oatmeal_join_risk(tmp_path: Path):
     ])
 
     meta = build_index(db, products, consensus, recipes)
+    con = sqlite3.connect(db)
+    con.row_factory = sqlite3.Row
+    try:
+        recipe_hits = search_recipe_use(con, "baby oatmeal", limit=3)
+    finally:
+        con.close()
+    assert recipe_hits[0]["ingredient_item"] == "baby oatmeal cereal"
+    assert recipe_hits[0]["retrieval_source"] == "verified_all_terms"
+    assert recipe_hits[0]["recipe_intent_analysis"]["canonical_name"] == "baby oatmeal cereal"
+
     dashboard = build_dashboard(db, rowid="126979")
 
     assert meta["product_rows"] == 2
@@ -140,6 +190,7 @@ def test_dashboard_surfaces_baby_oatmeal_join_risk(tmp_path: Path):
     assert dashboard["witnesses"]["same_upc"]
     assert dashboard["witnesses"]["code_neighbor_fit"]
     assert dashboard["witnesses"]["recipe_use"]
+    assert "recipe_intent_analysis" in dashboard["witnesses"]["recipe_use"][0]
     assert dashboard["candidate_families"]
     assert dashboard["expandable_branches"] == []
     assert dashboard["join_risks"][0]["risk"] == "audience_mismatch"

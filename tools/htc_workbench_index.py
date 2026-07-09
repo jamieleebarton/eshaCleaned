@@ -426,6 +426,66 @@ def product_role_analysis(product: dict[str, Any]) -> dict[str, Any]:
     }
 
 
+def recipe_intent_analysis(row: dict[str, Any]) -> dict[str, Any]:
+    text = " ".join(str(row.get(k) or "") for k in [
+        "ingredient_item", "display", "normalized_canonical_text",
+        "normalized_identity_phrase", "normalized_user_claims",
+        "normalized_form_facets", "normalized_processing_facets",
+        "facet_form", "facet_processing", "facet_modifier", "facet_variant",
+    ]).lower()
+    canonical_name = (
+        str(row.get("normalized_identity_phrase") or "").strip()
+        or str(row.get("normalized_canonical_text") or "").strip()
+        or str(row.get("ingredient_item") or "").strip()
+    )
+    terms = tokens(text)
+    audience = sorted(term for term in ["baby", "infant", "toddler"] if term in terms)
+    form = sorted(term for term in [
+        "cereal", "creamer", "dry", "liquid", "milk", "oatmeal", "powder", "powdered", "spread",
+    ] if term in terms)
+    role = "ordinary_ingredient"
+    join_requirement = "base_htc_if_facets_compatible"
+    blocks: list[str] = []
+
+    if audience:
+        role = "audience_specific_ingredient"
+        join_requirement = "explicit_audience_or_variant_only"
+        blocks.append("ordinary adult product variants")
+    if "powder" in terms or "powdered" in terms or "dry" in terms:
+        role = "ingredient_variant"
+        join_requirement = "variant_or_full_code"
+        blocks.extend(["ordinary liquid equivalent", "spread equivalent"])
+    if "creamer" in terms:
+        role = "prepared_component"
+        join_requirement = "component_term_only"
+        blocks.extend(["milk unless recipe explicitly allows creamer"])
+    if "formula" in terms:
+        role = "audience_specific_ingredient"
+        join_requirement = "explicit_audience_or_variant_only"
+        blocks.extend(["ordinary milk", "adult nutrition products"])
+    if "baby" in terms and "oatmeal" in terms:
+        blocks.append("ordinary oatmeal")
+    if "peanut" in terms and ("powder" in terms or "powdered" in terms):
+        blocks.append("peanut butter spread")
+    if "buttermilk" in terms and ("powder" in terms or "powdered" in terms):
+        blocks.append("liquid buttermilk unless substitution is explicit")
+
+    return {
+        "canonical_name": canonical_name,
+        "role": role,
+        "audience": audience,
+        "form": form,
+        "join_requirement": join_requirement,
+        "blocked_product_intents": sorted(set(blocks)),
+        "source_fields": {
+            "ingredient_item": row.get("ingredient_item", ""),
+            "display": row.get("display", ""),
+            "normalized_canonical_text": row.get("normalized_canonical_text", ""),
+            "normalized_identity_phrase": row.get("normalized_identity_phrase", ""),
+        },
+    }
+
+
 def compact_product(row: dict[str, Any]) -> dict[str, Any]:
     keys = [
         "source", "rowid", "upc", "name", "brand", "size_display", "category_path",
@@ -463,6 +523,66 @@ def search_recipe_use(con: sqlite3.Connection, query: str, *, limit: int = 20) -
     has_fts = con.execute(
         "SELECT 1 FROM sqlite_master WHERE type = 'table' AND name = 'recipes_fts'"
     ).fetchone()
+    text_fields = [
+        "ingredient_item", "display", "normalized_canonical_text",
+        "normalized_identity_phrase", "normalized_user_claims",
+        "normalized_form_facets", "normalized_processing_facets",
+    ]
+    scored_by_key: dict[str, tuple[float, dict[str, Any]]] = {}
+
+    def add_recipe_row(d: dict[str, Any], source: str) -> None:
+        text = " ".join(str(d.get(k) or "") for k in text_fields)
+        row_terms = tokens(text)
+        hits = sorted(qterms & row_terms)
+        if not hits:
+            return
+        coverage = len(hits) / len(qterms)
+        if source == "fts_loose" and len(qterms) <= 3 and coverage < 1.0:
+            return
+        jaccard = len(hits) / len(qterms | row_terms) if row_terms else 0.0
+        score = coverage + (0.15 * jaccard)
+        normalized_query = norm_text(query).strip()
+        normalized_text = norm_text(text)
+        if normalized_query and normalized_query in normalized_text:
+            score += 0.5
+        if qterms <= row_terms:
+            score += 0.35
+        key = "|".join(str(d.get(k) or "") for k in ["recipe_id", "ingredient_item", "display"])
+        row = {
+            "recipe_id": d.get("recipe_id", ""),
+            "recipe_title": d.get("recipe_title", ""),
+            "ingredient_item": d.get("ingredient_item", ""),
+            "display": d.get("display", ""),
+            "htc_code": d.get("htc_code", ""),
+            "normalized_canonical_text": d.get("normalized_canonical_text", ""),
+            "normalized_identity_phrase": d.get("normalized_identity_phrase", ""),
+            "normalized_user_claims": d.get("normalized_user_claims", ""),
+            "normalized_form_facets": d.get("normalized_form_facets", ""),
+            "matched_terms": hits,
+            "recipe_intent_analysis": recipe_intent_analysis(d),
+            "retrieval_source": source,
+        }
+        current = scored_by_key.get(key)
+        if current is None or score > current[0]:
+            scored_by_key[key] = (score, row)
+
+    # Verified SQL pass: if the query is compact, pull rows that actually contain
+    # every query term. This protects the dashboard from stale or loose FTS hits.
+    if len(qterms) <= 6:
+        where = " AND ".join(
+            "(lower(coalesce(ingredient_item, '') || ' ' || coalesce(display, '') || ' ' || "
+            "coalesce(normalized_canonical_text, '') || ' ' || coalesce(normalized_identity_phrase, '') || ' ' || "
+            "coalesce(normalized_user_claims, '') || ' ' || coalesce(normalized_form_facets, '') || ' ' || "
+            "coalesce(normalized_processing_facets, '')) LIKE ?)"
+            for _ in qterms
+        )
+        rows = con.execute(
+            f"SELECT * FROM recipes WHERE {where} LIMIT ?",
+            [f"%{term}%" for term in sorted(qterms)] + [limit * 10],
+        ).fetchall()
+        for row in rows:
+            add_recipe_row(dict(row), "verified_all_terms")
+
     if has_fts:
         match = " OR ".join(f'"{term}"' for term in sorted(qterms))
         rows = con.execute(
@@ -470,55 +590,15 @@ def search_recipe_use(con: sqlite3.Connection, query: str, *, limit: int = 20) -
             "ORDER BY bm25(recipes_fts) LIMIT ?",
             (match, limit * 5),
         ).fetchall()
-        scored = []
         for row in rows:
-            d = dict(row)
-            text = " ".join(str(d.get(k) or "") for k in [
-                "ingredient_item", "display", "normalized_canonical_text",
-                "normalized_identity_phrase", "normalized_user_claims",
-                "normalized_form_facets", "normalized_processing_facets",
-            ])
-            score, hits = token_score(qterms, text)
-            if score:
-                scored.append((score, {
-                    "recipe_id": d.get("recipe_id", ""),
-                    "recipe_title": d.get("recipe_title", ""),
-                    "ingredient_item": d.get("ingredient_item", ""),
-                    "display": d.get("display", ""),
-                    "htc_code": d.get("htc_code", ""),
-                    "normalized_canonical_text": d.get("normalized_canonical_text", ""),
-                    "normalized_identity_phrase": d.get("normalized_identity_phrase", ""),
-                    "normalized_user_claims": d.get("normalized_user_claims", ""),
-                    "normalized_form_facets": d.get("normalized_form_facets", ""),
-                    "matched_terms": hits,
-                }))
-        scored.sort(key=lambda item: item[0], reverse=True)
+            add_recipe_row(dict(row), "fts_loose")
+        scored = sorted(scored_by_key.values(), key=lambda item: item[0], reverse=True)
         return [row | {"score": round(score, 6)} for score, row in scored[:limit]]
 
     rows = con.execute("SELECT * FROM recipes LIMIT 20000").fetchall()
-    scored = []
     for row in rows:
-        d = dict(row)
-        text = " ".join(str(d.get(k) or "") for k in [
-            "ingredient_item", "display", "normalized_canonical_text",
-            "normalized_identity_phrase", "normalized_user_claims",
-            "normalized_form_facets", "normalized_processing_facets",
-        ])
-        score, hits = token_score(qterms, text)
-        if score:
-            scored.append((score, {
-                "recipe_id": d.get("recipe_id", ""),
-                "recipe_title": d.get("recipe_title", ""),
-                "ingredient_item": d.get("ingredient_item", ""),
-                "display": d.get("display", ""),
-                "htc_code": d.get("htc_code", ""),
-                "normalized_canonical_text": d.get("normalized_canonical_text", ""),
-                "normalized_identity_phrase": d.get("normalized_identity_phrase", ""),
-                "normalized_user_claims": d.get("normalized_user_claims", ""),
-                "normalized_form_facets": d.get("normalized_form_facets", ""),
-                "matched_terms": hits,
-            }))
-    scored.sort(key=lambda item: item[0], reverse=True)
+        add_recipe_row(dict(row), "scan")
+    scored = sorted(scored_by_key.values(), key=lambda item: item[0], reverse=True)
     return [row | {"score": round(score, 6)} for score, row in scored[:limit]]
 
 

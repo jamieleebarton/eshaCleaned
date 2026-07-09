@@ -47,6 +47,7 @@ from htc_workbench_index import (  # noqa: E402
     build_index as build_workbench_index,
     code_neighbor_fit,
     expand_candidate_family,
+    recipe_intent_analysis,
 )
 from htc.full_code import parse_full_code  # noqa: E402
 
@@ -480,7 +481,9 @@ def compact_recipe_line(row: dict[str, str]) -> dict[str, Any]:
         "normalized_canonical_text", "normalized_identity_phrase",
         "normalized_user_claims", "normalized_form_facets", "normalized_processing_facets",
     ]
-    return {k: row.get(k, "") for k in keys}
+    compact = {k: row.get(k, "") for k in keys}
+    compact["recipe_intent_analysis"] = recipe_intent_analysis(row)
+    return compact
 
 
 def search_recipe_ingredients(recipes_path: Path, query: str, *, limit: int = MAX_TOOL_ROWS) -> list[dict[str, Any]]:
