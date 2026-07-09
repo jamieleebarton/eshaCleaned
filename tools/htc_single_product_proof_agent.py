@@ -92,6 +92,8 @@ Shared output states:
 - verified_update: the proposed HTC is proven better than current HTC.
 - verified_current: current HTC is proven correct.
 - needs_more_evidence: no HTC is proven yet; provide machine evidence expansion tasks.
+- stage_recipe_join_policy is allowed when base/full-code is unresolved but
+  recipe compatibility is proven enough to block unsafe joins.
 """
 
 PROPOSER_SCHEMA = {
@@ -138,7 +140,7 @@ VERIFIER_SCHEMA = {
 }
 
 FIXER_SCHEMA = {
-    "fixer_verdict": "stage_htc_update|no_change_verified_current|machine_evidence_expansion",
+    "fixer_verdict": "stage_htc_update|stage_full_code_repair|stage_recipe_join_policy|no_change_verified_current|machine_evidence_expansion",
     "accepted_htc_code": "string or null",
     "accepted_htc_full_code": "string or null",
     "confidence": "high|medium|low",
@@ -959,7 +961,12 @@ def verifier_messages(packet: dict[str, Any], proposal: dict[str, Any]) -> list[
 
 def fixer_messages(packet: dict[str, Any], proposal: dict[str, Any], verifier: dict[str, Any]) -> list[dict[str, str]]:
     return [
-        {"role": "system", "content": SYSTEM_PREFIX + "\nYou are now the fixer. Stage a change only if the auditor accepted it. Do not invent a code."},
+        {"role": "system", "content": SYSTEM_PREFIX + (
+            "\nYou are now the fixer. Stage a code/full-code change only if the auditor accepted it. "
+            "Do not invent a code. If the auditor rejects the HTC/full-code but establishes recipe compatibility "
+            "such as ordinary_ingredient_substitute=no or join_level=blocked, stage_recipe_join_policy instead "
+            "of returning machine_evidence_expansion."
+        )},
         {"role": "user", "content": json.dumps({
             "role": "fixer",
             "task": "Decide the queue action from the proposal, auditor verdict, and evidence packet.",
@@ -984,16 +991,124 @@ def role_temperature(args: argparse.Namespace, role: str) -> float:
     return float(args.temperature if value is None else value)
 
 
-def final_state_from_fixer(current_htc: str, fixer: dict[str, Any]) -> dict[str, Any]:
+def recipe_policy_from_compatibility(source: dict[str, Any]) -> dict[str, Any]:
+    compat = source.get("recipe_compatibility") if isinstance(source.get("recipe_compatibility"), dict) else {}
+    ordinary = str(compat.get("ordinary_ingredient_substitute") or "").strip().lower()
+    join_level = str(compat.get("join_level") or "").strip().lower()
+    incompatible = compat.get("incompatible_recipe_terms") if isinstance(compat.get("incompatible_recipe_terms"), list) else []
+    compatible = compat.get("compatible_recipe_terms") if isinstance(compat.get("compatible_recipe_terms"), list) else []
+    evidence = compat.get("evidence") if isinstance(compat.get("evidence"), list) else []
+    if ordinary != "no" and join_level not in {"blocked", "full_code"} and not incompatible:
+        return {}
+    return {
+        "ordinary_ingredient_substitute": ordinary or "no",
+        "join_level": join_level or "blocked",
+        "compatible_recipe_terms": compatible,
+        "incompatible_recipe_terms": incompatible,
+        "blocks": [
+            {"recipe_query": term, "reason": source.get("recipe_join_risk") or "auditor identified recipe compatibility risk"}
+            for term in incompatible
+        ],
+        "allows": [
+            {"recipe_query": term, "reason": "explicit recipe/audience/form match"}
+            for term in compatible
+        ],
+        "evidence": evidence,
+    }
+
+
+def fallback_recipe_policy(proposal: dict[str, Any], verifier: dict[str, Any]) -> dict[str, Any]:
+    verifier_policy = recipe_policy_from_compatibility(verifier)
+    if verifier_policy:
+        return verifier_policy
+    return recipe_policy_from_compatibility(proposal)
+
+
+def find_full_code_witness(value: Any, full_code: str) -> dict[str, Any] | None:
+    if isinstance(value, dict):
+        if str(value.get("htc_full_code") or "").strip() == full_code:
+            return value
+        for child in value.values():
+            found = find_full_code_witness(child, full_code)
+            if found:
+                return found
+    elif isinstance(value, list):
+        for child in value:
+            found = find_full_code_witness(child, full_code)
+            if found:
+                return found
+    return None
+
+
+def full_code_modifier_contradictions(product: dict[str, Any], witness: dict[str, Any]) -> list[str]:
+    modifier = " ".join(str(witness.get(key) or "") for key in ["modifier", "retail_leaf_path"])
+    if not modifier:
+        return []
+    product_terms = tokens(" ".join(str(product.get(key) or "") for key in [
+        "name", "brand", "search_term", "category_path", "category_path_walmart",
+        "tree_product_identity", "tree_canonical_path", "tree_modifier",
+    ]), keep_weak=True)
+    modifier_terms = tokens(modifier, keep_weak=True)
+    ignored = {
+        "baby", "cereal", "food", "foods", "grain", "grow", "hot", "infant", "non",
+        "oat", "oatmeal", "organic", "pantry", "toddler", "whole", "with",
+    }
+    absent = sorted(term for term in modifier_terms - product_terms - ignored if len(term) > 3)
+    return absent[:8]
+
+
+def validate_final_state_against_packet(final: dict[str, Any], packet: dict[str, Any]) -> dict[str, Any]:
+    full_code = str(final.get("accepted_htc_full_code") or "").strip()
+    if not full_code or final.get("action") not in {"stage_htc_update", "stage_full_code_repair"}:
+        return final
+    witness = find_full_code_witness(packet, full_code)
+    if not witness:
+        return final
+    product = packet.get("product") if isinstance(packet.get("product"), dict) else {}
+    absent = full_code_modifier_contradictions(product, witness)
+    if not absent:
+        return final
+    repaired = dict(final)
+    repaired.update({
+        "action": "machine_evidence_expansion",
+        "verdict": "needs_more_evidence",
+        "validation_errors": [{
+            "error": "accepted_full_code_modifier_contradicts_product",
+            "accepted_htc_full_code": full_code,
+            "absent_modifier_terms": absent,
+            "witness_modifier": witness.get("modifier"),
+            "witness_retail_leaf_path": witness.get("retail_leaf_path"),
+        }],
+        "production_writes": False,
+    })
+    return repaired
+
+
+def final_state_from_fixer(
+    current_htc: str,
+    fixer: dict[str, Any],
+    *,
+    proposal: dict[str, Any] | None = None,
+    verifier: dict[str, Any] | None = None,
+) -> dict[str, Any]:
     accepted = clean_htc(fixer.get("accepted_htc_code") or "")
     accepted_full_code = str(fixer.get("accepted_htc_full_code") or "").strip()
     staged_change = fixer.get("staged_change") if isinstance(fixer.get("staged_change"), dict) else {}
     if not accepted_full_code:
         accepted_full_code = str(staged_change.get("to_htc_full_code") or "").strip()
+    recipe_join_policy = staged_change.get("recipe_join_policy") if isinstance(staged_change.get("recipe_join_policy"), dict) else {}
+    if not recipe_join_policy:
+        recipe_join_policy = fallback_recipe_policy(proposal or {}, verifier or {})
     verdict = str(fixer.get("fixer_verdict") or "machine_evidence_expansion")
     if verdict == "stage_htc_update" and accepted and (accepted != current_htc or accepted_full_code):
         action = "stage_htc_update"
         shared_verdict = "verified_update" if accepted != current_htc else "verified_current"
+    elif verdict == "stage_full_code_repair" and accepted_full_code:
+        action = "stage_full_code_repair"
+        shared_verdict = "verified_current" if not accepted or accepted == current_htc else "verified_update"
+    elif verdict == "stage_recipe_join_policy" or (recipe_join_policy and not accepted_full_code and not accepted):
+        action = "stage_recipe_join_policy"
+        shared_verdict = "verified_current"
     elif verdict == "no_change_verified_current":
         action = "no_change_verified_current"
         shared_verdict = "verified_current"
@@ -1005,9 +1120,11 @@ def final_state_from_fixer(current_htc: str, fixer: dict[str, Any]) -> dict[str,
         "accepted_htc_code": accepted,
         "accepted_htc_full_code": accepted_full_code,
         "facet_updates": staged_change.get("facet_updates") if isinstance(staged_change.get("facet_updates"), dict) else {},
-        "recipe_join_policy": staged_change.get("recipe_join_policy") if isinstance(staged_change.get("recipe_join_policy"), dict) else {},
+        "recipe_join_policy": recipe_join_policy,
         "evidence_ids": staged_change.get("evidence_ids") if isinstance(staged_change.get("evidence_ids"), list) else [],
-        "write_scope": staged_change.get("write_scope") if isinstance(staged_change.get("write_scope"), list) else [],
+        "write_scope": staged_change.get("write_scope") if isinstance(staged_change.get("write_scope"), list) else (
+            ["recipe_join_policy"] if action == "stage_recipe_join_policy" else []
+        ),
         "facet_notes": staged_change.get("facet_notes", ""),
         "action": action,
         "production_writes": False,
@@ -1093,7 +1210,8 @@ def run_product(args: argparse.Namespace, refs: dict, inv: dict, df: dict, row_n
         timeout=args.timeout,
     )
     fixer_done = time.time()
-    final = final_state_from_fixer(clean_htc(row.get("htc_code")), fixer)
+    final = final_state_from_fixer(clean_htc(row.get("htc_code")), fixer, proposal=proposal, verifier=verifier)
+    final = validate_final_state_against_packet(final, packet)
     t2 = time.time()
     first_timing = rounds[0]["timing_seconds"] if rounds else {"proposal": 0.0, "verifier": 0.0}
     result = {
@@ -1162,6 +1280,39 @@ def write_queue_record(out_dir: Path, result: dict[str, Any]) -> None:
             "recipe_join_policy": final.get("recipe_join_policy") or {},
             "evidence_ids": final.get("evidence_ids") or [],
             "write_scope": final.get("write_scope") or [],
+            "facet_notes": final.get("facet_notes"),
+            "verdict": final.get("verdict"),
+            "proof": proof,
+            "production_writes": False,
+        })
+    elif final.get("action") == "stage_full_code_repair":
+        append_jsonl(out_dir / "staged_full_code_repairs.jsonl", {
+            "action": "stage_full_code_repair",
+            "upc": product.get("upc"),
+            "rowid": product.get("rowid"),
+            "name": product.get("name"),
+            "from_htc_code": clean_htc(product.get("htc_code")),
+            "to_htc_code": final.get("accepted_htc_code") or clean_htc(product.get("htc_code")),
+            "to_htc_full_code": final.get("accepted_htc_full_code"),
+            "facet_updates": final.get("facet_updates") or {},
+            "recipe_join_policy": final.get("recipe_join_policy") or {},
+            "evidence_ids": final.get("evidence_ids") or [],
+            "write_scope": final.get("write_scope") or ["full_code_assignment"],
+            "facet_notes": final.get("facet_notes"),
+            "verdict": final.get("verdict"),
+            "proof": proof,
+            "production_writes": False,
+        })
+    elif final.get("action") == "stage_recipe_join_policy":
+        append_jsonl(out_dir / "staged_recipe_join_policies.jsonl", {
+            "action": "stage_recipe_join_policy",
+            "upc": product.get("upc"),
+            "rowid": product.get("rowid"),
+            "name": product.get("name"),
+            "current_htc_code": clean_htc(product.get("htc_code")),
+            "recipe_join_policy": final.get("recipe_join_policy") or {},
+            "evidence_ids": final.get("evidence_ids") or [],
+            "write_scope": final.get("write_scope") or ["recipe_join_policy"],
             "facet_notes": final.get("facet_notes"),
             "verdict": final.get("verdict"),
             "proof": proof,

@@ -172,6 +172,8 @@ def run_batch(args: argparse.Namespace) -> dict[str, Any]:
         "elapsed_seconds": round(time.time() - started, 3),
         "events": str(events_path),
         "staged_updates": str(args.out_dir / "staged_htc_updates.jsonl"),
+        "staged_full_code_repairs": str(args.out_dir / "staged_full_code_repairs.jsonl"),
+        "staged_recipe_join_policies": str(args.out_dir / "staged_recipe_join_policies.jsonl"),
         "machine_evidence_expansion": str(args.out_dir / "machine_evidence_expansion.jsonl"),
     }
     (args.out_dir / "runner_summary.json").write_text(

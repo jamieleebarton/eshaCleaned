@@ -1,0 +1,85 @@
+from __future__ import annotations
+
+import sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+TOOLS = ROOT / "tools"
+if str(TOOLS) not in sys.path:
+    sys.path.insert(0, str(TOOLS))
+
+from htc_single_product_proof_agent import final_state_from_fixer, validate_final_state_against_packet
+
+
+def test_final_state_stages_recipe_join_policy_from_auditor_compatibility():
+    final = final_state_from_fixer(
+        "868E000H",
+        {"fixer_verdict": "machine_evidence_expansion"},
+        proposal={},
+        verifier={
+            "recipe_join_risk": "audience_mismatch",
+            "recipe_compatibility": {
+                "ordinary_ingredient_substitute": "no",
+                "compatible_recipe_terms": ["baby oatmeal cereal"],
+                "incompatible_recipe_terms": ["oatmeal", "hot cereal"],
+                "join_level": "blocked",
+                "evidence": ["product is baby-specific"],
+            },
+        },
+    )
+
+    assert final["action"] == "stage_recipe_join_policy"
+    assert final["verdict"] == "verified_current"
+    assert final["write_scope"] == ["recipe_join_policy"]
+    assert final["recipe_join_policy"]["ordinary_ingredient_substitute"] == "no"
+    assert final["recipe_join_policy"]["blocks"][0]["recipe_query"] == "oatmeal"
+
+
+def test_final_state_stages_full_code_repair_action():
+    final = final_state_from_fixer(
+        "868E000H",
+        {
+            "fixer_verdict": "stage_full_code_repair",
+            "accepted_htc_code": "868E000H",
+            "accepted_htc_full_code": "~868E000H-ABC123-0001",
+            "staged_change": {
+                "write_scope": ["full_code_assignment"],
+                "facet_updates": {"audience": ["baby"]},
+            },
+        },
+    )
+
+    assert final["action"] == "stage_full_code_repair"
+    assert final["accepted_htc_code"] == "868E000H"
+    assert final["accepted_htc_full_code"] == "~868E000H-ABC123-0001"
+    assert final["write_scope"] == ["full_code_assignment"]
+
+
+def test_full_code_validation_blocks_absent_modifier_terms():
+    final = {
+        "action": "stage_htc_update",
+        "verdict": "verified_update",
+        "accepted_htc_code": "M001000N",
+        "accepted_htc_full_code": "~M001000N-8FFF68-0001",
+        "production_writes": False,
+    }
+    packet = {
+        "product": {
+            "name": "Earth's Best Organic Whole Grain Oatmeal Baby Cereal",
+            "search_term": "baby oatmeal",
+            "tree_modifier": "Oatmeal Organic Whole Grain",
+        },
+        "direct_consensus_candidates": [
+            {
+                "htc_full_code": "~M001000N-8FFF68-0001",
+                "modifier": "Apple Spinach Avocado > Organic",
+                "retail_leaf_path": "Baby & Toddler > Baby Food > Apple Spinach Avocado > Organic",
+            }
+        ],
+    }
+
+    validated = validate_final_state_against_packet(final, packet)
+
+    assert validated["action"] == "machine_evidence_expansion"
+    assert validated["verdict"] == "needs_more_evidence"
+    assert validated["validation_errors"][0]["absent_modifier_terms"] == ["apple", "avocado", "spinach"]
