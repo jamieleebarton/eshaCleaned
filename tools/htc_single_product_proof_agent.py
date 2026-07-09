@@ -752,6 +752,20 @@ def compact_workbench_dashboard(dashboard: dict[str, Any]) -> dict[str, Any]:
         ],
         "witnesses": {
             "same_upc": (witnesses.get("same_upc") or [])[:8],
+            "code_neighbor_fit": [
+                {
+                    "htc_code": row.get("htc_code"),
+                    "fit_score": row.get("fit_score"),
+                    "shared_terms": (row.get("shared_terms") or [])[:12],
+                    "product_terms_not_seen_in_neighbors": (row.get("product_terms_not_seen_in_neighbors") or [])[:12],
+                    "neighbor_terms_not_seen_in_product": (row.get("neighbor_terms_not_seen_in_product") or [])[:12],
+                    "risk": row.get("risk"),
+                    "question": row.get("question"),
+                    "examples": (row.get("examples") or [])[:3],
+                }
+                for row in (witnesses.get("code_neighbor_fit") or [])[:8]
+                if isinstance(row, dict)
+            ],
             "recipe_use": (witnesses.get("recipe_use") or [])[:8],
         },
         "expandable_branches": (dashboard.get("expandable_branches") or [])[:12],
@@ -1097,9 +1111,11 @@ def final_state_from_fixer(
     if not accepted_full_code:
         accepted_full_code = str(staged_change.get("to_htc_full_code") or "").strip()
     recipe_join_policy = staged_change.get("recipe_join_policy") if isinstance(staged_change.get("recipe_join_policy"), dict) else {}
-    if not recipe_join_policy:
-        recipe_join_policy = fallback_recipe_policy(proposal or {}, verifier or {})
     verdict = str(fixer.get("fixer_verdict") or "machine_evidence_expansion")
+    verifier_verdict = str((verifier or {}).get("verifier_verdict") or "")
+    policy_allowed = verdict == "stage_recipe_join_policy" or verifier_verdict in {"verified_current", "verified_update"}
+    if not recipe_join_policy and policy_allowed:
+        recipe_join_policy = fallback_recipe_policy(proposal or {}, verifier or {})
     if verdict == "stage_htc_update" and accepted and (accepted != current_htc or accepted_full_code):
         action = "stage_htc_update"
         shared_verdict = "verified_update" if accepted != current_htc else "verified_current"

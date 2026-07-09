@@ -17,6 +17,7 @@ def test_final_state_stages_recipe_join_policy_from_auditor_compatibility():
         {"fixer_verdict": "machine_evidence_expansion"},
         proposal={},
         verifier={
+            "verifier_verdict": "verified_current",
             "recipe_join_risk": "audience_mismatch",
             "recipe_compatibility": {
                 "ordinary_ingredient_substitute": "no",
@@ -33,6 +34,30 @@ def test_final_state_stages_recipe_join_policy_from_auditor_compatibility():
     assert final["write_scope"] == ["recipe_join_policy"]
     assert final["recipe_join_policy"]["ordinary_ingredient_substitute"] == "no"
     assert final["recipe_join_policy"]["blocks"][0]["recipe_query"] == "oatmeal"
+
+
+def test_final_state_does_not_stage_policy_when_auditor_is_unresolved():
+    final = final_state_from_fixer(
+        "D000600$",
+        {"fixer_verdict": "machine_evidence_expansion"},
+        proposal={
+            "recipe_compatibility": {
+                "ordinary_ingredient_substitute": "yes",
+                "compatible_recipe_terms": ["juice cocktail"],
+                "join_level": "full_code",
+            },
+        },
+        verifier={
+            "verifier_verdict": "needs_more_evidence",
+            "recipe_compatibility": {
+                "ordinary_ingredient_substitute": "uncertain",
+                "join_level": "uncertain",
+            },
+        },
+    )
+
+    assert final["action"] == "machine_evidence_expansion"
+    assert final["recipe_join_policy"] == {}
 
 
 def test_final_state_stages_full_code_repair_action():

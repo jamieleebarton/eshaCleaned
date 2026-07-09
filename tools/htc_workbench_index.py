@@ -485,6 +485,50 @@ def search_consensus_direct(con: sqlite3.Connection, query: str, *, limit: int =
     return [row | {"score": round(score, 6)} for score, row in scored[:limit]]
 
 
+def code_neighbor_fit(con: sqlite3.Connection, product: dict[str, Any], codes: list[str], *, limit_examples: int = 8) -> list[dict[str, Any]]:
+    product_text = " ".join(str(product.get(k) or "") for k in [
+        "name", "brand", "search_term", "category_path", "category_path_walmart",
+        "tree_product_identity", "tree_canonical_path", "tree_modifier",
+    ])
+    product_terms = tokens(product_text)
+    out = []
+    seen = set()
+    for raw_code in codes:
+        code = clean_code(raw_code)
+        if not code or code in seen:
+            continue
+        seen.add(code)
+        rows = con.execute(
+            "SELECT title, branded_food_category, product_identity_fixed, canonical_path, retail_leaf_path, "
+            "modifier, htc_code, htc_full_code FROM consensus WHERE htc_code IN (?, ?) LIMIT ?",
+            (code, "~" + code, limit_examples),
+        ).fetchall()
+        examples = [dict(row) for row in rows]
+        neighbor_text = " ".join(
+            " ".join(str(example.get(k) or "") for k in [
+                "title", "branded_food_category", "product_identity_fixed", "canonical_path", "retail_leaf_path", "modifier",
+            ])
+            for example in examples
+        )
+        neighbor_terms = tokens(neighbor_text)
+        shared = sorted(product_terms & neighbor_terms)
+        product_only = sorted(product_terms - neighbor_terms)
+        neighbor_only = sorted(neighbor_terms - product_terms)
+        fit = (len(shared) / len(product_terms | neighbor_terms)) if product_terms and neighbor_terms else 0.0
+        out.append({
+            "htc_code": code,
+            "fit_score": round(fit, 6),
+            "shared_terms": shared[:16],
+            "product_terms_not_seen_in_neighbors": product_only[:16],
+            "neighbor_terms_not_seen_in_product": neighbor_only[:16],
+            "question": "Is this product like the other products already living in this HTC code?",
+            "examples": examples[:limit_examples],
+            "risk": "outlier_candidate" if fit < 0.12 else "similar_neighbors",
+        })
+    out.sort(key=lambda row: row["fit_score"], reverse=True)
+    return out
+
+
 def family_id_from_path(path: str, code: str) -> str:
     parts = [re.sub(r"[^a-z0-9]+", "_", p.lower()).strip("_") for p in str(path or "").split(">") if p.strip()]
     core = "_".join(parts[:3]) if parts else clean_code(code)[:2]
@@ -687,6 +731,8 @@ def build_dashboard(db_path: Path = DEFAULT_DB, *, rowid: str = "", upc: str = "
         recipe_examples = search_recipe_use(con, recipe_query)
         consensus_direct = search_consensus_direct(con, direct_query)
         families, expandable = candidate_families(con, product)
+        neighbor_codes = [product.get("htc_code", ""), product.get("raw_htc_code", "")]
+        neighbor_codes.extend(row.get("htc_code", "") for row in consensus_direct[:8])
         return {
             "schema_version": 1,
             "product": compact_product(product),
@@ -694,6 +740,7 @@ def build_dashboard(db_path: Path = DEFAULT_DB, *, rowid: str = "", upc: str = "
             "witnesses": {
                 "same_upc": same_upc,
                 "consensus_direct": consensus_direct,
+                "code_neighbor_fit": code_neighbor_fit(con, product, neighbor_codes),
                 "recipe_use": recipe_examples,
             },
             "candidate_families": families,

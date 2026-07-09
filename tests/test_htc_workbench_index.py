@@ -134,6 +134,7 @@ def test_dashboard_surfaces_baby_oatmeal_join_risk(tmp_path: Path):
     assert meta["product_rows"] == 2
     assert dashboard["observed_facets"]["audience"] == ["baby"]
     assert dashboard["witnesses"]["same_upc"]
+    assert dashboard["witnesses"]["code_neighbor_fit"]
     assert dashboard["witnesses"]["recipe_use"]
     assert dashboard["candidate_families"]
     assert dashboard["expandable_branches"] == []
