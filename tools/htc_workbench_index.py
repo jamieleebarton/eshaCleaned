@@ -443,6 +443,48 @@ def search_recipe_use(con: sqlite3.Connection, query: str, *, limit: int = 20) -
     return [row | {"score": round(score, 6)} for score, row in scored[:limit]]
 
 
+def search_consensus_direct(con: sqlite3.Connection, query: str, *, limit: int = 16) -> list[dict[str, Any]]:
+    qterms = tokens(query)
+    if not qterms:
+        return []
+    rows = con.execute("SELECT * FROM consensus").fetchall()
+    scored = []
+    core_terms = {"baby", "infant", "oatmeal", "cereal"}
+    for row in rows:
+        d = dict(row)
+        text = " ".join(str(d.get(k) or "") for k in [
+            "title", "branded_food_category", "product_identity_fixed",
+            "canonical_path", "retail_leaf_path", "modifier",
+        ])
+        score, hits = token_score(qterms, text)
+        if not score:
+            continue
+        lower = text.lower()
+        core_hits = sorted(term for term in core_terms if term in lower and term in qterms)
+        if core_hits:
+            score += 0.12 * len(core_hits)
+        if "baby" in qterms or "infant" in qterms:
+            if any(term in lower for term in ["baby", "infant", "toddler"]):
+                score += 0.35
+            else:
+                score -= 0.15
+        scored.append((score, {
+            "fdc_id": d.get("fdc_id", ""),
+            "title": d.get("title", ""),
+            "branded_food_category": d.get("branded_food_category", ""),
+            "product_identity_fixed": d.get("product_identity_fixed", ""),
+            "canonical_path": d.get("canonical_path", ""),
+            "retail_leaf_path": d.get("retail_leaf_path", ""),
+            "modifier": d.get("modifier", ""),
+            "htc_code": d.get("htc_code", ""),
+            "htc_full_code": d.get("htc_full_code", ""),
+            "matched_terms": hits,
+            "core_hits": core_hits,
+        }))
+    scored.sort(key=lambda item: item[0], reverse=True)
+    return [row | {"score": round(score, 6)} for score, row in scored[:limit]]
+
+
 def family_id_from_path(path: str, code: str) -> str:
     parts = [re.sub(r"[^a-z0-9]+", "_", p.lower()).strip("_") for p in str(path or "").split(">") if p.strip()]
     core = "_".join(parts[:3]) if parts else clean_code(code)[:2]
@@ -472,11 +514,17 @@ def candidate_families(con: sqlite3.Connection, product: dict[str, Any], *, fami
         ])
         score, hits = token_score(qterms, text)
         signals = []
+        suspicious = []
         lower_path = path_text.lower()
         audience_family = any(term in lower_path for term in ["baby & toddler", "baby food", "infant"])
         if "baby" in facets.get("audience", []) and audience_family:
             score += 0.35
             signals.append("audience_facet:product says baby and family is baby/infant/toddler")
+        product_form_terms = set(facets.get("form", []))
+        if product_form_terms & {"cereal", "hot cereal", "oatmeal"}:
+            if not any(term in lower_path for term in ["cereal", "oatmeal", "oat"]):
+                score -= 0.25
+                suspicious.append("family_path_lacks_product_form:cereal/oatmeal")
         if current_code and clean_code(d.get("htc_code")) == current_code:
             score += 0.20
             signals.append("current_assignment:family contains current HTC code")
@@ -489,8 +537,10 @@ def candidate_families(con: sqlite3.Connection, product: dict[str, Any], *, fami
             "base_codes_seen": [],
             "matched_terms": Counter(),
             "signals": Counter(),
+            "suspicious": Counter(),
             "top_paths": Counter(),
             "top_full_codes": Counter(),
+            "matching_codes": [],
             "row_count": 0,
         })
         group["best_score"] = max(group["best_score"], score)
@@ -498,6 +548,19 @@ def candidate_families(con: sqlite3.Connection, product: dict[str, Any], *, fami
         group["row_count"] += int(d.get("row_count") or 0)
         group["matched_terms"].update(hits)
         group["signals"].update(signals)
+        group["suspicious"].update(suspicious)
+        row_count = int(d.get("row_count") or 0)
+        group["matching_codes"].append({
+            "htc_code": clean_code(d.get("htc_code")),
+            "score": round(score, 6),
+            "row_count": row_count,
+            "matched_terms": hits[:12],
+            "modal_canonical_path": d.get("modal_canonical_path", ""),
+            "top_full_codes": json.loads(d.get("top_full_codes_json") or "[]")[:4],
+            "top_leaf_paths": json.loads(d.get("top_leaf_paths_json") or "[]")[:4],
+            "top_modifiers": json.loads(d.get("top_modifiers_json") or "[]")[:4],
+            "title_samples": json.loads(d.get("title_samples_json") or "[]")[:4],
+        })
         for full_code, count in json.loads(d.get("top_full_codes_json") or "[]")[:4]:
             group["top_full_codes"][full_code] += int(count)
         for path, count in json.loads(d.get("top_leaf_paths_json") or "[]")[:4]:
@@ -515,13 +578,17 @@ def candidate_families(con: sqlite3.Connection, product: dict[str, Any], *, fami
             "row_count": group["row_count"],
             "matched_terms": [term for term, _ in group["matched_terms"].most_common(12)],
             "signals": [signal for signal, _ in group["signals"].most_common(8)],
+            "top_matching_codes": sorted(
+                group["matching_codes"],
+                key=lambda code: (-code["score"], -code["row_count"], code["htc_code"]),
+            )[:8],
             "top_full_codes": group["top_full_codes"].most_common(8),
             "top_paths": top_paths,
             "why_plausible": (
                 [f"matched_terms:{','.join(term for term, _ in group['matched_terms'].most_common(6))}"]
                 + [signal for signal, _ in group["signals"].most_common(4)]
             ),
-            "why_suspicious": [],
+            "why_suspicious": [reason for reason, _ in group["suspicious"].most_common(6)],
             "expand_tools": [
                 f"expand_candidate_family:{group['family_id']}",
                 f"find_contradictions:{group['family_id']}",
@@ -536,6 +603,55 @@ def candidate_families(con: sqlite3.Connection, product: dict[str, Any], *, fami
             "expand_tool": f"expand_candidate_family:{group['family_id']}",
         })
     return dashboard_families, branches
+
+
+def expand_candidate_family(
+    db_path: Path = DEFAULT_DB,
+    *,
+    family_id: str,
+    limit_codes: int = 25,
+    limit_examples_per_code: int = 4,
+) -> dict[str, Any]:
+    con = sqlite3.connect(db_path)
+    con.row_factory = sqlite3.Row
+    try:
+        matches = []
+        for row in con.execute("SELECT * FROM full_code_summary").fetchall():
+            d = dict(row)
+            if family_id_from_path(d.get("modal_canonical_path", ""), d.get("htc_code", "")) == family_id:
+                matches.append(d)
+        matches.sort(key=lambda row: int(row.get("row_count") or 0), reverse=True)
+        codes = [clean_code(row.get("htc_code")) for row in matches[:limit_codes]]
+        examples: dict[str, list[dict[str, Any]]] = {}
+        for code in codes:
+            rows = con.execute(
+                "SELECT fdc_id, title, branded_food_category, product_identity_fixed, canonical_path, "
+                "retail_leaf_path, modifier, htc_code, htc_full_code, htc_confidence, htc_source "
+                "FROM consensus WHERE htc_code IN (?, ?) LIMIT ?",
+                (code, "~" + code, limit_examples_per_code),
+            ).fetchall()
+            examples[code] = [dict(row) for row in rows]
+        return {
+            "tool": "expand_candidate_family",
+            "family_id": family_id,
+            "code_count": len(matches),
+            "codes": [
+                {
+                    "htc_code": clean_code(row.get("htc_code")),
+                    "row_count": int(row.get("row_count") or 0),
+                    "modal_canonical_path": row.get("modal_canonical_path", ""),
+                    "top_full_codes": json.loads(row.get("top_full_codes_json") or "[]")[:8],
+                    "top_leaf_paths": json.loads(row.get("top_leaf_paths_json") or "[]")[:8],
+                    "top_modifiers": json.loads(row.get("top_modifiers_json") or "[]")[:8],
+                    "title_samples": json.loads(row.get("title_samples_json") or "[]")[:8],
+                    "examples": examples.get(clean_code(row.get("htc_code")), []),
+                }
+                for row in matches[:limit_codes]
+            ],
+            "cursor": None if len(matches) <= limit_codes else f"{family_id}:{limit_codes}",
+        }
+    finally:
+        con.close()
 
 
 def join_risks(product: dict[str, Any], recipe_examples: list[dict[str, Any]]) -> list[dict[str, Any]]:
@@ -565,7 +681,11 @@ def build_dashboard(db_path: Path = DEFAULT_DB, *, rowid: str = "", upc: str = "
             raise SystemExit(f"product not found: rowid={rowid!r} upc={upc!r}")
         same_upc = fetch_same_upc(con, str(product.get("upc") or ""))
         recipe_query = " ".join(str(product.get(k) or "") for k in ["tree_product_identity", "tree_modifier", "search_term", "name"])
+        direct_query = " ".join(str(product.get(k) or "") for k in [
+            "name", "search_term", "tree_product_identity", "tree_modifier", "category_path", "category_path_walmart",
+        ])
         recipe_examples = search_recipe_use(con, recipe_query)
+        consensus_direct = search_consensus_direct(con, direct_query)
         families, expandable = candidate_families(con, product)
         return {
             "schema_version": 1,
@@ -573,6 +693,7 @@ def build_dashboard(db_path: Path = DEFAULT_DB, *, rowid: str = "", upc: str = "
             "observed_facets": observed_facets(product),
             "witnesses": {
                 "same_upc": same_upc,
+                "consensus_direct": consensus_direct,
                 "recipe_use": recipe_examples,
             },
             "candidate_families": families,
@@ -601,6 +722,11 @@ def build_parser() -> argparse.ArgumentParser:
     dash.add_argument("--db", type=Path, default=DEFAULT_DB)
     dash.add_argument("--rowid", default="")
     dash.add_argument("--upc", default="")
+    expand = sub.add_parser("expand-family")
+    expand.add_argument("--db", type=Path, default=DEFAULT_DB)
+    expand.add_argument("--family-id", required=True)
+    expand.add_argument("--limit-codes", type=int, default=25)
+    expand.add_argument("--limit-examples-per-code", type=int, default=4)
     return parser
 
 
@@ -621,6 +747,17 @@ def main() -> int:
         ))
     elif args.command == "dashboard":
         print(json.dumps(build_dashboard(args.db, rowid=args.rowid, upc=args.upc), indent=2, sort_keys=True))
+    elif args.command == "expand-family":
+        print(json.dumps(
+            expand_candidate_family(
+                args.db,
+                family_id=args.family_id,
+                limit_codes=args.limit_codes,
+                limit_examples_per_code=args.limit_examples_per_code,
+            ),
+            indent=2,
+            sort_keys=True,
+        ))
     return 0
 
 

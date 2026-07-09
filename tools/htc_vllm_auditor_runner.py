@@ -33,6 +33,7 @@ from htc_single_product_proof_agent import (  # noqa: E402
     DEFAULT_MODEL,
     DEFAULT_OUT_DIR,
     DEFAULT_RECIPES,
+    DEFAULT_WORKBENCH_DB,
     proof_key,
     run_product,
 )
@@ -143,6 +144,25 @@ def run_batch(args: argparse.Namespace) -> dict[str, Any]:
         "agent": "htc_vllm_auditor_runner",
         "model_base_url": args.model_base_url,
         "model_name": args.model_name,
+        "model_roles": {
+            "planner": {
+                "base_url": args.planner_model_base_url or args.model_base_url,
+                "model": args.planner_model_name or args.model_name,
+            },
+            "proposer": {
+                "base_url": args.proposer_model_base_url or args.model_base_url,
+                "model": args.proposer_model_name or args.model_name,
+            },
+            "auditor": {
+                "base_url": args.auditor_model_base_url or args.model_base_url,
+                "model": args.auditor_model_name or args.model_name,
+            },
+            "fixer": {
+                "base_url": args.fixer_model_base_url or args.model_base_url,
+                "model": args.fixer_model_name or args.model_name,
+            },
+        },
+        "workbench_db": str(args.workbench_db),
         "selected_count": len(rows),
         "processed_count": processed,
         "skipped_count": skipped,
@@ -172,9 +192,28 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--rowid", action="append", default=[])
     parser.add_argument("--model-base-url", default=DEFAULT_BASE_URL)
     parser.add_argument("--model-name", default=DEFAULT_MODEL)
+    parser.add_argument("--temperature", type=float, default=0.0)
+    parser.add_argument("--planner-model-base-url", default="")
+    parser.add_argument("--planner-model-name", default="")
+    parser.add_argument("--planner-temperature", type=float, default=None)
+    parser.add_argument("--proposer-model-base-url", default="")
+    parser.add_argument("--proposer-model-name", default="")
+    parser.add_argument("--proposer-temperature", type=float, default=None)
+    parser.add_argument("--auditor-model-base-url", default="")
+    parser.add_argument("--auditor-model-name", default="")
+    parser.add_argument("--auditor-temperature", type=float, default=None)
+    parser.add_argument("--fixer-model-base-url", default="")
+    parser.add_argument("--fixer-model-name", default="")
+    parser.add_argument("--fixer-temperature", type=float, default=None)
+    parser.add_argument("--workbench-db", type=Path, default=DEFAULT_WORKBENCH_DB)
+    parser.add_argument("--no-workbench", action="store_true")
+    parser.add_argument("--build-workbench-if-missing", action=argparse.BooleanOptionalAction, default=True)
+    parser.add_argument("--workbench-recipe-limit", type=int, default=250000)
+    parser.add_argument("--no-workbench-fts", action="store_true")
     parser.add_argument("--max-tokens", type=int, default=1000)
     parser.add_argument("--timeout", type=int, default=600)
     parser.add_argument("--evidence-rounds", type=int, default=1)
+    parser.add_argument("--planning-rounds", type=int, default=1)
     parser.add_argument("--max-processed", type=int, default=0)
     parser.add_argument("--resume", action=argparse.BooleanOptionalAction, default=True)
     parser.add_argument("--force", action="store_true")

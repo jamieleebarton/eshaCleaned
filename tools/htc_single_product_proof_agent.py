@@ -41,6 +41,12 @@ from htc_product_auditor_agent import (  # noqa: E402
     tokens,
     weighted_tokens,
 )
+from htc_workbench_index import (  # noqa: E402
+    DEFAULT_DB as DEFAULT_WORKBENCH_DB,
+    build_dashboard,
+    build_index as build_workbench_index,
+    expand_candidate_family,
+)
 from htc.full_code import parse_full_code  # noqa: E402
 
 DEFAULT_OUT_DIR = ROOT / "output" / "htc_single_product_proof_agent"
@@ -63,12 +69,16 @@ Rules:
 - Look at the whole HTC picture: base htc_code, htc_full_code examples, variant/modifier, claims, audience/use-case, and recipe substitution consequences.
 - The assignment must prevent bad recipe joins. A retail product can share a broad food family with a recipe ingredient but still be the wrong substitute because of audience, form, processing, flavor, or variant. Example: baby oatmeal cereal is not automatically usable for a recipe that asks for oatmeal.
 - Stage both the base HTC and the best supported full-code/facet target when the evidence proves them. If full-code/facets are not proven, request tools instead of collapsing to the broad bucket.
+- Prefer direct consensus witnesses with matching title/audience/form/modifier over broad candidate families. Never choose a full-code whose modifier contradicts the product identity.
 - Do not trust current_htc_code if source authority is weak, raw, rejected, non-food, or category-only.
 - Use product title, UPC, brand, aisle/category, search term, existing tree identity/path/modifier, current/raw HTC, and candidate corpus examples.
 - Reject candidates where the canonical path/product identity contradicts the product title.
 - A candidate supported only by a single rare corpus row is not enough unless other evidence is overwhelming.
 - If the product says juice, do not choose vinegar, canned fruit, cider, soda, punch, smoothie, slush, or concentrate unless the product title explicitly says that subtype.
 - Machine tools must be requested using only these exact forms:
+  expand_candidate_family:<FAMILY_ID>
+  get_full_code_summary:<HTC_CODE>
+  get_recipe_use_examples:<QUERY>
   fetch_corpus_rows_for_htc_code:<HTC_CODE>
   fetch_corpus_rows_for_product_title:<PRODUCT TITLE>
   fetch_product_rows_for_upc:<UPC>
@@ -91,9 +101,22 @@ PROPOSER_SCHEMA = {
     "confidence": "high|medium|low",
     "rationale": "short string",
     "recipe_join_risk": "short string",
+    "recipe_compatibility": {
+        "ordinary_ingredient_substitute": "yes|no|uncertain",
+        "compatible_recipe_terms": ["strings"],
+        "incompatible_recipe_terms": ["strings"],
+        "join_level": "base_htc|variant|full_code|blocked|uncertain",
+        "evidence": ["strings"],
+    },
     "supporting_evidence": ["strings"],
     "contradicting_evidence": ["strings"],
     "needed_machine_evidence": ["strings"],
+}
+
+PLANNER_SCHEMA = {
+    "selected_tools": ["expand_candidate_family:<FAMILY_ID>", "get_full_code_summary:<HTC_CODE>", "get_recipe_use_examples:<QUERY>"],
+    "rationale": "short string",
+    "risk_focus": ["strings"],
 }
 
 VERIFIER_SCHEMA = {
@@ -103,6 +126,13 @@ VERIFIER_SCHEMA = {
     "confidence": "high|medium|low",
     "rationale": "short string",
     "recipe_join_risk": "short string",
+    "recipe_compatibility": {
+        "ordinary_ingredient_substitute": "yes|no|uncertain",
+        "compatible_recipe_terms": ["strings"],
+        "incompatible_recipe_terms": ["strings"],
+        "join_level": "base_htc|variant|full_code|blocked|uncertain",
+        "evidence": ["strings"],
+    },
     "blocking_contradictions": ["strings"],
     "required_next_tools": ["strings"],
 }
@@ -116,8 +146,13 @@ FIXER_SCHEMA = {
     "recipe_join_risk": "short string",
     "staged_change": {
         "from_htc_code": "string",
+        "from_htc_full_code": "string",
         "to_htc_code": "string or null",
         "to_htc_full_code": "string or null",
+        "facet_updates": {},
+        "recipe_join_policy": {},
+        "evidence_ids": ["strings"],
+        "write_scope": ["product_htc_assignment|full_code_assignment|recipe_join_policy"],
         "facet_notes": "string",
     },
     "required_next_tools": ["strings"],
@@ -139,8 +174,12 @@ def post_chat(base_url: str, model: str, messages: list[dict[str, str]], *, max_
         headers={"Content-Type": "application/json", "Authorization": "Bearer EMPTY"},
         method="POST",
     )
-    with urllib.request.urlopen(req, timeout=timeout) as resp:  # noqa: S310 - local vLLM endpoint
-        raw = json.loads(resp.read().decode("utf-8"))
+    try:
+        with urllib.request.urlopen(req, timeout=timeout) as resp:  # noqa: S310 - local vLLM endpoint
+            raw = json.loads(resp.read().decode("utf-8"))
+    except urllib.error.HTTPError as exc:
+        body = exc.read().decode("utf-8", errors="replace")
+        raise RuntimeError(f"vLLM HTTP {exc.code}: {body[:2000]}") from exc
     content = raw["choices"][0]["message"].get("content") or "{}"
     return parse_json_object(content)
 
@@ -520,14 +559,27 @@ def weighted_title_terms(title: str) -> set[str]:
     return weighted_tokens({"name": title, "search_term": title, "tree_product_identity": title})["title"]
 
 
-def execute_machine_tools(products_path: Path, consensus_path: Path, recipes_path: Path, requested_tools: list[Any]) -> list[dict[str, Any]]:
+def execute_machine_tools(
+    products_path: Path,
+    consensus_path: Path,
+    recipes_path: Path,
+    workbench_db: Path,
+    requested_tools: list[Any],
+) -> list[dict[str, Any]]:
     results = []
     for tool in requested_tools:
         spec = str(tool or "").strip()
         if not spec:
             continue
         name, _, arg = spec.partition(":")
-        if name == "fetch_corpus_rows_for_htc_code":
+        if name == "expand_candidate_family":
+            results.append(expand_candidate_family(workbench_db, family_id=arg))
+            continue
+        if name == "get_full_code_summary":
+            rows = consensus_rows_for_htc_code(consensus_path, arg)
+        elif name == "get_recipe_use_examples":
+            rows = search_recipe_ingredients(recipes_path, arg)
+        elif name == "fetch_corpus_rows_for_htc_code":
             rows = consensus_rows_for_htc_code(consensus_path, arg)
         elif name == "fetch_corpus_rows_for_product_title":
             rows = consensus_rows_for_product_title(consensus_path, arg)
@@ -561,7 +613,10 @@ def execute_machine_tools(products_path: Path, consensus_path: Path, recipes_pat
 def valid_machine_tool(spec: Any) -> bool:
     text = str(spec or "").strip()
     return (
-        text.startswith("fetch_corpus_rows_for_htc_code:")
+        text.startswith("expand_candidate_family:")
+        or text.startswith("get_full_code_summary:")
+        or text.startswith("get_recipe_use_examples:")
+        or text.startswith("fetch_corpus_rows_for_htc_code:")
         or text.startswith("fetch_corpus_rows_for_product_title:")
         or text.startswith("fetch_product_rows_for_upc:")
         or text.startswith("search_store_products:")
@@ -573,6 +628,15 @@ def valid_machine_tool(spec: Any) -> bool:
 
 def machine_tool_requests(packet: dict[str, Any], proposal: dict[str, Any], verifier: dict[str, Any]) -> list[str]:
     requests = []
+    dashboard = packet.get("workbench_dashboard") if isinstance(packet.get("workbench_dashboard"), dict) else {}
+    for family in dashboard.get("candidate_families") or []:
+        if not isinstance(family, dict):
+            continue
+        family_id = str(family.get("family_id") or "").strip()
+        if family_id:
+            requests.append(f"expand_candidate_family:{family_id}")
+        if len(requests) >= 3:
+            break
     for spec in proposal.get("needed_machine_evidence") or []:
         if valid_machine_tool(spec):
             requests.append(str(spec))
@@ -609,35 +673,238 @@ def machine_tool_requests(packet: dict[str, Any], proposal: dict[str, Any], veri
     return unique[:MAX_TOOL_REQUESTS]
 
 
-def build_evidence_packet(consensus_path: Path, products_path: Path, recipes_path: Path, row_number: int, row: dict[str, str], refs: dict, inv: dict, df: dict) -> tuple[dict[str, Any], list[Any]]:
+def planner_tool_requests(packet: dict[str, Any], planner: dict[str, Any]) -> list[str]:
+    requests = []
+    for spec in planner.get("selected_tools") or []:
+        if valid_machine_tool(spec):
+            requests.append(str(spec))
+    for spec in packet.get("suggested_expansion_tools") or []:
+        if valid_machine_tool(spec):
+            requests.append(str(spec))
+    seen = set()
+    unique = []
+    for req in requests:
+        if req not in seen:
+            unique.append(req)
+            seen.add(req)
+    return unique[:MAX_TOOL_REQUESTS]
+
+
+def build_workbench_dashboard_for_row(args: argparse.Namespace, row: dict[str, str]) -> dict[str, Any]:
+    db_path = Path(getattr(args, "workbench_db", DEFAULT_WORKBENCH_DB))
+    if not getattr(args, "no_workbench", False) and not db_path.exists() and getattr(args, "build_workbench_if_missing", False):
+        build_workbench_index(
+            db_path,
+            args.products,
+            args.consensus,
+            args.recipes,
+            enable_fts=not getattr(args, "no_workbench_fts", False),
+            recipe_limit=getattr(args, "workbench_recipe_limit", None) or None,
+        )
+    if getattr(args, "no_workbench", False) or not db_path.exists():
+        return {
+            "unavailable": True,
+            "db_path": str(db_path),
+            "reason": "workbench disabled or database missing",
+        }
+    return build_dashboard(
+        db_path,
+        rowid=str(row.get("rowid") or ""),
+        upc=str(row.get("upc") or ""),
+    )
+
+
+def compact_workbench_dashboard(dashboard: dict[str, Any]) -> dict[str, Any]:
+    if dashboard.get("unavailable"):
+        return dashboard
+    witnesses = dashboard.get("witnesses") if isinstance(dashboard.get("witnesses"), dict) else {}
+    return {
+        "schema_version": dashboard.get("schema_version"),
+        "observed_facets": dashboard.get("observed_facets") or {},
+        "candidate_families": [
+            {
+                "family_id": family.get("family_id"),
+                "score": family.get("score"),
+                "base_codes_seen": (family.get("base_codes_seen") or [])[:8],
+                "matched_terms": (family.get("matched_terms") or [])[:10],
+                "signals": (family.get("signals") or [])[:6],
+                "top_matching_codes": (family.get("top_matching_codes") or [])[:6],
+                "top_full_codes": (family.get("top_full_codes") or [])[:6],
+                "top_paths": (family.get("top_paths") or [])[:5],
+                "why_plausible": (family.get("why_plausible") or [])[:5],
+                "why_suspicious": (family.get("why_suspicious") or [])[:5],
+                "expand_tools": (family.get("expand_tools") or [])[:3],
+            }
+            for family in (dashboard.get("candidate_families") or [])[:6]
+            if isinstance(family, dict)
+        ],
+        "join_risks": [
+            {
+                "risk": risk.get("risk"),
+                "product_audience": risk.get("product_audience"),
+                "question": risk.get("question"),
+                "ordinary_recipe_examples": (risk.get("ordinary_recipe_examples") or [])[:3],
+            }
+            for risk in (dashboard.get("join_risks") or [])[:4]
+            if isinstance(risk, dict)
+        ],
+        "witnesses": {
+            "same_upc": (witnesses.get("same_upc") or [])[:8],
+            "recipe_use": (witnesses.get("recipe_use") or [])[:8],
+        },
+        "expandable_branches": (dashboard.get("expandable_branches") or [])[:12],
+    }
+
+
+def pre_expand_dashboard_families(args: argparse.Namespace, dashboard: dict[str, Any], *, limit: int = 2) -> list[dict[str, Any]]:
+    if dashboard.get("unavailable"):
+        return []
+    expanded = []
+    for family in (dashboard.get("candidate_families") or [])[:limit]:
+        if not isinstance(family, dict):
+            continue
+        family_id = str(family.get("family_id") or "").strip()
+        if not family_id:
+            continue
+        expanded_family = expand_candidate_family(
+            args.workbench_db,
+            family_id=family_id,
+            limit_codes=6,
+            limit_examples_per_code=2,
+        )
+        expanded_family["codes"] = [
+            {
+                "htc_code": code.get("htc_code"),
+                "row_count": code.get("row_count"),
+                "modal_canonical_path": code.get("modal_canonical_path"),
+                "top_full_codes": (code.get("top_full_codes") or [])[:6],
+                "top_leaf_paths": (code.get("top_leaf_paths") or [])[:5],
+                "top_modifiers": (code.get("top_modifiers") or [])[:5],
+                "title_samples": (code.get("title_samples") or [])[:4],
+                "examples": (code.get("examples") or [])[:2],
+            }
+            for code in (expanded_family.get("codes") or [])[:6]
+            if isinstance(code, dict)
+        ]
+        expanded.append(expanded_family)
+    return expanded
+
+
+def suggested_dashboard_tools(dashboard: dict[str, Any], *, limit: int = 2) -> list[str]:
+    tools = []
+    for family in (dashboard.get("candidate_families") or [])[:limit]:
+        if not isinstance(family, dict):
+            continue
+        family_id = str(family.get("family_id") or "").strip()
+        if family_id:
+            tools.append(f"expand_candidate_family:{family_id}")
+    return tools
+
+
+def compact_tool_result_for_prompt(result: dict[str, Any]) -> dict[str, Any]:
+    if result.get("tool") == "expand_candidate_family":
+        return {
+            "tool": "expand_candidate_family",
+            "family_id": result.get("family_id"),
+            "code_count": result.get("code_count"),
+            "codes": [
+                {
+                    "htc_code": code.get("htc_code"),
+                    "row_count": code.get("row_count"),
+                    "modal_canonical_path": code.get("modal_canonical_path"),
+                    "top_full_codes": (code.get("top_full_codes") or [])[:4],
+                    "top_leaf_paths": (code.get("top_leaf_paths") or [])[:3],
+                    "top_modifiers": (code.get("top_modifiers") or [])[:3],
+                    "title_samples": (code.get("title_samples") or [])[:2],
+                    "examples": [
+                        {
+                            "title": example.get("title"),
+                            "htc_code": example.get("htc_code"),
+                            "htc_full_code": example.get("htc_full_code"),
+                            "canonical_path": example.get("canonical_path"),
+                            "retail_leaf_path": example.get("retail_leaf_path"),
+                            "modifier": example.get("modifier"),
+                        }
+                        for example in (code.get("examples") or [])[:1]
+                        if isinstance(example, dict)
+                    ],
+                }
+                for code in (result.get("codes") or [])[:4]
+                if isinstance(code, dict)
+            ],
+            "cursor": result.get("cursor"),
+        }
+    if "rows" in result:
+        rows = result.get("rows") if isinstance(result.get("rows"), list) else []
+        return {
+            **{k: v for k, v in result.items() if k != "rows"},
+            "rows": rows[:5],
+        }
+    return result
+
+
+def compact_tool_results_for_prompt(results: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    return [compact_tool_result_for_prompt(result) for result in results if isinstance(result, dict)]
+
+
+def compact_ranker_candidates(candidates: list[Any]) -> list[dict[str, Any]]:
+    out = []
+    for cand in candidates[:5]:
+        d = asdict(cand) if hasattr(cand, "__dataclass_fields__") else dict(cand)
+        out.append({
+            "htc_code": clean_htc(d.get("htc_code")),
+            "score": d.get("score"),
+            "canonical_path": d.get("canonical_path"),
+            "retail_leaf_path": d.get("retail_leaf_path"),
+            "product_identity": d.get("product_identity"),
+            "row_count": d.get("row_count"),
+            "evidence_terms": (d.get("evidence_terms") or [])[:10],
+            "missing_required_identity_terms": (d.get("missing_required_identity_terms") or [])[:8],
+            "signal_scores": {
+                "title_overlap": d.get("title_overlap"),
+                "search_overlap": d.get("search_overlap"),
+                "path_overlap": d.get("path_overlap"),
+                "aisle_overlap": d.get("aisle_overlap"),
+                "string_similarity": d.get("string_similarity"),
+                "authority_penalty": d.get("authority_penalty"),
+            },
+        })
+    return out
+
+
+def build_evidence_packet(args: argparse.Namespace, row_number: int, row: dict[str, str], refs: dict, inv: dict, df: dict) -> tuple[dict[str, Any], list[Any]]:
+    consensus_path = args.consensus
     candidates = rank_candidates(row, refs, inv, df)
     signals = {key: sorted(value) for key, value in weighted_tokens(row).items()}
-    current_code = clean_htc(row.get("htc_code"))
-    raw_code = clean_htc(row.get("raw_htc_code"))
-    context_codes = {current_code, raw_code}
-    context_codes.update(clean_htc(c.htc_code) for c in candidates[:8])
-    context_codes.discard("")
+    dashboard = build_workbench_dashboard_for_row(args, row)
+    compact_dashboard = compact_workbench_dashboard(dashboard)
+    raw_witnesses = dashboard.get("witnesses") if isinstance(dashboard.get("witnesses"), dict) else {}
     packet = {
+        "schema_version": 2,
         "product": compact_product(row),
-        "product_clues": product_clues(row),
         "row_number": row_number,
-        "signals": signals,
-        "same_upc_rows": [compact_product(r) for r in same_upc_rows(products_path, row.get("upc", ""))],
-        "same_search_rows": [compact_product(r) for r in same_search_rows(products_path, row.get("search_term", ""))],
-        "recipe_ingredient_neighbors": search_recipe_ingredients(
-            recipes_path,
-            " ".join(str(row.get(k) or "") for k in ["tree_product_identity", "tree_modifier", "search_term", "name"]),
-            limit=MAX_TOOL_ROWS,
-        ),
-        "candidate_htc_concepts": candidate_neighbor_rows(candidates, consensus_path),
-        "current_and_candidate_full_code_context": summarize_full_code_examples(
-            consensus_path,
-            context_codes,
-            limit_per_code=MAX_FULL_CODE_EXAMPLES,
-        ),
+        "direct_consensus_candidates": (raw_witnesses.get("consensus_direct") or [])[:10],
+        "workbench_dashboard": compact_dashboard,
+        "suggested_expansion_tools": suggested_dashboard_tools(compact_dashboard),
+        "supplemental_ranker_witnesses": {
+            "ranker_is_not_truth": True,
+            "signals": signals,
+            "product_clues": product_clues(row),
+            "candidate_htc_concepts": compact_ranker_candidates(candidates),
+        },
+        "tool_contract": [
+            "expand_candidate_family:<FAMILY_ID>",
+            "get_full_code_summary:<HTC_CODE>",
+            "get_recipe_use_examples:<QUERY>",
+            "fetch_product_rows_for_upc:<UPC>",
+            "search_consensus:<QUERY>",
+            "search_store_products:<QUERY>",
+            "search_recipe_ingredients:<QUERY>",
+            "sql_query:<READ_ONLY_SQL_OVER_product_rows_AND_consensus_rows>",
+        ],
         "recipe_join_question": (
-            "Would this retail product be a valid substitute when a recipe asks for the broad ingredient identity? "
-            "If not, preserve the difference with a more specific HTC/full-code/facet assignment."
+            "Decide whether this retail product may satisfy ordinary recipe ingredient terms, "
+            "or whether it must be limited to variant/full-code joins or blocked joins."
         ),
     }
     return packet, candidates
@@ -651,6 +918,28 @@ def proposer_messages(packet: dict[str, Any]) -> list[dict[str, str]]:
             "task": "Choose the correct HTC code or state needs_more_evidence.",
             "output_schema": PROPOSER_SCHEMA,
             "evidence_packet": packet,
+        }, sort_keys=True)},
+    ]
+
+
+def planner_messages(packet: dict[str, Any]) -> list[dict[str, str]]:
+    planner_packet = {
+        "product": packet.get("product"),
+        "workbench_dashboard": packet.get("workbench_dashboard"),
+        "supplemental_ranker_witnesses": packet.get("supplemental_ranker_witnesses"),
+        "tool_contract": packet.get("tool_contract"),
+        "task_focus": (
+            "Choose the smallest set of branch expansions needed before HTC/full-code reasoning. "
+            "Prefer expanding candidate families over raw searches. Always include suspicious family rivals."
+        ),
+    }
+    return [
+        {"role": "system", "content": SYSTEM_PREFIX + "\nYou are now the evidence planner. Do not decide the final HTC."},
+        {"role": "user", "content": json.dumps({
+            "role": "planner",
+            "task": "Select machine evidence tools to run before proposer reasoning.",
+            "output_schema": PLANNER_SCHEMA,
+            "evidence_map": planner_packet,
         }, sort_keys=True)},
     ]
 
@@ -682,6 +971,19 @@ def fixer_messages(packet: dict[str, Any], proposal: dict[str, Any], verifier: d
     ]
 
 
+def role_base_url(args: argparse.Namespace, role: str) -> str:
+    return str(getattr(args, f"{role}_model_base_url", "") or args.model_base_url)
+
+
+def role_model_name(args: argparse.Namespace, role: str) -> str:
+    return str(getattr(args, f"{role}_model_name", "") or args.model_name)
+
+
+def role_temperature(args: argparse.Namespace, role: str) -> float:
+    value = getattr(args, f"{role}_temperature", None)
+    return float(args.temperature if value is None else value)
+
+
 def final_state_from_fixer(current_htc: str, fixer: dict[str, Any]) -> dict[str, Any]:
     accepted = clean_htc(fixer.get("accepted_htc_code") or "")
     accepted_full_code = str(fixer.get("accepted_htc_full_code") or "").strip()
@@ -689,9 +991,9 @@ def final_state_from_fixer(current_htc: str, fixer: dict[str, Any]) -> dict[str,
     if not accepted_full_code:
         accepted_full_code = str(staged_change.get("to_htc_full_code") or "").strip()
     verdict = str(fixer.get("fixer_verdict") or "machine_evidence_expansion")
-    if verdict == "stage_htc_update" and accepted and accepted != current_htc:
+    if verdict == "stage_htc_update" and accepted and (accepted != current_htc or accepted_full_code):
         action = "stage_htc_update"
-        shared_verdict = "verified_update"
+        shared_verdict = "verified_update" if accepted != current_htc else "verified_current"
     elif verdict == "no_change_verified_current":
         action = "no_change_verified_current"
         shared_verdict = "verified_current"
@@ -702,6 +1004,10 @@ def final_state_from_fixer(current_htc: str, fixer: dict[str, Any]) -> dict[str,
         "verdict": shared_verdict,
         "accepted_htc_code": accepted,
         "accepted_htc_full_code": accepted_full_code,
+        "facet_updates": staged_change.get("facet_updates") if isinstance(staged_change.get("facet_updates"), dict) else {},
+        "recipe_join_policy": staged_change.get("recipe_join_policy") if isinstance(staged_change.get("recipe_join_policy"), dict) else {},
+        "evidence_ids": staged_change.get("evidence_ids") if isinstance(staged_change.get("evidence_ids"), list) else [],
+        "write_scope": staged_change.get("write_scope") if isinstance(staged_change.get("write_scope"), list) else [],
         "facet_notes": staged_change.get("facet_notes", ""),
         "action": action,
         "production_writes": False,
@@ -709,17 +1015,51 @@ def final_state_from_fixer(current_htc: str, fixer: dict[str, Any]) -> dict[str,
 
 
 def run_product(args: argparse.Namespace, refs: dict, inv: dict, df: dict, row_number: int, row: dict[str, str]) -> dict[str, Any]:
-    packet, _candidates = build_evidence_packet(args.consensus, args.products, args.recipes, row_number, row, refs, inv, df)
+    packet, _candidates = build_evidence_packet(args, row_number, row, refs, inv, df)
     t0 = time.time()
     rounds = []
     machine_evidence_rounds = []
+    planner: dict[str, Any] = {}
+    planner_timing = 0.0
+    if getattr(args, "planning_rounds", 1):
+        planner_start = time.time()
+        planner = post_chat(
+            role_base_url(args, "planner"),
+            role_model_name(args, "planner"),
+            planner_messages(packet),
+            max_tokens=min(args.max_tokens, 700),
+            temperature=role_temperature(args, "planner"),
+            timeout=args.timeout,
+        )
+        planner_timing = round(time.time() - planner_start, 3)
+        planned_tools = planner_tool_requests(packet, planner)
+        planned_results = execute_machine_tools(args.products, args.consensus, args.recipes, args.workbench_db, planned_tools)
+        packet["planned_evidence"] = {
+            "planner": planner,
+            "requested_tools": planned_tools,
+            "tool_results": compact_tool_results_for_prompt(planned_results),
+        }
     proposal: dict[str, Any] = {}
     verifier: dict[str, Any] = {}
     for round_index in range(args.evidence_rounds + 1):
         round_start = time.time()
-        proposal = post_chat(args.model_base_url, args.model_name, proposer_messages(packet), max_tokens=args.max_tokens, timeout=args.timeout)
+        proposal = post_chat(
+            role_base_url(args, "proposer"),
+            role_model_name(args, "proposer"),
+            proposer_messages(packet),
+            max_tokens=args.max_tokens,
+            temperature=role_temperature(args, "proposer"),
+            timeout=args.timeout,
+        )
         proposal_done = time.time()
-        verifier = post_chat(args.model_base_url, args.model_name, verifier_messages(packet, proposal), max_tokens=args.max_tokens, timeout=args.timeout)
+        verifier = post_chat(
+            role_base_url(args, "auditor"),
+            role_model_name(args, "auditor"),
+            verifier_messages(packet, proposal),
+            max_tokens=args.max_tokens,
+            temperature=role_temperature(args, "auditor"),
+            timeout=args.timeout,
+        )
         verifier_done = time.time()
         rounds.append({
             "round": round_index,
@@ -736,15 +1076,22 @@ def run_product(args: argparse.Namespace, refs: dict, inv: dict, df: dict, row_n
         requested_tools = machine_tool_requests(packet, proposal, verifier)
         if not requested_tools:
             break
-        tool_results = execute_machine_tools(args.products, args.consensus, args.recipes, requested_tools)
+        tool_results = execute_machine_tools(args.products, args.consensus, args.recipes, args.workbench_db, requested_tools)
         machine_evidence_rounds.append({
             "round": round_index + 1,
             "requested_tools": requested_tools,
-            "tool_results": tool_results,
+            "tool_results": compact_tool_results_for_prompt(tool_results),
         })
         packet["machine_evidence_rounds"] = machine_evidence_rounds
     fixer_start = time.time()
-    fixer = post_chat(args.model_base_url, args.model_name, fixer_messages(packet, proposal, verifier), max_tokens=args.max_tokens, timeout=args.timeout)
+    fixer = post_chat(
+        role_base_url(args, "fixer"),
+        role_model_name(args, "fixer"),
+        fixer_messages(packet, proposal, verifier),
+        max_tokens=args.max_tokens,
+        temperature=role_temperature(args, "fixer"),
+        timeout=args.timeout,
+    )
     fixer_done = time.time()
     final = final_state_from_fixer(clean_htc(row.get("htc_code")), fixer)
     t2 = time.time()
@@ -754,8 +1101,15 @@ def run_product(args: argparse.Namespace, refs: dict, inv: dict, df: dict, row_n
         "agent": "htc_single_product_proof_agent",
         "model_base_url": args.model_base_url,
         "model_name": args.model_name,
+        "model_roles": {
+            "planner": {"base_url": role_base_url(args, "planner"), "model": role_model_name(args, "planner")},
+            "proposer": {"base_url": role_base_url(args, "proposer"), "model": role_model_name(args, "proposer")},
+            "auditor": {"base_url": role_base_url(args, "auditor"), "model": role_model_name(args, "auditor")},
+            "fixer": {"base_url": role_base_url(args, "fixer"), "model": role_model_name(args, "fixer")},
+        },
         "row_number": row_number,
         "product": compact_product(row),
+        "planner": planner,
         "proposal": proposal,
         "verifier": verifier,
         "fixer": fixer,
@@ -763,6 +1117,7 @@ def run_product(args: argparse.Namespace, refs: dict, inv: dict, df: dict, row_n
         "machine_evidence_rounds": machine_evidence_rounds,
         "final": final,
         "timing_seconds": {
+            "planner": planner_timing,
             "proposal": first_timing.get("proposal", 0.0),
             "verifier": first_timing.get("verifier", 0.0),
             "fixer": round(fixer_done - fixer_start, 3),
@@ -803,6 +1158,10 @@ def write_queue_record(out_dir: Path, result: dict[str, Any]) -> None:
             "from_htc_code": clean_htc(product.get("htc_code")),
             "to_htc_code": final.get("accepted_htc_code"),
             "to_htc_full_code": final.get("accepted_htc_full_code"),
+            "facet_updates": final.get("facet_updates") or {},
+            "recipe_join_policy": final.get("recipe_join_policy") or {},
+            "evidence_ids": final.get("evidence_ids") or [],
+            "write_scope": final.get("write_scope") or [],
             "facet_notes": final.get("facet_notes"),
             "verdict": final.get("verdict"),
             "proof": proof,
@@ -828,13 +1187,32 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--products", type=Path, default=DEFAULT_PRODUCTS)
     parser.add_argument("--recipes", type=Path, default=DEFAULT_RECIPES)
     parser.add_argument("--out-dir", type=Path, default=DEFAULT_OUT_DIR)
-    parser.add_argument("--upc", default="078742088198")
+    parser.add_argument("--upc", default="")
     parser.add_argument("--rowid", default="")
     parser.add_argument("--model-base-url", default=DEFAULT_BASE_URL)
     parser.add_argument("--model-name", default=DEFAULT_MODEL)
+    parser.add_argument("--temperature", type=float, default=0.0)
+    parser.add_argument("--planner-model-base-url", default="")
+    parser.add_argument("--planner-model-name", default="")
+    parser.add_argument("--planner-temperature", type=float, default=None)
+    parser.add_argument("--proposer-model-base-url", default="")
+    parser.add_argument("--proposer-model-name", default="")
+    parser.add_argument("--proposer-temperature", type=float, default=None)
+    parser.add_argument("--auditor-model-base-url", default="")
+    parser.add_argument("--auditor-model-name", default="")
+    parser.add_argument("--auditor-temperature", type=float, default=None)
+    parser.add_argument("--fixer-model-base-url", default="")
+    parser.add_argument("--fixer-model-name", default="")
+    parser.add_argument("--fixer-temperature", type=float, default=None)
+    parser.add_argument("--workbench-db", type=Path, default=DEFAULT_WORKBENCH_DB)
+    parser.add_argument("--no-workbench", action="store_true")
+    parser.add_argument("--build-workbench-if-missing", action=argparse.BooleanOptionalAction, default=True)
+    parser.add_argument("--workbench-recipe-limit", type=int, default=250000)
+    parser.add_argument("--no-workbench-fts", action="store_true")
     parser.add_argument("--max-tokens", type=int, default=1000)
     parser.add_argument("--timeout", type=int, default=600)
     parser.add_argument("--evidence-rounds", type=int, default=1)
+    parser.add_argument("--planning-rounds", type=int, default=1)
     return parser
 
 
@@ -844,6 +1222,7 @@ def main() -> int:
     print(json.dumps({
         "agent": result["agent"],
         "product": result["product"],
+        "planner": result["planner"],
         "proposal": result["proposal"],
         "verifier": result["verifier"],
         "fixer": result["fixer"],

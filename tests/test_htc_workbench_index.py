@@ -9,7 +9,7 @@ TOOLS = ROOT / "tools"
 if str(TOOLS) not in sys.path:
     sys.path.insert(0, str(TOOLS))
 
-from htc_workbench_index import build_dashboard, build_index
+from htc_workbench_index import build_dashboard, build_index, expand_candidate_family
 
 
 def write_csv(path: Path, rows: list[dict[str, str]]) -> None:
@@ -140,3 +140,8 @@ def test_dashboard_surfaces_baby_oatmeal_join_risk(tmp_path: Path):
     assert dashboard["join_risks"][0]["risk"] == "audience_mismatch"
     assert dashboard["candidate_families"][0]["top_full_codes"]
     assert "expand_candidate_family" in dashboard["candidate_families"][0]["expand_tools"][0]
+
+    expanded = expand_candidate_family(db, family_id=dashboard["candidate_families"][0]["family_id"])
+    assert expanded["tool"] == "expand_candidate_family"
+    assert expanded["codes"][0]["top_full_codes"]
+    assert expanded["codes"][0]["examples"]
